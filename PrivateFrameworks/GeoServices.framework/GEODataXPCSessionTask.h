@@ -10,6 +10,7 @@
     bool  _didNotifyDelegate;
     double  _endTime;
     NSError * _error;
+    float  _priority;
     NSData * _receivedData;
     GEODataRequest * _request;
     GEODataXPCSession * _session;
@@ -33,6 +34,7 @@
 @property (nonatomic, readonly) unsigned long long incomingPayloadSize;
 @property (nonatomic, readonly) bool isCancelled;
 @property (nonatomic, readonly) unsigned long long outgoingPayloadSize;
+@property float priority;
 @property (nonatomic, readonly) bool protocolBufferHasPreamble;
 @property (nonatomic, readonly) NSData *receivedData;
 @property (nonatomic, readonly) NSString *remoteAddressAndPort;
@@ -42,6 +44,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned int taskIdentifier;
 @property (nonatomic, readonly) unsigned int taskQueue;
+@property (nonatomic, readonly) float taskQueuePriority;
 @property (nonatomic, readonly) NSObject<OS_xpc_object> *xpcRequest;
 @property (nonatomic, readonly) unsigned long long xpcRequestIdentifier;
 
@@ -63,6 +66,7 @@
 - (bool)isCancelled;
 - (void)notifyDelegate;
 - (unsigned long long)outgoingPayloadSize;
+- (float)priority;
 - (bool)processFailedReplyXPCDictionary:(id)arg1;
 - (bool)processReplyXPCDictionary:(id)arg1;
 - (void)processResult:(int)arg1 xpcReply:(id)arg2;
@@ -75,9 +79,11 @@
 - (id)session;
 - (id)sessionIsolation;
 - (void)setDidNotifyDelegate:(bool)arg1;
+- (void)setPriority:(float)arg1;
 - (void)start;
 - (unsigned int)taskIdentifier;
 - (unsigned int)taskQueue;
+- (float)taskQueuePriority;
 - (unsigned long long)updateXPCRequestIdentifier;
 - (id)xpcRequest;
 - (unsigned long long)xpcRequestIdentifier;

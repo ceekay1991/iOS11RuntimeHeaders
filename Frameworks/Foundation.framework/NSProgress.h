@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSProgress : NSObject <NSProgressPublisher> {
+@interface NSProgress : NSObject <NSProgressPublisher, VSAccountSerializationResult> {
     NSMutableDictionary * _acknowledgementHandlersByLowercaseBundleID;
     id /* block */  _cancellationHandler;
     NSMutableSet * _children;
@@ -49,7 +49,14 @@
 @property (getter=isPausable) bool pausable;
 @property (getter=isPaused, readonly) bool paused;
 @property (copy) id /* block */ pausingHandler;
+@property (getter=px_isComplete, nonatomic, readonly) bool px_complete;
 @property (copy) id /* block */ resumingHandler;
+@property (nonatomic, readonly) NSString *sf_bundleID;
+@property (nonatomic, readonly) NSString *sf_error;
+@property (nonatomic, readonly) NSString *sf_personRealName;
+@property (nonatomic, readonly) NSString *sf_publishingKey;
+@property (nonatomic, readonly) NSString *sf_sessionID;
+@property (nonatomic) long long sf_transferState;
 @property (readonly) Class superclass;
 @property (copy) NSNumber *throughput;
 @property long long totalUnitCount;
@@ -77,22 +84,24 @@
 + (void)removeSubscriber:(id)arg1;
 
 - (void).cxx_destruct;
-- (void)__notifyRemoteObserversOfValueForKey:(id)arg1 inUserInfo:(bool)arg2;
 - (id /* block */)_acknowledgementHandlerForAppBundleIdentifier:(id)arg1;
 - (void)_addCompletedUnitCount:(long long)arg1;
 - (void)_addImplicitChild:(id)arg1;
 - (bool)_adoptChildUserInfo;
 - (id)_indentedDescription:(unsigned long long)arg1;
 - (id)_initWithValues:(id)arg1;
-- (void)_notifyRemoteObserversOfValueForKey:(id)arg1 inUserInfo:(bool)arg2;
+- (void)_notifyRemoteObserversOfUserInfoValueForKey:(id)arg1;
+- (void)_notifyRemoteObserversOfValueForKeys:(id)arg1;
 - (id)_parent;
 - (void)_publish;
 - (id)_publishingAppBundleIdentifier;
 - (void)_receiveProgressMessage:(id)arg1 forSequence:(unsigned long long)arg2;
+- (double)_remoteFractionCompleted;
 - (void)_setAcknowledgementHandler:(id /* block */)arg1 forAppBundleIdentifier:(id)arg2;
 - (void)_setCompletedUnitCount:(long long)arg1 totalUnitCount:(long long)arg2;
 - (void)_setParent:(id)arg1 portion:(long long)arg2;
-- (void)_setRemoteValue:(id)arg1 forKey:(id)arg2 inUserInfo:(bool)arg3;
+- (void)_setRemoteUserInfoValue:(id)arg1 forKey:(id)arg2;
+- (void)_setRemoteValues:(id)arg1 forKeys:(id)arg2;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2 fromChild:(bool)arg3;
 - (id)_setValueForKeys:(id /* block */)arg1 settingBlock:(id /* block */)arg2;
 - (void)_unpublish;
@@ -195,6 +204,16 @@
 - (void)setInstallPhase:(unsigned long long)arg1;
 - (void)setInstallState:(unsigned long long)arg1;
 
+// Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
+
+- (id)brc_dumpDescription;
+- (void)brc_publish;
+- (void)brc_unpublish;
+
+// Image: /System/Library/PrivateFrameworks/DocumentManagerCore.framework/DocumentManagerCore
+
+- (bool)doc_isPending;
+
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 + (id)_geo_mirroredProgressForReceivingOverXPC:(id*)arg1;
@@ -204,5 +223,32 @@
 + (id)_geo_progressMirroringProgress:(id)arg1;
 
 - (void)_geo_mirroredProgressReplaceObservedProgressWith:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
+
++ (id)hd_progressMirroringProgress:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (void)_px_performSimulatedWorkStep:(long long)arg1;
+- (void)px_appendChild:(id)arg1 withPendingUnitCount:(long long)arg2;
+- (void)px_appendSimulatedProgressWithDuration:(double)arg1 pendingUnitCount:(short)arg2;
+- (bool)px_isComplete;
+
+// Image: /System/Library/PrivateFrameworks/Sharing.framework/Sharing
+
++ (id)sf_publishingKeyForApp:(id)arg1 sessionID:(id)arg2;
++ (id)sf_transferStateAsString:(long long)arg1;
+
+- (void)setSf_transferState:(long long)arg1;
+- (id)sf_bundleID;
+- (id)sf_error;
+- (void)sf_failedWithError:(id)arg1;
+- (id)sf_initWithAppBundle:(id)arg1 sessionID:(id)arg2 andPersonRealName:(id)arg3;
+- (id)sf_initWithFileURL:(id)arg1;
+- (id)sf_personRealName;
+- (id)sf_publishingKey;
+- (id)sf_sessionID;
+- (long long)sf_transferState;
 
 @end

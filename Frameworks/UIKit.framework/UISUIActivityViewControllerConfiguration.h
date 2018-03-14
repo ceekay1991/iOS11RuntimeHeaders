@@ -3,6 +3,7 @@
  */
 
 @interface UISUIActivityViewControllerConfiguration : NSObject <NSSecureCoding> {
+    bool  __unitTest_disableExcludingSourceApplicationFromOpenActivities;
     NSArray * _activityItemValueClassNames;
     NSArray * _activityItemValueExtensionMatchingDictionaries;
     NSArray * _activityTypeOrder;
@@ -22,6 +23,7 @@
     bool  _sourceIsManaged;
 }
 
+@property (nonatomic, readonly) bool _unitTest_disableExcludingSourceApplicationFromOpenActivities;
 @property (nonatomic, retain) NSArray *activityItemValueClassNames;
 @property (nonatomic, retain) NSArray *activityItemValueExtensionMatchingDictionaries;
 @property (nonatomic, retain) NSArray *activityTypeOrder;
@@ -40,10 +42,12 @@
 @property (nonatomic) bool shouldPresentAirDropSection;
 @property (nonatomic) bool sourceIsManaged;
 
++ (void)_unitTest_SetDisableExcludingSourceApplicationFromOpenActivities:(bool)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_contextForMatchingActivityItems:(id)arg1 activityItemValues:(id)arg2 activityItemValueClasses:(id)arg3;
+- (bool)_unitTest_disableExcludingSourceApplicationFromOpenActivities;
 - (id)activityItemValueClassNames;
 - (id)activityItemValueExtensionMatchingDictionaries;
 - (id)activityTypeOrder;

@@ -12,6 +12,8 @@
     bool  enabledWasSet;
     struct OpaqueFigPlaybackItem { } * figPlaybackItem;
     bool  figPlaybackItemIsReadyForInspection;
+    float  hapticVolume;
+    bool  hapticVolumeWasSet;
     NSDictionary * loudnessInfo;
     int  trackID;
     NSDictionary * videoEnhancementFilterOptions;

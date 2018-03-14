@@ -27,6 +27,7 @@
 @property (nonatomic, readonly) double currentKeepAliveInterval;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) int growthStage;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isServerOriginatedKeepAlive;
 @property (nonatomic) double lastSuccessfulKeepAliveInterval;
@@ -55,6 +56,7 @@
 - (unsigned long long)countOfGrowthActions;
 - (double)currentKeepAliveInterval;
 - (id)description;
+- (int)growthStage;
 - (id)initWithCacheInfo:(id)arg1 loggingIdentifier:(id)arg2 algorithmName:(id)arg3;
 - (bool)isServerOriginatedKeepAlive;
 - (double)lastSuccessfulKeepAliveInterval;

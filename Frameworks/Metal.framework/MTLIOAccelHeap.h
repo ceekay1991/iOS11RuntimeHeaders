@@ -21,6 +21,7 @@
 }
 
 @property (readonly) unsigned long long cpuCacheMode;
+@property (readonly) unsigned long long currentAllocatedSize;
 @property (readonly) <MTLDevice> *device;
 @property (copy) NSString *label;
 @property (readonly) unsigned long long size;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long usedSize;
 
 - (unsigned long long)cpuCacheMode;
+- (unsigned long long)currentAllocatedSize;
 - (void)dealloc;
 - (void)deallocHeapSubResource;
 - (id)description;

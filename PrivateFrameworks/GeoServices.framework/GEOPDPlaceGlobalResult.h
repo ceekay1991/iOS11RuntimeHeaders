@@ -14,6 +14,7 @@
     GEOPDExternalTransitLookupResult * _externalTransitLookupResult;
     GEOPDFeatureIdGeocodingResult * _featureIdGeocodingResult;
     GEOPDGeocodingResult * _geocodingResult;
+    GEOPDIpGeoLookupResult * _ipGeoLookupResult;
     GEOPDLocationDirectedSearchResult * _locationDirectedSearchResult;
     GEOPDMapsIdentifierPlaceLookupResult * _mapsIdentifierPlaceLookupResult;
     GEOPDMerchantLookupResult * _merchantLookupResult;
@@ -54,6 +55,7 @@
 @property (nonatomic, readonly) bool hasExternalTransitLookupResult;
 @property (nonatomic, readonly) bool hasFeatureIdGeocodingResult;
 @property (nonatomic, readonly) bool hasGeocodingResult;
+@property (nonatomic, readonly) bool hasIpGeoLookupResult;
 @property (nonatomic, readonly) bool hasLocationDirectedSearchResult;
 @property (nonatomic, readonly) bool hasMapsIdentifierPlaceLookupResult;
 @property (nonatomic, readonly) bool hasMerchantLookupResult;
@@ -69,6 +71,7 @@
 @property (nonatomic, readonly) bool hasSiriSearchResult;
 @property (nonatomic, readonly) bool hasVendorSpecificPlaceRefinementResult;
 @property (nonatomic, readonly) bool hasWifiFingerprintResult;
+@property (nonatomic, retain) GEOPDIpGeoLookupResult *ipGeoLookupResult;
 @property (nonatomic, retain) GEOPDLocationDirectedSearchResult *locationDirectedSearchResult;
 @property (nonatomic, retain) GEOPDMapsIdentifierPlaceLookupResult *mapsIdentifierPlaceLookupResult;
 @property (nonatomic, retain) GEOPDMerchantLookupResult *merchantLookupResult;
@@ -113,6 +116,7 @@
 - (bool)hasExternalTransitLookupResult;
 - (bool)hasFeatureIdGeocodingResult;
 - (bool)hasGeocodingResult;
+- (bool)hasIpGeoLookupResult;
 - (bool)hasLocationDirectedSearchResult;
 - (bool)hasMapsIdentifierPlaceLookupResult;
 - (bool)hasMerchantLookupResult;
@@ -129,6 +133,7 @@
 - (bool)hasVendorSpecificPlaceRefinementResult;
 - (bool)hasWifiFingerprintResult;
 - (unsigned long long)hash;
+- (id)ipGeoLookupResult;
 - (bool)isEqual:(id)arg1;
 - (id)locationDirectedSearchResult;
 - (id)mapsIdentifierPlaceLookupResult;
@@ -155,6 +160,7 @@
 - (void)setExternalTransitLookupResult:(id)arg1;
 - (void)setFeatureIdGeocodingResult:(id)arg1;
 - (void)setGeocodingResult:(id)arg1;
+- (void)setIpGeoLookupResult:(id)arg1;
 - (void)setLocationDirectedSearchResult:(id)arg1;
 - (void)setMapsIdentifierPlaceLookupResult:(id)arg1;
 - (void)setMerchantLookupResult:(id)arg1;

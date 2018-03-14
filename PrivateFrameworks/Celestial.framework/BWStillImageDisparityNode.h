@@ -4,6 +4,7 @@
 
 @interface BWStillImageDisparityNode : BWNode {
     bool  _attachesFaceLandmarksToOutputSampleBuffer;
+    BWNodeInput * _bravoHDRInput;
     NSDictionary * _cameraInfoByPortType;
     FigCaptureStillImageSettings * _currentRequestedStillImageCaptureSettings;
     BWStillImageCaptureSettings * _currentResolvedStillImageCaptureSettings;
@@ -30,6 +31,7 @@
 }
 
 @property (nonatomic) bool attachesFaceLandmarksToOutputSampleBuffer;
+@property (nonatomic, readonly) BWNodeInput *bravoHDRInput;
 @property (nonatomic, readonly) BWNodeInput *telephotoInput;
 @property (nonatomic, readonly) BWNodeInput *wideInput;
 
@@ -46,6 +48,7 @@
 - (void)_resolveProcessingMode;
 - (bool)attachesFaceLandmarksToOutputSampleBuffer;
 - (bool)attachesInputBracketToOutputSampleBuffer;
+- (id)bravoHDRInput;
 - (void)configurationWithID:(long long)arg1 updatedFormat:(id)arg2 didBecomeLiveForInput:(id)arg3;
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
@@ -55,6 +58,7 @@
 - (id)nodeSubType;
 - (id)nodeType;
 - (void)prepareForCurrentConfigurationToBecomeLive;
+- (void)prewarmLandmarkDetectorIfNecessary;
 - (id)processorOptionsDictionary;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
 - (void)setAttachesFaceLandmarksToOutputSampleBuffer:(bool)arg1;

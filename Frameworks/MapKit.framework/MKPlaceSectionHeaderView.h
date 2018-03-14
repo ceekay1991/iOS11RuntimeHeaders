@@ -8,6 +8,7 @@
     NSLayoutConstraint * _baselineToBottomConstraint;
     NSLayoutConstraint * _baselineToTopConstraint;
     NSArray * _constraints;
+    bool  _contentChanged;
     struct CGSize { 
         double width; 
         double height; 
@@ -23,6 +24,7 @@
     NSLayoutConstraint * _seeMoreCenterYConstraint;
     bool  _showSeeMoreButton;
     id  _target;
+    double  _width;
 }
 
 @property (nonatomic) SEL action;
@@ -69,5 +71,6 @@
 - (id)target;
 - (id)title;
 - (void)updateConstraints;
+- (void)updateContent;
 
 @end

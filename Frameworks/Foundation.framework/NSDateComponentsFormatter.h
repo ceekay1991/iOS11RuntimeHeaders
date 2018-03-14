@@ -41,6 +41,8 @@
 @property long long unitsStyle;
 @property unsigned long long zeroFormattingBehavior;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)localizedStringFromDateComponents:(id)arg1 unitsStyle:(long long)arg2;
 
 - (void)_NSDateComponentsFormatter_commonInit;
@@ -86,5 +88,9 @@
 - (id)stringFromTimeInterval:(double)arg1;
 - (long long)unitsStyle;
 - (unsigned long long)zeroFormattingBehavior;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
++ (id)__ck_durationFormatter;
 
 @end

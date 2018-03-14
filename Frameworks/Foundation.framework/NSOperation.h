@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSOperation : NSObject {
+@interface NSOperation : NSObject <ICLoggable> {
     id  _private;
     int  _private1;
     int  _private1b;
@@ -12,27 +12,43 @@
 @property (getter=isCancelled, readonly) bool cancelled;
 @property (copy) id /* block */ completionBlock;
 @property (getter=isConcurrent, readonly) bool concurrent;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSArray *dependencies;
+@property (readonly, copy) NSString *description;
 @property (getter=isExecuting, readonly) bool executing;
 @property (getter=isFinished, readonly) bool finished;
+@property (readonly) unsigned long long hash;
 @property (copy) NSString *name;
 @property long long qualityOfService;
 @property long long queuePriority;
 @property (getter=isReady, readonly) bool ready;
+@property (nonatomic) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
+@property (readonly) Class superclass;
 @property double threadPriority;
+
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)currentOperation;
++ (id)keyPathsForValuesAffectingCancelled;
++ (id)keyPathsForValuesAffectingExecuting;
++ (id)keyPathsForValuesAffectingFinished;
++ (id)keyPathsForValuesAffectingIsCancelled;
++ (id)keyPathsForValuesAffectingIsExecuting;
++ (id)keyPathsForValuesAffectingIsFinished;
++ (id)keyPathsForValuesAffectingIsReady;
++ (id)keyPathsForValuesAffectingReady;
 
-- (id)__;
+- (id)__graphDescription:(unsigned long long)arg1;
 - (id)_activity;
 - (id /* block */)_copyCompletionBlock;
-- (long long)_effQoS;
 - (id)_implicitObservationInfo;
 - (void)addDependency:(id)arg1;
+- (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void*)arg4;
 - (void)cancel;
 - (id /* block */)completionBlock;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)dependencies;
 - (id)description;
 - (id)init;
@@ -48,6 +64,7 @@
 - (long long)qualityOfService;
 - (long long)queuePriority;
 - (void)removeDependency:(id)arg1;
+- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)setCompletionBlock:(id /* block */)arg1;
 - (void)setName:(id)arg1;
 - (void)setObservationInfo:(void*)arg1;
@@ -58,5 +75,19 @@
 - (double)threadPriority;
 - (void)waitUntilFinished;
 - (void)waitUntilFinishedOrTimeout:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Catalyst.framework/Catalyst
+
+- (void)cat_addDependencies:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+
+- (void)setShouldEnqueueDependenciesWhenPerformingAsCloudRequest:(bool)arg1;
+- (bool)shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (id)ic_loggingIdentifier;
+- (id)ic_loggingValues;
 
 @end

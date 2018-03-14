@@ -11,8 +11,8 @@
 @property (readonly) unsigned long long bufferDataSize;
 @property (readonly) unsigned long long bufferDataType;
 @property (readonly) MTLArgument *bufferIndirectArgumentType;
+@property (readonly) MTLPointerType *bufferPointerType;
 @property (readonly) MTLStructType *bufferStructType;
-@property (readonly) MTLType *dataTypeDescription;
 @property (readonly) unsigned long long index;
 @property (readonly) unsigned long long indirectConstantAlignment;
 @property (readonly) unsigned long long indirectConstantDataSize;

@@ -16,6 +16,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (bool)_canBeReusedInPickerView;
 - (bool)_isAttributed;
 - (void)_setIsCenterCell:(bool)arg1 shouldModifyAlphaOfView:(bool)arg2;
@@ -23,7 +24,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)attributedTitle;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 isModern:(bool)arg3 textColor:(id)arg4 forceTextAlignmentCentered:(bool)arg5;
 - (void)prepareForReuse;

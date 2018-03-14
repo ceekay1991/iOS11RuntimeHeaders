@@ -23,6 +23,7 @@
 
 + (id)defaultFormat;
 + (id)formatForTraitCollection:(id)arg1;
++ (id)preferredFormat;
 
 - (double)_contextScale;
 - (bool)_grayscale;

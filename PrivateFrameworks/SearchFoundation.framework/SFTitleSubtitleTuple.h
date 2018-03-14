@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFTitleSubtitleTuple : NSObject <NSSecureCoding, SFTitleSubtitleTuple> {
+@interface SFTitleSubtitleTuple : NSObject <NSCopying, NSSecureCoding, SFTitleSubtitleTuple> {
     NSString * _subtitle;
     NSString * _title;
 }
@@ -19,6 +19,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

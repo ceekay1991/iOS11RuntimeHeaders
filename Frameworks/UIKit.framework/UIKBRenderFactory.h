@@ -43,6 +43,7 @@
 + (id)segmentedControlColor:(bool)arg1;
 
 - (double)RivenFactor:(double)arg1;
+- (id)ZWNJKeyImageName;
 - (id)_controlKeyBackgroundColorName;
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;

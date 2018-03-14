@@ -21,7 +21,11 @@
     }  _imagePickerFlags;
     NSString * _initialViewControllerClassName;
     NSArray * _mediaTypes;
+    bool  _photoPickerDidEndDelayingPresentation;
+    bool  _photoPickerDidStartDelayingPresentation;
     id /* block */  _photoPickerDisplayCompletion;
+    bool  _photoPickerIsPreheating;
+    UIViewController * _photoPickerPreheatedViewController;
     id /* block */  _photoPickerPreviewDisplayCompletion;
     Class  _photoPickerRequestOptionsClass;
     NSExtension * _photosExtension;
@@ -55,6 +59,8 @@
 @property (nonatomic) double videoMaximumDuration;
 @property (nonatomic) long long videoQuality;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (bool)_isMediaTypeAvailable:(id)arg1 forSource:(long long)arg2;
 + (bool)_reviewCapturedItems;
 + (id)availableCaptureModesForCameraDevice:(long long)arg1;
@@ -73,9 +79,11 @@
 - (bool)_convertAutoloopsToGIF;
 - (void)_createInitialControllerWithCompletion:(id /* block */)arg1;
 - (bool)_didRevertStatusBar;
-- (id)_handleDismissCurrentViewControllerFromPhotoPickerAnimated:(bool)arg1;
+- (void)_handleEndingPhotoPickerPresentationDelay;
 - (void)_handleInstantiatedRemoteViewController:(id)arg1 request:(id)arg2 error:(id)arg3 completion:(id /* block */)arg4;
 - (void)_handleMatchingExtensions:(id)arg1 error:(id)arg2 completion:(id /* block */)arg3;
+- (void)_handlePushViewController:(id)arg1;
+- (void)_handleTopViewControllerReadyForDisplay:(id)arg1;
 - (void)_imagePickerDidCancel;
 - (void)_imagePickerDidCompleteWithInfo:(id)arg1;
 - (void)_imagePickerDidCompleteWithInfoArray:(id)arg1;
@@ -110,7 +118,8 @@
 - (void)_setTargetForPrompt:(id)arg1;
 - (void)_setValue:(id)arg1 forProperty:(id)arg2;
 - (void)_setupControllersForCurrentMediaTypes;
-- (void)_setupControllersForCurrentSourceType;
+- (void)_setupControllersForCurrentSourceTypeWithCompletion:(id /* block */)arg1;
+- (bool)_shouldDelayPresentation;
 - (bool)_showsPrompt;
 - (bool)_sourceTypeIsCamera;
 - (id)_staticPrompt;
@@ -118,6 +127,7 @@
 - (void)_testPerformPreviewOfFirstPhoto;
 - (void)_updateCameraCaptureMode;
 - (id)_valueForProperty:(id)arg1;
+- (void)_viewControllerPresentationDidInitiate;
 - (bool)allowsEditing;
 - (bool)allowsImageEditing;
 - (long long)cameraCaptureMode;
@@ -141,7 +151,6 @@
 - (id)photosExtension;
 - (id)photosExtensionDiscoveryDriver;
 - (id)photosExtensionDiscoveryQueue;
-- (id)popViewControllerAnimated:(bool)arg1;
 - (void)requestViewControllerFromPhotoPickerWithRequestIdentifier:(id)arg1;
 - (void)setAllowsEditing:(bool)arg1;
 - (void)setAllowsImageEditing:(bool)arg1;
@@ -175,5 +184,9 @@
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillUnload;
+
+// Image: /System/Library/PrivateFrameworks/AppleAccountUI.framework/AppleAccountUI
+
++ (id)aaui_fixedCropRect:(id)arg1 forOriginalImage:(id)arg2;
 
 @end

@@ -15,6 +15,8 @@
 @property (nonatomic, readonly, copy) CNPropertyGroupItem *propertyGroupItem;
 @property (readonly) Class superclass;
 
++ (bool)supportsPropertyGroupItem:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)_cnui_IDSIDRepresentation;
 - (id)contactPropertyHandle;

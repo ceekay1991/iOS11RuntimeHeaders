@@ -40,6 +40,7 @@
 @property (getter=_internalFocusSystem, nonatomic, readonly) _UIHostedFocusSystem *internalFocusSystem;
 @property (getter=isMomentary, nonatomic) bool momentary;
 @property (nonatomic, readonly) unsigned long long numberOfSegments;
+@property (setter=px_setMinimumSegmentWidth:, nonatomic) double px_minimumSegmentWidth;
 @property (nonatomic, retain) UIView *removedSegment;
 @property (nonatomic) long long segmentedControlStyle;
 @property (nonatomic) long long selectedSegmentIndex;
@@ -65,6 +66,7 @@
 + (double)defaultHeightForStyle:(long long)arg1;
 + (double)defaultHeightForStyle:(long long)arg1 size:(int)arg2;
 
+- (void).cxx_destruct;
 - (id)__scalarStatisticsForUserValueChangedEvent;
 - (void)_animateContentChangeWithAnimations:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (id)_attributedTitleForSegmentAtIndex:(unsigned long long)arg1;
@@ -131,14 +133,25 @@
 - (id)_tintColorArchivingKey;
 - (id)_uiktest_labelsWithState:(unsigned long long)arg1;
 - (id)_uiktest_segmentAtIndex:(unsigned long long)arg1;
+- (void)_updateAxLongPressGestureRecognizer;
 - (void)_updateDividerImageForSegmentAtIndex:(unsigned long long)arg1;
 - (void)_updateOptionsBackground;
 - (void)_updateTitleTextAttributes;
 - (bool)_usesNewAnimations;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (struct CGSize { double x1; double x2; })__dbg_contentOffsetForSelectedSegment;
+- (bool)__dbg_hasValidSelectedSegmentIndex;
+- (bool)__dbg_isEnabledForSelectedSegment;
+- (id)__dbg_titleForSelectedSegment;
+- (double)__dbg_widthForSelectedSegment;
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)addSegmentWithTitle:(id)arg1;
@@ -153,9 +166,6 @@
 - (struct CGSize { double x1; double x2; })contentOffsetForSegmentAtIndex:(unsigned long long)arg1;
 - (struct UIOffset { double x1; double x2; })contentPositionAdjustmentForSegmentType:(long long)arg1 barMetrics:(long long)arg2;
 - (int)controlSize;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)dividerImageForLeftSegmentState:(unsigned long long)arg1 rightSegmentState:(unsigned long long)arg2 barMetrics:(long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
@@ -237,6 +247,7 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (bool)transparentBackground;
 - (void)updateForMiniBarState:(bool)arg1;
 - (bool)useBlockyMagnificationInClassic;
@@ -251,5 +262,17 @@
 - (long long)_mapkit_selectedSegmentIndex;
 - (void)_mapkit_setSelectedSegmentIndex:(long long)arg1;
 - (void)_mapkit_setTitle:(id)arg1 forSegmentAtIndex:(long long)arg2 insertIfNeeded:(bool)arg3;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
++ (double)px_defaultMinimumSegmentWidth;
+
+- (struct CGSize { double x1; double x2; })_pxswizzled_sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (double)px_minimumSegmentWidth;
+- (void)px_setMinimumSegmentWidth:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
+
+- (void)sizeToFitWithMinimumSegmentWidth:(double)arg1 maximumTotalWidth:(double)arg2;
 
 @end

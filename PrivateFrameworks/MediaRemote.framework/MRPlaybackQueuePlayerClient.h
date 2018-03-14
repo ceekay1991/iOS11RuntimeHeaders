@@ -3,77 +3,36 @@
  */
 
 @interface MRPlaybackQueuePlayerClient : NSObject {
-    MRPlaybackQueueContentItemCallbacks * _artworkCallbacks;
-    id /* block */  _beginLyricsEventCallback;
-    MRPlaybackQueueContentItemCallbacks * _createChildItemCallbacks;
-    MRPlaybackQueueContentItemCallbacks * _createItemForIdentifierCallbacks;
-    MRPlaybackQueueContentItemCallbacks * _createItemForOffsetCallbacks;
-    MRPlaybackQueueContentItemCallbacks * _createPlaybackQueueForRequestCallbacks;
-    id /* block */  _endLyricsEventCallback;
-    MRPlaybackQueueContentItemCallbacks * _infoCallbacks;
-    MRPlaybackQueueContentItemCallbacks * _languageOptionCallbacks;
-    MRPlaybackQueueContentItemCallbacks * _lyricsCallbacks;
-    MRPlaybackQueueContentItemCallbacks * _metadataCallbacks;
-    MRPlaybackQueuePlayerPathClient * _playbackQueueClient;
+    NSMutableDictionary * _cache;
+    NSMutableDictionary * _offsets;
     void * _playerPath;
-    NSObject<OS_dispatch_queue> * _serialQueue;
+    NSObject<OS_dispatch_queue> * _queue;
+    NSMutableSet * _requests;
 }
 
-@property (nonatomic, readonly) NSArray *artworkCallbacks;
-@property (nonatomic, copy) id /* block */ beginLyricsEventCallback;
-@property (nonatomic, readonly) void*capabilities;
-@property (nonatomic, readonly) void*context;
-@property (nonatomic, readonly) NSArray *createChildItemCallbacks;
-@property (nonatomic, readonly) NSArray *createItemForIdentifierCallbacks;
-@property (nonatomic, readonly) NSArray *createItemForOffsetCallbacks;
-@property (nonatomic, readonly) NSArray *createPlaybackQueueForRequestCallbacks;
-@property (nonatomic, copy) id /* block */ endLyricsEventCallback;
-@property (nonatomic, readonly) bool hasPlaybackQueueCallbacks;
-@property (nonatomic, readonly) NSArray *infoCallbacks;
-@property (nonatomic, readonly) NSArray *languageOptionsCallbacks;
-@property (nonatomic, readonly) NSArray *lyricsCallbacks;
-@property (nonatomic, readonly) NSArray *metadataCallbacks;
 @property (nonatomic, readonly) void*playerPath;
 
-- (void*)_addCallback:(id)arg1 toList:(id*)arg2 prepend:(bool)arg3;
-- (id)_callbacksFromList:(id)arg1;
-- (void*)addArtworkCallback:(id /* block */)arg1 prepend:(bool)arg2;
-- (void*)addCreateChildItemCallback:(id /* block */)arg1 prepend:(bool)arg2;
-- (void*)addCreateItemForIdentifierCallback:(id /* block */)arg1 prepend:(bool)arg2;
-- (void*)addCreateItemForOffsetCallback:(id /* block */)arg1 prepend:(bool)arg2;
-- (void*)addCreatePlaybackQueueForRequestCallback:(id /* block */)arg1 prepend:(bool)arg2;
-- (void*)addInfoCallback:(id /* block */)arg1 prepend:(bool)arg2;
-- (void*)addLanguageOptionsCallback:(id /* block */)arg1 prepend:(bool)arg2;
-- (void*)addLyricsCallback:(id /* block */)arg1 prepend:(bool)arg2;
-- (void*)addMetadataCallback:(id /* block */)arg1 prepend:(bool)arg2;
-- (void)addPlaybackQueue:(void*)arg1 forRequest:(void*)arg2;
-- (id)artworkCallbacks;
-- (id /* block */)beginLyricsEventCallback;
-- (void*)capabilities;
+- (void)_onQueue_invalidate;
+- (id)_onQueue_writeData;
+- (void)addRequest:(void*)arg1;
 - (void*)contentItemForOffset:(long long)arg1;
-- (void*)context;
-- (id)createChildItemCallbacks;
-- (id)createItemForIdentifierCallbacks;
-- (id)createItemForOffsetCallbacks;
-- (id)createPlaybackQueueForRequestCallbacks;
 - (void)dealloc;
-- (id /* block */)endLyricsEventCallback;
-- (bool)hasPlaybackQueueCallbacks;
-- (id)infoCallbacks;
+- (id)description;
+- (bool)hasRequest:(id)arg1;
 - (id)initWithPlayerPath:(void*)arg1 queue:(id)arg2;
-- (void)invalidatePlaybackQueue;
-- (void)invalidatePlaybackQueueWithContext:(void*)arg1;
-- (id)languageOptionsCallbacks;
-- (id)lyricsCallbacks;
-- (id)metadataCallbacks;
+- (void)invalidate;
 - (void*)nowPlayingItem;
-- (long long)offsetForContentItem:(void*)arg1;
-- (id)offsetsForContentItem:(void*)arg1;
+- (id)offsetForIdentifier:(id)arg1;
 - (void*)playerPath;
-- (bool)removeCallback:(void*)arg1;
-- (void*)requsetsForIdentifier:(id)arg1;
-- (void)setBeginLyricsEventCallback:(id /* block */)arg1;
-- (void)setEndLyricsEventCallback:(id /* block */)arg1;
+- (void)readData:(id)arg1;
+- (void)removeRequest:(id)arg1;
+- (void*)requestForContentItem:(void*)arg1;
+- (void*)requestForIdentifer:(id)arg1;
+- (void)subscribeToPlaybackQueue:(void*)arg1 forRequest:(void*)arg2;
+- (id)subscribedContentItemRequests:(id)arg1;
 - (id)subscribedContentItems:(id)arg1;
+- (id)subscribedContentItems:(id)arg1 forRequest:(void*)arg2;
+- (id)subscribedContentItemsIdentifiers:(id)arg1 forRequest:(void*)arg2;
+- (bool)verifyCommandOptions:(id)arg1 forCommand:(unsigned int)arg2;
 
 @end

@@ -30,6 +30,12 @@
             double height; 
         } size; 
     }  _frame;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _layoutMargins;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -69,6 +75,7 @@
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } displayInsets;
 @property (nonatomic) long long flickDirection;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } layoutMargins;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } paddedFrame;
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } paddedInsets;
 @property (nonatomic) int popupBias;
@@ -84,7 +91,7 @@
 + (id)geometryWithShape:(id)arg1;
 + (id)sortedGeometries:(id)arg1 leftToRight:(bool)arg2;
 
-- (id)_copyForDirection:(long long)arg1 positionFactor:(double)arg2 sizeFactor:(double)arg3 scale:(double)arg4;
+- (id)_copyForDirection:(long long)arg1 positionFactor:(double)arg2 inwardSizeFactor:(double)arg3 outwardSizeFactor:(double)arg4 perpendicularSizeFactor:(double)arg5 sizeAspectRatio:(double)arg6 scale:(double)arg7;
 - (void)adjustForConsistentGapsWithSize:(struct CGSize { double x1; double x2; })arg1 inFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (unsigned long long)adjustForTranslucentGapsInFrameWithSize_10Key:(struct CGSize { double x1; double x2; })arg1 centerX:(double)arg2 bottomEdge:(bool)arg3 topEdge:(bool)arg4;
 - (unsigned long long)adjustForTranslucentGapsWithSize:(struct CGSize { double x1; double x2; })arg1 inFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
@@ -108,6 +115,7 @@
 - (id)iPhoneVariantGeometries:(unsigned long long)arg1 annotationIndex:(unsigned long long)arg2;
 - (id)initWithShape:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })layoutMargins;
 - (void)makeIntegralWithScale:(double)arg1;
 - (void)overlayWithGeometry:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })paddedFrame;
@@ -122,6 +130,7 @@
 - (void)setDisplayFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setFlickDirection:(long long)arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setLayoutMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setPaddedFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setPopupBias:(int)arg1;
 - (void)setPopupSource:(struct CGPoint { double x1; double x2; })arg1;

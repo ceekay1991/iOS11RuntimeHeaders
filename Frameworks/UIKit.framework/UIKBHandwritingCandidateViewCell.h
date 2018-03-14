@@ -40,13 +40,13 @@
 + (double)systemFontSize;
 + (double)widthForCandidate:(id)arg1 visualStyling:(struct { unsigned int x1 : 6; unsigned int x2 : 1; unsigned int x3 : 1; unsigned int x4 : 8; unsigned int x5 : 8; unsigned int x6 : 8; })arg2;
 
+- (void).cxx_destruct;
 - (bool)_canDrawContent;
 - (void)_setRenderConfig:(id)arg1;
 - (void)_updateBorders;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)candidate;
 - (void)didMoveToWindow;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })edgeInsets;

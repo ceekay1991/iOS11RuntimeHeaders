@@ -9,8 +9,10 @@
     GEOPDAmenities * _amenities;
     GEOPDAssociatedApp * _associatedApp;
     GEOPDBounds * _bounds;
+    GEOPDBrowseCategories * _browseCategories;
     GEOPDBusinessClaim * _businessClaim;
     GEOPDCaptionedPhoto * _captionedPhoto;
+    GEONonComponentPlaceData * _clientExtNonComponentData;
     GEOPDContainedPlace * _containedPlace;
     GEOPDEntity * _entity;
     GEOPDETA * _eta;
@@ -53,8 +55,10 @@
 @property (nonatomic, retain) GEOPDAmenities *amenities;
 @property (nonatomic, retain) GEOPDAssociatedApp *associatedApp;
 @property (nonatomic, retain) GEOPDBounds *bounds;
+@property (nonatomic, retain) GEOPDBrowseCategories *browseCategories;
 @property (nonatomic, retain) GEOPDBusinessClaim *businessClaim;
 @property (nonatomic, retain) GEOPDCaptionedPhoto *captionedPhoto;
+@property (nonatomic, retain) GEONonComponentPlaceData *clientExtNonComponentData;
 @property (nonatomic, retain) GEOPDContainedPlace *containedPlace;
 @property (nonatomic, retain) GEOPDEntity *entity;
 @property (nonatomic, retain) GEOPDETA *eta;
@@ -67,8 +71,10 @@
 @property (nonatomic, readonly) bool hasAmenities;
 @property (nonatomic, readonly) bool hasAssociatedApp;
 @property (nonatomic, readonly) bool hasBounds;
+@property (nonatomic, readonly) bool hasBrowseCategories;
 @property (nonatomic, readonly) bool hasBusinessClaim;
 @property (nonatomic, readonly) bool hasCaptionedPhoto;
+@property (nonatomic, readonly) bool hasClientExtNonComponentData;
 @property (nonatomic, readonly) bool hasContainedPlace;
 @property (nonatomic, readonly) bool hasEntity;
 @property (nonatomic, readonly) bool hasEta;
@@ -138,8 +144,10 @@
 - (id)amenities;
 - (id)associatedApp;
 - (id)bounds;
+- (id)browseCategories;
 - (id)businessClaim;
 - (id)captionedPhoto;
+- (id)clientExtNonComponentData;
 - (id)containedPlace;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -156,8 +164,10 @@
 - (bool)hasAmenities;
 - (bool)hasAssociatedApp;
 - (bool)hasBounds;
+- (bool)hasBrowseCategories;
 - (bool)hasBusinessClaim;
 - (bool)hasCaptionedPhoto;
+- (bool)hasClientExtNonComponentData;
 - (bool)hasContainedPlace;
 - (bool)hasEntity;
 - (bool)hasEta;
@@ -216,8 +226,10 @@
 - (void)setAmenities:(id)arg1;
 - (void)setAssociatedApp:(id)arg1;
 - (void)setBounds:(id)arg1;
+- (void)setBrowseCategories:(id)arg1;
 - (void)setBusinessClaim:(id)arg1;
 - (void)setCaptionedPhoto:(id)arg1;
+- (void)setClientExtNonComponentData:(id)arg1;
 - (void)setContainedPlace:(id)arg1;
 - (void)setEntity:(id)arg1;
 - (void)setEta:(id)arg1;

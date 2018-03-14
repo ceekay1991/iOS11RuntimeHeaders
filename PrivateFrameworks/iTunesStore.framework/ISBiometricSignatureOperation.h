@@ -5,26 +5,30 @@
 @interface ISBiometricSignatureOperation : ISOperation {
     ISBiometricStore * _biometricStore;
     SSBiometricAuthenticationContext * _context;
-    ISTouchIDDialog * _dialog;
+    ISDialog * _fallbackDialog;
     id /* block */  _outputBlock;
+    ISTouchIDDialog * _touchIDDialog;
 }
 
 @property (nonatomic, retain) ISBiometricStore *biometricStore;
 @property (retain) SSBiometricAuthenticationContext *context;
-@property (nonatomic, retain) ISTouchIDDialog *dialog;
+@property (nonatomic, retain) ISDialog *fallbackDialog;
 @property (copy) id /* block */ outputBlock;
+@property (nonatomic, retain) ISTouchIDDialog *touchIDDialog;
 
 - (void).cxx_destruct;
-- (id)_reasonForDialogBody:(id)arg1;
+- (bool)_promptUserToAuthenticateForIdentityMapChangeWithAccountIdentifier:(id)arg1 accountName:(id)arg2;
 - (id)biometricStore;
 - (id)context;
-- (id)dialog;
-- (id)initWithBiometricAuthenticationContext:(id)arg1 dialog:(id)arg2;
+- (id)fallbackDialog;
+- (id)initWithBiometricAuthenticationContext:(id)arg1 touchIDDialog:(id)arg2 fallbackDialog:(id)arg3;
 - (id /* block */)outputBlock;
 - (void)run;
 - (void)setBiometricStore:(id)arg1;
 - (void)setContext:(id)arg1;
-- (void)setDialog:(id)arg1;
+- (void)setFallbackDialog:(id)arg1;
 - (void)setOutputBlock:(id /* block */)arg1;
+- (void)setTouchIDDialog:(id)arg1;
+- (id)touchIDDialog;
 
 @end

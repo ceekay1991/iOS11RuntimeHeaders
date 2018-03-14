@@ -7,11 +7,13 @@
 
 - (double)_customNavigationTransitionDuration;
 - (bool)_hasInterruptibleNavigationTransition;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_incomingNavigationBarFrame;
 - (bool)_isInteractiveCustomNavigationTransition;
 - (struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })_layoutMarginsforNavigationBar:(UINavigationBar *)arg1;
 - (void)_navigationBarChangedSize:(UINavigationBar *)arg1;
 - (void)_navigationBarDidChangeStyle:(UINavigationBar *)arg1;
 - (void)_navigationBarDidEndAnimation:(UINavigationBar *)arg1;
+- (bool)_navigationBarShouldUpdateProgress;
 - (void)_navigationBarWillBeginCoordinatedTransitionAnimations:(UINavigationBar *)arg1;
 - (void)_navigationItemDidUpdateSearchController:(UINavigationItem *)arg1 oldSearchController:(UISearchController *)arg2;
 - (bool)_shouldCrossFadeNavigationBar;

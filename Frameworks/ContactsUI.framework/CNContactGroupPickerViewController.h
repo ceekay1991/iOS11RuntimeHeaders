@@ -14,12 +14,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)pickableGroupsWithPickedGroups:(id)arg1;
-+ (bool)propertiesLeftToPickWithPickedGroups:(id)arg1;
++ (id)pickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2;
++ (bool)propertiesLeftToPickWithPickedGroups:(id)arg1 policy:(id)arg2;
 + (id)propertySections;
 
 - (void).cxx_destruct;
-- (id)_loadPickableGroupsWithPickedGroups:(id)arg1;
+- (id)_loadPickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2;
 - (void)cancel:(id)arg1;
 - (void)dealloc;
 - (id)groupPickerDelegate;

@@ -14,7 +14,6 @@
 @property (nonatomic, readonly) unsigned long long shortPromptType;
 @property (nonatomic, readonly, copy) NSString *textToSpeak;
 
-+ (id)eventWithPrompt:(unsigned long long)arg1 options:(unsigned long long)arg2 completion:(id /* block */)arg3;
 + (id)eventWithText:(id)arg1 fallbackPrompt:(unsigned long long)arg2 options:(unsigned long long)arg3 completion:(id /* block */)arg4;
 + (bool)isValidShortPromptType:(unsigned long long)arg1;
 

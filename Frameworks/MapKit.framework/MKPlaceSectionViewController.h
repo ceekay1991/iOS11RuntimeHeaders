@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPlaceSectionViewController : UIViewController <MKPlaceSectionViewDelegate> {
+@interface MKPlaceSectionViewController : UIViewController <MKPlaceSectionViewDelegate, _MKAnimationStackViewDelegate> {
     MKPlaceSectionView * _sectionView;
 }
 
@@ -21,5 +21,6 @@
 - (void)sectionView:(id)arg1 didSelectFooter:(id)arg2;
 - (void)sectionView:(id)arg1 didSelectHeader:(id)arg2;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)stackViewNeedsLayout:(id)arg1;
 
 @end

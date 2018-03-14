@@ -19,9 +19,9 @@
 - (void).cxx_destruct;
 - (id)artwork;
 - (id)artworkCache;
-- (id)badgeImageToDisplayInView:(id)arg1;
+- (id)badgeImageToDisplayWithScreenScale:(double)arg1;
 - (unsigned long long)hash;
-- (id)imageToDisplayInView:(id)arg1;
+- (id)imageToDisplayWithScreenScale:(double)arg1;
 - (id)initWithArtwork:(id)arg1 shieldSize:(long long)arg2;
 - (id)initWithArtwork:(id)arg1 shieldSize:(long long)arg2 artworkCache:(id)arg3;
 - (bool)isEqual:(id)arg1;

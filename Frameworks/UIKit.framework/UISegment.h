@@ -46,6 +46,7 @@
 
 + (id)_backgroundImageWithStorage:(id)arg1 style:(long long)arg2 mini:(bool)arg3 state:(unsigned long long)arg4 position:(unsigned int)arg5 drawMode:(int*)arg6 defaultBlock:(id /* block */)arg7;
 
+- (void).cxx_destruct;
 - (id)_attributedTextForState:(unsigned long long)arg1 selected:(bool)arg2;
 - (double)_barHeight;
 - (void)_commonSegmentInit;
@@ -80,10 +81,10 @@
 - (void)_updateBackgroundAndContentViewsIfNeeded;
 - (void)_updateFloatingContentControlState:(unsigned long long)arg1 context:(id)arg2 withAnimationCoordinator:(id)arg3 animated:(bool)arg4;
 - (void)_updateTextColors;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)animateAdd:(bool)arg1;
 - (void)animateRemoveForWidth:(double)arg1;
 - (id)badgeValue;
@@ -92,7 +93,6 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })contentRect;
 - (struct CGSize { double x1; double x2; })contentSize;
 - (int)controlSize;
-- (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)disabledTextColor;
 - (void)encodeWithCoder:(id)arg1;

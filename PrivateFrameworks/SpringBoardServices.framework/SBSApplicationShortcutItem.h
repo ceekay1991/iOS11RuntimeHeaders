@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic) unsigned long long activationMode;
+@property (nonatomic, retain) UIView *badgeView;
 @property (nonatomic, copy) NSString *bundleIdentifierToLaunch;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -24,6 +25,8 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSDictionary *userInfo;
 @property (nonatomic, retain) NSData *userInfoData;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices
 
 + (id)_staticApplicationShortcutItemsFromInfoPlistEntry:(id)arg1;
 
@@ -51,5 +54,16 @@
 - (id)type;
 - (id)userInfo;
 - (id)userInfoData;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+
++ (id)shortcutItemWithGKQuickAction:(id)arg1;
+
+- (bool)_gkIsGameCenterQuickAction;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardUI.framework/SpringBoardUI
+
+- (id)badgeView;
+- (void)setBadgeView:(id)arg1;
 
 @end

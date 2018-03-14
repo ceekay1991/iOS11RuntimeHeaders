@@ -38,14 +38,12 @@
 - (bool)_processSubgroupMembershipsFromSaveContext:(id)arg1 error:(id*)arg2;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)addressBook;
-- (id)batchEnumeratorForFetchRequest:(id)arg1;
 - (bool)canExecuteSaveRequest:(id)arg1 error:(id*)arg2;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id*)arg2;
 - (bool)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id*)arg3;
 - (id)contactIdentifierWithMatchingDictionary:(id)arg1;
+- (id)contactObservableForFetchRequest:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
-- (id)contactsForFetchRequest:(id)arg1 error:(id*)arg2;
-- (id)contactsForFetchRequest:(id)arg1 matchInfos:(id*)arg2 error:(id*)arg3;
 - (id)containersMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)defaultContainerIdentifier;
 - (id)defaultContainerIdentifierForAddressBook:(void*)arg1;
@@ -55,9 +53,9 @@
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(id /* block */)arg2 completion:(id /* block */)arg3;
 - (bool)executeSaveRequest:(id)arg1 error:(id*)arg2;
 - (bool)executeSaveRequest:(id)arg1 response:(id*)arg2 error:(id*)arg3;
-- (bool)fetchAndDecodeEncodedContactsForFetchRequest:(id)arg1 error:(id*)arg2 batchHandler:(id /* block */)arg3;
+- (bool)fetchAndDecodeEncodedContactsForFetchRequest:(id)arg1 error:(id*)arg2 cancelationToken:(id)arg3 batchHandler:(id /* block */)arg4;
 - (bool)fetchContactsForFetchRequest:(id)arg1 error:(id*)arg2 batchHandler:(id /* block */)arg3;
-- (bool)fetchEncodedContactsForFetchRequest:(id)arg1 error:(id*)arg2 batchHandler:(id /* block */)arg3;
+- (bool)fetchEncodedContactsForFetchRequest:(id)arg1 error:(id*)arg2 cancelationToken:(id)arg3 batchHandler:(id /* block */)arg4;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)groupsWithIdentifiers:(id)arg1 error:(id*)arg2;
 - (id)identifierWithError:(id*)arg1;
@@ -67,7 +65,7 @@
 - (id)initWithContactsEnvironment:(id)arg1 addressBook:(id)arg2;
 - (id)logger;
 - (id)matchingDictionaryForContact:(id)arg1;
-- (id)meContactIdentifierWithError:(id*)arg1;
+- (id)meContactIdentifiers:(id*)arg1;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id*)arg2;
 - (bool)registerChangeHistoryClientIdentifier:(id)arg1 error:(id*)arg2;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(id /* block */)arg2;

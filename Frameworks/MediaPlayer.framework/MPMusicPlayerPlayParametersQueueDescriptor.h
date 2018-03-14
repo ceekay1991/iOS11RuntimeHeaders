@@ -4,27 +4,31 @@
 
 @interface MPMusicPlayerPlayParametersQueueDescriptor : MPMusicPlayerQueueDescriptor {
     NSArray * _playParametersQueue;
-    NSDictionary * _startPlayParameters;
+    MPMusicPlayerPlayParameters * _startItemPlayParameters;
 }
 
 @property (nonatomic, copy) NSArray *playParametersQueue;
-@property (nonatomic, copy) NSDictionary *startPlayParameters;
+@property (nonatomic, retain) MPMusicPlayerPlayParameters *startItemPlayParameters;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)decodePlayParam:(id)arg1 completion:(id /* block */)arg2;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPlayParametersQueue:(id)arg1;
-- (id)playParametersArray;
 - (id)playParametersQueue;
 - (void)setEndTime:(double)arg1 forItemWithPlayParameters:(id)arg2;
 - (void)setPlayParametersQueue:(id)arg1;
-- (void)setStartPlayParameters:(id)arg1;
+- (void)setStartItemPlayParameters:(id)arg1;
 - (void)setStartTime:(double)arg1 forItemWithPlayParameters:(id)arg2;
-- (id)startItemIdentifier;
-- (struct NSDictionary { Class x1; }*)startPlayParameters;
+- (id)startItemPlayParameters;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)playbackContext;
 
 @end

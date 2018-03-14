@@ -9,6 +9,7 @@
     struct OpaqueFigSimpleMutex { } * dataOutputsStorageMutex;
     AVWeakReferencingDelegateStorage * delegateStorage;
     int  masterSynchronizedDataQueueMaxDepth;
+    bool  synchronizingVideoAndDepth;
     AVWeakReference * weakReference;
 }
 

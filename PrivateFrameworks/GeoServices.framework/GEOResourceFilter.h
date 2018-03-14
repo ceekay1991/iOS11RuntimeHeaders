@@ -13,13 +13,16 @@
         unsigned long long count; 
         unsigned long long size; 
     }  _scenarios;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, readonly) int*scales;
 @property (nonatomic, readonly) unsigned long long scalesCount;
 @property (nonatomic, readonly) int*scenarios;
 @property (nonatomic, readonly) unsigned long long scenariosCount;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (int)StringAsScales:(id)arg1;
 - (int)StringAsScenarios:(id)arg1;
 - (void)addScale:(int)arg1;
@@ -45,6 +48,7 @@
 - (unsigned long long)scenariosCount;
 - (void)setScales:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setScenarios:(int*)arg1 count:(unsigned long long)arg2;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

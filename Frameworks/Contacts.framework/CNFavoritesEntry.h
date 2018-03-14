@@ -7,6 +7,7 @@
     int  _abIdentifier;
     int  _abUid;
     NSString * _actionType;
+    bool  _autoUpdating;
     NSString * _bundleIdentifier;
     CNContact * _contact;
     bool  _dirty;
@@ -24,6 +25,7 @@
 @property (nonatomic) int abIdentifier;
 @property (nonatomic) int abUid;
 @property (nonatomic, retain) NSString *actionType;
+@property (nonatomic, readonly) bool autoUpdating;
 @property (nonatomic, retain) NSString *bundleIdentifier;
 @property (nonatomic, retain) CNContact *contact;
 @property (nonatomic, readonly) CNContactProperty *contactProperty;
@@ -33,6 +35,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSString *label;
 @property (nonatomic, retain) NSString *labeledValueIdentifier;
+@property (nonatomic, readonly, copy) NSString *localizedContactPropertyLabel;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, copy) NSString *originalName;
 @property (nonatomic, retain) NSString *propertyKey;
@@ -48,9 +51,11 @@
 + (id)createLabeledValueForFavoritesEntryValue:(id)arg1 label:(id)arg2 iOSLegacyIdentifier:(int)arg3 propertyKey:(id)arg4;
 + (id)descriptorsForRequiredKeysForPropertyKey:(id)arg1;
 + (id)favoritesEntryValueForLabeledValueValue:(id)arg1 propertyKey:(id)arg2;
++ (bool)favoritesEntryValueForLabeledValueValue:(id)arg1 propertyKey:(id)arg2 isEqualToValue:(id)arg3;
 + (void)initialize;
 + (id)instantMessageAddressForFavoritesEntryValue:(id)arg1;
 + (id)labeledValueValueForFavoritesEntryValue:(id)arg1 propertyKey:(id)arg2;
++ (id)rematchEntrySnapshot:(id)arg1 withStore:(id)arg2 noMatchFound:(bool*)arg3;
 + (id)sharedContactStore;
 + (id)socialProfileForFavoritesEntryValue:(id)arg1;
 + (id)valueStringFromInstantMessageAddress:(id)arg1;
@@ -69,6 +74,7 @@
 - (int)abIdentifier;
 - (int)abUid;
 - (id)actionType;
+- (bool)autoUpdating;
 - (id)bundleIdentifier;
 - (id)contact;
 - (void)contactDidChange:(id)arg1;
@@ -80,7 +86,7 @@
 - (id)initWithContact:(id)arg1 propertyKey:(id)arg2 identifier:(id)arg3 type:(long long)arg4;
 - (id)initWithContact:(id)arg1 propertyKey:(id)arg2 identifier:(id)arg3 type:(long long)arg4 store:(id)arg5;
 - (id)initWithContact:(id)arg1 propertyKey:(id)arg2 labeledValueIdentifier:(id)arg3 actionType:(id)arg4 bundleIdentifier:(id)arg5 store:(id)arg6;
-- (id)initWithDictionaryRepresentation:(id)arg1 store:(id)arg2;
+- (id)initWithDictionaryRepresentation:(id)arg1 store:(id)arg2 autoUpdating:(bool)arg3;
 - (bool)isEqual:(id)arg1;
 - (id)label;
 - (id)labeledValueIdentifier;
@@ -115,5 +121,10 @@
 // Image: /System/Library/PrivateFrameworks/ContactsUICore.framework/ContactsUICore
 
 + (id)favoritesEntryForUserActionItem:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
+
+- (id)localizedBundleName;
+- (id)localizedContactPropertyLabel;
 
 @end

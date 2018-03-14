@@ -9,7 +9,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)_processRequest:(id)arg1 withHandler:(id /* block */)arg2 refinedHandler:(id /* block */)arg3 networkActivity:(id /* block */)arg4;
+- (void)_processRequest:(id)arg1 auditToken:(id)arg2 timeout:(double)arg3 withHandler:(id /* block */)arg4 refinedHandler:(id /* block */)arg5 networkActivity:(id /* block */)arg6;
 - (void)applyToCorrectedSearch:(id)arg1;
 - (void)applyToPlaceInfo:(id)arg1;
 - (void)cancel;
@@ -17,7 +17,7 @@
 - (id)initWithRequest:(id)arg1 traits:(id)arg2;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2 mapItemToRefine:(id)arg3;
 - (id)resultSectionHeader;
-- (void)submitWithHandler:(id /* block */)arg1 timeout:(long long)arg2 networkActivity:(id /* block */)arg3;
-- (void)submitWithRefinedHandler:(id /* block */)arg1 timeout:(long long)arg2 networkActivity:(id /* block */)arg3;
+- (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(id /* block */)arg4;
+- (void)submitWithRefinedHandler:(id /* block */)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(id /* block */)arg4;
 
 @end

@@ -3,10 +3,8 @@
  */
 
 @interface MKModernUserLocationView : MKUserLocationView {
-    _MKBalloonCalloutView * _balloonCalloutView;
     CALayer * _baseDimmingLayer;
     CALayer * _baseLayer;
-    bool  _hideCallout;
     CALayer * _innerCircleLayer;
     UIImage * _innerImageMask;
     bool  _isShowingStaleColor;
@@ -15,7 +13,6 @@
     bool  _shouldShowOuterRing;
 }
 
-@property (nonatomic) bool hideCallout;
 @property (nonatomic, retain) UIImage *innerImageMask;
 @property (nonatomic) bool rotateInnerImageToMatchCourse;
 @property (nonatomic) bool shouldInnerPulse;
@@ -27,13 +24,10 @@
 
 - (void).cxx_destruct;
 - (struct CGColor { }*)_accuracyFillColor;
-- (void)_addBalloonCalloutView:(id)arg1;
 - (id)_animationToSynchronizePulse:(id*)arg1;
 - (id)_baseDimmingLayer;
 - (id)_baseLayer;
 - (void)_dealloc;
-- (void)_didHideBalloonCalloutView:(id)arg1;
-- (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_innerCircleLayerDefaultTransform;
 - (id)_innerPulseAnimation;
 - (id)_layerToMatchAccuracyRing;
 - (id)_pulseAnimation;
@@ -53,12 +47,10 @@
 - (void)_updatePulseAnimation;
 - (void)_updatePulseColor;
 - (void)didMoveToWindow;
-- (bool)hideCallout;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 - (id)innerImageMask;
 - (bool)rotateInnerImageToMatchCourse;
 - (void)setEffectsEnabled:(bool)arg1;
-- (void)setHideCallout:(bool)arg1;
 - (void)setInnerImageMask:(id)arg1;
 - (void)setRotateInnerImageToMatchCourse:(bool)arg1;
 - (void)setShouldInnerPulse:(bool)arg1;

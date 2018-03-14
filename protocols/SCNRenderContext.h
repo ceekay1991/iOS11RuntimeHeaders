@@ -39,13 +39,13 @@
 - (<SCNResourceManager> *)resourceManager;
 - (long long)sampleCount;
 - (struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })screenTransform;
-- (void)setBackgroundColor:(struct C3DColor4 { union { float x_1_1_1[4]; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_1_1_2; } x1; })arg1;
 - (void)setCollectsCompilationErrors:(bool)arg1;
 - (void)setContentScaleFactor:(double)arg1;
 - (void)setDebugOptions:(unsigned long long)arg1;
 - (void)setDisableLinearRendering:(bool)arg1;
 - (void)setEnablesDeferredShading:(bool)arg1;
 - (void)setIsOpaque:(bool)arg1;
+- (void)setRendererPremultipliedBackgroundColor:(struct C3DColor4 { union { float x_1_1_1[4]; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_1_1_2; } x1; })arg1;
 - (void)setSampleCount:(long long)arg1;
 - (void)setScreenTransform:(struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })arg1;
 - (void)setShowsAuthoringEnvironment:(bool)arg1;

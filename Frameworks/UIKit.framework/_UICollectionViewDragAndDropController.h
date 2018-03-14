@@ -4,10 +4,12 @@
 
 @interface _UICollectionViewDragAndDropController : _UICollectionViewShadowUpdatesController <UICollectionViewDropCoordinator, _UICollectionViewDragDestinationControllerDelegate, _UICollectionViewDragSourceControllerDelegate, _UICollectionViewDropCoordinator, _UICollectionViewPlaceholderContextDelegate> {
     NSMutableArray * __reorderedItems;
-    NSMutableDictionary * _cellAppearanceStates;
+    NSMapTable * _cellAppearanceStatesByCellPointers;
+    NSMutableDictionary * _cellAppearanceStatesByIndexPaths;
     NSMutableArray * _cellsDeferredForReuse;
     NSUUID * _currentDropInsertionShadowUpdateIdentifier;
     _UICollectionViewPlaceholderContext * _currentlyInsertingPlaceholderContext;
+    _UIDropAnimationHandlers * _defaultAnimationHandlers;
     _UICollectionViewDragDestinationController * _destinationController;
     NSMutableArray * _dropCoordinatorItems;
     NSMapTable * _dropCoordinatorItemsMap;
@@ -19,11 +21,13 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *_reorderedItems;
-@property (nonatomic, retain) NSMutableDictionary *cellAppearanceStates;
+@property (nonatomic, retain) NSMapTable *cellAppearanceStatesByCellPointers;
+@property (nonatomic, retain) NSMutableDictionary *cellAppearanceStatesByIndexPaths;
 @property (nonatomic, retain) NSMutableArray *cellsDeferredForReuse;
 @property (nonatomic, retain) NSUUID *currentDropInsertionShadowUpdateIdentifier;
 @property (nonatomic, retain) _UICollectionViewPlaceholderContext *currentlyInsertingPlaceholderContext;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, retain) _UIDropAnimationHandlers *defaultAnimationHandlers;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) _UICollectionViewDragDestinationController *destinationController;
 @property (nonatomic, readonly) NSIndexPath *destinationIndexPath;
@@ -45,10 +49,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addAnimationHandlers:(id)arg1 toAnimator:(id)arg2;
 - (void)_addDropCoordinatorItem:(id)arg1;
 - (void)_beginDragAndDropInsertingItemAtIndexPath:(id)arg1;
 - (void)_beginReorderingForItemAtIndexPath:(id)arg1 cell:(id)arg2;
+- (id)_cellAppearanceStateForCell:(id)arg1 addIfNotFound:(bool)arg2;
 - (id)_cellAppearanceStateForIndexPath:(id)arg1;
+- (id)_cellForDropCoordinatorItem:(id)arg1;
 - (void)_cleanupAfterOutstandingSessionCompletion;
 - (void)_decrementSessionRefCount;
 - (bool)_deleteShadowUpdateWithIdentifier:(id)arg1;
@@ -59,6 +66,7 @@
 - (bool)_hasReorderingMoved;
 - (void)_incrementSessionRefCount;
 - (id)_indexPathForCellAppearanceState:(id)arg1;
+- (void)_invokeAllCompletionHandlers;
 - (bool)_isReordering;
 - (void)_performCancelDropToIndexPath:(id)arg1 forDragItem:(id)arg2;
 - (id)_presentationIndexPathForIndexPath:(id)arg1 allowingAppendingInserts:(bool)arg2;
@@ -66,10 +74,12 @@
 - (bool)_removeMoveShadowUpdateMatchingReorderedItem:(id)arg1;
 - (void)_removeReorderedItemsCellsFromViewHierarchy;
 - (id)_reorderedItems;
+- (void)_resetAllAnimationHandlers;
 - (void)_resetReorderedItems;
 - (void)_rollbackCurrentDropInsertion;
 - (id)_shadowUpdateReuseIdentifierForItemItemAtIndexPath:(id)arg1;
 - (void)_shadowUpdatesWereReverted;
+- (bool)_shouldPerformTranslationForDelegateBasedFlowLayoutSizing;
 - (void)_updateAppearanceForCell:(id)arg1 atIndexPath:(id)arg2 appearance:(long long)arg3;
 - (void)_updateCellAppearanceForCell:(id)arg1 appearance:(long long)arg2;
 - (void)_updateCellAppearancesForItemsAtIndexPaths:(id)arg1;
@@ -77,23 +87,26 @@
 - (bool)beginReorderingForItemAtIndexPath:(id)arg1 cell:(id)arg2;
 - (id /* block */)cancelReordering;
 - (bool)cancelReorderingShouldRevertOrdering;
-- (id)cellAppearanceStates;
+- (id)cellAppearanceStatesByCellPointers;
+- (id)cellAppearanceStatesByIndexPaths;
 - (bool)cellShouldRemainInHierarchy:(id)arg1 indexPath:(id)arg2;
 - (id)cellsDeferredForReuse;
 - (id)currentDropInsertionShadowUpdateIdentifier;
 - (id)currentlyInsertingPlaceholderContext;
 - (id)dataSourceIndexPathForPresentationIndexPath:(id)arg1;
+- (id)defaultAnimationHandlers;
 - (id)description;
 - (id)destinationController;
 - (id)destinationIndexPath;
 - (void)didRebaseWithNewBaseUpdateMap:(id)arg1;
 - (void)dragDestinationController:(id)arg1 didCompleteDropAnimationForDragItem:(id)arg2;
 - (void)dragDestinationController:(id)arg1 didPerformDropAtIndexPath:(id)arg2;
-- (void)dragDestinationController:(id)arg1 willBeginDropAnimationForDragItem:(id)arg2;
+- (void)dragDestinationController:(id)arg1 willBeginDropAnimationForDragItem:(id)arg2 animator:(id)arg3;
 - (void)dragDestinationController:(id)arg1 willPerformDropAtIndexPath:(id)arg2;
 - (void)dragDestinationControllerDidConcludeDrop:(id)arg1;
 - (void)dragDestinationControllerSessionDidEnd:(id)arg1;
 - (void)dragDestinationControllerSessionWillBegin:(id)arg1;
+- (void)dragSourceController:(id)arg1 didCancelLiftForItemsAtIndexPaths:(id)arg2;
 - (void)dragSourceController:(id)arg1 didCompleteAnimatingCancelForItemsAtIndexPaths:(id)arg2;
 - (void)dragSourceController:(id)arg1 didCompleteLiftForItemsAtIndexPaths:(id)arg2;
 - (void)dragSourceController:(id)arg1 didEndForItemsAtIndexPaths:(id)arg2;
@@ -106,10 +119,11 @@
 - (void)dragSourceControllerSessionWillBegin:(id)arg1;
 - (id)dropCoordinatorItems;
 - (id)dropCoordinatorItemsMap;
-- (void)dropItem:(id)arg1 intoItemAtIndexPath:(id)arg2 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
-- (void)dropItem:(id)arg1 toItemAtIndexPath:(id)arg2;
+- (id)dropItem:(id)arg1 intoItemAtIndexPath:(id)arg2 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
+- (id)dropItem:(id)arg1 toItemAtIndexPath:(id)arg2;
+- (id)dropItem:(id)arg1 toPlaceholder:(id)arg2;
 - (id)dropItem:(id)arg1 toPlaceholderInsertedAtIndexPath:(id)arg2 withReuseIdentifier:(id)arg3 cellUpdateHandler:(id /* block */)arg4;
-- (void)dropItem:(id)arg1 toTarget:(id)arg2;
+- (id)dropItem:(id)arg1 toTarget:(id)arg2;
 - (id)dropProposal;
 - (id)dropSession;
 - (void)dropToItemAtIndexPath:(id)arg1 forDragItem:(id)arg2;
@@ -143,10 +157,12 @@
 - (id)session;
 - (int)sessionKind;
 - (long long)sessionRefCount;
-- (void)setCellAppearanceStates:(id)arg1;
+- (void)setCellAppearanceStatesByCellPointers:(id)arg1;
+- (void)setCellAppearanceStatesByIndexPaths:(id)arg1;
 - (void)setCellsDeferredForReuse:(id)arg1;
 - (void)setCurrentDropInsertionShadowUpdateIdentifier:(id)arg1;
 - (void)setCurrentlyInsertingPlaceholderContext:(id)arg1;
+- (void)setDefaultAnimationHandlers:(id)arg1;
 - (void)setDestinationController:(id)arg1;
 - (void)setDropCoordinatorItems:(id)arg1;
 - (void)setDropCoordinatorItemsMap:(id)arg1;

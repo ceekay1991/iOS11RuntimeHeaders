@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UITabBarController : UIViewController <DebugHierarchyObject, NSCoding, UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, UITabBarDelegate> {
+@interface UITabBarController : UIViewController <DebugHierarchyObject, GKContentRefresh, GKURLHandling, NSCoding, UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, UITabBarDelegate> {
     <UIViewControllerAnimatedTransitioning> * __animator;
     NSString * __backdropGroupName;
     <UIViewControllerInteractiveTransitioning> * __interactor;
@@ -55,6 +55,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSMutableArray *moreChildViewControllers;
 @property (nonatomic, readonly) UINavigationController *moreNavigationController;
+@property (nonatomic, readonly) bool pu_isTabBarHidden;
+@property (getter=px_isTabBarHidden, nonatomic, readonly) bool px_tabBarHidden;
 @property (getter=_rememberedFocusedItemsByViewController, nonatomic, readonly) NSMapTable *rememberedFocusedItemsByViewController;
 @property (nonatomic) unsigned long long selectedIndex;
 @property (nonatomic) UIViewController *selectedViewController;
@@ -85,6 +87,7 @@
 - (id)_animator;
 - (id)_backdropBarGroupName;
 - (id)_backdropGroupName;
+- (bool)_canRestoreFocusAfterTransitionToRecalledItem:(id)arg1 inViewController:(id)arg2;
 - (void)_configureTargetActionForTabBarItem:(id)arg1;
 - (id)_customAnimatorForFromViewController:(id)arg1 toViewController:(id)arg2;
 - (id)_customInteractionControllerForAnimator:(id)arg1;
@@ -102,6 +105,7 @@
 - (void)_getRotationContentSettings:(struct { bool x1; bool x2; bool x3; bool x4; bool x5; double x6; int x7; }*)arg1;
 - (bool)_hasPreferredInterfaceOrientationForPresentation;
 - (void)_hideBarWithTransition:(int)arg1 isExplicit:(bool)arg2;
+- (void)_hideBarWithTransition:(int)arg1 isExplicit:(bool)arg2 duration:(double)arg3;
 - (bool)_ignoreUnselectedTabsForStateRestoration;
 - (id)_interactor;
 - (void)_invalidateBarLayoutIfNecessary;
@@ -149,6 +153,7 @@
 - (bool)_shouldSynthesizeSupportedOrientations;
 - (bool)_shouldUseOnePartRotation;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(bool)arg2;
+- (void)_showBarWithTransition:(int)arg1 isExplicit:(bool)arg2 duration:(double)arg3;
 - (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_tabBarItemClicked:(id)arg1;
 - (long long)_tabBarPosition;
@@ -170,6 +175,7 @@
 - (void)animationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (bool)becomeFirstResponder;
 - (void)beginCustomizingTabBar:(id)arg1;
+- (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;
@@ -186,6 +192,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)hideBarWithTransition:(int)arg1;
+- (void)hideBarWithTransition:(int)arg1 duration:(double)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
@@ -221,6 +228,7 @@
 - (bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (bool)shouldUpdateFocusInContext:(id)arg1;
 - (void)showBarWithTransition:(int)arg1;
+- (void)showBarWithTransition:(int)arg1 duration:(double)arg2;
 - (bool)showsEditButtonOnLeft;
 - (struct CGSize { double x1; double x2; })sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize { double x1; double x2; })arg2;
 - (unsigned long long)supportedInterfaceOrientations;
@@ -254,5 +262,39 @@
 // Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
 
 - (id)debugHierarchyPropertyDescriptions;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (bool)pu_isTabBarHidden;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
+
+- (void)_gkForceNextContentUpdate;
+- (void)_gkHandleURLPathComponents:(id)arg1 query:(id)arg2;
+- (void)_gkRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
+- (void)_gkResetContents;
+- (void)_gkSetContentsNeedUpdateWithHandler:(id /* block */)arg1;
+- (bool)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
+- (void)_gkUpdateContentsWithCompletionHandlerAndError:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
+- (id)hu_presentedItem;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (double)px_HDRFocus;
+- (bool)px_canPerformAddToTabAnimationForTab:(unsigned long long)arg1;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })px_frameForTabItem:(unsigned long long)arg1 inCoordinateSpace:(id)arg2;
+- (double)px_imageModulationIntensity;
+- (bool)px_isImageModulationEnabled;
+- (bool)px_isTabBarHidden;
+- (id)px_navigateToMemoryWithLocalIdentifier:(id)arg1;
+- (void)px_performAddToTabAnimation:(unsigned long long)arg1 withSnapshotView:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
+
+- (id)selectedNavigationController;
 
 @end

@@ -12,7 +12,9 @@
     FBSSceneSettings * _overrideSettings;
     __UISceneSubstrate * _sceenSubstrate;
     FBSScene * _scene;
+    UIScreen * _screen;
     _UICanvas * _settingsCanvas;
+    bool  respondingToLifecycleEvent;
     bool  runningInTaskSwitcher;
     long long  state;
     bool  suspendedEventsOnly;
@@ -47,6 +49,7 @@
 + (id)_actionsHandlers;
 + (id)_canvasForScene:(id)arg1 create:(bool)arg2;
 + (void)_enqueuePostSettingUpdateTransactionBlock:(id /* block */)arg1;
++ (void)_enumerateAllWindowsIncludingInternalWindows:(bool)arg1 onlyVisibleWindows:(bool)arg2 asCopy:(bool)arg3 withBlock:(id /* block */)arg4;
 + (id)_keyboardCanvasForScreen:(id)arg1;
 + (id)_settingsDiffActions;
 + (id)_unassociatedCanvasForScreen:(id)arg1 create:(bool)arg2;
@@ -62,10 +65,14 @@
 - (void)_computeMetrics:(bool)arg1;
 - (void)_didBecomeActive;
 - (id)_effectiveSettings;
+- (void)_enumerateWindowsIncludingInternalWindows:(bool)arg1 onlyVisibleWindows:(bool)arg2 asCopy:(bool)arg3 stopped:(bool*)arg4 withBlock:(id /* block */)arg5;
+- (void)_enumerateWindowsIncludingInternalWindows:(bool)arg1 onlyVisibleWindows:(bool)arg2 asCopy:(bool)arg3 withBlock:(id /* block */)arg4;
 - (bool)_hasLifecycle;
 - (id)_inheritingWindowsIncludingInvisible:(bool)arg1;
 - (void)_invalidate;
+- (void)_invalidateScreen;
 - (bool)_isActive;
+- (bool)_isRespondingToLifecycleEvent;
 - (id)_oldSettings;
 - (void)_performActions:(id /* block */)arg1 withOverrideSettings:(id)arg2;
 - (void)_prepareCanvasForResumeWithTest:(id /* block */)arg1;
@@ -76,6 +83,7 @@
 - (void)_removeInheritingCanvas:(id)arg1;
 - (bool)_runningInTaskSwitcher;
 - (void)_setIsActive:(bool)arg1;
+- (void)_setIsRespondingToLifecycleEvent:(bool)arg1;
 - (void)_setRunningInTaskSwitcher:(bool)arg1;
 - (void)_setSuspendedEventsOnly:(bool)arg1;
 - (void)_setSuspendedUnderLock:(bool)arg1;
@@ -85,6 +93,8 @@
 - (id)_visibleWindows;
 - (void)_willAttach;
 - (void)_willResignActive;
+- (bool)_windowIsFront:(id)arg1;
+- (void)_windowUpdatedProperties:(id)arg1;
 - (void)_windowUpdatedVisibility:(id)arg1;
 - (id)allWindowsIncludingInternalWindows:(bool)arg1 onlyVisibleWindows:(bool)arg2;
 - (id)animationFencingCoordinator;

@@ -6,6 +6,7 @@
     NSURLProtectionSpaceInternal * _internal;
 }
 
+@property (nonatomic, readonly, copy) NSString *_sf_highLevelDomainAndPort;
 @property (readonly, copy) NSString *authenticationMethod;
 @property (readonly, copy) NSString *host;
 @property (readonly) bool isProxy;
@@ -14,6 +15,9 @@
 @property (readonly, copy) NSString *proxyType;
 @property (readonly, copy) NSString *realm;
 @property (readonly) bool receivesCredentialSecurely;
+@property (nonatomic, readonly) struct __CFString { }*safari_protocolAsSecAttrProtocolValue;
+
+// Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
 
 + (bool)supportsSecureCoding;
 
@@ -41,5 +45,22 @@
 - (id)realm;
 - (bool)receivesCredentialSecurely;
 - (struct __SecTrust { }*)serverTrust;
+
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
+- (id)_sf_highLevelDomainAndPort;
+
+// Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
+
++ (id)safari_HTMLFormProtectionSpaceForURL:(id)arg1;
+
+- (id)safari_URL;
+- (id)safari_addressString;
+- (bool)safari_allowsCredentialSaving;
+- (long long)safari_compareToHighLevelDomainFromProtectionSpace:(id)arg1;
+- (long long)safari_compareToHighLevelDomainFromProtectionSpaceOrderingDecimalCharactersLast:(id)arg1;
+- (id)safari_creationDateOfCredentialWithUser:(id)arg1;
+- (id)safari_protectionSpaceByReplacingHostWithHighlevelDomain;
+- (struct __CFString { }*)safari_protocolAsSecAttrProtocolValue;
 
 @end

@@ -6,6 +6,10 @@
 
 @property (readonly) bool hasSpaceAvailable;
 
+// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsUtilities.framework/DVTInstrumentsUtilities
+
+- (bool)xr_writeStringWithFormat:(id)arg1;
+
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (id)allocWithZone:(struct _NSZone { }*)arg1;

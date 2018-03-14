@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFStockChartCardSection : SFCardSection <NSSecureCoding, SFStockChartCardSection> {
+@interface SFStockChartCardSection : SFCardSection <NSCopying, NSSecureCoding, SFStockChartCardSection> {
     SFColor * _backgroundColor;
     bool  _canBeHidden;
     NSData * _chartData;
@@ -40,6 +40,7 @@
 @property (nonatomic, copy) NSArray *punchoutOptions;
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
+@property (nonatomic, copy) NSString *resultIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSURL *thirdPartyContentURL;
@@ -51,6 +52,7 @@
 - (id)backgroundColor;
 - (bool)canBeHidden;
 - (id)chartData;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasBottomPadding;

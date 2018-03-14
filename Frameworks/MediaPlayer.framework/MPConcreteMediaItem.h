@@ -6,6 +6,7 @@
     MPMediaLibrary * _library;
     unsigned long long  _persistentID;
     MPConcreteMediaEntityPropertiesCache * _propertiesCache;
+    NSObject<OS_dispatch_queue> * _utilitySerialQueue;
 }
 
 @property (nonatomic, readonly, retain) MPConcreteMediaEntityPropertiesCache *cachedPropertyValues;
@@ -27,6 +28,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateValuesForProperties:(id)arg1 usingBlock:(id /* block */)arg2;
 - (bool)existsInLibrary;
+- (void)incrementPlayCount;
 - (void)incrementPlayCountForPlayingToEnd;
 - (bool)incrementPlayCountForStopTime:(double)arg1;
 - (void)incrementSkipCount;
@@ -41,7 +43,6 @@
 - (double)nominalHasBeenPlayedThreshold;
 - (void)noteWasPlayedToTime:(double)arg1 skipped:(bool)arg2;
 - (unsigned long long)persistentID;
-- (void)reallyIncrementPlayCount;
 - (bool)setValue:(id)arg1 forProperty:(id)arg2;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 withCompletionBlock:(id /* block */)arg3;
 - (void)updateDateAccessedToCurrentDateWithWriteCompletionBlock:(id /* block */)arg1;

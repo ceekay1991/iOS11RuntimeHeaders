@@ -16,6 +16,7 @@
     double  _lastETARequestTime;
     unsigned long long  _maxAlternateRoutesCount;
     double  _requestInterval;
+    NSString * _requestingAppIdentifier;
     GEOComposedRoute * _route;
     GEORouteAttributes * _routeAttributes;
     GEORouteMatch * _routeMatch;
@@ -33,6 +34,7 @@
 @property (nonatomic) unsigned long long maxAlternateRoutesCount;
 @property (readonly) bool requestInProgress;
 @property (nonatomic) double requestInterval;
+@property (nonatomic, retain) NSString *requestingAppIdentifier;
 @property (nonatomic, retain) GEOComposedRoute *route;
 @property (nonatomic, retain) GEORouteAttributes *routeAttributes;
 @property (nonatomic, retain) GEORouteMatch *routeMatch;
@@ -67,6 +69,7 @@
 - (bool)requestInProgress;
 - (double)requestInterval;
 - (void)requestUpdate;
+- (id)requestingAppIdentifier;
 - (void)reset;
 - (id)route;
 - (id)routeAttributes;
@@ -80,6 +83,7 @@
 - (void)setDirectionsResponseID:(id)arg1;
 - (void)setMaxAlternateRoutesCount:(unsigned long long)arg1;
 - (void)setRequestInterval:(double)arg1;
+- (void)setRequestingAppIdentifier:(id)arg1;
 - (void)setRoute:(id)arg1;
 - (void)setRouteAttributes:(id)arg1;
 - (void)setRouteMatch:(id)arg1;

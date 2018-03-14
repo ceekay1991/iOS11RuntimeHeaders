@@ -6,6 +6,7 @@
 
 + (id)orientationConstraintInWorldSpace:(bool)arg1 withBlock:(id /* block */)arg2;
 + (id)positionConstraintInWorldSpace:(bool)arg1 withBlock:(id /* block */)arg2;
++ (bool)supportsSecureCoding;
 + (id)transformConstraintInWorldSpace:(bool)arg1 withBlock:(id /* block */)arg2;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

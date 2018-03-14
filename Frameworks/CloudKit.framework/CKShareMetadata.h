@@ -41,6 +41,8 @@
 @property (nonatomic, retain) NSString *rootRecordType;
 @property (nonatomic, retain) CKShare *share;
 
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -89,5 +91,13 @@
 - (void)setRootRecordType:(id)arg1;
 - (void)setShare:(id)arg1;
 - (id)share;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (void)_decryptDataWithPCSBlob:(struct _OpaquePCSShareProtection { }*)arg1 pcsManager:(id)arg2;
+- (void)_encryptDataWithPCSBlob:(struct _OpaquePCSShareProtection { }*)arg1 pcsManager:(id)arg2;
+- (bool)hasEncryptedData;
+- (struct _OpaquePCSShareProtection { }*)publicPCS;
+- (void)setPublicPCS:(struct _OpaquePCSShareProtection { }*)arg1;
 
 @end

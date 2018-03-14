@@ -3,12 +3,12 @@
  */
 
 @interface MKPlaceMessageViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate> {
-    <_MKInfoCardAnaylticsDelegate> * _analyticsDelegate;
+    <_MKInfoCardAnalyticsDelegate> * _analyticsDelegate;
     bool  _canUseMessageID;
     <_MKPlaceItem> * _placeItem;
 }
 
-@property (nonatomic) <_MKInfoCardAnaylticsDelegate> *analyticsDelegate;
+@property (nonatomic) <_MKInfoCardAnalyticsDelegate> *analyticsDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -24,7 +24,6 @@
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setAnalyticsDelegate:(id)arg1;
 - (void)setPlaceItem:(id)arg1;
-- (void)validateMessageID;
 - (void)viewDidLoad;
 
 @end

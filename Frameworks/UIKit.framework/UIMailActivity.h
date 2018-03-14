@@ -8,6 +8,7 @@
     bool  _hasFilteredAccount;
     bool  _keyboardVisible;
     MFMailComposeViewController * _mailComposeViewController;
+    NSString * _sourceApplicationBundleID;
     bool  _sourceIsManaged;
     NSString * _subject;
 }
@@ -22,6 +23,7 @@
 @property (nonatomic, retain) MFMailComposeViewController *mailComposeViewController;
 @property (nonatomic, readonly) Class objectRestorationClass;
 @property (nonatomic, readonly) <UIStateRestoring> *restorationParent;
+@property (nonatomic, copy) NSString *sourceApplicationBundleID;
 @property (nonatomic) bool sourceIsManaged;
 @property (nonatomic, copy) NSString *subject;
 @property (readonly) Class superclass;
@@ -45,7 +47,6 @@
 - (id)autosaveIdentifier;
 - (void)autosaveWithHandler:(id /* block */)arg1;
 - (bool)canPerformWithActivityItems:(id)arg1;
-- (bool)canPerformWithActivityItems:(id)arg1 hostApplicationBundleID:(id)arg2;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
@@ -61,8 +62,10 @@
 - (void)setHasFilteredAccount:(bool)arg1;
 - (void)setKeyboardVisible:(bool)arg1;
 - (void)setMailComposeViewController:(id)arg1;
+- (void)setSourceApplicationBundleID:(id)arg1;
 - (void)setSourceIsManaged:(bool)arg1;
 - (void)setSubject:(id)arg1;
+- (id)sourceApplicationBundleID;
 - (bool)sourceIsManaged;
 - (id)subject;
 

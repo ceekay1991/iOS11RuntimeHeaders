@@ -14,10 +14,12 @@
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (id)_dataNetworkImage;
+- (id)_dataNetworkImageName;
 - (id)_stringForRSSI;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
+- (id)accessibilityHUDRepresentation;
 - (id)contentsImage;
 - (double)extraLeftPadding;
 - (double)extraRightPadding;

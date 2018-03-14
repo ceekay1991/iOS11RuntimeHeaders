@@ -5,6 +5,9 @@
 @interface UIStatusBarBatteryItemView : UIStatusBarItemView {
     UIView * _accessoryView;
     bool  _batterySaverModeActive;
+    int  _cachedAXHUDCapacity;
+    UIImage * _cachedAXHUDImage;
+    unsigned long long  _cachedAXHUDStyle;
     unsigned long long  _cachedBatteryStyle;
     int  _cachedCapacity;
     bool  _cachedImageHasAccessoryImage;
@@ -13,6 +16,9 @@
     int  _state;
 }
 
+@property (nonatomic) int cachedAXHUDCapacity;
+@property (nonatomic, retain) UIImage *cachedAXHUDImage;
+@property (nonatomic) unsigned long long cachedAXHUDStyle;
 @property (nonatomic) unsigned long long cachedBatteryStyle;
 @property (nonatomic) int cachedCapacity;
 @property (nonatomic) bool cachedImageHasAccessoryImage;
@@ -20,6 +26,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_accessoryImage;
 - (struct CGSize { double x1; double x2; })_batteryOffsetWithBackground:(id)arg1;
 - (id)_contentsImage;
@@ -28,7 +35,10 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
+- (id)accessibilityHUDRepresentation;
+- (int)cachedAXHUDCapacity;
+- (id)cachedAXHUDImage;
+- (unsigned long long)cachedAXHUDStyle;
 - (unsigned long long)cachedBatteryStyle;
 - (int)cachedCapacity;
 - (bool)cachedImageHasAccessoryImage;
@@ -36,6 +46,9 @@
 - (id)contentsImage;
 - (double)extraRightPadding;
 - (double)legibilityStrength;
+- (void)setCachedAXHUDCapacity:(int)arg1;
+- (void)setCachedAXHUDImage:(id)arg1;
+- (void)setCachedAXHUDStyle:(unsigned long long)arg1;
 - (void)setCachedBatteryStyle:(unsigned long long)arg1;
 - (void)setCachedCapacity:(int)arg1;
 - (void)setCachedImageHasAccessoryImage:(bool)arg1;

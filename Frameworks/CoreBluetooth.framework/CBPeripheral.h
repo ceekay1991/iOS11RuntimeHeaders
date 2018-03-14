@@ -90,6 +90,7 @@
 - (id)name;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)openL2CAPChannel:(unsigned short)arg1;
+- (void)openL2CAPChannel:(unsigned short)arg1 options:(id)arg2;
 - (void)readRSSI;
 - (void)readValueForCharacteristic:(id)arg1;
 - (void)readValueForDescriptor:(id)arg1;

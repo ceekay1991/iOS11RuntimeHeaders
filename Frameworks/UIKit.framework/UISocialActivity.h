@@ -5,11 +5,13 @@
 @interface UISocialActivity : UIApplicationExtensionActivity <UIManagedConfigurationRestrictableActivity> {
     NSString * _builtinActivityType;
     SLComposeViewController * _socialComposeViewController;
-    bool  sourceIsManaged;
+    NSString * _sourceApplicationBundleID;
+    bool  _sourceIsManaged;
 }
 
 @property (nonatomic, copy) NSString *builtinActivityType;
 @property (nonatomic, retain) SLComposeViewController *socialComposeViewController;
+@property (nonatomic, copy) NSString *sourceApplicationBundleID;
 @property (nonatomic) bool sourceIsManaged;
 
 + (id)_activityExtensionItemsForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
@@ -29,15 +31,16 @@
 - (id)activityViewController;
 - (id)builtinActivityType;
 - (bool)canPerformWithActivityItems:(id)arg1;
-- (bool)canPerformWithActivityItems:(id)arg1 hostApplicationBundleID:(id)arg2;
 - (id)debugDescription;
 - (id)initWithActivityType:(id)arg1;
 - (id)initWithApplicationExtension:(id)arg1;
 - (void)prepareWithActivityExtensionItemData:(id)arg1;
 - (void)setBuiltinActivityType:(id)arg1;
 - (void)setSocialComposeViewController:(id)arg1;
+- (void)setSourceApplicationBundleID:(id)arg1;
 - (void)setSourceIsManaged:(bool)arg1;
 - (id)socialComposeViewController;
+- (id)sourceApplicationBundleID;
 - (bool)sourceIsManaged;
 
 @end

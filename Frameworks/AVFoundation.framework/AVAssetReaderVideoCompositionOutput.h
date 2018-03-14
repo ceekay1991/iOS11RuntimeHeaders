@@ -11,6 +11,8 @@
 @property (nonatomic, readonly) NSDictionary *videoSettings;
 @property (nonatomic, readonly) NSArray *videoTracks;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (id)assetReaderVideoCompositionOutputWithVideoTracks:(id)arg1 videoSettings:(id)arg2;
 
 - (id)_asset;
@@ -33,5 +35,9 @@
 - (id)videoComposition;
 - (id)videoSettings;
 - (id)videoTracks;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
++ (id)assetReaderVideoCompositionOutputWithVideoComposition:(id)arg1 appliedToAsset:(id)arg2 videoSettings:(id)arg3;
 
 @end

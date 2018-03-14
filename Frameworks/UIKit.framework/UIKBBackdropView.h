@@ -16,10 +16,10 @@
 - (id)_generateCornerContentsImage:(int)arg1;
 - (bool)_hasUpdatedFrame;
 - (void)_setRenderConfig:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void)dealloc;
 - (void)didCallRenderInContextOnBackdropViewLayer;
 - (id)imageForCorners;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 style:(long long)arg2 primaryBackdrop:(bool)arg3;

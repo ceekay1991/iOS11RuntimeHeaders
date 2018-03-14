@@ -20,6 +20,8 @@
 
 - (struct CGImage { }*)CGImageRepresentation;
 - (struct __CVBuffer { }*)_embeddedThumbnailSourcePixelBuffer;
+- (unsigned int)_orientation;
+- (unsigned int)actualPhotoProcessingFlags;
 - (id)bracketSettings;
 - (id)cameraCalibrationData;
 - (void)dealloc;
@@ -27,9 +29,10 @@
 - (id)depthData;
 - (id)description;
 - (id)embeddedThumbnailPhotoFormat;
+- (unsigned int)expectedPhotoProcessingFlags;
 - (id)fileDataRepresentation;
 - (id)fileDataRepresentationWithReplacementMetadata:(id)arg1 replacementEmbeddedThumbnailPhotoFormat:(id)arg2 replacementEmbeddedThumbnailPixelBuffer:(struct __CVBuffer { }*)arg3 replacementDepthData:(id)arg4;
-- (id)initWithTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 photoSurface:(struct __IOSurface { }*)arg2 photoSurfaceSize:(unsigned long long)arg3 previewPhotoSurface:(struct __IOSurface { }*)arg4 metadata:(id)arg5 depthDataSurface:(struct __IOSurface { }*)arg6 depthMetadataDictionary:(id)arg7 captureRequest:(id)arg8 bracketSettings:(id)arg9 sequenceCount:(unsigned long long)arg10 photoCount:(unsigned long long)arg11 sourceDeviceType:(id)arg12;
+- (id)initWithTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 photoSurface:(struct __IOSurface { }*)arg2 photoSurfaceSize:(unsigned long long)arg3 previewPhotoSurface:(struct __IOSurface { }*)arg4 metadata:(id)arg5 depthDataSurface:(struct __IOSurface { }*)arg6 depthMetadataDictionary:(id)arg7 captureRequest:(id)arg8 bracketSettings:(id)arg9 sequenceCount:(unsigned long long)arg10 photoCount:(unsigned long long)arg11 expectedPhotoProcessingFlags:(unsigned int)arg12 sourceDeviceType:(id)arg13;
 - (bool)isRawPhoto;
 - (long long)lensStabilizationStatus;
 - (id)livePhotoMovieFileURL;

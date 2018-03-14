@@ -7,6 +7,7 @@
     NSString * _cachedGestureKeySetName;
     NSString * _geometrySetName;
     NSString * _keySetName;
+    NSString * _locale;
     struct CGSize { 
         double width; 
         double height; 

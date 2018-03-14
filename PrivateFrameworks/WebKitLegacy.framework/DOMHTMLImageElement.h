@@ -70,6 +70,17 @@
 - (int)x;
 - (int)y;
 
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (id)mf_edgeToEdgeImageAttachmentStyle;
+
+- (void)mf_applyEdgeToEdgeStyleWithViewportWidth:(double)arg1;
+- (void)mf_constrainImageToSize:(struct CGSize { double x1; double x2; })arg1;
+- (bool)mf_isEdgeToEdgeFormatted;
+- (bool)mf_shouldFormatEdgeToEdge;
+- (void)mf_unconstrainImageSize;
+- (void)recursivelyRemoveMailAttributes;
+
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (bool)alwaysAttemptToShowTapHighlight;

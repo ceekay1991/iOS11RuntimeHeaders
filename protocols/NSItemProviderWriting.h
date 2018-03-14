@@ -11,6 +11,9 @@
 
 @optional
 
++ (long long)itemProviderVisibilityForRepresentationWithTypeIdentifier:(NSString *)arg1;
+
+- (long long)itemProviderVisibilityForRepresentationWithTypeIdentifier:(NSString *)arg1;
 - (NSArray *)writableTypeIdentifiersForItemProvider;
 
 @end

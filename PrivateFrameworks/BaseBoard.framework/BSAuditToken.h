@@ -26,6 +26,7 @@
 + (id)tokenFromXPCConnection:(id)arg1;
 + (id)tokenFromXPCMessage:(id)arg1;
 
+- (id)_bundleIDGeneratingIfNeeded:(bool)arg1;
 - (id)_dataWithValue:(id)arg1;
 - (id)_valueFromData:(id)arg1 ofType:(const char *)arg2;
 - (id)bundleID;

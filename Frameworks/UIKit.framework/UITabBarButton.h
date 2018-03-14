@@ -74,6 +74,7 @@
 
 + (id)_defaultLabelColor;
 
+- (void).cxx_destruct;
 - (void)_UIAppearance_setBadgeColor:(id)arg1;
 - (void)_UIAppearance_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_UIAppearance_setTitlePositionAdjustment:(struct UIOffset { double x1; double x2; })arg1;
@@ -133,7 +134,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)canBecomeFocused;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithImage:(id)arg1 landscapeImage:(id)arg2 selectedImage:(id)arg3 landscapeSelectedImage:(id)arg4 label:(id)arg5 withInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg6 landscapeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg7 tabBar:(id)arg8;

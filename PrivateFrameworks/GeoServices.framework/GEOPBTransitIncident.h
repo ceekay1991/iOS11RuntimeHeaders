@@ -20,6 +20,7 @@
     int  _iconEnum;
     unsigned int  _incidentIndex;
     unsigned long long  _incidentMuid;
+    GEOPBTransitArtwork * _incidentTypeArtwork;
     NSString * _longDescriptionString;
     NSString * _messageForAllBlocking;
     NSString * _messageForIncidentType;
@@ -41,6 +42,7 @@
 @property (nonatomic) bool hasIconEnum;
 @property (nonatomic) bool hasIncidentIndex;
 @property (nonatomic) bool hasIncidentMuid;
+@property (nonatomic, readonly) bool hasIncidentTypeArtwork;
 @property (nonatomic, readonly) bool hasLongDescriptionString;
 @property (nonatomic, readonly) bool hasMessageForAllBlocking;
 @property (nonatomic, readonly) bool hasMessageForIncidentType;
@@ -52,6 +54,7 @@
 @property (nonatomic) int iconEnum;
 @property (nonatomic) unsigned int incidentIndex;
 @property (nonatomic) unsigned long long incidentMuid;
+@property (nonatomic, retain) GEOPBTransitArtwork *incidentTypeArtwork;
 @property (nonatomic, retain) NSString *longDescriptionString;
 @property (nonatomic, retain) NSString *messageForAllBlocking;
 @property (nonatomic, retain) NSString *messageForIncidentType;
@@ -84,6 +87,7 @@
 - (bool)hasIconEnum;
 - (bool)hasIncidentIndex;
 - (bool)hasIncidentMuid;
+- (bool)hasIncidentTypeArtwork;
 - (bool)hasLongDescriptionString;
 - (bool)hasMessageForAllBlocking;
 - (bool)hasMessageForIncidentType;
@@ -97,6 +101,7 @@
 - (id)iconEnumAsString:(int)arg1;
 - (unsigned int)incidentIndex;
 - (unsigned long long)incidentMuid;
+- (id)incidentTypeArtwork;
 - (bool)isEqual:(id)arg1;
 - (id)longDescriptionString;
 - (void)mergeFrom:(id)arg1;
@@ -119,6 +124,7 @@
 - (void)setIconEnum:(int)arg1;
 - (void)setIncidentIndex:(unsigned int)arg1;
 - (void)setIncidentMuid:(unsigned long long)arg1;
+- (void)setIncidentTypeArtwork:(id)arg1;
 - (void)setLongDescriptionString:(id)arg1;
 - (void)setMessageForAllBlocking:(id)arg1;
 - (void)setMessageForIncidentType:(id)arg1;

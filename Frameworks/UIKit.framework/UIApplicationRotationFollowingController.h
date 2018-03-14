@@ -8,6 +8,7 @@
 
 @property (nonatomic) bool sizesWindowToScene;
 
+- (id)__autorotationSanityCheckObjectFromSource:(id)arg1 selector:(SEL)arg2;
 - (long long)_preferredInterfaceOrientationGivenCurrentOrientation:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)setSizesWindowToScene:(bool)arg1;

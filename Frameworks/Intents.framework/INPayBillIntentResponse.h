@@ -29,7 +29,6 @@
 - (id)_responseMessagePBRepresentation;
 - (id)billDetails;
 - (long long)code;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fromAccount;
 - (id)init;

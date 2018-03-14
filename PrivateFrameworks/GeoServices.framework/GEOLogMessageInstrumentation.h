@@ -3,7 +3,6 @@
  */
 
 @interface GEOLogMessageInstrumentation : NSObject {
-    GEOLogMessageCacheManager * _cacheManager;
     bool  _exitWhenAllInstrumentationLogsFlushed;
     NSObject<OS_dispatch_queue> * _instrumenationQueue;
     NSObject<OS_dispatch_source> * _logMessageInstrumentationFlushTimer;
@@ -15,15 +14,13 @@
     NSMutableArray * _registeredEventNames;
 }
 
-@property (nonatomic, readonly) GEOLogMessageCacheManager *cacheManager;
-
++ (id)cacheManager;
 + (id)createDefaultInstrumentation;
 + (id)defaultInstrumentation;
 + (void)disableDefaultInstrumentation;
 
 - (void).cxx_destruct;
 - (void)_registerEventName:(id)arg1;
-- (id)cacheManager;
 - (void)captureLogMessage:(id)arg1 forEventName:(id)arg2 fromLogFrameworkAdaptor:(bool)arg3;
 - (void)captureLogMessageCollectionRequest:(id)arg1 forEventName:(id)arg2 fromLogFrameworkAdaptor:(bool)arg3;
 - (void)captureLogMsgCountForEventName:(id)arg1 logMsgCount:(long long)arg2 fromLogFrameworkAdaptor:(bool)arg3;

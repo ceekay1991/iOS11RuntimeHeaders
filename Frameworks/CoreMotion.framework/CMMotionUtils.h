@@ -4,10 +4,12 @@
 
 @interface CMMotionUtils : NSObject
 
++ (long long)authorizationStatus;
 + (unsigned long long)copyDataFrom:(id)arg1 to:(id)arg2;
 + (bool)featureAvailability:(const char *)arg1;
 + (id)fileHandleForWritingToURL:(id)arg1;
 + (id)getExecutablePathFromPid:(int)arg1;
++ (long long)isAuthorizedForEntitlement:(id)arg1;
 + (bool)isMotionActivityEntitled;
 + (id)logDirectory;
 + (void)sendMessage:(struct shared_ptr<CLConnectionMessage> { struct CLConnectionMessage {} *x1; struct __shared_weak_count {} *x2; })arg1 withReply:(id /* block */)arg2;

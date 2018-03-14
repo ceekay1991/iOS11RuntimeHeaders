@@ -10,6 +10,8 @@
 @property (readonly) double doubleValue;
 @property (readonly, copy) NSUnit *unit;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (bool)supportsSecureCoding;
 
 - (id)_performOperation:(long long)arg1 withMeasurement:(id)arg2;
@@ -27,5 +29,9 @@
 - (id)measurementByConvertingToUnit:(id)arg1;
 - (id)measurementBySubtractingMeasurement:(id)arg1;
 - (id)unit;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
+- (id)hk_equivalentQuantity;
 
 @end

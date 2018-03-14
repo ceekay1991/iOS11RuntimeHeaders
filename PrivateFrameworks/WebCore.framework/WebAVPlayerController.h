@@ -26,9 +26,11 @@
     bool  _hasEnabledVideo;
     bool  _hasVideo;
     NSArray * _legibleMediaSelectionOptions;
+    bool  _liveStreamEventModePossible;
+    double  _liveUpdateInterval;
     NSArray * _loadedTimeRanges;
-    double  _maxTime;
-    double  _minTime;
+    AVValueTiming * _maxTiming;
+    AVValueTiming * _minTiming;
     bool  _muted;
     bool  _pictureInPictureInterrupted;
     bool  _pictureInPicturePossible;
@@ -37,6 +39,7 @@
     bool  _playingOnSecondScreen;
     double  _rate;
     NSArray * _seekableTimeRanges;
+    double  _seekableTimeRangesLastModifiedTime;
     long long  _status;
     AVValueTiming * _timing;
 }
@@ -67,9 +70,12 @@
 @property (readonly) bool hasMediaSelectionOptions;
 @property bool hasVideo;
 @property (retain) NSArray *legibleMediaSelectionOptions;
+@property double liveUpdateInterval;
 @property (retain) NSArray *loadedTimeRanges;
-@property double maxTime;
-@property double minTime;
+@property (readonly) double maxTime;
+@property (nonatomic, retain) AVValueTiming *maxTiming;
+@property (readonly) double minTime;
+@property (nonatomic, retain) AVValueTiming *minTiming;
 @property (getter=isMuted) bool muted;
 @property (getter=isPictureInPictureInterrupted) bool pictureInPictureInterrupted;
 @property (getter=isPictureInPicturePossible) bool pictureInPicturePossible;
@@ -80,6 +86,7 @@
 @property (getter=isPlayingOnSecondScreen, readonly) bool playingOnSecondScreen;
 @property double rate;
 @property (retain) NSArray *seekableTimeRanges;
+@property double seekableTimeRangesLastModifiedTime;
 @property long long status;
 @property (retain) AVValueTiming *timing;
 
@@ -91,6 +98,9 @@
 + (id)keyPathsForValuesAffectingHasLegibleMediaSelectionOptions;
 + (id)keyPathsForValuesAffectingHasLiveStreamingContent;
 + (id)keyPathsForValuesAffectingHasMediaSelectionOptions;
++ (id)keyPathsForValuesAffectingHasSeekableLiveStreamingContent;
++ (id)keyPathsForValuesAffectingMaxTime;
++ (id)keyPathsForValuesAffectingMinTime;
 + (id)keyPathsForValuesAffectingPlaying;
 + (id)keyPathsForValuesAffectingPlayingOnExternalScreen;
 
@@ -128,6 +138,7 @@
 - (bool)hasLegibleMediaSelectionOptions;
 - (bool)hasLiveStreamingContent;
 - (bool)hasMediaSelectionOptions;
+- (bool)hasSeekableLiveStreamingContent;
 - (bool)hasVideo;
 - (id)init;
 - (bool)isExternalPlaybackActive;
@@ -138,21 +149,27 @@
 - (bool)isPlayingOnExternalScreen;
 - (bool)isPlayingOnSecondScreen;
 - (id)legibleMediaSelectionOptions;
+- (double)liveUpdateInterval;
 - (id)loadedTimeRanges;
 - (double)maxTime;
+- (id)maxTiming;
 - (double)minTime;
+- (id)minTiming;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)pause:(id)arg1;
 - (void)play:(id)arg1;
 - (struct WebPlaybackSessionInterfaceAVKit { int (**x1)(); int (**x2)(); unsigned int x3; struct RetainPtr<WebAVPlayerController> { void *x_4_1_1; } x4; struct WebPlaybackSessionModel {} *x5; }*)playbackSessionInterface;
 - (id)player;
 - (id)playerControllerProxy;
 - (double)rate;
+- (void)resetMediaState;
 - (void)seekChapterBackward:(id)arg1;
 - (void)seekChapterForward:(id)arg1;
 - (void)seekToBeginning:(id)arg1;
 - (void)seekToEnd:(id)arg1;
 - (void)seekToTime:(double)arg1;
 - (id)seekableTimeRanges;
+- (double)seekableTimeRangesLastModifiedTime;
 - (void)setAllowsExternalPlayback:(bool)arg1;
 - (void)setAudioMediaSelectionOptions:(id)arg1;
 - (void)setCanPause:(bool)arg1;
@@ -174,9 +191,10 @@
 - (void)setHasEnabledVideo:(bool)arg1;
 - (void)setHasVideo:(bool)arg1;
 - (void)setLegibleMediaSelectionOptions:(id)arg1;
+- (void)setLiveUpdateInterval:(double)arg1;
 - (void)setLoadedTimeRanges:(id)arg1;
-- (void)setMaxTime:(double)arg1;
-- (void)setMinTime:(double)arg1;
+- (void)setMaxTiming:(id)arg1;
+- (void)setMinTiming:(id)arg1;
 - (void)setMuted:(bool)arg1;
 - (void)setPictureInPictureInterrupted:(bool)arg1;
 - (void)setPictureInPicturePossible:(bool)arg1;
@@ -185,6 +203,7 @@
 - (void)setPlaying:(bool)arg1;
 - (void)setRate:(double)arg1;
 - (void)setSeekableTimeRanges:(id)arg1;
+- (void)setSeekableTimeRangesLastModifiedTime:(double)arg1;
 - (void)setStatus:(long long)arg1;
 - (void)setTiming:(id)arg1;
 - (void)skipBackwardThirtySeconds:(id)arg1;
@@ -193,5 +212,6 @@
 - (void)toggleMuted:(id)arg1;
 - (void)togglePlayback:(id)arg1;
 - (void)togglePlaybackEvenWhenInBackground:(id)arg1;
+- (void)updateMinMaxTiming;
 
 @end

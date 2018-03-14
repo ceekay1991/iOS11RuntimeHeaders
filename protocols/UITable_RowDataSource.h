@@ -34,7 +34,7 @@
 - (double)_maxTitleWidthForHeaderInSection:(long long)arg1;
 - (bool)_providesRowHeights;
 - (double)_rowSpacing;
-- (void)_setHeight:(double)arg1 forRowAtIndexPath:(NSIndexPath *)arg2;
+- (void)_setHeight:(double)arg1 forRowAtIndexPath:(NSIndexPath *)arg2 usingPresentationValues:(bool)arg3;
 - (bool)_shouldStripHeaderTopPaddingForSection:(long long)arg1;
 - (bool)_shouldUseNewHeaderFooterBehavior;
 - (bool)_shouldUseSearchBarHeaderBehavior;

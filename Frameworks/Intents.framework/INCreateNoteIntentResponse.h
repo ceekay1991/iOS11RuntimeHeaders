@@ -25,7 +25,6 @@
 - (id)_responseMessagePBRepresentation;
 - (long long)code;
 - (id)createdNote;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;

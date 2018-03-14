@@ -21,12 +21,14 @@
 
 - (void).cxx_destruct;
 - (void)_cancelDrag;
-- (void)_getOperationMaskFromDelegateInApp:(unsigned long long*)arg1 outsideApp:(unsigned long long*)arg2 prefersFullSizePreview:(bool*)arg3;
+- (bool)_dynamicallyUpdatesPrefersFullSizePreviewss;
+- (void)_getOperationMaskFromDelegateInApp:(unsigned long long*)arg1 outsideApp:(unsigned long long*)arg2;
 - (id)_internalSessionSource;
 - (void)_sendDataTransferFinished;
 - (void)_sendDidEndWithOperation:(unsigned long long)arg1;
 - (void)_sendDidMove;
 - (void)_sendHandedOffDragImage;
+- (void)_sendHandedOffDragImageForItem:(id)arg1;
 - (void)_sendWillAddItems:(id)arg1;
 - (void)_sendWillBegin;
 - (void)_sendWillEndWithOperation:(unsigned long long)arg1;
@@ -40,6 +42,7 @@
 - (id)initWithInternalSessionSource:(id)arg1;
 - (id)localDraggingSession;
 - (long long)numberOfValidItemsForDrop;
+- (bool)prefersFullSizePreview;
 - (void)setDelegate:(id)arg1;
 - (void)setNumberOfValidItemsForDrop:(long long)arg1;
 

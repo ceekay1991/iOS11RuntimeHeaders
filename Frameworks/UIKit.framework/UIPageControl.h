@@ -39,6 +39,7 @@
 
 + (bool)doesOverrideMethod:(SEL)arg1 inBaseClass:(Class)arg2;
 
+- (void).cxx_destruct;
 - (id)__scalarStatisticsForUserValueChangedEvent;
 - (id)_activePageIndicatorImage;
 - (void)_cachePageIndicatorImages;
@@ -79,13 +80,15 @@
 - (void)_transitionIndicator:(id)arg1 toEnabled:(bool)arg2 index:(long long)arg3 legible:(bool)arg4;
 - (void)_updateCurrentPageDisplay;
 
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)canBecomeFocused;
 - (long long)currentPage;
 - (id)currentPageIndicatorTintColor;
-- (id)debugHierarchyPropertyDescriptions;
 - (bool)defersCurrentPageDisplay;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

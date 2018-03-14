@@ -7,7 +7,6 @@
     BKSApplicationStateMonitor * _appStateMonitor;
     bool  _forceBackboardServicesMonitoring;
     bool  _inBackground;
-    bool  _lastOccludedState;
     unsigned long long  _observerCount;
 }
 
@@ -21,8 +20,9 @@
 - (void)_becomeActive;
 - (void)_enterBackground;
 - (void)_exitBackground;
+- (void)_handleApplicationStateChange:(id)arg1 interestedPID:(int)arg2;
+- (void)_performSynchronouslyOnMainQueue:(id /* block */)arg1;
 - (void)_resignActive;
-- (void)_sceneOcclusionChanged:(id)arg1;
 - (void)dealloc;
 - (bool)forceBackboardServicesMonitoring;
 - (bool)isActive;

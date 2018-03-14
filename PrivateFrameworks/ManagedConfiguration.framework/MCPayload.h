@@ -30,6 +30,7 @@
 @property (nonatomic, readonly, retain) NSString *type;
 @property (nonatomic, readonly) long long version;
 
++ (id)applicablePayloadsForHomePod;
 + (id)badFieldTypeErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1 underlyingError:(id)arg2;
@@ -39,6 +40,7 @@
 + (id)localizedParenthesizedFormDescriptionForPayloadCount:(unsigned long long)arg1;
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
++ (id)mdmAdoptablePayloads;
 + (id)minimumWatchVersionRequirementsForPayloads;
 + (id)missingFieldErrorWithField:(id)arg1 underlyingError:(id)arg2;
 + (id)payloadFromDictionary:(id)arg1 profile:(id)arg2 outError:(id*)arg3;

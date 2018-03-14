@@ -6,6 +6,7 @@
     FBSScene * _activeScene;
     bool  _arePlaceholdersInitialised;
     FBSSceneLayer * _externalSceneLayer;
+    bool  _resetRequired;
 }
 
 @property (nonatomic, readonly) struct { id x1; int x2; bool x3; bool x4; bool x5; bool x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; } _bindingDescription;
@@ -28,16 +29,19 @@
 - (bool)_isTextEffectsWindowNotificationOwner;
 - (bool)_isWindowServerHostingManaged;
 - (bool)_matchingOptions:(id)arg1;
+- (long long)_orientationForClassicPresentation;
+- (void)_resetScene;
 - (void)_setRotatableClient:(id)arg1 toOrientation:(long long)arg2 updateStatusBar:(bool)arg3 duration:(double)arg4 force:(bool)arg5 isRotating:(bool)arg6;
 - (bool)_usesWindowServerHitTesting;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_viewTransformForInterfaceOrientation:(long long)arg1;
 - (bool)_wantsSceneAssociation;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (void)attachBindable;
-- (void)dealloc;
 - (void)detachBindable;
+- (void)endDisablingInterfaceAutorotation;
 - (void)invalidate;
 - (void)resetScene;
 - (void)setWindowLevel:(double)arg1;

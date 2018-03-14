@@ -61,6 +61,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_allVisibleCells;
 - (void)_centerTableInContainer:(id)arg1;
 - (bool)_containsTable:(id)arg1;
@@ -85,7 +86,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)beginUpdates;
 - (id)cellForRowAtIndexPath:(id)arg1;
 - (void)endUpdates;

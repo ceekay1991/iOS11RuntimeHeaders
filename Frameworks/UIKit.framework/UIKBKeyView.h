@@ -68,6 +68,7 @@
 - (void)_populateLayer:(id)arg1 withContents:(id)arg2;
 - (bool)_shouldUpdateLayers;
 - (bool)_viewShouldBeOpaque;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -85,7 +86,6 @@
 - (void)changeBackgroundToActiveIfNecessary;
 - (void)changeBackgroundToEnabled;
 - (id)contentsKeyView;
-- (void)dealloc;
 - (long long)didInputSubTree:(id)arg1;
 - (void)dimKeys:(id)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })displayInsets;

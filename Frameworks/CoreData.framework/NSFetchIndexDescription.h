@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSFetchIndexDescription : NSObject <NSCoding> {
+@interface NSFetchIndexDescription : NSObject <NSCoding, NSSecureCoding> {
     NSArray * _elements;
     NSEntityDescription * _entity;
     NSString * _name;
@@ -13,6 +13,8 @@
 @property (nonatomic, readonly) NSEntityDescription *entity;
 @property (copy) NSString *name;
 @property (copy) NSPredicate *partialIndexPredicate;
+
++ (bool)supportsSecureCoding;
 
 - (void)_checkElements:(id)arg1;
 - (id)_compoundIndexRepresentation;
@@ -32,6 +34,7 @@
 - (id)elements;
 - (void)encodeWithCoder:(id)arg1;
 - (id)entity;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 elements:(id)arg2;
 - (id)initWithName:(id)arg1 predicate:(id)arg2 elements:(id)arg3 entity:(id)arg4;

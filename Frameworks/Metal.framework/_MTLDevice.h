@@ -52,6 +52,11 @@
         unsigned int maxTessellationFactor; 
         unsigned int maxCustomSamplePositions; 
         unsigned int maxFramebufferStorageBits; 
+        unsigned int maxTileBuffers; 
+        unsigned int maxTileTextures; 
+        unsigned int maxTileSamplers; 
+        unsigned int maxTileInlineDataSize; 
+        unsigned int minTilePixels; 
     }  _limits;
     MTLIOMemoryInfo * _memoryInfo;
     struct MTLPipelineCollection { struct unordered_map<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *, std::__1::hash<_MTLLibrary *>, std::__1::equal_to<_MTLLibrary *>, std::__1::allocator<std::__1::pair<_MTLLibrary *const, MTLPipelineLibrarySerializer::LibraryDescriptor *> > > { struct __hash_table<std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::__unordered_map_hasher<_MTLLibrary *, std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::hash<_MTLLibrary *>, true>, std::__1::__unordered_map_equal<_MTLLibrary *, std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::equal_to<_MTLLibrary *>, true>, std::__1::allocator<std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *> > > { struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *> *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *> *> *> > > { struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *> *> **, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *> *> *> > > { struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *> *> {} **x_1_4_1; struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *> *> *> > { struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLLibrary *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *> *> *> > { unsigned long long x_1_6_1; } x_2_5_1; } x_1_4_2; } x_1_3_1; } x_1_2_1; } x_1_1_1; } x1; } * _pipelineDescriptors;
@@ -60,14 +65,16 @@
 }
 
 @property (readonly) unsigned int acceleratorPort;
+@property (readonly) unsigned long long argumentBuffersSupport;
 @property (readonly) MTLCompiler *compiler;
 @property (readonly) unsigned long long deviceLinearReadOnlyTextureAlignmentBytes;
 @property (readonly) unsigned long long deviceLinearTextureAlignmentBytes;
 @property (readonly) unsigned long long globalTraceObjectID;
 @property (readonly) struct IndirectArgumentBufferCapabilities { unsigned int x1 : 1; unsigned int x2 : 1; unsigned int x3 : 1; unsigned int x4 : 29; } indirectArgumentBufferCapabilities;
+@property (readonly) unsigned long long indirectArgumentBuffersSupport;
 @property (readonly) unsigned long long iosurfaceReadOnlyTextureAlignmentBytes;
 @property (readonly) unsigned long long iosurfaceTextureAlignmentBytes;
-@property (readonly) const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; float x19; float x20; unsigned int x21; unsigned int x22; unsigned int x23; unsigned int x24; unsigned int x25; unsigned int x26; unsigned int x27; unsigned int x28; unsigned int x29; unsigned int x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned int x35; unsigned int x36; unsigned int x37; unsigned int x38; unsigned int x39; unsigned int x40; unsigned int x41; unsigned int x42; unsigned int x43; }*limits;
+@property (readonly) const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; float x19; float x20; unsigned int x21; unsigned int x22; unsigned int x23; unsigned int x24; unsigned int x25; unsigned int x26; unsigned int x27; unsigned int x28; unsigned int x29; unsigned int x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned int x35; unsigned int x36; unsigned int x37; unsigned int x38; unsigned int x39; unsigned int x40; unsigned int x41; unsigned int x42; unsigned int x43; unsigned int x44; unsigned int x45; unsigned int x46; unsigned int x47; unsigned int x48; }*limits;
 @property (readonly) unsigned long long linearTextureAlignmentBytes;
 @property (readonly) unsigned long long maxBufferLength;
 @property (readonly) unsigned long long maxColorAttachments;
@@ -98,6 +105,10 @@
 @property (readonly) unsigned long long maxTextureWidth1D;
 @property (readonly) unsigned long long maxTextureWidth2D;
 @property (readonly) unsigned long long maxTextureWidth3D;
+@property (readonly) unsigned long long maxTileBuffers;
+@property (readonly) unsigned long long maxTileInlineDataSize;
+@property (readonly) unsigned long long maxTileSamplers;
+@property (readonly) unsigned long long maxTileTextures;
 @property (readonly) unsigned long long maxTotalComputeThreadsPerThreadgroup;
 @property (readonly) unsigned long long maxVertexAttributes;
 @property (readonly) unsigned long long maxVertexBuffers;
@@ -107,7 +118,10 @@
 @property (readonly) unsigned long long maxVisibilityQueryOffset;
 @property (readonly) unsigned long long minBufferNoCopyAlignmentBytes;
 @property (readonly) unsigned long long minConstantBufferAlignmentBytes;
+@property (readonly) unsigned long long minTilePixels;
 @property (readonly) NSString *name;
+@property (getter=areRasterOrderGroupsSupported, readonly) bool rasterOrderGroupsSupported;
+@property (readonly) unsigned long long readWriteTextureSupport;
 @property (readonly) NSObject<OS_dispatch_queue> *serialQueue;
 
 + (bool)featureProfile:(unsigned long long)arg1 supportsFeatureSet:(unsigned long long)arg2;
@@ -118,6 +132,8 @@
 - (void)_purgeDevice;
 - (void)_setDeviceWrapper:(id)arg1;
 - (unsigned int)acceleratorPort;
+- (bool)areRasterOrderGroupsSupported;
+- (unsigned long long)argumentBuffersSupport;
 - (id)compiler;
 - (void)compilerPropagatesThreadPriority:(bool)arg1;
 - (void*)computeFunctionKeyWithComputePipelineDescriptor:(id)arg1 keySize:(unsigned long long*)arg2;
@@ -142,12 +158,14 @@
 - (void*)getShaderCacheKeys;
 - (unsigned long long)globalTraceObjectID;
 - (struct IndirectArgumentBufferCapabilities { unsigned int x1 : 1; unsigned int x2 : 1; unsigned int x3 : 1; unsigned int x4 : 29; })indirectArgumentBufferCapabilities;
+- (unsigned long long)indirectArgumentBuffersSupport;
 - (id)init;
 - (void)initLimits;
 - (unsigned long long)iosurfaceReadOnlyTextureAlignmentBytes;
 - (unsigned long long)iosurfaceTextureAlignmentBytes;
+- (bool)isQuadDataSharingSupported;
 - (struct { unsigned int x1; unsigned int x2; })libraryCacheStats;
-- (const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; float x19; float x20; unsigned int x21; unsigned int x22; unsigned int x23; unsigned int x24; unsigned int x25; unsigned int x26; unsigned int x27; unsigned int x28; unsigned int x29; unsigned int x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned int x35; unsigned int x36; unsigned int x37; unsigned int x38; unsigned int x39; unsigned int x40; unsigned int x41; unsigned int x42; unsigned int x43; }*)limits;
+- (const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; float x19; float x20; unsigned int x21; unsigned int x22; unsigned int x23; unsigned int x24; unsigned int x25; unsigned int x26; unsigned int x27; unsigned int x28; unsigned int x29; unsigned int x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned int x35; unsigned int x36; unsigned int x37; unsigned int x38; unsigned int x39; unsigned int x40; unsigned int x41; unsigned int x42; unsigned int x43; unsigned int x44; unsigned int x45; unsigned int x46; unsigned int x47; unsigned int x48; }*)limits;
 - (unsigned long long)linearTextureAlignmentBytes;
 - (unsigned long long)maxBufferLength;
 - (unsigned long long)maxColorAttachments;
@@ -178,6 +196,10 @@
 - (unsigned long long)maxTextureWidth1D;
 - (unsigned long long)maxTextureWidth2D;
 - (unsigned long long)maxTextureWidth3D;
+- (unsigned long long)maxTileBuffers;
+- (unsigned long long)maxTileInlineDataSize;
+- (unsigned long long)maxTileSamplers;
+- (unsigned long long)maxTileTextures;
 - (unsigned long long)maxTotalComputeThreadsPerThreadgroup;
 - (unsigned long long)maxVertexAttributes;
 - (unsigned long long)maxVertexBuffers;
@@ -188,8 +210,12 @@
 - (unsigned long long)minBufferNoCopyAlignmentBytes;
 - (unsigned long long)minConstantBufferAlignmentBytes;
 - (unsigned long long)minLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
+- (unsigned long long)minTilePixels;
 - (unsigned long long)minimumLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
 - (id)name;
+- (id)newArgumentEncoderWithArguments:(id)arg1;
+- (id)newArgumentEncoderWithArguments:(id)arg1 structType:(id*)arg2;
+- (id)newArgumentEncoderWithLayout:(id)arg1;
 - (id)newCommandQueue;
 - (id)newCommandQueueWithDescriptor:(id)arg1;
 - (id)newCommandQueueWithMaxCommandBufferCount:(unsigned long long)arg1;
@@ -218,9 +244,11 @@
 - (id)pipelinePerformanceStatisticsWithComputeVariant:(struct NSObject { Class x1; }*)arg1;
 - (id)pipelinePerformanceStatisticsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2;
 - (id)productName;
+- (unsigned long long)readWriteTextureSupport;
 - (void)registerCompiler:(id)arg1;
 - (void)registerComputePipelineDescriptor:(id)arg1;
 - (void)registerRenderPipelineDescriptor:(id)arg1;
+- (void)registerTileRenderPipelineDescriptor:(id)arg1;
 - (void)releaseCacheEntry:(/* Warning: unhandled struct encoding: '{MTLLibraryContainer=i{?=[32C]}^{MTLLibraryData}@@@@@}' */ struct MTLLibraryContainer { int x1; struct { unsigned char x_2_1_1[32]; } x2; struct MTLLibraryData {} *x3; id x4; id x5; id x6; }*)arg1;
 - (id)serialQueue;
 - (void)startCollectingPipelineDescriptors;

@@ -21,6 +21,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)description;
 - (long long)distanceDetailLevel;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

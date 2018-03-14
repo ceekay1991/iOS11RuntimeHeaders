@@ -7,6 +7,8 @@
     NSString * _authToken;
     NSLock * _authTokenLock;
     GEOResourceManifestConfiguration * _configuration;
+    long long  _currentManifestUpdateType;
+    NSProgress * _currentUpdateProgress;
     <GEOResourceManifestServerProxyDelegate> * _delegate;
     GEOResourceFiltersManager * _filtersManager;
     int  _httpResponseStatusCode;
@@ -14,12 +16,10 @@
     double  _lastManifestRetryTimestamp;
     NSError * _lastResourceManifestLoadError;
     double  _lastTileGroupRetryTimestamp;
-    NSString * _loadingTileGroupUniqueIdentifier;
     unsigned long long  _manifestRetryCount;
     NSMutableArray * _manifestUpdateCompletionHandlers;
     NSTimer * _manifestUpdateTimer;
-    NSArray * _pendingTileGroupMigrationTasks;
-    GEOResourceLoader * _resourceLoader;
+    <NSObject> * _newActiveTileGroupTransaction;
     GEOResourceManifestDownload * _resourceManifest;
     NSMutableData * _responseData;
     NSString * _responseETag;
@@ -28,14 +28,16 @@
     unsigned long long  _stateCaptureHandle;
     NSURLSessionTask * _task;
     NSURLSessionTaskMetrics * _taskMetrics;
+    _GEOResourceManifestServerLocalProxyMigrationState * _tileGroupMigrationState;
     NSArray * _tileGroupMigrators;
     unsigned long long  _tileGroupRetryCount;
     NSTimer * _tileGroupUpdateTimer;
+    NSProgress * _updateProgress;
     bool  _wantsManifestUpdateOnReachabilityChange;
     bool  _wantsTileGroupUpdateOnReachabilityChange;
 }
 
-@property (nonatomic, readonly) GEOActiveTileGroup *activeTileGroup;
+@property (nonatomic, retain) GEOActiveTileGroup *activeTileGroup;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <GEOResourceManifestServerProxyDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -63,6 +65,7 @@
 - (void)_reachabilityChanged:(id)arg1;
 - (void)_scheduleTileGroupUpdateTimerWithTimeInterval:(double)arg1;
 - (void)_scheduleUpdateTimerWithTimeInterval:(double)arg1;
+- (void)_startOpportunisticMigrationToTileGroup:(id)arg1 inResourceManifest:(id)arg2 activeScales:(id)arg3 activeScenarios:(id)arg4;
 - (void)_startServer;
 - (void)_tileGroupTimerFired:(id)arg1;
 - (void)_updateManifest;
@@ -75,6 +78,7 @@
 - (void)activateResourceScenario:(int)arg1;
 - (id)activeTileGroup;
 - (id)authToken;
+- (void)cancelCurrentManifestUpdate;
 - (id)captureStateDataWithHints:(struct os_state_hints_s { unsigned int x1; char *x2; unsigned int x3; unsigned int x4; }*)arg1;
 - (void)closeConnection;
 - (id)configuration;
@@ -84,7 +88,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)filtersManagerDidChangeActiveFilters:(id)arg1;
-- (void)forceUpdate:(id /* block */)arg1;
+- (void)forceUpdate:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)getResourceManifestWithHandler:(id /* block */)arg1;
 - (id)initWithDelegate:(id)arg1 configuration:(id)arg2 additionalMigrationTaskClasses:(id)arg3;
 - (void)openConnection;
@@ -92,9 +96,11 @@
 - (oneway void)resetActiveTileGroup;
 - (id)serverOperationQueue;
 - (id)serverQueue;
+- (void)setActiveTileGroup:(id)arg1;
 - (oneway void)setActiveTileGroupIdentifier:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setManifestToken:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)updateIfNecessary:(id /* block */)arg1;
+- (id)updateProgress;
 
 @end

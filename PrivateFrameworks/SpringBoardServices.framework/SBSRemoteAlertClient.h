@@ -4,7 +4,7 @@
 
 @interface SBSRemoteAlertClient : FBSSystemServiceFacilityClient {
     NSObject<OS_dispatch_queue> * _handleObserverQueue;
-    NSMutableDictionary * _portToDeathWatcherMap;
+    NSMutableDictionary * _portToDeathSentinelMap;
     NSMutableDictionary * _portToHandleMap;
     NSObject<OS_dispatch_queue> * _queue;
 }

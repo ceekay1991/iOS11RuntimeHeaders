@@ -14,6 +14,7 @@
 - (bool)defaultStatusBarHidden;
 - (long long)defaultStatusBarStyle;
 - (bool)deviceOrientationEventsEnabled;
+- (bool)homeIndicatorAutoHidden;
 - (bool)idleModeVisualEffectsEnabled;
 - (bool)idleTimerDisabled;
 - (long long)interfaceOrientation;

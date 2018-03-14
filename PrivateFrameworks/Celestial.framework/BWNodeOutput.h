@@ -100,6 +100,7 @@
 - (void)emitIrisReferenceMovieRequestWithInfo:(id)arg1;
 - (void)emitNodeError:(id)arg1;
 - (void)emitSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
+- (void)emitStillImagePrewarmMessageWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 resolvedPhotoManifest:(id)arg3;
 - (void)emitStillImageReferenceFrameBracketedCaptureSequenceNumberMessageWithSequenceNumber:(int)arg1;
 - (id)format;
 - (id)formatRequirements;

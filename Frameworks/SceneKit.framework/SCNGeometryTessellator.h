@@ -24,10 +24,11 @@
 @property (nonatomic) unsigned long long tessellationPartitionMode;
 
 + (bool)supportsSecureCoding;
-+ (id)tessellatorWithLegacyTessellator:(id)arg1;
 
 - (struct { unsigned char x1; float x2; unsigned int x3; unsigned char x4; union { struct { float x_1_2_1; float x_1_2_2; } x_5_1_1; struct { float x_2_2_1; } x_5_1_2; struct { float x_3_2_1; } x_5_1_3; struct { unsigned char x_4_2_1; unsigned int x_4_2_2 : 1; unsigned int x_4_2_3 : 1; } x_5_1_4; } x5; })_tessellatorValueForGeometry:(id)arg1;
+- (bool)adaptive;
 - (void)addClient:(id)arg1;
+- (void)clientWillDie:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (double)edgeTessellationFactor;
@@ -39,6 +40,7 @@
 - (bool)isScreenSpace;
 - (double)maximumEdgeLength;
 - (void)removeClient:(id)arg1;
+- (bool)screenSpace;
 - (void)setAdaptive:(bool)arg1;
 - (void)setEdgeTessellationFactor:(double)arg1;
 - (void)setInsideTessellationFactor:(double)arg1;

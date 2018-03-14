@@ -11,6 +11,6 @@
 
 - (void).cxx_destruct;
 - (void)addHighMemoryThresholdRequest:(id)arg1;
-- (void)removeHighMemoryThresholdRequest:(id)arg1;
+- (void)removeHighMemoryThresholdRequest:(id)arg1 afterDelay:(double)arg2;
 
 @end

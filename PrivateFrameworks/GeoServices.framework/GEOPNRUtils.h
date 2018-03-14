@@ -8,6 +8,7 @@
 + (id)PNRTrieSuffix;
 + (id)PNRZippedStringsSuffix;
 + (id)PNRZippedTrieSuffix;
++ (id)_cacheDirectoryPath;
 + (id)_cachesPathForFileBaseName:(id)arg1 fileExtension:(id)arg2;
 + (id)_countryCodeForInternationalCode:(id)arg1;
 + (bool)_createCachesDirectory;

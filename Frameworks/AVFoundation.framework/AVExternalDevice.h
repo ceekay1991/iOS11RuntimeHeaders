@@ -32,6 +32,8 @@
 @property (nonatomic, readonly) NSArray *supportedFeatures;
 @property (nonatomic, readonly) long long transportType;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (id)currentCarPlayExternalDevice;
 + (id)currentExternalDevice;
 + (id)sharedLocalDevice;
@@ -80,5 +82,9 @@
 - (void)takeScreenForClient:(id)arg1 reason:(id)arg2;
 - (void)takeScreenForConnection;
 - (long long)transportType;
+
+// Image: /System/Library/PrivateFrameworks/WiFiKit.framework/WiFiKit
+
++ (bool)isCarPlaySessionActive;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIAlertController : UIViewController <DebugHierarchyObject, UIAlertControllerContaining, UIAlertControllerVisualStyleProviding, UIPreviewInteractionControllerDelegate, _UIAlertControllerTextFieldViewControllerContaining> {
+@interface UIAlertController : UIViewController <DebugHierarchyObject, HUPreloadableViewController, UIAlertControllerContaining, UIAlertControllerVisualStyleProviding, UIPreviewInteractionControllerDelegate, _UIAlertControllerTextFieldViewControllerContaining> {
     NSMutableArray * __actionDelimiterIndices;
     UIPopoverController * __compatibilityPopoverController;
     UIView * __presentationSourceRepresentationView;
@@ -11,6 +11,7 @@
     <UIAlertControllerSystemProvidedPresentationDelegate> * __systemProvidedPresentationDelegate;
     UIView * __systemProvidedPresentationView;
     UIAlertControllerVisualStyle * __visualStyle;
+    UIViewController * _accessibilityViewControllerForSizing;
     NSMutableDictionary * _actionToKeyCommandsDictionary;
     NSMutableArray * _actions;
     NSPointerArray * _actionsWithInvokedHandlers;
@@ -66,6 +67,7 @@
 @property (readonly) _UIAlertControllerTextFieldViewController *_textFieldViewController;
 @property (setter=_setTextFieldsHidden:) bool _textFieldsHidden;
 @property (setter=_setVisualStyle:, nonatomic, retain) UIAlertControllerVisualStyle *_visualStyle;
+@property (getter=_getAccessibilityViewControllerForSizing, setter=_setAccessibilityViewControllerForSizing:, nonatomic, retain) UIViewController *accessibilityViewControllerForSizing;
 @property (setter=_setActions:, nonatomic, retain) NSArray *actions;
 @property (getter=_attributedMessage, setter=_setAttributedMessage:, nonatomic, copy) NSAttributedString *attributedMessage;
 @property (getter=_attributedTitle, setter=_setAttributedTitle:, nonatomic, copy) NSAttributedString *attributedTitle;
@@ -141,6 +143,7 @@
 - (void)_flipFrameForShimDismissalIfNecessary;
 - (id)_focusedAction;
 - (id)_foregroundView;
+- (id)_getAccessibilityViewControllerForSizing;
 - (void)_getRotationContentSettings:(struct { bool x1; bool x2; bool x3; bool x4; bool x5; double x6; int x7; }*)arg1;
 - (void)_handleKeyCommand:(id)arg1;
 - (void)_handleReturn;
@@ -186,6 +189,7 @@
 - (void)_restoreInputViewsAnimated:(bool)arg1;
 - (id)_returnKeyCommand;
 - (void)_returnKeyPressedInLastTextField;
+- (void)_setAccessibilityViewControllerForSizing:(id)arg1;
 - (void)_setActions:(id)arg1;
 - (void)_setAttributedDetailMessage:(id)arg1;
 - (void)_setAttributedMessage:(id)arg1;
@@ -293,5 +297,57 @@
 // Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
 
 - (id)debugHierarchyPropertyDescriptions;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (id)mf_actionSheetWithTitle:(id)arg1 cancellationHandler:(id /* block */)arg2;
++ (id)mutedThreadActionAlertControllerWithHandler:(id /* block */)arg1;
++ (id)notifyMeConfirmationControllerWithHandler:(id /* block */)arg1;
+
+- (void)mf_addCancelActionWithHandler:(id /* block */)arg1;
+- (void)mf_presentFromViewController:(id)arg1 withSourceView:(id)arg2;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
++ (id)pu_alertForCPLEnableError:(id)arg1 actionHandler:(id /* block */)arg2 cancelHandler:(id /* block */)arg3;
++ (id)pu_alertForStorageUpgradeLoadFailure;
++ (id)pu_deleteITunesContentAlertWithAssetCount:(long long)arg1 includesPhotos:(bool)arg2 includesVideos:(bool)arg3 actionHandler:(id /* block */)arg4 cancelHandler:(id /* block */)arg5;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
++ (void)cam_showUsageSettings;
+
+- (id)initWithTitle:(id)arg1 message:(id)arg2;
+- (id)initWithTitle:(id)arg1 message:(id)arg2 lowDiskSpaceAlertType:(long long)arg3 dismissActionHandler:(id /* block */)arg4 resultActionHandler:(id /* block */)arg5;
+- (id)initWithType:(long long)arg1 captureMode:(long long)arg2 dismissActionHandler:(id /* block */)arg3 resultActionHandler:(id /* block */)arg4;
+
+// Image: /System/Library/PrivateFrameworks/ClassroomKit.framework/ClassroomKit
+
++ (id)crk_alertWithTitle:(id)arg1 message:(id)arg2 cancelButtonTitle:(id)arg3 confirmButtonTitle:(id)arg4 confirmBlock:(id /* block */)arg5;
++ (id)crk_alertWithTitle:(id)arg1 message:(id)arg2 cancelButtonTitle:(id)arg3 confirmButtonTitle:(id)arg4 destructiveTitle:(bool)arg5 confirmBlock:(id /* block */)arg6;
++ (id)crk_destructiveAlertWithTitle:(id)arg1 message:(id)arg2 cancelButtonTitle:(id)arg3 confirmButtonTitle:(id)arg4 confirmBlock:(id /* block */)arg5;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
+
+- (void)_gkAddCancelButtonWithNoAction;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
++ (id)alertControllerForAddingDestinationWithType:(unsigned long long)arg1 andProceed:(id /* block */)arg2;
++ (id)alertControllerForAddingDestinationWithTypeString:(id)arg1 andProceed:(id /* block */)arg2;
++ (id)alertControllerForAddingHomeWithProceed:(id /* block */)arg1;
++ (id)alertControllerForAddingRoomWithProceed:(id /* block */)arg1;
++ (id)alertControllerForAddingServiceGroupWithProceed:(id /* block */)arg1;
++ (id)alertControllerForAddingZoneWithProceed:(id /* block */)arg1;
++ (id)hu_alertControllerForUnimplementedFeature:(id)arg1;
+
+- (id)hu_preloadContent;
+
+// Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
+
++ (id)enableWiFiCallingAlertController;
++ (id)enableWiFiCallingAlertControllerWithPreferredStyle:(long long)arg1;
++ (id)networkUnavailableAlertControllerWithCallProvider:(id)arg1 dialType:(long long)arg2;
++ (id)networkUnavailableAlertControllerWithCallProvider:(id)arg1 dialType:(long long)arg2 preferredStyle:(long long)arg3;
 
 @end

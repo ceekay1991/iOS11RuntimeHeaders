@@ -31,6 +31,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dateCreated;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)identifier;

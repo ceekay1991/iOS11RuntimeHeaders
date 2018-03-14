@@ -14,7 +14,10 @@
         unsigned int tcpECNIntConnRecvCE : 1; 
         unsigned int tcpECNIntConnRecvECE : 1; 
         unsigned int tcpECNIntFallbackCE : 1; 
+        unsigned int tcpECNIntFallbackDropRst : 1; 
+        unsigned int tcpECNIntFallbackDropRxmt : 1; 
         unsigned int tcpECNIntFallbackReorder : 1; 
+        unsigned int tcpECNIntFallbackSYNRst : 1; 
         unsigned int tcpECNIntFallbackSynLoss : 1; 
         unsigned int tcpECNIntNotSupportedPeer : 1; 
         unsigned int tcpECNIntOffAvgRTT : 1; 
@@ -61,7 +64,10 @@
     unsigned long long  _tcpECNIntConnRecvCE;
     unsigned long long  _tcpECNIntConnRecvECE;
     unsigned long long  _tcpECNIntFallbackCE;
+    unsigned long long  _tcpECNIntFallbackDropRst;
+    unsigned long long  _tcpECNIntFallbackDropRxmt;
     unsigned long long  _tcpECNIntFallbackReorder;
+    unsigned long long  _tcpECNIntFallbackSYNRst;
     unsigned long long  _tcpECNIntFallbackSynLoss;
     unsigned long long  _tcpECNIntNotSupportedPeer;
     unsigned long long  _tcpECNIntOffAvgRTT;
@@ -109,7 +115,10 @@
 @property (nonatomic) bool hasTcpECNIntConnRecvCE;
 @property (nonatomic) bool hasTcpECNIntConnRecvECE;
 @property (nonatomic) bool hasTcpECNIntFallbackCE;
+@property (nonatomic) bool hasTcpECNIntFallbackDropRst;
+@property (nonatomic) bool hasTcpECNIntFallbackDropRxmt;
 @property (nonatomic) bool hasTcpECNIntFallbackReorder;
+@property (nonatomic) bool hasTcpECNIntFallbackSYNRst;
 @property (nonatomic) bool hasTcpECNIntFallbackSynLoss;
 @property (nonatomic) bool hasTcpECNIntNotSupportedPeer;
 @property (nonatomic) bool hasTcpECNIntOffAvgRTT;
@@ -155,7 +164,10 @@
 @property (nonatomic) unsigned long long tcpECNIntConnRecvCE;
 @property (nonatomic) unsigned long long tcpECNIntConnRecvECE;
 @property (nonatomic) unsigned long long tcpECNIntFallbackCE;
+@property (nonatomic) unsigned long long tcpECNIntFallbackDropRst;
+@property (nonatomic) unsigned long long tcpECNIntFallbackDropRxmt;
 @property (nonatomic) unsigned long long tcpECNIntFallbackReorder;
+@property (nonatomic) unsigned long long tcpECNIntFallbackSYNRst;
 @property (nonatomic) unsigned long long tcpECNIntFallbackSynLoss;
 @property (nonatomic) unsigned long long tcpECNIntNotSupportedPeer;
 @property (nonatomic) unsigned long long tcpECNIntOffAvgRTT;
@@ -206,7 +218,10 @@
 - (bool)hasTcpECNIntConnRecvCE;
 - (bool)hasTcpECNIntConnRecvECE;
 - (bool)hasTcpECNIntFallbackCE;
+- (bool)hasTcpECNIntFallbackDropRst;
+- (bool)hasTcpECNIntFallbackDropRxmt;
 - (bool)hasTcpECNIntFallbackReorder;
+- (bool)hasTcpECNIntFallbackSYNRst;
 - (bool)hasTcpECNIntFallbackSynLoss;
 - (bool)hasTcpECNIntNotSupportedPeer;
 - (bool)hasTcpECNIntOffAvgRTT;
@@ -258,7 +273,10 @@
 - (void)setHasTcpECNIntConnRecvCE:(bool)arg1;
 - (void)setHasTcpECNIntConnRecvECE:(bool)arg1;
 - (void)setHasTcpECNIntFallbackCE:(bool)arg1;
+- (void)setHasTcpECNIntFallbackDropRst:(bool)arg1;
+- (void)setHasTcpECNIntFallbackDropRxmt:(bool)arg1;
 - (void)setHasTcpECNIntFallbackReorder:(bool)arg1;
+- (void)setHasTcpECNIntFallbackSYNRst:(bool)arg1;
 - (void)setHasTcpECNIntFallbackSynLoss:(bool)arg1;
 - (void)setHasTcpECNIntNotSupportedPeer:(bool)arg1;
 - (void)setHasTcpECNIntOffAvgRTT:(bool)arg1;
@@ -304,7 +322,10 @@
 - (void)setTcpECNIntConnRecvCE:(unsigned long long)arg1;
 - (void)setTcpECNIntConnRecvECE:(unsigned long long)arg1;
 - (void)setTcpECNIntFallbackCE:(unsigned long long)arg1;
+- (void)setTcpECNIntFallbackDropRst:(unsigned long long)arg1;
+- (void)setTcpECNIntFallbackDropRxmt:(unsigned long long)arg1;
 - (void)setTcpECNIntFallbackReorder:(unsigned long long)arg1;
+- (void)setTcpECNIntFallbackSYNRst:(unsigned long long)arg1;
 - (void)setTcpECNIntFallbackSynLoss:(unsigned long long)arg1;
 - (void)setTcpECNIntNotSupportedPeer:(unsigned long long)arg1;
 - (void)setTcpECNIntOffAvgRTT:(unsigned long long)arg1;
@@ -348,7 +369,10 @@
 - (unsigned long long)tcpECNIntConnRecvCE;
 - (unsigned long long)tcpECNIntConnRecvECE;
 - (unsigned long long)tcpECNIntFallbackCE;
+- (unsigned long long)tcpECNIntFallbackDropRst;
+- (unsigned long long)tcpECNIntFallbackDropRxmt;
 - (unsigned long long)tcpECNIntFallbackReorder;
+- (unsigned long long)tcpECNIntFallbackSYNRst;
 - (unsigned long long)tcpECNIntFallbackSynLoss;
 - (unsigned long long)tcpECNIntNotSupportedPeer;
 - (unsigned long long)tcpECNIntOffAvgRTT;

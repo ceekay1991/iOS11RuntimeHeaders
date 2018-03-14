@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UITableViewDragController : NSObject <UIDragInteractionDelegate> {
+@interface _UITableViewDragController : NSObject <UIDragInteractionDelegate_Internal> {
     NSMapTable * _cellsAnimatingCancel;
     long long  _clientEnabledState;
     UIDragInteraction * _dragInteraction;
@@ -40,6 +40,9 @@
 + (bool)isEnabledByDefault;
 
 - (void).cxx_destruct;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint { double x1; double x2; })arg3;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (bool)_dragInteractionDynamicallyUpdatesPrefersFullSizePreviews:(id)arg1;
 - (void)addTentativeRowAtIndexPath:(id)arg1;
 - (void)beginDragForTentativeRows;
 - (void)beginDragOfRowsForSession:(id)arg1 notifyDelegate:(bool)arg2;
@@ -56,7 +59,9 @@
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 willAddItems:(id)arg3 forInteraction:(id)arg4;
+- (bool)dragInteraction:(id)arg1 sessionAllowsMoveOperation:(id)arg2;
 - (id)dragInteraction:(id)arg1 sessionForAddingItems:(id)arg2 withTouchAtPoint:(struct CGPoint { double x1; double x2; })arg3;
+- (bool)dragInteraction:(id)arg1 sessionIsRestrictedToDraggingApplication:(id)arg2;
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
 - (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
 - (id)dragSession;
@@ -64,6 +69,7 @@
 - (id)draggedIndexPath;
 - (bool)forceEnabledForReordering;
 - (void)forceReset;
+- (void)immediatelyBeginDragWithTouch:(id)arg1;
 - (id)indexPaths;
 - (id)initWithTableView:(id)arg1;
 - (id)initiatingCell;

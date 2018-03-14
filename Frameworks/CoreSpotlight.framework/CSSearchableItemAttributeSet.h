@@ -46,6 +46,7 @@
 @property (nonatomic, readonly) struct { char *x1; struct { unsigned int x_2_1_1; unsigned char x_2_1_2; } x2; } contentObj;
 @property (readonly) NSString *contentSnippet;
 @property (readonly) NSMutableDictionary *customAttributes;
+@property (retain) NSNumber *dataOwnerType;
 @property (nonatomic, readonly) CSDecoder *decoder;
 @property (retain) NSNumber *documentIdentifier;
 @property (retain) NSNumber *downloadError;
@@ -58,9 +59,16 @@
 @property (retain) NSNumber *favoriteRank;
 @property (retain) NSNumber *fileIdentifier;
 @property (copy) NSString *fileItemID;
+@property (copy) NSString *fileProviderDomaindentifier;
 @property (copy) NSString *fileProviderID;
+@property (copy) NSArray *fileProviderUserInfoKeys;
+@property (copy) NSArray *fileProviderUserInfoValues;
 @property (copy) NSString *filename;
 @property (nonatomic, readonly) bool hasCodedCustomAttributes;
+@property (nonatomic, copy) NSString *ic_dataSourceIdentifier;
+@property (nonatomic, copy) NSString *ic_managedObjectIDURI;
+@property (nonatomic) unsigned long long ic_searchResultType;
+@property (retain) NSNumber *isPlaceholder;
 @property (copy) NSDate *lastApplicationLaunchedDate;
 @property (copy) NSString *lastEditorIdentifier;
 @property (copy) NSString *lastEditorName;
@@ -106,6 +114,8 @@
 @property (copy) NSArray *userTags;
 @property (copy) NSString *versionIdentifier;
 
+// Image: /System/Library/Frameworks/CoreSpotlight.framework/CoreSpotlight
+
 + (id)_allKeys;
 + (id)_requiredAttributesForContentType:(id)arg1;
 + (id)_sharedAttributeKeySet;
@@ -143,7 +153,6 @@
 - (void)_setValue:(id)arg1 withClass:(Class)arg2 forKey:(id)arg3;
 - (void)_setValue:(id)arg1 withClass:(Class)arg2 forKey:(id)arg3 copy:(bool)arg4;
 - (void)_standardizeMarkAs;
-- (void)_updateDocumentInfoForContentURL:(id)arg1;
 - (id)accountHandles;
 - (id)accountIdentifier;
 - (id)accountType;
@@ -220,6 +229,7 @@
 - (id)creator;
 - (id)customAttributeDictionary;
 - (id)customAttributes;
+- (id)dataOwnerType;
 - (id)debugDescription;
 - (id)decoder;
 - (id)deliveryType;
@@ -254,7 +264,10 @@
 - (id)favoriteRank;
 - (id)fileIdentifier;
 - (id)fileItemID;
+- (id)fileProviderDomaindentifier;
 - (id)fileProviderID;
+- (id)fileProviderUserInfoKeys;
+- (id)fileProviderUserInfoValues;
 - (id)fileSize;
 - (id)filename;
 - (id)finderComment;
@@ -291,6 +304,7 @@
 - (id)isLikelyJunk;
 - (id)isLocal;
 - (id)isPartiallyDownloaded;
+- (id)isPlaceholder;
 - (id)isReaderView;
 - (id)isRedEyeOn;
 - (id)isShared;
@@ -461,6 +475,7 @@
 - (void)setCountry:(id)arg1;
 - (void)setCoverage:(id)arg1;
 - (void)setCreator:(id)arg1;
+- (void)setDataOwnerType:(id)arg1;
 - (void)setDeliveryType:(id)arg1;
 - (void)setDirector:(id)arg1;
 - (void)setDisplayName:(id)arg1;
@@ -493,7 +508,10 @@
 - (void)setFavoriteRank:(id)arg1;
 - (void)setFileIdentifier:(id)arg1;
 - (void)setFileItemID:(id)arg1;
+- (void)setFileProviderDomaindentifier:(id)arg1;
 - (void)setFileProviderID:(id)arg1;
+- (void)setFileProviderUserInfoKeys:(id)arg1;
+- (void)setFileProviderUserInfoValues:(id)arg1;
 - (void)setFileSize:(id)arg1;
 - (void)setFilename:(id)arg1;
 - (void)setFinderComment:(id)arg1;
@@ -528,6 +546,7 @@
 - (void)setInformation:(id)arg1;
 - (void)setInstantMessageAddresses:(id)arg1;
 - (void)setInstructions:(id)arg1;
+- (void)setIsPlaceholder:(id)arg1;
 - (void)setKeySignature:(id)arg1;
 - (void)setKeywords:(id)arg1;
 - (void)setKind:(id)arg1;
@@ -715,5 +734,30 @@
 - (id)videoBitRate;
 - (id)weakRelatedUniqueIdentifier;
 - (id)whiteBalance;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
+- (id)__ck_itemContentCreationDate;
+- (id)__ck_privateMutableAttributesDictionary;
+- (id)__ck_spotlightItemSnippet;
+
+// Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
+
++ (id)ic_customAttributeKeyDictionary;
++ (id)ic_customAttributeKeyWithName:(id)arg1 searchable:(bool)arg2 searchableByDefault:(bool)arg3 unique:(bool)arg4 multiValued:(bool)arg5;
++ (id)ic_dataSourceIdentifierCustomKey;
++ (id)ic_managedObjectIDCustomKey;
++ (id)ic_searchResultTypeCustomKey;
++ (id)ic_specializedIndexFieldAttributeKeyForStringField:(id)arg1;
+
+- (id)ic_dataSourceIdentifier;
+- (long long)ic_daysSinceModification;
+- (id)ic_managedObjectIDURI;
+- (void)ic_populateValuesForSpecializedFields;
+- (unsigned long long)ic_relevance;
+- (unsigned long long)ic_searchResultType;
+- (void)setIc_dataSourceIdentifier:(id)arg1;
+- (void)setIc_managedObjectIDURI:(id)arg1;
+- (void)setIc_searchResultType:(unsigned long long)arg1;
 
 @end

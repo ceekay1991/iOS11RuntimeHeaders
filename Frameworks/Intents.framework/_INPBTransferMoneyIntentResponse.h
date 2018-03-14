@@ -8,6 +8,7 @@
     _INPBPaymentAmountValue * _transactionAmount;
     NSString * _transactionNote;
     _INPBDateTimeRange * _transactionScheduledDate;
+    _INPBCurrencyAmountValue * _transferFee;
     PBUnknownFields * _unknownFields;
 }
 
@@ -17,10 +18,12 @@
 @property (nonatomic, readonly) bool hasTransactionAmount;
 @property (nonatomic, readonly) bool hasTransactionNote;
 @property (nonatomic, readonly) bool hasTransactionScheduledDate;
+@property (nonatomic, readonly) bool hasTransferFee;
 @property (nonatomic, retain) _INPBFinancialAccountValue *toAccount;
 @property (nonatomic, retain) _INPBPaymentAmountValue *transactionAmount;
 @property (nonatomic, retain) NSString *transactionNote;
 @property (nonatomic, retain) _INPBDateTimeRange *transactionScheduledDate;
+@property (nonatomic, retain) _INPBCurrencyAmountValue *transferFee;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (id)options;
@@ -35,6 +38,7 @@
 - (bool)hasTransactionAmount;
 - (bool)hasTransactionNote;
 - (bool)hasTransactionScheduledDate;
+- (bool)hasTransferFee;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
@@ -44,10 +48,12 @@
 - (void)setTransactionAmount:(id)arg1;
 - (void)setTransactionNote:(id)arg1;
 - (void)setTransactionScheduledDate:(id)arg1;
+- (void)setTransferFee:(id)arg1;
 - (id)toAccount;
 - (id)transactionAmount;
 - (id)transactionNote;
 - (id)transactionScheduledDate;
+- (id)transferFee;
 - (id)unknownFields;
 - (void)writeTo:(id)arg1;
 

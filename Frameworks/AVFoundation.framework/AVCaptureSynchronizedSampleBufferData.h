@@ -13,6 +13,7 @@
 - (id)_initWithSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 sampleBufferWasDropped:(bool)arg2;
 - (void)dealloc;
 - (long long)droppedReason;
+- (bool)hasCorrespondingDepthData;
 - (struct opaqueCMSampleBuffer { }*)sampleBuffer;
 - (bool)sampleBufferWasDropped;
 

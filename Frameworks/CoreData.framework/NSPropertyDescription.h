@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSPropertyDescription : NSObject <NSCoding, NSCopying> {
+@interface NSPropertyDescription : NSObject <NSCoding, NSCopying, NSSecureCoding> {
     NSEntityDescription * _entity;
     short  _entitysReferenceIDForProperty;
     void * _extraIvars;
@@ -20,8 +20,9 @@
         unsigned int _hasMaxValueInExtraIvars : 1; 
         unsigned int _hasMinValueInExtraIvars : 1; 
         unsigned int _storeBinaryDataExternally : 1; 
+        unsigned int _preserveValueOnDelete : 1; 
         unsigned int _reservedAttributeFlagOne : 1; 
-        unsigned int _reservedPropertyDescription : 3; 
+        unsigned int _reservedPropertyDescription : 2; 
     }  _propertyDescriptionFlags;
     NSMutableDictionary * _userInfo;
     NSArray * _validationPredicates;
@@ -30,13 +31,21 @@
     NSString * _versionHashModifier;
 }
 
+@property (getter=vs_JSONKey, setter=vs_setJSONKey:, nonatomic, copy) NSString *JSONKey;
+@property (getter=vs_JSONValueTransformerName, setter=vs_setJSONValueTransformerName:, nonatomic, copy) NSString *JSONValueTransformerName;
 @property (nonatomic, readonly) NSEntityDescription *entity;
+@property (getter=vs_expectedJSONValueClasses, setter=vs_setExpectedJSONValueClasses:, nonatomic, copy) NSArray *expectedJSONValueClass;
 @property (getter=isIndexed) bool indexed;
 @property (getter=isIndexedBySpotlight) bool indexedBySpotlight;
 @property (nonatomic, copy) NSString *name;
 @property (getter=isOptional) bool optional;
+@property (getter=vs_propertyListKey, setter=vs_setPropertyListKey:, nonatomic, copy) NSString *propertyListKey;
+@property (getter=vs_propertyListValueTransformerName, setter=vs_setPropertyListValueTransformerName:, nonatomic, copy) NSString *propertyListValueTransformerName;
 @property (copy) NSString *renamingIdentifier;
+@property (getter=vs_isRequiredJSONValue, setter=vs_setRequiredJSONValue:, nonatomic) bool requiredJSONValue;
 @property (getter=isStoredInExternalRecord) bool storedInExternalRecord;
+@property (getter=vs_subscriptionKeyPath, setter=vs_setSubscriptionKeyPath:, nonatomic, copy) NSString *subscriptionKeyPath;
+@property (getter=vs_suitablePurposes, setter=vs_setSuitablePurposes:, nonatomic) long long suitablePurposes;
 @property (getter=isTransient) bool transient;
 @property (nonatomic, retain) NSDictionary *userInfo;
 @property (readonly) NSArray *validationPredicates;
@@ -44,7 +53,10 @@
 @property (readonly, copy) NSData *versionHash;
 @property (copy) NSString *versionHashModifier;
 
+// Image: /System/Library/Frameworks/CoreData.framework/CoreData
+
 + (void)initialize;
++ (bool)supportsSecureCoding;
 
 - (void)_appendPropertyFieldsToData:(id)arg1 propertiesDict:(id)arg2 uniquedPropertyNames:(id)arg3 uniquedStrings:(id)arg4 uniquedData:(id)arg5 entitiesSlots:(id)arg6;
 - (bool)_comparePredicatesAndWarnings:(id)arg1;
@@ -62,6 +74,7 @@
 - (bool)_isToManyRelationship;
 - (bool)_isTriggerBacked;
 - (bool)_nonPredicateValidateValue:(id*)arg1 forKey:(id)arg2 inObject:(id)arg3 error:(id*)arg4;
+- (bool)_preserveValueOnDelete;
 - (unsigned long long)_propertyType;
 - (id)_rawValidationPredicates;
 - (id)_rawValidationWarnings;
@@ -119,5 +132,28 @@
 - (id)validationWarnings;
 - (id)versionHash;
 - (id)versionHashModifier;
+
+// Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
+
+- (id)vs_JSONKey;
+- (id)vs_JSONValueTransformer;
+- (id)vs_JSONValueTransformerName;
+- (id)vs_expectedJSONValueClasses;
+- (bool)vs_isRequiredJSONValue;
+- (bool)vs_isSuitableForPurpose:(long long)arg1;
+- (id)vs_propertyListKey;
+- (id)vs_propertyListValueTransformer;
+- (id)vs_propertyListValueTransformerName;
+- (void)vs_setExpectedJSONValueClasses:(id)arg1;
+- (void)vs_setJSONKey:(id)arg1;
+- (void)vs_setJSONValueTransformerName:(id)arg1;
+- (void)vs_setPropertyListKey:(id)arg1;
+- (void)vs_setPropertyListValueTransformerName:(id)arg1;
+- (void)vs_setRequiredJSONValue:(bool)arg1;
+- (void)vs_setSubscriptionKeyPath:(id)arg1;
+- (void)vs_setSuitablePurposes:(long long)arg1;
+- (void)vs_setUserInfoValue:(id)arg1 forKey:(id)arg2;
+- (id)vs_subscriptionKeyPath;
+- (long long)vs_suitablePurposes;
 
 @end

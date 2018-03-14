@@ -13,6 +13,7 @@
         unsigned int incidentDistance : 1; 
         unsigned int incidentIndex : 1; 
         unsigned int previousBannerChange : 1; 
+        unsigned int secondsSaved : 1; 
         unsigned int showAtDistance : 1; 
         unsigned int disableFasterRerouteByDefault : 1; 
     }  _has;
@@ -23,6 +24,7 @@
     NSMutableArray * _localizedIncidentSpokenTexts;
     NSMutableArray * _localizedIncidentSubBanners;
     int  _previousBannerChange;
+    unsigned int  _secondsSaved;
     unsigned int  _showAtDistance;
     GEOFormattedString * _spokenPrompt;
 }
@@ -39,6 +41,7 @@
 @property (nonatomic) bool hasIncidentDistance;
 @property (nonatomic) bool hasIncidentIndex;
 @property (nonatomic) bool hasPreviousBannerChange;
+@property (nonatomic) bool hasSecondsSaved;
 @property (nonatomic) bool hasShowAtDistance;
 @property (nonatomic, readonly) bool hasSpokenPrompt;
 @property (nonatomic) unsigned int hideAtDistance;
@@ -48,6 +51,7 @@
 @property (nonatomic, retain) NSMutableArray *localizedIncidentSpokenTexts;
 @property (nonatomic, retain) NSMutableArray *localizedIncidentSubBanners;
 @property (nonatomic) int previousBannerChange;
+@property (nonatomic) unsigned int secondsSaved;
 @property (nonatomic) unsigned int showAtDistance;
 @property (nonatomic, retain) GEOFormattedString *spokenPrompt;
 
@@ -81,6 +85,7 @@
 - (bool)hasIncidentDistance;
 - (bool)hasIncidentIndex;
 - (bool)hasPreviousBannerChange;
+- (bool)hasSecondsSaved;
 - (bool)hasShowAtDistance;
 - (bool)hasSpokenPrompt;
 - (unsigned long long)hash;
@@ -101,6 +106,7 @@
 - (int)previousBannerChange;
 - (id)previousBannerChangeAsString:(int)arg1;
 - (bool)readFrom:(id)arg1;
+- (unsigned int)secondsSaved;
 - (void)setBannerLargeText:(id)arg1;
 - (void)setBannerSmallText:(id)arg1;
 - (void)setBannerStyle:(int)arg1;
@@ -111,6 +117,7 @@
 - (void)setHasIncidentDistance:(bool)arg1;
 - (void)setHasIncidentIndex:(bool)arg1;
 - (void)setHasPreviousBannerChange:(bool)arg1;
+- (void)setHasSecondsSaved:(bool)arg1;
 - (void)setHasShowAtDistance:(bool)arg1;
 - (void)setHideAtDistance:(unsigned int)arg1;
 - (void)setIncidentDistance:(unsigned int)arg1;
@@ -119,6 +126,7 @@
 - (void)setLocalizedIncidentSpokenTexts:(id)arg1;
 - (void)setLocalizedIncidentSubBanners:(id)arg1;
 - (void)setPreviousBannerChange:(int)arg1;
+- (void)setSecondsSaved:(unsigned int)arg1;
 - (void)setShowAtDistance:(unsigned int)arg1;
 - (void)setSpokenPrompt:(id)arg1;
 - (unsigned int)showAtDistance;

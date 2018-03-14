@@ -74,6 +74,7 @@
 - (struct SCNVector3 { float x1; float x2; float x3; })direction;
 - (void)encodeWithCoder:(id)arg1;
 - (struct SCNVector3 { float x1; float x2; float x3; })evalAtLocation:(struct SCNVector3 { float x1; float x2; float x3; })arg1;
+- (bool)exclusive;
 - (double)falloffExponent;
 - (struct SCNVector3 { float x1; float x2; float x3; })halfExtent;
 - (id)init;

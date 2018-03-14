@@ -13,6 +13,9 @@
 + (void)_fallbackToUnsyncedOAuthTokens:(id)arg1;
 + (id)_fetchOptionsForAccount:(id)arg1;
 + (id)_itemForServiceName:(id)arg1 username:(id)arg2 accessGroup:(id)arg3 options:(id)arg4 error:(id*)arg5;
++ (void)_keychainLock_addItem:(id)arg1 forServiceName:(id)arg2 username:(id)arg3 accessGroup:(id)arg4 accessibility:(id)arg5 syncable:(bool)arg6 requiresTouchID:(bool)arg7 error:(id*)arg8;
++ (bool)_keychainLock_removeItemForService:(id)arg1 username:(id)arg2 accessGroup:(id)arg3 options:(id)arg4 error:(id*)arg5;
++ (void)_keychainLock_updateItem:(id)arg1 existingPassword:(id)arg2 forServiceName:(id)arg3 username:(id)arg4 accessGroup:(id)arg5 accessibility:(id)arg6 options:(id)arg7 error:(id*)arg8;
 + (void)_migrateCredential:(id)arg1 forAccount:(id)arg2 clientID:(id)arg3;
 + (void)_removeCredentialForAccountWithUsername:(id)arg1 accountQualifiedUsername:(id)arg2 accountIdentifier:(id)arg3 accountTypeIdentifier:(id)arg4 credentialType:(id)arg5 clientID:(id)arg6 options:(id)arg7 error:(id*)arg8;
 + (void)_removeCredentialItemWithKey:(id)arg1 forAccountWithID:(id)arg2 username:(id)arg3 accountTypeID:(id)arg4 clientID:(id)arg5 options:(id)arg6 error:(id*)arg7;

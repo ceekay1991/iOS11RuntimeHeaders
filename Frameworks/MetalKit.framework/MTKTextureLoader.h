@@ -20,9 +20,11 @@
 - (void)_loadData:(id)arg1 options:(id)arg2 uploader:(id)arg3 label:(id)arg4 completionHandler:(id /* block */)arg5;
 - (void)_loadMDLTexture:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_newAsyncTextureWithNames:(id)arg1 scaleFactor:(double)arg2 displayGamut:(long long)arg3 bundle:(id)arg4 options:(id)arg5 completionHandler:(id /* block */)arg6;
+- (id)_newAsyncTexturesFromTXRTextures:(id)arg1 options:(id)arg2 error:(id*)arg3;
 - (void)dealloc;
 - (id)device;
 - (id)initWithDevice:(id)arg1;
+- (id)newTextureFromTXRTexture:(id)arg1 options:(id)arg2 error:(id*)arg3;
 - (void)newTextureWithCGImage:(struct CGImage { }*)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)newTextureWithCGImage:(struct CGImage { }*)arg1 options:(id)arg2 error:(id*)arg3;
 - (void)newTextureWithContentsOfURL:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
@@ -35,6 +37,7 @@
 - (id)newTextureWithName:(id)arg1 scaleFactor:(double)arg2 bundle:(id)arg3 options:(id)arg4 error:(id*)arg5;
 - (void)newTextureWithName:(id)arg1 scaleFactor:(double)arg2 displayGamut:(long long)arg3 bundle:(id)arg4 options:(id)arg5 completionHandler:(id /* block */)arg6;
 - (id)newTextureWithName:(id)arg1 scaleFactor:(double)arg2 displayGamut:(long long)arg3 bundle:(id)arg4 options:(id)arg5 error:(id*)arg6;
+- (id)newTexturesFromTXRTextures:(id)arg1 options:(id)arg2 error:(id*)arg3;
 - (void)newTexturesWithContentsOfURLs:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)newTexturesWithContentsOfURLs:(id)arg1 options:(id)arg2 error:(id*)arg3;
 - (void)newTexturesWithNames:(id)arg1 scaleFactor:(double)arg2 bundle:(id)arg3 options:(id)arg4 completionHandler:(id /* block */)arg5;

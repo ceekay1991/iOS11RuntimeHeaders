@@ -4,12 +4,14 @@
 
 @interface AWDPushKeepAliveFailed : PBCodable <NSCopying> {
     unsigned int  _connectionType;
+    unsigned int  _currentGrowthStage;
     unsigned int  _dualChannelState;
     int  _error;
     NSString * _guid;
     struct { 
         unsigned int timestamp : 1; 
         unsigned int connectionType : 1; 
+        unsigned int currentGrowthStage : 1; 
         unsigned int dualChannelState : 1; 
         unsigned int error : 1; 
         unsigned int keepAliveVersion : 1; 
@@ -27,10 +29,12 @@
 }
 
 @property (nonatomic) unsigned int connectionType;
+@property (nonatomic) unsigned int currentGrowthStage;
 @property (nonatomic) unsigned int dualChannelState;
 @property (nonatomic) int error;
 @property (nonatomic, retain) NSString *guid;
 @property (nonatomic) bool hasConnectionType;
+@property (nonatomic) bool hasCurrentGrowthStage;
 @property (nonatomic) bool hasDualChannelState;
 @property (nonatomic) bool hasError;
 @property (nonatomic, readonly) bool hasGuid;
@@ -50,6 +54,7 @@
 - (unsigned int)connectionType;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (unsigned int)currentGrowthStage;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -57,6 +62,7 @@
 - (int)error;
 - (id)guid;
 - (bool)hasConnectionType;
+- (bool)hasCurrentGrowthStage;
 - (bool)hasDualChannelState;
 - (bool)hasError;
 - (bool)hasGuid;
@@ -74,10 +80,12 @@
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setConnectionType:(unsigned int)arg1;
+- (void)setCurrentGrowthStage:(unsigned int)arg1;
 - (void)setDualChannelState:(unsigned int)arg1;
 - (void)setError:(int)arg1;
 - (void)setGuid:(id)arg1;
 - (void)setHasConnectionType:(bool)arg1;
+- (void)setHasCurrentGrowthStage:(bool)arg1;
 - (void)setHasDualChannelState:(bool)arg1;
 - (void)setHasError:(bool)arg1;
 - (void)setHasKeepAliveVersion:(bool)arg1;

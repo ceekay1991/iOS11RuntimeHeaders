@@ -14,7 +14,6 @@
 
 - (void).cxx_destruct;
 - (id)bagKey;
-- (id)customURLString;
 - (id)httpBody;
 - (long long)httpBodyType;
 - (long long)httpMethod;

@@ -91,6 +91,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_accessoryBaseColor;
 - (void)_accessoryButtonAction:(id)arg1;
 - (void)_actionButton:(id)arg1 pushedInCell:(id)arg2;
@@ -98,7 +99,7 @@
 - (void)_animateDeletionOfRowWithCell:(id)arg1;
 - (void)_animateSwipeCancelation;
 - (double)_backgroundInset;
-- (void)_beginReorderingForCell:(id)arg1 touch:(id)arg2;
+- (bool)_beginReorderingForCell:(id)arg1 touch:(id)arg2;
 - (double)_bottomPadding;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_calloutTargetRectForCell:(id)arg1;
 - (bool)_canFocusCell:(id)arg1;
@@ -119,6 +120,7 @@
 - (void)_endSwipeToDeleteRowDidDelete:(bool)arg1;
 - (void)_finishedRemovingRemovalButtonForTableCell:(id)arg1;
 - (void)_highlightCell:(id)arg1 animated:(bool)arg2 scrollPosition:(long long)arg3 highlight:(bool)arg4;
+- (void)_highlightDidEndForCell:(id)arg1 withInteraction:(id)arg2;
 - (double)_indexBarExtentFromEdge;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_indexFrame;
 - (void)_insertInteractiveMoveShadowViews;
@@ -136,6 +138,7 @@
 - (double)_offsetForRevealingDeleteConfirmationButton;
 - (void)_performAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
 - (long long)_popoverControllerStyle;
+- (void)_prepareHighlightForCell:(id)arg1 withInteraction:(id)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_rawSectionContentInset;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_rawSeparatorInset;
 - (void)_removeInteractiveMoveShadowViews;
@@ -177,7 +180,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (long long)accessoryType;
 - (id)accessoryView;
 - (bool)allowsMultipleSelection;
@@ -203,6 +205,7 @@
 - (long long)indentationLevel;
 - (double)indentationWidth;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)insetsContentViewsToSafeArea;
 - (bool)interactiveMoveEffectsVisible;
 - (bool)isEditing;
 - (bool)isHighlighted;

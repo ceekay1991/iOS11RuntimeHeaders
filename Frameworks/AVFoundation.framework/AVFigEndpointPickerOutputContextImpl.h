@@ -14,24 +14,26 @@
 
 @property (nonatomic, readonly) NSString *ID;
 @property (nonatomic, readonly, copy) NSString *associatedAudioDeviceID;
+@property (readonly) bool canSetVolume;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) NSUUID *endpointPickerUUID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) AVOutputContextCommunicationChannel *outgoingCommunicationChannel;
+@property (nonatomic, readonly) NSString *outputContextType;
 @property (nonatomic, readonly) AVOutputDevice *outputDevice;
-@property (readonly) AVOutputDeviceGroup *outputDeviceGroup;
 @property (readonly) NSArray *outputDevices;
 @property AVOutputContext *parentOutputContext;
+@property (readonly) bool providesControlForAllVolumeFeatures;
 @property (readonly) Class superclass;
+@property (readonly) float volume;
 
 + (id)auxiliaryOutputContext;
 + (struct OpaqueFigEndpointPicker { }*)copySystemVideoPicker;
 + (id)iTunesAudioContext;
 + (void)initialize;
 + (bool)outputContextExistsWithRemoteOutputDevice;
-+ (id)outputContextForControllingOutputDeviceGroup:(id)arg1;
-+ (id)outputContextForControllingOutputDeviceGroupWithID:(id)arg1;
++ (id)outputContextImplForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
++ (id)outputContextImplForID:(id)arg1;
 + (id)platformDependentScreenOrVideoContext;
 + (void)resetOutputDeviceForAllOutputContexts;
 + (id)sharedAudioPresentationOutputContext;
@@ -45,8 +47,9 @@
 - (int)_configureFigEndpointPickerWithFeature:(unsigned long long)arg1 options:(id)arg2;
 - (void)_handlePickerServerConnectionDiedNotification;
 - (void)_removeFigEndpointPickerNotifications;
-- (void)addOutputDevice:(id)arg1;
+- (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)associatedAudioDeviceID;
+- (bool)canSetVolume;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endpointPickerUUID;
@@ -56,15 +59,21 @@
 - (id)initWithContextUUID:(id)arg1;
 - (id)initWithFeature:(unsigned long long)arg1 options:(id)arg2;
 - (bool)isEqual:(id)arg1;
+- (void)muteAllOutputDevicesWithCompletionHandler:(id /* block */)arg1;
+- (id)openCommunicationChannelWithOptions:(id)arg1 error:(id*)arg2;
 - (id)outgoingCommunicationChannel;
 - (void)outputContextDidChangeApplicationProcessID:(id)arg1;
+- (id)outputContextType;
 - (id)outputDevice;
-- (id)outputDeviceGroup;
 - (id)outputDevices;
 - (id)parentOutputContext;
+- (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(id /* block */)arg1;
+- (bool)providesControlForAllVolumeFeatures;
 - (void)removeOutputDevice:(id)arg1;
-- (bool)setOutputDevice:(id)arg1 options:(id)arg2;
+- (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setOutputDevices:(id)arg1;
 - (void)setParentOutputContext:(id)arg1;
+- (void)setVolume:(float)arg1;
+- (float)volume;
 
 @end

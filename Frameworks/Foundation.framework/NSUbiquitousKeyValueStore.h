@@ -13,6 +13,8 @@
 
 @property (readonly, copy) NSDictionary *dictionaryRepresentation;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (void)_appWillActivate;
 + (void)_appWillDeactivate;
 + (void)_synchronizeStoresForced:(bool)arg1;
@@ -72,5 +74,13 @@
 - (bool)synchronize;
 - (void)synchronizeWithCompletionHandler:(id /* block */)arg1;
 - (bool)synchronizeWithSourceForced:(bool)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SyncedDefaults.framework/SyncedDefaults
+
+- (void)_printDebugDescription;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (void)tsa_coalescedSynchronizeForDefaultStore;
 
 @end

@@ -15,6 +15,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_anyDateLabel;
 - (void)_setIsCenterCell:(bool)arg1 shouldModifyAlphaOfView:(bool)arg2;
 - (void)_updateWrappedView;
@@ -22,7 +23,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)resizeSubviewsWithOldSize:(struct CGSize { double x1; double x2; })arg1;

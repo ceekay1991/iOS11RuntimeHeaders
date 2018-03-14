@@ -9,8 +9,8 @@
 + (struct __SecCertificate { }*)copyCertificateWithPersistentID:(id)arg1 useSystemKeychain:(bool)arg2;
 + (struct __SecIdentity { }*)copyIdentityWithPersistentID:(id)arg1;
 + (struct __SecIdentity { }*)copyIdentityWithPersistentID:(id)arg1 useSystemKeychain:(bool)arg2;
-+ (void*)copyItemWithPersistentID:(id)arg1;
-+ (void*)copyItemWithPersistentID:(id)arg1 useSystemKeychain:(bool)arg2;
++ (const void*)copyItemWithPersistentID:(id)arg1;
++ (const void*)copyItemWithPersistentID:(id)arg1 useSystemKeychain:(bool)arg2;
 + (id)dataFromService:(id)arg1 account:(id)arg2 label:(id)arg3 description:(id)arg4 group:(id)arg5 outError:(id*)arg6;
 + (id)dataFromService:(id)arg1 account:(id)arg2 label:(id)arg3 description:(id)arg4 group:(id)arg5 useSystemKeychain:(bool)arg6 outError:(id*)arg7;
 + (id)dataFromService:(id)arg1 account:(id)arg2 label:(id)arg3 description:(id)arg4 outError:(id*)arg5;

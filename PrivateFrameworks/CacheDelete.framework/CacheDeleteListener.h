@@ -41,6 +41,7 @@
 - (void)setRequiredEntitlements:(id)arg1;
 - (void)setServiceName:(id)arg1;
 - (void)setXObj:(id)arg1;
+- (void)suspend;
 - (id)xObj;
 
 @end

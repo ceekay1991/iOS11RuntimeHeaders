@@ -4,6 +4,7 @@
 
 @interface ICStoreURLSession : ICURLSession
 
++ (id)prioritizedSharedStoreURLSession;
 + (id)sharedStoreURLSession;
 
 - (void)_performAuthenticationForResponse:(id)arg1 toRequest:(id)arg2 completionHandler:(id /* block */)arg3;

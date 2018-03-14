@@ -22,6 +22,7 @@
     long long  _maxMessageChunkSize;
     NSObject<OS_dispatch_queue> * _networkChangeObserverQueue;
     bool  _observingNetworkChange;
+    NSString * _policyIdentifier;
     NSURL * _remoteURL;
     GEOLogMessageCollectionRequest * _request;
     bool  _requireWiFi;
@@ -43,6 +44,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSURL *remoteURL;
 @property (readonly) Class superclass;
+@property (readonly) int supportedLogMessageType;
 @property (nonatomic) long long xpcActivityTriggerCount;
 
 - (void).cxx_destruct;
@@ -57,6 +59,7 @@
 - (void)_networkReachabilityChanged;
 - (void)_purgeAndSendLogMessages;
 - (void)_purgeExpiredLogMessagesFromCache;
+- (void)_purgeLogMessageCache;
 - (void)_purgeMapsSuggestionsCacheFile;
 - (void)_queueNextLogMessagesChunkForSending;
 - (void)_registerXPCActivityTimer;
@@ -78,12 +81,14 @@
 - (id)initWithAdaptorPolicy:(id)arg1;
 - (id)initWithRemoteURL:(id)arg1 debugRequestName:(id)arg2 supportedTypes:(id)arg3;
 - (bool)isLogFrameworkAdaptor;
+- (int)logMsgEventNetworkServiceForSupportedLogMsgType;
 - (void)protobufSession:(id)arg1 didCompleteTask:(id)arg2;
 - (void)queueLogMessage:(id)arg1;
 - (id)remoteURL;
 - (void)setDebugRequestName:(id)arg1;
 - (void)setRemoteURL:(id)arg1;
 - (void)setXpcActivityTriggerCount:(long long)arg1;
+- (int)supportedLogMessageType;
 - (void)updateAdaptorPolicyConfiguration:(id)arg1;
 - (long long)xpcActivityTriggerCount;
 

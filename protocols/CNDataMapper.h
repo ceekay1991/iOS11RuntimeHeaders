@@ -6,15 +6,14 @@
 @required
 
 - (NSArray *)accountsMatchingPredicate:(NSPredicate *)arg1 error:(id*)arg2;
-- (NSArray *)contactsForFetchRequest:(CNContactFetchRequest *)arg1 error:(id*)arg2;
-- (NSArray *)contactsForFetchRequest:(CNContactFetchRequest *)arg1 matchInfos:(id*)arg2 error:(id*)arg3;
+- (CNObservable *)contactObservableForFetchRequest:(CNContactFetchRequest *)arg1;
 - (NSArray *)containersMatchingPredicate:(NSPredicate *)arg1 error:(id*)arg2;
 - (NSString *)defaultContainerIdentifier;
 - (bool)executeSaveRequest:(CNSaveRequest *)arg1 error:(id*)arg2;
 - (bool)executeSaveRequest:(CNSaveRequest *)arg1 response:(id*)arg2 error:(id*)arg3;
 - (NSArray *)groupsMatchingPredicate:(NSPredicate *)arg1 error:(id*)arg2;
 - (id)initWithContactsEnvironment:(CNContactsEnvironment *)arg1;
-- (NSString *)meContactIdentifierWithError:(id*)arg1;
+- (NSArray *)meContactIdentifiers:(id*)arg1;
 - (CNPolicy *)policyForContainerWithIdentifier:(NSString *)arg1 error:(id*)arg2;
 - (void)requestAccessForEntityType:(void *)arg1 completionHandler:(void *)arg2; // needs 2 arg types, found 8: long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (bool)requestAccessForEntityType:(long long)arg1 error:(id*)arg2;
@@ -33,7 +32,6 @@
 - (bool)_saveCustomPropertyValuesForRemoteRecords:(NSArray *)arg1 error:(id*)arg2;
 - (NSArray *)_smartGroupsForAccountsWithIdentifiers:(NSArray *)arg1 contactStore:(CNContactStore *)arg2;
 - (NSArray *)_smartGroupsMatchingPredicate:(NSPredicate *)arg1 contactStore:(CNContactStore *)arg2;
-- (<CNBatchFetchEnumerator> *)batchEnumeratorForFetchRequest:(CNContactFetchRequest *)arg1;
 - (CNChangeHistoryResult *)changeHistoryWithFetchRequest:(CNChangeHistoryFetchRequest *)arg1 error:(id*)arg2;
 - (bool)clearChangeHistoryForClientIdentifier:(NSString *)arg1 toChangeAnchor:(CNChangeHistoryAnchor *)arg2 error:(id*)arg3;
 - (NSString *)contactIdentifierWithMatchingDictionary:(NSDictionary *)arg1;

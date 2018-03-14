@@ -45,11 +45,11 @@
 + (id)textColorWithHighlight:(bool)arg1 whiteText:(bool)arg2;
 + (double)widthForCandidate:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)_setRenderConfig:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)annotationLabel;
 - (id)annotationText;
 - (void)applyLayoutAttributes:(id)arg1;

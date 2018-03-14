@@ -16,6 +16,7 @@
 - (id)_hostFocusSystem;
 - (id)_initWithHostEnvironment:(id)arg1;
 - (bool)_isEligibleForFocusInteraction;
+- (bool)_postsFocusUpdateNotifications;
 - (bool)_requiresFocusedItemToHaveContainingView;
 - (void)_setDelegate:(id)arg1;
 - (void)_setFocusSoundGenerator:(id)arg1;

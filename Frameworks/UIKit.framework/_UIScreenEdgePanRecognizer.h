@@ -17,6 +17,7 @@
         double x; 
         double y; 
     }  _lastTouchLocation;
+    long long  _lastTouchModifier;
     double  _lastTouchTimestamp;
     UIDelayedAction * _recognitionTimer;
     bool  _recognizeAlongEdge;
@@ -46,6 +47,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property <_UIScreenEdgePanRecognizerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) bool hasRecordedData;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool recognizeAlongEdge;
 @property (nonatomic) bool recognizeImmediatelyFromEdgeLocked;
@@ -65,8 +67,8 @@
 - (void).cxx_destruct;
 - (void)_createOrDestoryAnalysisWindowIfNeeded;
 - (void)_idleTimerElapsed:(id)arg1;
-- (void)_incorporateIncrementalSampleAtLocation:(struct CGPoint { double x1; double x2; })arg1 timestamp:(double)arg2 modifier:(long long)arg3 interfaceOrientation:(long long)arg4 forceState:(long long)arg5;
-- (void)_incorporateInitialTouchAtLocation:(struct CGPoint { double x1; double x2; })arg1 timestamp:(double)arg2 modifier:(long long)arg3 interfaceOrientation:(long long)arg4 forceState:(long long)arg5;
+- (void)_incorporateIncrementalSampleAtLocation:(struct CGPoint { double x1; double x2; })arg1 timestamp:(double)arg2 modifier:(long long)arg3 region:(unsigned long long)arg4 interfaceOrientation:(long long)arg5 forceState:(long long)arg6;
+- (void)_incorporateInitialTouchAtLocation:(struct CGPoint { double x1; double x2; })arg1 timestamp:(double)arg2 modifier:(long long)arg3 region:(unsigned long long)arg4 interfaceOrientation:(long long)arg5 forceState:(long long)arg6;
 - (struct CGPoint { double x1; double x2; })_lastTouchLocation;
 - (void)_longPressTimerElapsed:(id)arg1;
 - (void)_setState:(long long)arg1;
@@ -74,8 +76,11 @@
 - (long long)_type;
 - (void)dealloc;
 - (id)delegate;
+- (bool)hasRecordedData;
 - (void)incorporateTouchSampleAtLocation:(struct CGPoint { double x1; double x2; })arg1 timestamp:(double)arg2 modifier:(long long)arg3 interfaceOrientation:(long long)arg4 forceState:(long long)arg5;
+- (void)incorporateTouchSampleAtLocation:(struct CGPoint { double x1; double x2; })arg1 timestamp:(double)arg2 modifier:(long long)arg3 region:(unsigned long long)arg4 interfaceOrientation:(long long)arg5 forceState:(long long)arg6;
 - (id)initWithType:(long long)arg1;
+- (id)initWithType:(long long)arg1 settings:(id)arg2;
 - (bool)isRequiringLongPress;
 - (bool)recognizeAlongEdge;
 - (bool)recognizeImmediatelyFromEdgeLocked;

@@ -2,7 +2,9 @@
    Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
  */
 
-@interface NSURLSessionConfiguration : NSObject <NSCopying, NSSecureCoding>
+@interface NSURLSessionConfiguration : NSObject <NSCopying, NSSecureCoding> {
+    bool  __allowsWCA;
+}
 
 @property (copy) NSDictionary *HTTPAdditionalHeaders;
 @property unsigned long long HTTPCookieAcceptPolicy;
@@ -27,9 +29,11 @@
 @property bool _allowsTCPFastOpen;
 @property bool _allowsTLSSessionResumption;
 @property bool _allowsTLSSessionTickets;
+@property bool _allowsWCA;
 @property (copy) <NSURLSessionAppleIDContext> *_appleIDContext;
 @property (copy) NSData *_atsContext;
 @property (copy) NSSet *_authenticatorStatusCodes;
+@property bool _clientIsNotExplicitlyDiscretionary;
 @property bool _collectsTimingData;
 @property (copy) NSString *_companionAppBundleIdentifier;
 @property double _connectionCacheCellPurgeTimeout;
@@ -45,6 +49,7 @@
 @property bool _duetPreauthorized;
 @property unsigned long long _forcedNetworkServiceType;
 @property bool _forcesNewConnections;
+@property bool _ignoreDidReceiveResponseDisposition;
 @property bool _infersDiscretionaryFromOriginatingClient;
 @property (copy) NSString *_ledBellyServiceIdentifier;
 @property double _longLivedConnectionCacheCellPurgeTimeout;
@@ -69,6 +74,7 @@
 @property (getter=_isProxySession) bool _proxySession;
 @property bool _requiresClientToOpenFiles;
 @property bool _requiresPowerPluggedIn;
+@property bool _requiresSustainedDataDelivery;
 @property bool _respectsAllowsCellularAccessForDiscretionaryTasks;
 @property bool _sessionSendsLaunchOnDemandEvents;
 @property bool _shouldPreserveBackgroundSessionDisposition;
@@ -78,6 +84,7 @@
 @property (copy) NSString *_sourceApplicationBundleIdentifier;
 @property (copy) NSString *_sourceApplicationSecondaryIdentifier;
 @property bool _supportsAVAssetDownloads;
+@property (copy) NSSet *_suppressedAutoAddedHTTPHeaders;
 @property (copy) NSString *_tcpConnectionPoolName;
 @property long long _timingDataOptions;
 @property (copy) NSString *_tlsTrustPinningPolicyName;
@@ -120,6 +127,7 @@
 + (id)sessionConfigurationForSharedSession;
 + (bool)supportsSecureCoding;
 
+- (bool)_allowsWCA;
 - (void*)_copyAttribute:(struct __CFString { }*)arg1;
 - (struct OpaqueCFHTTPCookieStorage { }*)_copyCFCookieStorage;
 - (struct _CFHSTSPolicy { }*)copyHSTSPolicy;
@@ -128,17 +136,22 @@
 - (struct HTTPConnectionCacheLimits { int x1; int x2; int x3; int x4; int x5; int x6; int x7; int x8; int x9; int x10; })getConnectionCacheLimits;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDisposition:(id)arg1;
+- (void)set_allowsWCA:(bool)arg1;
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 - (void)applyNSURLConnectionProperties:(id)arg1;
-- (void)configureWithRequest:(id)arg1;
-- (bool)hasApplicationAtrribution:(id)arg1;
-- (bool)isCompatibleWithRequest:(id)arg1;
-- (void)setApplicationAttribution:(id)arg1;
+- (void)geo_configureWithRequest:(id)arg1;
+- (bool)geo_hasApplicationAttribution:(id)arg1;
+- (bool)geo_isCompatibleWithRequest:(id)arg1;
+- (void)geo_setApplicationAttribution:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ProtocolBuffer.framework/ProtocolBuffer
 
 - (void)applyNSURLConnectionProperties:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/VideoSubscriberAccountUI.framework/VideoSubscriberAccountUI
+
++ (id)vs_defaultSessionConfigurationForSourceAppWithAuditToken:(id)arg1;
 
 @end

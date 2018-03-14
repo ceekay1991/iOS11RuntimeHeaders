@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UILayoutGuide : NSObject <AVKitLayoutItem, NSCoding, NSISVariableDelegate, UILayoutItem_Internal, _UILayoutItem> {
+@interface UILayoutGuide : NSObject <AVKitLayoutItem, HULayoutAnchorProviding, NSCoding, NSISVariableDelegate, SearchUIAutoLayoutItem, UILayoutItem_Internal, _UILayoutItem> {
     bool  __allowsNegativeDimensions;
     bool  __shouldBeArchived;
     bool  _allowOwningViewSetting;
@@ -84,9 +84,11 @@
 - (void).cxx_destruct;
 - (bool)_allowOwningViewSetting;
 - (bool)_allowsNegativeDimensions;
+- (id)_autolayoutTraceAtLevel:(long long)arg1 recursively:(bool)arg2;
 - (id)_boundsHeightVariable;
 - (id)_boundsWidthVariable;
 - (id)_createAnchorWithClass:(Class)arg1 attribute:(long long)arg2;
+- (id)_descriptionForLayoutTrace;
 - (void)_invalidateLayoutFrame;
 - (bool)_isLockedToOwningView;
 - (id)_layoutRect;
@@ -115,6 +117,7 @@
 - (id)_ui_view;
 - (id)_uili_existingBaseFrameVariables;
 - (id)_uili_existingLayoutVariables;
+- (bool)_uili_isFocusGuide;
 - (id)_uili_observableLayoutEngineForBaseFrameVariables:(bool)arg1;
 - (void)_uili_removeLayoutVariableObservationsOnlyToSupportTAMICChange:(bool)arg1;
 - (bool)_uili_requiresObservationForVariable:(id)arg1;
@@ -189,5 +192,11 @@
 - (id)avkit_constraintsFromCenterAndDimensionAnchorsToCenterAndDimensionAnchorsOfItem:(id)arg1;
 - (id)avkit_constraintsFromDimensionAnchorsToSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)avkit_constraintsFromEdgeAnchorsToEdgeAnchorsOfItem:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
+
+- (id)containerView;
+- (bool)isContainedByItem:(id)arg1;
+- (id)view;
 
 @end

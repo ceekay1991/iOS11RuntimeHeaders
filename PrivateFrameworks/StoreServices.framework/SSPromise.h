@@ -20,7 +20,6 @@
 + (void)_finishPromise:(id)arg1 withPromise:(id)arg2;
 + (id)_globalPromiseStorage;
 + (id)_globalPromiseStorageAccessQueue;
-+ (void)_simulateCrashWithMessage:(id)arg1;
 + (id)promiseWithAll:(id)arg1;
 + (id)promiseWithAny:(id)arg1;
 + (id)promiseWithError:(id)arg1;
@@ -34,6 +33,7 @@
 - (void)addSuccessBlock:(id /* block */)arg1;
 - (id /* block */)boolCompletionHandlerAdapter;
 - (bool)cancel;
+- (id)catchWithBlock:(id /* block */)arg1;
 - (id)completionBlocks;
 - (id /* block */)completionHandlerAdapter;
 - (id /* block */)errorOnlyCompletionHandlerAdapter;
@@ -43,6 +43,7 @@
 - (id)init;
 - (bool)isCancelled;
 - (bool)isFinished;
+- (id /* block */)nilValueCompletionHandlerAdapter;
 - (id)promiseResult;
 - (id)resultBeforeDate:(id)arg1 error:(id*)arg2;
 - (id)resultWithError:(id*)arg1;

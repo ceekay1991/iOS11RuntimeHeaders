@@ -12,7 +12,7 @@
 @property (nonatomic, copy) NSArray *extensionPointIdentifiers;
 @property bool performsInitialMatching;
 
-+ (id)extensionBasedActivityForExtensionIdentifier:(id)arg1;
++ (id)extensionBasedActivityForExtension:(id)arg1;
 + (id)extensionMatchingDictionariesForExtensionItems:(id)arg1;
 
 - (void).cxx_destruct;

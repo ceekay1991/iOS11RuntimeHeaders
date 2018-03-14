@@ -22,7 +22,6 @@
 - (void)_dealSelected:(id)arg1;
 - (id)deal;
 - (id)delegate;
-- (double)extraHeightToReserveInLayout;
 - (id)infoCardChildPossibleActions;
 - (void)loadView;
 - (bool)resizableViewsDisabled;

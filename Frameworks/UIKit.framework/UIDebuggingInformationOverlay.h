@@ -30,9 +30,10 @@
 + (void)prepareDebuggingOverlay;
 + (void)pushDisableApplyingConfigurations;
 
+- (void).cxx_destruct;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)checkingTouches;
 - (struct CGPoint { double x1; double x2; })drawingOrigin;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;

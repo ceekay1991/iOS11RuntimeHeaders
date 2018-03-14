@@ -5,6 +5,7 @@
 @interface PFCloudKitSchemaGenerator : NSObject {
     NSString * _configurationName;
     NSPersistentStoreCoordinator * _coordinator;
+    NSManagedObjectContext * _managedObjectContext;
     NSCloudKitMirroringDelegateOptions * _mirroringOptions;
     NSManagedObjectModel * _model;
     NSPersistentStore * _store;
@@ -13,6 +14,7 @@
 
 @property (nonatomic, readonly) NSString *configurationName;
 @property (nonatomic, readonly) NSPersistentStoreCoordinator *coordinator;
+@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, readonly) NSCloudKitMirroringDelegateOptions *mirroringOptions;
 @property (nonatomic, readonly) NSManagedObjectModel *model;
 @property (nonatomic, readonly) NSPersistentStore *store;
@@ -26,6 +28,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithObservedStore:(id)arg1 zone:(id)arg2 mirroringOptions:(id)arg3;
+- (id)managedObjectContext;
 - (id)mirroringOptions;
 - (id)model;
 - (id)newRepresentativeRecords;

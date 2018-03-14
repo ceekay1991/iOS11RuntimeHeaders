@@ -34,6 +34,7 @@
         unsigned int blurDisabled : 1; 
         unsigned int disableBlurTinting : 1; 
         unsigned int pendingFocusAction : 1; 
+        unsigned int springLoaded : 1; 
     }  _tabBarFlags;
     long long  _tabBarSizing;
     _UITabBarVisualProvider * _visualProvider;
@@ -90,6 +91,7 @@
 + (id)_unselectedTabTintColorForView:(id)arg1;
 + (id)_visualProviderForTabBar:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)_accessibilityButtonShapesEnabledDidChangeNotification:(id)arg1;
 - (void)_accessibilityButtonShapesParametersDidChange;
 - (id)_accessoryView;
@@ -186,10 +188,15 @@
 - (void)_updateTabBarItemView:(id)arg1;
 - (void)_updateTintedImages:(id)arg1 selected:(bool)arg2;
 - (bool)_vibrantLabels;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)addConstraint:(id)arg1;
 - (id)backgroundEffects;
 - (id)backgroundImage;
@@ -197,9 +204,6 @@
 - (id)barTintColor;
 - (void)beginCustomizingItems:(id)arg1;
 - (bool)canBecomeFocused;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (id)delegate;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)dismissCustomizeSheet:(bool)arg1;
@@ -213,6 +217,7 @@
 - (bool)isCustomizing;
 - (bool)isElementAccessibilityExposedToInterfaceBuilder;
 - (bool)isLocked;
+- (bool)isSpringLoaded;
 - (bool)isTranslucent;
 - (long long)itemPositioning;
 - (double)itemSpacing;
@@ -242,6 +247,7 @@
 - (void)setSelectionIndicatorImage:(id)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setShadowImage:(id)arg1;
+- (void)setSpringLoaded:(bool)arg1;
 - (void)setTintColor:(id)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(bool)arg1;
 - (void)setTranslucent:(bool)arg1;

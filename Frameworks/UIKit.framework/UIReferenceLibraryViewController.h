@@ -6,14 +6,14 @@
     UINavigationController * _baseNavController;
     NSArray * _definitionValues;
     id /* block */  _dismissCompletionHandler;
+    bool  _enableRotation;
     UIViewController * _longDefViewController;
     UITableViewController * _multiDefViewController;
     long long  _oldPopoverStyle;
-    UIWindow * _rotationDecider;
+    bool  _previousIgnoreOrientation;
     NSString * _term;
 }
 
-@property (setter=_setRotationDecider:, nonatomic, retain) UIWindow *_rotationDecider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) id /* block */ dismissCompletionHandler;
@@ -46,13 +46,13 @@
 - (void)_installDoneButtonOnViewControllerIfNeeded:(id)arg1;
 - (void)_installRequiredElementsOnViewController:(id)arg1;
 - (id)_localizedDictionaryTitleAttributes;
+- (long long)_preferredInterfaceOrientationGivenCurrentOrientation:(long long)arg1;
 - (id)_pressedButtonImage;
-- (id)_rotationDecider;
 - (void)_searchWeb:(id)arg1;
 - (void)_setPopoverController:(id)arg1;
-- (void)_setRotationDecider:(id)arg1;
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
 - (id /* block */)dismissCompletionHandler;
+- (bool)enableRotation;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -61,6 +61,8 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)pushDownloadManager:(id)arg1;
 - (void)setDismissCompletionHandler:(id /* block */)arg1;
+- (void)setEnableRotation:(bool)arg1;
+- (bool)shouldAutorotate;
 - (bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -71,5 +73,6 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
+- (void)window:(id)arg1 setupWithInterfaceOrientation:(long long)arg2;
 
 @end

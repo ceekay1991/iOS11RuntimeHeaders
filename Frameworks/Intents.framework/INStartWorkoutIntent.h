@@ -14,11 +14,12 @@
 @property (nonatomic, readonly) long long workoutLocationType;
 @property (nonatomic, readonly, copy) INSpeakableString *workoutName;
 
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
-- (id)description;
 - (id)domain;
 - (id)goalValue;
 - (id)initWithWorkoutName:(id)arg1 goalValue:(id)arg2 workoutGoalUnitType:(long long)arg3 workoutLocationType:(long long)arg4 isOpenEnded:(id)arg5;
@@ -36,5 +37,9 @@
 - (long long)workoutGoalUnitType;
 - (long long)workoutLocationType;
 - (id)workoutName;
+
+// Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
+
+- (void)apr_getArgsInto:(id)arg1;
 
 @end

@@ -4,7 +4,6 @@
 
 @interface AVApplePortraitMetadataInternal : NSObject {
     float  apertureFocalRatio;
-    bool  disparityNormalized;
     NSData * faceObservationsData;
     int  faceOrientation;
     struct CGRect { 
@@ -23,7 +22,6 @@
 }
 
 @property (nonatomic) float apertureFocalRatio;
-@property (nonatomic) bool disparityNormalized;
 @property (nonatomic, retain) NSData *faceObservationsData;
 @property (nonatomic) int faceOrientation;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } focusRectangle;
@@ -33,7 +31,6 @@
 
 - (float)apertureFocalRatio;
 - (void)dealloc;
-- (bool)disparityNormalized;
 - (id)faceObservationsData;
 - (int)faceOrientation;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })focusRectangle;
@@ -41,7 +38,6 @@
 - (id)init;
 - (float)luminanceNoiseAmplitude;
 - (void)setApertureFocalRatio:(float)arg1;
-- (void)setDisparityNormalized:(bool)arg1;
 - (void)setFaceObservationsData:(id)arg1;
 - (void)setFaceOrientation:(int)arg1;
 - (void)setFocusRectangle:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

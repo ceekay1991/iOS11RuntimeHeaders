@@ -13,7 +13,7 @@
                 struct shared_ptr<md::DebugTreeNode> {} *__first_; 
             } __end_cap_; 
         } _nodes; 
-        bool _options[3]; 
+        bool _options[4]; 
     }  _debugTree;
     bool  _isActive;
     VKMapView * _mapView;

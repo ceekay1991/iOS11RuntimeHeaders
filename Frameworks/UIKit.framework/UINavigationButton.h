@@ -65,6 +65,7 @@
 + (void)_resetRenderingModesForBackgroundImageView:(id)arg1 inBarStyle:(long long)arg2 isEnabled:(bool)arg3 withAccessibilityBackground:(bool)arg4 wantsBlendModeForAccessibilityBackgrounds:(bool)arg5 accessibilityBackgroundTintColor:(id)arg6;
 + (id)defaultFont;
 
+- (void).cxx_destruct;
 - (void)_UIAppearance_setBackButtonBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;
 - (void)_UIAppearance_setBackButtonBackgroundVerticalPositionAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
 - (void)_UIAppearance_setBackButtonTitlePositionAdjustment:(struct UIOffset { double x1; double x2; })arg1 forBarMetrics:(long long)arg2;
@@ -153,16 +154,15 @@
 - (id)_visualStyleForMetrics:(long long)arg1;
 - (bool)_wantsAccessibilityButtonShapes;
 - (bool)_wantsBlendModeForAccessibilityBackgrounds;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (long long)barStyle;
 - (long long)buttonType;
 - (bool)canBecomeFocused;
 - (bool)contentsEqualTo:(id)arg1 withStyle:(int)arg2;
 - (int)controlSize;
-- (void)dealloc;
 - (id)image;
 - (id)initWithImage:(id)arg1;
 - (id)initWithImage:(id)arg1 style:(int)arg2;

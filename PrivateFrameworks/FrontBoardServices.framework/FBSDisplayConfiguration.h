@@ -69,6 +69,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) long long tags;
 
+// Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
+
 + (bool)supportsSecureCoding;
 
 - (id)CADisplay;
@@ -128,5 +130,10 @@
 - (long long)type;
 - (id)uniqueID;
 - (id)uniqueIdentifier;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
+
+- (id)UIScreen;
+- (bool)isMainRootDisplay;
 
 @end

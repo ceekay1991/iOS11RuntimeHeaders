@@ -21,7 +21,9 @@
 - (id)capturedProperties;
 - (id)initWithInputAnimatableProperties:(id)arg1 modelValueSetter:(id /* block */)arg2 presentationValueSetter:(id /* block */)arg3;
 - (id)initWithInputAnimatableProperties:(id)arg1 modelValueSetter:(id /* block */)arg2 presentationValueSetter:(id /* block */)arg3 stabilizedCallback:(id /* block */)arg4;
+- (id)initWithInputAnimatableProperties:(id)arg1 modelValueSetter:(id /* block */)arg2 presentationValueSetter:(id /* block */)arg3 stabilizedCallback:(id /* block */)arg4 allowsProgressAnimatableProperties:(bool)arg5;
 - (id)initWithInputAnimatableProperties:(id)arg1 presentationValueChangedCallback:(id /* block */)arg2;
+- (id)initWithProgressAnimatableProperty:(id)arg1 modelValueSetter:(id /* block */)arg2 presentationValueSetter:(id /* block */)arg3;
 - (id /* block */)modelValueChangedCallback;
 - (void)modelValueUpdatedForProgress:(id)arg1;
 - (id /* block */)presentationValueChangedCallback;

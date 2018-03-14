@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPRTCReportingController : NSObject {
+@interface MPRTCReportingController : NSObject <ICEnvironmentMonitorObserver> {
     NSString * _clientName;
     int  _clientType;
     long long  _clientVersion;
@@ -20,7 +20,11 @@
 @property (nonatomic, readonly, copy) NSString *clientName;
 @property (nonatomic, readonly) int clientType;
 @property (nonatomic, readonly) long long clientVersion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) MPAVController *player;
+@property (readonly) Class superclass;
 
 + (long long)defaultClientVersion;
 + (id)newHierarchyTokenFromParentToken:(id)arg1;

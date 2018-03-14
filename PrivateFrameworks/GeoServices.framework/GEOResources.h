@@ -10,8 +10,11 @@
     NSString * _announcementsURL;
     NSMutableArray * _attributions;
     NSString * _authToken;
+    NSString * _backgroundDispatcherURL;
+    NSString * _backgroundRevGeoURL;
     NSString * _batchReverseGeocoderURL;
     NSString * _batchTrafficProbeURL;
+    NSString * _bluePOIDispatcherURL;
     NSString * _businessPortalBaseURL;
     NSMutableArray * _dataSetURLOverrides;
     NSMutableArray * _dataSets;
@@ -50,6 +53,7 @@
     NSMutableArray * _textures;
     NSMutableArray * _tileGroups;
     NSMutableArray * _tileSets;
+    PBUnknownFields * _unknownFields;
     GEOVersionManifest * _versionManifest;
     NSMutableArray * _xmlChecksums;
     NSMutableArray * _xmls;
@@ -62,8 +66,11 @@
 @property (nonatomic, retain) NSString *announcementsURL;
 @property (nonatomic, retain) NSMutableArray *attributions;
 @property (nonatomic, retain) NSString *authToken;
+@property (nonatomic, retain) NSString *backgroundDispatcherURL;
+@property (nonatomic, retain) NSString *backgroundRevGeoURL;
 @property (nonatomic, retain) NSString *batchReverseGeocoderURL;
 @property (nonatomic, retain) NSString *batchTrafficProbeURL;
+@property (nonatomic, retain) NSString *bluePOIDispatcherURL;
 @property (nonatomic, retain) NSString *businessPortalBaseURL;
 @property (nonatomic, retain) NSMutableArray *dataSetURLOverrides;
 @property (nonatomic, retain) NSMutableArray *dataSets;
@@ -77,8 +84,11 @@
 @property (nonatomic, readonly) bool hasAddressCorrectionUpdateURL;
 @property (nonatomic, readonly) bool hasAnnouncementsURL;
 @property (nonatomic, readonly) bool hasAuthToken;
+@property (nonatomic, readonly) bool hasBackgroundDispatcherURL;
+@property (nonatomic, readonly) bool hasBackgroundRevGeoURL;
 @property (nonatomic, readonly) bool hasBatchReverseGeocoderURL;
 @property (nonatomic, readonly) bool hasBatchTrafficProbeURL;
+@property (nonatomic, readonly) bool hasBluePOIDispatcherURL;
 @property (nonatomic, readonly) bool hasBusinessPortalBaseURL;
 @property (nonatomic, readonly) bool hasDirectionsURL;
 @property (nonatomic, readonly) bool hasDispatcherURL;
@@ -127,6 +137,7 @@
 @property (nonatomic, retain) NSMutableArray *textures;
 @property (nonatomic, retain) NSMutableArray *tileGroups;
 @property (nonatomic, retain) NSMutableArray *tileSets;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) GEOVersionManifest *versionManifest;
 @property (nonatomic, retain) NSMutableArray *xmlChecksums;
 @property (nonatomic, retain) NSMutableArray *xmls;
@@ -182,8 +193,11 @@
 - (id)attributions;
 - (unsigned long long)attributionsCount;
 - (id)authToken;
+- (id)backgroundDispatcherURL;
+- (id)backgroundRevGeoURL;
 - (id)batchReverseGeocoderURL;
 - (id)batchTrafficProbeURL;
+- (id)bluePOIDispatcherURL;
 - (id)businessPortalBaseURL;
 - (void)clearAnnouncementsSupportedLanguages;
 - (void)clearAttributions;
@@ -229,8 +243,11 @@
 - (bool)hasAddressCorrectionUpdateURL;
 - (bool)hasAnnouncementsURL;
 - (bool)hasAuthToken;
+- (bool)hasBackgroundDispatcherURL;
+- (bool)hasBackgroundRevGeoURL;
 - (bool)hasBatchReverseGeocoderURL;
 - (bool)hasBatchTrafficProbeURL;
+- (bool)hasBluePOIDispatcherURL;
 - (bool)hasBusinessPortalBaseURL;
 - (bool)hasDirectionsURL;
 - (bool)hasDispatcherURL;
@@ -292,8 +309,11 @@
 - (void)setAnnouncementsURL:(id)arg1;
 - (void)setAttributions:(id)arg1;
 - (void)setAuthToken:(id)arg1;
+- (void)setBackgroundDispatcherURL:(id)arg1;
+- (void)setBackgroundRevGeoURL:(id)arg1;
 - (void)setBatchReverseGeocoderURL:(id)arg1;
 - (void)setBatchTrafficProbeURL:(id)arg1;
+- (void)setBluePOIDispatcherURL:(id)arg1;
 - (void)setBusinessPortalBaseURL:(id)arg1;
 - (void)setDataSetURLOverrides:(id)arg1;
 - (void)setDataSets:(id)arg1;
@@ -353,6 +373,7 @@
 - (id)tileSetAtIndex:(unsigned long long)arg1;
 - (id)tileSets;
 - (unsigned long long)tileSetsCount;
+- (id)unknownFields;
 - (id)versionManifest;
 - (void)workAround24919568IfNecessary;
 - (void)writeTo:(id)arg1;

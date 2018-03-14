@@ -16,7 +16,6 @@
     unsigned long long  _requestedTTL;
     bool  _shouldFetchAssetContent;
     bool  _shouldFetchAssetContentInMemory;
-    NSDictionary * _signaturesOfAssetsByRecordIDAndKey;
     NSDictionary * _webSharingIdentityDataByRecordID;
 }
 
@@ -33,7 +32,6 @@
 @property (nonatomic) unsigned long long requestedTTL;
 @property (nonatomic) bool shouldFetchAssetContent;
 @property (nonatomic) bool shouldFetchAssetContentInMemory;
-@property (nonatomic, retain) NSDictionary *signaturesOfAssetsByRecordIDAndKey;
 @property (nonatomic, retain) NSDictionary *webSharingIdentityDataByRecordID;
 
 + (bool)supportsSecureCoding;
@@ -64,12 +62,10 @@
 - (void)setRequestedTTL:(unsigned long long)arg1;
 - (void)setShouldFetchAssetContent:(bool)arg1;
 - (void)setShouldFetchAssetContentInMemory:(bool)arg1;
-- (void)setSignaturesOfAssetsByRecordIDAndKey:(id)arg1;
 - (void)setURLOptions:(unsigned long long)arg1;
 - (void)setWebSharingIdentityDataByRecordID:(id)arg1;
 - (bool)shouldFetchAssetContent;
 - (bool)shouldFetchAssetContentInMemory;
-- (id)signaturesOfAssetsByRecordIDAndKey;
 - (id)webSharingIdentityDataByRecordID;
 
 @end

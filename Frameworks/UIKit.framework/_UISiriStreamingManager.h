@@ -3,15 +3,19 @@
  */
 
 @interface _UISiriStreamingManager : NSObject <CABehaviorDelegate> {
-    bool  _commitResultsAfterDynamicsFinish;
     unsigned long long  _firstIndexToRemoveAfterLineChangeClearingAnimation;
-    bool  _isPerformingLineChangeClearingAnimation;
     UIView * _siriItemView;
+    struct { 
+        unsigned int isPerformingLineChangeClearingAnimation : 1; 
+        unsigned int commitResultsAfterDynamicsFinish : 1; 
+        unsigned int waitingForDynamicsBehaviorToStop : 1; 
+        unsigned int didFinalize : 1; 
+        unsigned int didCleanUp : 1; 
+    }  _ssmFlags;
     NSLayoutManager * _streamingLayoutManager;
     NSTextContainer * _streamingTextContainer;
     NSTextStorage * _streamingTextStorage;
     UITextView * _textView;
-    bool  _waitingForDynamicsBehaviorToStop;
     NSMutableArray * _wordTokens;
     NSMutableArray * _words;
     NSArray * _wordsToSetAfterAnimations;
@@ -31,6 +35,7 @@
 - (void)animateText;
 - (void)behaviorDidStop:(id)arg1;
 - (void)commitFinalResults;
+- (void)ensureCleanedUp;
 - (id)initWithTextView:(id)arg1;
 - (void)setWords:(id)arg1;
 - (id)streamingLayoutManager;

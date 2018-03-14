@@ -6,6 +6,7 @@
     NSArray * availableVideoCodecs;
     NSString * bravoCameraSelectionBehaviorForRecording;
     NSMutableArray * connectionsThatRecordVideoOrientationAndMirroringChangesAsMetadataTrack;
+    struct ct_green_tea_logger_s { } * greenTeaLogger;
     NSArray * metadata;
     struct { 
         long long value; 

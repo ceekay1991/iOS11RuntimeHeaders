@@ -56,9 +56,11 @@
 - (int)clientThrottleQueueWidth;
 - (bool)compressRequests;
 - (id)configBaseURL;
+- (id)containerIDToForceFatalManateeZoneDecryptionFailure;
 - (id)customCloudDBBaseURL;
 - (id)customCodeServiceBaseURL;
 - (id)customDeviceServiceBaseURL;
+- (id)customMetricsServiceBaseURL;
 - (id)customShareServiceBaseURL;
 - (void)dealloc;
 - (double)defaultRequestTimeout;
@@ -88,6 +90,7 @@
 - (double)maximumThrottleSeconds;
 - (double)maximumWaitAfterFetchRequest;
 - (int)mcToken;
+- (double)minTTRPromptInterval;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (double)operationTimeout;
 - (bool)optimisticPCS;
@@ -108,6 +111,7 @@
 - (bool)sandboxCloudD;
 - (unsigned long long)savedErrorCount;
 - (bool)sendDebugHeader;
+- (bool)sendKeyIDsOnAllRequests;
 - (void)setAutomatedDeviceGroup:(id)arg1;
 - (void)setAutomatedDeviceGroupDefaults:(id)arg1;
 - (void)setBuildVersion:(id)arg1;
@@ -121,9 +125,11 @@
 - (void)setCkToken:(int)arg1;
 - (void)setCompressRequests:(bool)arg1;
 - (void)setConfigBaseURL:(id)arg1;
+- (void)setContainerIDToForceFatalManateeZoneDecryptionFailure:(id)arg1;
 - (void)setCustomCloudDBBaseURL:(id)arg1;
 - (void)setCustomCodeServiceBaseURL:(id)arg1;
 - (void)setCustomDeviceServiceBaseURL:(id)arg1;
+- (void)setCustomMetricsServiceBaseURL:(id)arg1;
 - (void)setCustomShareServiceBaseURL:(id)arg1;
 - (void)setDefaultRequestTimeout:(double)arg1;
 - (void)setDefaultResourceTimeout:(double)arg1;
@@ -171,7 +177,6 @@
 - (bool)useModTimeInAssetCacheEviction;
 - (bool)usePreauth;
 - (bool)useStingray;
-- (bool)validateMescalResponses;
 - (id)vettedEmailsTestFormat;
 
 @end

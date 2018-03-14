@@ -10,7 +10,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) bool valid;
 
-+ (void)becameFatallyBlocked:(id)arg1;
++ (void)becameFatallyBlocked:(id)arg1 index:(unsigned long long)arg2;
 + (id)getSilo;
 + (bool)isSupported;
 + (void)performSyncOnSilo:(id)arg1 invoker:(id /* block */)arg2;

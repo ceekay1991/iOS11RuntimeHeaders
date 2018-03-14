@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSLayoutConstraint *tableToTrailingEdgeConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *tableToTrailingReadableGuideConstraint;
 
-+ (id)contactHeaderViewWithContact:(id)arg1 editingGroups:(id)arg2 shouldAllowTakePhotoAction:(bool)arg3;
++ (id)contactHeaderViewWithContact:(id)arg1 editingGroups:(id)arg2 shouldAllowTakePhotoAction:(bool)arg3 delegate:(id)arg4;
 + (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(bool)arg2 shouldAllowImageDrops:(bool)arg3;
 
 - (void).cxx_destruct;
@@ -29,7 +29,7 @@
 - (bool)becomeFirstResponder;
 - (id)editingGroups;
 - (bool)hasPhoto;
-- (id)initWithContact:(id)arg1 editingGroups:(id)arg2 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 shouldAllowTakePhotoAction:(bool)arg4;
+- (id)initWithContact:(id)arg1 editingGroups:(id)arg2 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 shouldAllowTakePhotoAction:(bool)arg4 delegate:(id)arg5;
 - (id)namePropertyDelegate;
 - (bool)photoIsModified;
 - (bool)pinToReadableContentGuide;

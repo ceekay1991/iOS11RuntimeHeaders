@@ -7,6 +7,7 @@
 
 - (<CNDonationAccountLogger> *)accountLogger;
 - (<CNDonationAgentLogger> *)agentLogger;
+- (<CNDonationAnalyticsLogger> *)analyticsLogger;
 - (<CNDonationExtensionLogger> *)extensionLogger;
 - (<CNDonationPreferencesLogger> *)preferencesLogger;
 - (<CNDonationToolLogger> *)toolLogger;

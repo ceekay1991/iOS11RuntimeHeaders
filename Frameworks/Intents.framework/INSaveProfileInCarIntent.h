@@ -14,9 +14,8 @@
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
-- (id)description;
 - (id)domain;
 - (id)initWithProfileNumber:(id)arg1 profileLabel:(id)arg2;
 - (id)initWithProfileNumber:(id)arg1 profileName:(id)arg2;

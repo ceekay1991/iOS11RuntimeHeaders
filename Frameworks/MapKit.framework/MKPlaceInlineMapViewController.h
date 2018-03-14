@@ -24,9 +24,9 @@
 + (id)inlineMapWithMapItem:(id)arg1;
 
 - (void).cxx_destruct;
-- (void)_addAnnotationToSnapshot:(id)arg1;
 - (void)_handleTapOnMap;
 - (void)_launchMaps;
+- (struct CGSize { double x1; double x2; })_mapSize;
 - (void)_updateInlineMapWithRefinedMapItems;
 - (void)_updateMap;
 - (void)_updateSnapshotImage:(id)arg1;

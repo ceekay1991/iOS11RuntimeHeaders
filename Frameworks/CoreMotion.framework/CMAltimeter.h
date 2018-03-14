@@ -6,6 +6,7 @@
     id  _internal;
 }
 
++ (long long)authorizationStatus;
 + (void)dummySelector:(id)arg1;
 + (void)initialize;
 + (bool)isRelativeAltitudeAvailable;

@@ -3,15 +3,20 @@
  */
 
 @interface MKClusterAnnotation : NSObject <MKAnnotation> {
-    NSString * _clusteringIdentifier;
     struct CLLocationCoordinate2D { 
         double latitude; 
         double longitude; 
-    }  _coordinate;
+    }  __coordinate;
+    NSString * __subtitle;
+    NSString * __title;
+    NSString * _clusteringIdentifier;
+    struct { 
+        unsigned int hasCoordinate : 1; 
+        unsigned int hasMutableCoordinate : 1; 
+        unsigned int hasTitle : 1; 
+        unsigned int hasSubtitle : 1; 
+    }  _flags;
     NSArray * _memberAnnotations;
-    NSString * _subtitle;
-    bool  _subtitleIsExplicitlyNil;
-    NSString * _title;
 }
 
 @property (nonatomic, copy) NSString *clusteringIdentifier;
@@ -25,13 +30,16 @@
 @property (nonatomic, copy) NSString *title;
 
 - (void).cxx_destruct;
+- (struct CLLocationCoordinate2D { double x1; double x2; })_averageCoordinate;
 - (bool)_isMKClusterAnnotation;
 - (id)clusteringIdentifier;
 - (struct CLLocationCoordinate2D { double x1; double x2; })coordinate;
+- (void)dealloc;
 - (unsigned long long)hash;
 - (id)initWithMemberAnnotations:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)memberAnnotations;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)setClusteringIdentifier:(id)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setTitle:(id)arg1;

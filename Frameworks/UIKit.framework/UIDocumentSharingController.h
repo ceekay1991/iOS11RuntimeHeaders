@@ -98,6 +98,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)initWithFileURL:(id)arg1;
+- (id)initWithFileURL:(id)arg1 error:(id*)arg2;
 - (void)setDelegate:(id)arg1;
 
 @end

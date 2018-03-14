@@ -4,7 +4,6 @@
 
 @interface VKGestureCameraBehavior : NSObject <VKGesturingCameraController> {
     VKCameraController * _cameraController;
-    int  _flyoverMode;
     double  _lastRotation;
     bool  _notifyCameraStateChanges;
     struct CGPoint { 
@@ -62,7 +61,6 @@
 - (bool)isPinching;
 - (bool)isPitching;
 - (bool)isRotating;
-- (void)setFlyoverMode:(int)arg1;
 - (void)startPanningAtPoint:(struct CGPoint { double x1; double x2; })arg1 panAtStartPoint:(bool)arg2;
 - (void)startPinchingWithFocusPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)startPitchingWithFocusPoint:(struct CGPoint { double x1; double x2; })arg1;

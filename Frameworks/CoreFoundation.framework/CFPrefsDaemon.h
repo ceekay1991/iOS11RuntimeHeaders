@@ -34,7 +34,7 @@
 - (union { struct _CFPrefsShmemEntry { int x_1_1_1; unsigned int x_1_1_2; } x1; unsigned long long x2; }*)shmem;
 - (void)synchronousWithSourceCache:(id /* block */)arg1;
 - (unsigned int)userID;
-- (void)withSourceForDomain:(struct __CFString { }*)arg1 inContainer:(struct __CFString { }*)arg2 user:(struct __CFString { }*)arg3 byHost:(bool)arg4 managed:(bool)arg5 cloudStoreEntitlement:(id)arg6 cloudConfigurationPath:(struct __CFString { }*)arg7 perform:(id /* block */)arg8;
+- (void)withSourceForDomain:(struct __CFString { }*)arg1 inContainer:(struct __CFString { }*)arg2 user:(struct __CFString { }*)arg3 byHost:(bool)arg4 managed:(bool)arg5 managedUsesContainer:(bool)arg6 cloudStoreEntitlement:(id)arg7 cloudConfigurationPath:(struct __CFString { }*)arg8 perform:(id /* block */)arg9;
 - (void)withSources:(id /* block */)arg1;
 
 @end

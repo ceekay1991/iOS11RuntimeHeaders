@@ -6,6 +6,7 @@
     NSMutableDictionary * _mutableBagKeysDictionary;
 }
 
+@property (nonatomic) double bagLoadTimeout;
 @property (nonatomic, retain) NSMutableDictionary *mutableBagKeysDictionary;
 @property (nonatomic, copy) NSString *profile;
 @property (nonatomic, copy) NSString *profileVersion;

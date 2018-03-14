@@ -6,22 +6,18 @@
     struct { 
         unsigned int recvTime : 1; 
         unsigned int probeCount : 1; 
-        unsigned int tripIdHash : 1; 
     }  _has;
     int  _probeCount;
     long long  _recvTime;
     NSString * _tripId;
-    unsigned int  _tripIdHash;
 }
 
 @property (nonatomic) bool hasProbeCount;
 @property (nonatomic) bool hasRecvTime;
 @property (nonatomic, readonly) bool hasTripId;
-@property (nonatomic) bool hasTripIdHash;
 @property (nonatomic) int probeCount;
 @property (nonatomic) long long recvTime;
 @property (nonatomic, retain) NSString *tripId;
-@property (nonatomic) unsigned int tripIdHash;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
@@ -31,7 +27,6 @@
 - (bool)hasProbeCount;
 - (bool)hasRecvTime;
 - (bool)hasTripId;
-- (bool)hasTripIdHash;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
@@ -40,13 +35,10 @@
 - (long long)recvTime;
 - (void)setHasProbeCount:(bool)arg1;
 - (void)setHasRecvTime:(bool)arg1;
-- (void)setHasTripIdHash:(bool)arg1;
 - (void)setProbeCount:(int)arg1;
 - (void)setRecvTime:(long long)arg1;
 - (void)setTripId:(id)arg1;
-- (void)setTripIdHash:(unsigned int)arg1;
 - (id)tripId;
-- (unsigned int)tripIdHash;
 - (void)writeTo:(id)arg1;
 
 @end

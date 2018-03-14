@@ -12,6 +12,7 @@
 
 - (void).cxx_destruct;
 - (void)acceptDonationValueVisitor:(id)arg1;
+- (id)copyWithNewExpirationDate:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

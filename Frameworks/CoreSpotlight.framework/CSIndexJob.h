@@ -5,6 +5,7 @@
 @interface CSIndexJob : NSObject <NSCopying, NSSecureCoding> {
     NSArray * _bundleIDs;
     NSArray * _excludedBundleIDs;
+    NSString * _extensionBundleID;
     NSArray * _identifiersToReindex;
     long long  _jobOptions;
     long long  _jobType;
@@ -14,6 +15,7 @@
 
 @property (nonatomic, retain) NSArray *bundleIDs;
 @property (nonatomic, retain) NSArray *excludedBundleIDs;
+@property (nonatomic, retain) NSString *extensionBundleID;
 @property (nonatomic, retain) NSArray *identifiersToReindex;
 @property (nonatomic) long long jobOptions;
 @property (nonatomic) long long jobType;
@@ -28,6 +30,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)excludedBundleIDs;
+- (id)extensionBundleID;
 - (unsigned long long)hash;
 - (id)identifiersToReindex;
 - (id)initWithCoder:(id)arg1;
@@ -41,6 +44,7 @@
 - (id)providerType;
 - (void)setBundleIDs:(id)arg1;
 - (void)setExcludedBundleIDs:(id)arg1;
+- (void)setExtensionBundleID:(id)arg1;
 - (void)setIdentifiersToReindex:(id)arg1;
 - (void)setJobOptions:(long long)arg1;
 - (void)setJobType:(long long)arg1;

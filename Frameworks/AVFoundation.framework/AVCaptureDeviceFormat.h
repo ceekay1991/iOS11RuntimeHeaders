@@ -27,6 +27,8 @@
 @property (nonatomic, readonly) NSArray *videoSupportedFrameRateRanges;
 @property (nonatomic, readonly) double videoZoomFactorUpscaleThreshold;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (void)initialize;
 
 - (id)AVCaptureSessionPresets;
@@ -52,6 +54,7 @@
 - (bool)isIrisVideoStabilizationSupported;
 - (bool)isPhotoFormat;
 - (bool)isSISSupported;
+- (bool)isStereoFusionSupported;
 - (bool)isVideoBinned;
 - (bool)isVideoHDRSupported;
 - (bool)isVideoStabilizationModeSupported:(long long)arg1;
@@ -90,5 +93,14 @@
 - (id)videoZoomSupportedDownscaleStages;
 - (id)videoZoomSupportedUpscaleStages;
 - (id)vtScalingMode;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
+- (struct { int x1; int x2; })_expectedVideoDimensionsForVideoConfiguration:(long long)arg1;
+- (double)_framesPerSecondForVideoConfiguration:(long long)arg1;
+- (long long)cam_compareUsingDimensions:(id)arg1;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })cam_frameDurationForVideoConfiguration:(long long)arg1;
+- (bool)cam_supportsPanoramaConfiguration:(id)arg1;
+- (bool)cam_supportsVideoConfiguration:(long long)arg1;
 
 @end

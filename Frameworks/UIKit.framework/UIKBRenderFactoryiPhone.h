@@ -4,6 +4,7 @@
 
 @interface UIKBRenderFactoryiPhone : UIKBRenderFactory
 
+- (struct CGPoint { double x1; double x2; })ZWNJKeyOffset;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
@@ -69,6 +70,7 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })variantPaddedFrameInsets;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })variantSymbolFrameInsets;
 - (struct CGPoint { double x1; double x2; })variantSymbolTextOffset;
+- (double)variantWideShadowWeight;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })wideShadowPaddleInsets;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })wideShadowPopupMenuInsets;
 - (double)zhuyinFirstToneKeyFontSize;

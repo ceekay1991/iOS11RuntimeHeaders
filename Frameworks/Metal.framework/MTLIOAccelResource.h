@@ -43,6 +43,7 @@
     unsigned long long  uniqueId;
 }
 
+@property (readonly) unsigned long long allocatedSize;
 @property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly, copy) NSString *debugDescription;
@@ -61,6 +62,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) void*virtualAddress;
 
+- (unsigned long long)allocatedSize;
 - (void)annotateResource:(struct __CFDictionary { }*)arg1;
 - (id)cachedAllocationInfo;
 - (struct __CFDictionary { }*)copyAnnotationDictionary:(unsigned long long)arg1 obj_key_name:(struct __CFString { }*)arg2 obj_dict:(struct __CFDictionary { }*)arg3;

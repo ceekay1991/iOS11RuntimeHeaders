@@ -23,6 +23,8 @@
 
 - (void).cxx_destruct;
 - (id)CKDescriptionPropertiesWithPublic:(bool)arg1 private:(bool)arg2 shouldExpand:(bool)arg3;
+- (void)_setIsExecuting:(bool)arg1;
+- (void)_setIsFinished:(bool)arg1;
 - (void)cancel;
 - (id)context;
 - (id /* block */)daemonInvokeBlock;

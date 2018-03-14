@@ -20,6 +20,7 @@
 @property (nonatomic, readonly) bool isSuggested;
 @property (nonatomic, retain) NSString *label;
 @property (nonatomic, readonly) unsigned long long options;
+@property (nonatomic, readonly) NSString *sanitizedTargetHandle;
 @property (nonatomic, readonly) bool shouldCurateIfPerformed;
 @property (nonatomic, readonly) bool shouldGroupByBundleIdentifier;
 @property (nonatomic, readonly) NSString *targetHandle;
@@ -36,6 +37,7 @@
 + (id)itemWithType:(id)arg1 contactProperty:(id)arg2 bundleIdentifier:(id)arg3 dialRequest:(id)arg4 group:(long long)arg5 options:(unsigned long long)arg6;
 + (id)itemWithType:(id)arg1 contactProperty:(id)arg2 bundleIdentifier:(id)arg3 dialRequest:(id)arg4 isSuggested:(bool)arg5;
 + (id)itemWithType:(id)arg1 contactProperty:(id)arg2 bundleIdentifier:(id)arg3 url:(id)arg4 group:(long long)arg5 options:(unsigned long long)arg6;
++ (id)itemWithType:(id)arg1 contactProperty:(id)arg2 bundleIdentifier:(id)arg3 url:(id)arg4 isSensitive:(bool)arg5 group:(long long)arg6 options:(unsigned long long)arg7;
 + (id)itemWithType:(id)arg1 contactProperty:(id)arg2 bundleIdentifier:(id)arg3 userActivity:(id)arg4 group:(long long)arg5 options:(unsigned long long)arg6;
 + (id)itemWithType:(id)arg1 contactProperty:(id)arg2 bundleIdentifier:(id)arg3 userActivity:(id)arg4 isSuggested:(bool)arg5;
 + (id)payItemWithLabel:(id)arg1 targetStringValue:(id)arg2 url:(id)arg3 bundleIdentifier:(id)arg4;
@@ -71,11 +73,13 @@
 - (id)label;
 - (unsigned long long)options;
 - (id)performActionWithContext:(id)arg1;
+- (id)sanitizedTargetHandle;
 - (void)setLabel:(id)arg1;
 - (void)setTeamIdentifier:(id)arg1;
 - (bool)shouldCurateIfPerformed;
 - (bool)shouldGroupByBundleIdentifier;
 - (bool)shouldUseApplicationNameForLabel;
+- (bool)shouldUseLabelForQuickActionButtonTitle;
 - (id)targetHandle;
 - (id)teamIdentifier;
 - (id)type;

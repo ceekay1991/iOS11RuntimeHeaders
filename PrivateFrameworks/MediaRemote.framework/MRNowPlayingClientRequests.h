@@ -2,9 +2,8 @@
    Image: /System/Library/PrivateFrameworks/MediaRemote.framework/MediaRemote
  */
 
-@interface MRNowPlayingClientRequests : NSObject {
+@interface MRNowPlayingClientRequests : NSObject <MRNowPlayingClientState> {
     void * _client;
-    int  _notifyRestoreClientStateForLaunch;
     NSArray * _nowPlayingClients;
     NSMutableArray * _playerClients;
     NSObject<OS_dispatch_queue> * _serialQueue;
@@ -19,5 +18,7 @@
 - (id)nowPlayingClients;
 - (id)nowPlayingPlayerClientRequestsForPlayerPath:(void*)arg1;
 - (id)playerClients;
+- (void)removePlayer:(void*)arg1;
+- (void)restoreNowPlayingClientState;
 
 @end

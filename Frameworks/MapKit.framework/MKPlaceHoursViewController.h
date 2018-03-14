@@ -3,7 +3,7 @@
  */
 
 @interface MKPlaceHoursViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate> {
-    <_MKInfoCardAnaylticsDelegate> * _analyticsDelegate;
+    <_MKInfoCardAnalyticsDelegate> * _analyticsDelegate;
     NSArray * _completeHours;
     NSString * _currentOpeningString;
     NSMutableDictionary * _formattedData;
@@ -13,7 +13,7 @@
     bool  _resizableViewsDisabled;
 }
 
-@property (nonatomic) <_MKInfoCardAnaylticsDelegate> *analyticsDelegate;
+@property (nonatomic) <_MKInfoCardAnalyticsDelegate> *analyticsDelegate;
 @property (nonatomic, readonly) NSArray *completeHours;
 @property (nonatomic, readonly) NSString *currentOpeningString;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,8 +36,7 @@
 - (void)calculateWidthsForData:(id)arg1;
 - (id)completeHours;
 - (id)currentOpeningString;
-- (double)extraHeightToReserveInLayout;
-- (void)formatData;
+- (id)formattedData;
 - (id)infoCardChildPossibleActions;
 - (id)initWithMapItem:(id)arg1;
 - (id)mapItem;

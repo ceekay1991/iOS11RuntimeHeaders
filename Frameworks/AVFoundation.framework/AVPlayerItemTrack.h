@@ -20,6 +20,7 @@
 - (void)_transferCachedValuesToFig;
 - (void)_transferDisableColorMatchingToFig;
 - (void)_transferEnabledToFig;
+- (void)_transferHapticVolumeToFig;
 - (void)_transferLoudnessInfoToFig;
 - (void)_transferVideoEnhancementOptionsToFig;
 - (id)_weakReferenceToPlayerItem;
@@ -31,6 +32,7 @@
 - (bool)disableColorMatching;
 - (id)fallbackTrack;
 - (void)finalize;
+- (float)hapticVolume;
 - (unsigned long long)hash;
 - (bool)isEnabled;
 - (bool)isEqual:(id)arg1;
@@ -38,6 +40,7 @@
 - (void)setActiveHapticChannelIndex:(long long)arg1;
 - (void)setDisableColorMatching:(bool)arg1;
 - (void)setEnabled:(bool)arg1;
+- (void)setHapticVolume:(float)arg1;
 - (void)setLoudnessInfo:(id)arg1;
 - (void)setVideoEnhancementFilterOptions:(id)arg1;
 - (int)trackID;

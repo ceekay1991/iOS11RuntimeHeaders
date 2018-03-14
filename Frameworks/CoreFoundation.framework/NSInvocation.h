@@ -43,6 +43,10 @@
 - (void)setTarget:(id)arg1;
 - (id)target;
 
+// Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
+
+- (id)fp_copy;
+
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 - (bool)_hasBlockArgument;
@@ -55,12 +59,59 @@
 + (id)_mapkit_invocationWithSelector:(SEL)arg1 target:(id)arg2;
 + (id)_mapkit_invocationWithSelector:(SEL)arg1 target:(id)arg2 arguments:(char *)arg3;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
+- (void)MP_clearRetainedArguments;
+- (void)MP_setRetainedArgument2:(id)arg1;
+- (void)MP_setRetainedArgument3:(id)arg1;
+- (void)MP_setRetainedTarget:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+
++ (id)_gkInvocationWithBlock:(id)arg1;
+
+- (void)__gkPrepareForFakeCallbackWithNoData:(bool)arg1 orError:(id)arg2;
+- (void)_gkCallbackWithError:(id)arg1 queue:(id)arg2;
+- (void)_gkClearArgumentAtIndex:(unsigned long long)arg1;
+- (void)_gkClearCopiedArguments;
+- (void)_gkClearTarget;
+- (void)_gkCopyArguments;
+- (bool)_gkHasReplyBlock;
+- (void)_gkInvokeOnce;
+- (void)_gkInvokeOnceWithTarget:(id)arg1;
+- (void)_gkPrepareForCallWithError:(id)arg1;
+- (void)_gkPrintBlockSignature;
+- (id)_gkReplyHandlerInvocation;
+
 // Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
 
 - (bool)wantsReturnValue;
 
+// Image: /System/Library/PrivateFrameworks/Message.framework/Message
+
++ (id)mf_invocationWithSelector:(SEL)arg1 target:(id)arg2;
++ (id)mf_invocationWithSelector:(SEL)arg1 target:(id)arg2 object1:(id)arg3 object2:(id)arg4;
++ (id)mf_invocationWithSelector:(SEL)arg1 target:(id)arg2 object:(id)arg3;
+
+- (bool)mf_shouldLogInvocation;
+
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
++ (void)tsu_executeBlock:(id /* block */)arg1;
++ (id)tsu_invocationWithBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
+
++ (void)tsu_executeBlock:(id /* block */)arg1;
++ (id)tsu_invocationWithBlock:(id /* block */)arg1;
+
 // Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
 
 - (void)_webkit_invokeAndHandleException:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (void)tsu_executeBlock:(id /* block */)arg1;
++ (id)tsu_invocationWithBlock:(id /* block */)arg1;
 
 @end

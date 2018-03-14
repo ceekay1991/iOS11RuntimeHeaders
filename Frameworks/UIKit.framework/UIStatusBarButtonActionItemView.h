@@ -15,6 +15,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentsImageFrame;
 - (id)_createButton;
 - (void)_doubleTapButton:(id)arg1;
@@ -24,7 +25,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)allowsUserInteraction;
 - (long long)buttonType;
 - (bool)canBecomeFocused;
@@ -41,6 +41,7 @@
 - (void)setLayerHighlightImage:(id)arg1;
 - (void)setRingLayer:(id)arg1;
 - (void)setSelected:(bool)arg1;
+- (bool)showsTouchWhenHighlighted;
 - (double)updateContentsAndWidth;
 - (bool)usesAdvancedActions;
 

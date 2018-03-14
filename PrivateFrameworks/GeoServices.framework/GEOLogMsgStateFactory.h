@@ -75,6 +75,6 @@
 - (id)logMsgStateForTileSetWithTileSetInfoArray:(id)arg1;
 - (id)logMsgStateForTransitWithStateOrigin:(id)arg1 transitNotAvailableAdvisoryShowing:(bool)arg2;
 - (id)logMsgStateForTransitWithTransitNotAvailableAdvisoryShowing:(bool)arg1;
-- (id)logMsgStateForUserSessionWithSessionType:(unsigned long long)arg1 isNavSessionAllowed:(bool)arg2;
+- (id)logMsgStateForUserSessionWithSessionType:(unsigned long long)arg1 isNavSessionAllowed:(bool)arg2 userSessionSnapshot:(id)arg3;
 
 @end

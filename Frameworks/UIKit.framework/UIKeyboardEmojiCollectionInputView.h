@@ -29,6 +29,7 @@
 - (void)_setUserHasSelectedSkinToneEmoji:(bool)arg1;
 - (bool)_shouldReverseLayoutDirection;
 - (bool)_userHasSelectedSkinToneEmoji;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -40,17 +41,18 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id /* block */)completionBlock;
-- (void)dealloc;
 - (long long)didInputSubTree:(id)arg1;
 - (void)didMoveToWindow;
 - (void)dimKeys:(id)arg1;
 - (id)emojiBaseFirstCharacterString:(id)arg1;
 - (id)emojiBaseString:(id)arg1;
+- (id)firstFullyVisibleHeader;
 - (bool)genderEmojiBaseStringNeedVariantSelector:(id)arg1;
 - (id)hitTestResponder;
 - (long long)indexForPrettyCategoryDisplay:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 keyplane:(id)arg2 key:(id)arg3;
 - (bool)isDraggingInputView;
+- (id)itemInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

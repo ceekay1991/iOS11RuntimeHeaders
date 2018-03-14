@@ -6,6 +6,7 @@
     _MKTokenAttributedString * _categoryToken;
     _MKTokenAttributedString * _closedToken;
     NSArray * _constraints;
+    bool  _constraintsCreated;
     _MKDataHeaderModel * _dataModel;
     <MKPlaceCardHeaderViewControllerDelegate> * _delegate;
     _MKTokenAttributedString * _distanceToken;
@@ -34,7 +35,7 @@
     _MKTokenAttributedString * _verifiedToken;
 }
 
-@property (nonatomic) double currentMinimalModeInterpolationFactor;
+@property (nonatomic) double contentAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MKPlaceCardHeaderViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -54,11 +55,12 @@
 - (id)_currentTitle;
 - (void)_loadLogo;
 - (id)_localizedHours;
+- (bool)_mapItemShouldDisplayDistance:(id)arg1;
 - (id)_reviewLabelText;
 - (void)_setupDatas;
 - (id)_verifiedText;
 - (bool)_willShowDistance;
-- (double)currentMinimalModeInterpolationFactor;
+- (double)contentAlpha;
 - (id)delegate;
 - (void)hideTitle:(bool)arg1;
 - (void)infoCardThemeChanged:(id)arg1;
@@ -68,10 +70,12 @@
 - (id)newLabel;
 - (id)placeItem;
 - (void)setConstraints;
-- (void)setCurrentMinimalModeInterpolationFactor:(double)arg1;
+- (void)setContentAlpha:(double)arg1;
 - (void)setDelegate:(id)arg1;
+- (id)titleFont;
 - (void)updateHeaderTitle;
 - (void)updateViews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(bool)arg1;
 
 @end

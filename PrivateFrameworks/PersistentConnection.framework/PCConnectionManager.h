@@ -5,6 +5,7 @@
 @interface PCConnectionManager : NSObject <PCInterfaceMonitorDelegate> {
     bool  _alwaysWantsInterfaceChangeCallbacks;
     int  _connectionClass;
+    int  _currentGrowthStage;
     double  _defaultPollingInterval;
     PCPersistentTimer * _delayTimer;
     <PCConnectionManagerDelegate> * _delegate;
@@ -12,6 +13,7 @@
     NSRunLoop * _delegateRunLoop;
     bool  _deviceUnderGoodCondition;
     bool  _disableEarlyFire;
+    id  _duetContextRegistration;
     NSString * _duetIdentifier;
     bool  _enableNonCellularConnections;
     bool  _forceManualWhenRoaming;
@@ -35,6 +37,7 @@
     double  _lastStopTime;
     NSObject<OS_os_log> * _logObject;
     bool  _minimumIntervalFallbackEnabled;
+    double  _nonCellularEarlyFireConstantInterval;
     double  _onTimeKeepAliveTime;
     int  _onlyAllowedStyle;
     bool  _onlyAllowedStyleSet;
@@ -42,6 +45,7 @@
     double  _pollingIntervalOverride;
     bool  _pollingIntervalOverrideSet;
     unsigned int  _powerAssertionID;
+    bool  _powerOptimizationsForExpensiveNetworkingDisabled;
     int  _prefsChangedToken;
     int  _prefsStyle;
     int  _pushIsConnectedToken;
@@ -51,12 +55,14 @@
     NSString * _serviceIdentifier;
     double  _timerGuidance;
     int  _timerGuidanceToken;
+    CUTWeakReference * _weakConnectionManager;
     <PCGrowthAlgorithm> * _wifiGrowthAlgorithm;
     <PCGrowthAlgorithm> * _wwanGrowthAlgorithm;
 }
 
 @property (nonatomic) bool alwaysWantsInterfaceChangeCallbacks;
 @property (nonatomic, readonly) unsigned long long countOfGrowthActions;
+@property (nonatomic, readonly) int currentGrowthStage;
 @property (nonatomic, readonly) double currentKeepAliveInterval;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PCConnectionManagerDelegate> *delegate;
@@ -71,7 +77,9 @@
 @property double maximumKeepAliveInterval;
 @property (nonatomic) bool minimumIntervalFallbackEnabled;
 @property (nonatomic) double minimumKeepAliveInterval;
+@property (nonatomic) double nonCellularEarlyFireConstantInterval;
 @property (nonatomic, readonly) double pollingInterval;
+@property (nonatomic) bool powerOptimizationsForExpensiveNetworkingDisabled;
 @property (readonly) Class superclass;
 
 + (bool)_isCachedKeepAliveIntervalStillValid:(double)arg1 date:(id)arg2;
@@ -89,7 +97,9 @@
 - (void)_clearTimersReleasingPowerAssertion:(bool)arg1;
 - (id)_currentGrowthAlgorithm;
 - (void)_delayTimerFired;
+- (void)_deregisterForDeviceConditionsNotifications;
 - (id)_getCachedWWANKeepAliveInterval;
+- (id)_growthAlgorithmOnInterface:(long long)arg1;
 - (void)_handleDeviceConditionChangeCallback;
 - (bool)_hasBudgetRemaining;
 - (id)_initWithConnectionClass:(int)arg1 interfaceIdentifier:(long long)arg2 guidancePriority:(unsigned long long)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 serviceIdentifier:(id)arg6;
@@ -103,6 +113,7 @@
 - (void)_releasePowerAssertion;
 - (void)_resolveStateWithAction:(int)arg1;
 - (void)_saveWWANKeepAliveInterval;
+- (void)_setMaximumKeepAliveInterval:(double)arg1 onInterface:(long long)arg2;
 - (void)_setTimerGuidance:(double)arg1;
 - (void)_setupKeepAliveForReconnect;
 - (void)_setupTimerForPollForAdjustment:(bool)arg1;
@@ -115,6 +126,7 @@
 - (bool)alwaysWantsInterfaceChangeCallbacks;
 - (void)cancelPollingIntervalOverride;
 - (unsigned long long)countOfGrowthActions;
+- (int)currentGrowthStage;
 - (double)currentKeepAliveInterval;
 - (int)currentStyle;
 - (void)dealloc;
@@ -135,9 +147,11 @@
 - (double)maximumKeepAliveInterval;
 - (bool)minimumIntervalFallbackEnabled;
 - (double)minimumKeepAliveInterval;
+- (double)nonCellularEarlyFireConstantInterval;
 - (bool)operatorMinimumIntervalFallbackAllowed;
 - (id)persistentInterfaceManager;
 - (double)pollingInterval;
+- (bool)powerOptimizationsForExpensiveNetworkingDisabled;
 - (void)resumeManagerWithAction:(int)arg1;
 - (void)resumeManagerWithAction:(int)arg1 forceGrow:(bool)arg2;
 - (void)setAlwaysWantsInterfaceChangeCallbacks:(bool)arg1;
@@ -150,9 +164,11 @@
 - (void)setMaximumKeepAliveInterval:(double)arg1;
 - (void)setMinimumIntervalFallbackEnabled:(bool)arg1;
 - (void)setMinimumKeepAliveInterval:(double)arg1;
+- (void)setNonCellularEarlyFireConstantInterval:(double)arg1;
 - (void)setOnlyAllowedStyle:(int)arg1;
 - (void)setOperatorMinimumIntervalFallbackAllowed:(bool)arg1;
 - (void)setPollingIntervalOverride:(double)arg1;
+- (void)setPowerOptimizationsForExpensiveNetworkingDisabled:(bool)arg1;
 - (bool)shouldClientScheduleReconnectDueToFailure;
 - (void)startManager;
 - (void)stopAndResetManager;

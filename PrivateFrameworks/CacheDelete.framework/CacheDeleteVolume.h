@@ -6,8 +6,6 @@
     unsigned long long  _initialFreespace;
     bool  _isRoot;
     NSString * _mountPoint;
-    NSDictionary * _thresholds;
-    NSString * _uuid;
 }
 
 @property (readonly) unsigned long long initialFreespace;
@@ -15,7 +13,6 @@
 @property (nonatomic, readonly) NSString *mountPoint;
 @property (nonatomic, readonly) long long state;
 @property (nonatomic, readonly) NSDictionary *thresholds;
-@property (nonatomic, readonly) NSString *uuid;
 
 + (id)rootVolume;
 + (long long)stateForPath:(id)arg1;
@@ -37,7 +34,6 @@
 - (unsigned long long)size;
 - (long long)state;
 - (id)thresholds;
-- (id)uuid;
 - (bool)validate;
 
 @end

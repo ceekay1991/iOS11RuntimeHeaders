@@ -5,25 +5,34 @@
 @interface CKAccountInfo : NSObject <NSSecureCoding> {
     long long  _accountPartition;
     long long  _accountStatus;
+    NSError * _manateeError;
     bool  _supportsDeviceToDeviceEncryption;
 }
 
 @property (nonatomic) long long accountPartition;
 @property (nonatomic) long long accountStatus;
+@property (nonatomic, retain) NSError *manateeAvailabilityError;
+@property (nonatomic, retain) NSError *manateeError;
 @property (nonatomic) bool supportsDeviceToDeviceEncryption;
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (long long)accountPartition;
 - (long long)accountStatus;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)manateeAvailabilityError;
+- (id)manateeError;
 - (void)setAccountPartition:(long long)arg1;
 - (void)setAccountStatus:(long long)arg1;
+- (void)setManateeAvailabilityError:(id)arg1;
+- (void)setManateeError:(id)arg1;
 - (void)setSupportsDeviceToDeviceEncryption:(bool)arg1;
 - (bool)supportsDeviceToDeviceEncryption;
 

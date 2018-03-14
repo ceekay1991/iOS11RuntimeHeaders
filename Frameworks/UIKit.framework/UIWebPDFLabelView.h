@@ -18,12 +18,12 @@
 - (double)_fadeOutDelay;
 - (double)_fadeOutDuration;
 - (void)_makeRoundedCorners;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (void)clearTimer;
 - (unsigned long long)currentPageIndex;
-- (void)dealloc;
 - (void)fadeOut;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isTimerInstalled;

@@ -30,7 +30,6 @@
 + (id)newEllipticalConeWithHeight:(void *)arg1 radii:(void *)arg2 radialSegments:(void *)arg3 verticalSegments:(void *)arg4 geometryType:(void *)arg5 inwardNormals:(void *)arg6 allocator:(void *)arg7; // needs 7 arg types, found 6: float, unsigned long long, unsigned long long, long long, bool, id
 + (id)newIcosahedronWithRadius:(float)arg1 inwardNormals:(bool)arg2 allocator:(id)arg3;
 + (id)newIcosahedronWithRadius:(float)arg1 inwardNormals:(bool)arg2 geometryType:(long long)arg3 allocator:(id)arg4;
-+ (id)newMeshWithPrimitive:(void *)arg1 segments:(void *)arg2 inwardNormals:(void *)arg3 geometryType:(void *)arg4 allocator:(void *)arg5; // needs 5 arg types, found 4: id, bool, long long, id
 + (id)newPlaneWithDimensions:(void *)arg1 segments:(void *)arg2 geometryType:(void *)arg3 allocator:(void *)arg4; // needs 4 arg types, found 2: long long, id
 + (id)newSubdividedMesh:(id)arg1 submeshIndex:(unsigned long long)arg2 subdivisionLevels:(unsigned long long)arg3;
 
@@ -71,7 +70,6 @@
 - (id)initHemisphereWithExtent:(void *)arg1 segments:(void *)arg2 inwardNormals:(void *)arg3 cap:(void *)arg4 geometryType:(void *)arg5 allocator:(void *)arg6; // needs 6 arg types, found 4: bool, bool, long long, id
 - (id)initIcosahedronWithExtent:(void *)arg1 inwardNormals:(void *)arg2 geometryType:(void *)arg3 allocator:(void *)arg4; // needs 4 arg types, found 3: bool, long long, id
 - (id)initMeshBySubdividingMesh:(id)arg1 submeshIndex:(int)arg2 subdivisionLevels:(unsigned int)arg3 allocator:(id)arg4;
-- (id)initMeshWithPrimitive:(void *)arg1 segments:(void *)arg2 inwardNormals:(void *)arg3 geometryType:(void *)arg4 allocator:(void *)arg5; // needs 5 arg types, found 4: id, bool, long long, id
 - (id)initPlaneWithExtent:(void *)arg1 segments:(void *)arg2 geometryType:(void *)arg3 allocator:(void *)arg4; // needs 4 arg types, found 2: long long, id
 - (id)initSphereWithExtent:(void *)arg1 segments:(void *)arg2 inwardNormals:(void *)arg3 geometryType:(void *)arg4 allocator:(void *)arg5; // needs 5 arg types, found 3: bool, long long, id
 - (id)initWithBufferAllocator:(id)arg1;

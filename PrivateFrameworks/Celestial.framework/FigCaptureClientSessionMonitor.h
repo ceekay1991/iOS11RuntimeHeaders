@@ -48,11 +48,11 @@
 - (void)_handleCMSessionManagerNofification:(id)arg1;
 - (bool)_isSupportedExtensionClientType;
 - (id)_logString;
+- (void)_notifyIfResolvedSupportedExtensionApplicationStateOrLayoutStateDidChangeUsingLayoutStateChanged:(bool)arg1;
 - (int)_registerCMSessionForObservation;
 - (id)_resolveApplicationID;
-- (void)_resolveSupportedExtensionApplicationStateAndNotifyIfChanged;
 - (void)_setUpApplicationInfo;
-- (int)_updateApplicationState;
+- (void)_updateApplicationState;
 - (id)applicationID;
 - (void)dealloc;
 - (id)description;

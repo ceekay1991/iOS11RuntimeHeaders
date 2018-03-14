@@ -2,24 +2,21 @@
    Image: /System/Library/PrivateFrameworks/CommonUtilities.framework/CommonUtilities
  */
 
-@interface CUTCheckpointInstant : CUTCheckpoint {
+@interface CUTCheckpointInstant : CUTCheckpointSignpost {
     NSDate * _date;
 }
 
 @property (nonatomic, retain) NSDate *date;
 
-+ (bool)supportsSecureCoding;
-
 - (void).cxx_destruct;
+- (id)_reportEndDate;
+- (id)_reportStartDate;
+- (void)_touchDate;
 - (id)date;
 - (id)description;
-- (id)descriptionWithDate:(id*)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithName:(id)arg1;
-- (id)initWithName:(id)arg1 date:(id)arg2;
+- (id)initWithDate:(id)arg1 name:(id)arg2 uniqueIdentifier:(id)arg3;
+- (id)initWithName:(id)arg1 uniqueIdentifier:(id)arg2;
 - (void)mergeWithCheckpoint:(id)arg1;
 - (void)setDate:(id)arg1;
-- (void)touchDate;
 
 @end

@@ -5,10 +5,12 @@
 @interface ICRadioGetTracksRequest : NSObject <NSCopying> {
     NSDictionary * _additionalRequestParameters;
     bool  _allowsExplicitContent;
+    NSNumber * _delegatedPrivateListeningEnabled;
     ICRadioContentReference * _nowPlayingContentReference;
     NSArray * _playActivityEvents;
     ICRadioPlaybackHistory * _playbackContext;
     bool  _preservingCurrentlyPlayingItem;
+    NSNumber * _privateListeningEnabled;
     long long  _reasonType;
     ICStoreRequestContext * _requestContext;
     ICRadioContentReference * _seedContentReference;
@@ -21,10 +23,12 @@
 
 @property (nonatomic, copy) NSDictionary *additionalRequestParameters;
 @property (nonatomic) bool allowsExplicitContent;
+@property (getter=isDelegatedPrivateListeningEnabled, nonatomic, copy) NSNumber *delegatedPrivateListeningEnabled;
 @property (nonatomic, copy) ICRadioContentReference *nowPlayingContentReference;
 @property (nonatomic, copy) NSArray *playActivityEvents;
 @property (nonatomic, copy) ICRadioPlaybackHistory *playbackContext;
 @property (getter=isPreservingCurrentlyPlayingItem, nonatomic) bool preservingCurrentlyPlayingItem;
+@property (getter=isPrivateListeningEnabled, nonatomic, copy) NSNumber *privateListeningEnabled;
 @property (nonatomic) long long reasonType;
 @property (nonatomic, copy) ICStoreRequestContext *requestContext;
 @property (nonatomic, copy) ICRadioContentReference *seedContentReference;
@@ -39,7 +43,9 @@
 - (bool)allowsExplicitContent;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)init;
+- (id)isDelegatedPrivateListeningEnabled;
 - (bool)isPreservingCurrentlyPlayingItem;
+- (id)isPrivateListeningEnabled;
 - (id)nowPlayingContentReference;
 - (void)performWithResponseHandler:(id /* block */)arg1;
 - (id)playActivityEvents;
@@ -49,10 +55,12 @@
 - (id)seedContentReference;
 - (void)setAdditionalRequestParameters:(id)arg1;
 - (void)setAllowsExplicitContent:(bool)arg1;
+- (void)setDelegatedPrivateListeningEnabled:(id)arg1;
 - (void)setNowPlayingContentReference:(id)arg1;
 - (void)setPlayActivityEvents:(id)arg1;
 - (void)setPlaybackContext:(id)arg1;
 - (void)setPreservingCurrentlyPlayingItem:(bool)arg1;
+- (void)setPrivateListeningEnabled:(id)arg1;
 - (void)setReasonType:(long long)arg1;
 - (void)setRequestContext:(id)arg1;
 - (void)setSeedContentReference:(id)arg1;

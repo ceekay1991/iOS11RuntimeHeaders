@@ -3,6 +3,7 @@
  */
 
 @interface AWDWiFiMetricsManagerChipCounters : PBCodable <NSCopying> {
+    NSMutableArray * _frameCounterPerInterfaces;
     AWDWiFiMetricsManagerFrameCounterStats * _frameCounters;
     struct { 
         unsigned int timestamp : 1; 
@@ -18,6 +19,7 @@
     AWDWPA2Counters * _ucastWPA2Counters;
 }
 
+@property (nonatomic, retain) NSMutableArray *frameCounterPerInterfaces;
 @property (nonatomic, retain) AWDWiFiMetricsManagerFrameCounterStats *frameCounters;
 @property (nonatomic, readonly) bool hasFrameCounters;
 @property (nonatomic, readonly) bool hasMcastWPA2Counters;
@@ -39,11 +41,18 @@
 @property (nonatomic, retain) AWDChipCountersTx *txGeneralStats;
 @property (nonatomic, retain) AWDWPA2Counters *ucastWPA2Counters;
 
++ (Class)frameCounterPerInterfaceType;
+
+- (void)addFrameCounterPerInterface:(id)arg1;
+- (void)clearFrameCounterPerInterfaces;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)frameCounterPerInterfaceAtIndex:(unsigned long long)arg1;
+- (id)frameCounterPerInterfaces;
+- (unsigned long long)frameCounterPerInterfacesCount;
 - (id)frameCounters;
 - (bool)hasFrameCounters;
 - (bool)hasMcastWPA2Counters;
@@ -64,6 +73,7 @@
 - (id)rxMACCounterStats;
 - (id)rxMACErrorStats;
 - (id)rxPhyErrors;
+- (void)setFrameCounterPerInterfaces:(id)arg1;
 - (void)setFrameCounters:(id)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setMcastWPA2Counters:(id)arg1;

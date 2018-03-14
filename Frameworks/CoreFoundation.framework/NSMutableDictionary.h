@@ -2,7 +2,12 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSMutableDictionary : NSDictionary
+@interface NSMutableDictionary : NSDictionary <PHMutableFetchDictionaryAccessing>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
 
@@ -36,9 +41,17 @@
 - (void)setObjects:(id)arg1 forKeys:(id)arg2;
 - (void)setObjects:(const id*)arg1 forKeys:(const id*)arg2 count:(unsigned long long)arg3;
 
+// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsUtilities.framework/DVTInstrumentsUtilities
+
+- (void)xr_setNullableObject:(id)arg1 forKey:(id)arg2;
+
 // Image: /System/Library/CoreServices/RawCamera.bundle/RawCamera
 
 - (id)makeSerializable;
+
+// Image: /System/Library/Frameworks/AddressBook.framework/AddressBook
+
+- (void)abs_setNonNilObject:(id)arg1 forKey:(id)arg2;
 
 // Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
@@ -56,6 +69,10 @@
 - (id)initWithContentsOfURL:(id)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (bool)pu_containsIndexPath:(id)arg1;
+
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (id)_dictionaryWithContentsOfDictionaries:(id)arg1;
@@ -64,15 +81,53 @@
 
 - (void)un_safeSetObject:(id)arg1 forKey:(id)arg2;
 
+// Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
+
+- (void)vs_setObjectUnlessNil:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/AirPortAssistant.framework/AirPortAssistant
+
+- (id)mutableCopyDeep;
+
+// Image: /System/Library/PrivateFrameworks/AssetExplorer.framework/AssetExplorer
+
+- (void)ae_moveObjectFromKey:(id)arg1 toKey:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
 - (void)bs_setSafeObject:(id)arg1 forKey:(id)arg2;
 - (id)bs_takeObjectForKey:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/BulletinDistributorCompanion.framework/BulletinDistributorCompanion
+
+- (void)setIdsMetadataFileKey:(id)arg1;
+- (void)setIdsMetadataFileURLType:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
+
+- (id)CALsafeObjectForKey:(id)arg1 calculatedWithBlock:(id /* block */)arg2;
+
 // Image: /System/Library/PrivateFrameworks/ContactsFoundation.framework/ContactsFoundation
 
 - (void)_cn_setNonNilObject:(id)arg1 forKey:(id)arg2;
 - (void)_cn_setObject:(id)arg1 orPlaceholder:(id)arg2 forKey:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/CoreDAV.framework/CoreDAV
+
+- (void)CDVAddObjectsAndKeys:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CoreMediaStream.framework/CoreMediaStream
+
++ (id)MSASDictionaryWithCopyOfDictionary:(id)arg1;
+
+- (id)MSASAddDictionary:(id)arg1;
+- (id)MSASAddEventIsDueToAlbumDeletionAlbumGUID:(id)arg1;
+- (id)MSASAddEventIsDueToAssetCollectionDeletionAssetCollectionGUID:(id)arg1;
+- (id)MSASAddIsAlbumResetSyncAlbumGUID:(id)arg1;
+- (id)MSASAddIsErrorRecovery;
+- (id)MSASAddIsGlobalResetSync;
+- (id)MSASAddIsLocalChange;
+- (id)MSASAddNotInterestingKey;
 
 // Image: /System/Library/PrivateFrameworks/CoreRecents.framework/CoreRecents
 
@@ -86,11 +141,49 @@
 - (void)logCounter_incrementForSubtype_internal:(id)arg1;
 - (bool)logCounter_isLog:(id)arg1 byKey:(id)arg2 count:(unsigned long long*)arg3 withinLimit:(unsigned long long*)arg4 withOptions:(id)arg5;
 
+// Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DACardDAV.framework/DACardDAV
+
+- (void)addObjectsAndKeys:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DAEAS.framework/DAEAS
+
+- (void)setObject:(id)arg1 forInt:(int)arg2;
+
+// Image: /System/Library/PrivateFrameworks/DifferentialPrivacy.framework/DifferentialPrivacy
+
+- (void)dp_addBoolForKey:(id)arg1;
+- (void)dp_addStringForKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/FMCoreLite.framework/FMCoreLite
+
+- (id)fm_objectForKey:(id)arg1 withDefaultValue:(id /* block */)arg2;
+- (void)fm_safeSetObject:(id)arg1 forKey:(id)arg2;
+- (void)fm_safelyMapKey:(id)arg1 toObject:(id)arg2;
+- (void)fm_safelySetObject:(id)arg1 forKey:(id)arg2;
+- (void)safelyMapKey:(id)arg1 toObject:(id)arg2;
+- (void)safelySetObject:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/FitnessUI.framework/FitnessUI
+
+- (void)fiui_incrementValueForKey:(id)arg1 byValue:(double)arg2;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+
+- (void)_gkAddEntriesFromFormEncodedString:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/IMDaemonCore.framework/IMDaemonCore
+
+- (void)setAsString:(id)arg1 forKey:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
 
 + (id)nonRetainingDictionary;
 + (id)nonRetainingKeyAndValueDictionary;
 + (id)retainingKeyDictionary;
+
+// Image: /System/Library/PrivateFrameworks/MIME.framework/MIME
+
+- (void)mf_fixupRFC2231Values;
 
 // Image: /System/Library/PrivateFrameworks/ManagedConfiguration.framework/ManagedConfiguration
 
@@ -112,9 +205,201 @@
 - (id)MCValidateAndRemoveNonZeroLengthStringWithKey:(id)arg1 isRequired:(bool)arg2 outError:(id*)arg3;
 - (id)MCValidateAndRemoveObjectOfClass:(Class)arg1 withKey:(id)arg2 isRequired:(bool)arg3 outError:(id*)arg4;
 
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
+- (void)copyObjectFromDictionary:(id)arg1 forKey:(id)arg2;
+- (void)copyObjectFromDictionaryRemoveIfNotPresent:(id)arg1 forKey:(id)arg2;
+- (void)copyObjectsFromDictionary:(id)arg1 forKeys:(id)arg2;
+- (void)copyObjectsFromDictionaryRemoveIfNotPresent:(id)arg1 forKeys:(id)arg2;
+- (void)removeObjectsForKeysOtherThan:(id)arg1;
+- (void)setBool:(bool)arg1 forKey:(id)arg2;
+- (void)setBoolIfNotPresent:(bool)arg1 forKey:(id)arg2;
+- (void)setDouble:(double)arg1 forKey:(id)arg2;
+- (void)setDoubleIfNotPresent:(double)arg1 forKey:(id)arg2;
+- (void)setFloat:(float)arg1 forKey:(id)arg2;
+- (void)setFloatIfNotPresent:(float)arg1 forKey:(id)arg2;
+- (void)setInt:(int)arg1 forKey:(id)arg2;
+- (void)setIntIfNotPresent:(int)arg1 forKey:(id)arg2;
+- (void)setInteger:(long long)arg1 forKey:(id)arg2;
+- (void)setObject:(id)arg1 forIndex:(int)arg2;
+- (void)setObjectIfNotNil:(id)arg1 forKey:(id)arg2;
+- (void)setObjectIfNotPresent:(id)arg1 forKey:(id)arg2;
+- (void)setObjectOrRemoveIfNil:(id)arg1 forKey:(id)arg2;
+- (void)setRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)setRectIfNotPresent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)setUnsignedInteger:(unsigned long long)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/Message.framework/Message
+
+- (void)mf_addObject:(id)arg1 forKey:(id)arg2;
+- (id)mf_objectForKey:(id)arg1 ofClass:(Class)arg2;
+- (void)mf_setBool:(bool)arg1 forKey:(id)arg2;
+- (void)mf_setInteger:(int)arg1 forKey:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/MusicLibrary.framework/MusicLibrary
 
 - (void)mergeWithDictionary:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
+
++ (bool)_processArgumentWithMutableDictionary:(id)arg1 object:(id)arg2 key:(id)arg3;
++ (id)npkDictionaryWithObjectsAndKeys:(id)arg1;
+
+- (void)npkSetObject:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/NetAppsUtilities.framework/NetAppsUtilities
+
+- (id)na_objectForKey:(id)arg1 withDefaultValue:(id /* block */)arg2;
+- (void)na_safeSetObject:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (id)fc_dequeueTransactions;
+- (bool)fc_enqueueActionType:(long long)arg1;
+- (void)fc_enqueueTransaction:(id)arg1 withMaxTransactionCount:(unsigned long long)arg2;
+- (void)fc_mergeWithDictionary:(id)arg1 withValueCombiner:(id /* block */)arg2;
+- (void)fc_popActionTypesUpToCount:(unsigned long long)arg1;
+- (void)fc_removeObjectsForKeysNotInArray:(id)arg1;
+- (void)fc_removeObjectsForKeysNotInSet:(id)arg1;
+- (void)fc_safelySetObject:(id)arg1 forKey:(id)arg2;
+- (void)fc_safelySetObjectAllowingNil:(id)arg1 forKey:(id)arg2;
+- (void)fc_safelySetObjectAllowingNil:(id)arg1 forKeyAllowingNil:(id)arg2;
+- (void)fc_setLocalDataHintIfNeeded:(bool)arg1;
+- (void)fc_transformValuesWithKeyAndValueBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
+
+- (void)ic_addKey:(id)arg1 forNonNilObject:(id)arg2;
+- (void)ic_setNonNilObject:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
++ (id)tsu_dictionaryByInvertingDictionary:(id)arg1;
++ (id)tsu_dictionaryByInvertingDictionaryIfPossible:(id)arg1;
+
+- (id)addToCacheAndReturnCssString:(id)arg1;
+- (id)tsu_objectForKey:(id)arg1 withDefaultOfClass:(Class)arg2;
+- (id)tsu_objectForKey:(id)arg1 withDefaultUsingBlock:(id /* block */)arg2;
+- (void)tsu_setNonNilObject:(id)arg1 forKey:(id)arg2;
+- (void)tsu_setNonNilValueForKey:(id)arg1 fromDictionary:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
+- (void)safelySetObject:(id)arg1 forKey:(id)arg2;
+- (void)setBool:(bool)arg1 forKey:(id)arg2;
+- (void)setDouble:(double)arg1 forKey:(id)arg2;
+- (void)setInt32:(int)arg1 forKey:(id)arg2;
+- (void)setInteger:(long long)arg1 forKey:(id)arg2;
+- (void)setLongLong:(long long)arg1 forKey:(id)arg2;
+- (void)setObjectOrNull:(id)arg1 forKey:(id)arg2;
+- (void)setUnsignedLongLong:(unsigned long long)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PhotoEditSupport.framework/PhotoEditSupport
+
+- (void)bl_copyObjectFromDictionary:(id)arg1 forKey:(id)arg2;
+- (void)bl_copyObjectFromDictionaryRemoveIfNotPresent:(id)arg1 forKey:(id)arg2;
+- (void)bl_copyObjectsFromDictionary:(id)arg1 forKeys:(id)arg2;
+- (void)bl_copyObjectsFromDictionaryRemoveIfNotPresent:(id)arg1 forKeys:(id)arg2;
+- (void)bl_setAffineTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1 forKey:(id)arg2;
+- (void)bl_setBool:(bool)arg1 forKey:(id)arg2;
+- (void)bl_setBoolIfNotPresent:(bool)arg1 forKey:(id)arg2;
+- (void)bl_setDouble:(double)arg1 forKey:(id)arg2;
+- (void)bl_setDoubleIfNotPresent:(double)arg1 forKey:(id)arg2;
+- (void)bl_setFloat:(float)arg1 forKey:(id)arg2;
+- (void)bl_setFloatIfNotPresent:(float)arg1 forKey:(id)arg2;
+- (void)bl_setInt:(int)arg1 forKey:(id)arg2;
+- (void)bl_setIntIfNotPresent:(int)arg1 forKey:(id)arg2;
+- (void)bl_setInteger:(long long)arg1 forKey:(id)arg2;
+- (void)bl_setNonRetainedObject:(id)arg1 forKey:(id)arg2;
+- (void)bl_setObject:(id)arg1 forIndex:(int)arg2;
+- (void)bl_setObjectIfNotNil:(id)arg1 forKey:(id)arg2;
+- (void)bl_setObjectIfNotPresent:(id)arg1 forKey:(id)arg2;
+- (void)bl_setPointAsString:(struct CGPoint { double x1; double x2; })arg1 forKey:(id)arg2;
+- (void)bl_setPointAsStringIfNotPresent:(struct CGPoint { double x1; double x2; })arg1 forKey:(id)arg2;
+- (void)bl_setRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)bl_setRectAsString:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)bl_setRectAsStringIfNotPresent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)bl_setRectIfNotPresent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (void)_pl_setNonNilObject:(id)arg1 forKey:(id)arg2;
+- (void)pl_applyOrientation:(long long)arg1 toNormalizedPointWithXKey:(id)arg2 yKey:(id)arg3;
+- (void)pl_enforceCorrectValuesForMinKey:(id)arg1 maxKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ProVideo.framework/ProVideo
+
+- (void)addObject:(id)arg1 toSetForKey:(id)arg2;
+- (id)objectsInAllSetsForKeys:(id)arg1;
+- (void)removeObject:(id)arg1 fromSetForKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ScreenReaderCore.framework/ScreenReaderCore
+
+- (void)scrc_mergeEntriesFromDictionary:(id)arg1;
+- (void)scrc_mergeEntriesFromDictionary:(id)arg1 factory:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ServerDocsProtocol.framework/ServerDocsProtocol
+
++ (id)sd_dictionaryFromDictionary:(id)arg1 forKeys:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/SoftwareUpdateServices.framework/SoftwareUpdateServices
+
+- (void)setSafeObject:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/Swift/libswiftFoundation.dylib
+
+/* MISSING HEADER DESCRIPTION FOR METHOD _swift_objectForKeyedSubscript: */
+/* MISSING HEADER DESCRIPTION FOR METHOD _swift_setObject:forKeyedSubscript: */
+
+// Image: /System/Library/PrivateFrameworks/Symptoms.framework/Frameworks/SymptomEvaluator.framework/SymptomEvaluator
+
+- (void)setActions:(id)arg1 forProcess:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
+
++ (id)tsu_dictionaryByInvertingDictionary:(id)arg1;
++ (id)tsu_dictionaryByInvertingDictionaryIfPossible:(id)arg1;
+
+- (id)tsu_objectForKey:(id)arg1 withDefaultOfClass:(Class)arg2;
+- (id)tsu_objectForKey:(id)arg1 withDefaultUsingBlock:(id /* block */)arg2;
+- (void)tsu_removeObjectsWithoutKeys:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/UserNotificationsServer.framework/UserNotificationsServer
+
+- (void)uns_safeSetCGRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)uns_safeSetCMTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 forKey:(id)arg2;
+- (void)uns_safeSetNonEmptyArray:(id)arg1 forKey:(id)arg2;
+- (void)uns_safeSetNonEmptyDictionary:(id)arg1 forKey:(id)arg2;
+- (void)uns_safeSetNonEmptyString:(id)arg1 forKey:(id)arg2;
+- (void)uns_safeSetObject:(id)arg1 forKey:(id)arg2;
+- (void)uns_setCGRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)uns_setCMTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/VideoProcessing.framework/VideoProcessing
+
+- (void)vcp_addEntriesFromResults:(id)arg1;
+- (void)vcp_addFlags:(unsigned long long)arg1;
+- (void)vcp_addTypes:(unsigned long long)arg1;
+- (void)vcp_appendResult:(id)arg1 forKey:(id)arg2;
+- (void)vcp_appendResults:(id)arg1;
+- (id)vcp_mutableResults;
+- (void)vcp_removeResultForKey:(id)arg1;
+- (void)vcp_removeSyncPoint;
+- (void)vcp_setDateAnalyzed:(id)arg1;
+- (void)vcp_setDateModified:(id)arg1;
+- (void)vcp_setFingerprint:(id)arg1;
+- (void)vcp_setFlags:(unsigned long long)arg1;
+- (void)vcp_setQuality:(double)arg1;
+- (void)vcp_setResult:(id)arg1 forKey:(id)arg2;
+- (void)vcp_setResults:(id)arg1;
+- (void)vcp_setSyncPoint:(const struct { long long x1; int x2; unsigned int x3; long long x4; }*)arg1;
+- (void)vcp_setTimerange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1;
+- (void)vcp_setTypes:(unsigned long long)arg1;
+- (void)vcp_setVersion:(int)arg1;
+
+// Image: /System/Library/PrivateFrameworks/WatchListKit.framework/WatchListKit
+
+- (void)wlk_setObjectUnlessNil:(id)arg1 forKey:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
 
@@ -125,5 +410,27 @@
 - (void)_webkit_setLongLong:(long long)arg1 forKey:(id)arg2;
 - (void)_webkit_setUnsignedInt:(unsigned int)arg1 forKey:(id)arg2;
 - (void)_webkit_setUnsignedLongLong:(unsigned long long)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/iPhotoMigrationSupport.framework/iPhotoMigrationSupport
+
+- (void)blj_setObjectIfNotNil:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (id)tsu_dictionaryByInvertingDictionary:(id)arg1;
++ (id)tsu_dictionaryByInvertingDictionaryIfPossible:(id)arg1;
+
+- (void)tsp_addObject:(id)arg1 toArrayWithDeepCopyOptionKey:(id)arg2;
+- (void)tsp_addObject:(id)arg1 toArrayWithSerializationOptionKey:(id)arg2;
+- (void)tsp_delayArchivingObjectDuringDeepCopy:(id)arg1;
+- (void)tsp_delayArchivingObjectDuringSerialization:(id)arg1;
+- (void)tsp_setDeepCopyObjectProxy:(id)arg1 forReferencedObject:(id)arg2;
+- (void)tsp_setSerializationObjectProxy:(id)arg1 forReferencedObject:(id)arg2;
+- (void)tsp_skipArchivingObjectDuringDeepCopy:(id)arg1;
+- (void)tsp_skipArchivingObjectDuringSerialization:(id)arg1;
+- (id)tsu_objectForKey:(id)arg1 withDefaultOfClass:(Class)arg2;
+- (id)tsu_objectForKey:(id)arg1 withDefaultUsingBlock:(id /* block */)arg2;
+- (void)tsu_setNonNilObject:(id)arg1 forKey:(id)arg2;
+- (void)tsu_setNonNilValueForKey:(id)arg1 fromDictionary:(id)arg2;
 
 @end

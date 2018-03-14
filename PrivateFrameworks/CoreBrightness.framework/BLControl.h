@@ -6,6 +6,7 @@
     bool  AABEnabled;
     id /* block */  _callback;
     void * _callbackContext;
+    struct __CFDictionary { } * _clientDisplayMap;
     id /* block */  _ecoModeNotificationHandler;
     int  _ecoModeNotificationToken;
     id /* block */  _ecoModePreferencesUpdateNotificationHandler;
@@ -49,5 +50,6 @@
 - (bool)setPropertyWithKey:(struct __CFString { }*)arg1 property:(void*)arg2 client:(struct __CFNumber { }*)arg3;
 - (bool)start;
 - (void)stop;
+- (void)waitForALSArrival;
 
 @end

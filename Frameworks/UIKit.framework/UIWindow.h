@@ -10,6 +10,7 @@
     bool  __shouldHitTestEntireScreen;
     id /* block */  __shouldPreventRotationHook;
     bool  __usesLegacySupportedOrientationChecks;
+    UIAccessibilityHUDView * _accessibilityHUD;
     _UICanvas * _canvas;
     long long  _containedGestureRecognizerMaximumState;
     _UIContextBinder * _contextBinder;
@@ -115,6 +116,8 @@
 @property (getter=_fromWindowOrientation, setter=_setFromWindowOrientation:, nonatomic) long long fromWindowOrientation;
 @property (readonly) unsigned long long hash;
 @property (getter=isKeyWindow, nonatomic, readonly) bool keyWindow;
+@property (nonatomic, readonly) PXContextualNotificationCenter *px_contextualNotificationCenter;
+@property (nonatomic, readonly) PXImageModulationManager *px_imageModulationManager;
 @property (getter=_rememberedFocusedItem, setter=_setRememberedFocusedItem:, nonatomic) <UIFocusItem> *rememberedFocusedItem;
 @property (nonatomic, retain) UIViewController *rootViewController;
 @property (nonatomic, retain) UIScreen *screen;
@@ -136,9 +139,9 @@
 + (id)_findWithDisplayPoint:(struct CGPoint { double x1; double x2; })arg1;
 + (id)_globalHitTestForLocation:(struct CGPoint { double x1; double x2; })arg1 inWindowServerHitTestWindow:(id)arg2 withEvent:(id)arg3;
 + (id)_hitTestToPoint:(struct CGPoint { double x1; double x2; })arg1 forEvent:(id)arg2 windowServerHitTestWindow:(id)arg3 screen:(id)arg4;
++ (id)_homeIndicatorAutoHiddenControllingWindow;
 + (bool)_isSecure;
 + (bool)_isSystemWindow;
-+ (id)_keyWindowIgnoringAlertViewWindow;
 + (unsigned long long)_keyWindowStackSize;
 + (void)_noteStatusBarHeightChanged:(double)arg1 oldHeight:(double)arg2;
 + (void)_noteStatusBarHeightChanged:(double)arg1 oldHeight:(double)arg2 forAutolayoutRootViewsOnly:(bool)arg3;
@@ -180,6 +183,7 @@
 + (id)keyWindow;
 + (Class)layerClass;
 
+- (void).cxx_destruct;
 - (id)__clientsForRotationCallbacks;
 - (bool)__hostViewUnderlapsStatusBar;
 - (void)__setHostViewUnderlapsStatusBar:(bool)arg1;
@@ -258,6 +262,7 @@
 - (bool)_disableAutomaticKeyboardBehavior;
 - (bool)_disableAutomaticKeyboardUI;
 - (bool)_disableGroupOpacity;
+- (void)_dismissAccessibilityHUD;
 - (unsigned long long)_edgeForTouch:(id)arg1;
 - (unsigned long long)_edgesForSystemGesturesTouchDelay;
 - (void)_endKeyWindowDeferral;
@@ -306,6 +311,7 @@
 - (bool)_isInAWindow;
 - (bool)_isKeyWindowForDeferral;
 - (bool)_isLoweringAnchoringConstraints;
+- (bool)_isMainSceneSized;
 - (bool)_isScrollingEnabledForView:(id)arg1;
 - (bool)_isSecure;
 - (bool)_isSettingFirstResponder;
@@ -315,6 +321,7 @@
 - (bool)_isTextEffectsWindowNotificationOwner;
 - (bool)_isVisible;
 - (bool)_isWindowServerHostingManaged;
+- (id)_keyboardSceneSettings;
 - (id)_layoutEngineCreateIfNecessary;
 - (id)_layoutEngineIfAvailable;
 - (bool)_legacyOrientationChecks;
@@ -326,12 +333,16 @@
 - (bool)_needsShakesWhenInactive;
 - (id)_normalInheritedTintColor;
 - (void)_noteOverlayInsetsDidChange;
+- (void)_notifyRotatableViewOrientation:(long long)arg1 duration:(double)arg2;
 - (void)_orderFrontWithoutMakingKey;
+- (long long)_orientationForClassicPresentation;
 - (long long)_orientationForRootTransform;
 - (long long)_orientationForViewTransform;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_overlayInsets;
+- (long long)_overriddenInterfaceOrientation;
 - (id)_overridingPreferredFocusEnvironment;
 - (id)_parentFocusEnvironment;
+- (void)_performTouchContinuationWithOverrideHitTestedView:(id)arg1;
 - (void)_positionHeaderView:(id)arg1 andFooterView:(id)arg2 outsideContentViewForInterfaceOrientation:(long long)arg3;
 - (void)_propagateTraitCollectionChangedForStateRestoration;
 - (id)_redundantConstraints;
@@ -406,6 +417,7 @@
 - (bool)_shouldAdjustSizeClassesAndResizeWindow;
 - (bool)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (bool)_shouldAutorotateToInterfaceOrientation:(long long)arg1 checkForDismissal:(bool)arg2 isRotationDisabled:(bool*)arg3;
+- (bool)_shouldControlAutorotation;
 - (bool)_shouldCreateContextAsSecure;
 - (bool)_shouldDelayTouchForSystemGestures:(id)arg1;
 - (bool)_shouldDisableTransformLayerScalingForSnapshotting;
@@ -419,6 +431,7 @@
 - (bool)_shouldTextEffectsWindowBeHostedForView:(id)arg1;
 - (bool)_shouldUseRemoteContext;
 - (bool)_shouldZoom;
+- (void)_showAccessibilityHUDItem:(id)arg1;
 - (void)_slideFooterFromOrientation:(long long)arg1 toOrientation:(long long)arg2 startSnapshot:(id)arg3 endSnapshot:(id)arg4 duration:(double)arg5;
 - (void)_slideHeaderView:(id)arg1 andFooterView:(id)arg2 offScreen:(bool)arg3 forInterfaceOrientation:(long long)arg4;
 - (long long)_subclassPreferredFocusedViewPrioritizationType;
@@ -490,15 +503,19 @@
 - (void)_windowInternalConstraints_sizeDidChange;
 - (bool)_windowOwnsInterfaceOrientation;
 - (void)_writeLayerTreeToPath:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
 
 + (id)debugHierarchyGroupingIDs;
 + (id)debugHierarchyObjectsInGroupWithID:(id)arg1 outOptions:(id*)arg2;
 
+- (id)debugHierarchyAdditionalGroupingIDs;
+- (id)debugHierarchyObjectsInGroupWithID:(id)arg1 outOptions:(id*)arg2;
+- (id)debugHierarchyPropertyDescriptions;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)addRootViewControllerViewIfPossible;
 - (bool)autorotates;
 - (void)awakeFromNib;
@@ -516,10 +533,6 @@
 - (struct CGPoint { double x1; double x2; })convertWindowToDevice:(struct CGPoint { double x1; double x2; })arg1;
 - (void*)createIOSurface;
 - (void*)createIOSurfaceWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (void)dealloc;
-- (id)debugHierarchyAdditionalGroupingIDs;
-- (id)debugHierarchyObjectsInGroupWithID:(id)arg1 outOptions:(id*)arg2;
-- (id)debugHierarchyPropertyDescriptions;
 - (id)delegate;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endDisablingInterfaceAutorotation;
@@ -592,5 +605,34 @@
 - (struct CGPoint { double x1; double x2; })warpPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (double)windowLevel;
 - (int)windowOutput;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
++ (void)music_setWantsDefaultLayoutInsets;
++ (void)music_setWantsLayoutInsetsUsingBlock:(id /* block */)arg1;
++ (void)music_setWantsMusicLayoutInsets;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (void)pl_presentViewController:(id)arg1 animated:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (id)px_contextualNotificationCenter;
+- (id)px_imageModulationManager;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardUI.framework/SpringBoardUI
+
+- (id)sbui_effectiveWindowForIsolation;
+
+// Image: /System/Library/PrivateFrameworks/UIAccessibility.framework/UIAccessibility
+
+- (bool)_accessibilityIsModalWithKeyboard;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_axConvertRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 toWindow:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
+
+- (id)addTouchCaptureViewWithTag:(long long)arg1;
+- (id)removeTouchCaptureViewWithTag:(long long)arg1;
 
 @end

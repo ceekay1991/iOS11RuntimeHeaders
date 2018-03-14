@@ -2,16 +2,20 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIKBRenderFactory_Composite : UIKBRenderFactory {
-    UIKBRenderFactory * _baseFactory;
+@interface UIKBRenderFactory_Composite : UIKBRenderFactoryiPhone {
     UIKBRenderFactory * _overlayFactory;
 }
 
-- (Class)_baseFactoryClass;
 - (Class)_overlayFactoryClass;
-- (id)_overlayMethodSelectors;
-- (void)forwardInvocation:(id)arg1;
 - (id)initWithRenderingContext:(id)arg1 skipLayoutSegments:(bool)arg2;
-- (id)methodSignatureForSelector:(SEL)arg1;
+- (bool)isTallPopup;
+- (double)popupFontSize;
+- (struct CGPoint { double x1; double x2; })popupSymbolTextOffset;
+- (struct CGPoint { double x1; double x2; })variantAnnotationTextOffset;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })variantPaddedFrameInsets;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })variantSymbolFrameInsets;
+- (struct CGPoint { double x1; double x2; })variantSymbolTextOffset;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })wideShadowPaddleInsets;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })wideShadowPopupMenuInsets;
 
 @end

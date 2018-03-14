@@ -13,7 +13,10 @@
 - (bool)_hasResolvablePartialInformation;
 - (bool)_hasVenueFeatureType;
 - (id)_identifier;
+- (bool)_isTransitDisplayFeature;
+- (id)_labelMarker;
 - (unsigned long long)_muid;
+- (id)_place;
 - (id)_styleAttributes;
 - (int)_venueFeatureType;
 - (id)_venueInfo;

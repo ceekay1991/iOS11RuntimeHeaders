@@ -4,6 +4,8 @@
 
 @interface _INVocabularyConnection : NSObject {
     NSXPCConnection * _connection;
+    NSObject<OS_dispatch_queue> * _queue;
+    <INIntentPreferencesAndVocabularyUpdateService> * _remoteObjectProxy;
 }
 
 + (void)initialize;
@@ -13,6 +15,7 @@
 - (id)_connection;
 - (id)_syncService;
 - (void)dealloc;
+- (id)init;
 - (id)settingsService;
 
 @end

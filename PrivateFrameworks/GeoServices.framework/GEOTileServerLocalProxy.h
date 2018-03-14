@@ -9,6 +9,7 @@
     NSMutableArray * _inProgress;
     NSLock * _inProgressLock;
     NSMapTable * _providers;
+    NSObject<OS_dispatch_queue> * _workQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;

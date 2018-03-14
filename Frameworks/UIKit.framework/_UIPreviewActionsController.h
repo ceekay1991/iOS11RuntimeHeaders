@@ -35,6 +35,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <_UIPreviewActionsControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frameForActionView;
 @property (nonatomic) bool hasBegun;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint { double x1; double x2; } lastPanningLocation;
@@ -55,6 +56,7 @@
 - (void).cxx_destruct;
 - (void)_actionsControllerCommonInit;
 - (void)_activateFeedbackIfNeeded;
+- (struct CGPoint { double x1; double x2; })_applyLayoutAdjustmentsForManagedViewWithPosition:(struct CGPoint { double x1; double x2; })arg1;
 - (struct CGPoint { double x1; double x2; })_centerForMenuDismissedForActionSheet:(id)arg1;
 - (struct CGPoint { double x1; double x2; })_centerForMenuPresentedForActionSheet:(id)arg1;
 - (struct CGPoint { double x1; double x2; })_centerForPlatterWithMenuViewPresentedForActionSheet:(id)arg1;
@@ -67,7 +69,7 @@
 - (void)_fireConfirmFeedbackIfNeededForInitialSelectionState:(bool)arg1 finalSelectionState:(bool)arg2;
 - (bool)_hasPreviewSwipeActions;
 - (bool)_hasSelectedSwipeAction;
-- (void)_hideChrome;
+- (void)_hideChromeAndSetAffordanceHidden:(bool)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_initialPlatterFrame;
 - (bool)_isSwipeActionVisible;
 - (id)_makeAndAddToViewHierarchyPreviewActionSheetForMenuItems:(id)arg1;
@@ -78,6 +80,7 @@
 - (bool)_previewActionsSheetIsVisible;
 - (double)_quickActionSelectionOffset;
 - (double)_quickActionsSelectionThresholdForPreviewMenuItemStyle:(long long)arg1;
+- (void)_setAffordanceAlpha:(double)arg1 withDuration:(double)arg2 hideOnCompletion:(bool)arg3;
 - (bool)_shouldDismiss;
 - (void)_updateAffordanceIfNecessary;
 - (void)_updateSwipeActionsState;
@@ -94,6 +97,8 @@
 - (id)delegate;
 - (void)dismissPreviewActionsWithCompletion:(id /* block */)arg1;
 - (void)endPanningAtLocation:(struct CGPoint { double x1; double x2; })arg1;
+- (void)flashScrollAffordance;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameForActionView;
 - (bool)hasBegun;
 - (id)initWithContainerView:(id)arg1 platterView:(id)arg2 presentedViewController:(id)arg3 delegate:(id)arg4;
 - (struct CGPoint { double x1; double x2; })initialCenterForLeadingSwipeActionView;

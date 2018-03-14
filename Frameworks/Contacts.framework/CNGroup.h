@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Contacts.framework/Contacts
  */
 
-@interface CNGroup : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
+@interface CNGroup : NSObject <ABSCNLegacyIdentifiable, NSCopying, NSMutableCopying, NSSecureCoding> {
     NSDate * _creationDate;
     int  _iOSLegacyIdentifier;
     NSString * _identifier;
@@ -12,11 +12,16 @@
 }
 
 @property (nonatomic, readonly, copy) NSDate *creationDate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) int iOSLegacyIdentifier;
+@property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (nonatomic, readonly, copy) NSDate *modificationDate;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly, copy) CNGroup *snapshot;
+@property (readonly) Class superclass;
 
 + (id)identifierProvider;
 + (id)localizedStringForKey:(id)arg1;

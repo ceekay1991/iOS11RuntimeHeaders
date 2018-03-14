@@ -20,6 +20,7 @@
     bool  _performingDeactivation;
     UIKBRenderConfig * _renderConfig;
     NSMutableDictionary * _renderedKeyViews;
+    UIKBRenderingContext * _renderingContext;
     bool  _shouldDrawRect;
     NSMutableDictionary * _subviewIndex;
 }
@@ -39,13 +40,16 @@
 @property (nonatomic, retain) UIKBKeyViewAnimator *keyViewAnimator;
 @property (nonatomic, retain) UIKBTree *keyplane;
 @property (nonatomic, retain) UIKBRenderConfig *renderConfig;
+@property (nonatomic, retain) UIKBRenderingContext *renderingContext;
 @property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (bool)_canDrawContent;
 - (void)_generateFactoryIfNeeded;
+- (void)_generateRenderingContextIfNeeded;
 - (bool)_shouldAllowKey:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -65,7 +69,6 @@
 - (void)deactivateAdaptiveKey:(id)arg1;
 - (void)deactivateKey:(id)arg1 previousState:(int)arg2;
 - (void)deactivateKeys;
-- (void)dealloc;
 - (id)defaultKeyplane;
 - (id)defaultKeyplaneCacheToken;
 - (void)dimKeys:(id)arg1;
@@ -88,6 +91,7 @@
 - (void)removeFromSuperview;
 - (void)removeKeyFromDelayedDeactivationSet:(id)arg1;
 - (id)renderConfig;
+- (id)renderingContext;
 - (void)scheduleDelayedDeactivation;
 - (void)setCacheToken:(id)arg1;
 - (void)setDefaultKeyplane:(id)arg1;
@@ -97,6 +101,7 @@
 - (void)setKeyViewAnimator:(id)arg1;
 - (void)setKeyplane:(id)arg1;
 - (void)setRenderConfig:(id)arg1;
+- (void)setRenderingContext:(id)arg1;
 - (void)setState:(int)arg1 forKey:(id)arg2;
 - (bool)shouldAnimateInKeyView:(id)arg1;
 - (bool)shouldAnimateOutKeyView:(id)arg1;

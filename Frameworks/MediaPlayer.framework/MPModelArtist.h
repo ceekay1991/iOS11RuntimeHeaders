@@ -20,6 +20,8 @@
 @property (nonatomic, copy) NSDate *libraryAddedDate;
 @property (nonatomic) long long songCount;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)__MPModelPropertyArtistAlbumCount__PROPERTY;
 + (id)__MPModelPropertyArtistArtwork__PROPERTY;
 + (id)__MPModelPropertyArtistEditorialArtwork__PROPERTY;
@@ -53,5 +55,11 @@
 - (void)setLibraryAddedDate:(id)arg1;
 - (void)setSongCount:(long long)arg1;
 - (long long)songCount;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)_radioStationMatchMetadata;
+- (bool)_shouldMatchArtist;
+- (id)mpc_radioContentReference;
 
 @end

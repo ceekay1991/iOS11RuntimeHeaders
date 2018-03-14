@@ -3,16 +3,16 @@
  */
 
 @interface SSUpdateAccountResponse : NSObject {
-    NSString * _passwordEquivalentToken;
+    unsigned long long  _credentialSource;
     SSAccount * _updatedAccount;
 }
 
-@property (nonatomic, readonly, copy) NSString *passwordEquivalentToken;
+@property (nonatomic, readonly) unsigned long long credentialSource;
 @property (nonatomic, readonly) SSAccount *updatedAccount;
 
 - (void).cxx_destruct;
-- (id)initWithUpdatedAccount:(id)arg1 passwordEquivalentToken:(id)arg2;
-- (id)passwordEquivalentToken;
+- (unsigned long long)credentialSource;
+- (id)initWithUpdatedAccount:(id)arg1 credentialSource:(unsigned long long)arg2;
 - (id)updatedAccount;
 
 @end

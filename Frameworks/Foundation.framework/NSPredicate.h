@@ -42,6 +42,17 @@
 
 - (id)minimalFormInContext:(id)arg1;
 
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
+- (id)hk_filterRepresentationForDataTypes:(id)arg1 filterClasses:(id)arg2;
+
+// Image: /System/Library/Frameworks/Photos.framework/Photos
+
++ (id)predicateForAssetsInAssetCollectionWithID:(id)arg1;
++ (id)predicateForCloudInvitationsInAssetCollection:(id)arg1;
++ (id)predicateForCommentsInAsset:(id)arg1;
++ (id)predicateForLikesInAsset:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/AddressBookLegacy.framework/AddressBookLegacy
 
 - (void)ab_addCallbackContextToArray:(id)arg1;
@@ -52,5 +63,41 @@
 - (id)ab_metadataForMatchingRow:(struct CPSqliteStatement { struct CPSqliteConnection {} *x1; struct sqlite3_stmt {} *x2; double x3; bool x4; }*)arg1 columnOffset:(unsigned long long)arg2;
 - (id)ab_newQueryWithSortOrder:(unsigned int)arg1 ranked:(bool)arg2 addressBook:(void*)arg3 propertyIndices:(const struct __CFDictionary {}**)arg4;
 - (void)ab_runPredicateWithSortOrder:(unsigned int)arg1 ranked:(bool)arg2 inAddressBook:(void*)arg3 withDelegate:(id)arg4;
+
+// Image: /System/Library/PrivateFrameworks/CloudDocs.framework/CloudDocs
+
+- (id)br_fileObjectIDWithWatchedChildren;
+- (id)br_urlWithWatchedChildren;
+- (id)br_watchedFileObjectID;
+- (id)br_watchedURL;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
++ (id)predicateWithCKDPQueryFilters:(id)arg1 translator:(id)arg2;
++ (id)predicateWithSortedCKDPQueryFilters:(id)arg1 translator:(id)arg2;
+
+- (id)CKDPQueryFiltersWithTranslator:(id)arg1 error:(id*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
+
+- (id)_sqlPredicateForSelect;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
++ (id)predicateWithFCCKPQueryFilters:(id)arg1 translator:(id)arg2;
++ (id)predicateWithSortedFCCKPQueryFilters:(id)arg1 translator:(id)arg2;
+
+- (id)FCCKPQueryFiltersWithTranslator:(id)arg1 error:(id*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/SpotlightServices.framework/SpotlightServices
+
++ (id)_predicateForItemsWithAttribute:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/VideoProcessing.framework/VideoProcessing
+
++ (id)vcp_livePhotosPredicate:(bool)arg1;
++ (id)vcp_moviesPredicate:(bool)arg1;
++ (id)vcp_photosPredicate:(bool)arg1;
++ (id)vcp_stillPhotosPredicate:(bool)arg1;
 
 @end

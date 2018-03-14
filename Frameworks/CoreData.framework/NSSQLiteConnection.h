@@ -4,7 +4,7 @@
 
 @interface NSSQLiteConnection : NSObject {
     NSMutableArray * _activeGenerations;
-    NSMutableSet * _batchChangedObjectsForHistoryTracking;
+    NSMutableArray * _batchChangedObjectsForHistoryTracking;
     NSSQLiteStatement * _beginStatement;
     struct __CFDictionary { } * _cachedEntityConstrainedValuesUpdateStatements;
     struct __CFDictionary { } * _cachedEntityUpdateStatements;
@@ -93,6 +93,7 @@
 - (void)_dropOldHistoryTrackingTables;
 - (void)_dropOldHistoryTrackingTablesV0;
 - (void)_dropOldHistoryTrackingTablesV1;
+- (void)_dropTableForCloudKitMetadataEntity:(id)arg1;
 - (void)_endFetch;
 - (void)_endPowerAssertionWithAssert:(unsigned long long)arg1 andApp:(id)arg2;
 - (void)_ensureDatabaseOpen;
@@ -109,10 +110,11 @@
 - (bool)_hasOldHistoryTrackingTables;
 - (bool)_hasOldHistoryTrackingTablesV0;
 - (bool)_hasOldHistoryTrackingTablesV1;
+- (bool)_hasPersistentHistoryTables;
 - (bool)_hasTableWithName:(id)arg1;
+- (long long)_insertTransactionForRequestContext:(id)arg1;
 - (bool)_isQueryGenerationTrackingConnection;
 - (id)_lastInsertRowID;
-- (long long)_newTransactionForRequestContext:(id)arg1;
 - (id)_newValueForColumn:(id)arg1 atIndex:(unsigned int)arg2 inStatement:(struct sqlite3_stmt { }*)arg3;
 - (void)_performPostSaveTasks:(bool)arg1 andForceFullVacuum:(bool)arg2;
 - (void)_registerExtraFunctions;
@@ -124,6 +126,7 @@
 - (id)adapter;
 - (void)addPeerRange:(id)arg1;
 - (void)addPeerRangeForPeerID:(id)arg1 entityName:(id)arg2 rangeStart:(id)arg3 rangeEnd:(id)arg4 peerRangeStart:(id)arg5 peerRangeEnd:(id)arg6;
+- (bool)addTombstoneColumnsForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)addVMCachedStatement:(id)arg1;
 - (void)adoptQueryGenerationWithIdentifier:(id)arg1;
 - (id)allPeerRanges;
@@ -139,6 +142,7 @@
 - (bool)canConnect;
 - (void)clearBatchChangedObjectsForHistoryTracking;
 - (void)clearObjectIDsUpdatedByTriggers;
+- (void)clearPrefetchRequestCache;
 - (id)columnsToFetch;
 - (void)commitTransaction;
 - (void)configureUbiquityMetadataTable;
@@ -196,12 +200,12 @@
 - (id)initAsQueryGenerationTrackingConnectionForSQLCore:(id)arg1;
 - (id)initForSQLCore:(id)arg1;
 - (void)insertAncillaryModelObject:(id)arg1 withEntity:(id)arg2;
-- (void)insertBatchDeleteChange:(id)arg1 transactionID:(long long)arg2;
-- (void)insertChange:(id)arg1 type:(long long)arg2 transactionID:(long long)arg3 relationshipChanges:(id)arg4 context:(id)arg5;
+- (void)insertBatchDeleteChanges:(id)arg1 transactionID:(long long)arg2;
+- (void)insertChanges:(id)arg1 type:(long long)arg2 transactionID:(long long)arg3 context:(id)arg4;
 - (long long)insertImportOperation:(id)arg1;
 - (void)insertImportPendingRelationship:(id)arg1 withOperationPrimaryKey:(long long)arg2;
 - (void)insertRow:(id)arg1;
-- (void)insertUpdate:(id)arg1 transactionID:(long long)arg2 updatedAttributes:(id)arg3;
+- (void)insertUpdates:(id)arg1 transactionID:(long long)arg2 updatedAttributes:(id)arg3;
 - (bool)isFetchInProgress;
 - (bool)isLocalFS;
 - (bool)isOpen;
@@ -211,6 +215,7 @@
 - (id)newFetchUUIDSForSubentitiesRootedAt:(id)arg1;
 - (id)newFetchedArray;
 - (id)newFetchedChangesArray;
+- (int)numberOfTombstones;
 - (void)performAndWait:(id /* block */)arg1;
 - (bool)performIntegrityCheck;
 - (id)prefetchRequestCache;
@@ -218,6 +223,7 @@
 - (void)prepareInsertStatementForAncillaryEntity:(id)arg1;
 - (void)prepareSQLStatement:(id)arg1;
 - (void)processDeleteRequest:(id)arg1;
+- (void)processRelationshipUpdatesForRequestContext:(id)arg1;
 - (void)processSaveRequest:(id)arg1;
 - (void)processUpdateRequest:(id)arg1 withOIDs:(id)arg2 forAttributes:(id)arg3;
 - (id)queue;

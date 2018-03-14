@@ -14,6 +14,7 @@
 - (GEOAssociatedApp *)_associatedApp;
 - (GEOMapItemPlaceAttribution *)_attribution;
 - (NSURL *)_bestBrandIconURLForSize:(struct CGSize { double x1; double x2; })arg1 allowSmaller:(bool)arg2;
+- (NSArray *)_browseCategories;
 - (GEOPDBusinessClaim *)_businessClaim;
 - (NSString *)_businessURL;
 - (NSArray *)_childPlaces;
@@ -47,7 +48,6 @@
 - (bool)_hasTakesReservationsAmenity;
 - (bool)_hasTelephone;
 - (bool)_hasTransit;
-- (bool)_hasTravelTimeForTransportType:(int)arg1;
 - (bool)_hasUserRatingScore;
 - (bool)_hasVenueFeatureType;
 - (bool)_hasWifiFingerprintConfidence;
@@ -56,6 +56,7 @@
 - (GEOMapItemIdentifier *)_identifier;
 - (bool)_isInLinkedPlaceRelationship;
 - (bool)_isStandaloneBrand;
+- (bool)_isTransitDisplayFeature;
 - (NSArray *)_localizedCategoryNamesForType:(unsigned int)arg1;
 - (<GEOMapItem> *)_mapItemByStrippingOptionalData;
 - (GEOMessageLink *)_messageLink;
@@ -65,11 +66,14 @@
 - (unsigned long long)_openingHoursOptions;
 - (NSArray *)_operatingHours;
 - (bool)_optsOutOfTelephoneAds;
+- (int)_parsecSectionType;
 - (NSArray *)_photos;
 - (GEOMapItemPhotosAttribution *)_photosAttribution;
 - (GEOPlace *)_place;
 - (GEOPDPlace *)_placeData;
 - (NSData *)_placeDataAsData;
+- (int)_placeDisplayStyle;
+- (int)_placeDisplayType;
 - (int)_placeType;
 - (NSString *)_poiPinpointURLString;
 - (NSString *)_poiSurveyURLString;
@@ -77,7 +81,6 @@
 - (unsigned int)_priceRange;
 - (NSURL *)_providerURL;
 - (NSArray *)_quickLinks;
-- (int)_recommendedTransportType;
 - (bool)_responseStatusIsIncomplete;
 - (int)_resultProviderID;
 - (unsigned int)_resultSnippetDistanceDisplayThreshold;
@@ -93,10 +96,7 @@
 - (NSArray *)_tips;
 - (<GEOTransitAttribution> *)_transitAttribution;
 - (<GEOMapItemTransitInfo> *)_transitInfo;
-- (unsigned int)_travelDistanceForTransportType:(int)arg1;
-- (unsigned int)_travelTimeForTransportType:(int)arg1;
 - (NSString *)_vendorID;
-- (int)_venueCategoryBrowseType;
 - (int)_venueFeatureType;
 - (<GEOMapItemVenueInfo> *)_venueInfo;
 - (NSURL *)_webURL;
@@ -132,9 +132,14 @@
 - (bool)isValid;
 - (NSString *)name;
 - (int)referenceFrame;
+- (NSString *)shortAddress;
 - (NSArray *)spatialMappedCategories;
 - (NSString *)spokenNameForLocale:(NSString *)arg1;
 - (NSTimeZone *)timezone;
 - (NSString *)weatherDisplayName;
+
+@optional
+
+- (<GEOMapItem> *)_mapItemBySettingIsTransitDisplayFeature:(bool)arg1;
 
 @end

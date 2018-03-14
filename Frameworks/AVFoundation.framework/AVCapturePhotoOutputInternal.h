@@ -19,6 +19,7 @@
     bool  dualCameraFusionSupported;
     bool  filterRenderingEnabled;
     int  flashSceneObserverCount;
+    struct ct_green_tea_logger_s { } * greenTeaLogger;
     bool  highResolutionCaptureEnabled;
     bool  imageOptimizationForOfflineVideoStabilizationSupported;
     bool  isFlashScene;

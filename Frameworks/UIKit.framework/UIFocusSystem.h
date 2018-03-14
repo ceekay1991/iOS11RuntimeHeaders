@@ -72,6 +72,7 @@
 - (bool)_isEnvironmentEligibleForFocusUpdate:(id)arg1 shouldResetFocus:(bool*)arg2 debugReport:(id)arg3;
 - (id)_parentFocusEnvironment;
 - (void)_performWithoutFocusUpdates:(id /* block */)arg1;
+- (bool)_postsFocusUpdateNotifications;
 - (id)_preferredFirstResponder;
 - (id)_preferredFirstResponderFocusSystem;
 - (id)_preferredFirstResponderFocusSystemForFocusedItem:(id)arg1;

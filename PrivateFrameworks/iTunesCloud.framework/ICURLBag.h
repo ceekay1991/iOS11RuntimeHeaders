@@ -31,6 +31,7 @@
 - (id)convertedActionsCache;
 - (bool)hasValueForBagKey:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (long long)int64ValueForBagKey:(id)arg1;
 - (id)mescalConfigurationForRequestURL:(id)arg1;
 - (id)mescalConfigurationForResponseURL:(id)arg1;
 - (id)queue;

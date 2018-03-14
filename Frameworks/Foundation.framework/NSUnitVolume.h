@@ -4,6 +4,8 @@
 
 @interface NSUnitVolume : NSDimension <NSSecureCoding>
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)acreFeet;
 + (id)baseUnit;
@@ -37,5 +39,10 @@
 + (id)quarts;
 + (id)tablespoons;
 + (id)teaspoons;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
+- (id)hk_equivalentBaseUnit;
+- (id)hk_equivalentUnitWithConstant:(double)arg1 coefficient:(double)arg2;
 
 @end

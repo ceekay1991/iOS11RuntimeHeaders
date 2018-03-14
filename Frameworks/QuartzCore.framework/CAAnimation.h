@@ -120,4 +120,42 @@
 - (void)setUsesSceneTimeBase:(bool)arg1;
 - (bool)usesSceneTimeBase;
 
+// Image: /System/Library/PrivateFrameworks/AuthKitUI.framework/AuthKitUI
+
++ (id)ak_jiggleAnimation;
+
+// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+
+- (id)_lp_copyWithBeginTime:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
++ (id)pkui_shakeAnimation;
++ (id)pkui_shakeAnimationWithInitalOffest:(double)arg1 springStiffness:(double)arg2 springDamping:(double)arg3;
++ (id)pkui_smallShakeAnimation;
+
+- (id /* block */)pkui_completionHandler;
+- (id /* block */)pkui_didStartHandler;
+- (void)pkui_setCompletionHandler:(id /* block */)arg1;
+- (void)pkui_setDidStartHandler:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
++ (id)TSD_supportedKeyPaths;
+
+- (id)TSD_animationForKeyPath:(id)arg1 atTime:(double)arg2;
+- (double)TSD_animationPercentByApplyingTimingFunctionForKeyPath:(id)arg1 atTime:(double)arg2;
+- (bool)TSD_containsAnimationForKeyPath:(id)arg1;
+- (id)TSD_valueAtTime:(double)arg1 initialValue:(id)arg2;
+- (id)TSD_valueForKeyPath:(id)arg1 atTime:(double)arg2;
+- (id)TSD_valueForKeyPath:(id)arg1 atTime:(double)arg2 animationCache:(id)arg3;
+- (void)p_getValue:(id*)arg1 animationPercent:(double*)arg2 atTime:(double)arg3 initialValue:(id)arg4;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (void)TSD_enableAdjustmentForLagacyCacheBoundaries;
+
+- (id)TSDCAAnimationContextCache;
+- (id)TSD_valueForKeyPath:(id)arg1 atTime:(double)arg2;
+
 @end

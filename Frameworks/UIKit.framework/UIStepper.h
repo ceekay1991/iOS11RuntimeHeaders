@@ -34,6 +34,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)__scalarStatisticsForUserValueChangedEvent;
 - (void)_commonStepperInit;
 - (bool)_contentHuggingDefault_isUsuallyFixedHeight;
@@ -54,15 +55,17 @@
 - (void)_updateHighlightingAtPoint:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (void)_updateImages;
 
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)autorepeat;
 - (id)backgroundImageForState:(unsigned long long)arg1;
 - (bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (id)debugHierarchyPropertyDescriptions;
 - (id)decrementImageForState:(unsigned long long)arg1;
 - (id)dividerImageForLeftSegmentState:(unsigned long long)arg1 rightSegmentState:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;

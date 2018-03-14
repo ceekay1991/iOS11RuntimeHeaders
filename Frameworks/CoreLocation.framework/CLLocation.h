@@ -16,6 +16,7 @@
 @property (readonly, copy) NSString *description;
 @property (getter=_navigation_detailedMatchInfo, nonatomic, readonly) GEONavigationMatchInfo *detailedMatchInfo;
 @property (nonatomic, readonly, copy) CLFloor *floor;
+@property (getter=_navigation_gtLog, setter=_navigation_setGtLog:, nonatomic) bool gtLog;
 @property (getter=_navigation_hasMatch, nonatomic, readonly) bool hasMatch;
 @property (getter=_navigation_hasValidCourse, nonatomic, readonly) bool hasValidCourse;
 @property (readonly) unsigned long long hash;
@@ -96,12 +97,32 @@
 
 - (int)_mapkit_source;
 
+// Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
+
+- (unsigned int)atx_locationHash;
+
+// Image: /System/Library/PrivateFrameworks/CameraKit.framework/CameraKit
+
+- (id)cam_videoMetadataRepresentation;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
+- (id)cam_videoMetadataRepresentation;
+
+// Image: /System/Library/PrivateFrameworks/CloudPhotoLibrary.framework/CloudPhotoLibrary
+
+- (unsigned long long)cplSpecialHash;
+- (bool)cplSpecialIsEqual:(id)arg1;
+- (id)initWithCPLArchiver:(id)arg1;
+- (id)plistArchiveWithCPLArchiver:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
 + (id)_navigation_stringWithType:(int)arg1;
 
 - (double)_navigation_courseAccuracy;
 - (id)_navigation_detailedMatchInfo;
+- (bool)_navigation_gtLog;
 - (bool)_navigation_hasMatch;
 - (bool)_navigation_hasValidCourse;
 - (bool)_navigation_isEqualToLocationCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
@@ -109,8 +130,26 @@
 - (id)_navigation_locationDescription;
 - (struct CLLocationCoordinate2D { double x1; double x2; })_navigation_rawShiftedCoordinate;
 - (id)_navigation_routeMatch;
+- (void)_navigation_setGtLog:(bool)arg1;
 - (double)_navigation_speedAccuracy;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 rawCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg2 course:(double)arg3 rawCourse:(double)arg4 courseAccuracy:(double)arg5 speed:(double)arg6 speedAccuracy:(double)arg7 altitude:(double)arg8 timestamp:(double)arg9 horizontalAccuracy:(double)arg10 verticalAccuracy:(double)arg11 type:(int)arg12 referenceFrame:(int)arg13;
 - (id)initWithGeoLocation:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+
+- (id)timeZone;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (int)pl_locationHash;
+- (id)pl_newSurroundingLocationsHashes;
+
+// Image: /System/Library/PrivateFrameworks/SearchAds.framework/SearchAds
+
+- (id)snappedToGrid:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/WeatherFoundation.framework/WeatherFoundation
+
+- (bool)wf_isEquivalentToLocation:(id)arg1 tolerance:(double)arg2;
 
 @end

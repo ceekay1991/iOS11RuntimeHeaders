@@ -115,6 +115,7 @@
 - (unsigned int)outputBlendMode;
 - (id)processedImageFromShapeImage:(id)arg1;
 - (id)processedImageFromShapeImage:(id)arg1 withScale:(double)arg2;
+- (id)processedImageFromShapeImage:(id)arg1 withScale:(double)arg2 invertShadows:(bool)arg3;
 - (id)processedImageFromShapePath:(struct CGPath { }*)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)scaleBrightnessOfEffectColorsByAmount:(double)arg1 onlyTintableColors:(bool)arg2;
 - (void)scaleEffectParametersBy:(double)arg1;

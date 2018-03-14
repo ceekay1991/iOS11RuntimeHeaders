@@ -33,7 +33,6 @@
 - (unsigned long long)rowForCandidateAtIndex:(unsigned long long)arg1;
 - (TIKeyboardSecureCandidateRenderTraits *)secureCandidateRenderTraits;
 - (void)setCandidates:(TIKeyboardCandidateResultSet *)arg1 type:(int)arg2 inlineText:(NSString *)arg3 inlineRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 maxX:(double)arg5 layout:(bool)arg6;
-- (void)setCompletionContext:(NSString *)arg1;
 - (void)setInlineText:(NSString *)arg1;
 - (void)showCaret:(bool)arg1 gradually:(bool)arg2;
 - (unsigned long long)viewOffsetForCandidateAtIndex:(unsigned long long)arg1;

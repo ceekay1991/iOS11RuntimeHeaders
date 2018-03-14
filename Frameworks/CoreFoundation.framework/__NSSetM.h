@@ -3,12 +3,9 @@
  */
 
 @interface __NSSetM : NSMutableSet {
-    struct __cow_state_t { struct os_unfair_lock_s { unsigned int x_1_1_1; } x1; unsigned long long x2; unsigned long long x3; struct { int (*x_4_1_1)(); int (*x_4_1_2)(); int (*x_4_1_3)(); int (*x_4_1_4)(); } x4; } * cow;
-    unsigned long long  mutations;
-    /* Warning: unhandled struct encoding: '{?="used"b58"size"Q"objs"^@}' */ struct { 
-        unsigned int used : 58; 
-        unsigned long long size; 
-        id *objs; 
+    /* Warning: Unrecognized filer type: '^' using 'void*' */ void* cow;
+    /* Warning: unhandled struct encoding: '{?="objs"^@"state"(?="mutations"Q""{?="muts"I"used"b26"szidx"b6})}' */ struct { 
+        state **objs; 
     }  storage;
 }
 

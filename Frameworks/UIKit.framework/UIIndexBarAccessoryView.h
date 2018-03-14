@@ -14,11 +14,11 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (bool)_selectEntry:(id)arg1 atIndex:(long long)arg2;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)displayEntryNearestToContentOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (long long)edge;
 - (bool)overlay;

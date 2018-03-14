@@ -70,7 +70,6 @@
     NSMutableArray * _PayloadCurrencyAmounts;
     NSMutableArray * _PayloadDataStringLists;
     NSMutableArray * _PayloadDataStrings;
-    NSMutableArray * _PayloadDataTimes;
     struct { 
         int *list; 
         unsigned long long count; 
@@ -147,11 +146,6 @@
     NSMutableArray * _PayloadHomeEntitys;
     NSMutableArray * _PayloadIntegerLists;
     NSMutableArray * _PayloadIntegerValues;
-    struct { 
-        int *list; 
-        unsigned long long count; 
-        unsigned long long size; 
-    }  _PayloadItemTypes;
     NSMutableArray * _PayloadLocationLists;
     struct { 
         int *list; 
@@ -177,7 +171,11 @@
         unsigned long long size; 
     }  _PayloadMessageTypes;
     NSMutableArray * _PayloadNoteContents;
-    NSMutableArray * _PayloadNotebookLocations;
+    struct { 
+        int *list; 
+        unsigned long long count; 
+        unsigned long long size; 
+    }  _PayloadNotebookItemTypes;
     NSMutableArray * _PayloadNotes;
     NSMutableArray * _PayloadPaymentAmountValues;
     NSMutableArray * _PayloadPaymentMethodLists;
@@ -300,7 +298,6 @@
 @property (nonatomic, retain) NSMutableArray *PayloadCurrencyAmounts;
 @property (nonatomic, retain) NSMutableArray *PayloadDataStringLists;
 @property (nonatomic, retain) NSMutableArray *PayloadDataStrings;
-@property (nonatomic, retain) NSMutableArray *PayloadDataTimes;
 @property (nonatomic, readonly) int*PayloadDateSearchTypes;
 @property (nonatomic, readonly) unsigned long long PayloadDateSearchTypesCount;
 @property (nonatomic, retain) NSMutableArray *PayloadDateTimeRangeLists;
@@ -341,8 +338,6 @@
 @property (nonatomic, retain) NSMutableArray *PayloadHomeEntitys;
 @property (nonatomic, retain) NSMutableArray *PayloadIntegerLists;
 @property (nonatomic, retain) NSMutableArray *PayloadIntegerValues;
-@property (nonatomic, readonly) int*PayloadItemTypes;
-@property (nonatomic, readonly) unsigned long long PayloadItemTypesCount;
 @property (nonatomic, retain) NSMutableArray *PayloadLocationLists;
 @property (nonatomic, readonly) int*PayloadLocationSearchTypes;
 @property (nonatomic, readonly) unsigned long long PayloadLocationSearchTypesCount;
@@ -356,7 +351,8 @@
 @property (nonatomic, readonly) int*PayloadMessageTypes;
 @property (nonatomic, readonly) unsigned long long PayloadMessageTypesCount;
 @property (nonatomic, retain) NSMutableArray *PayloadNoteContents;
-@property (nonatomic, retain) NSMutableArray *PayloadNotebookLocations;
+@property (nonatomic, readonly) int*PayloadNotebookItemTypes;
+@property (nonatomic, readonly) unsigned long long PayloadNotebookItemTypesCount;
 @property (nonatomic, retain) NSMutableArray *PayloadNotes;
 @property (nonatomic, retain) NSMutableArray *PayloadPaymentAmountValues;
 @property (nonatomic, retain) NSMutableArray *PayloadPaymentMethodLists;
@@ -410,7 +406,6 @@
 + (Class)PayloadCurrencyAmountType;
 + (Class)PayloadDataStringListType;
 + (Class)PayloadDataStringType;
-+ (Class)PayloadDataTimeType;
 + (Class)PayloadDateTimeRangeListType;
 + (Class)PayloadDateTimeRangeValueType;
 + (Class)PayloadDateTimeValueType;
@@ -433,7 +428,6 @@
 + (Class)PayloadLongValueType;
 + (Class)PayloadNoteContentType;
 + (Class)PayloadNoteType;
-+ (Class)PayloadNotebookLocationType;
 + (Class)PayloadPaymentAmountValueType;
 + (Class)PayloadPaymentMethodListType;
 + (Class)PayloadPaymentMethodValueType;
@@ -519,9 +513,6 @@
 - (unsigned long long)PayloadDataStringListsCount;
 - (id)PayloadDataStrings;
 - (unsigned long long)PayloadDataStringsCount;
-- (id)PayloadDataTimeAtIndex:(unsigned long long)arg1;
-- (id)PayloadDataTimes;
-- (unsigned long long)PayloadDataTimesCount;
 - (int)PayloadDateSearchTypeAtIndex:(unsigned long long)arg1;
 - (int*)PayloadDateSearchTypes;
 - (id)PayloadDateSearchTypesAsString:(int)arg1;
@@ -618,10 +609,6 @@
 - (id)PayloadIntegerValueAtIndex:(unsigned long long)arg1;
 - (id)PayloadIntegerValues;
 - (unsigned long long)PayloadIntegerValuesCount;
-- (int)PayloadItemTypeAtIndex:(unsigned long long)arg1;
-- (int*)PayloadItemTypes;
-- (id)PayloadItemTypesAsString:(int)arg1;
-- (unsigned long long)PayloadItemTypesCount;
 - (id)PayloadLocationAtIndex:(unsigned long long)arg1;
 - (id)PayloadLocationListAtIndex:(unsigned long long)arg1;
 - (id)PayloadLocationLists;
@@ -654,9 +641,10 @@
 - (id)PayloadNoteContentAtIndex:(unsigned long long)arg1;
 - (id)PayloadNoteContents;
 - (unsigned long long)PayloadNoteContentsCount;
-- (id)PayloadNotebookLocationAtIndex:(unsigned long long)arg1;
-- (id)PayloadNotebookLocations;
-- (unsigned long long)PayloadNotebookLocationsCount;
+- (int)PayloadNotebookItemTypeAtIndex:(unsigned long long)arg1;
+- (int*)PayloadNotebookItemTypes;
+- (id)PayloadNotebookItemTypesAsString:(int)arg1;
+- (unsigned long long)PayloadNotebookItemTypesCount;
 - (id)PayloadNotes;
 - (unsigned long long)PayloadNotesCount;
 - (id)PayloadPaymentAmountValueAtIndex:(unsigned long long)arg1;
@@ -774,11 +762,11 @@
 - (int)StringAsPayloadHomeAttributeValueTypes:(id)arg1;
 - (int)StringAsPayloadHomeDeviceTypes:(id)arg1;
 - (int)StringAsPayloadHomeEntityTypes:(id)arg1;
-- (int)StringAsPayloadItemTypes:(id)arg1;
 - (int)StringAsPayloadLocationSearchTypes:(id)arg1;
 - (int)StringAsPayloadMessageAttributes:(id)arg1;
 - (int)StringAsPayloadMessageEffects:(id)arg1;
 - (int)StringAsPayloadMessageTypes:(id)arg1;
+- (int)StringAsPayloadNotebookItemTypes:(id)arg1;
 - (int)StringAsPayloadPaymentStatus:(id)arg1;
 - (int)StringAsPayloadPhotoAttributes:(id)arg1;
 - (int)StringAsPayloadPreferredCallProviders:(id)arg1;
@@ -809,7 +797,6 @@
 - (void)addPayloadCurrencyAmount:(id)arg1;
 - (void)addPayloadDataString:(id)arg1;
 - (void)addPayloadDataStringList:(id)arg1;
-- (void)addPayloadDataTime:(id)arg1;
 - (void)addPayloadDateSearchType:(int)arg1;
 - (void)addPayloadDateTimeRangeList:(id)arg1;
 - (void)addPayloadDateTimeRangeValue:(id)arg1;
@@ -838,7 +825,6 @@
 - (void)addPayloadHomeEntityType:(int)arg1;
 - (void)addPayloadIntegerList:(id)arg1;
 - (void)addPayloadIntegerValue:(id)arg1;
-- (void)addPayloadItemType:(int)arg1;
 - (void)addPayloadLocation:(id)arg1;
 - (void)addPayloadLocationList:(id)arg1;
 - (void)addPayloadLocationSearchType:(int)arg1;
@@ -849,7 +835,7 @@
 - (void)addPayloadMessageType:(int)arg1;
 - (void)addPayloadNote:(id)arg1;
 - (void)addPayloadNoteContent:(id)arg1;
-- (void)addPayloadNotebookLocation:(id)arg1;
+- (void)addPayloadNotebookItemType:(int)arg1;
 - (void)addPayloadPaymentAmountValue:(id)arg1;
 - (void)addPayloadPaymentMethodList:(id)arg1;
 - (void)addPayloadPaymentMethodValue:(id)arg1;
@@ -896,7 +882,6 @@
 - (void)clearPayloadCurrencyAmounts;
 - (void)clearPayloadDataStringLists;
 - (void)clearPayloadDataStrings;
-- (void)clearPayloadDataTimes;
 - (void)clearPayloadDateSearchTypes;
 - (void)clearPayloadDateTimeRangeLists;
 - (void)clearPayloadDateTimeRangeValues;
@@ -925,7 +910,6 @@
 - (void)clearPayloadHomeEntitys;
 - (void)clearPayloadIntegerLists;
 - (void)clearPayloadIntegerValues;
-- (void)clearPayloadItemTypes;
 - (void)clearPayloadLocationLists;
 - (void)clearPayloadLocationSearchTypes;
 - (void)clearPayloadLocations;
@@ -935,7 +919,7 @@
 - (void)clearPayloadMessageEffects;
 - (void)clearPayloadMessageTypes;
 - (void)clearPayloadNoteContents;
-- (void)clearPayloadNotebookLocations;
+- (void)clearPayloadNotebookItemTypes;
 - (void)clearPayloadNotes;
 - (void)clearPayloadPaymentAmountValues;
 - (void)clearPayloadPaymentMethodLists;
@@ -993,7 +977,6 @@
 - (void)setPayloadCurrencyAmounts:(id)arg1;
 - (void)setPayloadDataStringLists:(id)arg1;
 - (void)setPayloadDataStrings:(id)arg1;
-- (void)setPayloadDataTimes:(id)arg1;
 - (void)setPayloadDateSearchTypes:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadDateTimeRangeLists:(id)arg1;
 - (void)setPayloadDateTimeRangeValues:(id)arg1;
@@ -1022,7 +1005,6 @@
 - (void)setPayloadHomeEntitys:(id)arg1;
 - (void)setPayloadIntegerLists:(id)arg1;
 - (void)setPayloadIntegerValues:(id)arg1;
-- (void)setPayloadItemTypes:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadLocationLists:(id)arg1;
 - (void)setPayloadLocationSearchTypes:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadLocations:(id)arg1;
@@ -1032,7 +1014,7 @@
 - (void)setPayloadMessageEffects:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadMessageTypes:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadNoteContents:(id)arg1;
-- (void)setPayloadNotebookLocations:(id)arg1;
+- (void)setPayloadNotebookItemTypes:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadNotes:(id)arg1;
 - (void)setPayloadPaymentAmountValues:(id)arg1;
 - (void)setPayloadPaymentMethodLists:(id)arg1;

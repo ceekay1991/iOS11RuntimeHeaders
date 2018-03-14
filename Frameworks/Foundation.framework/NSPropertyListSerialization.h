@@ -19,8 +19,30 @@
 
 - (id)init;
 
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+
++ (id)_gkTypesafePropertyListWithData:(id)arg1 withClass:(Class)arg2;
+
 // Image: /System/Library/PrivateFrameworks/ManagedConfiguration.framework/ManagedConfiguration
 
 + (id)MCSafePropertyListWithData:(id)arg1 options:(unsigned long long)arg2 format:(unsigned long long*)arg3 error:(out id*)arg4;
+
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
++ (id)tsu_localizedPropertyListWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
++ (void)tsu_processLocalizedPropertyList:(id)arg1;
++ (id)tsu_propertyListWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
+
+// Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
+
++ (id)tsu_localizedPropertyListWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
++ (void)tsu_processLocalizedPropertyList:(id)arg1;
++ (id)tsu_propertyListWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (id)tsu_localizedPropertyListWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
++ (void)tsu_processLocalizedPropertyList:(id)arg1;
++ (id)tsu_propertyListWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
 
 @end

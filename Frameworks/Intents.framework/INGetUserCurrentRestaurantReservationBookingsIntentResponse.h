@@ -18,7 +18,6 @@
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (long long)code;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;

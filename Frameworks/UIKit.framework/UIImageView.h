@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIImageView : UIView <DebugHierarchyObject, UIAccessibilityContentSizeCategoryImageAdjusting> {
+@interface UIImageView : UIView <DebugHierarchyObject, NUCrossFadeViewAnimatable, UIAccessibilityContentSizeCategoryImageAdjusting> {
     bool  __animatesContents;
     bool  _adjustsImageWhenAncestorFocused;
     struct UIEdgeInsets { 
@@ -15,6 +15,7 @@
     UILayoutGuide * _focusedFrameGuide;
     long long  _lastResolvedLayoutDirectionTrait;
     UITraitCollection * _lastResolvedTraitCollection;
+    bool  _masksFocusEffectToContents;
     id  _storage;
     bool  _templateSettingsAreInvalid;
 }
@@ -43,6 +44,7 @@
 @property (nonatomic, copy) NSArray *highlightedAnimationImages;
 @property (nonatomic, retain) UIImage *highlightedImage;
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic) bool masksFocusEffectToContents;
 @property (nonatomic, readonly) UIView *overlayContentView;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIColor *tintColor;
@@ -53,6 +55,7 @@
 + (bool)_canReuseIOSurface:(struct __IOSurface { }*)arg1 forRenderingCIImageWithIOSurfaceProperties:(id)arg2;
 + (id)_surfacePropertiesForRenderingCIImageWithSize:(struct CGSize { double x1; double x2; })arg1 pixelFormat:(unsigned int)arg2 bytesPerElement:(unsigned long long)arg3;
 
+- (void).cxx_destruct;
 - (id)_activeImage;
 - (id)_adaptiveImageForImage:(id)arg1 assignedImage:(id)arg2 currentImage:(id)arg3 hasAdapted:(bool*)arg4;
 - (void)_ancestorWillUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
@@ -63,6 +66,7 @@
 - (bool)_canDrawContent;
 - (id)_checkHighlightedImageForAdaptation:(id)arg1 hadAdapted:(bool*)arg2;
 - (id)_checkImageForAdaptation:(id)arg1 hasAdapted:(bool*)arg2;
+- (void)_cleanUpForStopAnimating;
 - (void)_clearPretiledImageCacheForImage:(id)arg1;
 - (void)_configureForLayeredImage:(id)arg1;
 - (id)_contentsMultiplyColorForEffectiveTintColor:(id)arg1;
@@ -114,19 +118,21 @@
 - (void)_updatePretiledImageCacheForImage:(id)arg1;
 - (void)_updateState;
 - (void)_updateTemplateProperties;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)adjustsImageSizeForAccessibilityContentSizeCategory;
 - (bool)adjustsImageWhenAncestorFocused;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
 - (double)animationDuration;
 - (id)animationImages;
 - (long long)animationRepeatCount;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (unsigned long long)defaultAccessibilityTraits;
 - (int)drawMode;
@@ -147,6 +153,7 @@
 - (bool)isElementAccessibilityExposedToInterfaceBuilder;
 - (bool)isHighlighted;
 - (void)layoutSubviews;
+- (bool)masksFocusEffectToContents;
 - (id)overlayContentView;
 - (void)setAdjustsImageSizeForAccessibilityContentSizeCategory:(bool)arg1;
 - (void)setAdjustsImageWhenAncestorFocused:(bool)arg1;
@@ -164,6 +171,7 @@
 - (void)setHighlightedAnimationImages:(id)arg1;
 - (void)setHighlightedImage:(id)arg1;
 - (void)setImage:(id)arg1;
+- (void)setMasksFocusEffectToContents:(bool)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
@@ -172,5 +180,37 @@
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (bool)useBlockyMagnificationInClassic;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (id)pu_extractPlayOverlayBackgroundImageFromCenter:(struct CGPoint { double x1; double x2; })arg1 asynchronously:(bool)arg2 handler:(id /* block */)arg3;
+
+// Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
+
+- (bool)supportsAsynchronousMeasurement;
+
+// Image: /System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit
+
+- (void)mt_applyVibrantStyling:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NanoMediaBridgeUI.framework/NanoMediaBridgeUI
+
+- (id)_imageFromImage:(id)arg1 scaledToSize:(struct CGSize { double x1; double x2; })arg2;
+- (void)setArtworkCatalog:(id)arg1 withPlaceholderImage:(id)arg2 withDesiredSize:(struct CGSize { double x1; double x2; })arg3;
+
+// Image: /System/Library/PrivateFrameworks/NewsUI.framework/NewsUI
+
+- (void)nu_crossFadeViewClearVisibleState;
+- (void)nu_crossFadeViewSetValue:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
+- (void)ic_enableLetterpressIfSupported;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })alignmentRect;
+- (struct CGSize { double x1; double x2; })alignmentSize;
+- (void)setAlignmentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 
 @end

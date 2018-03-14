@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPInlineVideoController : NSObject <MPSwipableViewDelegate, MPTransportControlsTarget, MPVideoControllerProtocol, MPVideoOverlayDelegate, MPVolumeControllerDelegate, UIAlertViewDelegate, UIPopoverControllerDelegate> {
+@interface MPInlineVideoController : NSObject <MPSwipableViewDelegate, MPTransportControlsTarget, MPVideoControllerProtocol, MPVideoOverlayDelegate, MPVolumeControllerDelegate, UIAlertViewDelegate> {
     bool  _TVOutEnabled;
     bool  _TVOutEnabledMaster;
     unsigned long long  _activeOverlayUserEvents;
@@ -53,7 +53,6 @@
     NSString * _playbackErrorDescription;
     MPAVController * _player;
     UIImage * _posterImage;
-    MPAudioVideoRoutingPopoverController * _routePopoverController;
     long long  _scaleMode;
     long long  _scaleModeOverride;
     bool  _scheduledLoadingIndicator;
@@ -247,7 +246,6 @@
 - (void)overlayTappedFullscreenButton:(id)arg1;
 - (id)playbackErrorDescription;
 - (id)player;
-- (void)popoverControllerDidDismissPopover:(id)arg1;
 - (id)posterImage;
 - (void)prepareToDisplayVideo;
 - (long long)scaleMode;

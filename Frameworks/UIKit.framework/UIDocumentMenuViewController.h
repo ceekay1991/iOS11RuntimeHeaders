@@ -3,6 +3,7 @@
  */
 
 @interface UIDocumentMenuViewController : UIViewController <UIActionSheetPresentationControllerDelegate, _UIDocumentPickerRemoteViewControllerContaining> {
+    NSArray * _allowedUTIs;
     NSMutableArray * _auxiliaryOptions;
     _UIResilientRemoteViewContainerViewController * _childViewController;
     <UIDocumentMenuDelegate> * _delegate;
@@ -15,6 +16,7 @@
 }
 
 @property (getter=_ignoreApplicationEntitlementForImport, setter=_setIgnoreApplicationEntitlementForImport:, nonatomic) bool _ignoreApplicationEntitlementForImport;
+@property (nonatomic, copy) NSArray *allowedUTIs;
 @property (nonatomic, retain) NSMutableArray *auxiliaryOptions;
 @property (getter=_childViewController, setter=_setChildViewController:, nonatomic, retain) _UIResilientRemoteViewContainerViewController *childViewController;
 @property (readonly, copy) NSString *debugDescription;
@@ -46,6 +48,7 @@
 - (void)_stitchFileCreationAtURL:(id)arg1;
 - (void)actionSheetPresentationControllerDidDismissActionSheet:(id)arg1;
 - (void)addOptionWithTitle:(id)arg1 image:(id)arg2 order:(unsigned long long)arg3 handler:(id /* block */)arg4;
+- (id)allowedUTIs;
 - (id)auxiliaryOptions;
 - (id)delegate;
 - (bool)dismissDelegateCalled;
@@ -55,6 +58,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithURL:(id)arg1 inMode:(unsigned long long)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (void)setAllowedUTIs:(id)arg1;
 - (void)setAuxiliaryOptions:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDismissDelegateCalled:(bool)arg1;

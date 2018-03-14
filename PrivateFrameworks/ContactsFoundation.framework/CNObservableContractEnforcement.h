@@ -11,6 +11,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (bool)shouldEnforceRxProtocols;
++ (bool)shouldSwizzleNilResults;
+
 - (void)observerDidComplete;
 - (void)observerDidFailWithError:(id)arg1;
 - (void)observerDidReceiveResult:(id)arg1;

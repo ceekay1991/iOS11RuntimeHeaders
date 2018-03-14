@@ -12,9 +12,12 @@
     bool  _updateImage;
 }
 
-// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (void).cxx_destruct;
+
+// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+
 - (id)initWithImage:(id)arg1 alternateImage:(id)arg2 barStyle:(long long)arg3 barButtonItemStyle:(long long)arg4 tintColor:(id)arg5 bezel:(bool)arg6;
 - (void)setBezelStyleForBarStyle:(long long)arg1 tintColor:(id)arg2;
 - (void)setBezelStyleForBarStyle:(long long)arg1 tintColor:(id)arg2 iconTintColor:(id)arg3 iconTintColorDidChange:(bool)arg4;

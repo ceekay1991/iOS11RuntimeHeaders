@@ -3,12 +3,12 @@
  */
 
 @interface GEOPDIcon : PBCodable <NSCopying> {
-    GEOPDPhoto * _icon;
+    GEOPDPhoto * _image;
     PBUnknownFields * _unknownFields;
 }
 
-@property (nonatomic, readonly) bool hasIcon;
-@property (nonatomic, retain) GEOPDPhoto *icon;
+@property (nonatomic, readonly) bool hasImage;
+@property (nonatomic, retain) GEOPDPhoto *image;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
@@ -16,13 +16,13 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasIcon;
+- (bool)hasImage;
 - (unsigned long long)hash;
-- (id)icon;
+- (id)image;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
-- (void)setIcon:(id)arg1;
+- (void)setImage:(id)arg1;
 - (id)unknownFields;
 - (void)writeTo:(id)arg1;
 

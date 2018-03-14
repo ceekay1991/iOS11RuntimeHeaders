@@ -46,6 +46,7 @@
 - (void)completeWithErrorCode:(long long)arg1;
 - (bool)completedAsCancelled;
 - (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
+- (void)dataSession:(id)arg1 willSendRequest:(id)arg2 forTask:(id)arg3 completionHandler:(id /* block */)arg4;
 - (id)dataTask;
 - (id)debugDescription;
 - (id)delegate;
@@ -74,5 +75,6 @@
 - (void)setSession:(id)arg1;
 - (void)start;
 - (unsigned long long)taskIdentifier;
+- (void)updateDataRequest:(id)arg1 withNewProtobufRequest:(id)arg2 completionHandler:(id /* block */)arg3;
 
 @end

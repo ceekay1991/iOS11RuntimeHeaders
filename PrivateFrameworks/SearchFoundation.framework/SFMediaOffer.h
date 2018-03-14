@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFMediaOffer : SFActionItem <NSSecureCoding, SFMediaOffer> {
+@interface SFMediaOffer : SFActionItem <NSCopying, NSSecureCoding, SFMediaOffer> {
     SFActionItem * _actionItem;
     struct { 
         unsigned int isEnabled : 1; 
@@ -53,6 +53,7 @@
 
 - (void).cxx_destruct;
 - (id)actionItem;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasIsEnabled;

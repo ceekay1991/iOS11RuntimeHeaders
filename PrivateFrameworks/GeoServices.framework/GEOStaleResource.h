@@ -9,6 +9,7 @@
         unsigned int originalTimestamp : 1; 
     }  _has;
     double  _originalTimestamp;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) GEOResource *desiredResource;
@@ -17,6 +18,7 @@
 @property (nonatomic, readonly) bool hasFallbackResource;
 @property (nonatomic) bool hasOriginalTimestamp;
 @property (nonatomic) double originalTimestamp;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
@@ -37,6 +39,7 @@
 - (void)setFallbackResource:(id)arg1;
 - (void)setHasOriginalTimestamp:(bool)arg1;
 - (void)setOriginalTimestamp:(double)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

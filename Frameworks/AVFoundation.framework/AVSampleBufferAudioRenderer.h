@@ -20,9 +20,12 @@
 + (id)sampleBufferAudioRenderer;
 
 - (int)_initializeTimebase;
+- (int)_installNotificationHandlers;
 - (void)_transitionToFailedStatusWithOSStatus:(int)arg1;
 - (void)_transitionToStatus:(long long)arg1 error:(id)arg2;
 - (void)_triggerMediaRequestCallback;
+- (void)_uninstallNotificationHandlers;
+- (void)_wasFlushedAutomaticallyAtTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (id)audioOutputDeviceUniqueID;
 - (id)audioTimePitchAlgorithm;
 - (void)copyFigSampleBufferAudioRenderer:(struct OpaqueFigSampleBufferAudioRenderer {}**)arg1;

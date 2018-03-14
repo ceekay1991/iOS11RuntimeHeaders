@@ -3,17 +3,11 @@
  */
 
 @interface __NSArrayI : NSArray {
-    struct __cow_state_t { struct os_unfair_lock_s { unsigned int x_1_1_1; } x1; unsigned long long x2; unsigned long long x3; struct { int (*x_4_1_1)(); int (*x_4_1_2)(); int (*x_4_1_3)(); int (*x_4_1_4)(); } x4; } * cow;
-    /* Warning: unhandled struct encoding: '{?="used"Q"offset"Q"size"Q"list"^@}' */ struct { 
-        unsigned long long used; 
-        unsigned long long offset; 
-        unsigned long long size; 
-        id *list; 
-    }  storage;
+    /* Warning: unhandled array encoding: '[0@]' */ id  _list;
+    unsigned long long  _used;
 }
 
 + (id)__new:(const id*)arg1 :(char *)arg2 :(unsigned long long)arg3 :(bool)arg4;
-+ (id)__transferNew:(id*)arg1 :(unsigned long long)arg2 :(unsigned long long)arg3;
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 + (bool)automaticallyNotifiesObserversForKey:(id)arg1;
 
@@ -23,7 +17,6 @@
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
 - (void)getObjects:(id*)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
-- (unsigned long long)indexOfObjectIdenticalTo:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;

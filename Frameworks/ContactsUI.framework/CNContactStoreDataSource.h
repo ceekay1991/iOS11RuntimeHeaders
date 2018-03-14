@@ -4,6 +4,7 @@
 
 @interface CNContactStoreDataSource : NSObject <CNContactDataSource> {
     CNContactStoreSnapshot * _currentSnapshot;
+    bool  _fetchUnified;
     CNContactStoreFilter * _filter;
     NSArray * _keysToFetch;
     bool  _loadingSnapshot;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSString *displayName;
 @property (nonatomic, readonly) CNContactFilter *effectiveFilter;
+@property (nonatomic) bool fetchUnified;
 @property (nonatomic, copy) CNContactStoreFilter *filter;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSArray *indexSections;
@@ -62,6 +64,7 @@
 - (id)delegate;
 - (id)displayName;
 - (id)effectiveFilter;
+- (bool)fetchUnified;
 - (id)filter;
 - (id)indexPathForContact:(id)arg1;
 - (id)indexSections;
@@ -85,6 +88,7 @@
 - (void)setContactFormatter:(id)arg1;
 - (void)setCurrentSnapshot:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setFetchUnified:(bool)arg1;
 - (void)setFilter:(id)arg1;
 - (void)setKeysToFetch:(id)arg1;
 - (void)setMeContact:(id)arg1;

@@ -4,7 +4,7 @@
 
 @interface UITableViewLabel : UILabel {
     double  _firstParagraphFirstLineHeadIndent;
-    bool  _numberOfLinesSet;
+    long long  _savedNumberOfLines;
     NSAttributedString * _shadowAttributedText;
     UITableViewCell * _tableCell;
 }
@@ -13,17 +13,20 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
+- (bool)_attributedStringHasParagraphStyleWithNonzeroFirstLineHeadIndent:(id)arg1;
+- (void)_cleanupErrantFirstLineHeadIndent;
+- (void)_clearNumberOfLines;
 - (id)_disabledFontColor;
+- (void)_restoreNumberOfLines;
 - (void)_setFirstParagraphFirstLineHeadIndent:(double)arg1;
 - (void)_setNumberOfLinesForAXLayoutIfNecessary;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setAttributedText:(id)arg1;
-- (void)setNumberOfLines:(long long)arg1;
 - (void)setTableCell:(id)arg1;
 - (void)setText:(id)arg1;
 - (id)tableCell;

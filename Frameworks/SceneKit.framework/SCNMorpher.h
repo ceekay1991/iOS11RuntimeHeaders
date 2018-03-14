@@ -11,6 +11,7 @@
     unsigned int  _isPresentationInstance;
     struct __C3DMorph { } * _morpher;
     NSString * _name;
+    NSDictionary * _targetNameToIndexes;
     NSArray * _targets;
     bool  _unifyNormal;
     bool  _useSparseTargets;
@@ -19,8 +20,6 @@
 
 @property (readonly) NSArray *animationKeys;
 @property (nonatomic) long long calculationMode;
-@property (nonatomic, retain) NSArray *channelTargetCounts;
-@property (nonatomic, retain) NSArray *channelTargetWeights;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -33,6 +32,7 @@
 + (id)morpher;
 + (id)morpherWithMorphRef:(struct __C3DMorph { }*)arg1;
 + (bool)supportsSecureCoding;
++ (id)weightIndexStringForIndex:(long long)arg1;
 
 - (const void*)__CFObject;
 - (bool)__removeAnimation:(id)arg1 forKey:(id)arg2;
@@ -47,6 +47,7 @@
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
+- (long long)_weightIndexForTargetNamed:(id)arg1;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (void)addAnimationPlayer:(id)arg1 forKey:(id)arg2;
@@ -104,6 +105,7 @@
 - (bool)unifiesNormals;
 - (bool)wantsCPUMorphing;
 - (double)weightForTargetAtIndex:(unsigned long long)arg1;
+- (double)weightForTargetNamed:(id)arg1;
 - (id)weights;
 
 @end

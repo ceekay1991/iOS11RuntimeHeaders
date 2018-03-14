@@ -3,19 +3,16 @@
  */
 
 @interface GEOMapItemParentVenue : NSObject {
-    GEOVenueLabel * _buildingLabel;
-    <GEOVenueIdentifier> * _venueIdentifier;
-    GEOVenueLabel * _venueLabel;
+    unsigned long long  _businessID;
+    int  _featureType;
 }
 
-@property (nonatomic, readonly) GEOVenueLabel *buildingLabel;
-@property (nonatomic, readonly) <GEOVenueIdentifier> *venueIdentifier;
-@property (nonatomic, readonly) GEOVenueLabel *venueLabel;
+@property (nonatomic, readonly) unsigned long long businessID;
+@property (nonatomic, readonly) int featureType;
 
-- (void).cxx_destruct;
-- (id)buildingLabel;
-- (id)initWithIdentifier:(id)arg1 venueLabel:(id)arg2 buildingLabel:(id)arg3;
-- (id)venueIdentifier;
-- (id)venueLabel;
+- (unsigned long long)businessID;
+- (int)featureType;
+- (id)initWithBusinessID:(unsigned long long)arg1 featureType:(int)arg2;
+- (id)initWithLocatedInsideInfo:(id)arg1;
 
 @end

@@ -2,7 +2,8 @@
    Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
  */
 
-@interface FPItem : NSObject <NSCopying, NSFileProviderItem, NSSecureCoding> {
+@interface FPItem : NSObject <NSCopying, NSFileProviderItem, NSFileProviderItem_Private, NSSecureCoding> {
+    NSString * _appContainerBundleIdentifier;
     unsigned long long  _capabilities;
     NSNumber * _childItemCount;
     NSString * _containerDisplayName;
@@ -21,11 +22,14 @@
     NSNumber * _hasUnresolvedConflicts;
     bool  _hidden;
     NSArray * _hierarchyPath;
+    bool  _isContainer;
     NSNumber * _isDownloadRequested;
+    bool  _isUbiquitous;
     NSString * _itemIdentifier;
     NSDate * _lastUsedDate;
     NSPersonNameComponents * _mostRecentEditorNameComponents;
     bool  _mostRecentVersionDownloaded;
+    bool  _offline;
     NSPersonNameComponents * _ownerNameComponents;
     NSString * _parentItemIdentifier;
     bool  _pending;
@@ -37,6 +41,7 @@
     NSString * _sharingPermissions;
     NSString * _spotlightDomainIdentifier;
     unsigned long long  _state;
+    bool  _supportsMostRecentVersionDownloaded;
     NSData * _tagData;
     bool  _trashed;
     NSString * _typeIdentifier;
@@ -47,11 +52,13 @@
     NSData * _versionIdentifier;
 }
 
+@property (nonatomic, copy) NSString *appContainerBundleIdentifier;
 @property (nonatomic) unsigned long long capabilities;
 @property (nonatomic, copy) NSNumber *childItemCount;
 @property (getter=isCloudItem, nonatomic, readonly) bool cloudItem;
 @property (nonatomic, readonly) NSString *containerDisplayName;
 @property (nonatomic, copy) NSDate *contentModificationDate;
+@property (nonatomic, readonly) NSProgress *copyingProgress;
 @property (nonatomic, copy) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) unsigned long long depthInHierarchy;
@@ -59,6 +66,7 @@
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, copy) NSNumber *documentSize;
 @property (nonatomic, readonly) NSString *domainIdentifier;
+@property (getter=isDownloadRequested, readonly, copy) NSNumber *downloadRequested;
 @property (getter=isDownloaded, nonatomic) bool downloaded;
 @property (getter=isDownloading, nonatomic) bool downloading;
 @property (nonatomic, copy) NSError *downloadingError;
@@ -69,13 +77,17 @@
 @property (nonatomic, readonly) unsigned long long folderType;
 @property (nonatomic, retain) NSString *formerIdentifier;
 @property (nonatomic, readonly) FPItemID *formerItemID;
+@property (nonatomic, readonly) NSString *fp_appContainerBundleIdentifier;
 @property (nonatomic, readonly) NSString *fp_domainIdentifier;
+@property (getter=fp_isContainer, nonatomic, readonly) bool fp_isContainer;
 @property (nonatomic, readonly) NSString *fp_spotlightDomainIdentifier;
+@property (getter=fp_isUbiquitous, nonatomic, readonly) bool fp_ubiquitous;
 @property (nonatomic, readonly) NSNumber *hasUnresolvedConflicts;
 @property (readonly) unsigned long long hash;
 @property (getter=isHidden, nonatomic, readonly) bool hidden;
 @property (nonatomic, retain) NSArray *hierarchyPath;
 @property (nonatomic, readonly) NSString *hierarchyPathKey;
+@property (nonatomic, readonly) bool isContainer;
 @property (nonatomic, readonly) NSNumber *isDownloadRequested;
 @property (nonatomic, readonly) bool isFolder;
 @property (nonatomic, readonly) FPItemID *itemID;
@@ -83,12 +95,13 @@
 @property (nonatomic, copy) NSDate *lastUsedDate;
 @property (nonatomic, retain) NSPersonNameComponents *mostRecentEditorNameComponents;
 @property (getter=isMostRecentVersionDownloaded, nonatomic) bool mostRecentVersionDownloaded;
+@property (getter=isOffline, nonatomic) bool offline;
 @property (nonatomic, retain) NSPersonNameComponents *ownerNameComponents;
 @property (nonatomic, readonly, copy) NSString *parentItemIdentifier;
 @property (getter=isPending, nonatomic) bool pending;
 @property (nonatomic) NSString *placeholdIdentifier;
 @property (getter=isPlaceholder, nonatomic, readonly) bool placeholder;
-@property (nonatomic, readonly) NSProgress *progress;
+@property (nonatomic, retain) NSProgress *progress;
 @property (nonatomic, readonly) NSString *providerIdentifier;
 @property (getter=isReadable, nonatomic, readonly) bool readable;
 @property (getter=isShared, nonatomic) bool shared;
@@ -97,10 +110,12 @@
 @property (nonatomic, retain) NSString *spotlightDomainIdentifier;
 @property (nonatomic) unsigned long long state;
 @property (readonly) Class superclass;
+@property (nonatomic) bool supportsMostRecentVersionDownloaded;
 @property (nonatomic, copy) NSData *tagData;
 @property (nonatomic, copy) NSArray *tags;
 @property (getter=isTrashed, nonatomic) bool trashed;
 @property (nonatomic, copy) NSString *typeIdentifier;
+@property (getter=isUbiquitous, nonatomic) bool ubiquitous;
 @property (getter=isUploaded, nonatomic) bool uploaded;
 @property (getter=isUploading, nonatomic) bool uploading;
 @property (nonatomic, copy) NSError *uploadingError;
@@ -109,6 +124,8 @@
 @property (nonatomic, retain) NSData *versionIdentifier;
 @property (getter=isWritable, nonatomic, readonly) bool writable;
 
++ (id)allUbiquitousResourceKeys;
++ (id)fp_queryFetchAttributes;
 + (id)generatePlaceholderIdentifier;
 + (id)generatePlaceholderIdentifierWithOriginalID:(id)arg1;
 + (id)placeholderWithCopyOfExistingItem:(id)arg1 lastUsageUpdatePolicy:(unsigned long long)arg2 underParent:(id)arg3 inProvider:(id)arg4;
@@ -116,12 +133,15 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_downloadingStatus;
+- (id)appContainerBundleIdentifier;
 - (unsigned long long)capabilities;
 - (id)childItemCount;
 - (id)containerDisplayName;
 - (id)contentModificationDate;
 - (id)copyAsPending;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)copyingProgress;
 - (id)creationDate;
 - (unsigned long long)depthInHierarchy;
 - (id)description;
@@ -137,7 +157,10 @@
 - (unsigned long long)folderType;
 - (id)formerIdentifier;
 - (id)formerItemID;
+- (id)fp_appContainerBundleIdentifier;
 - (id)fp_domainIdentifier;
+- (bool)fp_isContainer;
+- (bool)fp_isUbiquitous;
 - (id)fp_spotlightDomainIdentifier;
 - (id)hasUnresolvedConflicts;
 - (unsigned long long)hash;
@@ -146,8 +169,10 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProvider:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3 parentItemIdentifier:(id)arg4 filename:(id)arg5 typeIdentifier:(id)arg6;
 - (id)initWithProvider:(id)arg1 itemIdentifier:(id)arg2 parentItemIdentifier:(id)arg3 filename:(id)arg4 isDirectory:(bool)arg5;
+- (id)initWithSearchableItem:(id)arg1;
 - (id)initWithVendorItem:(id)arg1 provider:(id)arg2 domain:(id)arg3;
 - (bool)isCloudItem;
+- (bool)isContainer;
 - (id)isDownloadRequested;
 - (bool)isDownloaded;
 - (bool)isDownloading;
@@ -156,12 +181,14 @@
 - (bool)isFolder;
 - (bool)isHidden;
 - (bool)isMostRecentVersionDownloaded;
+- (bool)isOffline;
 - (bool)isPending;
 - (bool)isPlaceholder;
 - (bool)isReadable;
 - (bool)isShared;
 - (bool)isSharedByCurrentUser;
 - (bool)isTrashed;
+- (bool)isUbiquitous;
 - (bool)isUploaded;
 - (bool)isUploading;
 - (bool)isWritable;
@@ -175,6 +202,7 @@
 - (id)placeholdIdentifier;
 - (id)progress;
 - (id)providerIdentifier;
+- (void)setAppContainerBundleIdentifier:(id)arg1;
 - (void)setCapabilities:(unsigned long long)arg1;
 - (void)setChildItemCount:(id)arg1;
 - (void)setContentModificationDate:(id)arg1;
@@ -194,20 +222,23 @@
 - (void)setLastUsedDate:(id)arg1;
 - (void)setMostRecentEditorNameComponents:(id)arg1;
 - (void)setMostRecentVersionDownloaded:(bool)arg1;
+- (void)setOffline:(bool)arg1;
 - (void)setOwnerNameComponents:(id)arg1;
 - (void)setParentItemIdentifier:(id)arg1;
 - (void)setPending:(bool)arg1;
 - (void)setPlaceholdIdentifier:(id)arg1;
-- (void)setPlaceholdOperationProgress:(id)arg1;
+- (void)setProgress:(id)arg1;
 - (void)setProviderIdentifier:(id)arg1;
 - (void)setShared:(bool)arg1;
 - (void)setSharedByCurrentUser:(bool)arg1;
 - (void)setSpotlightDomainIdentifier:(id)arg1;
 - (void)setState:(unsigned long long)arg1;
+- (void)setSupportsMostRecentVersionDownloaded:(bool)arg1;
 - (void)setTagData:(id)arg1;
 - (void)setTags:(id)arg1;
 - (void)setTrashed:(bool)arg1;
 - (void)setTypeIdentifier:(id)arg1;
+- (void)setUbiquitous:(bool)arg1;
 - (void)setUploaded:(bool)arg1;
 - (void)setUploading:(bool)arg1;
 - (void)setUploadingError:(id)arg1;
@@ -216,10 +247,12 @@
 - (id)sharingPermissions;
 - (id)spotlightDomainIdentifier;
 - (unsigned long long)state;
+- (bool)supportsMostRecentVersionDownloaded;
 - (id)tagData;
 - (id)tags;
 - (id)toSearchableItem;
 - (id)typeIdentifier;
+- (id)ubiquitousResourceKeysDiffAgainstItem:(id)arg1;
 - (id)uploadingError;
 - (id)uploadingProgress;
 - (id)userInfo;

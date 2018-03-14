@@ -12,6 +12,8 @@
 @property (nonatomic, readonly, copy) MPMediaQuery *query;
 @property (nonatomic, retain) MPMediaItem *startItem;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -26,5 +28,9 @@
 - (void)setStartItem:(id)arg1;
 - (void)setStartTime:(double)arg1 forItem:(id)arg2;
 - (id)startItem;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)playbackContext;
 
 @end

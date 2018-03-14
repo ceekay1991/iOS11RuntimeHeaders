@@ -16,6 +16,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool deviceOrientationEventsEnabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool homeIndicatorAutoHidden;
 @property (nonatomic, readonly) bool idleModeVisualEffectsEnabled;
 @property (nonatomic, readonly) bool idleTimerDisabled;
 @property (nonatomic, readonly) long long interfaceOrientation;
@@ -46,6 +47,7 @@
 - (bool)defaultStatusBarHidden;
 - (long long)defaultStatusBarStyle;
 - (bool)deviceOrientationEventsEnabled;
+- (bool)homeIndicatorAutoHidden;
 - (bool)idleModeVisualEffectsEnabled;
 - (bool)idleTimerDisabled;
 - (long long)interfaceOrientation;

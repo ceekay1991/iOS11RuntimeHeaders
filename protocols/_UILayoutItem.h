@@ -12,6 +12,7 @@
 - (void*)_referenceView;
 - (NSMutableSet *)_uili_existingBaseFrameVariables;
 - (NSMutableSet *)_uili_existingLayoutVariables;
+- (bool)_uili_isFocusGuide;
 - (NSISEngine *)_uili_observableLayoutEngineForBaseFrameVariables:(bool)arg1;
 - (void)_uili_removeLayoutVariableObservationsOnlyToSupportTAMICChange:(bool)arg1;
 - (bool)_uili_requiresObservationForVariable:(NSISVariable *)arg1;

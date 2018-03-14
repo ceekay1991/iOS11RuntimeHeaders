@@ -6,7 +6,9 @@
     NSMutableOrderedSet * _discoveredTags;
     DOCTagRegistryICloudDataSource * _iCloudDataSource;
     bool  _inBatchUpdate;
+    int  _localStorageDidUpdateNotifyToken;
     bool  _shouldSynchronizeAfterBatchUpdate;
+    long long  _tagSerialNumber;
     NSMutableOrderedSet * _userTags;
 }
 
@@ -18,6 +20,7 @@
 @property (nonatomic) bool inBatchUpdate;
 @property (nonatomic) bool shouldSynchronizeAfterBatchUpdate;
 @property (readonly) Class superclass;
+@property (nonatomic) long long tagSerialNumber;
 @property (nonatomic, retain) NSMutableOrderedSet *userTags;
 
 + (id)sharedInstance;
@@ -32,6 +35,7 @@
 - (void)addTag:(id)arg1 options:(long long)arg2;
 - (void)addTags:(id)arg1 options:(long long)arg2;
 - (bool)canReplaceTag:(id)arg1 withTag:(id)arg2;
+- (void)dealloc;
 - (id)discoveredTags;
 - (id)iCloudDataSource;
 - (bool)inBatchUpdate;
@@ -46,10 +50,12 @@
 - (void)setICloudDataSource:(id)arg1;
 - (void)setInBatchUpdate:(bool)arg1;
 - (void)setShouldSynchronizeAfterBatchUpdate:(bool)arg1;
+- (void)setTagSerialNumber:(long long)arg1;
 - (void)setUserTags:(id)arg1;
 - (bool)shouldSynchronizeAfterBatchUpdate;
 - (void)synchronize;
 - (id)tagForName:(id)arg1;
+- (long long)tagSerialNumber;
 - (id)userTags;
 
 @end

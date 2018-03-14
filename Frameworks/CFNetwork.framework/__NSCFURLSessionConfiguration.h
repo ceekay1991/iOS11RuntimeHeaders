@@ -28,6 +28,7 @@
     NSData * _atsContext;
     NSSet * _authenticatorStatusCodes;
     bool  _backgroundSession;
+    bool  _clientIsNotExplicitlyDiscretionary;
     bool  _collectsTimingData;
     NSString * _companionAppBundleIdentifier;
     double  _connectionCacheCellPurgeTimeout;
@@ -47,6 +48,7 @@
     unsigned long long  _forcedNetworkServiceType;
     bool  _forcesNewConnections;
     NSString * _identifier;
+    bool  _ignoreDidReceiveResponseDisposition;
     bool  _infersDiscretionaryFromOriginatingClient;
     NSString * _ledBellyServiceIdentifier;
     double  _longLivedConnectionCacheCellPurgeTimeout;
@@ -80,6 +82,7 @@
     unsigned long long  _requestCachePolicy;
     bool  _requiresClientToOpenFiles;
     bool  _requiresPowerPluggedIn;
+    bool  _requiresSustainedDataDelivery;
     bool  _respectsAllowsCellularAccessForDiscretionaryTasks;
     bool  _sessionSendsLaunchEvents;
     bool  _sessionSendsLaunchOnDemandEvents;
@@ -93,6 +96,7 @@
     NSString * _sourceApplicationBundleIdentifier;
     NSString * _sourceApplicationSecondaryIdentifier;
     bool  _supportsAVAssetDownloads;
+    NSSet * _suppressedAutoAddedHTTPHeaders;
     NSString * _tcpConnectionPoolName;
     double  _timeoutIntervalForRequest;
     double  _timeoutIntervalForResource;
@@ -132,6 +136,7 @@
 - (id)_appleIDContext;
 - (id)_atsContext;
 - (id)_authenticatorStatusCodes;
+- (bool)_clientIsNotExplicitlyDiscretionary;
 - (bool)_collectsTimingData;
 - (id)_companionAppBundleIdentifier;
 - (double)_connectionCacheCellPurgeTimeout;
@@ -149,6 +154,7 @@
 - (bool)_duetPreauthorized;
 - (unsigned long long)_forcedNetworkServiceType;
 - (bool)_forcesNewConnections;
+- (bool)_ignoreDidReceiveResponseDisposition;
 - (bool)_infersDiscretionaryFromOriginatingClient;
 - (bool)_isProxySession;
 - (id)_ledBellyServiceIdentifier;
@@ -173,6 +179,7 @@
 - (bool)_preventsSystemHTTPProxyAuthentication;
 - (bool)_requiresClientToOpenFiles;
 - (bool)_requiresPowerPluggedIn;
+- (bool)_requiresSustainedDataDelivery;
 - (bool)_respectsAllowsCellularAccessForDiscretionaryTasks;
 - (bool)_sessionSendsLaunchOnDemandEvents;
 - (bool)_shouldPreserveBackgroundSessionDisposition;
@@ -182,6 +189,7 @@
 - (id)_sourceApplicationBundleIdentifier;
 - (id)_sourceApplicationSecondaryIdentifier;
 - (bool)_supportsAVAssetDownloads;
+- (id)_suppressedAutoAddedHTTPHeaders;
 - (id)_tcpConnectionPoolName;
 - (long long)_timingDataOptions;
 - (id)_tlsTrustPinningPolicyName;
@@ -262,6 +270,7 @@
 - (void)set_appleIDContext:(id)arg1;
 - (void)set_atsContext:(id)arg1;
 - (void)set_authenticatorStatusCodes:(id)arg1;
+- (void)set_clientIsNotExplicitlyDiscretionary:(bool)arg1;
 - (void)set_collectsTimingData:(bool)arg1;
 - (void)set_companionAppBundleIdentifier:(id)arg1;
 - (void)set_connectionCacheCellPurgeTimeout:(double)arg1;
@@ -277,6 +286,7 @@
 - (void)set_duetPreauthorized:(bool)arg1;
 - (void)set_forcedNetworkServiceType:(unsigned long long)arg1;
 - (void)set_forcesNewConnections:(bool)arg1;
+- (void)set_ignoreDidReceiveResponseDisposition:(bool)arg1;
 - (void)set_infersDiscretionaryFromOriginatingClient:(bool)arg1;
 - (void)set_ledBellyServiceIdentifier:(id)arg1;
 - (void)set_longLivedConnectionCacheCellPurgeTimeout:(double)arg1;
@@ -301,6 +311,7 @@
 - (void)set_proxySession:(bool)arg1;
 - (void)set_requiresClientToOpenFiles:(bool)arg1;
 - (void)set_requiresPowerPluggedIn:(bool)arg1;
+- (void)set_requiresSustainedDataDelivery:(bool)arg1;
 - (void)set_respectsAllowsCellularAccessForDiscretionaryTasks:(bool)arg1;
 - (void)set_sessionSendsLaunchOnDemandEvents:(bool)arg1;
 - (void)set_shouldPreserveBackgroundSessionDisposition:(bool)arg1;
@@ -310,6 +321,7 @@
 - (void)set_sourceApplicationBundleIdentifier:(id)arg1;
 - (void)set_sourceApplicationSecondaryIdentifier:(id)arg1;
 - (void)set_supportsAVAssetDownloads:(bool)arg1;
+- (void)set_suppressedAutoAddedHTTPHeaders:(id)arg1;
 - (void)set_tcpConnectionPoolName:(id)arg1;
 - (void)set_timingDataOptions:(long long)arg1;
 - (void)set_tlsTrustPinningPolicyName:(id)arg1;

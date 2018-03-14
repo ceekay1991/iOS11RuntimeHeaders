@@ -6,7 +6,6 @@
     bool  _allowedToModifyInputBuffers;
     BWNodeOutput * _bravoHDRDisparityOutput;
     bool  _clientExpectsPreBracketFrame;
-    struct opaqueCMSampleBuffer { } * _collectedProcessedPreBracketHDR;
     struct opaqueCMSampleBuffer { } * _collectedUnprocessedPreBracketHDR;
     int (* _createSampleBufferProcessorFunction;
     FigCaptureStillImageSettings * _currentRequestedStillImageCaptureSettings;
@@ -14,9 +13,8 @@
     NSMutableDictionary * _depthSampleBuffersForInputFrames;
     unsigned int  _expectedFrameCount;
     bool  _expectsPreBracketFrame;
-    bool  _expectsReferenceFrameBracketedCaptureSequenceNumber;
     int  _gnrFusionReferenceFrameBracketedCaptureSequenceNumber;
-    bool  _handlesFusionDataReferenceFrameSelection;
+    bool  _handlesPearlDepthDataReferenceFrameSelection;
     int  _hdrDisparityBracketedCaptureSequenceNumber;
     bool  _hdrEnabled;
     <BWStillImageProcessingStatusDelegate> * _hdrReferenceFrameSelectionDelegate;
@@ -50,11 +48,12 @@
 - (struct opaqueCMSampleBuffer { }*)_copyAndZoomSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 usingNormalizedZoomRectangle:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_detectMissingPreBracketedFrameAndEmitBWNodeError;
 - (int)_gnrProcessingTypeWithMetadataDictionary:(id)arg1;
-- (void)_handleReferenceFrameSelectionResult:(int)arg1;
+- (void)_handleSBPReferenceFrame:(int)arg1;
 - (id)_initWithSISEnabled:(bool)arg1 OISEnabled:(bool)arg2 HDREnabled:(bool)arg3 portType:(id)arg4 sensorID:(id)arg5 sensorIDDictionary:(id)arg6 telephotoPortType:(id)arg7 telephotoSensorID:(id)arg8 telephotoSensorIDDictionary:(id)arg9 sbpCreationFunction:(int (*)arg10 treatSoftErrorsAsHardErrors:(bool)arg11;
+- (bool)_isBravoDepthDataCapture;
 - (bool)_isBravoHDRDepthDataCapture;
 - (bool)_isBravoTelephotoHDRDepthDataCapture;
-- (id)_outputForSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
+- (id)_outputForSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 bufferRepresentsHDRFusedImage:(bool)arg2;
 - (void)_processSequenceInSampleBufferProcessor;
 - (bool)_receivedExpectedAmountOfFrames;
 - (void)_sampleBufferProcessorOutputReady:(int)arg1 sampleBuffer:(struct opaqueCMSampleBuffer { }*)arg2;
@@ -73,7 +72,7 @@
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
 - (void)handleStillImageReferenceFrameBracketedCaptureSequenceNumber:(int)arg1 forInput:(id)arg2;
-- (bool)handlesFusionDataReferenceFrameSelection;
+- (bool)handlesPearlDepthDataReferenceFrameSelection;
 - (id)hdrReferenceFrameSelectionDelegate;
 - (id)initWithSISEnabled:(bool)arg1 OISEnabled:(bool)arg2 HDREnabled:(bool)arg3 portType:(id)arg4 sensorID:(id)arg5 sensorIDDictionary:(id)arg6 telephotoPortType:(id)arg7 telephotoSensorID:(id)arg8 telephotoSensorIDDictionary:(id)arg9;
 - (id)nodeSubType;
@@ -83,7 +82,7 @@
 - (id)sbpOptionsDictionary;
 - (void)setAllowedToModifyInputBuffers:(bool)arg1;
 - (void)setAttachesInputBracketToOutputSampleBuffer:(bool)arg1;
-- (void)setHandlesFusionDataReferenceFrameSelection:(bool)arg1;
+- (void)setHandlesPearlDepthDataReferenceFrameSelection:(bool)arg1;
 - (void)setHdrReferenceFrameSelectionDelegate:(id)arg1;
 - (void)setUsesHDRPreBracketFrameForErrorRecoveryDownstream:(bool)arg1;
 - (bool)usesHDRPreBracketFrameForErrorRecoveryDownstream;

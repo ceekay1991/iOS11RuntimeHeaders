@@ -56,6 +56,7 @@
 @property (nonatomic) long long requiredInterfaceType;
 @property (nonatomic) bool resolvePTR;
 @property (nonatomic) bool reuseLocalAddress;
+@property (nonatomic, readonly) NSURL *sanitizedURL;
 @property (nonatomic) unsigned long long trafficClass;
 @property (nonatomic) bool trustInvalidCertificates;
 @property (nonatomic) unsigned int uid;
@@ -153,6 +154,7 @@
 - (long long)requiredInterfaceType;
 - (bool)resolvePTR;
 - (bool)reuseLocalAddress;
+- (id)sanitizedURL;
 - (void)setAccount:(id)arg1;
 - (void)setAllowSocketAccess:(bool)arg1;
 - (void)setDataMode:(unsigned long long)arg1;

@@ -25,10 +25,12 @@
 - (void).cxx_destruct;
 - (void)_computeFinalSnapshotAndReverseUpdateItemsForCollectionViewUpdateItems:(id)arg1;
 - (id)_findUpdateForIdentifier:(id)arg1;
+- (bool)_isSectionOnlyIndexPath:(id)arg1;
 - (bool)_mapIsSimpleInsertMoveSequence;
 - (id)_mapUpdateForCollectionUpdateItem:(id)arg1 snapshot:(id)arg2;
 - (void)_performAppendingInsertsFixups;
 - (id)_rebasedUpdatesForUpdate:(id)arg1;
+- (id)_sectionIndexPathForSection:(long long)arg1;
 - (id)_transformIndexPath:(id)arg1 applyingUpdateItem:(id)arg2 withSnapshot:(id)arg3;
 - (long long)_transformSectionIndex:(long long)arg1 applyingUpdateItem:(id)arg2 withSnapshot:(id)arg3;
 - (id)_updateMapByRevertingAllUpdatesExceptUpdateWithIdentifier:(id)arg1;
@@ -45,8 +47,8 @@
 - (id)initialIndexPathForIndexPath:(id)arg1 beforeUpdateWithIdentifier:(id)arg2;
 - (long long)initialSectionIndexForFinalSectionIndex:(long long)arg1;
 - (id)initialSnapshot;
+- (id)initialUpdateForFinalUpdate:(id)arg1;
 - (id)initialUpdateForUpdateIdentifier:(id)arg1;
-- (id)intitialUpdateForFinalUpdate:(id)arg1;
 - (bool)isBatchUpdateMap;
 - (id)originalUpdateItems;
 - (id)rebasedMapFromNewBaseMap:(id)arg1;

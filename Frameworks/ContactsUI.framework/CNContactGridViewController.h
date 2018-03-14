@@ -57,7 +57,6 @@
 - (void)actionsView:(id)arg1 willShowActions:(id)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })avatarMargins;
 - (struct CGSize { double x1; double x2; })avatarSize;
-- (void)avatarView:(id)arg1 willShowActions:(id)arg2;
 - (id)backgroundColor;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -104,5 +103,6 @@
 - (id)viewControllerForActionsView:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
+- (void)willBeginPreviewInteractionForAvatarView:(id)arg1;
 
 @end

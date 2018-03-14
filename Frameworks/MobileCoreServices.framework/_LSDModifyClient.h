@@ -23,7 +23,7 @@
 - (void)unregisterBundleUnit:(unsigned int)arg1 options:(unsigned int)arg2 completionHandler:(id /* block */)arg3;
 - (void)unregisterExtensionPoint:(id)arg1 withVersion:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)updateContainerUnit:(unsigned int)arg1 completionHandler:(id /* block */)arg2;
-- (void)updateRecordForApp:(id)arg1 withSINF:(id)arg2 iTunesMetadata:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)updateRecordForApp:(id)arg1 withSINF:(id)arg2 iTunesMetadata:(id)arg3 placeholderMetadata:(id)arg4 sendNotification:(int)arg5 completionHandler:(id /* block */)arg6;
 - (void)willHandleInvocation:(id)arg1 isReply:(bool)arg2;
 
 @end

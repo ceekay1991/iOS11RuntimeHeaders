@@ -25,6 +25,7 @@
     NSObject<OS_xpc_object> * required_netagent_domains;
     NSObject<OS_xpc_object> * required_netagent_types;
     NSObject<OS_xpc_object> * required_netagent_uuids;
+    char * sanitized_url;
     NSObject<OS_xpc_object> * ssl_cipher_suites;
     NSObject<OS_xpc_object> * tls_session_id;
     NSObject<OS_nw_array> * transforms;
@@ -94,7 +95,6 @@
         unsigned int is_fallback : 1; 
         unsigned int desperate_ivan : 1; 
         unsigned int tls_should_trust_invalid_certificates : 1; 
-        unsigned int __pad_bits : 1; 
         unsigned char __pad[5]; 
     }  value;
 }

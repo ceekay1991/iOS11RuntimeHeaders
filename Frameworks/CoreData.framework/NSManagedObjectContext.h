@@ -39,7 +39,8 @@
         unsigned int _autoMerge : 1; 
         unsigned int _isXPCServerContext : 1; 
         unsigned int _pushSecureDelete : 1; 
-        unsigned int _reservedFlags : 4; 
+        unsigned int _refreshAfterSave : 1; 
+        unsigned int _reservedFlags : 3; 
     }  _flags;
     int  _ignoreChangeNotification;
     id  _infoByGID;
@@ -66,6 +67,7 @@
 
 @property (nonatomic) bool automaticallyMergesChangesFromParent;
 @property (readonly) unsigned long long concurrencyType;
+@property (nonatomic, retain) NSString *debugName;
 @property (nonatomic, readonly) NSSet *deletedObjects;
 @property (nonatomic, readonly) bool hasChanges;
 @property (nonatomic, readonly) NSSet *insertedObjects;
@@ -79,11 +81,14 @@
 @property (nonatomic) bool retainsRegisteredObjects;
 @property bool shouldDeleteInaccessibleFaults;
 @property (nonatomic) bool shouldPerformSecureOperation;
+@property (nonatomic) bool shouldRefreshAfterSave;
 @property double stalenessInterval;
 @property (copy) NSString *transactionAuthor;
 @property (nonatomic, retain) NSUndoManager *undoManager;
 @property (nonatomic, readonly) NSSet *updatedObjects;
 @property (nonatomic, readonly) NSMutableDictionary *userInfo;
+
+// Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
 + (void)__Multithreading_Violation_AllThatIsLeftToUsIsHonor__;
 + (bool)_handleError:(id)arg1 withError:(id*)arg2;
@@ -246,6 +251,8 @@
 - (void)_undoUpdates:(id)arg1;
 - (void)_unlimitRequest:(id)arg1;
 - (void)_unregisterForNotifications;
+- (id)_unsafeName;
+- (id)_unsafeTransactionAuthor;
 - (bool)_updateLocationsOfObjectsToLocationByOrderKey:(id)arg1 inRelationshipWithName:(id)arg2 onObjectWithID:(id)arg3 error:(id*)arg4;
 - (void)_updateUndoTransactionForThisEvent:(id)arg1 withDeletions:(id)arg2 withUpdates:(id)arg3;
 - (void)_updateUnprocessedOwnDestinations:(id)arg1;
@@ -327,12 +334,14 @@
 - (void)setRetainsRegisteredObjects:(bool)arg1;
 - (void)setShouldDeleteInaccessibleFaults:(bool)arg1;
 - (void)setShouldPerformSecureOperation:(bool)arg1;
+- (void)setShouldRefreshAfterSave:(bool)arg1;
 - (void)setStalenessInterval:(double)arg1;
 - (void)setTransactionAuthor:(id)arg1;
 - (void)setUndoManager:(id)arg1;
 - (bool)shouldDeleteInaccessibleFaults;
 - (bool)shouldHandleInaccessibleFault:(id)arg1 forObjectID:(id)arg2 triggeredByProperty:(id)arg3;
 - (bool)shouldPerformSecureOperation;
+- (bool)shouldRefreshAfterSave;
 - (double)stalenessInterval;
 - (id)transactionAuthor;
 - (bool)tryLock;
@@ -342,5 +351,27 @@
 - (void)unlockObjectStore;
 - (id)updatedObjects;
 - (id)userInfo;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (id)debugName;
+- (bool)ic_save;
+- (bool)ic_saveWithLogDescription:(id)arg1;
+- (void)setDebugName:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (id)deleteObjectsWithIncrementalSave:(id)arg1;
+- (id)enumerateObjectsFromFetchRequest:(id)arg1 count:(unsigned long long*)arg2 batchSize:(unsigned long long)arg3 usingBlock:(id /* block */)arg4;
+- (id)enumerateObjectsFromFetchRequest:(id)arg1 count:(unsigned long long*)arg2 usingDefaultBatchSizeWithBlock:(id /* block */)arg3;
+- (id)enumerateWithIncrementalSaveUsingObjects:(id)arg1 shouldRefreshAfterSave:(bool)arg2 withBlock:(id /* block */)arg3;
+- (id)enumerateWithIncrementalSaveUsingObjects:(id)arg1 withBlock:(id /* block */)arg2;
+- (bool)isUserInterfaceContext;
+- (id)photoLibrary;
+- (void)pl_refresh;
+
+// Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
+
+- (id)objectWithURI:(id)arg1;
 
 @end

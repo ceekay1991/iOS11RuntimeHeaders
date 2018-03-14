@@ -4,6 +4,11 @@
 
 @interface _UIKeyboardUsageTracking : NSObject
 
++ (void)appAutofillCredentialFromSafariUI;
++ (void)appAutofillDetectedDecrement;
++ (void)appAutofillDetectedIncrement;
++ (void)appAutofillExtraKeyTapped;
++ (void)appAutofillFilled;
 + (void)countKeystrokeForReachableKeyboardWithBias:(long long)arg1;
 + (void)countReachableKeyboardHandBiasChangeToBias:(long long)arg1;
 + (void)dualStringsKeyFlickUpCount;

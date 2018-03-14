@@ -5,6 +5,7 @@
 @interface MNLocationManager : NSObject <GEOResourceManifestTileGroupObserver, MNLocationProviderDelegate> {
     NSBundle * _effectiveBundle;
     NSString * _effectiveBundleIdentifier;
+    double  _expectedGpsUpdateInterval;
     bool  _hasCustomDesiredAccuracy;
     CLHeading * _heading;
     NSHashTable * _headingObservers;

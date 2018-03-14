@@ -24,6 +24,7 @@
 - (void)setBusFormat:(void *)arg1 scope:(void *)arg2 format:(void *)arg3 reply:(void *)arg4; // needs 4 arg types, found 10: unsigned int, unsigned int, AVAudioFormat *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, NSError *, void*
 - (void)setValue:(void *)arg1 forKey:(void *)arg2 reply:(void *)arg3; // needs 3 arg types, found 8: id, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, void*
 - (void)setValue:(void *)arg1 forProperty:(void *)arg2 reply:(void *)arg3; // needs 3 arg types, found 8: id, AUAudioUnitProperty *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, void*
+- (void)setWorkIntervalPort:(CAXPCObject *)arg1;
 - (void)supportedViewConfigurations:(void *)arg1 reply:(void *)arg2; // needs 2 arg types, found 7: NSArray *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSIndexSet *, void*
 - (void)uninitialize:(void *)arg1; // needs 1 arg types, found 5: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
 - (void)valueForKey:(void *)arg1 reply:(void *)arg2; // needs 2 arg types, found 6: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id

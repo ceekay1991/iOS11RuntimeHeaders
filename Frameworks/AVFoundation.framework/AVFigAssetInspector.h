@@ -36,6 +36,7 @@
 - (void*)_valueAsCFTypeForProperty:(struct __CFString { }*)arg1;
 - (id)alternateTrackGroups;
 - (id)availableMetadataFormats;
+- (id)availableVideoDynamicRanges;
 - (bool)canContainFragments;
 - (id)commonMetadata;
 - (bool)containsFragments;

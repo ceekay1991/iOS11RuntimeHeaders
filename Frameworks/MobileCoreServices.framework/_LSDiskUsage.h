@@ -4,7 +4,6 @@
 
 @interface _LSDiskUsage : NSObject <NSCopying, NSSecureCoding> {
     NSString * _bundleIdentifier;
-    NSObject<OS_dispatch_queue> * _queue;
     NSMutableDictionary * _usage;
     id  _validationToken;
 }
@@ -18,14 +17,13 @@
 + (id)ODRUsageForBundleIdentifier:(id)arg1 error:(id*)arg2;
 + (id)_serverQueue;
 + (id)mobileInstallationQueue;
++ (id)propertyQueue;
 + (bool)supportsSecureCoding;
 + (id)usageFromMobileInstallationForBundleIdentifier:(id)arg1 error:(id*)arg2;
 
 - (void).cxx_destruct;
 - (bool)_fetchWithXPCConnection:(id)arg1 error:(id*)arg2;
 - (id)_initWithBundleIdentifier:(id)arg1 alreadyKnownUsage:(id)arg2 validationToken:(id)arg3;
-- (bool)_isValidWithConnection:(id)arg1;
-- (id)_validationTokenPayload;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)debugDescription;
 - (id)dynamicUsage;

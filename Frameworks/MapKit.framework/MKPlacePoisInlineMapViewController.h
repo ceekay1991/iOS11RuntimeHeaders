@@ -21,7 +21,6 @@
 - (void).cxx_destruct;
 - (void)_handleTapOnMap;
 - (void)_updateMap;
-- (double)extraHeightToReserveInLayout;
 - (void)fetchPoisForBrand;
 - (id)geoCamera;
 - (void)loadView;

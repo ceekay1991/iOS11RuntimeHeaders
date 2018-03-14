@@ -15,6 +15,7 @@
     struct { 
         unsigned int sessionID : 1; 
         unsigned int timepoint : 1; 
+        unsigned int sessionRelativeTimestamp : 1; 
         unsigned int transportType : 1; 
         unsigned int walkingLimitMeters : 1; 
         unsigned int allowPartialResults : 1; 
@@ -37,11 +38,14 @@
     GEOWaypointTyped * _originWaypointTyped;
     NSData * _originalRouteID;
     NSData * _originalRouteZilchPoints;
+    NSString * _phoneticLocaleIdentifier;
+    NSString * _requestingAppId;
     NSMutableArray * _serviceTags;
     struct GEOSessionID { 
         unsigned long long _high; 
         unsigned long long _low; 
     }  _sessionID;
+    double  _sessionRelativeTimestamp;
     NSData * _sessionState;
     struct GEOTimepoint { 
         double _time; 
@@ -85,7 +89,10 @@
 @property (nonatomic, readonly) bool hasOriginWaypointTyped;
 @property (nonatomic, readonly) bool hasOriginalRouteID;
 @property (nonatomic, readonly) bool hasOriginalRouteZilchPoints;
+@property (nonatomic, readonly) bool hasPhoneticLocaleIdentifier;
+@property (nonatomic, readonly) bool hasRequestingAppId;
 @property (nonatomic) bool hasSessionID;
+@property (nonatomic) bool hasSessionRelativeTimestamp;
 @property (nonatomic, readonly) bool hasSessionState;
 @property (nonatomic) bool hasTimepoint;
 @property (nonatomic, readonly) bool hasTrafficSnapshot;
@@ -105,8 +112,11 @@
 @property (nonatomic, retain) GEOWaypointTyped *originWaypointTyped;
 @property (nonatomic, retain) NSData *originalRouteID;
 @property (nonatomic, retain) NSData *originalRouteZilchPoints;
+@property (nonatomic, retain) NSString *phoneticLocaleIdentifier;
+@property (nonatomic, retain) NSString *requestingAppId;
 @property (nonatomic, retain) NSMutableArray *serviceTags;
 @property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionID;
+@property (nonatomic) double sessionRelativeTimestamp;
 @property (nonatomic, retain) NSData *sessionState;
 @property (nonatomic) struct GEOTimepoint { double x1; int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; } timepoint;
 @property (nonatomic, retain) GEOTFTrafficSnapshot *trafficSnapshot;
@@ -167,7 +177,10 @@
 - (bool)hasOriginWaypointTyped;
 - (bool)hasOriginalRouteID;
 - (bool)hasOriginalRouteZilchPoints;
+- (bool)hasPhoneticLocaleIdentifier;
+- (bool)hasRequestingAppId;
 - (bool)hasSessionID;
+- (bool)hasSessionRelativeTimestamp;
 - (bool)hasSessionState;
 - (bool)hasTimepoint;
 - (bool)hasTrafficSnapshot;
@@ -191,13 +204,16 @@
 - (id)originWaypointTyped;
 - (id)originalRouteID;
 - (id)originalRouteZilchPoints;
+- (id)phoneticLocaleIdentifier;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
+- (id)requestingAppId;
 - (Class)responseClass;
 - (id)serviceTagAtIndex:(unsigned long long)arg1;
 - (id)serviceTags;
 - (unsigned long long)serviceTagsCount;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionID;
+- (double)sessionRelativeTimestamp;
 - (id)sessionState;
 - (void)setAbClientMetadata:(id)arg1;
 - (void)setAdditionalEnabledMarkets:(id)arg1;
@@ -216,6 +232,7 @@
 - (void)setHasIsFromAPI:(bool)arg1;
 - (void)setHasNeedServerLatency:(bool)arg1;
 - (void)setHasSessionID:(bool)arg1;
+- (void)setHasSessionRelativeTimestamp:(bool)arg1;
 - (void)setHasTimepoint:(bool)arg1;
 - (void)setHasTransportType:(bool)arg1;
 - (void)setHasUseLiveTrafficAsFallback:(bool)arg1;
@@ -231,8 +248,11 @@
 - (void)setOriginWaypointTyped:(id)arg1;
 - (void)setOriginalRouteID:(id)arg1;
 - (void)setOriginalRouteZilchPoints:(id)arg1;
+- (void)setPhoneticLocaleIdentifier:(id)arg1;
+- (void)setRequestingAppId:(id)arg1;
 - (void)setServiceTags:(id)arg1;
 - (void)setSessionID:(struct GEOSessionID { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setSessionRelativeTimestamp:(double)arg1;
 - (void)setSessionState:(id)arg1;
 - (void)setTimepoint:(struct GEOTimepoint { double x1; int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })arg1;
 - (void)setTrafficSnapshot:(id)arg1;

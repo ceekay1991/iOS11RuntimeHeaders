@@ -8,19 +8,23 @@
     unsigned int  _distanceToRoute;
     int  _feedbackType;
     bool  _guidancePromptsEnabled;
+    int  _hapticsType;
     struct { 
         unsigned int timestamp : 1; 
         unsigned int distanceRemainingOnRoute : 1; 
         unsigned int distanceToManeuver : 1; 
         unsigned int distanceToRoute : 1; 
         unsigned int feedbackType : 1; 
+        unsigned int hapticsType : 1; 
         unsigned int remainingTime : 1; 
         unsigned int routeLocationIndex : 1; 
         unsigned int routeLocationOffset : 1; 
         unsigned int stepID : 1; 
         unsigned int guidancePromptsEnabled : 1; 
+        unsigned int lowGuidanceNavigation : 1; 
     }  _has;
     GEOLocation * _location;
+    bool  _lowGuidanceNavigation;
     unsigned int  _remainingTime;
     NSData * _routeID;
     unsigned int  _routeLocationIndex;
@@ -42,6 +46,7 @@
 @property (nonatomic, readonly) unsigned int effectiveStepID;
 @property (nonatomic) int feedbackType;
 @property (nonatomic) bool guidancePromptsEnabled;
+@property (nonatomic) int hapticsType;
 @property (nonatomic) bool hasDistanceRemainingOnRoute;
 @property (nonatomic) bool hasDistanceToManeuver;
 @property (nonatomic) bool hasDistanceToRoute;
@@ -49,7 +54,9 @@
 @property (nonatomic, readonly) bool hasEffectiveStepID;
 @property (nonatomic) bool hasFeedbackType;
 @property (nonatomic) bool hasGuidancePromptsEnabled;
+@property (nonatomic) bool hasHapticsType;
 @property (nonatomic, readonly) bool hasLocation;
+@property (nonatomic) bool hasLowGuidanceNavigation;
 @property (nonatomic) bool hasRemainingTime;
 @property (nonatomic, readonly) bool hasRouteID;
 @property (nonatomic) bool hasRouteLocationIndex;
@@ -58,9 +65,9 @@
 @property (nonatomic) bool hasStepID;
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic, readonly) bool isNavigating;
-@property (nonatomic, readonly) bool isPreviewingNavigation;
 @property (nonatomic, readonly) bool isRecalculating;
 @property (nonatomic, retain) GEOLocation *location;
+@property (nonatomic) bool lowGuidanceNavigation;
 @property (nonatomic) unsigned int remainingTime;
 @property (nonatomic, retain) NSData *routeID;
 @property (nonatomic) unsigned int routeLocationIndex;
@@ -74,6 +81,7 @@
 
 - (void).cxx_destruct;
 - (int)StringAsFeedbackType:(id)arg1;
+- (int)StringAsHapticsType:(id)arg1;
 - (void)_updateClusteredSectionSelectedRideIndicesFromRoute:(id)arg1;
 - (void)addSelectedRideIndex:(unsigned int)arg1;
 - (void)clearSelectedRideIndexs;
@@ -87,9 +95,12 @@
 - (unsigned int)distanceToRoute;
 - (unsigned int)effectiveDistanceToManeuver;
 - (unsigned int)effectiveStepID;
+- (unsigned int)effectiveStepIDInRoute:(id)arg1;
 - (int)feedbackType;
 - (id)feedbackTypeAsString:(int)arg1;
 - (bool)guidancePromptsEnabled;
+- (int)hapticsType;
+- (id)hapticsTypeAsString:(int)arg1;
 - (bool)hasDistanceRemainingOnRoute;
 - (bool)hasDistanceToManeuver;
 - (bool)hasDistanceToRoute;
@@ -97,7 +108,9 @@
 - (bool)hasEffectiveStepID;
 - (bool)hasFeedbackType;
 - (bool)hasGuidancePromptsEnabled;
+- (bool)hasHapticsType;
 - (bool)hasLocation;
+- (bool)hasLowGuidanceNavigation;
 - (bool)hasRemainingTime;
 - (bool)hasRouteID;
 - (bool)hasRouteLocationIndex;
@@ -110,9 +123,9 @@
 - (id)initWithRouteID:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isNavigating;
-- (bool)isPreviewingNavigation;
 - (bool)isRecalculating;
 - (id)location;
+- (bool)lowGuidanceNavigation;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)remainingTime;
@@ -129,17 +142,21 @@
 - (void)setDistanceToRoute:(unsigned int)arg1;
 - (void)setFeedbackType:(int)arg1;
 - (void)setGuidancePromptsEnabled:(bool)arg1;
+- (void)setHapticsType:(int)arg1;
 - (void)setHasDistanceRemainingOnRoute:(bool)arg1;
 - (void)setHasDistanceToManeuver:(bool)arg1;
 - (void)setHasDistanceToRoute:(bool)arg1;
 - (void)setHasFeedbackType:(bool)arg1;
 - (void)setHasGuidancePromptsEnabled:(bool)arg1;
+- (void)setHasHapticsType:(bool)arg1;
+- (void)setHasLowGuidanceNavigation:(bool)arg1;
 - (void)setHasRemainingTime:(bool)arg1;
 - (void)setHasRouteLocationIndex:(bool)arg1;
 - (void)setHasRouteLocationOffset:(bool)arg1;
 - (void)setHasStepID:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setLocation:(id)arg1;
+- (void)setLowGuidanceNavigation:(bool)arg1;
 - (void)setRemainingTime:(unsigned int)arg1;
 - (void)setRouteID:(id)arg1;
 - (void)setRouteLocationIndex:(unsigned int)arg1;

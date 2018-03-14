@@ -206,5 +206,6 @@
 
 - (bool)hasTrafficIncidentAlert;
 - (bool)hasValidTrafficIncidentAlertText;
+- (id)initForRoute:(id)arg1 usingETAsFromOtherRoute:(id)arg2;
 
 @end

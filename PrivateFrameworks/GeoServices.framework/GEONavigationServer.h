@@ -41,6 +41,7 @@
 - (void)_requestTransitSummaryWithPeer:(id)arg1;
 - (void)_sendMessage:(long long)arg1 data:(id)arg2 toPeer:(id)arg3;
 - (void)_updateAllPeersWithMessage:(long long)arg1 data:(id)arg2;
+- (void)clearAllData;
 - (void)dealloc;
 - (id)init;
 - (void)setCurrentRoadName:(id)arg1;

@@ -62,6 +62,8 @@
 @property (nonatomic) long long userEditableComponents;
 @property (getter=isVisiblePlaylist, nonatomic) bool visiblePlaylist;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)__MPModelPropertyPlaylistArtwork__PROPERTY;
 + (id)__MPModelPropertyPlaylistCloudVersionHash__PROPERTY;
 + (id)__MPModelPropertyPlaylistCuratorPlaylist__PROPERTY;
@@ -199,5 +201,11 @@
 - (id)tracksTiledArtworkCatalogWithRows:(unsigned long long)arg1 columns:(unsigned long long)arg2;
 - (long long)type;
 - (long long)userEditableComponents;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mpc_remotePlaybackQueueRequiredProperties;
+
+- (id)mpc_protoContainerRepresentation;
 
 @end

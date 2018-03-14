@@ -17,6 +17,7 @@
 - (id)processFetchRequest:(id)arg1 fromClientWithContext:(id)arg2 error:(id*)arg3;
 - (id)processFetchResults:(id)arg1 prefetchedObjects:(id)arg2 ofType:(unsigned long long)arg3;
 - (id)processObtainRequest:(id)arg1 inContext:(id)arg2 error:(id*)arg3;
+- (id)processPersistentHistoryRequest:(id)arg1 fromClientWithContext:(id)arg2 error:(id*)arg3;
 - (id)processPullChangesRequest:(id)arg1 fromClientWithContext:(id)arg2 error:(id*)arg3;
 - (id)processRelationshipSourceObjectID:(id)arg1 fromClientWithContext:(id)arg2 error:(id*)arg3;
 - (id)processRequest:(id)arg1 fromClientWithContext:(id)arg2 error:(id*)arg3;

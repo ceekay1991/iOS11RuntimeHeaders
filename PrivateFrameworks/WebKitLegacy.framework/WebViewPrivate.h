@@ -32,8 +32,26 @@
     struct RetainPtr<WebUITextIndicatorData> { 
         void *m_ptr; 
     }  dataOperationTextIndicator;
+    unsigned long long  deviceOrientation;
     int  didDrawTiles;
     id  downloadDelegate;
+    unsigned long long  dragSourceAction;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  draggedElementBounds;
+    struct RetainPtr<NSString> { 
+        void *m_ptr; 
+    }  draggedLinkTitle;
+    struct RetainPtr<NSURL> { 
+        void *m_ptr; 
+    }  draggedLinkURL;
     bool  drawsBackground;
     id  editingDelegate;
     id  editingDelegateForwarder;
@@ -186,7 +204,9 @@
     }  sourceApplicationAuditData;
     long long  spellCheckerDocumentTag;
     bool  tabKeyCyclesThroughElementsChanged;
-    WebUITextIndicatorData * textIndicatorData;
+    struct RetainPtr<WebUITextIndicatorData> { 
+        void *m_ptr; 
+    }  textIndicatorData;
     bool  useSiteSpecificSpoofing;
     struct String { 
         struct RefPtr<WTF::StringImpl> { 

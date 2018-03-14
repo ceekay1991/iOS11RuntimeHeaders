@@ -12,7 +12,7 @@
                 struct shared_ptr<md::DebugTreeNode> {} *__first_; 
             } __end_cap_; 
         } _nodes; 
-        bool _options[3]; 
+        bool _options[4]; 
     }  _debugTree;
 }
 
@@ -21,7 +21,6 @@
 - (void)activate:(id)arg1;
 - (void)deactivate;
 - (bool)deserializeTree:(id)arg1;
-- (id)init;
 - (id)logTree;
 - (void)populateData;
 - (void)printTree;

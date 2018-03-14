@@ -14,6 +14,8 @@
 @property (nonatomic, readonly) MPModelPlaybackPosition *playbackPosition;
 @property (nonatomic, readonly) MPModelStoreAsset *storeAsset;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (bool)_shouldRespectMusicCellularDataSetting;
 + (bool)_shouldRespectStoreCellularDataSetting;
 + (id)requiredHomeSharingAssetProperties;
@@ -53,5 +55,9 @@
 - (id)storeAsset;
 - (id)storeUbiquitousIdentifier;
 - (id)streamingPlaybackAssetDestinationFilePathForAssetQuality:(unsigned long long)arg1 assetFlavor:(id)arg2 protectionType:(unsigned long long)arg3 pathExtension:(id)arg4;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)mqf_playbackItemMetadataModelObject;
 
 @end

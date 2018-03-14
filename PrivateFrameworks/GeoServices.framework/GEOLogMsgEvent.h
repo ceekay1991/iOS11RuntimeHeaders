@@ -6,10 +6,13 @@
     GEOLogMsgEventBatchTrafficProbe * _batchTrafficProbeCollection;
     GEOLogMsgEventCacheHit * _cacheHitEvent;
     GEOLogMsgEventClientACSuggestions * _clientAcSuggestions;
+    GEOLogMsgEventCommuteWindow * _commuteWindow;
     GEOLogMsgEventDirections * _directionsEvent;
     int  _eventType;
     GEOLogMsgEventFullNavTrace * _fullNavTrace;
+    GEOLogMsgEventGenericAppError * _genericAppErrorEvent;
     struct { 
+        unsigned int usageEventTime : 1; 
         unsigned int eventType : 1; 
     }  _has;
     GEOLogMsgEventListInteractionSession * _listInteractionSession;
@@ -33,21 +36,26 @@
     GEOLogMsgEventTimeToLeaveHypothesis * _timeToLeaveHypothesisEvent;
     GEOLogMsgEventTimeToLeaveInitialTravelTime * _timeToLeaveInitialTravelTimeEvent;
     GEOLogMsgEventTransitAppLaunch * _transitAppLaunchEvent;
+    double  _usageEventTime;
     GEOLogMsgEventUserAction * _userActionEvent;
 }
 
 @property (nonatomic, retain) GEOLogMsgEventBatchTrafficProbe *batchTrafficProbeCollection;
 @property (nonatomic, retain) GEOLogMsgEventCacheHit *cacheHitEvent;
 @property (nonatomic, retain) GEOLogMsgEventClientACSuggestions *clientAcSuggestions;
+@property (nonatomic, retain) GEOLogMsgEventCommuteWindow *commuteWindow;
 @property (nonatomic, retain) GEOLogMsgEventDirections *directionsEvent;
 @property (nonatomic) int eventType;
 @property (nonatomic, retain) GEOLogMsgEventFullNavTrace *fullNavTrace;
+@property (nonatomic, retain) GEOLogMsgEventGenericAppError *genericAppErrorEvent;
 @property (nonatomic, readonly) bool hasBatchTrafficProbeCollection;
 @property (nonatomic, readonly) bool hasCacheHitEvent;
 @property (nonatomic, readonly) bool hasClientAcSuggestions;
+@property (nonatomic, readonly) bool hasCommuteWindow;
 @property (nonatomic, readonly) bool hasDirectionsEvent;
 @property (nonatomic) bool hasEventType;
 @property (nonatomic, readonly) bool hasFullNavTrace;
+@property (nonatomic, readonly) bool hasGenericAppErrorEvent;
 @property (nonatomic, readonly) bool hasListInteractionSession;
 @property (nonatomic, readonly) bool hasLogFrameworkEvent;
 @property (nonatomic, readonly) bool hasMapLaunchEvent;
@@ -68,6 +76,7 @@
 @property (nonatomic, readonly) bool hasTimeToLeaveHypothesisEvent;
 @property (nonatomic, readonly) bool hasTimeToLeaveInitialTravelTimeEvent;
 @property (nonatomic, readonly) bool hasTransitAppLaunchEvent;
+@property (nonatomic) bool hasUsageEventTime;
 @property (nonatomic, readonly) bool hasUserActionEvent;
 @property (nonatomic, retain) GEOLogMsgEventListInteractionSession *listInteractionSession;
 @property (nonatomic, retain) GEOLogMsgEventLogFramework *logFrameworkEvent;
@@ -90,10 +99,10 @@
 @property (nonatomic, retain) GEOLogMsgEventTimeToLeaveHypothesis *timeToLeaveHypothesisEvent;
 @property (nonatomic, retain) GEOLogMsgEventTimeToLeaveInitialTravelTime *timeToLeaveInitialTravelTimeEvent;
 @property (nonatomic, retain) GEOLogMsgEventTransitAppLaunch *transitAppLaunchEvent;
+@property (nonatomic) double usageEventTime;
 @property (nonatomic, retain) GEOLogMsgEventUserAction *userActionEvent;
 
 + (void)_initializeAcceptedLogMsgStateTypes;
-+ (void)_initializeAllowedSessionTypes;
 + (id)acceptedLogMsgStates;
 + (id)acceptedLogMsgStatesForLogMsgEventType:(int)arg1;
 + (bool)logMsgEventType:(int)arg1 acceptsLogMsgStateType:(int)arg2;
@@ -103,11 +112,11 @@
 - (int)StringAsEventType:(id)arg1;
 - (bool)acceptsLogMsgStateType:(int)arg1;
 - (void)addLogMsgState:(id)arg1;
-- (unsigned long long)allowedSessionType;
 - (id)batchTrafficProbeCollection;
 - (id)cacheHitEvent;
 - (void)clearLogMsgStates;
 - (id)clientAcSuggestions;
+- (id)commuteWindow;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -116,12 +125,15 @@
 - (int)eventType;
 - (id)eventTypeAsString:(int)arg1;
 - (id)fullNavTrace;
+- (id)genericAppErrorEvent;
 - (bool)hasBatchTrafficProbeCollection;
 - (bool)hasCacheHitEvent;
 - (bool)hasClientAcSuggestions;
+- (bool)hasCommuteWindow;
 - (bool)hasDirectionsEvent;
 - (bool)hasEventType;
 - (bool)hasFullNavTrace;
+- (bool)hasGenericAppErrorEvent;
 - (bool)hasListInteractionSession;
 - (bool)hasLogFrameworkEvent;
 - (bool)hasMapLaunchEvent;
@@ -142,12 +154,10 @@
 - (bool)hasTimeToLeaveHypothesisEvent;
 - (bool)hasTimeToLeaveInitialTravelTimeEvent;
 - (bool)hasTransitAppLaunchEvent;
+- (bool)hasUsageEventTime;
 - (bool)hasUserActionEvent;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
-- (bool)isFullCarPlayStateAllowed;
-- (bool)isFullExperimentsStateAllowed;
-- (bool)isNavigationSessionAllowed;
 - (id)listInteractionSession;
 - (id)logFrameworkEvent;
 - (id)logMsgStateAtIndex:(unsigned long long)arg1;
@@ -171,10 +181,13 @@
 - (void)setBatchTrafficProbeCollection:(id)arg1;
 - (void)setCacheHitEvent:(id)arg1;
 - (void)setClientAcSuggestions:(id)arg1;
+- (void)setCommuteWindow:(id)arg1;
 - (void)setDirectionsEvent:(id)arg1;
 - (void)setEventType:(int)arg1;
 - (void)setFullNavTrace:(id)arg1;
+- (void)setGenericAppErrorEvent:(id)arg1;
 - (void)setHasEventType:(bool)arg1;
+- (void)setHasUsageEventTime:(bool)arg1;
 - (void)setListInteractionSession:(id)arg1;
 - (void)setLogFrameworkEvent:(id)arg1;
 - (void)setLogMsgStates:(id)arg1;
@@ -196,6 +209,7 @@
 - (void)setTimeToLeaveHypothesisEvent:(id)arg1;
 - (void)setTimeToLeaveInitialTravelTimeEvent:(id)arg1;
 - (void)setTransitAppLaunchEvent:(id)arg1;
+- (void)setUsageEventTime:(double)arg1;
 - (void)setUserActionEvent:(id)arg1;
 - (id)staleResourceEvent;
 - (id)stateTimingEvent;
@@ -206,6 +220,9 @@
 - (id)timeToLeaveHypothesisEvent;
 - (id)timeToLeaveInitialTravelTimeEvent;
 - (id)transitAppLaunchEvent;
+- (void)unregisterLogMsgStateOfType:(int)arg1;
+- (void)unregisterLogMsgStatesOfTypes:(id)arg1;
+- (double)usageEventTime;
 - (id)userActionEvent;
 - (void)writeTo:(id)arg1;
 

@@ -2,10 +2,15 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSMapTable : NSObject <NSCoding, NSCopying, NSFastEnumeration>
+@interface NSMapTable : NSObject <NSCoding, NSCopying, NSFastEnumeration, SGHeaderCollection>
 
 @property (readonly) unsigned long long count;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy) NSPointerFunctions *keyPointerFunctions;
+@property (readonly) Class superclass;
+@property (nonatomic, readonly) bool tsp_isWeakObjectMapTable;
 @property (readonly, copy) NSPointerFunctions *valuePointerFunctions;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
@@ -56,6 +61,10 @@
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (id)valuePointerFunctions;
 
+// Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
+
+- (id)allKeys;
+
 // Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
 - (void)bs_each:(id /* block */)arg1;
@@ -63,5 +72,70 @@
 - (id)bs_safeObjectForKey:(id)arg1 ofType:(Class)arg2;
 - (void)bs_setSafeObject:(id)arg1 forKey:(id)arg2;
 - (id)bs_takeObjectForKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
+
++ (id)sg_headerKeyFunctions;
++ (id)sg_headerValueFunctions;
+
+- (void)sg_addEntriesFromHeadersDictionary:(id)arg1;
+- (id)sg_firstHeaderForKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+
+- (void)_gkEnumerateKeysAndObjectsUsingBlock:(id /* block */)arg1;
+- (id)objectForKeyedSubscript:(id)arg1;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
+
+- (id)allKeys;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (id)fc_objectsForKeys:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
+- (id)tsu_allKeys;
+- (id)tsu_noCopyDictionaryRepresentation;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
++ (id)pk_weakPointerPersonalityToStrongObjectsMapTable;
+
+// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+
+- (double)_clsScoreForItem:(id)arg1;
+- (double)_clsScoreForItem:(id)arg1 withContext:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
++ (id)newTspStrongObjectsMapTable;
++ (id)newTspWeakObjectsMapTable;
+
+- (void)enumerateIdentifiersAndObjectsUsingBlock:(id /* block */)arg1;
+- (void)enumerateObjectsUsingBlock:(id /* block */)arg1;
+- (id)tsp_objectForIdentifier:(long long)arg1;
+- (void)tsp_removeObjectForIdentifier:(long long)arg1;
+- (void)tsp_setObject:(id)arg1 forIdentifier:(long long)arg2;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (id)newTspStrongObjectsMapTable;
++ (id)newTspStrongObjectsMapTableWithCapacity:(unsigned long long)arg1;
++ (id)newTspWeakObjectsMapTable;
++ (id)newTspWeakObjectsMapTableWithCapacity:(unsigned long long)arg1;
+
+- (id)objectAtIndexedSubscript:(unsigned long long)arg1;
+- (void)setObject:(id)arg1 atIndexedSubscript:(unsigned long long)arg2;
+- (void)tsp_enumerateIdentifiersAndObjectsUsingBlock:(id /* block */)arg1;
+- (void)tsp_enumerateObjectsUsingBlock:(id /* block */)arg1;
+- (bool)tsp_isWeakObjectMapTable;
+- (id)tsp_objectForIdentifier:(long long)arg1;
+- (void)tsp_removeObjectForIdentifier:(long long)arg1;
+- (void)tsp_setObject:(id)arg1 forIdentifier:(long long)arg2;
+- (id)tsu_allKeys;
+- (id)tsu_noCopyDictionaryRepresentation;
 
 @end

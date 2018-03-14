@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFSportsTeam : NSObject <NSSecureCoding, SFSportsTeam> {
+@interface SFSportsTeam : NSObject <NSCopying, NSSecureCoding, SFSportsTeam> {
     NSString * _accessibilityDescription;
     SFImage * _logo;
     NSString * _name;
@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (id)accessibilityDescription;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

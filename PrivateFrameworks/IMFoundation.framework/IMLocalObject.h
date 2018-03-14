@@ -7,12 +7,12 @@
 }
 
 @property (nonatomic, readonly) NSObject<OS_xpc_object> *connection;
-@property (nonatomic, readonly) bool forceSecureCoding;
 @property (nonatomic, readonly) bool isValid;
 @property (nonatomic, readonly) NSString *portName;
 @property (nonatomic, retain) NSString *processName;
 @property (nonatomic, readonly) NSProtocolChecker *protocolChecker;
 @property (nonatomic) id target;
+@property (nonatomic, retain) NSArray *whitelistedClasses;
 
 + (id)_imLocalObjectQueue;
 + (void)_registerIMLocalObject:(id)arg1;
@@ -40,7 +40,6 @@
 - (id)connection;
 - (void)dealloc;
 - (id)description;
-- (bool)forceSecureCoding;
 - (bool)handleInvocation:(id)arg1;
 - (id)initWithTarget:(id)arg1 connection:(id)arg2 protocol:(id)arg3;
 - (id)initWithTarget:(id)arg1 connection:(id)arg2 protocol:(id)arg3 forceSecureCoding:(bool)arg4;
@@ -56,7 +55,9 @@
 - (void)setPortName:(id)arg1;
 - (void)setProcessName:(id)arg1;
 - (void)setTarget:(id)arg1;
+- (void)setWhitelistedClasses:(id)arg1;
 - (id)target;
 - (void)terminated;
+- (id)whitelistedClasses;
 
 @end

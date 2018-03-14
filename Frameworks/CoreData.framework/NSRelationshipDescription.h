@@ -24,6 +24,7 @@
 @property (readonly, copy) NSData *versionHash;
 
 + (void)initialize;
++ (bool)supportsSecureCoding;
 
 - (void)_createCachesAndOptimizeState;
 - (id)_initWithName:(id)arg1;

@@ -8,6 +8,7 @@
     _UIDynamicValueAnimation * _animationX;
     _UIDynamicValueAnimation * _animationY;
     NSTimer * _cooldownTimer;
+    NSArray * _displayedEntries;
     struct { 
         unsigned int isDragging : 1; 
         unsigned int isDecelerating : 1; 
@@ -18,7 +19,7 @@
     }  _flags;
     unsigned long long  _heading;
     long long  _highlightedIndexEntry;
-    UIIndexBarAccessoryView * _indexBarView;
+    _UIFocusFastScrollingIndexBarView * _indexBarView;
     NSArray * _indexEntries;
     double  _initialEdgeDigitizerLocation;
     long long  _initialIndexEntry;
@@ -49,8 +50,8 @@
 
 @property (getter=isDecelerating, nonatomic, readonly) bool decelerating;
 @property (getter=isDragging, nonatomic, readonly) bool dragging;
-@property (nonatomic, readonly) UIIndexBarEntry *highlightedEntry;
-@property (nonatomic, readonly) UIView<UIScrollAccessory> *indexBarView;
+@property (nonatomic, readonly) _UIFocusFastScrollingIndexBarEntry *highlightedEntry;
+@property (nonatomic, readonly) _UIFocusFastScrollingIndexBarView *indexBarView;
 @property (nonatomic, copy) NSArray *indexEntries;
 @property (nonatomic, readonly) UIScrollView *scrollView;
 @property (nonatomic, readonly) long long scrollingStyle;
@@ -59,6 +60,7 @@
 
 + (id)controllerWithRequest:(id)arg1;
 + (id)indexBarViewForScrollView:(id)arg1;
++ (long long)indexOfEntryNearestToScrollViewBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inDisplayedEntries:(id)arg2;
 
 - (void).cxx_destruct;
 - (void)_attemptToStop;
@@ -72,6 +74,8 @@
 - (struct { double x1; double x2; })_currentScrollViewDecelerationVelocity;
 - (void)_endDraggingWithFinalVelocity:(struct { double x1; double x2; })arg1;
 - (void)_finishDecelerating;
+- (void)_handleAnimationGroupScrollingAnimations;
+- (void)_handleAnimationGroupScrollingCompletionWithInitialVelocity:(struct CGPoint { double x1; double x2; })arg1 bounces:(bool)arg2;
 - (void)_handleEdgePanBegin:(id)arg1;
 - (void)_handleEdgePanChanged:(id)arg1;
 - (void)_handleEdgePanEnd:(id)arg1;

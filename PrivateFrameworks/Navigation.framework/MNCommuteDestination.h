@@ -3,6 +3,8 @@
  */
 
 @interface MNCommuteDestination : NSObject <NSCopying, NSSecureCoding> {
+    GEODirectionsRequest * _directionsRequest;
+    GEOETATrafficUpdateResponse * _etaResponse;
     GEOETARoute * _etaRoute;
     bool  _invalid;
     MNLocation * _lastLocation;
@@ -11,7 +13,9 @@
     MNObserverHashTable * _observers;
     double  _remainingDistance;
     double  _remainingTime;
+    bool  _rerouting;
     GEOComposedRoute * _route;
+    GEORouteSet * _routeSet;
     long long  _score;
     NSDictionary * _scores;
     MNCommuteDestinationSuggestion * _suggestion;
@@ -19,6 +23,8 @@
 
 @property (readonly) bool canCalculateETA;
 @property (readonly) bool canGetETARoute;
+@property (nonatomic, retain) GEODirectionsRequest *directionsRequest;
+@property (nonatomic, retain) GEOETATrafficUpdateResponse *etaResponse;
 @property (nonatomic, retain) GEOETARoute *etaRoute;
 @property (nonatomic, readonly) double geodesicDistance;
 @property (nonatomic) bool invalid;
@@ -29,7 +35,9 @@
 @property (retain) MNObserverHashTable *observers;
 @property (nonatomic) double remainingDistance;
 @property (nonatomic) double remainingTime;
+@property (nonatomic) bool rerouting;
 @property (nonatomic, retain) GEOComposedRoute *route;
+@property (nonatomic, retain) GEORouteSet *routeSet;
 @property (nonatomic) long long score;
 @property (nonatomic, retain) NSDictionary *scores;
 @property (readonly) NSString *shortDescription;
@@ -37,19 +45,17 @@
 @property (nonatomic, readonly) NSString *uniqueIdentifier;
 @property (nonatomic, readonly) GEOComposedWaypoint *waypoint;
 
-+ (id)archivedDestinationForUniqueID:(id)arg1;
-+ (void)removeStaleArchivedDestinations;
-+ (id)sharedDefaults;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
-- (void)archiveDestination;
 - (bool)canCalculateETA;
 - (bool)canGetETARoute;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (id)directionsRequest;
 - (void)encodeWithCoder:(id)arg1;
+- (id)etaResponse;
 - (id)etaRoute;
 - (double)geodesicDistance;
 - (id)init;
@@ -64,9 +70,13 @@
 - (double)remainingDistance;
 - (double)remainingTime;
 - (void)removeObserver:(id)arg1;
+- (bool)rerouting;
 - (id)route;
+- (id)routeSet;
 - (long long)score;
 - (id)scores;
+- (void)setDirectionsRequest:(id)arg1;
+- (void)setEtaResponse:(id)arg1;
 - (void)setEtaRoute:(id)arg1;
 - (void)setInvalid:(bool)arg1;
 - (void)setLastLocation:(id)arg1;
@@ -75,7 +85,9 @@
 - (void)setObservers:(id)arg1;
 - (void)setRemainingDistance:(double)arg1;
 - (void)setRemainingTime:(double)arg1;
+- (void)setRerouting:(bool)arg1;
 - (void)setRoute:(id)arg1;
+- (void)setRouteSet:(id)arg1;
 - (void)setScore:(long long)arg1;
 - (void)setScores:(id)arg1;
 - (void)setSuggestion:(id)arg1;

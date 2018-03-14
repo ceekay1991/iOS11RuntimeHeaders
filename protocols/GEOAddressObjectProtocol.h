@@ -10,10 +10,12 @@
 - (GEOAddress *)address;
 - (NSDictionary *)addressDictionary;
 - (NSString *)cityDisplayNameWithFallback:(bool)arg1;
+- (CNPostalAddress *)cnPostalAddress;
 - (NSString *)fullAddressNoCurrentCountryWithMultiline:(bool)arg1;
 - (NSString *)fullAddressWithMultiline:(bool)arg1;
 - (NSString *)fullAddressWithMultiline:(bool)arg1 relative:(GEOAddressObject *)arg2;
 - (bool)hasKnownAccuracy;
+- (id)initWithCNPostalAddress:(CNPostalAddress *)arg1 langauge:(NSString *)arg2 country:(NSString *)arg3 phoneticLocale:(NSString *)arg4;
 - (id)initWithContactAddressDictionary:(NSDictionary *)arg1 langauge:(NSString *)arg2 country:(NSString *)arg3 phoneticLocale:(NSString *)arg4;
 - (id)initWithCurrentCountry;
 - (id)initWithPlaceDataAddressObject:(GEOPDAddressObject *)arg1 placeDataAddress:(GEOPDAddress *)arg2 placeDataInfo:(GEOPDPlaceInfo *)arg3 placeDataEntity:(GEOPDEntity *)arg4 language:(NSString *)arg5 country:(NSString *)arg6 phoneticLocale:(NSString *)arg7;

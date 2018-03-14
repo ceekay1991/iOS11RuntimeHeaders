@@ -21,6 +21,8 @@
 @property (copy) NSString *name;
 @property (readonly) NSArray *persistentStores;
 
+// Image: /System/Library/Frameworks/CoreData.framework/CoreData
+
 + (void)__Multithreading_Violation_AllThatIsLeftToUsIsHonor__;
 + (id)_beginPowerAssertionWithAssert:(unsigned long long*)arg1;
 + (Class)_classForPersistentStoreAtURL:(id)arg1;
@@ -55,6 +57,7 @@
 - (bool)_canSaveGraphRootedAtObject:(id)arg1 intoStore:(id)arg2 withPreviouslyChecked:(struct __CFSet { }*)arg3 withAcceptableEntities:(struct __CFSet { }*)arg4;
 - (bool)_checkForPostLionWriter:(id)arg1;
 - (bool)_checkForSkewedEntityHashes:(id)arg1 metadata:(id)arg2;
+- (bool)_checkForTombstoneSkew:(id)arg1 metadata:(id)arg2 configuration:(id)arg3;
 - (id)_checkRequestForStore:(id)arg1 withContext:(id)arg2 originalRequest:(id)arg3 andOptimisticLocking:(id)arg4;
 - (id)_conflictsWithRowCacheForObject:(id)arg1 withContext:(id)arg2 andStore:(id)arg3;
 - (void)_coordinator_no_idea_what_kind_of_request_that_was_supposed_to_be;
@@ -104,7 +107,11 @@
 - (void)_setIsRegisteredWithCloudKit:(bool)arg1;
 - (void)_setIsRegisteredWithUbiquity:(bool)arg1;
 - (void)_setQosClassOptions:(unsigned int)arg1;
+- (void)_setXPCBundleIdentifier:(id)arg1;
+- (void)_setXPCProcessName:(id)arg1;
 - (bool)_validateQueryGeneration:(id)arg1 error:(id*)arg2;
+- (id)_xpcBundleIdentifier;
+- (id)_xpcProcessName;
 - (void)addPersistentStoreWithDescription:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)addPersistentStoreWithType:(id)arg1 configuration:(id)arg2 URL:(id)arg3 options:(id)arg4 error:(id*)arg5;
 - (void)dealloc;
@@ -140,5 +147,9 @@
 - (bool)tryLock;
 - (void)unlock;
 - (bool)validateManagedObjectModel:(id)arg1 forHistoryTrackingWithOptions:(id)arg2 error:(id*)arg3;
+
+// Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
+
+- (id)ic_managedObjectIDForURIString:(id)arg1;
 
 @end

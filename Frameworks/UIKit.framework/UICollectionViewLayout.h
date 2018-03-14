@@ -55,7 +55,7 @@
 @property (nonatomic, readonly) UICollectionView *collectionView;
 @property (getter=_compositionLayout, setter=_setCompositionLayout:, nonatomic) _UICollectionViewCompositionLayout *compositionLayout;
 @property (getter=_elementKinds, setter=_setElementKinds:, nonatomic, copy) NSArray *elementKinds;
-@property (getter=_fastScrollingIndexBarInsets, nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } fastScrollingIndexBarInsets;
+@property (getter=_focusFastScrollingIndexBarInsets, nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } focusFastScrollingIndexBarInsets;
 @property (getter=_frame, setter=_setFrame:, nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
 @property (getter=_items, setter=_setItems:, nonatomic, copy) NSIndexSet *items;
 @property (getter=_layoutOffset, setter=_setLayoutOffset:, nonatomic) struct CGPoint { double x1; double x2; } layoutOffset;
@@ -64,6 +64,8 @@
 @property (getter=_sections, setter=_setSections:, nonatomic, copy) NSIndexSet *sections;
 @property (getter=_siblingLayout, setter=_setSiblingLayout:, nonatomic) UICollectionViewLayout *siblingLayout;
 @property (getter=_sublayoutType, setter=_setSublayoutType:, nonatomic) long long sublayoutType;
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
@@ -82,9 +84,10 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_dynamicReferenceBounds;
 - (id)_elementKinds;
 - (bool)_estimatesSizes;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_fastScrollingIndexBarInsets;
+- (struct CGSize { double x1; double x2; })_fallbackItemSize;
 - (void)_finalizeCollectionViewItemAnimations;
 - (void)_finalizeLayoutTransition;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_focusFastScrollingIndexBarInsets;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frame;
 - (id)_indexPathsToDeleteForDecorationViewOfKind:(id)arg1;
 - (id)_indexPathsToDeleteForSupplementaryViewOfKind:(id)arg1;
@@ -178,5 +181,13 @@
 - (id)targetIndexPathForInteractivelyMovingItem:(id)arg1 withPosition:(struct CGPoint { double x1; double x2; })arg2;
 - (struct CGPoint { double x1; double x2; })transitionContentOffsetForProposedContentOffset:(struct CGPoint { double x1; double x2; })arg1 keyItemIndexPath:(id)arg2;
 - (struct CGPoint { double x1; double x2; })updatesContentOffsetForProposedContentOffset:(struct CGPoint { double x1; double x2; })arg1;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (id)pu_layoutAttributesForElementClosestToPoint:(struct CGPoint { double x1; double x2; })arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 passingTest:(id /* block */)arg3;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
+- (void)music_collectionViewInheritedLayoutInsetsDidChange;
 
 @end

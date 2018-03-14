@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIActivityIndicatorView : UIView <DebugHierarchyObject, NSCoding> {
+@interface UIActivityIndicatorView : UIView <DebugHierarchyObject, NSCoding, _UIStatusBarDisplayable> {
     long long  _activityIndicatorViewStyle;
     long long  _actualActivityIndicatorViewStyle;
     bool  _animating;
@@ -31,9 +31,11 @@
     double  _width;
 }
 
+@property (nonatomic, readonly) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property (nonatomic) long long activityIndicatorViewStyle;
 @property (getter=isAnimating, nonatomic, readonly) bool animating;
 @property (nonatomic, readonly) NSString *artBackupKeyString;
+@property (nonatomic, readonly) double baselineOffset;
 @property (nonatomic) bool clockWise;
 @property (nonatomic, retain) UIColor *color;
 @property (readonly, copy) NSString *debugDescription;
@@ -55,6 +57,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) bool useArtwork;
 @property (nonatomic) bool useOutlineShadow;
+@property (nonatomic, readonly) bool wantsCrossfade;
 @property (nonatomic) double width;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
@@ -64,6 +67,7 @@
 + (struct CGSize { double x1; double x2; })defaultSizeForStyle:(long long)arg1;
 + (struct CGSize { double x1; double x2; })size;
 
+- (void).cxx_destruct;
 - (double)_alphaValueForStep:(long long)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
@@ -100,17 +104,19 @@
 - (void)_tearDownAnimation;
 - (void)_updateInternalViewFrameWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (double)_widthForGearWidth:(double)arg1;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (long long)activityIndicatorViewStyle;
 - (id)artBackupKey;
 - (id)artBackupKeyString;
 - (bool)clockWise;
 - (id)color;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateImages;
 - (bool)hasShadow;
@@ -161,6 +167,16 @@
 - (void)tintColorDidChange;
 - (bool)useArtwork;
 - (bool)useOutlineShadow;
+- (bool)wantsCrossfade;
 - (double)width;
+
+// Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
+
+- (bool)supportsAsynchronousMeasurement;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFURLImage : SFImage <NSSecureCoding, SFURLImage> {
+@interface SFURLImage : SFImage <NSCopying, NSSecureCoding, SFURLImage> {
     NSURL * _urlValue;
 }
 
@@ -27,6 +27,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

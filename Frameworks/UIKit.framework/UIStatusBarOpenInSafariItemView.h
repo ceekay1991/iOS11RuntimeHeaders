@@ -12,12 +12,12 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_displayStringFromURL:(id)arg1;
 - (id)_nominalTitleWithDestinationText:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)destinationText;
 - (bool)layoutImageOnTrailingEdge;
 - (void)setDestinationText:(id)arg1;

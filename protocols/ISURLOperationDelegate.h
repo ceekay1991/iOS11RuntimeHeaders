@@ -7,6 +7,9 @@
 
 - (NSURLCache *)URLCache;
 - (NSString *)URLCacheID;
+- (NSNumber *)metricsLoadURLSamplingPercentage;
+- (NSNumber *)metricsLoadURLSamplingPercentageCachedResponses;
+- (NSNumber *)metricsLoadURLSessionDuration;
 - (NSURLCredential *)operation:(ISURLOperation *)arg1 credentialForAuthenticationChallenge:(NSURLAuthenticationChallenge *)arg2;
 - (void)operation:(ISURLOperation *)arg1 didDiscoverContentLength:(NSNumber *)arg2;
 - (void)operation:(ISURLOperation *)arg1 didReceiveResponse:(NSURLResponse *)arg2;

@@ -5,8 +5,9 @@
 
 @required
 
-- (bool)canPerformWithActivityItems:(NSArray *)arg1 hostApplicationBundleID:(NSString *)arg2;
+- (void)setSourceApplicationBundleID:(NSString *)arg1;
 - (void)setSourceIsManaged:(bool)arg1;
+- (NSString *)sourceApplicationBundleID;
 - (bool)sourceIsManaged;
 
 @end

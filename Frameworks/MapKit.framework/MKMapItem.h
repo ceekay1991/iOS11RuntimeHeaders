@@ -13,24 +13,23 @@
     bool  _isMapItemTypeTransit;
     bool  _isPlaceHolder;
     bool  _isTransitInfoUpdated;
+    NSString * _localizedSampleSizeForUserRatingScoreString;
     MKMapItemMetadata * _metadata;
-    NSString * _name;
     NSNumberFormatter * _numberFormatterForAdamId;
-    NSString * _phoneNumber;
     _MKMapItemPhotosAttribution * _photosAttribution;
     GEOPlace * _place;
     _MKPlaceReservationInfo * _reservationInfo;
     _MKMapItemReviewsAttribution * _reviewsAttribution;
     NSString * _shortAddress;
-    NSTimeZone * _timeZone;
     <GEOTransitAttribution> * _updatedTransitAttribution;
     <GEOMapItemTransitInfo> * _updatedTransitInfo;
-    NSURL * _url;
+    GEOMapItemStorageUserValues * _userValues;
 }
 
 @property (getter=_acceptsApplePay, nonatomic, readonly) bool acceptsApplePay;
 @property (getter=_alternativeAppAdamIds, nonatomic, readonly) NSArray *alternativeAppAdamIds;
 @property (getter=_attribution, nonatomic, readonly) _MKMapItemPlaceAttribution *attribution;
+@property (getter=_browseCategories, nonatomic, readonly) NSArray *browseCategories;
 @property (getter=_businessClaim, nonatomic, readonly) GEOPDBusinessClaim *businessClaim;
 @property (getter=_coordinate, nonatomic, readonly) struct CLLocationCoordinate2D { double x1; double x2; } coordinate;
 @property (getter=_customIconID, nonatomic, readonly) unsigned long long customIconID;
@@ -51,11 +50,14 @@
 @property (getter=_geoAddress, nonatomic, readonly) GEOAddress *geoAddress;
 @property (getter=_geoFenceMapRegion, nonatomic, readonly) GEOMapRegion *geoFenceMapRegion;
 @property (getter=_geoMapItem, nonatomic, readonly) <GEOMapItemPrivate> *geoMapItem;
+@property (getter=_geoMapItemStorageForDragAndDrop, nonatomic, readonly) GEOMapItemStorage *geoMapItemStorageForDragAndDrop;
+@property (getter=_geoMapItemStorageForPersistence, nonatomic, readonly) GEOMapItemStorage *geoMapItemStorageForPersistence;
 @property (getter=_goodForKids, nonatomic, readonly) bool goodForKids;
 @property (getter=_handle, nonatomic, readonly) NSData *handle;
 @property (getter=_hasAcceptsApplePayAmenity, nonatomic, readonly) bool hasAcceptsApplePayAmenity;
 @property (getter=_hasAnyAmenities, nonatomic, readonly) bool hasAnyAmenities;
 @property (getter=_hasBusinessClaim, nonatomic, readonly) bool hasBusinessClaim;
+@property (getter=_hasCorrectedHomeWorkAddress, nonatomic, readonly) bool hasCorrectedHomeWorkAddress;
 @property (getter=_hasCorrectedHomeWorkCoordinate, nonatomic, readonly) bool hasCorrectedHomeWorkCoordinate;
 @property (getter=_hasDelivery, nonatomic, readonly) bool hasDelivery;
 @property (getter=_hasDeliveryAmenity, nonatomic, readonly) bool hasDeliveryAmenity;
@@ -93,6 +95,7 @@
 @property (getter=_localizedMessageBusinessOperatingHours, nonatomic, readonly) NSString *localizedMessageBusinessOperatingHours;
 @property (getter=_localizedOperatingHours, nonatomic, readonly) NSString *localizedOperatingHours;
 @property (getter=_localizedResponseTime, nonatomic, readonly) NSString *localizedResponseTime;
+@property (getter=_localizedSampleSizeForUserRatingScoreString, nonatomic, readonly) NSString *localizedSampleSizeForUserRatingScoreString;
 @property (getter=_messageBusinessHours, nonatomic, readonly) NSArray *messageBusinessHours;
 @property (getter=_messageID, nonatomic, readonly) NSString *messageID;
 @property (getter=_messageURLString, nonatomic, readonly) NSString *messageURLString;
@@ -102,11 +105,13 @@
 @property (getter=_needsAttribution, nonatomic, readonly) bool needsAttribution;
 @property (getter=_normalizedUserRatingScore, nonatomic, readonly) float normalizedUserRatingScore;
 @property (getter=_openingHoursOptions, nonatomic, readonly) unsigned long long openingHoursOptions;
+@property (getter=_parsecSectionType, nonatomic, readonly) int parsecSectionType;
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (getter=_phoneNumberOptsOutOfAds, nonatomic, readonly) bool phoneNumberOptsOutOfAds;
 @property (getter=_photosAttribution, nonatomic, readonly) _MKMapItemPhotosAttribution *photosAttribution;
 @property (nonatomic, readonly) GEOPlace *place;
 @property (getter=_placeDataAsData, nonatomic, readonly) NSData *placeDataAsData;
+@property (getter=_placeDisplayStyle, nonatomic, readonly) int placeDisplayStyle;
 @property (nonatomic, readonly) MKPlacemark *placemark;
 @property (getter=_poiPinpointURLString, nonatomic, readonly) NSString *poiPinpointURLString;
 @property (getter=_poiSurveyURLString, nonatomic, readonly) NSString *poiSurveyURLString;
@@ -133,13 +138,15 @@
 @property (getter=_transitDisplayName, nonatomic, readonly) NSString *transitDisplayName;
 @property (getter=_transitInfo, nonatomic, readonly) <GEOMapItemTransitInfo> *transitInfo;
 @property (nonatomic, retain) NSURL *url;
+@property (nonatomic, readonly) GEOMapItemStorageUserValues *userValues;
 @property (getter=_vendorID, nonatomic, readonly, copy) NSString *vendorID;
-@property (getter=_venueCategoryBrowseType, nonatomic, readonly) long long venueCategoryBrowseType;
 @property (getter=_venueFeatureType, nonatomic, readonly) long long venueFeatureType;
 @property (getter=_venueInfo, nonatomic, readonly) <GEOMapItemVenueInfo> *venueInfo;
 @property (getter=_webURL, nonatomic, readonly, copy) NSURL *webURL;
 @property (nonatomic, readonly, copy) NSArray *writableTypeIdentifiersForItemProvider;
 @property (nonatomic, readonly) NSString *yelpID;
+
+// Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 + (id)_deserializeResourceOptionsFromURL:(id)arg1 error:(out id*)arg2;
 + (void)_fillOutRequest:(id)arg1 withMapsDataString:(id)arg2;
@@ -170,7 +177,7 @@
 + (id)mapItemWithSerializedPlaceData:(id)arg1;
 + (id)mapItemWithSerializedPlaceData:(id)arg1 serializedDetourInfo:(id)arg2 currentLocation:(bool)arg3;
 + (id)mapItemsFromURL:(id)arg1 options:(id*)arg2;
-+ (id)newObjectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 options:(id)arg3 error:(id*)arg4;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id*)arg3;
 + (bool)openMapsWithItems:(id)arg1 launchOptions:(id)arg2;
 + (void)openMapsWithItems:(id)arg1 launchOptions:(id)arg2 completionHandler:(id /* block */)arg3;
 + (id)plistCompatibleDictionaryFromStandardOptions:(id)arg1;
@@ -186,7 +193,6 @@
 - (bool)_acceptsApplePay;
 - (id)_activityURL;
 - (id)_activityURLUsingWebPlaceCard:(bool)arg1;
-- (id)_addressFormattedAsAddressDictionary;
 - (id)_addressFormattedAsCity;
 - (id)_addressFormattedAsMultilineAddress;
 - (id)_addressFormattedAsName;
@@ -200,8 +206,10 @@
 - (id)_attributionFor:(id)arg1 sourceStringFormat:(id)arg2 moreSourceStringFormat:(id)arg3 imageTintColor:(id)arg4;
 - (id)_attributionWithDisplayName:(id)arg1 attributionFormat:(id)arg2 logo:(id)arg3 isSnippetLogo:(bool)arg4;
 - (id)_bestBrandIconURLForSize:(struct CGSize { double x1; double x2; })arg1 allowSmaller:(bool)arg2;
+- (id)_browseCategories;
 - (id)_businessClaim;
 - (bool)_canGetDirections;
+- (id)_cnPostalAddress;
 - (struct CLLocationCoordinate2D { double x1; double x2; })_coordinate;
 - (unsigned long long)_customIconID;
 - (id)_detourInfo;
@@ -219,12 +227,15 @@
 - (id)_geoAddress;
 - (id)_geoFenceMapRegion;
 - (id)_geoMapItem;
+- (id)_geoMapItemStorageForDragAndDrop;
+- (id)_geoMapItemStorageForPersistence;
 - (id)_getBusiness;
 - (bool)_goodForKids;
 - (id)_handle;
 - (bool)_hasAcceptsApplePayAmenity;
 - (bool)_hasAnyAmenities;
 - (bool)_hasBusinessClaim;
+- (bool)_hasCorrectedHomeWorkAddress;
 - (bool)_hasCorrectedHomeWorkCoordinate;
 - (bool)_hasDelivery;
 - (bool)_hasDeliveryAmenity;
@@ -272,6 +283,7 @@
 - (id)_localizedNextOpeningStringShort:(bool)arg1;
 - (id)_localizedOperatingHours;
 - (id)_localizedResponseTime;
+- (id)_localizedSampleSizeForUserRatingScoreString;
 - (id)_mapsDataString;
 - (id)_messageBusinessHours;
 - (id)_messageID;
@@ -280,10 +292,12 @@
 - (bool)_needsAttribution;
 - (float)_normalizedUserRatingScore;
 - (unsigned long long)_openingHoursOptions;
+- (int)_parsecSectionType;
 - (bool)_phoneNumberOptsOutOfAds;
 - (id)_photosAttribution;
 - (id)_placeCardContact;
 - (id)_placeDataAsData;
+- (int)_placeDisplayStyle;
 - (id)_poiPinpointURLString;
 - (id)_poiSurveyURLString;
 - (id)_postalAddressFromMeCardUsingAddressIdentifier:(id)arg1;
@@ -292,7 +306,6 @@
 - (id)_priceRangeString;
 - (id)_providerURL;
 - (id)_quickLinks;
-- (int)_recommendedTransportType;
 - (void)_refreshAttribution;
 - (bool)_responseStatusIsIncomplete;
 - (unsigned long long)_restaurantExtensionModeForFirstProvider;
@@ -315,13 +328,10 @@
 - (id)_transitAttribution;
 - (id)_transitDisplayName;
 - (id)_transitInfo;
-- (unsigned int)_travelDistanceForTransportType:(int)arg1;
-- (unsigned int)_travelTimeForTransportType:(int)arg1;
 - (id)_urlExtraStorage;
 - (id)_vCardFilename;
 - (id)_vCardRepresentation;
 - (id)_vendorID;
-- (long long)_venueCategoryBrowseType;
 - (long long)_venueFeatureType;
 - (id)_venueInfo;
 - (id)_weatherDisplayName;
@@ -340,7 +350,6 @@
 - (id)initWithContact:(id)arg1;
 - (id)initWithGeoMapItem:(id)arg1 isPlaceHolderPlace:(bool)arg2;
 - (id)initWithGeoMapItemAsCurrentLocation:(id)arg1;
-- (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id*)arg3;
 - (id)initWithPlace:(id)arg1;
 - (id)initWithPlace:(id)arg1 isPlaceHolderPlace:(bool)arg2;
 - (id)initWithPlacemark:(id)arg1;
@@ -371,7 +380,13 @@
 - (void)updateTransitInfoWithMapItem:(id)arg1;
 - (id)url;
 - (id)urlRepresentation;
+- (id)userValues;
+- (void)validateMessageIDWithCompletion:(id /* block */)arg1;
 - (id)venueLabelWithContext:(unsigned long long)arg1;
 - (id)yelpID;
+
+// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+
+- (id)businessCategories;
 
 @end

@@ -6,7 +6,12 @@
     UIVisualEffectView * _effectView;
     _UIInteractiveHighlightEnvironment * _environment;
     _UIPortalView * _portalView;
-    UILayoutGuide * _preferredLayoutGuide;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _preferredContentInsets;
     UIView * _superview;
     UIView * _view;
 }
@@ -14,7 +19,7 @@
 @property (nonatomic) UIVisualEffectView *effectView;
 @property (nonatomic, retain) _UIInteractiveHighlightEnvironment *environment;
 @property (nonatomic) _UIPortalView *portalView;
-@property (nonatomic) UILayoutGuide *preferredLayoutGuide;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } preferredContentInsets;
 @property (nonatomic) UIView *superview;
 @property (nonatomic) UIView *view;
 
@@ -25,11 +30,11 @@
 - (id)environment;
 - (void)finalizeEffect;
 - (id)portalView;
-- (id)preferredLayoutGuide;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })preferredContentInsets;
 - (void)setEffectView:(id)arg1;
 - (void)setEnvironment:(id)arg1;
 - (void)setPortalView:(id)arg1;
-- (void)setPreferredLayoutGuide:(id)arg1;
+- (void)setPreferredContentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setSuperview:(id)arg1;
 - (void)setView:(id)arg1;
 - (id)superview;

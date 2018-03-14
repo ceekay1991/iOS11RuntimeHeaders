@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFMapRegion : NSObject <NSSecureCoding, SFMapRegion> {
+@interface SFMapRegion : NSObject <NSCopying, NSSecureCoding, SFMapRegion> {
     double  _eastLng;
     struct { 
         unsigned int southLat : 1; 
@@ -28,6 +28,7 @@
 
 + (bool)supportsSecureCoding;
 
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (double)eastLng;
 - (void)encodeWithCoder:(id)arg1;

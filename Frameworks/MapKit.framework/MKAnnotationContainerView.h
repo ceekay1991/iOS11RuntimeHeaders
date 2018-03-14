@@ -82,7 +82,6 @@
 - (void)_showBubbleForAnnotationView:(id)arg1 bounce:(bool)arg2 scrollToFit:(bool)arg3 avoid:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4;
 - (void)_updateAddedAnnotationRotation:(id)arg1;
 - (void)_updateAnnotationView:(id)arg1;
-- (void)_updateAnnotationViewPerspectiveMidsteam:(bool)arg1;
 - (void)_updateOrientationOfViews:(id)arg1;
 - (void)_updateOrientationOfViews:(id)arg1 relative:(id)arg2 projectionView:(id)arg3;
 - (void)_updateOrientationOfViewsCorrect:(id)arg1 relative:(id)arg2 projectionView:(id)arg3;
@@ -158,6 +157,8 @@
 - (void)transitionFrom:(long long)arg1 to:(long long)arg2 duration:(double)arg3;
 - (void)updateAnnotationLocationsDuringAnimation:(bool)arg1;
 - (void)updateAnnotationView:(id)arg1;
+- (void)updateAnnotationViewsForReason:(long long)arg1;
+- (void)updateCalloutStateForSelectedAnnotationView:(id)arg1;
 - (void)updateUserLocationView;
 - (id)userLocationView;
 

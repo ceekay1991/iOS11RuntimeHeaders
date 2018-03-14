@@ -9,7 +9,7 @@
 @property (nonatomic, readonly) <SFResourceLoader> *strongloader;
 
 - (void).cxx_destruct;
-- (id)initWithloader:(id)arg1;
+- (id)initWithLoader:(id)arg1;
 - (id)strongloader;
 
 @end

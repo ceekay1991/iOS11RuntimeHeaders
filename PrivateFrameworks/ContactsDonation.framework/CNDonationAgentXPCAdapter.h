@@ -12,20 +12,20 @@
 + (void)changeFromAccount:(id)arg1 toAccount:(id)arg2 scope:(id)arg3;
 + (void)donateMeCardValues:(id)arg1 scope:(id)arg2;
 + (void)fetchDonatedMeCardWithScope:(id)arg1;
-+ (void)listRejectionsWithScope:(id)arg1;
 + (void)meCardDonationsWithScope:(id)arg1;
++ (id)newXPCConnection;
 + (void)rejectValueWithDonationIdentifier:(id)arg1 scope:(id)arg2;
-+ (void)rejectValuesWithCollectionIdentifier:(id)arg1 scope:(id)arg2;
++ (void)rejectValuesWithClusterIdentifier:(id)arg1 scope:(id)arg2;
 + (void)removeAllRejectionsWithScope:(id)arg1;
 + (void)removeDonatedMeCardValuesForIdentifiers:(id)arg1 scope:(id)arg2;
 
 - (id)changeFromAccount:(id)arg1 toAccount:(id)arg2;
 - (id)donateMeCardValues:(id)arg1;
+- (id)donatedMeCardEither;
 - (id)fetchDonatedMeCard;
-- (id)listRejections;
 - (id)meCardDonations;
 - (id)rejectValueWithDonationIdentifier:(id)arg1;
-- (id)rejectValuesWithCollectionIdentifier:(id)arg1;
+- (id)rejectValuesWithClusterIdentifier:(id)arg1;
 - (id)removeAllRejections;
 - (id)removeDonatedMeCardValuesForIdentifiers:(id)arg1;
 

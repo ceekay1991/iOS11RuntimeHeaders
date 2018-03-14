@@ -19,6 +19,7 @@
     UIColor * _readOnlyTextColor;
     UIColor * _searchBarBackgroundColor;
     UIColor * _sectionBackgroundColor;
+    UIColor * _sectionIndexBackgroundColor;
     UIColor * _selectedCellBackgroundColor;
     long long  _separatorBackdropOverlayBlendMode;
     UIColor * _separatorColor;
@@ -54,6 +55,7 @@
 @property (nonatomic, retain) UIColor *readOnlyTextColor;
 @property (nonatomic, retain) UIColor *searchBarBackgroundColor;
 @property (nonatomic, retain) UIColor *sectionBackgroundColor;
+@property (nonatomic, retain) UIColor *sectionIndexBackgroundColor;
 @property (nonatomic, retain) UIColor *selectedCellBackgroundColor;
 @property (nonatomic) long long separatorBackdropOverlayBlendMode;
 @property (nonatomic, retain) UIColor *separatorColor;
@@ -104,6 +106,7 @@
 - (id)readOnlyTextColor;
 - (id)searchBarBackgroundColor;
 - (id)sectionBackgroundColor;
+- (id)sectionIndexBackgroundColor;
 - (id)selectedCellBackgroundColor;
 - (long long)separatorBackdropOverlayBlendMode;
 - (id)separatorColor;
@@ -124,6 +127,7 @@
 - (void)setReadOnlyTextColor:(id)arg1;
 - (void)setSearchBarBackgroundColor:(id)arg1;
 - (void)setSectionBackgroundColor:(id)arg1;
+- (void)setSectionIndexBackgroundColor:(id)arg1;
 - (void)setSelectedCellBackgroundColor:(id)arg1;
 - (void)setSeparatorBackdropOverlayBlendMode:(long long)arg1;
 - (void)setSeparatorColor:(id)arg1;

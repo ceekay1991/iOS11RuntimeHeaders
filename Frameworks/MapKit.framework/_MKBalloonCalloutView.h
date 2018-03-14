@@ -20,7 +20,11 @@
         double height; 
     }  _intrinsicSize;
     bool  _originatesAsSmallBalloon;
-    UIImageView * _shadowView;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _shadowSize;
+    UIView * _shadowView;
     double  _smallBalloonScale;
     UIColor * _strokeColor;
     long long  _style;

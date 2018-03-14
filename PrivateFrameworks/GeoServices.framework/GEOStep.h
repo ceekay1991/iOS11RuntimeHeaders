@@ -21,7 +21,9 @@
         unsigned int overrideTransportType : 1; 
         unsigned int stepID : 1; 
         unsigned int endsOnFwy : 1; 
+        unsigned int maneuverLaneGuidanceSuppressed : 1; 
         unsigned int shouldChainManeuver : 1; 
+        unsigned int stayOn : 1; 
         unsigned int toFreeway : 1; 
         unsigned int tollAhead : 1; 
         unsigned int tollPrior : 1; 
@@ -35,6 +37,7 @@
     int  _junctionType;
     int  _maneuverEndBasicIndex;
     int  _maneuverEndZilchIndex;
+    bool  _maneuverLaneGuidanceSuppressed;
     NSMutableArray * _maneuverNames;
     int  _maneuverStartZilchIndex;
     int  _maneuverType;
@@ -43,6 +46,7 @@
     int  _overrideTransportType;
     bool  _shouldChainManeuver;
     NSMutableArray * _signposts;
+    bool  _stayOn;
     unsigned int  _stepID;
     GEOTimeCheckpoints * _timeCheckpoints;
     bool  _toFreeway;
@@ -66,12 +70,14 @@
 @property (nonatomic) bool hasJunctionType;
 @property (nonatomic) bool hasManeuverEndBasicIndex;
 @property (nonatomic) bool hasManeuverEndZilchIndex;
+@property (nonatomic) bool hasManeuverLaneGuidanceSuppressed;
 @property (nonatomic) bool hasManeuverStartZilchIndex;
 @property (nonatomic) bool hasManeuverType;
 @property (nonatomic, readonly) bool hasNotice;
 @property (nonatomic) bool hasOverrideDrivingSide;
 @property (nonatomic) bool hasOverrideTransportType;
 @property (nonatomic) bool hasShouldChainManeuver;
+@property (nonatomic) bool hasStayOn;
 @property (nonatomic) bool hasStepID;
 @property (nonatomic, readonly) bool hasTimeCheckpoints;
 @property (nonatomic) bool hasToFreeway;
@@ -87,6 +93,7 @@
 @property (nonatomic) int maneuverEndBasicIndex;
 @property (nonatomic, readonly) unsigned int maneuverEndIndex;
 @property (nonatomic) int maneuverEndZilchIndex;
+@property (nonatomic) bool maneuverLaneGuidanceSuppressed;
 @property (nonatomic, retain) NSMutableArray *maneuverNames;
 @property (nonatomic, readonly) unsigned int maneuverStartIndex;
 @property (nonatomic) int maneuverStartZilchIndex;
@@ -96,6 +103,7 @@
 @property (nonatomic) int overrideTransportType;
 @property (nonatomic) bool shouldChainManeuver;
 @property (nonatomic, retain) NSMutableArray *signposts;
+@property (nonatomic) bool stayOn;
 @property (nonatomic) unsigned int stepID;
 @property (nonatomic, retain) GEOTimeCheckpoints *timeCheckpoints;
 @property (nonatomic) bool toFreeway;
@@ -150,12 +158,14 @@
 - (bool)hasJunctionType;
 - (bool)hasManeuverEndBasicIndex;
 - (bool)hasManeuverEndZilchIndex;
+- (bool)hasManeuverLaneGuidanceSuppressed;
 - (bool)hasManeuverStartZilchIndex;
 - (bool)hasManeuverType;
 - (bool)hasNotice;
 - (bool)hasOverrideDrivingSide;
 - (bool)hasOverrideTransportType;
 - (bool)hasShouldChainManeuver;
+- (bool)hasStayOn;
 - (bool)hasStepID;
 - (bool)hasTimeCheckpoints;
 - (bool)hasToFreeway;
@@ -180,6 +190,7 @@
 - (unsigned int)maneuverEndIndex;
 - (int)maneuverEndZilchIndex;
 - (bool)maneuverIsHighwayExit;
+- (bool)maneuverLaneGuidanceSuppressed;
 - (id)maneuverNameAtIndex:(unsigned long long)arg1;
 - (id)maneuverNames;
 - (unsigned long long)maneuverNamesCount;
@@ -211,11 +222,13 @@
 - (void)setHasJunctionType:(bool)arg1;
 - (void)setHasManeuverEndBasicIndex:(bool)arg1;
 - (void)setHasManeuverEndZilchIndex:(bool)arg1;
+- (void)setHasManeuverLaneGuidanceSuppressed:(bool)arg1;
 - (void)setHasManeuverStartZilchIndex:(bool)arg1;
 - (void)setHasManeuverType:(bool)arg1;
 - (void)setHasOverrideDrivingSide:(bool)arg1;
 - (void)setHasOverrideTransportType:(bool)arg1;
 - (void)setHasShouldChainManeuver:(bool)arg1;
+- (void)setHasStayOn:(bool)arg1;
 - (void)setHasStepID:(bool)arg1;
 - (void)setHasToFreeway:(bool)arg1;
 - (void)setHasTollAhead:(bool)arg1;
@@ -227,6 +240,7 @@
 - (void)setJunctionType:(int)arg1;
 - (void)setManeuverEndBasicIndex:(int)arg1;
 - (void)setManeuverEndZilchIndex:(int)arg1;
+- (void)setManeuverLaneGuidanceSuppressed:(bool)arg1;
 - (void)setManeuverNames:(id)arg1;
 - (void)setManeuverStartZilchIndex:(int)arg1;
 - (void)setManeuverType:(int)arg1;
@@ -235,6 +249,7 @@
 - (void)setOverrideTransportType:(int)arg1;
 - (void)setShouldChainManeuver:(bool)arg1;
 - (void)setSignposts:(id)arg1;
+- (void)setStayOn:(bool)arg1;
 - (void)setStepID:(unsigned int)arg1;
 - (void)setTimeCheckpoints:(id)arg1;
 - (void)setToFreeway:(bool)arg1;
@@ -245,6 +260,7 @@
 - (id)signpostAtIndex:(unsigned long long)arg1;
 - (id)signposts;
 - (unsigned long long)signpostsCount;
+- (bool)stayOn;
 - (unsigned int)stepID;
 - (id)timeCheckpoints;
 - (bool)toFreeway;

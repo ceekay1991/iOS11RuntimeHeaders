@@ -12,9 +12,6 @@
 @property (nonatomic, readonly) long long homeButtonType;
 @property (getter=isInternalInstall, nonatomic, readonly) bool internalInstall;
 @property (nonatomic, readonly, copy) NSString *localizedProductName;
-@property (nonatomic, readonly) double mainScreenOrientation;
-@property (nonatomic, readonly) int mainScreenPitch;
-@property (nonatomic, readonly) double mainScreenScale;
 @property (getter=isMultiCore, nonatomic, readonly) bool multiCore;
 @property (nonatomic, readonly, copy) NSString *operatingSystemName;
 @property (nonatomic, readonly, copy) NSString *productBuildVersion;
@@ -27,19 +24,16 @@
 
 + (id)sharedInstance;
 
+- (bool)_isD22Emulator;
 - (int)deviceClass;
 - (bool)hasGasGauge;
 - (bool)hasOrbCapability;
 - (long long)homeButtonType;
-- (id)init;
 - (bool)isCarrierInstall;
 - (bool)isDeveloperInstall;
 - (bool)isInternalInstall;
 - (bool)isMultiCore;
 - (id)localizedProductName;
-- (double)mainScreenOrientation;
-- (int)mainScreenPitch;
-- (double)mainScreenScale;
 - (id)operatingSystemName;
 - (id)productBuildVersion;
 - (id)productClass;

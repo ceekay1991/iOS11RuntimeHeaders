@@ -4,6 +4,7 @@
 
 @interface ICMusicSubscriptionStatus : NSObject <NSCopying> {
     bool  _administrator;
+    long long  _carrierBundlingStatusType;
     NSDictionary * _dictionaryRepresentation;
     bool  _eligibleForFreeTrial;
     NSDate * _expirationDate;
@@ -22,6 +23,7 @@
 }
 
 @property (getter=isAdministrator, nonatomic, readonly) bool administrator;
+@property (nonatomic, readonly) long long carrierBundlingStatusType;
 @property (nonatomic, readonly, copy) NSDictionary *dictionaryRepresentation;
 @property (getter=isEligibleForFreeTrial, nonatomic, readonly) bool eligibleForFreeTrial;
 @property (nonatomic, readonly, copy) NSDate *expirationDate;
@@ -39,7 +41,9 @@
 @property (nonatomic, readonly, copy) NSArray *termsStatusList;
 
 - (void).cxx_destruct;
+- (long long)carrierBundlingStatusType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (id)dictionaryRepresentation;
 - (id)expirationDate;
 - (bool)hasFamily;
@@ -48,6 +52,7 @@
 - (id)initWithResponseDictionary:(id)arg1;
 - (bool)isAdministrator;
 - (bool)isEligibleForFreeTrial;
+- (bool)isEqualToStatus:(id)arg1;
 - (bool)isHeadOfHousehold;
 - (bool)isInFreeTrial;
 - (bool)isMatchEnabled;

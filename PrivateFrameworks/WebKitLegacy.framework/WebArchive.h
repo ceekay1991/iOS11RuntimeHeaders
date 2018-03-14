@@ -11,8 +11,10 @@
 @property (nonatomic, readonly, copy) NSArray *subframeArchives;
 @property (nonatomic, readonly, copy) NSArray *subresources;
 
-- (struct LegacyWebArchive { int (**x1)(); unsigned int x2; struct RefPtr<WebCore::ArchiveResource> { struct ArchiveResource {} *x_3_1_1; } x3; struct Vector<WTF::Ref<WebCore::ArchiveResource>, 0, WTF::CrashOnOverflow, 16> { struct Ref<WebCore::ArchiveResource> {} *x_4_1_1; unsigned int x_4_1_2; unsigned int x_4_1_3; } x4; struct Vector<WTF::Ref<WebCore::Archive>, 0, WTF::CrashOnOverflow, 16> { struct Ref<WebCore::Archive> {} *x_5_1_1; unsigned int x_5_1_2; unsigned int x_5_1_3; } x5; }*)_coreLegacyWebArchive;
-- (id)_initWithCoreLegacyWebArchive:(struct PassRefPtr<WebCore::LegacyWebArchive> { struct LegacyWebArchive {} *x1; })arg1;
+// Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
+
+- (struct LegacyWebArchive { int (**x1)(); unsigned int x2; struct RefPtr<WebCore::ArchiveResource> { struct ArchiveResource {} *x_3_1_1; } x3; struct Vector<WTF::Ref<WebCore::ArchiveResource>, 0, WTF::CrashOnOverflow, 16> { struct Ref<WebCore::ArchiveResource> {} *x_4_1_1; unsigned int x_4_1_2; unsigned int x_4_1_3; unsigned int x_4_1_4; } x4; struct Vector<WTF::Ref<WebCore::Archive>, 0, WTF::CrashOnOverflow, 16> { struct Ref<WebCore::Archive> {} *x_5_1_1; unsigned int x_5_1_2; unsigned int x_5_1_3; unsigned int x_5_1_4; } x5; }*)_coreLegacyWebArchive;
+- (id)_initWithCoreLegacyWebArchive:(struct RefPtr<WebCore::LegacyWebArchive> { struct LegacyWebArchive {} *x1; }*)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)data;
 - (void)dealloc;
@@ -24,5 +26,9 @@
 - (id)mainResource;
 - (id)subframeArchives;
 - (id)subresources;
+
+// Image: /System/Library/Frameworks/WebKit.framework/WebKit
+
++ (id)bundleForClass;
 
 @end

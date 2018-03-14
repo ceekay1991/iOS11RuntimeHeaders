@@ -33,7 +33,7 @@
 - (int)clearBindings;
 - (id)columnIndexByName;
 - (id)connection;
-- (int)finalize;
+- (int)finalizeStatement;
 - (id)initWithStatement:(struct sqlite3_stmt { }*)arg1 connection:(id)arg2;
 - (bool)isReadOnly;
 - (int)reset;

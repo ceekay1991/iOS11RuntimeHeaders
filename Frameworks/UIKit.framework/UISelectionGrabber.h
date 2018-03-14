@@ -25,11 +25,12 @@
 
 + (id)_grabberDot;
 
+- (void).cxx_destruct;
 - (id)_dotView;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)activeFlattened;
 - (bool)alertFlattened;
 - (void)animateGrabberInWithCompletion:(id /* block */)arg1;
@@ -40,7 +41,6 @@
 - (void)canExpandAfterBecomeActive:(id)arg1;
 - (void)canExpandAfterNavigationTransition:(id)arg1;
 - (bool)clipDot:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (void)dealloc;
 - (void)didMoveToSuperview;
 - (bool)dotIsVisibleInDocument:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

@@ -19,10 +19,13 @@
 @property (retain) NSExpression *expression;
 @property unsigned long long expressionResultType;
 
++ (bool)supportsSecureCoding;
+
 - (unsigned long long)_propertyType;
 - (void)_writeIntoData:(id)arg1 propertiesDict:(id)arg2 uniquedPropertyNames:(id)arg3 uniquedStrings:(id)arg4 uniquedData:(id)arg5 entitiesSlots:(id)arg6 fetchRequests:(id)arg7;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)expression;
 - (unsigned long long)expressionResultType;

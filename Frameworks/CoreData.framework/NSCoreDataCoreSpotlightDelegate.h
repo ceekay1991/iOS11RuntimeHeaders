@@ -8,14 +8,19 @@
     NSString * _indexName;
 }
 
+- (void)_catchUpToCurrentTransaction;
 - (void)_doFullReimport;
+- (void)_importObjectsUpdatedSinceTransaction:(id)arg1;
 - (bool)_initialImportCompleted;
+- (id)_lastImportedTransaction;
+- (id)_processTransactionsStartingAt:(id)arg1;
 - (id)_processedOidsForDictionary:(id)arg1;
 - (id)_processedOidsForSaveRequest:(id)arg1;
 - (void)_reindexInstancesOf:(id)arg1 in:(id)arg2;
 - (id)_searchableItemForObject:(id)arg1;
+- (id)_spotlightClientStateForHistoryTracking;
+- (void)_updateSpotlightClientStateForHistoryTracking:(id)arg1;
 - (void)_updateSpotlightIndexForObjectsWithIDs:(id)arg1;
-- (void)_updateSpotlightIndexFromNotification:(id)arg1;
 - (void)_updateSpotlightIndexFromSaveRequest:(id)arg1;
 - (id)attributeSetForObject:(id)arg1;
 - (void)dealloc;

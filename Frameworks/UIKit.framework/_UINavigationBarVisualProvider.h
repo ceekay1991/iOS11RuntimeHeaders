@@ -22,9 +22,11 @@
 - (id)_accessibility_HUDItemForPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)_accessibility_controlToActivateForHUDGestureLiftAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_shim_30244716;
+- (bool)_shim_34415965;
 - (id)_shim_backIndicatorView;
 - (id)_shim_backdropGroupName;
 - (long long)_shim_backdropStyle;
+- (double)_shim_backgroundAlpha;
 - (double)_shim_backgroundHeight;
 - (id)_shim_compatibilityBackgroundView;
 - (id)_shim_contentView;
@@ -55,6 +57,7 @@
 - (bool)_shim_wantsCustomTouchHandlingForTouches:(id)arg1;
 - (void)_updateBackground;
 - (void)_updateTitleViewForOpacityChange;
+- (void)animateForSearchPresentation:(bool)arg1;
 - (void)barSizeChanged;
 - (bool)canHandleStatusBarTouchAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)changeAppearance;
@@ -75,6 +78,7 @@
 - (void)prepareForPush;
 - (void)provideViewsForContents:(id)arg1 topItem:(id)arg2 backItem:(id)arg3;
 - (void)pushAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)recordBarSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)refreshControlHost;
 - (void)safeAreaInsetsDidChange;
 - (void)setBackButtonVisible:(bool)arg1 animated:(bool)arg2;
@@ -82,6 +86,7 @@
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setStack:(id)arg1;
 - (void)setupTopNavigationItem;
+- (bool)shouldUseHeightRangeFittingWidth;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)stack;
 - (void)stackDidChangeFrom:(id)arg1;

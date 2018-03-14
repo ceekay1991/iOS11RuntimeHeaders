@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFAirport : NSObject <NSSecureCoding, SFAirport> {
+@interface SFAirport : NSObject <NSCopying, NSSecureCoding, SFAirport> {
     NSString * _city;
     NSString * _code;
     NSString * _country;
@@ -39,6 +39,7 @@
 - (void).cxx_destruct;
 - (id)city;
 - (id)code;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)country;
 - (id)countryCode;
 - (id)dictionaryRepresentation;

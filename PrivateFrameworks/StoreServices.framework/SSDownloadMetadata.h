@@ -8,6 +8,8 @@
     NSLock * _lock;
 }
 
+@property (getter=hasHDR, readonly) bool HDR;
+@property (getter=isHLS, readonly) bool HLS;
 @property (readonly) NSArray *MD5HashStrings;
 @property (readonly, retain) NSData *appReceiptData;
 @property unsigned long long artistIdentifier;
@@ -38,6 +40,7 @@
 @property (copy) NSString *pageProgressionDirection;
 @property unsigned long long preOrderIdentifier;
 @property (copy) NSString *preferredAssetFlavor;
+@property (getter=isPremium, readonly) bool premium;
 @property (readonly) NSDictionary *primaryAssetDictionary;
 @property (retain) NSURL *primaryAssetURL;
 @property (copy) NSString *redownloadActionParameters;
@@ -104,6 +107,7 @@
 - (id)documentTargetIdentifier;
 - (id)downloadKey;
 - (id)downloadPermalink;
+- (id)downloadPolicy;
 - (id)downloaderAccountIdentifier;
 - (id)durationInMilliseconds;
 - (id)enableExtensions;
@@ -115,6 +119,7 @@
 - (id)fullSizeImageURL;
 - (id)genre;
 - (unsigned long long)genreIdentifier;
+- (bool)hasHDR;
 - (bool)hasMessagesExtension;
 - (id)hlsPlaylistURL;
 - (id)indexInCollection;
@@ -131,8 +136,10 @@
 - (bool)isContentRestricted;
 - (bool)isDeviceBasedVPP;
 - (bool)isExplicitContent;
+- (bool)isHLS;
 - (bool)isHighDefinition;
 - (bool)isMusicShow;
+- (bool)isPremium;
 - (bool)isRedownloadDownload;
 - (bool)isRental;
 - (bool)isSample;
@@ -198,6 +205,7 @@
 - (void)setDocumentTargetIdentifier:(id)arg1;
 - (void)setDownloadKey:(id)arg1;
 - (void)setDownloadPermalink:(id)arg1;
+- (void)setDownloadPolicy:(id)arg1;
 - (void)setDurationInMilliseconds:(id)arg1;
 - (void)setEnableExtensions:(id)arg1;
 - (void)setEpisodeIdentifier:(id)arg1;

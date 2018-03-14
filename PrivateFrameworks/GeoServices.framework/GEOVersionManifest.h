@@ -4,9 +4,11 @@
 
 @interface GEOVersionManifest : PBCodable <NSCopying> {
     NSMutableArray * _serviceVersions;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSMutableArray *serviceVersions;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)serviceVersionType;
 
@@ -25,6 +27,7 @@
 - (id)serviceVersions;
 - (unsigned long long)serviceVersionsCount;
 - (void)setServiceVersions:(id)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

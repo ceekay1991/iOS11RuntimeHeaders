@@ -13,6 +13,7 @@
     double  _expiration_date;
     bool  _hasLegacyXattrs;
     NSString * _identifier;
+    double  _last_viewed_date;
     NSData * _metadata;
     int  _priority;
     NSString * _relativePath;
@@ -28,6 +29,7 @@
 @property double expiration_date;
 @property bool hasLegacyXattrs;
 @property (nonatomic, readonly) NSString *identifier;
+@property double last_viewed_date;
 @property (nonatomic, retain) NSData *metadata;
 @property int priority;
 @property (nonatomic, retain) NSString *relativePath;
@@ -47,7 +49,7 @@
 - (double)consumed_date;
 - (id)contentType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (struct { unsigned int x1; double x2; double x3; double x4; double x5; int x6; bool x7; long long x8; long long x9; long long x10; long long x11; long long x12; BOOL x13[0]; }*)createFlattenedAsset:(long long*)arg1;
+- (struct { unsigned int x1; double x2; double x3; double x4; double x5; double x6; int x7; bool x8; long long x9; long long x10; long long x11; long long x12; long long x13; BOOL x14[0]; }*)createFlattenedAsset:(long long*)arg1;
 - (id)description;
 - (id)displayName;
 - (id)downloadCompletionDate;
@@ -61,8 +63,10 @@
 - (bool)hasLegacyXattrs;
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFlattenedAsset:(struct { unsigned int x1; double x2; double x3; double x4; double x5; int x6; bool x7; long long x8; long long x9; long long x10; long long x11; long long x12; BOOL x13[0]; }*)arg1;
+- (id)initWithFlattenedAsset:(struct { unsigned int x1; double x2; double x3; double x4; double x5; double x6; int x7; bool x8; long long x9; long long x10; long long x11; long long x12; long long x13; BOOL x14[0]; }*)arg1;
 - (id)initWithRelativePath:(id)arg1 identifier:(id)arg2 expirationDate:(id)arg3 contentType:(id)arg4 metadata:(id)arg5 priority:(int)arg6;
+- (id)lastViewedDate;
+- (double)last_viewed_date;
 - (id)metadata;
 - (int)priority;
 - (int)purgeabilityScoreAtUrgency:(int)arg1;
@@ -79,6 +83,8 @@
 - (void)setExpirationDate:(id)arg1;
 - (void)setExpiration_date:(double)arg1;
 - (void)setHasLegacyXattrs:(bool)arg1;
+- (void)setLastViewedDate:(id)arg1;
+- (void)setLast_viewed_date:(double)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setPriority:(int)arg1;
 - (void)setRelativePath:(id)arg1;

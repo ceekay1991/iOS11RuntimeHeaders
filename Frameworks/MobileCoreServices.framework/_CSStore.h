@@ -21,7 +21,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1 error:(id*)arg2;
 - (id)initWithError:(id*)arg1;
-- (id)initWithStoreNoCopy:(struct Store { id x1; bool x2; struct array<unsigned int, 64> { unsigned int x_3_1_1[64]; } x3; long long x4; }*)arg1;
+- (id)initWithStoreNoCopy:(struct Store { id x1; bool x2; struct array<unsigned int, 64> { unsigned int x_3_1_1[64]; } x3; struct atomic<long long> { long long x_4_1_1; } x4; struct atomic<long long> { long long x_5_1_1; } x5; }*)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1 error:(id*)arg2;
 - (void)setExpectedAccessQueue:(id)arg1;

@@ -2,9 +2,10 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOSearchAttributionServerLocalProxy : NSObject <GEOSearchAttributionServerProxy> {
+@interface GEOSearchAttributionServerLocalProxy : NSObject <GEOResourceManifestTileGroupObserver, GEOSearchAttributionServerProxy> {
     GEOSearchAttributionManifest * _attributionManifest;
     NSLock * _attributionManifestLock;
+    NSObject<OS_dispatch_queue> * _isolationQueue;
     NSMapTable * _listeners;
     NSLock * _listenersLock;
     NSMutableArray * _updateManifestCompletionHandlers;
@@ -19,12 +20,11 @@
 
 - (void).cxx_destruct;
 - (id)_attributionManifest;
-- (void)_loadAttributionInfoForListener:(id)arg1 hasUpdatedManifest:(bool)arg2;
-- (void)_pruneOldAttributionLogos;
+- (void)_loadAttributionInfoForListener:(id)arg1;
 - (void)_sendError:(id)arg1 toListener:(id)arg2;
-- (void)_sendInfo:(id)arg1 updatedManifest:(bool)arg2 toListener:(id)arg3;
-- (void)_updateManifestWithCompletionHandler:(id /* block */)arg1 errorHandler:(id /* block */)arg2;
+- (void)_sendInfo:(id)arg1 toListener:(id)arg2;
 - (id)init;
-- (void)loadAttributionInfoForIdentifier:(id)arg1 version:(unsigned int)arg2 completionHandler:(id /* block */)arg3 errorHandler:(id /* block */)arg4;
+- (void)loadAttributionInfoForIdentifiers:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 
 @end

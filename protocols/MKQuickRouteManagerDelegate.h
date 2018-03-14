@@ -5,7 +5,7 @@
 
 @required
 
-- (bool)quickRouteShouldIncludeTransit;
+- (bool)quickRouteShouldIncludeTransitWhenNotPreferredTransportType;
 - (bool)quickRouteShouldOnlyUseAutomobile;
 
 @optional

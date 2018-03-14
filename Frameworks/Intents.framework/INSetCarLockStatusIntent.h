@@ -13,10 +13,9 @@
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (id)carName;
-- (id)description;
 - (id)domain;
 - (id)initWithLocked:(id)arg1 carName:(id)arg2;
 - (id)locked;

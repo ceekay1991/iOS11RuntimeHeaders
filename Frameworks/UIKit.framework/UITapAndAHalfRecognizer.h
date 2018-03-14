@@ -35,6 +35,7 @@
 - (void)setMinimumFinalPressDuration:(double)arg1;
 - (void)setNumberOfFullTaps:(int)arg1;
 - (void)setTouch:(id)arg1;
+- (bool)shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
 - (void)startRecognitionTimer:(double)arg1;
 - (void)startTapTimer:(double)arg1;
 - (void)tooSlow:(id)arg1;

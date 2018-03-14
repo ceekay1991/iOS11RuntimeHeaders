@@ -93,9 +93,10 @@
 + (struct CGSize { double x1; double x2; })sizeForGroupHeader:(id)arg1 visualStyle:(int)arg2;
 + (double)widthForCandidate:(id)arg1 candidateNumber:(unsigned long long)arg2 visualStyle:(int)arg3;
 
+- (void).cxx_destruct;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)alternativeText;
 - (id)alternativeTextLabel;
 - (id)annotationLabel;

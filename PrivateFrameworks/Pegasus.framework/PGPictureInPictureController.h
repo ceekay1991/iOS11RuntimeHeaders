@@ -24,6 +24,7 @@
 @property (nonatomic) <PGPictureInPictureControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isStartingStoppingOrCancellingPictureInPicture;
 @property (getter=isPictureInPictureActive, nonatomic, readonly) bool pictureInPictureActive;
 @property (nonatomic, readonly) NSSet *pictureInPictureApplications;
 @property (readonly) Class superclass;
@@ -38,6 +39,7 @@
 - (id)delegate;
 - (id)init;
 - (bool)isPictureInPictureActive;
+- (bool)isStartingStoppingOrCancellingPictureInPicture;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)pictureInPictureApplications;
 - (void)pictureInPictureInterruptionBegan;

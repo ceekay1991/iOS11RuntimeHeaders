@@ -19,6 +19,9 @@
 
 + (id)clearImage:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 + (id)emptyImage;
++ (id)imageForRenderingWithMPS:(id)arg1 orNonMPS:(id)arg2;
++ (id)imageForRenderingWithMetal:(id)arg1 orNonMetal:(id)arg2;
++ (id)imageForRenderingWithMetalContext:(id)arg1 orOpenGLContextUsingMetal:(id)arg2 orNonMetalContext:(id)arg3;
 + (id)imageWithArrayOfImages:(id)arg1 selector:(id /* block */)arg2;
 + (id)imageWithAttributedString:(id)arg1 format:(int)arg2;
 + (id)imageWithAttributedString:(id)arg1 format:(int)arg2 options:(id)arg3;
@@ -109,6 +112,8 @@
 - (void)finalize;
 - (id)getAutoRotateFilter:(id)arg1 ciImage:(id)arg2 rgbRows:(id)arg3 inputRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 rotateCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg5;
 - (void)getAutocropRect:(id)arg1 rotateXfrm:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg2 inputImageRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 clipRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg4;
+- (id)imageByApplyingCGOrientation:(unsigned int)arg1;
+- (id)imageByApplyingFilter:(id)arg1;
 - (id)imageByApplyingFilter:(id)arg1 withInputParameters:(id)arg2;
 - (id)imageByApplyingGaussianBlurWithSigma:(double)arg1;
 - (id)imageByApplyingOrientation:(int)arg1;
@@ -128,10 +133,14 @@
 - (id)imageBySettingProperties:(id)arg1;
 - (id)imageByTaggingWithColorSpace:(struct CGColorSpace { }*)arg1;
 - (id)imageByUnpremultiplyingAlpha;
+- (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })imageTransformForCGOrientation:(unsigned int)arg1;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })imageTransformForOrientation:(int)arg1;
 - (id)imageWithExtent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 processorDescription:(id)arg2 argumentDigest:(unsigned long long)arg3 inputFormat:(int)arg4 outputFormat:(int)arg5 options:(id)arg6 roiCallback:(id /* block */)arg7 processor:(id /* block */)arg8;
 - (id)init;
 - (id)initAuxiliaryWithImageSource:(struct CGImageSource { }*)arg1 options:(id)arg2 depth:(bool)arg3;
+- (id)initForRenderingWithMPS:(id)arg1 orNonMPS:(id)arg2;
+- (id)initForRenderingWithMetal:(id)arg1 orNonMetal:(id)arg2;
+- (id)initForRenderingWithMetalContext:(id)arg1 orOpenGLContextUsingMetal:(id)arg2 orNonMetalContext:(id)arg3;
 - (id)initWithArrayOfImages:(id)arg1 selector:(id /* block */)arg2;
 - (id)initWithAttributedString:(id)arg1 format:(int)arg2;
 - (id)initWithAttributedString:(id)arg1 format:(int)arg2 options:(id)arg3;
@@ -202,5 +211,25 @@
 
 - (id)initWithImage:(id)arg1;
 - (id)initWithImage:(id)arg1 options:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/AXMediaUtilities.framework/AXMediaUtilities
+
+- (long long)_imageOrientationForInterfaceOrientation:(long long)arg1 displayOrientation:(long long)arg2;
+- (long long)_imageOrientationForInterfaceOrientation:(long long)arg1 isMirrored:(bool)arg2;
+- (id)rotatedImageWithInterfaceOrientation:(long long)arg1 displayOrientation:(long long)arg2 appliedImageOrientation:(long long*)arg3;
+- (id)rotatedImageWithInterfaceOrientation:(long long)arg1 isMirrored:(bool)arg2 appliedImageOrientation:(long long*)arg3;
+- (void)saveToURL:(id)arg1 withOrientation:(long long)arg2;
+- (void)writeImageInAllOrientationsToDirectoryAtURL:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/BarcodeSupport.framework/BarcodeSupport
+
+- (id)_bcs_stringValueIfQRCode;
+
+// Image: /System/Library/PrivateFrameworks/PhotoEditSupport.framework/PhotoEditSupport
+
+- (id)bl_imageFromAlphaChannel;
+- (id)bl_imageToAlphaChannel;
+- (id)bl_moveAlphaToBlue;
+- (id)bl_moveBlueToAlpha;
 
 @end

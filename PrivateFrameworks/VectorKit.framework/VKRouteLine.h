@@ -67,6 +67,7 @@
 - (void)_updateBounds:(id)arg1;
 - (void)_updateTilesCovered:(id)arg1;
 - (struct Box<double, 2> { struct Matrix<double, 2, 1> { double x_1_1_1[2]; } x1; struct Matrix<double, 2, 1> { double x_2_1_1[2]; } x2; })bounds;
+- (double)boundsUnitsPerMeter;
 - (bool)buildRouteLine:(id)arg1 tiles:(id)arg2 viewUnitsPerPoint:(double)arg3 force:(bool)arg4 selected:(bool)arg5 isNavMode:(bool)arg6;
 - (void)createMeshIfNecessary:(long long)arg1;
 - (void)dealloc;
@@ -74,6 +75,7 @@
 - (void)generateArrowsForManeuverDisplayMode:(int)arg1 routeLineWidth:(double)arg2;
 - (bool)hasNewRoadMatches;
 - (id)initWithPolylineOverlay:(id)arg1;
+- (struct Matrix<double, 4, 4> { double x1[16]; })inverseManeuverTransform;
 - (bool)isTrafficUpToDate;
 - (bool)isTrafficUptoDate:(double)arg1;
 - (struct vector<gm::Matrix<float, 2, 1>, std::__1::allocator<gm::Matrix<float, 2, 1> > > { struct Matrix<float, 2, 1> {} *x1; struct Matrix<float, 2, 1> {} *x2; struct __compressed_pair<gm::Matrix<float, 2, 1> *, std::__1::allocator<gm::Matrix<float, 2, 1> > > { struct Matrix<float, 2, 1> {} *x_3_1_1; } x3; })maneuverPoints;

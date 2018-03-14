@@ -5,6 +5,7 @@
 @interface HapticServerInstance : NSObject <ServerInterface> {
     unsigned long long  _clientID;
     HapticServer * _master;
+    NSTimer * _timer;
 }
 
 @property (readonly) unsigned long long clientID;

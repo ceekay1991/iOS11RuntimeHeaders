@@ -4,12 +4,19 @@
 
 @interface GEOPDVenueIdentifier : PBCodable <NSCopying> {
     unsigned long long  _buildingId;
-    unsigned long long  _directoryGroupingId;
+    struct { 
+        unsigned long long *list; 
+        unsigned long long count; 
+        unsigned long long size; 
+    }  _containedBys;
+    unsigned long long  _featureId;
     unsigned long long  _fixtureId;
+    unsigned long long  _geminiId;
     struct { 
         unsigned int buildingId : 1; 
-        unsigned int directoryGroupingId : 1; 
+        unsigned int featureId : 1; 
         unsigned int fixtureId : 1; 
+        unsigned int geminiId : 1; 
         unsigned int levelId : 1; 
         unsigned int unitId : 1; 
         unsigned int venueId : 1; 
@@ -28,11 +35,15 @@
 }
 
 @property (nonatomic) unsigned long long buildingId;
-@property (nonatomic) unsigned long long directoryGroupingId;
+@property (nonatomic, readonly) unsigned long long*containedBys;
+@property (nonatomic, readonly) unsigned long long containedBysCount;
+@property (nonatomic) unsigned long long featureId;
 @property (nonatomic) unsigned long long fixtureId;
+@property (nonatomic) unsigned long long geminiId;
 @property (nonatomic) bool hasBuildingId;
-@property (nonatomic) bool hasDirectoryGroupingId;
+@property (nonatomic) bool hasFeatureId;
 @property (nonatomic) bool hasFixtureId;
+@property (nonatomic) bool hasGeminiId;
 @property (nonatomic) bool hasLevelId;
 @property (nonatomic) bool hasLevelOrdinal;
 @property (nonatomic) bool hasUnitId;
@@ -45,30 +56,35 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned long long venueId;
 
-+ (id)venueIdentifiersForIdentifier:(id)arg1;
-
 - (void).cxx_destruct;
+- (void)addContainedBy:(unsigned long long)arg1;
 - (void)addSectionId:(unsigned long long)arg1;
 - (unsigned long long)buildingId;
+- (void)clearContainedBys;
 - (void)clearSectionIds;
+- (unsigned long long)containedByAtIndex:(unsigned long long)arg1;
+- (unsigned long long*)containedBys;
+- (unsigned long long)containedBysCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)directoryGroupingId;
+- (unsigned long long)featureId;
 - (unsigned long long)fixtureId;
+- (unsigned long long)geminiId;
 - (bool)hasBuildingId;
-- (bool)hasDirectoryGroupingId;
+- (bool)hasFeatureId;
 - (bool)hasFixtureId;
+- (bool)hasGeminiId;
 - (bool)hasLevelId;
 - (bool)hasLevelOrdinal;
 - (bool)hasUnitId;
 - (bool)hasVenueId;
 - (unsigned long long)hash;
 - (id)initWithIdentifier:(id)arg1;
-- (id)initWithVenueID:(unsigned long long)arg1;
-- (id)initWithVenueID:(unsigned long long)arg1 componentIdentifier:(id)arg2;
+- (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2;
+- (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2 componentIdentifier:(id)arg3;
 - (bool)isEqual:(id)arg1;
 - (unsigned long long)levelId;
 - (int)levelOrdinal;
@@ -78,11 +94,14 @@
 - (unsigned long long*)sectionIds;
 - (unsigned long long)sectionIdsCount;
 - (void)setBuildingId:(unsigned long long)arg1;
-- (void)setDirectoryGroupingId:(unsigned long long)arg1;
+- (void)setContainedBys:(unsigned long long*)arg1 count:(unsigned long long)arg2;
+- (void)setFeatureId:(unsigned long long)arg1;
 - (void)setFixtureId:(unsigned long long)arg1;
+- (void)setGeminiId:(unsigned long long)arg1;
 - (void)setHasBuildingId:(bool)arg1;
-- (void)setHasDirectoryGroupingId:(bool)arg1;
+- (void)setHasFeatureId:(bool)arg1;
 - (void)setHasFixtureId:(bool)arg1;
+- (void)setHasGeminiId:(bool)arg1;
 - (void)setHasLevelId:(bool)arg1;
 - (void)setHasLevelOrdinal:(bool)arg1;
 - (void)setHasUnitId:(bool)arg1;

@@ -38,6 +38,7 @@
 + (bool)_isAlertControllerShimClass;
 + (Class)_popoverControllerClass;
 
+- (void).cxx_destruct;
 - (id)_addButtonWithTitle:(id)arg1 label:(id)arg2;
 - (id)_addMediaButtonWithTitle:(id)arg1 iconView:(id)arg2 andTableIconView:(id)arg3;
 - (id)_alertController;
@@ -60,10 +61,10 @@
 - (void)_showFromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inView:(id)arg2 direction:(unsigned long long)arg3 animated:(bool)arg4;
 - (id)_titleLabel;
 - (void)_toggleButtonSelectionAtIndex:(unsigned long long)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (long long)actionSheetStyle;
 - (long long)addButtonWithTitle:(id)arg1;
 - (id)addButtonWithTitle:(id)arg1 label:(id)arg2;
@@ -73,7 +74,6 @@
 - (id)buttonTitleAtIndex:(long long)arg1;
 - (long long)cancelButtonIndex;
 - (id)context;
-- (void)dealloc;
 - (id)delegate;
 - (long long)destructiveButtonIndex;
 - (void)dismissWithClickedButtonIndex:(long long)arg1 animated:(bool)arg2;

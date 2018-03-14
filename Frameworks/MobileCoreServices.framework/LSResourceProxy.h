@@ -17,7 +17,6 @@
     LSBundleProxy * __typeIconOwner;
     bool  _boundIconIsBadge;
     NSString * _localizedName;
-    unsigned long long  _propertyListCachingStrategy;
 }
 
 @property (setter=_setBoundApplicationIdentifier:, nonatomic, copy) NSString *_boundApplicationIdentifier;

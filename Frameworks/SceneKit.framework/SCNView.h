@@ -5,7 +5,6 @@
 @interface SCNView : UIView <DebugHierarchyObject, SCNSceneRenderer, SCNTechniqueSupport> {
     unsigned long long  __ibPreferredRenderingAPI;
     NSString * __ibSceneName;
-    unsigned int  _allowsBrowsing;
     unsigned int  _appIsDeactivated;
     unsigned int  _autoPausedScene;
     UIColor * _backgroundColor;
@@ -82,6 +81,7 @@
 + (id)deviceForOptions:(id)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (Class)layerClass;
++ (bool)lowLatency;
 + (unsigned long long)renderingAPIForOptions:(id)arg1;
 
 - (void)SCN_displayLinkCallback:(double)arg1;
@@ -193,6 +193,7 @@
 - (unsigned long long)renderingAPI;
 - (bool)rendersContinuously;
 - (void)resumeDisplayLink;
+- (void)safeAreaInsetsDidChange;
 - (id)scene;
 - (double)sceneTime;
 - (id)scn_backingLayer;

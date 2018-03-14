@@ -78,6 +78,7 @@
 - (bool)isJaliscoGeniusEnabled;
 - (bool)isUpdateInProgress;
 - (void)loadArtworkForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 artworkSourceType:(long long)arg4 completionHandler:(id /* block */)arg5;
+- (void)loadArtworkInfoForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 artworkSourceType:(long long)arg4 completionHandler:(id /* block */)arg5;
 - (void)loadGeniusItemsForSagaID:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)loadJaliscoGeniusTermsAndConditionsWithCompletionHandler:(id /* block */)arg1;
 - (void)loadUpdateProgressWithCompletionHandler:(id /* block */)arg1;
@@ -93,8 +94,11 @@
 - (void)setItemProperties:(id)arg1 forPurchaseHistoryID:(unsigned long long)arg2;
 - (void)setItemProperties:(id)arg1 forSagaID:(unsigned long long)arg2;
 - (void)setLikedState:(long long)arg1 forAlbumWithStoreID:(long long)arg2;
+- (void)setLikedState:(long long)arg1 forAlbumWithStoreID:(long long)arg2 completion:(id /* block */)arg3;
 - (void)setLikedState:(long long)arg1 forEntityWithStoreID:(long long)arg2 withMediaType:(unsigned long long)arg3;
+- (void)setLikedState:(long long)arg1 forEntityWithStoreID:(long long)arg2 withMediaType:(unsigned long long)arg3 completion:(id /* block */)arg4;
 - (void)setLikedState:(long long)arg1 forPlaylistWithGlobalID:(id)arg2;
+- (void)setLikedState:(long long)arg1 forPlaylistWithGlobalID:(id)arg2 completion:(id /* block */)arg3;
 - (void)setPlaylistProperties:(id)arg1 trackList:(id)arg2 forPlaylistWithPersistentID:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
 - (bool)shouldProhibitActionsForCurrentNetworkConditions;
 - (bool)shouldProhibitMusicActionForCurrentNetworkConditions;

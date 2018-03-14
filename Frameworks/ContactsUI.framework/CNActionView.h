@@ -14,9 +14,10 @@
     UIView * _platterView;
     long long  _style;
     UITapGestureRecognizer * _tapGestureRecognizer;
+    <CNActionViewTemplateImage> * _templateImage;
     NSString * _title;
+    UIFont * _titleFont;
     UILabel * _titleLabel;
-    double  _titleWidth;
     NSString * _type;
 }
 
@@ -35,14 +36,17 @@
 @property (nonatomic) long long style;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, retain) <CNActionViewTemplateImage> *templateImage;
 @property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) UIFont *titleFont;
 @property (nonatomic, retain) UILabel *titleLabel;
-@property (nonatomic) double titleWidth;
 @property (nonatomic, retain) NSString *type;
 
 + (id)borderColorForDisabledBoldState;
 + (id)contentColorForDisabledBoldState;
 + (id)contentColorForDisabledVibrantDarkState;
++ (id)defaultTitleFont;
++ (id)defaultTitleFontOfSize:(double)arg1;
 + (void)fadeInView:(id)arg1;
 
 - (void).cxx_destruct;
@@ -66,7 +70,7 @@
 - (id)longPressGestureRecognizer;
 - (id)platterView;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectForPlatterView;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectForTitleLabelForFont:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectForTitleLabelForFont:(id)arg1 fittingSize:(struct CGSize { double x1; double x2; })arg2;
 - (void)setActionDelegate:(id)arg1;
 - (void)setActivatedContstrants:(id)arg1;
 - (void)setDisabled:(bool)arg1;
@@ -80,18 +84,20 @@
 - (void)setPlatterView:(id)arg1;
 - (void)setStyle:(long long)arg1;
 - (void)setTapGestureRecognizer:(id)arg1;
+- (void)setTemplateImage:(id)arg1;
 - (void)setTitle:(id)arg1;
+- (void)setTitleFont:(id)arg1;
 - (void)setTitleLabel:(id)arg1;
-- (void)setTitleWidth:(double)arg1;
 - (void)setType:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (long long)style;
 - (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (id)tapGestureRecognizer;
+- (id)templateImage;
 - (void)tintColorDidChange;
 - (id)title;
+- (id)titleFont;
 - (id)titleLabel;
-- (double)titleWidth;
 - (id)type;
 - (void)updateImageViewStateAnimated:(bool)arg1;
 - (void)updateLabelStateAnimated:(bool)arg1;

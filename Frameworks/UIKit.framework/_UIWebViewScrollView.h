@@ -5,9 +5,12 @@
 @interface _UIWebViewScrollView : UIWebScrollView {
     bool  _bouncesSetExplicitly;
     UIWebBrowserView * _browserView;
+    bool  _contentInsetAdjustmentBehaviorWasExternallyOverridden;
     _UIWebViewScrollViewDelegateForwarder * _forwarder;
 }
 
+- (bool)_contentInsetAdjustmentBehaviorWasExternallyOverridden;
+- (void)_setContentInsetAdjustmentBehaviorInternal:(long long)arg1;
 - (void)_setWebView:(id)arg1;
 - (void)_weaklySetBouncesHorizontally:(bool)arg1;
 - (void)dealloc;
@@ -16,7 +19,7 @@
 - (void)setBounces:(bool)arg1;
 - (void)setBouncesHorizontally:(bool)arg1;
 - (void)setBouncesVertically:(bool)arg1;
-- (void)setContentInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)setContentInsetAdjustmentBehavior:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 
 @end

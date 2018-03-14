@@ -23,6 +23,7 @@
         unsigned long long location; 
         unsigned long long length; 
     }  _markedTextSelection;
+    NSDictionary * _markedTextStyle;
     NSHashTable * _observedScrollViews;
     UITextPasteController * _pasteController;
     struct _NSRange { 
@@ -117,7 +118,6 @@
 - (id)_characterPositionForPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
 - (void)_clearSelectionUI;
-- (void)_commonInitWithLayoutManager:(id)arg1;
 - (void)_coordinateSelectionChange:(id /* block */)arg1;
 - (void)_copySelectionToClipboard;
 - (void)_define:(id)arg1;
@@ -147,6 +147,7 @@
 - (bool)_hasMarkedText;
 - (bool)_hasMarkedTextOrRangedSelection;
 - (int)_indexForTextPosition:(id)arg1;
+- (id)_initWithLayoutManager:(id)arg1;
 - (void)_insertAttributedText:(id)arg1 fromKeyboard:(bool)arg2;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
 - (void)_insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2 replacingRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 resultLength:(unsigned long long*)arg4;
@@ -249,6 +250,7 @@
 - (void)_teardownTextContainerView:(id)arg1;
 - (id)_textColorForCaretSelection;
 - (void)_textContainerDidChangeView:(id)arg1;
+- (id)_textInputTraits;
 - (id)_textRangeFromNSRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)_textStorage;
 - (void)_textStorageDidProcessEditing:(id)arg1;
@@ -287,6 +289,7 @@
 - (bool)continuousSpellCheckingEnabled;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
+- (void)dealloc;
 - (void)decreaseSize:(id)arg1;
 - (id)delegate;
 - (void)delegateWillChangeAttributedText:(id)arg1;
@@ -300,7 +303,6 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameForDictationResultPlaceholder:(id)arg1;
 - (bool)hasText;
 - (void)increaseSize:(id)arg1;
-- (id)initWithLayoutManager:(id)arg1;
 - (id)inputDelegate;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (id)insertDictationResultPlaceholder;

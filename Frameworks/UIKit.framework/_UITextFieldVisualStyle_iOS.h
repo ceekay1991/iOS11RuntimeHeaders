@@ -4,17 +4,14 @@
 
 @interface _UITextFieldVisualStyle_iOS : _UITextFieldVisualStyle
 
-- (id)attributeNamesToEdit;
 - (id)defaultFocusedTextColor;
 - (id)defaultTextColor;
 - (id)defaultTextColorForKeyboardAppearance;
-- (id)editedAttributeValueForName:(id)arg1 value:(id)arg2;
-- (id)editedAttributedTextForText:(id)arg1 defaultAttributes:(id)arg2;
-- (id)fieldEditorTextAttributesStoringOriginalDefaultTextAttributes:(id)arg1;
 - (void)handleTextVibrancy;
+- (id)namesOfAttributesToOverrideForEditing;
+- (id)overridingEditingAttributes:(id)arg1 forOriginalAttributes:(id)arg2;
 - (id)parentViewForTextContentView;
 - (id)placeholderColor;
 - (bool)textShouldUseVibrancy;
-- (id)uneditedAttributeNameForName:(id)arg1;
 
 @end

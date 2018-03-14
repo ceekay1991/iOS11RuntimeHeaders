@@ -40,6 +40,8 @@
 @property (nonatomic) long long sagaId;
 @property (nonatomic) long long storeId;
 
+// Image: /System/Library/PrivateFrameworks/MusicLibrary.framework/MusicLibrary
+
 + (Class)libraryIdentifiersType;
 
 - (void).cxx_destruct;
@@ -92,5 +94,18 @@
 - (void)setStoreId:(long long)arg1;
 - (long long)storeId;
 - (void)writeTo:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NanoMusicSync.framework/NanoMusicSync
+
++ (id)_multiverseIdentifiersWithPIDs:(id)arg1 groupingType:(long long)arg2;
++ (id)_pidsFromSyncIDs:(id)arg1 containerClass:(Class)arg2;
++ (id)midDataArrayFromAlbumPIDs:(id)arg1;
++ (id)midDataArrayFromAlbumSyncIDs:(id)arg1;
++ (id)midDataArrayFromPlaylistPIDs:(id)arg1;
++ (id)midDataArrayFromPlaylistSyncIDs:(id)arg1;
++ (id)midDataFromPlaylistPID:(id)arg1;
++ (id)midDataFromPlaylistSyncID:(id)arg1;
++ (id)pidFromMIDData:(id)arg1;
++ (id)pidsFromMIDDataArray:(id)arg1;
 
 @end

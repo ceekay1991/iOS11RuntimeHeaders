@@ -4,6 +4,7 @@
 
 @interface BrightnessSystemInternal : NSThread <NSXPCListenerDelegate> {
     NSRunLoop * _NS_rl;
+    float  _cachedSlider;
     id /* block */  _callback;
     NSMutableDictionary * _clients;
     NSMutableDictionary * _clientsProps;

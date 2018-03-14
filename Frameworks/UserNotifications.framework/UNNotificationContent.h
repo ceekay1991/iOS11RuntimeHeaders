@@ -48,6 +48,8 @@
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly, copy) NSDictionary *userInfo;
 
+// Image: /System/Library/Frameworks/UserNotifications.framework/UserNotifications
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -81,5 +83,10 @@
 - (id)threadIdentifier;
 - (id)title;
 - (id)userInfo;
+
+// Image: /System/Library/PrivateFrameworks/UserNotificationsServer.framework/UserNotificationsServer
+
+- (bool)uns_willAlertUser;
+- (bool)uns_willNotifyUser;
 
 @end

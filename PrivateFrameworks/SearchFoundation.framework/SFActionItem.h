@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFActionItem : NSObject <NSSecureCoding, SFActionItem> {
+@interface SFActionItem : NSObject <NSCopying, NSSecureCoding, SFActionItem> {
     NSString * _applicationBundleIdentifier;
     SFImage * _baseIcon;
     NSString * _contactIdentifier;
@@ -73,6 +73,7 @@
 - (id)applicationBundleIdentifier;
 - (id)baseIcon;
 - (id)contactIdentifier;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (id)email;
 - (void)encodeWithCoder:(id)arg1;

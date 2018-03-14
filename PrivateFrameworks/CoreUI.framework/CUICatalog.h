@@ -7,6 +7,7 @@
     NSBundle * _bundle;
     unsigned int  _fileHasDisplayGamutInKeySpace;
     NSCache * _lookupCache;
+    NSCache * _negativeCache;
     unsigned int  _purgeWhenFinished;
     unsigned int  _reserved;
     NSMapTable * _storageMapTable;
@@ -106,6 +107,7 @@
 - (id)namedTextureWithName:(id)arg1 scaleFactor:(double)arg2 displayGamut:(long long)arg3;
 - (id)namedVectorImageWithName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 displayGamut:(long long)arg5 layoutDirection:(long long)arg6 sizeClassHorizontal:(long long)arg7 sizeClassVertical:(long long)arg8;
 - (id)namedVectorImageWithName:(id)arg1 scaleFactor:(double)arg2 displayGamut:(long long)arg3 layoutDirection:(long long)arg4;
+- (id)negativeCache;
 - (id)newShapeEffectPresetForStylePresetName:(id)arg1 styleConfiguration:(id)arg2;
 - (id)newShapeEffectPresetWithRenditionKey:(id)arg1;
 - (id)newShapeEffectStackForStylePresetName:(id)arg1 styleConfiguration:(id)arg2 foregroundColor:(struct CGColor { }*)arg3;

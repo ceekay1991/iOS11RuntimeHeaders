@@ -6,6 +6,7 @@
 @required
 
 - (<CNContactsLogger> *)contactsLogger;
+- (<CNRegulatoryLogger> *)regulatoryLogger;
 - (<CNSpotlightIndexingLogger> *)spotlightIndexingLogger;
 
 @end

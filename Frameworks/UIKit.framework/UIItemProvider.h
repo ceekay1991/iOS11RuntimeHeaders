@@ -12,6 +12,8 @@
 @property (nonatomic, copy) NSNumber *size;
 @property (nonatomic, copy) NSDictionary *teamMetadata;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 - (void).cxx_destruct;
 - (bool)canCreateObjectOfClass:(Class)arg1;
 - (bool)canInstantiateObjectOfClass:(Class)arg1;
@@ -49,5 +51,9 @@
 - (void)setTeamMetadata:(id)arg1;
 - (id)size;
 - (id)teamMetadata;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
+- (bool)supportedInQLController;
 
 @end

@@ -5,7 +5,7 @@
 @interface GEONetworkDefaults : NSObject <_GEONetworkDefaultsServerProxyDelegate> {
     NSMutableArray * _completionHandlers;
     NSDictionary * _networkDefaults;
-    NSLock * _networkDefaultsLock;
+    NSObject<OS_dispatch_queue> * _networkDefaultsIsolation;
     <_GEONetworkDefaultsServerProxy> * _serverProxy;
 }
 
@@ -17,11 +17,11 @@
 + (void)_ib_disableServerConnection;
 + (void)setUseLocalProxy:(bool)arg1;
 + (id)sharedNetworkDefaults;
++ (bool)useLocalProxy;
 
 - (void).cxx_destruct;
 - (bool)_needsUpdate;
 - (id)allKeys;
-- (void)dealloc;
 - (id)init;
 - (void)serverProxy:(id)arg1 networkDefaultsDidChange:(id)arg2;
 - (void)updateIfNecessary:(id /* block */)arg1;

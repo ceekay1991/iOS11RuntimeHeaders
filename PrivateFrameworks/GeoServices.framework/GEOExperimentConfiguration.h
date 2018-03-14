@@ -39,6 +39,7 @@
 - (id)_reportAProblemClientMetadata;
 - (void)_setActiveExperimentBranchDictionaryRepresentation:(id)arg1;
 - (id)_siriClientMetadata;
+- (void)abAssignUUIDWithCompletionHandler:(id /* block */)arg1;
 - (void)addExperimentObserver:(id)arg1 queue:(id)arg2;
 - (id)clientConfig;
 - (id)clientConfigurationValueForKey:(id)arg1;
@@ -53,5 +54,6 @@
 - (void)refreshDatasetABStatus:(id)arg1;
 - (void)removeExperimentObserver:(id)arg1;
 - (void)serverProxy:(id)arg1 didChangeExperimentsInfo:(id)arg2;
+- (void)updateURLComponents:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 
 @end

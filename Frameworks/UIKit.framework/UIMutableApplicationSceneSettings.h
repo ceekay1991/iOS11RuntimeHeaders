@@ -21,6 +21,8 @@
 @property (nonatomic) bool underLock;
 @property (nonatomic) long long userInterfaceStyle;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 - (bool)canShowAlerts;
 - (Class)canvasClass;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -50,5 +52,10 @@
 - (bool)underLock;
 - (long long)userInterfaceStyle;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
+
+- (bool)fb_isUnderLock;
+- (bool)isEffectivelyBackgrounded;
 
 @end

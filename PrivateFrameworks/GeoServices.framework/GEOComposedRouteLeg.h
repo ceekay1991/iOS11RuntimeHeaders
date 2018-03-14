@@ -36,6 +36,7 @@
 @property (nonatomic, readonly) long long type;
 
 - (void).cxx_destruct;
+- (bool)_MapsCarPlay_isEqual:(id)arg1;
 - (id)composedRoute;
 - (bool)contains:(id)arg1;
 - (id)description;

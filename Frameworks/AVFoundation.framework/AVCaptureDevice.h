@@ -15,6 +15,8 @@
 @property (nonatomic, readonly) NSString *modelID;
 @property (nonatomic, readonly) NSString *uniqueID;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (id)_devices;
 + (id)_devicesWithDeviceTypes:(id)arg1 mediaType:(id)arg2 position:(long long)arg3;
 + (void)_filterConnectedDevices:(id)arg1 withDeviceTypes:(id)arg2 mediaType:(id)arg3 position:(long long)arg4;
@@ -199,6 +201,7 @@
 - (void)stopUsingDevice;
 - (id)supportedMetadataObjectIdentifiers;
 - (bool)supportsAVCaptureSessionPreset:(id)arg1;
+- (id)systemPressureState;
 - (struct { float x1; float x2; })temperatureAndTintValuesForDeviceWhiteBalanceGains:(struct { float x1; float x2; float x3; })arg1;
 - (float)torchLevel;
 - (long long)torchMode;
@@ -207,5 +210,15 @@
 - (bool)usesQuantizationScalingMatrix_H264_Steep_16_48;
 - (double)videoZoomFactor;
 - (long long)whiteBalanceMode;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
+- (void)cam_debugExposureState;
+- (void)cam_debugFocusAndExposureState;
+- (void)cam_debugFocusState;
+- (id)cameraPanoramaFormatForConfiguration:(id)arg1;
+- (id)cameraStillImageFormat;
+- (id)cameraVideoFormatForVideoConfiguration:(long long)arg1;
+- (id)cameraVideoPresetForVideoConfiguration:(long long)arg1;
 
 @end

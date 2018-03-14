@@ -14,9 +14,9 @@
 + (id)boundedQueueWithCapacity:(unsigned long long)arg1 overflowHandler:(id /* block */)arg2;
 + (id)priorityQueueWithComparator:(id /* block */)arg1;
 
+- (void).cxx_destruct;
 - (id)allObjects;
 - (unsigned long long)count;
-- (void)dealloc;
 - (id)dequeue;
 - (void)dequeueObject:(id)arg1;
 - (id)drain;

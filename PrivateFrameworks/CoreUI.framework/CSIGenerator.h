@@ -58,6 +58,7 @@
         double height; 
     }  _originalUncroppedSize;
     unsigned int  _pixelFormat;
+    bool  _preservedVectorRepresentation;
     NSData * _rawData;
     unsigned long long  _rowbytes;
     unsigned int  _scaleFactor;
@@ -100,6 +101,7 @@
 @property (nonatomic) bool optOutOfThinning;
 @property (nonatomic) struct CGSize { double x1; double x2; } originalUncroppedSize;
 @property (nonatomic) unsigned int pixelFormat;
+@property (nonatomic) bool preservedVectorRepresentation;
 @property (nonatomic) unsigned int scaleFactor;
 @property (nonatomic) struct CGSize { double x1; double x2; } size;
 @property (nonatomic, copy) NSDictionary *sizesByIndex;
@@ -161,6 +163,7 @@
 - (bool)optOutOfThinning;
 - (struct CGSize { double x1; double x2; })originalUncroppedSize;
 - (unsigned int)pixelFormat;
+- (bool)preservedVectorRepresentation;
 - (id)rawData;
 - (unsigned int)scaleFactor;
 - (void)setAllowsMultiPassEncoding:(bool)arg1;
@@ -187,6 +190,7 @@
 - (void)setOptOutOfThinning:(bool)arg1;
 - (void)setOriginalUncroppedSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setPixelFormat:(unsigned int)arg1;
+- (void)setPreservedVectorRepresentation:(bool)arg1;
 - (void)setScaleFactor:(unsigned int)arg1;
 - (void)setSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setSizesByIndex:(id)arg1;

@@ -15,8 +15,7 @@
 - (void)cancelRequest:(id)arg1;
 - (void)finalizeRequest:(id)arg1;
 - (id)init;
-- (void)startRequest:(id)arg1 auditToken:(id)arg2 isDoomRequest:(bool)arg3 requestPriority:(id)arg4 finished:(id /* block */)arg5 networkActivity:(id /* block */)arg6 error:(id /* block */)arg7;
-- (void)startRequest:(id)arg1 auditToken:(id)arg2 skipFinalize:(bool)arg3 finished:(id /* block */)arg4 networkActivity:(id /* block */)arg5 error:(id /* block */)arg6;
+- (void)startRequest:(id)arg1 auditToken:(id)arg2 skipFinalize:(bool)arg3 isDoomRequest:(bool)arg4 requestPriority:(id)arg5 finished:(id /* block */)arg6 networkActivity:(id /* block */)arg7 error:(id /* block */)arg8;
 - (void)startRequest:(id)arg1 finished:(id /* block */)arg2 networkActivity:(id /* block */)arg3 error:(id /* block */)arg4;
 
 @end

@@ -22,6 +22,8 @@
 @property (nonatomic) bool renameOnCollision;
 @property (nonatomic) unsigned int taskId;
 
+// Image: /System/Library/PrivateFrameworks/DataAccessExpress.framework/DataAccessExpress
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -45,5 +47,9 @@
 - (void)setRenameOnCollision:(bool)arg1;
 - (void)setTaskId:(unsigned int)arg1;
 - (unsigned int)taskId;
+
+// Image: /System/Library/PrivateFrameworks/Message.framework/Message
+
+- (id)mf_deferredOperation;
 
 @end

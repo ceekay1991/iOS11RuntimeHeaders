@@ -14,9 +14,12 @@
 @property (nonatomic) int printerState;
 @property (nonatomic, retain) UIView *statusView;
 
-// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (void).cxx_destruct;
+
+// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+
 - (id)delegate;
 - (id)infoButton;
 - (void)infoButtonPressed:(id)arg1;

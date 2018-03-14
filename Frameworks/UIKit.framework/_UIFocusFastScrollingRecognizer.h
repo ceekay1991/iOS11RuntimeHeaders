@@ -8,6 +8,7 @@
     bool  _enabled;
     _UIFocusEnginePanGestureRecognizer * _panGesture;
     UIScrollView * _previewingScrollView;
+    NSTimer * _previewingTouchTimer;
     NSTimer * _swipeIntervalTimer;
     NSMapTable * _swipeSequences;
 }
@@ -22,8 +23,11 @@
 + (id)recognizerWithPanGesture:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_activatePreviewingScrollView;
+- (void)_activatePreviewingScrollViewAfterDelay;
 - (bool)_attemptToImmediatelyRecognizeEdgeGesture;
 - (unsigned long long)_bestHeadingForAccumulator:(struct CGVector { double x1; double x2; })arg1;
+- (void)_deactivatePreviewingScrollViewIfNecessary;
 - (id)_deepestEligibleScrollViewContainingFocusedItem:(unsigned long long)arg1;
 - (void)_focusDidUpate:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;

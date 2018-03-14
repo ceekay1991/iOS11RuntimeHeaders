@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFTextColumnSection : NSObject <NSSecureCoding, SFTextColumnSection> {
+@interface SFTextColumnSection : NSObject <NSCopying, NSSecureCoding, SFTextColumnSection> {
     struct { 
         unsigned int textNoWrap : 1; 
         unsigned int textWeight : 1; 
@@ -25,6 +25,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasTextNoWrap;

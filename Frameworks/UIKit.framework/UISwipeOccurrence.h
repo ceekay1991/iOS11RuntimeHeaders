@@ -15,8 +15,13 @@
     }  _extraInsets;
     NSIndexPath * _indexPath;
     UISwipeActionPullView * _leadingPullView;
+    bool  _shouldReenableUserInteraction;
     NSDictionary * _swipeDirectionToPullView;
     UIView * _swipedView;
+    struct CGPoint { 
+        double x; 
+        double y; 
+    }  _swipedViewInitialPosition;
     UISwipeActionPullView * _trailingPullView;
 }
 
@@ -30,9 +35,11 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSIndexPath *indexPath;
 @property (nonatomic, retain) UISwipeActionPullView *leadingPullView;
+@property (nonatomic) bool shouldReenableUserInteraction;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSDictionary *swipeDirectionToPullView;
 @property (nonatomic, retain) UIView *swipedView;
+@property (nonatomic) struct CGPoint { double x1; double x2; } swipedViewInitialPosition;
 @property (nonatomic, retain) UISwipeActionPullView *trailingPullView;
 
 - (void).cxx_destruct;
@@ -66,13 +73,17 @@
 - (void)setExtraInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setIndexPath:(id)arg1;
 - (void)setLeadingPullView:(id)arg1;
+- (void)setShouldReenableUserInteraction:(bool)arg1;
 - (void)setSwipeDirectionToPullView:(id)arg1;
 - (void)setSwipedView:(id)arg1;
+- (void)setSwipedViewInitialPosition:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setTrailingPullView:(id)arg1;
 - (bool)shouldDismissWithTouchLocation:(struct CGPoint { double x1; double x2; })arg1;
+- (bool)shouldReenableUserInteraction;
 - (void)swipeActionPullView:(id)arg1 tappedAction:(id)arg2;
 - (id)swipeDirectionToPullView;
 - (id)swipedView;
+- (struct CGPoint { double x1; double x2; })swipedViewInitialPosition;
 - (id)trailingPullView;
 - (void)updateLayout;
 

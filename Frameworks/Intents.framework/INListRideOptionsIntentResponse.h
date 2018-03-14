@@ -26,7 +26,6 @@
 - (id)_dictionaryRepresentation;
 - (id)_responseMessagePBRepresentation;
 - (long long)code;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)expirationDate;
 - (id)init;

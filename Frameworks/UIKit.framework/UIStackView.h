@@ -26,6 +26,7 @@
 
 + (Class)layerClass;
 
+- (void).cxx_destruct;
 - (id)_baselineViewForFirst:(bool)arg1;
 - (double)_calculatedIntrinsicHeight;
 - (void)_commonStackViewInitializationWithArrangedSubviews:(id)arg1;
@@ -41,7 +42,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)addArrangedSubview:(id)arg1;
 - (long long)alignment;
 - (id)arrangedSubviews;
@@ -67,7 +67,6 @@
 - (void)setOpaque:(bool)arg1;
 - (void)setSpacing:(double)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(bool)arg1;
-- (void)set_mk_axis:(long long)arg1;
 - (double)spacing;
 - (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;
@@ -76,5 +75,6 @@
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (long long)_mk_axis;
+- (void)set_mk_axis:(long long)arg1;
 
 @end

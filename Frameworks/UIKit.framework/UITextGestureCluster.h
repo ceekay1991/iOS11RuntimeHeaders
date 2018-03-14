@@ -42,6 +42,7 @@
 - (void)detach;
 - (void)disableClearsOnInsertion;
 - (double)distanceBetweenPoint:(struct CGPoint { double x1; double x2; })arg1 andRange:(id)arg2;
+- (bool)doesControlDelegate;
 - (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;

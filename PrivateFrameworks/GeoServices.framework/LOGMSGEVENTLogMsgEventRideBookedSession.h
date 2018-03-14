@@ -17,6 +17,7 @@
         unsigned int viewedDetails : 1; 
         unsigned int viewedInProactiveTray : 1; 
     }  _has;
+    NSMutableArray * _intentResponseFailures;
     bool  _invalidVehicleLocation;
     bool  _missingVehicleLocation;
     NSString * _rideAppId;
@@ -43,6 +44,7 @@
 @property (nonatomic) bool hasTappedProactiveTrayItem;
 @property (nonatomic) bool hasViewedDetails;
 @property (nonatomic) bool hasViewedInProactiveTray;
+@property (nonatomic, retain) NSMutableArray *intentResponseFailures;
 @property (nonatomic) bool invalidVehicleLocation;
 @property (nonatomic) bool missingVehicleLocation;
 @property (nonatomic, retain) NSString *rideAppId;
@@ -53,10 +55,14 @@
 @property (nonatomic) bool viewedDetails;
 @property (nonatomic) bool viewedInProactiveTray;
 
++ (Class)intentResponseFailureType;
+
 - (void).cxx_destruct;
 - (int)StringAsStatusIssue:(id)arg1;
+- (void)addIntentResponseFailure:(id)arg1;
 - (bool)bookedUsingMaps;
 - (bool)cancelled;
+- (void)clearIntentResponseFailures;
 - (bool)contactedDriver;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -75,6 +81,9 @@
 - (bool)hasViewedDetails;
 - (bool)hasViewedInProactiveTray;
 - (unsigned long long)hash;
+- (id)intentResponseFailureAtIndex:(unsigned long long)arg1;
+- (id)intentResponseFailures;
+- (unsigned long long)intentResponseFailuresCount;
 - (bool)invalidVehicleLocation;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
@@ -95,6 +104,7 @@
 - (void)setHasTappedProactiveTrayItem:(bool)arg1;
 - (void)setHasViewedDetails:(bool)arg1;
 - (void)setHasViewedInProactiveTray:(bool)arg1;
+- (void)setIntentResponseFailures:(id)arg1;
 - (void)setInvalidVehicleLocation:(bool)arg1;
 - (void)setMissingVehicleLocation:(bool)arg1;
 - (void)setRideAppId:(id)arg1;

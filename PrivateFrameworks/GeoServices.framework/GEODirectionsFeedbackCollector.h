@@ -17,7 +17,9 @@
 - (void).cxx_destruct;
 - (void)_updateFeedbackSessionWithResponseID:(id)arg1;
 - (void)addAlightNotificationFeedback:(id)arg1;
+- (void)addGuidanceEventFeedback:(id)arg1;
 - (void)addRouteID:(id)arg1 routeIndex:(unsigned int)arg2 stepID:(unsigned int)arg3 completeStep:(bool)arg4;
+- (void)addStepFeedback:(id)arg1;
 - (void)addTrafficRerouteFeedback:(id)arg1;
 - (void)changeNavigationType:(int)arg1;
 - (id)currentDirectionsFeedback;

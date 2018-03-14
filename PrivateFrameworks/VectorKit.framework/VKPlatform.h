@@ -3,11 +3,13 @@
  */
 
 @interface VKPlatform : NSObject {
+    bool  _isMac;
     bool  _lowPerformanceDevice;
     unsigned long long  _memSize;
     int  _numCPUs;
     bool  _proceduralRoadAlpha;
     bool  _supports3DBuildingStrokes;
+    bool  _supportsARMode;
     bool  _supportsBuildingStrokes;
     bool  _supportsCoastlineGlows;
     bool  _supportsPerFragmentLighting;
@@ -28,6 +30,7 @@
 @property (nonatomic, readonly) bool shouldStyleLabelsInParallel;
 @property (nonatomic, readonly) bool supports3DBuildingStrokes;
 @property (nonatomic, readonly) bool supports3DBuildings;
+@property (nonatomic, readonly) bool supportsARMode;
 @property (nonatomic, readonly) bool supportsBuildingShadows;
 @property (nonatomic, readonly) bool supportsBuildingStrokes;
 @property (nonatomic, readonly) bool supportsCoastlineGlows;
@@ -35,7 +38,6 @@
 @property (nonatomic, readonly) bool supportsHiResRTT;
 @property (nonatomic, readonly) bool supportsPerFragmentLighting;
 @property (nonatomic, readonly) unsigned char tileDecodeQueueWidth;
-@property (nonatomic, readonly) unsigned long long tileMaximumLimit;
 @property (nonatomic, readonly) unsigned int tilePrefetchNumberOfScreens;
 @property (nonatomic, readonly) bool useCheapTrafficShader;
 
@@ -59,6 +61,7 @@
 - (bool)shouldStyleLabelsInParallel;
 - (bool)supports3DBuildingStrokes;
 - (bool)supports3DBuildings;
+- (bool)supportsARMode;
 - (bool)supportsBuildingShadows;
 - (bool)supportsBuildingStrokes;
 - (bool)supportsCoastlineGlows;
@@ -66,7 +69,7 @@
 - (bool)supportsHiResRTT;
 - (bool)supportsPerFragmentLighting;
 - (unsigned char)tileDecodeQueueWidth;
-- (unsigned long long)tileMaximumLimit;
+- (unsigned long long)tileMaximumLimit:(unsigned long long)arg1;
 - (unsigned int)tilePrefetchNumberOfScreens;
 - (bool)useCheapTrafficShader;
 

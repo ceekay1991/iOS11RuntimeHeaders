@@ -19,7 +19,7 @@
 @property (nonatomic, copy) id /* block */ downloadablePlaylistItemEntityQueryBlock;
 @property (nonatomic) long long enableState;
 @property (nonatomic, retain) MPModelObject *identifyingModelObject;
-@property (nonatomic, retain) MPMediaLibraryView *libraryView;
+@property (nonatomic, copy) MPMediaLibraryView *libraryView;
 @property (nonatomic, copy) NSNumber *redownloadableItemCount;
 @property (nonatomic, copy) id /* block */ responseHandler;
 

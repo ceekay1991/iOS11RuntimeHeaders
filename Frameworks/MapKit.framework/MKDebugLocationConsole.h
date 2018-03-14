@@ -8,6 +8,7 @@
     bool  _customTextEnabled;
     unsigned long long  _pageIndex;
     MKMapView * _parentMapView;
+    NSDateFormatter * _timeStampFormatter;
     NSTimer * _updateTimer;
 }
 
@@ -26,6 +27,8 @@
 - (unsigned long long)pageIndex;
 - (void)setCustomTextEnabled:(bool)arg1;
 - (void)setPageIndex:(unsigned long long)arg1;
+- (void)setText:(id)arg1;
+- (id)timeStampFormatter;
 - (void)update;
 - (void)updateCustomText:(id)arg1 textColor:(id)arg2;
 - (void)updateFrameWithEdgeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;

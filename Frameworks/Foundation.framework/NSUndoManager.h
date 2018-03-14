@@ -29,6 +29,8 @@
 @property (getter=isUndoRegistrationEnabled, readonly) bool undoRegistrationEnabled;
 @property (getter=isUndoing, readonly) bool undoing;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (void)_endTopLevelGroupings;
 + (void)_setEndsTopLevelGroupingsAfterRunLoopIterations:(bool)arg1;
 
@@ -83,5 +85,9 @@
 - (id)undoMenuItemTitle;
 - (id)undoMenuTitleForUndoActionName:(id)arg1;
 - (void)undoNestedGroup;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (bool)ic_isUndoingOrRedoing;
 
 @end

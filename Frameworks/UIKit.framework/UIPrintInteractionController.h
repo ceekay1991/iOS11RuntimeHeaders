@@ -7,8 +7,9 @@
     id /* block */  _completionHandler;
     <UIPrintInteractionControllerDelegate> * _delegate;
     bool  _hidesNumberOfCopies;
+    bool  _isManagedContent;
     NSObject<OS_dispatch_queue> * _previewQueue;
-    <UIPrintInteractionControllerDelegate> * _printActivityDelegate;
+    <UIPrintInteractionControllerActivityDelegate> * _printActivityDelegate;
     UIPrintFormatter * _printFormatter;
     UIPrintInfo * _printInfo;
     UIPrintPageRenderer * _printPageRenderer;
@@ -22,10 +23,11 @@
 }
 
 @property (nonatomic) <UIPrintInteractionControllerDelegate> *delegate;
+@property (nonatomic) bool isManagedContent;
 @property (nonatomic, readonly) long long pageCount;
 @property (nonatomic, retain) NSArray *pageRanges;
 @property (nonatomic, retain) UIPrintPaper *paper;
-@property (nonatomic) <UIPrintInteractionControllerDelegate> *printActivityDelegate;
+@property (nonatomic) <UIPrintInteractionControllerActivityDelegate> *printActivityDelegate;
 @property (nonatomic, retain) UIPrintFormatter *printFormatter;
 @property (nonatomic, retain) UIPrintInfo *printInfo;
 @property (nonatomic, retain) UIPrintPageRenderer *printPageRenderer;
@@ -67,6 +69,7 @@
 - (double)_getCutLengthFromDelegateForPaper:(id)arg1;
 - (id)_init;
 - (void)_manualPrintPage;
+- (id)_newPDFPreviewURLWithPath:(id)arg1 isManagedContent:(bool)arg2;
 - (struct CGContext { }*)_newSaveContext:(id)arg1 withMediaRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (id)_paperForContentType:(long long)arg1;
 - (id)_paperForPDFItem:(id)arg1 withDuplexMode:(long long)arg2;
@@ -80,6 +83,7 @@
 - (void)_printPanelWillDismiss:(bool)arg1;
 - (struct CGSize { double x1; double x2; })_printablePDFDataSize:(id)arg1;
 - (struct CGSize { double x1; double x2; })_printablePDFURLSize:(id)arg1;
+- (bool)_printingItemIsReallyTallPDF;
 - (void)_setPrintInfoState:(int)arg1;
 - (bool)_setupPrintPanel:(id /* block */)arg1;
 - (void)_startPrinting;
@@ -90,6 +94,7 @@
 - (id)delegate;
 - (void)dismissAnimated:(bool)arg1;
 - (id)init;
+- (bool)isManagedContent;
 - (long long)pageCount;
 - (id)pageRanges;
 - (id)paper;
@@ -107,6 +112,7 @@
 - (id)printingItems;
 - (bool)savePDFToURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)setDelegate:(id)arg1;
+- (void)setIsManagedContent:(bool)arg1;
 - (void)setPageRanges:(id)arg1;
 - (void)setPaper:(id)arg1;
 - (void)setPrintActivityDelegate:(id)arg1;

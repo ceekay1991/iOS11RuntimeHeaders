@@ -27,6 +27,7 @@
 - (bool)hasPunchoutPickerDismissText;
 - (bool)hasPunchoutPickerTitle;
 - (bool)hasSeparatorStyle;
+- (bool)hasSpecialOfferButtonLabel;
 - (bool)hasTopPadding;
 - (bool)hasType;
 - (bool)hasWatchListButtonLabel;
@@ -61,11 +62,13 @@
 - (void)setPunchoutPickerDismissText:(NSString *)arg1;
 - (void)setPunchoutPickerTitle:(NSString *)arg1;
 - (void)setSeparatorStyle:(int)arg1;
+- (void)setSpecialOfferButtonLabel:(_SFPBRichText *)arg1;
 - (void)setType:(NSString *)arg1;
 - (void)setWatchListButtonLabel:(NSString *)arg1;
 - (void)setWatchListConfirmationText:(NSString *)arg1;
 - (void)setWatchListContinuationText:(NSString *)arg1;
 - (void)setWatchListIdentifier:(NSString *)arg1;
+- (_SFPBRichText *)specialOfferButtonLabel;
 - (NSString *)type;
 - (NSString *)watchListButtonLabel;
 - (NSString *)watchListConfirmationText;

@@ -18,6 +18,8 @@
 - (void).cxx_destruct;
 - (id)initWithRequest:(id)arg1 forParameters:(id)arg2 traits:(id)arg3;
 - (id)mapItemsForParameters:(id)arg1;
+- (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 networkActivity:(id /* block */)arg3;
+- (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 networkActivity:(id /* block */)arg3 queue:(id)arg4;
 - (void)submitWithHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2;
 - (void)submitWithHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2 queue:(id)arg3;
 

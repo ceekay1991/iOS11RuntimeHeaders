@@ -6,8 +6,13 @@
     bool  _advancingOnCommitDisabled;
     NSObject<OS_dispatch_queue> * _animationAdvancerWaitingFlagQueue;
     NSMutableArray * _animationBlocksToStart;
+    NSThread * _animationThread;
+    NSObject<OS_dispatch_semaphore> * _animationThreadKeepAliveSemaphore;
+    NSRunLoop * _animationThreadRunLoop;
+    bool  _animationsShouldCompleteImmediately;
     bool  _animationsSuspended;
     <_UIViewInProcessAnimationManagerDriver> * _animatorAdvancer;
+    NSObject<OS_dispatch_queue> * _backlightQueue;
     _UIAppCACommitFuture * _caCommitFuture;
     bool  _commitsSynchronously;
     NSThread * _currentTickThread;
@@ -25,8 +30,12 @@
     NSMutableArray * _preExitBlocks;
     NSMutableArray * _preTickBlocks;
     NSObject<OS_dispatch_queue> * _preTickLockingQueue;
+    NSHashTable * _presentationGroups;
+    NSMutableArray * _presentationModifierGroupRequestBlocks;
+    unsigned long long  _presentationModifierRequestCount;
     double  _refreshInterval;
     int  _screenDimmingNotificationToken;
+    bool  _screenIsOff;
     bool  _skipNextFrame;
     NSObject<OS_dispatch_queue> * _tickPrepQueue;
     NSObject<OS_dispatch_queue> * _tickQueue;
@@ -38,6 +47,9 @@
 }
 
 @property (nonatomic) bool advancingOnCommitDisabled;
+@property NSThread *animationThread;
+@property (retain) NSObject<OS_dispatch_semaphore> *animationThreadKeepAliveSemaphore;
+@property NSRunLoop *animationThreadRunLoop;
 @property (nonatomic) bool commitsSynchronously;
 @property NSThread *currentTickThread;
 @property (readonly, copy) NSString *debugDescription;
@@ -48,7 +60,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic) bool usesMainThreadExecution;
 
++ (void)_cancelPresentationModifierGroupRequest:(id)arg1;
 + (void)_dispatchAsyncOntoMainBeforeExit:(id /* block */)arg1;
++ (id)_requestPresentationModifierGroup:(id /* block */)arg1;
 + (void)_setExternalAnimationDriver:(id)arg1;
 + (id)sharedManager;
 
@@ -56,8 +70,8 @@
 - (void)_advanceWithTime:(double)arg1;
 - (void)_applicationBecameActive;
 - (void)_applicationResignedActive;
-- (void)_backlightDimmedBelowMinimumThreshold;
 - (void)_cancelAllAnimationsImmediately;
+- (void)_cancelPresentationModifierGroupRequest:(id)arg1;
 - (void)_commitSynchronously;
 - (void)_displayLinkFire:(id)arg1;
 - (bool)_isInvalidated;
@@ -68,14 +82,20 @@
 - (void)_processPostTicks;
 - (void)_processPostTicksDelayIfNecessary:(double)arg1;
 - (void)_processPreTicks;
+- (void)_processPresentationModifierRequestsAndFlush;
 - (void)_processTickExitRemovingEntries:(id)arg1;
 - (void)_registerBacklightChangedNotification;
+- (id)_requestPresentationModifierGroup:(id /* block */)arg1;
 - (void)_runAnimationBlocks;
 - (void)_setAnimationExecutionParameters;
 - (void)_setCurrentMediaTime:(double)arg1;
 - (void)_setPerformScheduledBlocksManually:(bool)arg1;
+- (bool)_shouldKeepAnimationThreadAlive;
 - (void)addEntry:(id /* block */)arg1;
 - (bool)advancingOnCommitDisabled;
+- (id)animationThread;
+- (id)animationThreadKeepAliveSemaphore;
+- (id)animationThreadRunLoop;
 - (bool)commitsSynchronously;
 - (id)currentTickThread;
 - (void)dealloc;
@@ -90,6 +110,9 @@
 - (double)refreshInterval;
 - (void)scheduleAnimatorAdvancerToStart;
 - (void)setAdvancingOnCommitDisabled:(bool)arg1;
+- (void)setAnimationThread:(id)arg1;
+- (void)setAnimationThreadKeepAliveSemaphore:(id)arg1;
+- (void)setAnimationThreadRunLoop:(id)arg1;
 - (void)setCommitsSynchronously:(bool)arg1;
 - (void)setCurrentTickThread:(id)arg1;
 - (void)setExecutionMode:(unsigned long long)arg1;

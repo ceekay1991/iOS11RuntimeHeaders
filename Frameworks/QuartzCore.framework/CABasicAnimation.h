@@ -35,4 +35,25 @@
 
 + (id)normalizedAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
+- (void)pkui_updateForAdditiveAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1 toPoint:(struct CGPoint { double x1; double x2; })arg2;
+- (void)pkui_updateForAdditiveAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1 toPoint:(struct CGPoint { double x1; double x2; })arg2 withLayerPoint:(struct CGPoint { double x1; double x2; })arg3;
+- (void)pkui_updateForAdditiveAnimationFromScalar:(double)arg1 toScalar:(double)arg2;
+- (void)pkui_updateForAdditiveAnimationFromScalar:(double)arg1 toScalar:(double)arg2 withLayerScalar:(double)arg3;
+- (void)pkui_updateForAdditiveAnimationFromSize:(struct CGSize { double x1; double x2; })arg1 toSize:(struct CGSize { double x1; double x2; })arg2;
+- (void)pkui_updateForAdditiveAnimationFromSize:(struct CGSize { double x1; double x2; })arg1 toSize:(struct CGSize { double x1; double x2; })arg2 withLayerSize:(struct CGSize { double x1; double x2; })arg3;
+- (void)pkui_updateForAdditiveAnimationFromTransform:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg1 toTransform:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg2;
+- (void)pkui_updateForAdditiveAnimationFromTransform:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg1 toTransform:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg2 withLayerTransform:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg3;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
+- (double)TSD_animationPercentByApplyingTimingFunctionForKeyPath:(id)arg1 atTime:(double)arg2;
+- (id)TSD_valueAtTime:(double)arg1 initialValue:(id)arg2;
+- (void)p_getValue:(id*)arg1 animationPercent:(double*)arg2 atTime:(double)arg3 initialValue:(id)arg4;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
+- (id)TSDCAAnimationContextCache;
+
 @end

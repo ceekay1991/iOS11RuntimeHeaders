@@ -16,6 +16,7 @@
 }
 
 @property (readonly) NSString *currentStateDebugString;
+@property (readonly) bool isActive;
 @property (readonly) long long liveConfigurationID;
 
 + (void)initialize;
@@ -27,6 +28,7 @@
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
 - (id)init;
+- (bool)isActive;
 - (long long)liveConfigurationID;
 - (id)nodeType;
 - (void)notifyWhenActive:(id /* block */)arg1;

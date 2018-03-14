@@ -8,11 +8,11 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_appBundleIdentifier;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (long long)buttonType;
 - (void)layoutSubviews;
 - (double)neededSizeForImageSet:(id)arg1;

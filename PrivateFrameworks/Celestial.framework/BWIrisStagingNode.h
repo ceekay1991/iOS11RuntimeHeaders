@@ -99,6 +99,7 @@
 - (void)_enqueueIrisRequest:(id)arg1;
 - (bool)_fillInRefMovieStartAndTrimTimesForStillImageTimesBeforeTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (bool)_fillInStartAndTrimTimesForMasterMovieWithInfo:(id)arg1;
+- (bool)_haveEnoughVideoStagedToStartFirstIrisRecording:(id)arg1 currentTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })_hostPTSForSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 - (unsigned long long)_indexOfBufferBeforeOrEqualToHostPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 inputIndex:(unsigned long long)arg2 tolerance:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3;
 - (unsigned long long)_indexOfBufferBeforeOrEqualToPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 inputIndex:(unsigned long long)arg2;

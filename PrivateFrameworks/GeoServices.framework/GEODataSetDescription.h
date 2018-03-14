@@ -8,12 +8,14 @@
         unsigned int identifier : 1; 
     }  _has;
     unsigned int  _identifier;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSString *dataSetDescription;
 @property (nonatomic, readonly) bool hasDataSetDescription;
 @property (nonatomic) bool hasIdentifier;
 @property (nonatomic) unsigned int identifier;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
@@ -31,6 +33,7 @@
 - (void)setDataSetDescription:(id)arg1;
 - (void)setHasIdentifier:(bool)arg1;
 - (void)setIdentifier:(unsigned int)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

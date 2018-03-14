@@ -19,11 +19,10 @@
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (long long)audioRoute;
 - (id)contacts;
-- (id)description;
 - (long long)destinationType;
 - (id)domain;
 - (id)initWithContacts:(id)arg1;
@@ -42,6 +41,10 @@
 - (long long)ttyType;
 - (bool)useSpeaker;
 - (id)verb;
+
+// Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
+
+- (void)apr_getArgsInto:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
 

@@ -5,12 +5,14 @@
 @interface GEOCountryRegionTuple : PBCodable <NSCopying> {
     NSString * _countryCode;
     NSString * _region;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSString *countryCode;
 @property (nonatomic, readonly) bool hasCountryCode;
 @property (nonatomic, readonly) bool hasRegion;
 @property (nonatomic, retain) NSString *region;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
@@ -27,6 +29,7 @@
 - (id)region;
 - (void)setCountryCode:(id)arg1;
 - (void)setRegion:(id)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -17,7 +17,9 @@
 @property (nonatomic, readonly) NSTimeZone *timeZone;
 
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (id)formatPattern;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTimeStamp:(double)arg1 timeZone:(id)arg2 formatPattern:(id)arg3;
 - (double)timeStamp;
 - (id)timeZone;

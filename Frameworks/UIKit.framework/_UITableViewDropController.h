@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UITableViewDropController : NSObject <UIDropInteractionDelegate, _UITableViewDropCoordinatorDelegate> {
+@interface _UITableViewDropController : NSObject <UIDropInteractionDelegate_Private, _UITableViewDropCoordinatorDelegate> {
     bool  _canOnlyHandleReordering;
     unsigned long long  _defaultDropOperation;
     NSMapTable * _dragItemDropAnimations;
@@ -32,17 +32,20 @@
 @property (getter=isTrackingDrag, nonatomic, readonly) bool trackingDrag;
 
 - (void).cxx_destruct;
-- (void)animateDragItem:(id)arg1 intoRowAtIndexPath:(id)arg2 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
-- (void)animateDragItem:(id)arg1 toCell:(id)arg2 withPreviewParameters:(id)arg3;
-- (void)animateDragItem:(id)arg1 toRowAtIndexPath:(id)arg2 withPreviewParameters:(id)arg3;
-- (void)animateDragItem:(id)arg1 toTarget:(id)arg2;
+- (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (id)animateDragItem:(id)arg1 intoRowAtIndexPath:(id)arg2 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
+- (id)animateDragItem:(id)arg1 toCell:(id)arg2 withPreviewParameters:(id)arg3;
+- (id)animateDragItem:(id)arg1 toRowAtIndexPath:(id)arg2;
+- (id)animateDragItem:(id)arg1 toTarget:(id)arg2;
 - (void)beginIgnoringDrags;
 - (bool)canOnlyHandleReordering;
 - (bool)commitPlaceholderInsertionWithContext:(id)arg1 dataSourceUpdates:(id /* block */)arg2;
+- (id)defaultAnimatorForDragItem:(id)arg1;
 - (unsigned long long)defaultDropOperation;
 - (bool)deletePlaceholder:(id)arg1;
 - (id)dragItemDropAnimations;
 - (id)dropInteraction;
+- (void)dropInteraction:(id)arg1 concludeDrop:(id)arg2;
 - (void)dropInteraction:(id)arg1 item:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (id)dropInteraction:(id)arg1 previewForDroppingItem:(id)arg2 withDefault:(id)arg3;
@@ -55,7 +58,7 @@
 - (void)endIgnoringDrags;
 - (long long)ignoringDragsCount;
 - (id)initWithTableView:(id)arg1;
-- (void)insertPlaceholderAtIndexPath:(id)arg1 withContext:(id)arg2;
+- (void)insertPlaceholderAtIndexPath:(id)arg1 withContext:(id)arg2 previewParametersProvider:(id /* block */)arg3;
 - (bool)isActive;
 - (bool)isTrackingDrag;
 - (void)resetAllDragState;

@@ -5,6 +5,7 @@
 @interface MNNavigationSession : NSObject <MNGuidanceManagerDelegate, MNLocationManagerHeadingObserver, MNLocationManagerObserver, MNLocationTrackerDelegate, MNNavigationAudioSessionDelegate, MNTimeAndDistanceUpdaterDelegate, MNTracePlayerObserver, MNVoiceControllerObserver> {
     MNTrafficIncidentAlert * _activeTrafficIncidentAlert;
     MNNavigationAudioSession * _audioSession;
+    GEOApplicationAuditToken * _auditToken;
     MNClassicGuidanceManager * _classicGuidanceManager;
     GEOComposedWaypoint * _destination;
     MNGuidanceEventManager * _guidanceEventManager;
@@ -14,6 +15,8 @@
     bool  _isAllowedToSwitchTransportTypes;
     bool  _isConnectedToCarplay;
     bool  _isSpeakingTrafficIncidentAlert;
+    NSUUID * _lastLaneID;
+    MNGuidanceSignInfo * _lastSignInfo;
     MNLocationTracker * _locationTracker;
     GEOMotionContext * _motionContext;
     int  _navigationType;
@@ -26,6 +29,7 @@
 }
 
 @property (nonatomic, retain) <MNAudioSession> *audioSession;
+@property (nonatomic, readonly) GEOApplicationAuditToken *auditToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) GEOComposedWaypoint *destination;
@@ -68,6 +72,7 @@
 - (id)audioSession;
 - (void)audioSessionDidFinishAnnouncingArrival:(id)arg1;
 - (void)audioSessionWillAnnounceArrival:(id)arg1;
+- (id)auditToken;
 - (void)dealloc;
 - (id)destination;
 - (double)distanceToManeuverEnd;
@@ -79,16 +84,23 @@
 - (void)guidanceManager:(id)arg1 displayPrimaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(bool)arg8;
 - (void)guidanceManager:(id)arg1 displaySecondaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6;
 - (void)guidanceManager:(id)arg1 hideLaneDirectionsForId:(id)arg2;
+- (void)guidanceManager:(id)arg1 newGuidanceEventFeedback:(id)arg2;
 - (void)guidanceManager:(id)arg1 showLaneDirections:(id)arg2;
+- (void)guidanceManager:(id)arg1 triggerHaptics:(int)arg2;
 - (void)guidanceManager:(id)arg1 updateSignsWithInfo:(id)arg2;
+- (void)guidanceManager:(id)arg1 updatedGuidanceEventFeedback:(id)arg2;
+- (void)guidanceManager:(id)arg1 usePersistentDisplay:(bool)arg2;
 - (void)guidanceManager:(id)arg1 willAnnounce:(unsigned long long)arg2 inSeconds:(double)arg3;
+- (void)guidanceManagerBeginGuidanceUpdate:(id)arg1;
 - (void)guidanceManagerDidUpdateProgress:(id)arg1 currentStepIndex:(unsigned long long)arg2 distanceUntilSign:(double)arg3 timeUntilSign:(double)arg4;
+- (void)guidanceManagerEndGuidanceUpdate:(id)arg1;
 - (void)guidanceManagerHideSecondaryStep:(id)arg1;
 - (void)guidanceManagerProceedingToRoute:(id)arg1 proceedToRouteDistance:(double)arg2 displayString:(id)arg3 closestStepIndex:(unsigned long long)arg4;
 - (bool)guidancePromptsEnabled;
-- (id)initWithRouteManager:(id)arg1 traceManager:(id)arg2;
+- (id)initWithRouteManager:(id)arg1 auditToken:(id)arg2 traceManager:(id)arg3;
 - (bool)isAllowedToSwitchTransportTypes;
 - (bool)isConnectedToCarplay;
+- (bool)isCurrentlySpeaking;
 - (id)lastMatchedLocation;
 - (void)locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
@@ -100,7 +112,7 @@
 - (void)locationManagerUpdatedHeading:(id)arg1;
 - (void)locationManagerUpdatedLocation:(id)arg1;
 - (void)locationTracker:(id)arg1 didChangeState:(int)arg2;
-- (void)locationTracker:(id)arg1 didReroute:(id)arg2 rerouteReason:(unsigned long long)arg3 request:(id)arg4 response:(id)arg5;
+- (void)locationTracker:(id)arg1 didReroute:(id)arg2 newAlternateRoutes:(id)arg3 rerouteReason:(unsigned long long)arg4 request:(id)arg5 response:(id)arg6;
 - (void)locationTracker:(id)arg1 didSignalAlightForStepAtIndex:(unsigned long long)arg2;
 - (void)locationTracker:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3 request:(id)arg4 response:(id)arg5;
 - (void)locationTracker:(id)arg1 didUpdateAlternateRoutes:(id)arg2;
@@ -143,7 +155,7 @@
 - (void)tracePlayer:(id)arg1 didJumpToRouteResponse:(id)arg2 request:(id)arg3 origin:(id)arg4 destination:(id)arg5;
 - (void)tracePlayer:(id)arg1 didPlayAtTime:(double)arg2;
 - (void)tracePlayer:(id)arg1 didReceiveLocationError:(id)arg2;
-- (void)tracePlayer:(id)arg1 didSeekToTime:(double)arg2 location:(id)arg3;
+- (void)tracePlayer:(id)arg1 didSeekToTime:(double)arg2 fromTime:(double)arg3 location:(id)arg4;
 - (void)tracePlayer:(id)arg1 didSeekToTransportType:(int)arg2;
 - (void)tracePlayer:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)tracePlayer:(id)arg1 didUpdateLocation:(id)arg2;

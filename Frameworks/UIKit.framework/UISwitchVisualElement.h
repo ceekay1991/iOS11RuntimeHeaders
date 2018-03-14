@@ -18,9 +18,10 @@
 
 + (struct CGSize { double x1; double x2; })preferredContentSize;
 
+- (void).cxx_destruct;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)enabled;
 - (double)enabledAlpha;
 - (id)impactFeedbackGenerator;

@@ -15,6 +15,7 @@
     bool  _discardNextHypothesis;
     id /* block */  _finalResultsOperation;
     bool  _hasPreheated;
+    bool  _ignoreFinalizePhrases;
     struct _NSRange { 
         unsigned long long location; 
         unsigned long long length; 
@@ -73,6 +74,7 @@
 + (void)applicationWillResignActive;
 + (id)bestInterpretationForDictationResult:(id)arg1;
 + (bool)checkTraitsSupportDictation:(id)arg1;
++ (bool)dictationInfoIsOnScreen;
 + (bool)dictationIsFunctional;
 + (void)didBeginEditingInTextView:(id)arg1;
 + (void)didOneFingerTapInTextView:(id)arg1;
@@ -87,12 +89,13 @@
 + (void)keyboardWillChangeFromDelegate:(id)arg1 toDelegate:(id)arg2;
 + (void)logCorrectionStatisticsForDelegate:(id)arg1;
 + (void)logDictationString:(id)arg1;
++ (void)performOperations:(id /* block */)arg1 keyboardShifted:(bool)arg2;
 + (void)poppedLastStreamingOperation;
 + (bool)remoteCanDictateCurrentInputMode;
 + (id)serializedDictationPhrases:(id)arg1;
-+ (id)serializedInterpretationFromToken:(id)arg1 transform:(struct __CFString { }*)arg2 fromKeyboard:(bool)arg3 useServerCapitalization:(bool)arg4;
 + (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString { }*)arg2;
-+ (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString { }*)arg2 ranges:(id*)arg3;
++ (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString { }*)arg2 autocapitalization:(long long)arg3 capitalization:(unsigned long long)arg4;
++ (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString { }*)arg2 capitalization:(unsigned long long)arg3;
 + (double)serverManualEndpointingThreshold;
 + (id)sharedInstance;
 + (bool)shouldDeleteBackwardInInputDelegate:(id)arg1;
@@ -108,7 +111,6 @@
 + (bool)takesPressesBegan:(id)arg1 forTextView:(id)arg2;
 + (bool)takesPressesChanged:(id)arg1 forTextView:(id)arg2;
 + (bool)takesPressesEnded:(id)arg1 forTextView:(id)arg2;
-+ (void)textFieldTextDidEndEditing;
 + (void)updateLandingView;
 + (bool)usingServerManualEndpointingThreshold;
 + (bool)usingTypeAndTalk;
@@ -118,6 +120,7 @@
 - (void)_beginEnableDictationPrompt;
 - (void)_beginOfflineMetricsSession;
 - (void)_clearExistingText;
+- (void)_completeStartDictationWithContinuation:(id /* block */)arg1;
 - (id)_containingSearchBarForView:(id)arg1;
 - (void)_createDictationPresenterWindowIfNecessary;
 - (id)_currentLanguageForOfflineDictationMetrics;
@@ -131,6 +134,7 @@
 - (id)_hypothesisRangeFromSelectionRange:(id)arg1 inputDelegate:(id)arg2;
 - (void)_markOfflineDictationInputMetricEvent;
 - (void)_presentOptInAlertForDictationInputMode;
+- (void)_presentOptInAlertWithCompletion:(id /* block */)arg1;
 - (void)_presentPrivacySheetWithCompletion:(id /* block */)arg1;
 - (id)_rangeByExtendingRange:(id)arg1 backward:(long long)arg2 forward:(long long)arg3 inputDelegate:(id)arg4;
 - (void)_restartDictation;
@@ -143,6 +147,7 @@
 - (void)_startDictation;
 - (void)_startStreamingAnimations;
 - (void)_stopStreamingAnimation;
+- (bool)_systemLanguageSupportsDictation;
 - (void)_touchPhaseChangedForTouch:(id)arg1;
 - (void)_updateFromSelectedTextRange:(id)arg1 withNewHypothesis:(id)arg2;
 - (id)activationIdentifier;
@@ -152,6 +157,7 @@
 - (void)cancelRecordingLimitTimer;
 - (void)clearTextFieldPlaceholder;
 - (void)completeStartConnection;
+- (void)completeStartConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (id)connectionForStatisticsLogging;
 - (id)currentInputModeForDictation;
 - (void)dealloc;
@@ -162,7 +168,7 @@
 - (void)dictationConnection:(id)arg1 didFilterTokensWithFilterState:(id)arg2 forFinalize:(bool)arg3;
 - (void)dictationConnection:(id)arg1 didReceiveSearchResults:(id)arg2 recognizedText:(id)arg3 stable:(bool)arg4 final:(bool)arg5;
 - (void)dictationConnection:(id)arg1 filterState:(id)arg2 processFilteredToken:(id)arg3 forFinalize:(bool)arg4;
-- (id)dictationConnection:(id)arg1 filterState:(id)arg2 token:(id)arg3 secureInput:(bool)arg4 forFinalize:(bool)arg5;
+- (bool)dictationConnection:(id)arg1 filterState:(id)arg2 shouldCheckpointAtToken:(id)arg3;
 - (void)dictationConnection:(id)arg1 finalizePhrases:(id)arg2 languageModel:(id)arg3 correctionIdentifier:(id)arg4 secureInput:(bool)arg5;
 - (void)dictationConnection:(id)arg1 receivedInterpretation:(id)arg2 languageModel:(id)arg3 secureInput:(bool)arg4;
 - (void)dictationConnection:(id)arg1 updateOptions:(id)arg2;
@@ -220,6 +226,7 @@
 - (id)selectedTextForInputDelegate:(id)arg1;
 - (void)setActivationIdentifier:(id)arg1;
 - (void)setCurrentInputModeForDictation:(id)arg1;
+- (void)setDictationInfoOnScreenNotifyKey:(bool)arg1;
 - (void)setDictationInputMode:(id)arg1;
 - (void)setDictationPresenterWindow:(id)arg1;
 - (void)setDictationPrivacySheetController:(id)arg1;
@@ -242,11 +249,13 @@
 - (bool)shouldPresentOptInAlert;
 - (void)startConnection;
 - (void)startDictation;
+- (void)startDictationForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)startHelpMessageDisplay;
 - (void)startRecordingLimitTimer;
 - (int)state;
 - (void)stopDictation;
 - (void)stopDictation:(bool)arg1;
+- (void)stopDictationIgnoreFinalizePhrases;
 - (void)stopHelpMessageDisplay;
 - (id)streamingOperations;
 - (bool)supportsDictationLanguage:(id)arg1 error:(id*)arg2;

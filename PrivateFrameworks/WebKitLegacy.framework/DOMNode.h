@@ -54,9 +54,12 @@
 @property (nonatomic) long long keyboardType;
 @property (readonly) DOMNode *lastChild;
 @property (nonatomic) bool learnsCorrections;
+@property (nonatomic) bool loadKeyboardsForSiriLanguage;
 @property (readonly, copy) NSString *localName;
 @property (nonatomic, readonly) UITextRange *markedTextRange;
 @property (nonatomic, copy) NSDictionary *markedTextStyle;
+@property (readonly) bool mf_isAttachment;
+@property (readonly) bool mf_isBody;
 @property (readonly, copy) NSString *namespaceURI;
 @property (readonly) DOMNode *nextSibling;
 @property (readonly, copy) NSString *nodeName;
@@ -192,6 +195,36 @@
 - (id)textRects;
 - (id)webArchive;
 - (id)webArchiveByFilteringSubframes:(id /* block */)arg1;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (void)_fixParagraphsAndQuotesFromMicrosoftNodesToRemove:(id)arg1;
+- (id)mf_appendBlockPlaceholder;
+- (id)mf_blockNodeAncestor;
+- (id)mf_childNodeAtIndex:(int)arg1;
+- (id)mf_commonAncestorWithNode:(id)arg1;
+- (id)mf_containingBlockQuote;
+- (bool)mf_containsOnlySelectionMarkers;
+- (bool)mf_containsRichText;
+- (id)mf_findElementWithTag:(id)arg1 className:(id)arg2 andIdName:(id)arg3;
+- (id)mf_firstDescendantBlockQuote;
+- (id)mf_firstSibling;
+- (void)mf_fixParagraphsAndQuotesFromMicrosoft;
+- (id)mf_highestContainingBlockQuote;
+- (bool)mf_isAtBeginningOfContainerNode:(id)arg1;
+- (bool)mf_isAtEndOfContainerNode:(id)arg1;
+- (bool)mf_isAttachment;
+- (bool)mf_isBody;
+- (bool)mf_isDescendantOfNode:(id)arg1;
+- (bool)mf_isQuoteOrWithinQuote;
+- (id)mf_lastSibling;
+- (id)mf_nextSiblingOrAunt;
+- (int)mf_quoteLevelDelta;
+- (id)mf_topmostContainingNodeWithNameInArray:(id)arg1;
+- (id)mf_traverseNextNodeStayingWithin:(id)arg1;
+- (id)mf_traverseNextSiblingStayingWithin:(id)arg1;
+- (id)mf_traversePreviousNode;
+- (void)recursivelyRemoveMailAttributes;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
@@ -452,5 +485,10 @@
 - (id)urlScheme;
 - (id)webFrame;
 - (int)wordOffsetInRange:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/DataDetectorsUI.framework/DataDetectorsUI
+
+- (void)dd_removeResultLinks;
+- (bool)dd_searchForLinkRemovingExistingDDLinksWithEndNode:(id)arg1 didModifyDOM:(bool*)arg2;
 
 @end

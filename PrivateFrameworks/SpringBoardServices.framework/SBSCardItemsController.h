@@ -3,6 +3,7 @@
  */
 
 @interface SBSCardItemsController : NSObject <SBSCardItemsControllerRemoteInterface> {
+    bool  _connected;
     NSXPCConnection * _connection;
     NSString * _identifier;
 }
@@ -13,6 +14,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_connectToServerIfNecessary;
+- (void)_invalidateConnection;
+- (void)_noteConnectionDropped;
+- (id)_remoteInterfaceWithErrorHandler:(id /* block */)arg1;
 - (void)dealloc;
 - (void)getCardItemsWithHandler:(id /* block */)arg1;
 - (id)initWithIdentifier:(id)arg1;

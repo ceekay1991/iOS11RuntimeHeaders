@@ -79,4 +79,8 @@
 
 - (id)replacementObjectForPortCoder:(id)arg1;
 
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
+- (bool)sf_matchesTopLevelDomain:(id)arg1;
+
 @end

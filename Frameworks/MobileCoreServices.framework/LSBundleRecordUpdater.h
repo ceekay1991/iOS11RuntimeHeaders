@@ -26,6 +26,7 @@
         unsigned int machOUUIDs[4]; 
         unsigned long long sequenceNumber; 
         unsigned long long compatibilityState; 
+        unsigned long long installFailureReason; 
         unsigned long long itemID; 
         unsigned int deviceFamilies; 
         unsigned int installType; 
@@ -98,6 +99,8 @@
 - (id)bundleIdentifier;
 - (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithBundleIdentifier:(id)arg1 preferPlaceholder:(bool)arg2;
+- (void)parsePlaceholderMetadata:(id)arg1;
 - (void)parseSINFDictionary:(id)arg1;
 - (void)parseiTunesMetadata:(id)arg1;
 - (int)updateBundleRecord;

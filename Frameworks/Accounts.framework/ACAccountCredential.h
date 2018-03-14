@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Accounts.framework/Accounts
  */
 
-@interface ACAccountCredential : NSObject <ACProtobufCoding, NSSecureCoding> {
+@interface ACAccountCredential : NSObject <ACProtobufCoding, NSCoding, NSCopying, NSSecureCoding> {
     NSMutableDictionary * _credentialItems;
     NSString * _credentialType;
     bool  _dirty;
@@ -50,6 +50,7 @@
 - (id)_initWithProtobufData:(id)arg1;
 - (void)_markPropertyDirty:(id)arg1;
 - (void)_setOwningAccount:(id)arg1;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)credentialItemForKey:(id)arg1;
 - (id)credentialItems;
 - (id)credentialType;

@@ -4,11 +4,13 @@
 
 @interface AWDPushKeepAliveSent : PBCodable <NSCopying> {
     unsigned int  _connectionType;
+    unsigned int  _currentGrowthStage;
     unsigned int  _dualChannelState;
     NSString * _guid;
     struct { 
         unsigned int timestamp : 1; 
         unsigned int connectionType : 1; 
+        unsigned int currentGrowthStage : 1; 
         unsigned int dualChannelState : 1; 
         unsigned int keepAliveACKDuration : 1; 
         unsigned int keepAliveVersion : 1; 
@@ -31,9 +33,11 @@
 }
 
 @property (nonatomic) unsigned int connectionType;
+@property (nonatomic) unsigned int currentGrowthStage;
 @property (nonatomic) unsigned int dualChannelState;
 @property (nonatomic, retain) NSString *guid;
 @property (nonatomic) bool hasConnectionType;
+@property (nonatomic) bool hasCurrentGrowthStage;
 @property (nonatomic) bool hasDualChannelState;
 @property (nonatomic, readonly) bool hasGuid;
 @property (nonatomic) bool hasKeepAliveACKDuration;
@@ -58,12 +62,14 @@
 - (unsigned int)connectionType;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (unsigned int)currentGrowthStage;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned int)dualChannelState;
 - (id)guid;
 - (bool)hasConnectionType;
+- (bool)hasCurrentGrowthStage;
 - (bool)hasDualChannelState;
 - (bool)hasGuid;
 - (bool)hasKeepAliveACKDuration;
@@ -85,9 +91,11 @@
 - (unsigned int)nextKeepAliveInterval;
 - (bool)readFrom:(id)arg1;
 - (void)setConnectionType:(unsigned int)arg1;
+- (void)setCurrentGrowthStage:(unsigned int)arg1;
 - (void)setDualChannelState:(unsigned int)arg1;
 - (void)setGuid:(id)arg1;
 - (void)setHasConnectionType:(bool)arg1;
+- (void)setHasCurrentGrowthStage:(bool)arg1;
 - (void)setHasDualChannelState:(bool)arg1;
 - (void)setHasKeepAliveACKDuration:(bool)arg1;
 - (void)setHasKeepAliveVersion:(bool)arg1;

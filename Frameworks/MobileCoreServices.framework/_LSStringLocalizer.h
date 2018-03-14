@@ -5,7 +5,6 @@
 @interface _LSStringLocalizer : NSObject {
     NSArray * _bundleLocalizations;
     bool  _isMainBundle;
-    NSObject<OS_dispatch_queue> * _queue;
     NSString * _stringsFile;
     NSMutableDictionary * _stringsFileContent;
     NSMutableDictionary * _unlocalizedInfoPlistStrings;
@@ -15,11 +14,13 @@
 + (id)coreTypesLocalizer;
 + (id)frameworkBundleLocalizer;
 + (id)preferredLocalizationsForXCTests;
++ (id)queue;
 + (void)setPreferredLocalizationsForXCTests:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)_initWithBundleURL:(id)arg1 stringsFile:(id)arg2;
-- (struct __CFBundle { }*)copyBundle;
+- (id)_initWithBundleURL:(id)arg1 stringsFile:(id)arg2 keepBundle:(bool)arg3;
+- (struct __CFBundle { }*)bundle;
+- (void)dealloc;
 - (id)debugDescription;
 - (id)init;
 - (id)initWithBundleURL:(id)arg1 stringsFile:(id)arg2;

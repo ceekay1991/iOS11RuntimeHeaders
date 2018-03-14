@@ -14,6 +14,7 @@
     NSDictionary * _options;
     bool  _sentWillBeginDelayedRequest;
     bool  _sentWillDownloadToURL;
+    NSObject<OS_dispatch_queue> * _sessionWorkQueue;
 }
 
 @property unsigned long long AVAssetDownloadToken;
@@ -38,6 +39,7 @@
 - (void)URLSession:(id)arg1 assetDownloadTask:(id)arg2 willDownloadToURL:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willBeginDelayedRequest:(id)arg3 completionHandler:(id /* block */)arg4;
+- (bool)_isAVAssetTask;
 - (void)_onqueue_cancel;
 - (void)_onqueue_childTask:(id)arg1 didCompleteWithError:(id)arg2;
 - (void)_onqueue_childTask:(id)arg1 didLoadTimeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg2 totalTimeRangesLoaded:(id)arg3 timeRangeExpectedToLoad:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg4;

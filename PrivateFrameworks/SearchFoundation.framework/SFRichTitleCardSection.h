@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFRichTitleCardSection : SFTitleCardSection <NSSecureCoding, SFRichTitleCardSection> {
+@interface SFRichTitleCardSection : SFTitleCardSection <NSCopying, NSSecureCoding, SFRichTitleCardSection> {
     NSNumber * _auxiliaryAlignment;
     NSString * _auxiliaryBottomText;
     int  _auxiliaryBottomTextColor;
@@ -12,6 +12,7 @@
     bool  _canBeHidden;
     NSString * _contentAdvisory;
     NSString * _descriptionText;
+    NSString * _footnote;
     struct { 
         unsigned int canBeHidden : 1; 
         unsigned int hasTopPadding : 1; 
@@ -68,6 +69,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSString *descriptionText;
 @property (nonatomic, readonly) NSDictionary *dictionaryRepresentation;
+@property (nonatomic, copy) NSString *footnote;
 @property (nonatomic) bool hasBottomPadding;
 @property (nonatomic) bool hasTopPadding;
 @property (readonly) unsigned long long hash;
@@ -87,6 +89,7 @@
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
 @property (nonatomic, copy) NSNumber *rating;
 @property (nonatomic, copy) NSString *ratingText;
+@property (nonatomic, copy) NSString *resultIdentifier;
 @property (nonatomic, retain) SFImage *reviewGlyph;
 @property (nonatomic) bool reviewNewLine;
 @property (nonatomic, copy) NSString *reviewText;
@@ -101,6 +104,8 @@
 @property (nonatomic, copy) NSNumber *titleWeight;
 @property (nonatomic, copy) NSString *type;
 
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -112,9 +117,11 @@
 - (id)backgroundColor;
 - (bool)canBeHidden;
 - (id)contentAdvisory;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)descriptionText;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (id)footnote;
 - (bool)hasAuxiliaryBottomTextColor;
 - (bool)hasBottomPadding;
 - (bool)hasCanBeHidden;
@@ -157,6 +164,7 @@
 - (void)setCanBeHidden:(bool)arg1;
 - (void)setContentAdvisory:(id)arg1;
 - (void)setDescriptionText:(id)arg1;
+- (void)setFootnote:(id)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
 - (void)setHideVerticalDivider:(bool)arg1;
@@ -191,5 +199,10 @@
 - (bool)titleNoWrap;
 - (id)titleWeight;
 - (id)type;
+
+// Image: /System/Library/PrivateFrameworks/CardKit.framework/CardKit
+
+- (int)_crk_leadingCardSectionSeparatorStyle;
+- (int)_crk_trailingCardSectionSeparatorStyle;
 
 @end

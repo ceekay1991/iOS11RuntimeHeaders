@@ -9,12 +9,14 @@
     UIMotionEffect * _focusedItemHighlightMotionEffect;
     UIView * _focusedItemHighlightView;
     UIScrollView * _itemsScrollView;
+    bool  _usingHorizontalLayout;
 }
 
 - (void).cxx_destruct;
 - (void)_applyAppearanceCustomizationsToItem:(id)arg1;
 - (void)_cleanupAdaptiveBackdrop;
 - (void)_configureItems:(id)arg1;
+- (void)_determineHorizontalLayout;
 - (id)_focusedItemHighlightView;
 - (bool)_focusedItemHighlightViewIsVisible;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_layoutRegion;
@@ -35,7 +37,6 @@
 - (void)_shim_updateBackdropView;
 - (void)_shim_updateFocusHighlightVisibility;
 - (void)_shim_updateTabBarItemView:(id)arg1;
-- (bool)_shouldUseHorizontalLayout;
 - (void)_updateAccessoryView;
 - (void)_updateBackground;
 - (void)_updateFocusedItemHighlightFrame;
@@ -53,6 +54,7 @@
 - (id)preferredFocusedView;
 - (void)prepare;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (void)tabBarSizeChanged:(struct CGSize { double x1; double x2; })arg1;
 - (void)teardown;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateArchivedSubviews:(id)arg1;

@@ -24,12 +24,14 @@
 @property (readonly, copy) NSDate *_lastActivityDate;
 @property (setter=_setMinimalRequiredUserInfoKeys:, copy) NSSet *_minimalRequiredUserInfoKeys;
 @property (setter=_setOptions:, copy) NSDictionary *_options;
+@property (readonly, copy) NSUUID *_originalUniqueIdentifier;
 @property (setter=_setSubtitle:, copy) NSString *_subtitle;
 @property (readonly) long long _suggestedActionType;
 @property (readonly, copy) NSString *_teamIdentifier;
 @property (readonly, retain) NSUUID *_uniqueIdentifier;
 @property (readonly, copy) NSString *activityType;
 @property (nonatomic, readonly, copy) NSString *cacheIdentifier;
+@property (copy) CSSearchableItemAttributeSet *contentAttributeSet;
 @property (readonly, copy) NSString *debugDescription;
 @property <NSUserActivityDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -204,6 +206,7 @@
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (id)newObjectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 options:(id)arg3 error:(id*)arg4;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id*)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
 + (id)writableTypeIdentifiersForItemProvider;
 
@@ -217,5 +220,21 @@
 + (id)_cnui_startAudioCallIntentWithHandle:(id)arg1 contact:(id)arg2;
 + (id)_cnui_startVideoCallIntentWithHandle:(id)arg1 contact:(id)arg2;
 + (id)_cnui_userActivityWithActivityType:(id)arg1 handle:(id)arg2 contact:(id)arg3 intentWithPerson:(id /* block */)arg4;
+
+// Image: /System/Library/PrivateFrameworks/UserActivity.framework/UserActivity
+
+- (id)_copyWithNewUUID;
+- (id)_objectForIdentifier:(id)arg1;
+- (id)_originalUniqueIdentifier;
+- (id)_payloadForIdentifier:(id)arg1;
+- (id /* block */)_payloadUpdateBlockForIdentifier:(id)arg1;
+- (void)_sendToCoreSpotlightIndexer;
+- (void)_setDirty:(bool)arg1 identifier:(id)arg2;
+- (void)_setPayload:(id)arg1 object:(id)arg2 identifier:(id)arg3;
+- (void)_setPayload:(id)arg1 object:(id)arg2 identifier:(id)arg3 dirty:(bool)arg4;
+- (void)_setPayloadIdentifier:(id)arg1 object:(id)arg2 withBlock:(id /* block */)arg3;
+- (void)_updateForwardToCoreSpotlightIndexer:(BOOL)arg1;
+- (id)contentAttributeSet;
+- (void)setContentAttributeSet:(id)arg1;
 
 @end

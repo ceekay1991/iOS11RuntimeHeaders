@@ -12,6 +12,7 @@
     id /* block */  _completionHandler;
     UIView * _componentsView;
     bool  _done;
+    unsigned long long  _droppedItemIndex;
     bool  _fastAnimation;
     bool  _hasStartedSpringAnimation;
     bool  _ignoreRetargeting;
@@ -47,6 +48,7 @@
         } size; 
     }  _targetFrame;
     id /* block */  _targetUpdateHandler;
+    id /* block */  _updatedDroppedItemHandler;
     UIView * _view;
     <_UIDraggingItemVisualTarget> * _visualTarget;
 }
@@ -57,6 +59,7 @@
 @property (nonatomic, copy) id /* block */ completionHandler;
 @property (nonatomic, retain) UIView *componentsView;
 @property (nonatomic) bool done;
+@property (nonatomic) unsigned long long droppedItemIndex;
 @property (nonatomic) bool fastAnimation;
 @property (nonatomic) bool hasStartedSpringAnimation;
 @property (nonatomic) bool ignoreRetargeting;
@@ -77,6 +80,7 @@
 @property (nonatomic, retain) UIViewPropertyAnimator *systemDefaultPropertyAnimator;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } targetFrame;
 @property (nonatomic, copy) id /* block */ targetUpdateHandler;
+@property (nonatomic, copy) id /* block */ updatedDroppedItemHandler;
 @property (nonatomic, retain) UIView *view;
 @property (nonatomic, retain) <_UIDraggingItemVisualTarget> *visualTarget;
 
@@ -87,6 +91,7 @@
 - (id /* block */)completionHandler;
 - (id)componentsView;
 - (bool)done;
+- (unsigned long long)droppedItemIndex;
 - (bool)fastAnimation;
 - (bool)hasStartedSpringAnimation;
 - (bool)ignoreRetargeting;
@@ -109,6 +114,7 @@
 - (void)setCompletionHandler:(id /* block */)arg1;
 - (void)setComponentsView:(id)arg1;
 - (void)setDone:(bool)arg1;
+- (void)setDroppedItemIndex:(unsigned long long)arg1;
 - (void)setFastAnimation:(bool)arg1;
 - (void)setHasStartedSpringAnimation:(bool)arg1;
 - (void)setIgnoreRetargeting:(bool)arg1;
@@ -129,12 +135,14 @@
 - (void)setSystemDefaultPropertyAnimator:(id)arg1;
 - (void)setTargetFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setTargetUpdateHandler:(id /* block */)arg1;
+- (void)setUpdatedDroppedItemHandler:(id /* block */)arg1;
 - (void)setView:(id)arg1;
 - (void)setVisualTarget:(id)arg1;
 - (bool)shouldDrivePropertyAnimator;
 - (id)systemDefaultPropertyAnimator;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })targetFrame;
 - (id /* block */)targetUpdateHandler;
+- (id /* block */)updatedDroppedItemHandler;
 - (id)view;
 - (id)visualTarget;
 

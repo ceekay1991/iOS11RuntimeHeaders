@@ -17,6 +17,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (void)_arrowButton:(long long)arg1;
 - (void)_beginIndirectTracking;
 - (void)_downArrowButton:(id)arg1;
@@ -29,7 +30,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;

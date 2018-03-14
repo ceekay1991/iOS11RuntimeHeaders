@@ -68,6 +68,7 @@
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (bool)_canDrawContent;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -75,7 +76,6 @@
 - (id)cacheKey;
 - (id)cacheKeysForRenderFlags:(id)arg1;
 - (double)cachedWidth;
-- (void)dealloc;
 - (void)displayLayer:(id)arg1;
 - (void)drawContentsOfRenderers:(id)arg1;
 - (id)geometryCacheKey;

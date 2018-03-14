@@ -25,6 +25,7 @@
 @property (nonatomic) bool predictionEnabled;
 @property (readonly) Class superclass;
 
++ (void)registerPreferredLanguagesForInputModes:(id)arg1 replacingInputModes:(id)arg2;
 + (id)sharedPreferencesController;
 
 - (int)MCValueForManagedPreferenceKey:(id)arg1;

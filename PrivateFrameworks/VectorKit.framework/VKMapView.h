@@ -12,12 +12,14 @@
         float right; 
     }  _animatingToEdgeInsets;
     unsigned char  _applicationState;
+    MDARController * _arController;
     VKMapCanvas * _canvas;
     bool  _containsOverlay;
     bool  _didFinishSnapshotting;
     long long  _displayRate;
     unsigned char  _displayedSearchResultsType;
     VKTimedAnimation * _edgeInsetAnimation;
+    int  _flyoverMode;
     VKClassicGlobeCanvas * _globe;
     bool  _isChangingMapType;
     bool  _isInBackground;
@@ -100,7 +102,7 @@
 @property (nonatomic, readonly) VKMapCanvas *mapCanvas;
 @property (nonatomic) <VKMapViewDelegate> *mapDelegate;
 @property (nonatomic) struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; bool x5; } mapDisplayStyle;
-@property (nonatomic, readonly) const struct MapEngine { int (**x1)(); struct shared_ptr<md::TaskContext> { struct TaskContext {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; /* Warning: unhandled struct encoding: '{_retain_ptr<_MapEngineRenderQueueSource *' */ struct x3; }*mapEngine; /* unknown property attribute:  std::__1::default_delete<md::FlyoverAvailability> >=^{FlyoverAvailability}}}BBB{atomic<bool>=AB}{atomic<bool>=AB}B} */
+@property (nonatomic, readonly) const struct MapEngine { int (**x1)(); struct shared_ptr<md::TaskContext> { struct TaskContext {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; /* Warning: unhandled struct encoding: '{_retain_ptr<GEOResourceManifestConfiguration *' */ struct x3; }*mapEngine; /* unknown property attribute:  std::__1::default_delete<md::LogicManager> >=^{LogicManager}}}BBB{atomic<bool>=AB}{atomic<bool>=AB}B} */
 @property (nonatomic, readonly) GEOMapRegion *mapRegion;
 @property (nonatomic) long long mapType;
 @property (nonatomic) long long navigationDisplayRate;
@@ -154,6 +156,7 @@
 - (void)_updateBackgroundColor;
 - (void)_updateDisplayRate;
 - (void)_updateMapDisplayStyle;
+- (void)activateInternalSettings;
 - (void)addCustomFeatureDataSource:(id)arg1;
 - (void)addExternalAnchor:(id)arg1;
 - (void)addOverlay:(id)arg1;
@@ -169,6 +172,10 @@
 - (long long)annotationTrackingZoomStyle;
 - (unsigned char)applicationState;
 - (long long)applicationUILayout;
+- (void)arController:(id)arg1 arSessionWasInterrupted:(unsigned long long)arg2;
+- (void)arController:(id)arg1 didChangeTrackingState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
+- (void)arController:(id)arg1 didEncounterError:(id)arg2;
+- (void)arControllerSessionInterruptionEnded:(id)arg1;
 - (id)attributionsForCurrentRegion;
 - (id)boundsContextForSelectedTransitLines;
 - (bool)buildingFootprintsDisabled;
@@ -204,7 +211,7 @@
 - (void)deselectFeatureId;
 - (void)deselectLabelMarker;
 - (void)deselectTransitLineMarker;
-- (void)deselectVenueComponentId;
+- (void)deselectVenuePoiFeatureId;
 - (id)detailedDescription;
 - (id)detailedDescriptionDictionaryRepresentation;
 - (void)didEnterBackground;
@@ -213,6 +220,7 @@
 - (void)didReceiveMemoryWarning:(id)arg1;
 - (void)disableFlyoverStatistics;
 - (long long)displayRate;
+- (bool)displayedFloorIsDefaultForVenueBuilding:(id)arg1;
 - (short)displayedFloorOrdinalForVenueBuilding:(id)arg1;
 - (unsigned char)displayedSearchResultsType;
 - (double)distanceFromPoint:(struct CGPoint { double x1; double x2; })arg1 toPoint:(struct CGPoint { double x1; double x2; })arg2 fromLayer:(id)arg3 withPrecision:(long long)arg4;
@@ -222,7 +230,9 @@
 - (bool)enableDebugLabelHighlighting;
 - (void)enableFlyoverStatistics;
 - (void)enter3DMode;
+- (void)enterARModeAtCoordinate:(struct { double x1; double x2; })arg1;
 - (void)exit3DMode;
+- (void)exitARMode;
 - (struct shared_ptr<md::FeatureMarker> { struct FeatureMarker {} *x1; struct __shared_weak_count {} *x2; })featureMarkerAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)flushTileLoads;
 - (int)flyoverMode;
@@ -266,12 +276,13 @@
 - (void)map:(id)arg1 canZoomOutDidChange:(bool)arg2;
 - (void)map:(id)arg1 didBecomePitched:(bool)arg2;
 - (void)map:(id)arg1 didChangeRegionAnimated:(bool)arg2;
+- (void)map:(id)arg1 didEnterARMode:(bool)arg2;
 - (void)map:(id)arg1 didUpdateContainsOverlay:(bool)arg2;
 - (void)map:(id)arg1 didUpdateVerticalYawTo:(double)arg2;
 - (void)map:(id)arg1 flyoverModeDidChange:(int)arg2;
 - (void)map:(id)arg1 flyoverModeWillChange:(int)arg2;
+- (void)map:(id)arg1 labelMarkerDidChangeState:(const struct shared_ptr<md::LabelMarker> { struct LabelMarker {} *x1; struct __shared_weak_count {} *x2; }*)arg2;
 - (id)map:(id)arg1 presentationForAnnotation:(id)arg2;
-- (void)map:(id)arg1 selectedLabelMarkerDidChangeState:(const struct shared_ptr<md::LabelMarker> { struct LabelMarker {} *x1; struct __shared_weak_count {} *x2; }*)arg2;
 - (void)map:(id)arg1 selectedLabelMarkerWillDisappear:(const struct shared_ptr<md::LabelMarker> { struct LabelMarker {} *x1; struct __shared_weak_count {} *x2; }*)arg2;
 - (void)map:(id)arg1 willChangeRegionAnimated:(bool)arg2;
 - (void)map:(id)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;
@@ -290,7 +301,7 @@
 - (void)mapDidReturnToDefaultZoom:(id)arg1;
 - (void)mapDidStartLoadingTiles:(id)arg1;
 - (struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; bool x5; })mapDisplayStyle;
-- (const struct MapEngine { int (**x1)(); struct shared_ptr<md::TaskContext> { struct TaskContext {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; struct _retain_ptr<_MapEngineRenderQueueSource *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> { int (**x_3_1_1)(); id x_3_1_2; /* Warning: Unrecognized filer type: '_' using 'void*' */ void*x_3_1_3; const void*x_3_1_4; void*x_3_1_5; void*x_3_1_6; int x_3_1_7; in void*x_3_1_8; out unsigned int x_3_1_9/* : ? */; void*x_3_1_10; BOOL x_3_1_11; void*x_3_1_12; } x3; struct _release_objc { } x4; }*)mapEngine;
+- (const struct MapEngine { int (**x1)(); struct shared_ptr<md::TaskContext> { struct TaskContext {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; struct _retain_ptr<GEOResourceManifestConfiguration *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> { int (**x_3_1_1)(); id x_3_1_2; /* Warning: Unrecognized filer type: '_' using 'void*' */ void*x_3_1_3; const void*x_3_1_4; void*x_3_1_5; void*x_3_1_6; int x_3_1_7; in void*x_3_1_8; out unsigned int x_3_1_9/* : ? */; void*x_3_1_10; BOOL x_3_1_11; void*x_3_1_12; } x3; struct _release_objc { } x4; }*)mapEngine;
 - (void)mapHasStartedPanning:(id)arg1;
 - (void)mapHasStoppedPanning:(id)arg1;
 - (void)mapLabelsDidLayout:(id)arg1;
@@ -304,7 +315,7 @@
 - (long long)navigationDisplayRate;
 - (id)navigationPuck;
 - (long long)navigationShieldSize;
-- (void)nearestVenueDidChange:(const struct Venue { unsigned long long x1; struct vector<md::VenueBuilding, std::__1::allocator<md::VenueBuilding> > { struct VenueBuilding {} *x_2_1_1; struct VenueBuilding {} *x_2_1_2; struct __compressed_pair<md::VenueBuilding *, std::__1::allocator<md::VenueBuilding> > { struct VenueBuilding {} *x_3_2_1; } x_2_1_3; } x2; struct ConvexHull2<double> { struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_1_2_1; struct Matrix<double, 2, 1> {} *x_1_2_2; struct __compressed_pair<gm::Matrix<double, 2, 1> *, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_3_3_1; } x_1_2_3; } x_3_1_1; } x3; struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> > { struct __rep { union { struct __long { char *x_1_5_1; unsigned long long x_1_5_2; unsigned long long x_1_5_3; } x_1_4_1; struct __short { BOOL x_2_5_1[23]; struct { unsigned char x_2_6_1; } x_2_5_2; } x_1_4_2; struct __raw { unsigned long long x_3_5_1[3]; } x_1_4_3; } x_1_3_1; } x_1_2_1; } x_4_1_1; } x4; }*)arg1 building:(const struct VenueBuilding { struct vector<md::VenueLevel, std::__1::allocator<md::VenueLevel> > { struct VenueLevel {} *x_1_1_1; struct VenueLevel {} *x_1_1_2; struct __compressed_pair<md::VenueLevel *, std::__1::allocator<md::VenueLevel> > { struct VenueLevel {} *x_3_2_1; } x_1_1_3; } x1; unsigned long long x2; unsigned long long x3; short x4; struct Matrix<double, 2, 1> { double x_5_1_1[2]; } x5; struct ConvexHull2<double> { struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_1_2_1; struct Matrix<double, 2, 1> {} *x_1_2_2; struct __compressed_pair<gm::Matrix<double, 2, 1> *, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_3_3_1; } x_1_2_3; } x_6_1_1; } x6; }*)arg2;
+- (void)nearestVenueDidChange:(const struct Venue { unsigned long long x1; unsigned long long x2; struct vector<md::VenueBuilding, std::__1::allocator<md::VenueBuilding> > { struct VenueBuilding {} *x_3_1_1; struct VenueBuilding {} *x_3_1_2; struct __compressed_pair<md::VenueBuilding *, std::__1::allocator<md::VenueBuilding> > { struct VenueBuilding {} *x_3_2_1; } x_3_1_3; } x3; struct Polygon2<double> { struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_1_2_1; struct Matrix<double, 2, 1> {} *x_1_2_2; struct __compressed_pair<gm::Matrix<double, 2, 1> *, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_3_3_1; } x_1_2_3; } x_4_1_1; } x4; struct ConvexHull2<double> { struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_1_2_1; struct Matrix<double, 2, 1> {} *x_1_2_2; struct __compressed_pair<gm::Matrix<double, 2, 1> *, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_3_3_1; } x_1_2_3; } x_5_1_1; } x5; }*)arg1 building:(const struct VenueBuilding { struct vector<md::VenueLevel, std::__1::allocator<md::VenueLevel> > { struct VenueLevel {} *x_1_1_1; struct VenueLevel {} *x_1_1_2; struct __compressed_pair<md::VenueLevel *, std::__1::allocator<md::VenueLevel> > { struct VenueLevel {} *x_3_2_1; } x_1_1_3; } x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; short x6; struct Matrix<double, 2, 1> { double x_7_1_1[2]; } x7; struct ConvexHull2<double> { struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_1_2_1; struct Matrix<double, 2, 1> {} *x_1_2_2; struct __compressed_pair<gm::Matrix<double, 2, 1> *, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_3_3_1; } x_1_2_3; } x_8_1_1; } x8; }*)arg2;
 - (void)openLoaderConnection;
 - (void)panWithOffset:(struct CGPoint { double x1; double x2; })arg1 relativeToScreenPoint:(struct CGPoint { double x1; double x2; })arg2 animated:(bool)arg3 duration:(double)arg4 completionHandler:(id /* block */)arg5;
 - (void)pauseFlyoverTourAnimation;
@@ -333,6 +344,7 @@
 - (bool)restoreViewportFromInfo:(id)arg1;
 - (void)resumeFlyoverTourAnimation;
 - (bool)roadClassDisabled:(int)arg1;
+- (id)roadLabelTilesInScene;
 - (id)roadMarkersForSelectionAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)roadsDisabled;
 - (id)routePreloadSession;
@@ -343,6 +355,7 @@
 - (void)selectTransitLineMarker:(id)arg1;
 - (id)selectedLabelMarker;
 - (id)selectedTransitLineIDs;
+- (void)setARInterfaceOrientation:(long long)arg1;
 - (void)setAdditionalManifestConfiguration:(id)arg1;
 - (void)setAllowDatelineWraparound:(bool)arg1;
 - (void)setAnnotationTrackingHeadingAnimationDisplayRate:(long long)arg1;
@@ -407,7 +420,7 @@
 - (void)setRoutePreloadSession:(id)arg1;
 - (void)setRouteUserOffset:(struct PolylineCoordinate { unsigned int x1; float x2; })arg1;
 - (void)setSelectedFeatureId:(unsigned long long)arg1;
-- (void)setSelectedVenueComponentId:(unsigned long long)arg1;
+- (void)setSelectedVenuePoiFeatureId:(unsigned long long)arg1;
 - (void)setShieldIdiom:(long long)arg1;
 - (void)setShieldSize:(long long)arg1;
 - (void)setShouldLoadFallbackTiles:(bool)arg1;
@@ -474,6 +487,8 @@
 - (id)userLocationAnimator;
 - (struct { bool x1; })vehicleState;
 - (id)venueAtLocation:(struct { double x1; double x2; })arg1;
+- (id)venueAtLocation:(struct { double x1; double x2; })arg1 withMarginForError:(bool)arg2;
+- (id)venueAtLocation:(struct { double x1; double x2; })arg1 withMarginForError:(bool)arg2 includeNonRevealedVenues:(bool)arg3;
 - (id)venueBuildingWithFocus;
 - (id)venueWithFocus;
 - (id)venueWithID:(unsigned long long)arg1;

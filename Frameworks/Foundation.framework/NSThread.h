@@ -78,4 +78,36 @@
 - (void)__im_performBlock:(id /* block */)arg1 waitUntilDone:(bool)arg2;
 - (void)__im_performBlock:(id /* block */)arg1 waitUntilDone:(bool)arg2 modes:(id)arg3;
 
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
++ (id)tsu_currentThreadName;
+
+// Image: /System/Library/PrivateFrameworks/ScreenReaderCore.framework/ScreenReaderCore
+
+- (void)registerForStopNotification;
+- (bool)shouldStop;
+- (void)unregisterForStopNotification;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
++ (bool)tsp_hasReadFileAccess;
++ (bool)tsp_isArchiverThread;
++ (void)tsp_performSynchronousArchiverOperationUsingBlock:(id /* block */)arg1;
++ (void)tsp_performSynchronousOperationMarkingThreadWithKey:(id)arg1 usingBlock:(id /* block */)arg2;
++ (void)tsp_performSynchronousOperationWithReadFileAccessUsingBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (bool)tsp_hasReadFileAccess;
++ (bool)tsp_isArchiverThread;
++ (bool)tsp_isRunningFinalizeHandlersForLegacyDocument;
++ (bool)tsp_isRunningFinalizeHandlersForUpgrade;
++ (bool)tsp_isUnarchiverThread;
++ (id)tsp_newUnarchiverQueueWithName:(const char *)arg1;
++ (void)tsp_performSynchronousArchiverOperationUsingBlock:(id /* block */)arg1;
++ (void)tsp_performSynchronousOperationWithReadFileAccessUsingBlock:(id /* block */)arg1;
++ (void)tsp_performSynchronousOperationWithThreadDictionaryObject:(id)arg1 forKey:(id)arg2 usingBlock:(id /* block */)arg3;
++ (void)tsp_runFinalizeHandlersForReadCoordinator:(id)arg1 usingBlock:(id /* block */)arg2;
++ (id)tsu_currentThreadName;
+
 @end

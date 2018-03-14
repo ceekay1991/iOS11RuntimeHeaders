@@ -19,7 +19,8 @@
         unsigned int optOutOfThinning : 1; 
         unsigned int isFlippable : 1; 
         unsigned int isTintable : 1; 
-        unsigned int reserved : 21; 
+        unsigned int preservedVectorRepresentation : 1; 
+        unsigned int reserved : 20; 
     }  _renditionFlags;
     unsigned int  _scale;
     NSData * _srcData;
@@ -94,6 +95,7 @@
 - (id)packedContents;
 - (struct CGPDFDocument { }*)pdfDocument;
 - (int)pixelFormat;
+- (bool)preservedVectorRepresentation;
 - (id)provideTextureInfo;
 - (double)scale;
 - (void)setBlendMode:(int)arg1;

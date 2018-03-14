@@ -24,8 +24,8 @@
     bool  _exitsFullScreenWhenPlaybackEnds;
     id /* block */  _finishPreparingForInteractiveDismissalHandler;
     AVFullScreenViewController * _fullScreenViewController;
+    bool  _hasClientSetVideoGravity;
     id /* block */  _interactiveDismissalCompletionHandler;
-    NSTimer * _loadingIndicatorTimer;
     UIPopoverPresentationController * _mediaSelectionPopoverPresentationController;
     id  _nowPlayingControllerDidReceiveStopCommandEventObserver;
     AVNowPlayingInfoController * _nowPlayingInfoController;
@@ -33,7 +33,6 @@
     NSDictionary * _pixelBufferAttributes;
     AVPlaybackControlsController * _playbackControlsController;
     bool  _playbackControlsViewControllerPictureInPictureButtonEnabled;
-    bool  _playbackControlsViewControllerShouldShowLoadingIndicator;
     AVPlaybackControlsVisibilityController * _playbackControlsVisibilityController;
     UIScreen * _playbackTargetScreen;
     AVPlayerController * _playerController;
@@ -52,7 +51,6 @@
     AVTransitionController * _transitionController;
     bool  _transitionFromFullScreenOrDismissViewControllerWhenEnteringBackgroundAfterPictureInPictureStart;
     long long  _videoGravity;
-    MPVolumeController * _volumeController;
 }
 
 @property (nonatomic) bool allowsPictureInPicturePlayback;
@@ -95,6 +93,8 @@
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } videoBounds;
 @property (nonatomic, copy) NSString *videoGravity;
 
+// Image: /System/Library/Frameworks/AVKit.framework/AVKit
+
 + (id)keyPathsForValuesAffectingPictureInPictureActive;
 + (id)keyPathsForValuesAffectingPictureInPicturePossible;
 + (id)keyPathsForValuesAffectingPictureInPictureSuspended;
@@ -107,23 +107,24 @@
 
 - (void).cxx_destruct;
 - (bool)_canEnterFullScreen;
-- (void)_fireLoadingIndicatorTimer:(id)arg1;
 - (void)_handleDoubleDoubleTapGesture:(id)arg1;
 - (void)_handleDoubleTapGesture:(id)arg1;
 - (void)_handleExitFullScreenKeyCommand:(id)arg1;
-- (void)_handleFastForwardKeyDownCommand:(id)arg1;
-- (void)_handleFastForwardKeyUpCommand:(id)arg1;
+- (void)_handleFastForwardKeyPressedCommand:(id)arg1;
+- (void)_handleFastForwardKeyReleasedCommand:(id)arg1;
 - (void)_handleGoToBeginningKeyCommand:(id)arg1;
 - (void)_handlePlayPauseKeyCommand:(id)arg1;
-- (void)_handleRewindKeyDownCommand:(id)arg1;
-- (void)_handleRewindKeyUpCommand:(id)arg1;
+- (void)_handleRewindKeyPressedCommand:(id)arg1;
+- (void)_handleRewindKeyReleasedCommand:(id)arg1;
 - (void)_handleShowNextFrameKeyCommand:(id)arg1;
 - (void)_handleShowPreviousFrameKeyCommand:(id)arg1;
 - (void)_handleSingleTapGesture:(id)arg1;
 - (void)_handleSkipAhead15SecondsKeyCommand:(id)arg1;
 - (void)_handleSkipBack15SecondsKeyCommand:(id)arg1;
-- (void)_handleVolumeDownKeyCommand:(id)arg1;
-- (void)_handleVolumeUpKeyCommand:(id)arg1;
+- (void)_handleVolumeDownKeyPressedCommand:(id)arg1;
+- (void)_handleVolumeDownKeyReleasedCommand:(id)arg1;
+- (void)_handleVolumeUpKeyPressedCommand:(id)arg1;
+- (void)_handleVolumeUpKeyReleasedCommand:(id)arg1;
 - (bool)_ignoreAppSupportedOrientations;
 - (bool)_isAudioOnlyContent;
 - (bool)_isDescendantOfRootViewController;
@@ -131,15 +132,15 @@
 - (bool)_isUnsupportedContent;
 - (void)_loadPlaybackControlsControllersIfNeeded;
 - (void)_mediaSelectionDoneButtonTapped:(id)arg1;
-- (id)_mediaSelectionViewController;
 - (bool)_modalPresentationStyleIsFullScreen;
+- (void)_setVideoGravity:(id)arg1 forLayoutMetrics:(unsigned long long)arg2;
 - (void)_togglePictureInPicture;
 - (void)_transitionFromFullScreenAnimated:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)_transitionFromFullScreenWithReason:(long long)arg1 animated:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)_transitionToFullScreenAnimated:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)_updateAudioOnlyIndicatorView;
 - (void)_updateExternalPlaybackIndicatorView;
-- (void)_updatePlaybackControlsViewController;
+- (void)_updatePlaybackControlsController;
 - (void)_updatePlayerLayerViewAndContentOverlayView;
 - (void)_updatePlayerLayerViewAndContentOverlayViewExcludingScreen:(id)arg1;
 - (void)_updateUnsupportedContentIndicatorView;
@@ -169,6 +170,7 @@
 - (void)fullScreenButtonTapped:(id)arg1;
 - (id)fullScreenViewController;
 - (void)fullScreenViewControllerDidEndFullScreenPresentation:(id)arg1 wasInteractive:(bool)arg2;
+- (void)fullScreenViewControllerNeedsAppBasedStatusBarAppearanceUpdate:(id)arg1;
 - (void)fullScreenViewControllerWillBeginFullScreenPresentation:(id)arg1;
 - (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)iAdPrerollView;
@@ -187,6 +189,7 @@
 - (id)keyCommands;
 - (void)loadView;
 - (void)mediaSelectionButtonTapped:(id)arg1;
+- (bool)modalPresentationCapturesStatusBarAppearance;
 - (long long)modalPresentationStyleForFullScreenViewController:(id)arg1 presentingViewController:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)pictureInPictureButtonTapped:(id)arg1;
@@ -211,13 +214,13 @@
 - (long long)preferredStatusBarStyle;
 - (long long)preferredUnobscuredArea;
 - (long long)preferredWhitePointAdaptivityStyle;
+- (bool)prefersHomeIndicatorAutoHidden;
 - (bool)prefersStatusBarHidden;
 - (bool)prefersStatusBarHiddenForFullScreenViewController:(id)arg1;
 - (void)prepareForFinishingInteractiveTransition:(id /* block */)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (bool)presentRoutingViewController:(id)arg1;
 - (bool)requiresLinearPlayback;
-- (void)scaleButtonTapped:(id)arg1;
 - (id)secondScreenWindow;
 - (void)setAllowsPictureInPicturePlayback:(bool)arg1;
 - (void)setCanHideInteractiveContentOverlayView:(bool)arg1;
@@ -251,10 +254,24 @@
 - (bool)updatesNowPlayingInfoCenter;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })videoBounds;
 - (id)videoGravity;
+- (void)videoGravityButtonTapped:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
 - (id)viewForFullScreenViewController:(id)arg1;
 - (void)viewWillAppear:(bool)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
+
+// Image: /System/Library/Frameworks/iAd.framework/iAd
+
++ (void)preparePrerollAds;
+
+- (void)cancelPreroll;
+- (void)playPrerollAdWithCompletionHandler:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
+
+- (bool)siriui_shouldHideStatusBar;
+- (bool)siriui_shouldRotateToLandscape;
 
 @end

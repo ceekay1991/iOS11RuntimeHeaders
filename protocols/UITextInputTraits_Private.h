@@ -36,6 +36,7 @@
 - (bool)isDevicePasscodeEntry;
 - (bool)isSingleLineDocument;
 - (bool)learnsCorrections;
+- (bool)loadKeyboardsForSiriLanguage;
 - (NSString *)recentInputIdentifier;
 - (NSString *)responseContext;
 - (bool)returnKeyGoesToNextResponder;
@@ -68,6 +69,7 @@
 - (void)setIsCarPlayIdiom:(bool)arg1;
 - (void)setIsSingleLineDocument:(bool)arg1;
 - (void)setLearnsCorrections:(bool)arg1;
+- (void)setLoadKeyboardsForSiriLanguage:(bool)arg1;
 - (void)setPINEntrySeparatorIndexes:(NSIndexSet *)arg1;
 - (void)setRecentInputIdentifier:(NSString *)arg1;
 - (void)setResponseContext:(NSString *)arg1;

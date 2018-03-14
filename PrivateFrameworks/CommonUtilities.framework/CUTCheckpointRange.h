@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CommonUtilities.framework/CommonUtilities
  */
 
-@interface CUTCheckpointRange : CUTCheckpoint {
+@interface CUTCheckpointRange : CUTCheckpointSignpost {
     NSDate * _endDate;
     bool  _ordered;
     NSDate * _startDate;
@@ -13,21 +13,19 @@
 @property (nonatomic, retain) NSDate *startDate;
 
 - (void).cxx_destruct;
+- (id)_reportEndDate;
+- (id)_reportStartDate;
+- (void)_touchEndDate;
+- (void)_touchStartDate;
 - (id)description;
-- (id)descriptionWithDate:(id*)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithName:(id)arg1;
-- (id)initWithName:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (id)initWithName:(id)arg1 uniqueIdentifier:(id)arg2;
+- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 name:(id)arg3 uniqueIdentifier:(id)arg4;
 - (bool)isOrdered;
-- (void)measure:(id /* block */)arg1;
 - (void)mergeWithCheckpoint:(id)arg1;
 - (void)setEndDate:(id)arg1;
 - (void)setOrdered:(bool)arg1;
 - (void)setStartDate:(id)arg1;
 - (id)startDate;
-- (void)touchEndDate;
-- (void)touchStartDate;
 
 @end

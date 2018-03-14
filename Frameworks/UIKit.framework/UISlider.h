@@ -39,6 +39,9 @@
     float  _value;
 }
 
+@property (nonatomic) double akMaximumValue;
+@property (nonatomic) double akMinimumValue;
+@property (nonatomic) double akValue;
 @property (getter=isContinuous, nonatomic) bool continuous;
 @property (nonatomic, readonly) UIImage *currentMaximumTrackImage;
 @property (nonatomic, readonly) UIImage *currentMinimumTrackImage;
@@ -63,6 +66,7 @@
 
 + (bool)_allowActionsToQueue;
 
+- (void).cxx_destruct;
 - (id)__distributionStatisticsForUserInteractionDuration;
 - (bool)_alwaysHandleScrollerMouseEvent;
 - (void)_buildTrackArtwork;
@@ -112,11 +116,16 @@
 - (bool)_trackEnabled;
 - (void)_updateAppearanceForEnabled:(bool)arg1;
 - (void)_updateMaxTrackColorForInitialization:(bool)arg1;
+- (void)dealloc;
 - (id)description;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
 - (bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (bool)cancelMouseTracking;
@@ -127,9 +136,6 @@
 - (id)currentMaximumTrackImage;
 - (id)currentMinimumTrackImage;
 - (id)currentThumbImage;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -182,5 +188,14 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })trackRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (float)value;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })valueTextRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
+
+- (double)akMaximumValue;
+- (double)akMinimumValue;
+- (double)akValue;
+- (void)setAkMaximumValue:(double)arg1;
+- (void)setAkMinimumValue:(double)arg1;
+- (void)setAkValue:(double)arg1;
 
 @end

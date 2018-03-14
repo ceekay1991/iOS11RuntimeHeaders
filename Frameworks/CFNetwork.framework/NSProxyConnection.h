@@ -20,7 +20,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (bool)doCleanupWhenWritesCompleted;
-- (id)initWithHost:(id)arg1 port:(unsigned short)arg2 queue:(id)arg3;
+- (id)initWithHost:(id)arg1 port:(unsigned short)arg2 queue:(id)arg3 configuration:(id)arg4;
 - (id)initWithTCPConnection:(id)arg1;
 - (long long)pendingWrites;
 - (void)read:(unsigned long long)arg1 handler:(id /* block */)arg2;

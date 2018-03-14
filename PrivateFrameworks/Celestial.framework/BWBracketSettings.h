@@ -3,7 +3,6 @@
  */
 
 @interface BWBracketSettings : NSObject {
-    NSDictionary * _bracketedCaptureOverrides;
     int  _bracketingMode;
     NSArray * _exposureValues;
     bool  _lensStabilizationEnabledForClientBracket;
@@ -13,7 +12,6 @@
 }
 
 @property (nonatomic, readonly) int bracketFrameCount;
-@property (nonatomic, copy) NSDictionary *bracketedCaptureOverrides;
 @property (nonatomic, readonly) int bracketingMode;
 @property (nonatomic, copy) NSArray *exposureValues;
 @property (nonatomic) bool lensStabilizationEnabledForClientBracket;
@@ -24,7 +22,6 @@
 + (id)bracketSettingsForBracketingMode:(int)arg1;
 
 - (int)bracketFrameCount;
-- (id)bracketedCaptureOverrides;
 - (int)bracketingMode;
 - (void)dealloc;
 - (id)description;
@@ -34,7 +31,6 @@
 - (id)manualExposureBracketedCaptureParams;
 - (id)oisBracketedCaptureParams;
 - (bool)providePreBracketedEV0;
-- (void)setBracketedCaptureOverrides:(id)arg1;
 - (void)setExposureValues:(id)arg1;
 - (void)setLensStabilizationEnabledForClientBracket:(bool)arg1;
 - (void)setManualExposureBracketedCaptureParams:(id)arg1;

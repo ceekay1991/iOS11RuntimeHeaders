@@ -32,13 +32,14 @@
 - (void)activateResourceScenario:(int)arg1;
 - (id)activeTileGroup;
 - (id)authToken;
+- (void)cancelCurrentManifestUpdate;
 - (void)closeConnection;
 - (id)configuration;
 - (void)deactivateResourceScale:(int)arg1;
 - (void)deactivateResourceScenario:(int)arg1;
 - (void)dealloc;
 - (id)delegate;
-- (void)forceUpdate:(id /* block */)arg1;
+- (void)forceUpdate:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)getResourceManifestWithHandler:(id /* block */)arg1;
 - (id)initWithDelegate:(id)arg1 configuration:(id)arg2 additionalMigrationTaskClasses:(id)arg3;
 - (void)openConnection;
@@ -49,5 +50,6 @@
 - (void)setDelegate:(id)arg1;
 - (void)setManifestToken:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)updateIfNecessary:(id /* block */)arg1;
+- (id)updateProgress;
 
 @end

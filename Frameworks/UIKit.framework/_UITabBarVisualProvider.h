@@ -36,6 +36,7 @@
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (bool)shouldUpdateFocusInContext:(id)arg1;
 - (id)tabBar;
+- (void)tabBarSizeChanged:(struct CGSize { double x1; double x2; })arg1;
 - (void)teardown;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateArchivedSubviews:(id)arg1;

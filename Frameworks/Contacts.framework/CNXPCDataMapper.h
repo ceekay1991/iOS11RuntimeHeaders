@@ -24,25 +24,24 @@
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id*)arg2;
 - (bool)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id*)arg3;
 - (id)connection;
+- (id)contactObservableForFetchRequest:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
-- (id)contactsForFetchRequest:(id)arg1 error:(id*)arg2;
-- (id)contactsForFetchRequest:(id)arg1 matchInfos:(id*)arg2 error:(id*)arg3;
 - (id)containersMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (void)dealloc;
 - (id)defaultContainerIdentifier;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(id /* block */)arg2 completion:(id /* block */)arg3;
 - (bool)executeSaveRequest:(id)arg1 error:(id*)arg2;
 - (bool)executeSaveRequest:(id)arg1 response:(id*)arg2 error:(id*)arg3;
-- (bool)fetchAndDecodeEncodedContactsForFetchRequest:(id)arg1 error:(id*)arg2 batchHandler:(id /* block */)arg3;
+- (bool)fetchAndDecodeEncodedContactsForFetchRequest:(id)arg1 error:(id*)arg2 cancelationToken:(id)arg3 batchHandler:(id /* block */)arg4;
 - (bool)fetchContactsForFetchRequest:(id)arg1 error:(id*)arg2 batchHandler:(id /* block */)arg3;
-- (bool)fetchEncodedContactsForFetchRequest:(id)arg1 error:(id*)arg2 batchHandler:(id /* block */)arg3;
+- (bool)fetchEncodedContactsForFetchRequest:(id)arg1 error:(id*)arg2 cancelationToken:(id)arg3 batchHandler:(id /* block */)arg4;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)identifierWithError:(id*)arg1;
 - (id)init;
 - (id)initWithContactsEnvironment:(id)arg1;
 - (id)initWithContactsEnvironment:(id)arg1 connection:(id)arg2;
 - (id)logger;
-- (id)meContactIdentifierWithError:(id*)arg1;
+- (id)meContactIdentifiers:(id*)arg1;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id*)arg2;
 - (bool)registerChangeHistoryClientIdentifier:(id)arg1 error:(id*)arg2;
 - (bool)reindexSearchableItemsWithIdentifiers:(id)arg1 error:(id*)arg2;
@@ -64,5 +63,6 @@
 - (id)unifiedContactCountWithError:(id*)arg1;
 - (bool)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id*)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
+- (id)verifyIndexWithError:(id*)arg1;
 
 @end

@@ -40,6 +40,7 @@
 + (id)defaultFont;
 + (id)pmString;
 
+- (void).cxx_destruct;
 - (id)_calendar;
 - (id)_dateString;
 - (id)_dateWithDayDiffFromToday:(long long)arg1;
@@ -53,13 +54,12 @@
 - (id)_todayDate;
 - (double)_tomorrow;
 - (double)_yesterday;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)boldForAllLocales;
 - (id)date;
-- (void)dealloc;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)drawTextInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)font;

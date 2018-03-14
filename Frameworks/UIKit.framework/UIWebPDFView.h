@@ -103,6 +103,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_viewCachingBoundsInUIViewCoords;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_viewportBoundsInUIVIewCoordsWithView:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_viewportBoundsInUIViewCoords;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -112,7 +113,6 @@
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (struct CGPDFDocument { }*)cgPDFDocument;
 - (void)clearSelection;
-- (void)dealloc;
 - (void)didCompleteLayout;
 - (void)didReceiveMemoryWarning:(id)arg1;
 - (void)didRotate:(id)arg1;

@@ -14,12 +14,14 @@
 @property unsigned long long attributeType;
 @property (copy) NSString *attributeValueClassName;
 @property (retain) id defaultValue;
+@property bool preserveValueOnDeletionInPersistentHistory;
 @property (copy) NSString *valueTransformerName;
 @property (readonly, copy) NSData *versionHash;
 
 + (id)_classNameForType:(unsigned long long)arg1;
 + (void)initialize;
 + (id)stringForAttributeType:(unsigned long long)arg1;
++ (bool)supportsSecureCoding;
 
 - (Class)_attributeValueClass;
 - (long long)_canConvertPredicate:(id)arg1 andWarning:(id)arg2;
@@ -34,6 +36,7 @@
 - (unsigned long long)_propertyType;
 - (id)_rawValidationPredicates;
 - (id)_rawValidationWarnings;
+- (void)_setPreserveValueOnDeletionInPersistentHistory:(bool)arg1;
 - (void)_sortOutDefaultNumericValuesBecauseDoublesAndFloatsDontCompareEqualAndThatBreaksTests;
 - (void)_versionHash:(char *)arg1 inStyle:(unsigned long long)arg2;
 - (void)_writeIntoData:(id)arg1 propertiesDict:(id)arg2 uniquedPropertyNames:(id)arg3 uniquedStrings:(id)arg4 uniquedData:(id)arg5 entitiesSlots:(id)arg6 fetchRequests:(id)arg7;
@@ -48,10 +51,12 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isIndexed;
+- (bool)preserveValueOnDeletionInPersistentHistory;
 - (void)setAllowsExternalBinaryDataStorage:(bool)arg1;
 - (void)setAttributeType:(unsigned long long)arg1;
 - (void)setAttributeValueClassName:(id)arg1;
 - (void)setDefaultValue:(id)arg1;
+- (void)setPreserveValueOnDeletionInPersistentHistory:(bool)arg1;
 - (void)setStoresBinaryDataExternally:(bool)arg1;
 - (void)setValueTransformerName:(id)arg1;
 - (bool)storesBinaryDataExternally;

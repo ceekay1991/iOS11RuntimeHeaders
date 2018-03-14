@@ -75,6 +75,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (long long)_actionLayoutAxisUnknowDisallowed;
 - (bool)_actionLayoutAxisUnknownDisallowedIsVertical;
 - (id)_actionRepresentationViewForAction:(id)arg1;
@@ -91,6 +92,7 @@
 - (void)_arrangeActionViewsInActionSequenceView;
 - (void)_arrangeTopLevelViews;
 - (void)_associateWeakSimultaneouslyPresentedGroupViews:(id)arg1 bidirectional:(bool)arg2;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_buttonEdgeInsetsFromGroupViewEdge;
 - (void)_commonInitWithActionGroup:(id)arg1 visualStyleProvider:(id)arg2 actionHandlerInvocationDelegate:(id)arg3;
 - (id)_constraintsToPinView:(id)arg1 layoutGuide:(id)arg2 identifier:(id)arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentEdgeFrame;
@@ -141,10 +143,10 @@
 - (id)_visualStyleOverrideSeparatorAttributes;
 - (id)_visualStyleOverrideTitleLabelFont;
 - (id)_widthAnchoredToContentGuideConstraintForTopLevelView:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)actionGroup;
 - (id)actionHandlerInvocationDelegate;
 - (long long)actionLayoutAxis;
@@ -163,7 +165,6 @@
 - (void)configureForDismissAlongsideTransitionCoordinator:(id)arg1;
 - (void)configureForPresentAlongsideTransitionCoordinator:(id)arg1;
 - (id)contentGuide;
-- (void)dealloc;
 - (id)defaultVisualStyleForTraitCollection:(id)arg1 presentationStyle:(long long)arg2;
 - (id)initWithActionGroup:(id)arg1 actionHandlerInvocationDelegate:(id)arg2;
 - (void)insertArrangedHeaderView:(id)arg1 atIndex:(unsigned long long)arg2 scrollable:(bool)arg3;
@@ -207,5 +208,9 @@
 - (id)visualStyle;
 - (id)visualStyleProvider;
 - (id)weakSimultaneouslyPresentedGroupViews;
+
+// Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
+
+- (id)newActionSeparatorView;
 
 @end

@@ -4,6 +4,8 @@
 
 @interface CNContactFetchRequest : NSObject <NSSecureCoding> {
     bool  _allowsBatching;
+    unsigned long long  _batchSize;
+    bool  _disallowsEncodedFetch;
     NSArray * _keysToFetch;
     bool  _mutableObjects;
     bool  _onlyMainStore;
@@ -14,6 +16,8 @@
 }
 
 @property (nonatomic) bool allowsBatching;
+@property (nonatomic) unsigned long long batchSize;
+@property (nonatomic) bool disallowsEncodedFetch;
 @property (nonatomic, copy) NSArray *keysToFetch;
 @property (nonatomic) bool mutableObjects;
 @property (nonatomic) bool onlyMainStore;
@@ -26,7 +30,9 @@
 
 - (void).cxx_destruct;
 - (bool)allowsBatching;
+- (unsigned long long)batchSize;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (bool)disallowsEncodedFetch;
 - (id)effectiveKeysToFetch;
 - (id)effectivePredicate;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,6 +46,8 @@
 - (bool)rankSort;
 - (bool)requiresMeContactAuthorization;
 - (void)setAllowsBatching:(bool)arg1;
+- (void)setBatchSize:(unsigned long long)arg1;
+- (void)setDisallowsEncodedFetch:(bool)arg1;
 - (void)setKeysToFetch:(id)arg1;
 - (void)setMutableObjects:(bool)arg1;
 - (void)setOnlyMainStore:(bool)arg1;

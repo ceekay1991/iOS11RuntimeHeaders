@@ -79,6 +79,7 @@
 @property (nonatomic) long long shadowMode;
 @property (nonatomic) double shadowRadius;
 @property (nonatomic) unsigned long long shadowSampleCount;
+@property (nonatomic, readonly, copy) NSData *sphericalHarmonicsCoefficients;
 @property (nonatomic) double spotInnerAngle;
 @property (nonatomic) double spotOuterAngle;
 @property (readonly) Class superclass;
@@ -192,6 +193,7 @@
 - (void)setShouldBakeDirectLighting:(bool)arg1;
 - (void)setShouldBakeIndirectLighting:(bool)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
+- (void)setSphericalHarmonicsCoefficients:(id)arg1;
 - (void)setSpotFalloffExponent:(double)arg1;
 - (void)setSpotInnerAngle:(double)arg1;
 - (void)setSpotOuterAngle:(double)arg1;
@@ -215,6 +217,7 @@
 - (unsigned long long)shadowSampleCount;
 - (bool)shouldBakeDirectLighting;
 - (bool)shouldBakeIndirectLighting;
+- (id)sphericalHarmonicsCoefficients;
 - (double)spotFalloffExponent;
 - (double)spotInnerAngle;
 - (double)spotOuterAngle;

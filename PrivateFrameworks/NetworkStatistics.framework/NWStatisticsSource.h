@@ -30,7 +30,6 @@
     NWStatisticsManager * _manager;
     unsigned int  _provider;
     unsigned long long  _reference;
-    bool  _removed;
     bool  _removing;
 }
 
@@ -41,7 +40,6 @@
 @property (readonly) NWStatisticsManager *manager;
 @property (readonly) unsigned int provider;
 @property unsigned long long reference;
-@property (getter=isRemoved) bool removed;
 @property bool removing;
 @property (readonly) unsigned long long snapshotRevision;
 @property (readonly) unsigned long long sourceIdentifier;
@@ -61,7 +59,6 @@
 - (bool)handleMessage:(struct nstat_msg_hdr { unsigned long long x1; unsigned int x2; unsigned short x3; unsigned short x4; }*)arg1 length:(long long)arg2;
 - (id)init;
 - (id)initWithManager:(id)arg1 source:(unsigned long long)arg2 provider:(unsigned int)arg3;
-- (bool)isRemoved;
 - (id)manager;
 - (unsigned int)provider;
 - (void)queryCounts;
@@ -73,7 +70,6 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDescriptorSeqno:(unsigned long long)arg1;
 - (void)setReference:(unsigned long long)arg1;
-- (void)setRemoved:(bool)arg1;
 - (void)setRemoving:(bool)arg1;
 - (unsigned long long)snapshotRevision;
 - (unsigned long long)sourceIdentifier;

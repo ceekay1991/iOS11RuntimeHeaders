@@ -50,6 +50,15 @@
 - (long long)secondsFromGMT;
 - (long long)secondsFromGMTForDate:(id)arg1;
 
+// Image: /System/Library/Frameworks/EventKit.framework/EventKit
+
++ (id)calendarTimeZone;
+
+// Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
+
+- (id)cityName;
+- (void)setCityName:(id)arg1;
+
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (bool)supportsSecureCoding;
@@ -59,10 +68,33 @@
 - (id)initWithCoder:(id)arg1;
 - (id)replacementObjectForPortCoder:(id)arg1;
 
+// Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
+
++ (bool)vs_isTimeZoneSet;
+
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
+
+- (id)descriptionForDate:(id)arg1;
+- (bool)isEquivalentTo:(id)arg1;
+- (bool)isUTC;
+
+// Image: /System/Library/PrivateFrameworks/ClockKit.framework/ClockKit
+
+- (id)JSONObjectRepresentation;
+- (id)initWithJSONObjectRepresentation:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DAEAS.framework/DAEAS
+
++ (id)gmt;
+
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
 - (bool)_navigation_hasSameOffsetFromGMTAsTimeZone:(id)arg1;
 - (bool)_navigation_isEquivalentToTimeZone:(id)arg1 forDate:(id)arg2;
 - (bool)_navigation_isEquivalentToTimeZone:(id)arg1 forDates:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/iCalendar.framework/iCalendar
+
+- (id)ICSComputeTimeZoneChangeListFromDate:(id)arg1 toDate:(id)arg2;
 
 @end

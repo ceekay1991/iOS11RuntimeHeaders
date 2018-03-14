@@ -27,6 +27,7 @@
     bool  _shouldPendInSetupIfNotAllowed;
     NSArray * _textFields;
     NSString * _title;
+    NSString * _touchIDContinueToken;
     long long  _unlockActionButtonIndex;
     NSMutableDictionary * _userInfo;
     struct __CFDictionary { } * _userNotificationValues;
@@ -60,7 +61,10 @@
 @property (readonly) Class superclass;
 @property (retain) NSArray *textFields;
 @property (retain) NSString *title;
+@property (copy) NSString *touchIDContinueToken;
 @property long long unlockActionButtonIndex;
+
+// Image: /System/Library/PrivateFrameworks/iTunesStore.framework/iTunesStore
 
 + (long long)displayCountForKey:(id)arg1;
 
@@ -71,6 +75,7 @@
 - (id)authenticationContext;
 - (bool)authorizationIsForced;
 - (id)buttons;
+- (id)buyParams;
 - (id)copyUserNotification;
 - (void*)copyValueForCFUserNotificationKey:(struct __CFString { }*)arg1;
 - (id)copyXPCEncoding;
@@ -120,6 +125,7 @@
 - (void)setShouldPendInSetupIfNotAllowed:(bool)arg1;
 - (void)setTextFields:(id)arg1;
 - (void)setTitle:(id)arg1;
+- (void)setTouchIDContinueToken:(id)arg1;
 - (void)setUnlockActionButtonIndex:(long long)arg1;
 - (void)setValue:(void*)arg1 forCFUserNotificationKey:(struct __CFString { }*)arg2;
 - (void)setValue:(id)arg1 forUserInfoKey:(id)arg2;
@@ -128,7 +134,12 @@
 - (bool)shouldPendInSetupIfNotAllowed;
 - (id)textFields;
 - (id)title;
+- (id)touchIDContinueToken;
 - (long long)unlockActionButtonIndex;
 - (id)valueForUserInfoKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
+
++ (id)ITunesStoreNotAvailableDialog;
 
 @end

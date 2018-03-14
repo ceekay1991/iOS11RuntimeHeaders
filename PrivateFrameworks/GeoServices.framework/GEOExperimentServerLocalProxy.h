@@ -30,6 +30,7 @@
 - (void)_setupRefreshActivity;
 - (void)_updateIfNecessary;
 - (void)_writeExperimentInfoToDisk:(id)arg1;
+- (void)abAssignUUIDWithCompletionHandler:(id /* block */)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (id)experimentsInfo;

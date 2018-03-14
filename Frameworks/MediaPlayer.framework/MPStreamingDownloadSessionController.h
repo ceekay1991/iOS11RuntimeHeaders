@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPStreamingDownloadSessionController : NSObject {
+@interface MPStreamingDownloadSessionController : NSObject <ICEnvironmentMonitorObserver> {
     NSObject<OS_dispatch_queue> * _accessQueue;
     NSMapTable * _assetDownloadSessionToDownloadSession;
     NSMapTable * _assetDownloadSessionToPlaybackMetadata;
@@ -17,6 +17,11 @@
     }  _prioritizedDownloadTokens;
     NSOperationQueue * _streamingOperationQueue;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedDownloadSessionController;
 
@@ -33,7 +38,6 @@
 - (void)_getNetworkConstraintsForPlaybackItemMetadata:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)_handleNewDownloadSession:(id)arg1 withAssetDownloadSession:(id)arg2 forPlaybackItemMetadata:(id)arg3;
 - (void)_handlePrioritizationForFinishingAssetDownloadSession:(id)arg1;
-- (void)_networkTypeDidChangeNotification:(id)arg1;
 - (id)_newDownloadSessionForRequest:(id)arg1 sourceURL:(id)arg2 downloadKey:(id)arg3 sinfs:(id)arg4 pathExtension:(id)arg5 assetFlavor:(id)arg6 allowAssetCaching:(bool)arg7 allowITunesContentConfiguration:(bool)arg8 protectionType:(unsigned long long)arg9 returningAssetDownloadSession:(id*)arg10;
 - (void)_playbackItemMetadataNetworkConstraintsDidChangeNotification:(id)arg1;
 - (void)_postFailedForDownloadSession:(id)arg1;
@@ -52,6 +56,7 @@
 - (void)dealloc;
 - (void)endPausingAllDownloadSessions;
 - (void)endPrioritizingDownloadSession:(id)arg1;
+- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (id)init;
 - (void)releaseDownloadSession:(id)arg1;
 - (void)startDownloadSession:(id)arg1;

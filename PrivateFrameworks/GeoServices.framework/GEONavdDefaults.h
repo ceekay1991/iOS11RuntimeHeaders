@@ -24,6 +24,8 @@
 @property (nonatomic, readonly) double locationUpdatesDesiredAccuracyForWalking;
 @property (nonatomic, readonly) double locationUpdatesDesiredAccuracyWhileStationaryForDriving;
 @property (nonatomic, readonly) double locationUpdatesDesiredAccuracyWhileStationaryForWalking;
+@property (nonatomic, readonly) double maxDistanceFromOriginToSuppressReroute;
+@property (nonatomic, readonly) unsigned long long maxRandomJitterForHypothesisWakeup;
 @property (nonatomic, readonly) long long maximumNumberOfDestinationsToMonitor;
 @property (nonatomic, readonly) unsigned long long maximumNumberOfEntriesInTheCacheUnderMemoryPressure;
 @property (nonatomic, readonly) unsigned long long maximumNumberOfLeechedLocations;
@@ -32,6 +34,7 @@
 @property (nonatomic, readonly) double maximumTimeBetweenConsecutiveHypothesisUpdatesInSeconds;
 @property (nonatomic, readonly) unsigned long long maximumTraceFileCount;
 @property (nonatomic, readonly) double maximumUserRoutingPreferencesAge;
+@property (nonatomic, readonly) unsigned long long minRandomJitterForHypothesisWakeup;
 @property (nonatomic, readonly) double minimumDistanceToCompareAgainstLocationAccuracy;
 @property (nonatomic, readonly) double minimumDistanceToGetLocationUpdatesInMeters;
 @property (nonatomic, readonly) double minimumExpirationOffset;
@@ -82,6 +85,8 @@
 - (double)locationUpdatesDesiredAccuracyForWalking;
 - (double)locationUpdatesDesiredAccuracyWhileStationaryForDriving;
 - (double)locationUpdatesDesiredAccuracyWhileStationaryForWalking;
+- (double)maxDistanceFromOriginToSuppressReroute;
+- (unsigned long long)maxRandomJitterForHypothesisWakeup;
 - (long long)maximumNumberOfDestinationsToMonitor;
 - (unsigned long long)maximumNumberOfEntriesInTheCacheUnderMemoryPressure;
 - (unsigned long long)maximumNumberOfLeechedLocations;
@@ -90,6 +95,7 @@
 - (double)maximumTimeBetweenConsecutiveHypothesisUpdatesInSeconds;
 - (unsigned long long)maximumTraceFileCount;
 - (double)maximumUserRoutingPreferencesAge;
+- (unsigned long long)minRandomJitterForHypothesisWakeup;
 - (double)minimumDistanceToCompareAgainstLocationAccuracy;
 - (double)minimumDistanceToGetLocationUpdatesInMeters;
 - (double)minimumExpirationOffset;

@@ -39,7 +39,6 @@
 - (double)_computeACMR;
 - (void)_optimizeTriangleIndices;
 - (void)_printData;
-- (id)_renderableElementCopy;
 - (long long)bytesPerIndex;
 - (id)data;
 - (void)dealloc;

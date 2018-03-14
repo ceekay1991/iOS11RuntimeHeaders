@@ -15,11 +15,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_doNetworkRequestForCoordinate:(struct { double x1; double x2; })arg1 traits:(id)arg2 shouldCache:(bool)arg3 completionHandler:(id /* block */)arg4;
+- (void)_doNetworkRequestForLatLng:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 shouldCache:(bool)arg4 completionHandler:(id /* block */)arg5;
 - (void)_prunePersistentCache;
 - (void)dealloc;
 - (id)init;
 - (id)persistentCache;
-- (void)shiftCoordinate:(struct { double x1; double x2; })arg1 completionHandler:(id /* block */)arg2;
+- (void)shiftLatLng:(id)arg1 auditToken:(id)arg2 completionHandler:(id /* block */)arg3;
 
 @end

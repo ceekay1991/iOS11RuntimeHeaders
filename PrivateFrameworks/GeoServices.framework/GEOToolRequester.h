@@ -12,6 +12,7 @@
 + (void)useRemoteProxy;
 
 - (void).cxx_destruct;
+- (id)getDefault:(id)arg1;
 - (id)init;
 - (void)lockDBs;
 - (void)resetMapDataExtension;

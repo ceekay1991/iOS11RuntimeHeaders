@@ -20,9 +20,11 @@
 - (bool)contactListViewController:(id)arg1 canSelectContact:(id)arg2;
 - (void)contactListViewController:(id)arg1 didSelectContact:(id)arg2;
 - (bool)contactViewController:(id)arg1 shouldPerformDefaultActionForContact:(id)arg2 propertyKey:(id)arg3 propertyIdentifier:(id)arg4;
+- (id)createTableView;
 - (void)dealloc;
 - (id)externalDevice;
 - (id)init;
+- (id)initWithDataSource:(id)arg1 searchable:(bool)arg2 environment:(id)arg3 shouldUseLargeTitle:(bool)arg4;
 - (id)initWithStyle:(long long)arg1;
 - (bool)limitedUI;
 - (void)limitedUINotification:(id)arg1;

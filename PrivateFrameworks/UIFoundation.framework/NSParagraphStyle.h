@@ -95,4 +95,14 @@
 - (long long)_ui_resolvedWritingDirection;
 - (long long)_ui_resolvedWritingDirectionForUserInterfaceLayoutDirection:(long long)arg1;
 
+// Image: /System/Library/PrivateFrameworks/NewsFeedLayout.framework/NewsFeedLayout
+
++ (id)nfl_paragraphStyleWithLineHeight:(double)arg1 textAlignment:(long long)arg2;
++ (id)nfl_paragraphStyleWithLineHeight:(double)arg1 textAlignment:(long long)arg2 lineBreakMode:(long long)arg3;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
++ (bool)ic_isRTL;
++ (id)ic_mutableDefaultParagraphStyle;
+
 @end

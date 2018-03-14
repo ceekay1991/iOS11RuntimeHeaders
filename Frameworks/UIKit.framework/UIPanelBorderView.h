@@ -16,15 +16,15 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_cachedBackdropGroupName;
 - (void)_statusBarTimeDidChange:(id)arg1;
 - (void)_updateObservationOfTime;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)backdropGroupName;
-- (void)dealloc;
 - (void)didMoveToWindow;
 - (void)layoutSubviews;
 - (bool)observesTime;

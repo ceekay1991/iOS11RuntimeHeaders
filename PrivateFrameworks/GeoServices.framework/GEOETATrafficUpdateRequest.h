@@ -21,6 +21,7 @@
     struct { 
         unsigned int sessionID : 1; 
         unsigned int clientTimepoint : 1; 
+        unsigned int sessionRelativeTimestamp : 1; 
         unsigned int maxAlternateRouteCount : 1; 
         unsigned int previouslyRejectedRerouteSavings : 1; 
         unsigned int rerouteStatus : 1; 
@@ -33,6 +34,7 @@
     unsigned int  _maxAlternateRouteCount;
     bool  _needServerLatency;
     unsigned int  _previouslyRejectedRerouteSavings;
+    NSString * _requestingAppId;
     int  _rerouteStatus;
     GEORouteAttributes * _routeAttributes;
     NSMutableArray * _routes;
@@ -41,8 +43,10 @@
         unsigned long long _high; 
         unsigned long long _low; 
     }  _sessionID;
+    double  _sessionRelativeTimestamp;
     NSData * _sessionState;
     GEOTFTrafficSnapshot * _trafficSnapshot;
+    NSData * _tripID;
     bool  _useClientTimepointAsNow;
     bool  _useLiveTrafficAsFallback;
 }
@@ -66,24 +70,30 @@
 @property (nonatomic) bool hasMaxAlternateRouteCount;
 @property (nonatomic) bool hasNeedServerLatency;
 @property (nonatomic) bool hasPreviouslyRejectedRerouteSavings;
+@property (nonatomic, readonly) bool hasRequestingAppId;
 @property (nonatomic) bool hasRerouteStatus;
 @property (nonatomic, readonly) bool hasRouteAttributes;
 @property (nonatomic) bool hasSessionID;
+@property (nonatomic) bool hasSessionRelativeTimestamp;
 @property (nonatomic, readonly) bool hasSessionState;
 @property (nonatomic, readonly) bool hasTrafficSnapshot;
+@property (nonatomic, readonly) bool hasTripID;
 @property (nonatomic) bool hasUseClientTimepointAsNow;
 @property (nonatomic) bool hasUseLiveTrafficAsFallback;
 @property (nonatomic) bool includeBetterRouteSuggestion;
 @property (nonatomic) unsigned int maxAlternateRouteCount;
 @property (nonatomic) bool needServerLatency;
 @property (nonatomic) unsigned int previouslyRejectedRerouteSavings;
+@property (nonatomic, retain) NSString *requestingAppId;
 @property (nonatomic) int rerouteStatus;
 @property (nonatomic, retain) GEORouteAttributes *routeAttributes;
 @property (nonatomic, retain) NSMutableArray *routes;
 @property (nonatomic, retain) NSMutableArray *serviceTags;
 @property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionID;
+@property (nonatomic) double sessionRelativeTimestamp;
 @property (nonatomic, retain) NSData *sessionState;
 @property (nonatomic, retain) GEOTFTrafficSnapshot *trafficSnapshot;
+@property (nonatomic, retain) NSData *tripID;
 @property (nonatomic) bool useClientTimepointAsNow;
 @property (nonatomic) bool useLiveTrafficAsFallback;
 
@@ -124,11 +134,14 @@
 - (bool)hasMaxAlternateRouteCount;
 - (bool)hasNeedServerLatency;
 - (bool)hasPreviouslyRejectedRerouteSavings;
+- (bool)hasRequestingAppId;
 - (bool)hasRerouteStatus;
 - (bool)hasRouteAttributes;
 - (bool)hasSessionID;
+- (bool)hasSessionRelativeTimestamp;
 - (bool)hasSessionState;
 - (bool)hasTrafficSnapshot;
+- (bool)hasTripID;
 - (bool)hasUseClientTimepointAsNow;
 - (bool)hasUseLiveTrafficAsFallback;
 - (unsigned long long)hash;
@@ -140,6 +153,7 @@
 - (unsigned int)previouslyRejectedRerouteSavings;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
+- (id)requestingAppId;
 - (int)rerouteStatus;
 - (id)rerouteStatusAsString:(int)arg1;
 - (Class)responseClass;
@@ -151,6 +165,7 @@
 - (id)serviceTags;
 - (unsigned long long)serviceTagsCount;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionID;
+- (double)sessionRelativeTimestamp;
 - (id)sessionState;
 - (void)setAbClientMetadata:(id)arg1;
 - (void)setAdditionalEnabledMarkets:(id)arg1;
@@ -167,22 +182,27 @@
 - (void)setHasPreviouslyRejectedRerouteSavings:(bool)arg1;
 - (void)setHasRerouteStatus:(bool)arg1;
 - (void)setHasSessionID:(bool)arg1;
+- (void)setHasSessionRelativeTimestamp:(bool)arg1;
 - (void)setHasUseClientTimepointAsNow:(bool)arg1;
 - (void)setHasUseLiveTrafficAsFallback:(bool)arg1;
 - (void)setIncludeBetterRouteSuggestion:(bool)arg1;
 - (void)setMaxAlternateRouteCount:(unsigned int)arg1;
 - (void)setNeedServerLatency:(bool)arg1;
 - (void)setPreviouslyRejectedRerouteSavings:(unsigned int)arg1;
+- (void)setRequestingAppId:(id)arg1;
 - (void)setRerouteStatus:(int)arg1;
 - (void)setRouteAttributes:(id)arg1;
 - (void)setRoutes:(id)arg1;
 - (void)setServiceTags:(id)arg1;
 - (void)setSessionID:(struct GEOSessionID { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setSessionRelativeTimestamp:(double)arg1;
 - (void)setSessionState:(id)arg1;
 - (void)setTrafficSnapshot:(id)arg1;
+- (void)setTripID:(id)arg1;
 - (void)setUseClientTimepointAsNow:(bool)arg1;
 - (void)setUseLiveTrafficAsFallback:(bool)arg1;
 - (id)trafficSnapshot;
+- (id)tripID;
 - (bool)useClientTimepointAsNow;
 - (bool)useLiveTrafficAsFallback;
 - (void)writeTo:(id)arg1;

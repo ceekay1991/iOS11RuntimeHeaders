@@ -15,11 +15,12 @@
 @property (nonatomic, readonly, copy) INDateComponentsRange *scheduledPickupTime;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
-- (id)description;
 - (id)domain;
 - (id)dropOffLocation;
 - (id)initWithPickupLocation:(id)arg1 dropOffLocation:(id)arg2 rideOptionName:(id)arg3 partySize:(id)arg4 paymentMethod:(id)arg5;
@@ -40,5 +41,9 @@
 - (void)setScheduledPickupTime:(id)arg1;
 - (void)setVerb:(id)arg1;
 - (id)verb;
+
+// Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
+
+- (void)apr_getArgsInto:(id)arg1;
 
 @end

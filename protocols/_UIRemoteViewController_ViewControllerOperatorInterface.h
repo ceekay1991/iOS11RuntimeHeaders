@@ -7,7 +7,6 @@
 
 - (void)__dismissTextServiceSessionAnimated:(bool)arg1;
 - (void)__handleFocusMovementAction:(UIFocusMovementAction *)arg1;
-- (void)__setServiceMaxFrameSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)__setSupportedInterfaceOrientations:(NSArray *)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(bool)arg1;
 - (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(bool)arg2 canRedo:(bool)arg3;
@@ -19,7 +18,9 @@
 - (void)__viewServiceDidUnregisterScrollToTopView;
 - (void)__viewServiceDidUpdatePreferredScreenEdgesDeferringSystemGestures:(long long)arg1;
 - (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 preferredStatusBarVisibility:(int)arg2 updateAnimation:(long long)arg3 currentAnimationSettings:(BSAnimationSettings *)arg4;
+- (void)__viewServiceDidUpdatePreferredUserInterfaceStyle:(long long)arg1;
 - (void)__viewServiceDidUpdatePreferredWhitePointAdaptationStyle:(long long)arg1 animationSettings:(BSAnimationSettings *)arg2;
+- (void)__viewServiceDidUpdatePrefersHomeIndicatorAutoHidden:(bool)arg1;
 - (void)__viewServiceDidUpdateTintColor:(UIColor *)arg1 duration:(double)arg2;
 - (void)__viewServiceInstrinsicContentSizeDidChange:(struct CGSize { double x1; double x2; })arg1 fence:(BKSAnimationFenceHandle *)arg2;
 - (void)__viewServicePopoverDidChangeContentSize:(void *)arg1 animated:(void *)arg2 fence:(void *)arg3 withReplyHandler:(void *)arg4; // needs 4 arg types, found 9: struct CGSize { double x1; double x2; }, bool, BKSAnimationFenceHandle *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, struct CGSize { double x1; double x2; }, void*

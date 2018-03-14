@@ -14,6 +14,7 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (id)_unarchivedTagsFromData:(id)arg1;
 - (id)discoveredTags;
 - (id)init;
 - (void)setDiscoveredTags:(id)arg1;

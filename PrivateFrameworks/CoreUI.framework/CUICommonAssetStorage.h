@@ -18,7 +18,7 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;
-    /* Warning: unhandled array encoding: '[10@]' */ id  _renditionInfoCache;
+    /* Warning: unhandled array encoding: '[20@]' */ id  _renditionInfoCache;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _renditionInfoCacheLock;
@@ -64,6 +64,7 @@
 - (id)description;
 - (void)enumerateBitmapIndexUsingBlock:(id /* block */)arg1;
 - (bool)enumerateKeysAndObjectsUsingBlock:(id /* block */)arg1;
+- (void)enumerateKeysAndObjectsWithoutIgnoringUsingBlock:(id /* block */)arg1;
 - (id)externalTags;
 - (float)fontSizeForFontSizeType:(id)arg1;
 - (bool)getBaselineOffset:(float*)arg1 forFontType:(id)arg2;

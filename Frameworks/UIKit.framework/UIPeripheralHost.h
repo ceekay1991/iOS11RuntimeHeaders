@@ -14,7 +14,6 @@
     UIKeyboardAutomatic * _automaticKeyboard;
     bool  _automaticKeyboardAnimatingIn;
     bool  _automaticKeyboardAnimatingOut;
-    int  _automaticKeyboardState;
     bool  _blockedReloadInputViewsForDictation;
     id /* block */  _bounceCompletionBlock;
     struct CGRect { 
@@ -39,6 +38,7 @@
     }  _clippingKeyboardAdjustmentStart;
     int  _clippingKeyboardMode;
     UITextEffectsWindow * _containerWindow;
+    int  _currentState;
     UIInputViewTransition * _currentTransition;
     int  _deactivationCount;
     id /* block */  _deferredTransitionTask;
@@ -202,6 +202,7 @@
 + (Class)hostViewClass;
 + (bool)inputViewSetContainsView:(id)arg1;
 + (id)passthroughViews;
++ (bool)pointIsWithinKeyboardContent:(struct CGPoint { double x1; double x2; })arg1;
 + (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })screenBoundsInAppOrientation;
 + (id)sharedInstance;
 + (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleInputViewFrame;
@@ -232,11 +233,13 @@
 - (bool)_isAccessoryViewChangedOnly;
 - (bool)_isCoordinatingWithSystemGestures;
 - (bool)_isIgnoringReloadInputViews;
+- (int)_isKeyboardDeactivated;
 - (bool)_isPinningInputViewsOnBehalfOfResponder:(id)arg1;
 - (bool)_isSelfHosting;
 - (bool)_isSuppressedByManualKeyboard;
 - (bool)_isTrackingResponder:(id)arg1;
 - (bool)_isTransitioning;
+- (void)_onScreenStateDidChange;
 - (void)_performRefreshCorners;
 - (void)_preserveInputViewsWithId:(id)arg1;
 - (void)_preserveInputViewsWithId:(id)arg1 animated:(bool)arg2;
@@ -395,6 +398,7 @@
 - (void)prepareForRotationToOrientation:(long long)arg1;
 - (void)prepareForTransition;
 - (void)prepareToAnimateClippedKeyboardWithOffsets:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 orderingIn:(bool)arg2 onSnapshot:(bool)arg3;
+- (void)prepareToMoveKeyboardForInputViewSet:(id)arg1;
 - (void)pushAnimationStyle:(id)arg1;
 - (void)queueDelayedTask:(id /* block */)arg1;
 - (void)refreshCorners;

@@ -2,10 +2,17 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface _GEODataSessionTaskRequesterOp : _GEOServiceRequesterOp <GEOProtobufSessionTaskDelegate> {
+@interface _GEODataSessionTaskRequesterOp : NSObject <GEOProtobufSessionTaskDelegate> {
+    NSString * _appIdentifier;
+    GEOApplicationAuditToken * _auditToken;
     bool  _canceled;
+    id /* block */  _completionHandler;
+    <GEOServiceRequestConfiguring> * _config;
     int  _dataRequestKind;
+    NSString * _debugRequestName;
+    PBRequest * _request;
     GEOProtobufSessionTask * _task;
+    GEOMapServiceTraits * _traits;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -15,8 +22,11 @@
 
 - (void).cxx_destruct;
 - (void)_cleanup;
+- (id)_fullURL;
+- (id)_userInfoForTask:(id)arg1;
 - (void)cancel;
-- (id)initWithRequest:(id)arg1 auditToken:(id)arg2 urlType:(unsigned long long)arg3 additionalURLQueryItems:(id)arg4 additionalHTTPHeaders:(id)arg5 debugRequestName:(id)arg6 serviceType:(id)arg7 experimentType:(long long)arg8 experimentDispatcherRequestType:(int)arg9 timeout:(double)arg10 shouldThrottleRequests:(bool)arg11 throttleKey:(id)arg12 dataRequestKind:(int)arg13 traits:(id)arg14;
+- (void)dealloc;
+- (id)initWithRequest:(id)arg1 auditToken:(id)arg2 config:(id)arg3 timeout:(double)arg4 dataRequestKind:(int)arg5 traits:(id)arg6;
 - (void)protobufSession:(id)arg1 didCompleteTask:(id)arg2;
 - (void)startWithCompletionHandler:(id /* block */)arg1;
 

@@ -10,6 +10,7 @@
 @property (readonly) Class superclass;
 
 + (bool)_isSiriAuthorizationRestricted;
++ (long long)_rawSiriAuthorizationStatusForAppID:(id)arg1;
 + (void)_requestSiriAuthorization:(id /* block */)arg1 auditToken:(struct { unsigned int x1[8]; })arg2;
 + (long long)_siriAuthorizationStatusForAppID:(id)arg1;
 + (bool)_siriEnabled;

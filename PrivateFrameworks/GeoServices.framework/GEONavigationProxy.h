@@ -15,6 +15,7 @@
     bool  _guidancePromptsEnabled;
     GEONavigationGuidanceState * _guidanceState;
     bool  _hasNavigationStartedToken;
+    bool  _isNavigatingInLowGuidance;
     GEOLocation * _lastLocation;
     bool  _locationUnreliable;
     NSXPCConnection * _nanomapscdConnection;
@@ -53,6 +54,7 @@
 - (void)_closeNanomapscdConnection;
 - (void)_closeNavdConnection;
 - (void)_invalidateNavigationSessionWithRouteContext:(id)arg1;
+- (void)_markCurrentHapticsAsTriggered;
 - (void)_openNanomapscdConnection;
 - (void)_openNavdConnection;
 - (void)_sendActiveRouteDetailsData;
@@ -82,6 +84,7 @@
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setFormatter:(id)arg1;
 - (void)setGuidancePromptsEnabled:(bool)arg1;
+- (void)setIsNavigatingInLowGuidance:(bool)arg1;
 - (void)setLastLocation:(id)arg1;
 - (void)setLocationUnreliable:(bool)arg1;
 - (void)setNavigationState:(int)arg1;
@@ -97,5 +100,6 @@
 - (void)setTrafficIncidentDetailsData:(id)arg1;
 - (void)startWithDestinationName:(id)arg1;
 - (void)stop;
+- (void)triggerHaptics:(int)arg1;
 
 @end

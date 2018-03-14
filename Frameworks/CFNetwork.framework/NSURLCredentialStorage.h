@@ -9,6 +9,8 @@
 @property (nonatomic) bool _useSystemKeychain;
 @property (readonly, copy) NSDictionary *allCredentials;
 
+// Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+
 + (id)sharedCredentialStorage;
 
 - (struct _CFURLCredentialStorage { }*)_CFURLCredentialStorage;
@@ -30,5 +32,13 @@
 - (void)setDefaultCredential:(id)arg1 forProtectionSpace:(id)arg2;
 - (void)setDefaultCredential:(id)arg1 forProtectionSpace:(id)arg2 task:(id)arg3;
 - (void)set_useSystemKeychain:(bool)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
+
+- (void)safari_setSynchronizableCredential:(id)arg1 forHTMLFormProtectionSpace:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
+- (void)purge;
 
 @end

@@ -31,6 +31,7 @@
 }
 
 @property (nonatomic) <_UIButtonBarAppearanceDelegate> *_appearanceDelegate;
+@property (nonatomic) bool allowsViewWrappers;
 @property (nonatomic, copy) NSArray *barButtonGroups;
 @property (getter=_compact, setter=_setCompact:, nonatomic) bool compact;
 @property (nonatomic) bool createsPopoverLayoutGuides;
@@ -85,6 +86,7 @@
 - (id)_updatedViewForBarButtonItem:(id)arg1 withView:(id)arg2;
 - (void)_validateAllItems;
 - (id)_visualProvider;
+- (bool)allowsViewWrappers;
 - (id)barButtonGroups;
 - (bool)createsPopoverLayoutGuides;
 - (void)dealloc;
@@ -94,6 +96,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (double)minimumInterItemSpace;
+- (void)setAllowsViewWrappers:(bool)arg1;
 - (void)setBarButtonGroups:(id)arg1;
 - (void)setCreatesPopoverLayoutGuides:(bool)arg1;
 - (void)setDefaultActionFilter:(id /* block */)arg1;

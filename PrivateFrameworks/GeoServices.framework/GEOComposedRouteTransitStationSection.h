@@ -46,6 +46,7 @@
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
+- (bool)_MapsCarPlay_isEqual:(id)arg1;
 - (id)description;
 - (struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; })fromNodeID;
 - (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 step:(id)arg4 toNodeSignificance:(int)arg5 startDistance:(double)arg6 lengthScaleFactor:(double)arg7;

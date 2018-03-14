@@ -31,6 +31,8 @@
 @property bool success;
 @property (readonly) NSString *uniqueKey;
 
+// Image: /System/Library/PrivateFrameworks/iTunesStore.framework/iTunesStore
+
 - (void).cxx_destruct;
 - (void)_addSubOperation:(id)arg1;
 - (void)_failAfterException;
@@ -43,6 +45,7 @@
 - (id)authenticatedAccountDSID;
 - (void)cancel;
 - (bool)copyAccountID:(id*)arg1 byAuthenticatingWithContext:(id)arg2 returningError:(id*)arg3;
+- (bool)copyAccountID:(id*)arg1 byHandlingAuthenticateResponse:(id)arg2 returningError:(id*)arg3;
 - (id)copyActivePowerAssertionIdentifiers;
 - (id)copySerializationLocks;
 - (id)delegate;
@@ -85,5 +88,10 @@
 - (bool)success;
 - (id)uniqueKey;
 - (void)unlock;
+
+// Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
+
+- (void)sendCompletionCallback:(id)arg1;
+- (void)setScriptOptions:(id)arg1;
 
 @end

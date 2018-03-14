@@ -32,16 +32,20 @@
 @property (nonatomic, retain) NSXPCConnection *xpcConnection;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *xpcQueue;
 
++ (id)clientInterface;
++ (id)serverInterface;
 + (id)userContext;
 
 - (void).cxx_destruct;
 - (void)addKeyPathsWithRegistrationsForAnyChangeFromRegistration:(id)arg1;
 - (void)cleanupInternalReferencesToRegistration:(id)arg1;
+- (void)clearCacheForKeyPathsWithFireOnChangeRegistrations:(id)arg1;
 - (void)dealloc;
 - (void)deregisterCallback:(id)arg1;
 - (id)endpoint;
 - (bool)evaluatePredicate:(id)arg1;
 - (void)handleContextualChange:(id)arg1 handler:(id /* block */)arg2;
+- (void)handleRegistrationCompleted:(id)arg1 handler:(id /* block */)arg2;
 - (bool)hasKnowledgeOfContextualKeyPath:(id)arg1;
 - (id)initWithEndpoint:(id)arg1;
 - (bool)interrupted;

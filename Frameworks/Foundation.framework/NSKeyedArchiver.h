@@ -27,8 +27,11 @@
 @property unsigned long long outputFormat;
 @property bool requiresSecureCoding;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (bool)archiveRootObject:(id)arg1 toFile:(id)arg2;
 + (id)archivedDataWithRootObject:(id)arg1;
++ (id)archivedDataWithRootObject:(id)arg1 requiringSecureCoding:(bool)arg2 error:(id*)arg3;
 + (id)classNameForClass:(Class)arg1;
 + (void)initialize;
 + (void)setClassName:(id)arg1 forClass:(Class)arg2;
@@ -67,6 +70,7 @@
 - (void)finishEncoding;
 - (id)init;
 - (id)initForWritingWithMutableData:(id)arg1;
+- (id)initRequiringSecureCoding:(bool)arg1;
 - (unsigned long long)outputFormat;
 - (void)replaceObject:(id)arg1 withObject:(id)arg2;
 - (bool)requiresSecureCoding;
@@ -76,5 +80,23 @@
 - (void)setRequiresSecureCoding:(bool)arg1;
 - (unsigned int)systemVersion;
 - (long long)versionForClassName:(id)arg1;
+
+// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsUtilities.framework/DVTInstrumentsUtilities
+
++ (id)xr_deepCopy:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AVConference.framework/AVConference
+
++ (id)secureArchiveObjectOfClass:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/DigitalTouchShared.framework/DigitalTouchShared
+
++ (id)_et_secureArchivedDataWithRootObject:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PairedSync.framework/PairedSync
+
++ (bool)secureArchiveRootObject:(id)arg1 toFile:(id)arg2;
++ (bool)secureArchiveRootObject:(id)arg1 toFile:(id)arg2 withOptions:(unsigned long long)arg3;
++ (id)secureArchivedDataWithRootObject:(id)arg1;
 
 @end

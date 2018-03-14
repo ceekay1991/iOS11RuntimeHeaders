@@ -32,6 +32,7 @@
 + (void)setVisualElementProvider:(id)arg1;
 + (id)visualElementForTraitCollection:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)__scalarStatisticsForUserValueChangedEvent;
 - (bool)_alwaysShowOnOffLabel;
 - (bool)_contentHuggingDefault_isUsuallyFixedHeight;
@@ -49,13 +50,15 @@
 - (bool)_shouldAlterCodedFrame;
 - (bool)_shouldShowOnOffLabels;
 - (void)_showingOnOffLabelChanged;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
 - (unsigned long long)defaultAccessibilityTraits;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

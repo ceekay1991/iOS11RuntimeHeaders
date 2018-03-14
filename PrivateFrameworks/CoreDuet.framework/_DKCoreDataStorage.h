@@ -10,7 +10,7 @@
     NSString * _directory;
     NSFileManager * _fm;
     bool  _localOnly;
-    NSMutableDictionary * _managedObjectContexts;
+    NSMapTable * _managedObjectContexts;
     NSManagedObjectModel * _managedObjectModel;
     NSCloudKitMirroringDelegate * _mirroringDelegate;
     NSURL * _modelURL;
@@ -19,7 +19,7 @@
     NSObject<OS_dispatch_queue> * _queueMOC;
     NSObject<OS_dispatch_queue> * _queuePSC;
     bool  _readOnly;
-    NSMutableDictionary * _syncPaths;
+    bool  _sync;
 }
 
 @property (readonly) NSString *containerIdentifier;
@@ -30,6 +30,7 @@
 @property (readonly) NSCloudKitMirroringDelegate *mirroringDelegate;
 @property (readonly) NSURL *modelURL;
 @property (readonly) bool readOnly;
+@property (readonly) bool sync;
 
 + (unsigned long long)anonymizeObjectStringsInContext:(id)arg1 entityName:(id)arg2 predicate:(id)arg3 sortDescriptors:(id)arg4 batchFetchLimit:(unsigned long long)arg5 totalFetchLimit:(unsigned long long)arg6 includeSubentities:(bool)arg7 salt:(id)arg8;
 + (id)anonymizeString:(id)arg1 withSalt:(id)arg2;
@@ -62,10 +63,14 @@
 - (void)handleDatabaseErrors:(id)arg1 forProtectionClass:(id)arg2;
 - (id)init;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 readOnly:(bool)arg4 localOnly:(bool)arg5;
+- (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 readOnly:(bool)arg4 localOnly:(bool)arg5 sync:(bool)arg6;
+- (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 sync:(bool)arg4;
 - (void)invalidateManagedObjectContextAndPersistentStoreCoordinatorFor:(id)arg1;
+- (bool)isManagedObjectContextFor:(id)arg1 equalToManagedObjectContext:(id)arg2;
 - (bool)isManagedObjectModel:(id)arg1 compatibleWithPersistentStoreAtURL:(id)arg2 error:(id*)arg3;
 - (bool)localOnly;
 - (id)managedObjectContextFor:(id)arg1;
+- (id)managedObjectContextForKey:(id)arg1;
 - (id)managedObjectModel;
 - (id)managedObjectModelForVersion:(unsigned long long)arg1;
 - (id)managedObjectModelURLForVersion:(unsigned long long)arg1;
@@ -76,10 +81,12 @@
 - (id)modelURL;
 - (id)persistentStoreCoordinatorFor:(id)arg1;
 - (bool)readOnly;
+- (void)removeManagedObjectContextForKey:(id)arg1;
 - (void)removePersistentStoreCoordinatorFor:(id)arg1;
 - (void)removePersistentStoresInCoordinator:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setManagedObjectContext:(id)arg1 forKey:(id)arg2;
 - (void)setManagedObjectModel:(id)arg1;
-- (id)syncDatabasePathFor:(id)arg1;
+- (bool)sync;
 
 @end

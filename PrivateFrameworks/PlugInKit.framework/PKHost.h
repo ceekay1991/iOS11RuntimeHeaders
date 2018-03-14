@@ -32,6 +32,8 @@
 - (void)deactivatePlugIn:(id)arg1;
 - (void)discoverPlugInsForAttributes:(id)arg1 flags:(unsigned long long)arg2 found:(id /* block */)arg3;
 - (id)discoveryMap;
+- (void)findPlugInByPathURL:(id)arg1 reply:(id /* block */)arg2;
+- (void)findPlugInByUUID:(id)arg1 reply:(id /* block */)arg2;
 - (id)hostInfoPlist;
 - (id)hostQueue;
 - (id)init;

@@ -31,6 +31,8 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) FBSDisplayConfiguration *displayConfiguration;
 @property (nonatomic, readonly, copy) FBSDisplayIdentity *displayIdentity;
+@property (getter=isEffectivelyBackgrounded, nonatomic, readonly) bool effectivelyBackgrounded;
+@property (getter=fb_isUnderLock, nonatomic, readonly) bool fb_underLock;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) long long interfaceOrientation;
@@ -75,5 +77,11 @@
 
 - (Class)canvasClass;
 - (bool)isUISubclass;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
+
+- (id)fb_fallbackSpecification;
+- (bool)fb_isUnderLock;
+- (bool)isEffectivelyBackgrounded;
 
 @end

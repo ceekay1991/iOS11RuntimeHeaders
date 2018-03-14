@@ -4,9 +4,14 @@
 
 @interface _DKCustomMetadataMO : NSManagedObject
 
-@property (nonatomic, retain) _DKAttributeMO *attribute;
-@property (nonatomic, retain) _DKAttributeValueMO *attributeValue;
-@property (nonatomic, retain) _DKEventMO *event;
+@property (nonatomic, copy) NSData *binaryValue;
+@property (nonatomic, copy) NSDate *dateValue;
+@property (nonatomic, copy) NSNumber *doubleValue;
+@property (nonatomic, retain) NSSet *event;
+@property (nonatomic, copy) NSNumber *integerValue;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *stringValue;
+@property (nonatomic, copy) NSString *valueHash;
 
 + (id)fetchRequest;
 

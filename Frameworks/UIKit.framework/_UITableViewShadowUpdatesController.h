@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UITableViewShadowUpdatesController : NSObject <UIDataSourceModelAssociation, UITableViewDataSourcePrefetching, UITableViewDataSourcePrivate, UITableViewDelegatePrivate, UITableViewDragDelegate, UITableViewDragDestinationDelegate_Internal, UITableViewDragSourceDelegate, UITableViewDropDelegate> {
+@interface _UITableViewShadowUpdatesController : NSObject <UIDataSourceModelAssociation, UITableViewDataSourcePrefetching, UITableViewDataSourcePrivate, UITableViewDelegatePrivate, UITableViewDragDelegate_Private, UITableViewDragDestinationDelegate_Internal, UITableViewDragSourceDelegate, UITableViewDropDelegate_Private> {
     _UIDataSourceSnapshotter * _initialSnapshot;
     NSMutableArray * _shadowUpdates;
     UITableView * _tableView;
@@ -22,9 +22,13 @@
 @property (nonatomic, retain) _UIDataSourceUpdateMap *updateMap;
 
 - (void).cxx_destruct;
+- (long long)__tableView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
+- (long long)__tableView:(id)arg1 dataOwnerForDropSession:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (id)_rebasedShadowUpdatesForUpdate:(id)arg1 initialSnapshot:(id)arg2;
 - (bool)_tableView:(id)arg1 canFocusRowAtIndexPath:(id)arg2;
 - (bool)_tableView:(id)arg1 canHandleDropSession:(id)arg2;
+- (long long)_tableView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
+- (long long)_tableView:(id)arg1 dataOwnerForDropSession:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (void)_tableView:(id)arg1 dragSessionDidEnd:(id)arg2;
 - (void)_tableView:(id)arg1 dragSessionWillBegin:(id)arg2;
 - (void)_tableView:(id)arg1 dropSessionDidEnd:(id)arg2;
@@ -53,6 +57,7 @@
 - (id)indexPathForPreferredFocusedItemForTableView:(id)arg1;
 - (id)indexPathForPreferredFocusedViewInTableView:(id)arg1;
 - (id)indexPathsAfterShadowUpdates:(id)arg1;
+- (id)indexPathsAfterShadowUpdates:(id)arg1 allowAppendingInsert:(bool)arg2;
 - (id)indexPathsBeforeShadowUpdates:(id)arg1;
 - (id)initWithTableView:(id)arg1;
 - (id)initialSnapshot;
@@ -67,6 +72,7 @@
 - (long long)sectionBeforeShadowUpdates:(long long)arg1;
 - (id)sectionIndexTitlesForTableView:(id)arg1;
 - (id)sectionsAfterShadowUpdates:(id)arg1;
+- (id)sectionsAfterShadowUpdates:(id)arg1 allowAppendingInsert:(bool)arg2;
 - (id)sectionsBeforeShadowUpdates:(id)arg1;
 - (void)setInitialSnapshot:(id)arg1;
 - (void)setShadowUpdates:(id)arg1;
@@ -106,8 +112,11 @@
 - (void)tableView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
 - (void)tableView:(id)arg1 didUpdateTextFieldForRowAtIndexPath:(id)arg2 withValue:(id)arg3;
 - (id)tableView:(id)arg1 dragPreviewParametersForRowAtIndexPath:(id)arg2;
+- (bool)tableView:(id)arg1 dragSessionAllowsMoveOperation:(id)arg2;
 - (void)tableView:(id)arg1 dragSessionDidEnd:(id)arg2;
+- (bool)tableView:(id)arg1 dragSessionIsRestrictedToDraggingApplication:(id)arg2;
 - (void)tableView:(id)arg1 dragSessionWillBegin:(id)arg2;
+- (id)tableView:(id)arg1 dropPreviewParametersForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 dropSessionDidEnd:(id)arg2;
 - (void)tableView:(id)arg1 dropSessionDidEnter:(id)arg2;
 - (void)tableView:(id)arg1 dropSessionDidExit:(id)arg2;
@@ -138,6 +147,8 @@
 - (long long)tableView:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
 - (bool)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (bool)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
+- (bool)tableView:(id)arg1 shouldHaveFullLengthBottomSeparatorForSection:(long long)arg2;
+- (bool)tableView:(id)arg1 shouldHaveFullLengthTopSeparatorForSection:(long long)arg2;
 - (bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (bool)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;

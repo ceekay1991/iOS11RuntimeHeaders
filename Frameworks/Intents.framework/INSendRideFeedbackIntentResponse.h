@@ -10,7 +10,6 @@
 
 - (id)_dictionaryRepresentation;
 - (long long)code;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBackingStore:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;

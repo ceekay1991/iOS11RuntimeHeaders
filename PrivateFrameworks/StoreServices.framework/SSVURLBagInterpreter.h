@@ -24,7 +24,9 @@
 - (id)AMDDomains;
 - (id)URLForURLBagKey:(id)arg1;
 - (id)_valueForKey:(id)arg1 withClass:(Class)arg2;
+- (id)cachedValueFromBag:(id)arg1 key:(id)arg2 withType:(unsigned long long)arg3 updateCache:(bool)arg4;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)initWithSSBag:(id)arg1;
 - (id)initWithURLBag:(id)arg1;
 - (id)initWithURLBagDictionary:(id)arg1;
 - (id)mescalCertificateURL;

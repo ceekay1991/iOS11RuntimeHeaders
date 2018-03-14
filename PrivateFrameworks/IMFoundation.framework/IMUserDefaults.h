@@ -9,12 +9,24 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (bool)isAbsintheV3V4Enabled;
+// Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
+
++ (bool)isAbsintheV4Enabled;
++ (bool)isBAACertEnabled;
++ (bool)isDebugPiscoLoggingEnabled;
++ (bool)isDeviceScoringEnabled;
 + (bool)isEngramEnabled;
++ (bool)isLiveDeliveryWarmUpEnabled;
++ (bool)isPiscoEnabled;
 + (long long)phoneNumberValidationMode;
 + (id)phoneNumberValidationPreflightTestData;
-+ (void)setEnableAbsintheV3V4:(bool)arg1;
++ (void)setEnableAbsintheV4:(bool)arg1;
++ (void)setEnableBAACert:(bool)arg1;
++ (void)setEnableDebugPiscoLogging:(bool)arg1;
++ (void)setEnableDeviceScoring:(bool)arg1;
 + (void)setEnableEngram:(bool)arg1;
++ (void)setEnableLiveDeliveryWarmUp:(bool)arg1;
++ (void)setEnablePisco:(bool)arg1;
 + (void)setPhoneNumberValidationMode:(long long)arg1;
 + (void)setPhoneNumberValidationPreflightTestData:(id)arg1;
 + (id)sharedDefaults;
@@ -38,5 +50,9 @@
 - (void)setValue:(void*)arg1 forKey:(id)arg2 applicationID:(struct __CFString { }*)arg3 userName:(struct __CFString { }*)arg4 hostName:(struct __CFString { }*)arg5;
 - (void)synchronizeAppID:(id)arg1;
 - (void)synchronizeApplicationID:(struct __CFString { }*)arg1 userName:(struct __CFString { }*)arg2 hostName:(struct __CFString { }*)arg3;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/IMSharedUtilities
+
++ (bool)__im_isEngramEnabledForGroups;
 
 @end

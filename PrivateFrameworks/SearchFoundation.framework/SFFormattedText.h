@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFFormattedText : SFText <NSSecureCoding, SFFormattedText> {
+@interface SFFormattedText : SFText <NSCopying, NSSecureCoding, SFFormattedText> {
     SFImage * _glyph;
     struct { 
         unsigned int isEmphasized : 1; 
@@ -30,6 +30,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)glyph;

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UICollectionViewDragDestinationController : NSObject <UIDropInteractionDelegate, _UICollectionViewShadowUpdatesRebaseApplicable> {
+@interface _UICollectionViewDragDestinationController : NSObject <UIDropInteractionDelegate_Private, _UICollectionViewShadowUpdatesRebaseApplicable> {
     UICollectionView * _collectionView;
     <_UICollectionViewDragDestinationControllerDelegate> * _delegate;
     UIDropInteraction * _dropInteraction;
@@ -50,6 +50,7 @@
 - (id)_dragDestinationDelegateProxy;
 - (id)_dropDelegateActual;
 - (id)_dropDelegateProxy;
+- (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (id)_effectiveDropProposalForProposal:(id)arg1;
 - (void)_endInteractiveReorderingIfNeeded;
 - (bool)_hasGapLargeEnoughToRequireDropActionCallForCurrentItemAttributes:(id)arg1 proposedNextItemAttributes:(id)arg2;
@@ -57,6 +58,7 @@
 - (bool)_isLocalInteractiveMove;
 - (bool)_isMultiItemSource;
 - (void)_pauseReorderingDisplayLink;
+- (id)_queryClientForPreviewParamtersForItemAtIndexPath:(id)arg1;
 - (void)_reorderingDisplayLinkDidTick;
 - (void)_resumeReorderingDisplayLink;
 - (bool)_shouldPerformMovementForProposal:(id)arg1;

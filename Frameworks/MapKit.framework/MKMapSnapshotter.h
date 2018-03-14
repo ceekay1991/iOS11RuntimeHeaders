@@ -21,6 +21,7 @@
 - (void)_exitBackground:(id)arg1;
 - (void)_failWithError:(id)arg1;
 - (void)_performSnapshot;
+- (void)_setupCustomFeaturesForAnnotationViewsIfNeeded;
 - (void)_succeedWithSnapshot:(id)arg1;
 - (void)cancel;
 - (void)dealloc;

@@ -15,9 +15,11 @@
         unsigned int redirectCount : 1; 
         unsigned int requestDataSize : 1; 
         unsigned int responseDataSize : 1; 
+        unsigned int tilesetId : 1; 
         unsigned int totalTime : 1; 
     }  _has;
     int  _httpResponseCode;
+    NSString * _manifestEnv;
     int  _networkService;
     int  _queuedTime;
     int  _redirectCount;
@@ -31,12 +33,14 @@
     int  _responseDataSize;
     NSString * _serviceIpAddress;
     GEONetworkSessionTaskTransactionMetrics * _taskMetrics;
+    unsigned int  _tilesetId;
     int  _totalTime;
 }
 
 @property (nonatomic) int decodeTime;
 @property (nonatomic) bool hasDecodeTime;
 @property (nonatomic) bool hasHttpResponseCode;
+@property (nonatomic, readonly) bool hasManifestEnv;
 @property (nonatomic) bool hasNetworkService;
 @property (nonatomic) bool hasQueuedTime;
 @property (nonatomic) bool hasRedirectCount;
@@ -50,8 +54,10 @@
 @property (nonatomic) bool hasResponseDataSize;
 @property (nonatomic, readonly) bool hasServiceIpAddress;
 @property (nonatomic, readonly) bool hasTaskMetrics;
+@property (nonatomic) bool hasTilesetId;
 @property (nonatomic) bool hasTotalTime;
 @property (nonatomic) int httpResponseCode;
+@property (nonatomic, retain) NSString *manifestEnv;
 @property (nonatomic) int networkService;
 @property (nonatomic) int queuedTime;
 @property (nonatomic) int redirectCount;
@@ -65,6 +71,7 @@
 @property (nonatomic) int responseDataSize;
 @property (nonatomic, retain) NSString *serviceIpAddress;
 @property (nonatomic, retain) GEONetworkSessionTaskTransactionMetrics *taskMetrics;
+@property (nonatomic) unsigned int tilesetId;
 @property (nonatomic) int totalTime;
 
 - (void).cxx_destruct;
@@ -76,6 +83,7 @@
 - (id)dictionaryRepresentation;
 - (bool)hasDecodeTime;
 - (bool)hasHttpResponseCode;
+- (bool)hasManifestEnv;
 - (bool)hasNetworkService;
 - (bool)hasQueuedTime;
 - (bool)hasRedirectCount;
@@ -89,10 +97,12 @@
 - (bool)hasResponseDataSize;
 - (bool)hasServiceIpAddress;
 - (bool)hasTaskMetrics;
+- (bool)hasTilesetId;
 - (bool)hasTotalTime;
 - (unsigned long long)hash;
 - (int)httpResponseCode;
 - (bool)isEqual:(id)arg1;
+- (id)manifestEnv;
 - (void)mergeFrom:(id)arg1;
 - (int)networkService;
 - (id)networkServiceAsString:(int)arg1;
@@ -119,8 +129,10 @@
 - (void)setHasRequestErrorCode:(bool)arg1;
 - (void)setHasRequestStart:(bool)arg1;
 - (void)setHasResponseDataSize:(bool)arg1;
+- (void)setHasTilesetId:(bool)arg1;
 - (void)setHasTotalTime:(bool)arg1;
 - (void)setHttpResponseCode:(int)arg1;
+- (void)setManifestEnv:(id)arg1;
 - (void)setNetworkService:(int)arg1;
 - (void)setQueuedTime:(int)arg1;
 - (void)setRedirectCount:(int)arg1;
@@ -134,8 +146,10 @@
 - (void)setResponseDataSize:(int)arg1;
 - (void)setServiceIpAddress:(id)arg1;
 - (void)setTaskMetrics:(id)arg1;
+- (void)setTilesetId:(unsigned int)arg1;
 - (void)setTotalTime:(int)arg1;
 - (id)taskMetrics;
+- (unsigned int)tilesetId;
 - (int)totalTime;
 - (void)writeTo:(id)arg1;
 

@@ -9,8 +9,8 @@
     NSString * _activityType;
     NSUUID * _activityUUID;
     Class  _classForPreparingExtensionItemData;
+    NSString * _extensionIdentifier;
     bool  _isAirDropActivity;
-    bool  _isPhotoServiceAccessGranted;
     struct CGSize { 
         double width; 
         double height; 
@@ -25,8 +25,8 @@
 @property (nonatomic, retain) NSString *activityType;
 @property (nonatomic, retain) NSUUID *activityUUID;
 @property (nonatomic, readonly) Class classForPreparingExtensionItemData;
+@property (nonatomic) NSString *extensionIdentifier;
 @property (nonatomic) bool isAirDropActivity;
-@property (nonatomic) bool isPhotoServiceAccessGranted;
 @property (nonatomic) struct CGSize { double x1; double x2; } thumbnailSize;
 @property (nonatomic) bool wantsAttachmentURLItemData;
 @property (nonatomic) bool wantsThumbnailItemData;
@@ -44,16 +44,16 @@
 - (id)activityUUID;
 - (Class)classForPreparingExtensionItemData;
 - (void)encodeWithCoder:(id)arg1;
+- (id)extensionIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (bool)isAirDropActivity;
-- (bool)isPhotoServiceAccessGranted;
 - (void)setActivityCategory:(long long)arg1;
 - (void)setActivitySpecificMetadata:(id)arg1;
 - (void)setActivitySupportsPromiseURLs:(bool)arg1;
 - (void)setActivityType:(id)arg1;
 - (void)setActivityUUID:(id)arg1;
+- (void)setExtensionIdentifier:(id)arg1;
 - (void)setIsAirDropActivity:(bool)arg1;
-- (void)setIsPhotoServiceAccessGranted:(bool)arg1;
 - (void)setThumbnailSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setWantsAttachmentURLItemData:(bool)arg1;
 - (void)setWantsThumbnailItemData:(bool)arg1;

@@ -12,6 +12,7 @@
 - (bool)_validateContainerIdentifier:(id)arg1 error:(id*)arg2;
 - (bool)_validateContainerOptions:(id)arg1 error:(id*)arg2;
 - (bool)_validateHistoryTrackingOptions:(id)arg1 error:(id*)arg2;
+- (bool)_validateMemoryThreshold:(id)arg1 error:(id*)arg2;
 - (void)dealloc;
 - (id)parsedOptions;
 - (bool)validateOptions:(id)arg1 andStoreOptions:(id)arg2 error:(id*)arg3;

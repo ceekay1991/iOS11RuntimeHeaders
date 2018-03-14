@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPModelLibraryRequest : MPModelRequest <MPModelRequestDetailedKeepLocalStatusRequesting> {
+@interface MPModelLibraryRequest : MPModelRequest <MPCModelPlaybackRequesting, MPCModelRequestRTCReporting, MPModelRequestDetailedKeepLocalStatusRequesting> {
     NSArray * _allowedItemIdentifiers;
     struct _NSRange { 
         unsigned long long location; 
@@ -23,9 +23,13 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) MPMediaQuery *legacyMediaQuery;
 @property (nonatomic, retain) MPMediaLibrary *mediaLibrary;
+@property (nonatomic, readonly) MPSectionedCollection *playbackSourceModelObjects;
+@property (nonatomic, readonly, copy) NSString *rtcReportingPlayQueueSourceIdentifier;
 @property (nonatomic, copy) NSArray *scopedContainers;
 @property (readonly) Class superclass;
 @property (nonatomic) bool wantsDetailedKeepLocalRequestableResponse;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 - (void).cxx_destruct;
 - (id)allowedItemIdentifiers;
@@ -49,5 +53,11 @@
 - (void)setScopedContainers:(id)arg1;
 - (void)setWantsDetailedKeepLocalRequestableResponse:(bool)arg1;
 - (bool)wantsDetailedKeepLocalRequestableResponse;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)rtcReportingPlayQueueSourceIdentifier;
+- (void)setShouldExcludeNonShuffleItems:(bool)arg1;
+- (bool)shouldExcludeNonShuffleItems;
 
 @end

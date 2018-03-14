@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ContactsFoundation.framework/ContactsFoundation
  */
 
-@interface CNEither : NSObject {
+@interface CNEither : NSObject <NSSecureCoding> {
     CNPair * _pair;
 }
 
@@ -18,10 +18,13 @@
 + (id)eitherWithLeft:(id)arg1 right:(id)arg2;
 + (id)eitherWithRight:(id)arg1;
 + (id)firstLeftInLazyChain:(id)arg1;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithLeft:(id)arg1 right:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (bool)isLeft;

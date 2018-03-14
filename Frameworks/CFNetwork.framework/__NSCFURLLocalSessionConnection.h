@@ -43,9 +43,11 @@
 - (void)_didReceiveData:(id)arg1;
 - (void)_didReceiveResponse:(id)arg1 sniff:(bool)arg2;
 - (void)_didSendBodyData:(struct UploadProgressInfo { long long x1; long long x2; long long x3; })arg1;
+- (void)_didSendMetrics;
 - (void)_immediatePostDelegateTick;
 - (void)_needConnectedSocketToHost:(id)arg1 port:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (void)_needNewBodyStream;
+- (bool)_needSendingMetrics;
 - (void)_redirectRequest:(id)arg1 redirectResponse:(id)arg2 completion:(id /* block */)arg3;
 - (void)_task_sendFinish;
 - (void)_tick;

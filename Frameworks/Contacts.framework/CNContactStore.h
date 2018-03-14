@@ -2,11 +2,17 @@
    Image: /System/Library/Frameworks/Contacts.framework/Contacts
  */
 
-@interface CNContactStore : NSObject
+@interface CNContactStore : NSObject <TUContactsDataSource>
 
 @property (nonatomic, readonly) CNiOSAddressBook *addressBook;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasMultipleGroupsOrAccounts;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) CNiOSAddressBookDataMapper *iOSMapper;
+@property (readonly) Class superclass;
+
+// Image: /System/Library/Frameworks/Contacts.framework/Contacts
 
 + (id)_contactStoreForPublicAddressBook:(void*)arg1;
 + (long long)authorizationStatusForEntityType:(long long)arg1;
@@ -71,8 +77,9 @@
 - (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
 - (id)labeledValueFromMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
 - (id)labeledValueFromPublicMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
+- (id)mainContactStore;
 - (id)matchingDictionaryForContact:(id)arg1;
-- (id)meContactIdentifierWithError:(id*)arg1;
+- (id)meContactIdentifiers:(id*)arg1;
 - (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id*)arg3;
 - (int)multiValueIdentifierFromLabeledValue:(id)arg1;
 - (id)originForSuggestion:(id)arg1 error:(id*)arg2;
@@ -101,5 +108,24 @@
 - (bool)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id*)arg2;
 - (id)usedLabelsForPropertyWithKey:(id)arg1 error:(id*)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
+- (id)verifyIndexWithError:(id*)arg1;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (id)_contactForEmailAddress:(id)arg1 keysToFetch:(id)arg2;
+- (id)mf_fetchContactForEmailAddress:(id)arg1 keysToFetch:(id)arg2;
+- (id)mf_fetchContactForEmailAddress:(id)arg1 keysToFetch:(id)arg2 error:(id*)arg3;
+- (id)mf_onScheduler:(id)arg1 contactFutureForEmailAddress:(id)arg2 keysToFetch:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
+
++ (id)safari_sharedContactStore;
+
+// Image: /System/Library/PrivateFrameworks/TelephonyUtilities.framework/TelephonyUtilities
+
+- (id)contactForDestinationId:(id)arg1;
+- (id)contactForDestinationId:(id)arg1 keysToFetch:(id)arg2;
+- (id)contactForIdentifier:(id)arg1;
+- (id)contactForIdentifier:(id)arg1 keysToFetch:(id)arg2;
 
 @end

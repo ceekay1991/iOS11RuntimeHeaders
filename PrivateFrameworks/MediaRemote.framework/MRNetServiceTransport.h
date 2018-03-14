@@ -5,16 +5,19 @@
 @interface MRNetServiceTransport : MRExternalDeviceTransport {
     void * _deviceInfo;
     NSNetService * _netService;
+    bool  _requiresCustomPairing;
 }
 
 @property (nonatomic, retain) NSNetService *netService;
+@property (nonatomic) bool requiresCustomPairing;
 
-+ (void*)createDeviceInfoFromTXTRecordData:(id)arg1;
++ (void*)createDeviceInfoFromNetService:(id)arg1;
++ (void*)createDeviceInfoFromTXTRecord:(id)arg1;
 
-- (void)_updateDeviceInfoWithNetService:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (void*)deviceInfo;
+- (id)error;
 - (bool)getInputStream:(id*)arg1 outputStream:(id*)arg2;
 - (id)hostname;
 - (id)initWithNetService:(id)arg1;
@@ -22,6 +25,11 @@
 - (id)netService;
 - (long long)port;
 - (bool)requiresCustomPairing;
+- (void)reset;
 - (void)setNetService:(id)arg1;
+- (void)setRequiresCustomPairing:(bool)arg1;
+- (void)setShouldUseSystemAuthenticationPrompt:(bool)arg1;
+- (bool)shouldUseSystemAuthenticationPrompt;
+- (void)updateDeviceInfoWithTXTRecord:(id)arg1;
 
 @end

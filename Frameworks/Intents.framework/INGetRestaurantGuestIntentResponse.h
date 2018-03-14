@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (long long)code;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)guest;
 - (id)guestDisplayPreferences;

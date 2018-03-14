@@ -2,7 +2,8 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UICompatibilityTextView : UIScrollView <UIDragInteractionDelegate, UIDropInteractionDelegate, UIPreviewItemDelegate, UITextInput, UITextLinkInteraction, UIWebDraggingDelegate, WebEditingDelegate, WebPolicyDelegate> {
+@interface _UICompatibilityTextView : UIScrollView <UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, UIPreviewItemDelegate, UITextInput, UITextLinkInteraction, UIWebDraggingDelegate, WebEditingDelegate, WebPolicyDelegate> {
+    bool  _dragInteractionEnabled;
     id  _private;
     bool  m_editing;
     UIView * m_inputView;
@@ -18,6 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <UITextViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (getter=isDragInteractionEnabled, nonatomic) bool dragInteractionEnabled;
 @property (getter=isEditable, nonatomic) bool editable;
 @property (getter=isEditing, nonatomic) bool editing;
 @property (nonatomic) bool enablesReturnKeyAutomatically;
@@ -62,6 +64,9 @@
 - (id)_dataForPreviewItemController:(id)arg1 atPosition:(struct CGPoint { double x1; double x2; })arg2 type:(long long*)arg3;
 - (void)_dealloc;
 - (void)_define:(id)arg1;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint { double x1; double x2; })arg3;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (bool)_freezeTextContainerSize;
 - (bool)_interactionShouldBeginFromPreviewItemController:(id)arg1 forPosition:(struct CGPoint { double x1; double x2; })arg2;
 - (void)_interactionStartedFromPreviewItemController:(id)arg1;
@@ -124,6 +129,8 @@
 - (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
+- (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
+- (bool)dragInteractionEnabled;
 - (void)dropInteraction:(id)arg1 concludeDrop:(id)arg2;
 - (void)dropInteraction:(id)arg1 item:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
@@ -155,6 +162,7 @@
 - (id)insertDictationResultPlaceholder;
 - (void)insertText:(id)arg1;
 - (id)interactionAssistant;
+- (bool)isDragInteractionEnabled;
 - (bool)isEditable;
 - (bool)isEditing;
 - (bool)isFirstResponder;
@@ -220,6 +228,7 @@
 - (void)setClearsOnInsertion:(bool)arg1;
 - (void)setContentToHTMLString:(id)arg1;
 - (void)setDataDetectorTypes:(unsigned long long)arg1;
+- (void)setDragInteractionEnabled:(bool)arg1;
 - (void)setEditable:(bool)arg1;
 - (void)setEditing:(bool)arg1;
 - (void)setFont:(id)arg1;

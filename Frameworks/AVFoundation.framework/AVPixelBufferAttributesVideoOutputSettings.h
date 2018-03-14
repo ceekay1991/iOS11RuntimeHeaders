@@ -7,6 +7,7 @@
     NSDictionary * _VTPixelAspectRatioDictionary;
 }
 
+@property (nonatomic, readonly) NSString *fieldMode;
 @property (nonatomic, readonly) NSDictionary *pixelBufferAttributes;
 
 + (id)_videoOutputSettingsWithVideoSettingsDictionary:(id)arg1 exceptionReason:(id*)arg2;
@@ -16,6 +17,7 @@
 - (id)cleanApertureDictionary;
 - (void)dealloc;
 - (bool)encoderIsAvailableOnCurrentSystemReturningError:(id*)arg1;
+- (id)fieldMode;
 - (int)height;
 - (id)initWithPixelBufferAttributes:(id)arg1 exceptionReason:(id*)arg2;
 - (id)initWithTrustedPixelBufferAttributes:(id)arg1;

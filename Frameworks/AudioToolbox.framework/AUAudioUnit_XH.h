@@ -34,9 +34,11 @@
     bool  _removingObserverWithContext;
     struct IPCAURenderingClient { 
         int (**_vptr$IPCAURenderingClient)(); 
+        <AUAudioUnitXPCProtocol> *mRemote; 
         bool mInitialized; 
         bool mRenderPrioritySet; 
         bool mIsOffline; 
+        bool mSentWorkInterval; 
         struct IPCAUSharedMemory { 
             int (**_vptr$SharableMemoryBase)(); 
             bool mIsOwner; 
@@ -64,6 +66,7 @@
                 struct SemaphoreIOMessenger_Sender {} *__first_; 
             } __ptr_; 
         } mMessenger; 
+        unsigned int mWorkIntervalPort; 
         double mOutputSampleRate; 
         struct CAMutex { 
             int (**_vptr$CAMutex)(); 

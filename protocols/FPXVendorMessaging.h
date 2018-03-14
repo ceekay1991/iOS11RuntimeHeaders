@@ -5,7 +5,6 @@
 
 @required
 
-- (void)fetchSupportedMessageInterfacesForDocumentAtURL:(void *)arg1 completionHandler:(void *)arg2; // needs 2 arg types, found 7: NSURL *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, void*
-- (void)fetchSupportedMessageInterfacesForItemID:(void *)arg1 completionHandler:(void *)arg2; // needs 2 arg types, found 7: FPItemID *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, void*
+- (void)fetchSupportedServicesForDocumentAtURL:(void *)arg1 completionHandler:(void *)arg2; // needs 2 arg types, found 8: NSURL *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, NSError *, void*
 
 @end

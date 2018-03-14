@@ -33,6 +33,7 @@
 
 + (double)defaultDurationForTransition:(int)arg1;
 
+- (void).cxx_destruct;
 - (double)_curlUpRevealedHeight;
 - (void)_didCompleteTransition:(bool)arg1;
 - (void)_didStartTransition;
@@ -43,7 +44,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (long long)animationTimingCurve;
 - (id)delegate;
 - (double)durationForTransition:(int)arg1;

@@ -12,6 +12,10 @@
     unsigned int  _flags;
     id /* block */  _hidePINHandler;
     NSString * _label;
+    NSData * _mfiCertificateData;
+    NSString * _mfiProductType;
+    NSString * _mfiSerialNumber;
+    NSData * _mfiToken;
     NSString * _myAppleID;
     CUAppleIDClient * _myAppleIDInfoClient;
     struct PairingSessionPrivate { } * _pairingSession;
@@ -36,6 +40,10 @@
 @property (nonatomic) unsigned int flags;
 @property (nonatomic, copy) id /* block */ hidePINHandler;
 @property (nonatomic, copy) NSString *label;
+@property (nonatomic, copy) NSData *mfiCertificateData;
+@property (nonatomic, copy) NSString *mfiProductType;
+@property (nonatomic, copy) NSString *mfiSerialNumber;
+@property (nonatomic, copy) NSData *mfiToken;
 @property (nonatomic, copy) NSString *myAppleID;
 @property (nonatomic, retain) CUAppleIDClient *myAppleIDInfoClient;
 @property (nonatomic, readonly) CUPairedPeer *pairedPeer;
@@ -69,6 +77,10 @@
 - (id)init;
 - (void)invalidate;
 - (id)label;
+- (id)mfiCertificateData;
+- (id)mfiProductType;
+- (id)mfiSerialNumber;
+- (id)mfiToken;
 - (id)myAppleID;
 - (id)myAppleIDInfoClient;
 - (id)openStreamWithName:(id)arg1 error:(id*)arg2;
@@ -89,6 +101,10 @@
 - (void)setFlags:(unsigned int)arg1;
 - (void)setHidePINHandler:(id /* block */)arg1;
 - (void)setLabel:(id)arg1;
+- (void)setMfiCertificateData:(id)arg1;
+- (void)setMfiProductType:(id)arg1;
+- (void)setMfiSerialNumber:(id)arg1;
+- (void)setMfiToken:(id)arg1;
 - (void)setMyAppleID:(id)arg1;
 - (void)setMyAppleIDInfoClient:(id)arg1;
 - (void)setPeerAppleID:(id)arg1;

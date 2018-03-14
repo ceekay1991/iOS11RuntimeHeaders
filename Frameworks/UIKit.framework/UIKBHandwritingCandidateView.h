@@ -42,12 +42,13 @@
 + (Class)cellClass;
 + (double)shadowYForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 shadowHeight:(double)arg2;
 
+- (void).cxx_destruct;
 - (id)_inheritedRenderConfig;
 - (void)_setRenderConfig:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)calculateDummyCellAttributes;
 - (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
 - (id)candidateList;
@@ -60,7 +61,6 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)currentCandidate;
 - (unsigned long long)currentIndex;
-- (void)dealloc;
 - (id)delegate;
 - (void)displayLayer:(id)arg1;
 - (unsigned long long)dummyCellCount;

@@ -20,8 +20,11 @@
     NSMutableArray * _announcementsSupportedLanguages;
     NSString * _announcementsURL;
     NSMutableArray * _attributions;
+    NSString * _backgroundDispatcherURL;
+    NSString * _backgroundRevGeoURL;
     NSString * _batchReverseGeocoderURL;
     NSString * _batchTrafficProbeURL;
+    NSString * _bluePOIURL;
     NSString * _businessPortalBaseURL;
     GEODataSetDescription * _dataSet;
     NSString * _directionsURL;
@@ -30,6 +33,7 @@
     NSMutableArray * _fontChecksums;
     NSMutableArray * _fonts;
     struct { 
+        unsigned int mapLayersMetadata : 1; 
         unsigned int locationShiftVersion : 1; 
         unsigned int modelVersion : 1; 
         unsigned int operationMode : 1; 
@@ -45,6 +49,14 @@
     NSString * _logMessageUsageURL;
     NSString * _logMessageUsageV3URL;
     NSMutableArray * _mapLayers;
+    struct GEOMapLayersMetadata { 
+        double _lastUpdatedTimestamp; 
+        bool _stale; 
+        struct { 
+            unsigned int lastUpdatedTimestamp : 1; 
+            unsigned int stale : 1; 
+        } _has; 
+    }  _mapLayersMetadata;
     unsigned int  _modelVersion;
     int  _operationMode;
     NSString * _polyLocationShiftURL;
@@ -73,6 +85,7 @@
     NSMutableArray * _textures;
     NSMutableArray * _tileSets;
     NSString * _uniqueIdentifier;
+    PBUnknownFields * _unknownFields;
     GEOVersionManifest * _versionManifest;
     NSMutableArray * _xmlChecksums;
     NSMutableArray * _xmls;
@@ -89,8 +102,11 @@
 @property (nonatomic, retain) NSMutableArray *announcementsSupportedLanguages;
 @property (nonatomic, retain) NSString *announcementsURL;
 @property (nonatomic, retain) NSMutableArray *attributions;
+@property (nonatomic, retain) NSString *backgroundDispatcherURL;
+@property (nonatomic, retain) NSString *backgroundRevGeoURL;
 @property (nonatomic, retain) NSString *batchReverseGeocoderURL;
 @property (nonatomic, retain) NSString *batchTrafficProbeURL;
+@property (nonatomic, retain) NSString *bluePOIURL;
 @property (nonatomic, retain) NSString *businessPortalBaseURL;
 @property (nonatomic, retain) GEODataSetDescription *dataSet;
 @property (nonatomic, retain) NSString *directionsURL;
@@ -102,8 +118,11 @@
 @property (nonatomic, readonly) bool hasAddressCorrectionInitURL;
 @property (nonatomic, readonly) bool hasAddressCorrectionUpdateURL;
 @property (nonatomic, readonly) bool hasAnnouncementsURL;
+@property (nonatomic, readonly) bool hasBackgroundDispatcherURL;
+@property (nonatomic, readonly) bool hasBackgroundRevGeoURL;
 @property (nonatomic, readonly) bool hasBatchReverseGeocoderURL;
 @property (nonatomic, readonly) bool hasBatchTrafficProbeURL;
+@property (nonatomic, readonly) bool hasBluePOIURL;
 @property (nonatomic, readonly) bool hasBusinessPortalBaseURL;
 @property (nonatomic, readonly) bool hasDataSet;
 @property (nonatomic, readonly) bool hasDirectionsURL;
@@ -112,6 +131,7 @@
 @property (nonatomic) bool hasLocationShiftVersion;
 @property (nonatomic, readonly) bool hasLogMessageUsageURL;
 @property (nonatomic, readonly) bool hasLogMessageUsageV3URL;
+@property (nonatomic) bool hasMapLayersMetadata;
 @property (nonatomic) bool hasModelVersion;
 @property (nonatomic) bool hasOperationMode;
 @property (nonatomic, readonly) bool hasPolyLocationShiftURL;
@@ -141,6 +161,7 @@
 @property (nonatomic, retain) NSString *logMessageUsageURL;
 @property (nonatomic, retain) NSString *logMessageUsageV3URL;
 @property (nonatomic, retain) NSMutableArray *mapLayers;
+@property (nonatomic) struct GEOMapLayersMetadata { double x1; bool x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; } mapLayersMetadata;
 @property (nonatomic) unsigned int modelVersion;
 @property (nonatomic) int operationMode;
 @property (nonatomic, retain) NSString *polyLocationShiftURL;
@@ -169,6 +190,7 @@
 @property (nonatomic, retain) NSMutableArray *textures;
 @property (nonatomic, retain) NSMutableArray *tileSets;
 @property (nonatomic, retain) NSString *uniqueIdentifier;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) GEOVersionManifest *versionManifest;
 @property (nonatomic, retain) NSMutableArray *xmlChecksums;
 @property (nonatomic, retain) NSMutableArray *xmls;
@@ -248,9 +270,12 @@
 - (id)attributionAtIndex:(unsigned long long)arg1;
 - (id)attributions;
 - (unsigned long long)attributionsCount;
+- (id)backgroundDispatcherURL;
+- (id)backgroundRevGeoURL;
 - (id)baseURLStringForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (id)batchReverseGeocoderURL;
 - (id)batchTrafficProbeURL;
+- (id)bluePOIURL;
 - (id)businessPortalBaseURL;
 - (void)clearActiveResources;
 - (void)clearActiveScales;
@@ -296,8 +321,11 @@
 - (bool)hasAddressCorrectionInitURL;
 - (bool)hasAddressCorrectionUpdateURL;
 - (bool)hasAnnouncementsURL;
+- (bool)hasBackgroundDispatcherURL;
+- (bool)hasBackgroundRevGeoURL;
 - (bool)hasBatchReverseGeocoderURL;
 - (bool)hasBatchTrafficProbeURL;
+- (bool)hasBluePOIURL;
 - (bool)hasBusinessPortalBaseURL;
 - (bool)hasDataSet;
 - (bool)hasDirectionsURL;
@@ -306,6 +334,7 @@
 - (bool)hasLocationShiftVersion;
 - (bool)hasLogMessageUsageURL;
 - (bool)hasLogMessageUsageV3URL;
+- (bool)hasMapLayersMetadata;
 - (bool)hasModelVersion;
 - (bool)hasOperationMode;
 - (bool)hasPolyLocationShiftURL;
@@ -354,6 +383,7 @@
 - (id)mapLayerAtIndex:(unsigned long long)arg1;
 - (id)mapLayers;
 - (unsigned long long)mapLayersCount;
+- (struct GEOMapLayersMetadata { double x1; bool x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })mapLayersMetadata;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)modelVersion;
 - (int)operationMode;
@@ -381,6 +411,7 @@
 - (id)regionalResourcesForMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)regionalResourcesURL;
 - (id)releaseInfo;
+- (int)requestStyleForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (id)reserved;
 - (id)resourceAtIndex:(unsigned long long)arg1;
 - (id)resources;
@@ -397,8 +428,11 @@
 - (void)setAnnouncementsSupportedLanguages:(id)arg1;
 - (void)setAnnouncementsURL:(id)arg1;
 - (void)setAttributions:(id)arg1;
+- (void)setBackgroundDispatcherURL:(id)arg1;
+- (void)setBackgroundRevGeoURL:(id)arg1;
 - (void)setBatchReverseGeocoderURL:(id)arg1;
 - (void)setBatchTrafficProbeURL:(id)arg1;
+- (void)setBluePOIURL:(id)arg1;
 - (void)setBusinessPortalBaseURL:(id)arg1;
 - (void)setDataSet:(id)arg1;
 - (void)setDirectionsURL:(id)arg1;
@@ -407,6 +441,7 @@
 - (void)setFontChecksums:(id)arg1;
 - (void)setFonts:(id)arg1;
 - (void)setHasLocationShiftVersion:(bool)arg1;
+- (void)setHasMapLayersMetadata:(bool)arg1;
 - (void)setHasModelVersion:(bool)arg1;
 - (void)setHasOperationMode:(bool)arg1;
 - (void)setHybridUnavailableRegions:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*)arg1 count:(unsigned long long)arg2;
@@ -418,6 +453,7 @@
 - (void)setLogMessageUsageURL:(id)arg1;
 - (void)setLogMessageUsageV3URL:(id)arg1;
 - (void)setMapLayers:(id)arg1;
+- (void)setMapLayersMetadata:(struct GEOMapLayersMetadata { double x1; bool x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })arg1;
 - (void)setModelVersion:(unsigned int)arg1;
 - (void)setOperationMode:(int)arg1;
 - (void)setPolyLocationShiftURL:(id)arg1;
@@ -472,6 +508,7 @@
 - (unsigned long long)tileSetsCount;
 - (double)timeToLiveForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (id)uniqueIdentifier;
+- (id)unknownFields;
 - (unsigned int)versionForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (id)versionManifest;
 - (void)writeTo:(id)arg1;

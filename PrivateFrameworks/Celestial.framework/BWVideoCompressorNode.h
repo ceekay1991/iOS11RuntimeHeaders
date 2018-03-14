@@ -3,29 +3,27 @@
  */
 
 @interface BWVideoCompressorNode : BWNode {
-    bool  _bFrameEncodingActive;
     bool  _bFrameEncodingAllowed;
+    double  _bFrameEncodingAllowedAtHigherPressureStopTime;
+    double  _bFrameEncodingAllowedAtHigherPressureTimeLimit;
     bool  _bFrameEncodingRequested;
-    double  _bFrameEncodingStopTime;
-    double  _bFrameEncodingTimeLimit;
     NSObject<OS_dispatch_semaphore> * _backPressureSemaphore;
     int  _backPressureSemaphoreInitialValue;
     struct OpaqueVTCompressionSession { } * _compressionSession;
     NSDictionary * _compressionSettings;
     bool  _didPrepareToEncode;
     NSObject<OS_dispatch_queue> * _emitterQueue;
-    int  _encodedFramesStats;
     bool  _flushRequestReceived;
-    int  _frameDelayStats;
-    int  _maxFrameDelayStats;
     float  _maxVideoFrameRate;
     bool  _nextFrameEncodeAsKeyFrame;
     int  _nonBFrameAverageBitRate;
-    int  _receivedFramesStats;
+    int  _powerPressureLevel;
+    int  _powerPressureNotificationToken;
     bool  _shouldAttachDebugSEI;
     bool  _sourceIsHDResolution;
     unsigned int  _sourcePixelFormatType;
-    NSObject<OS_dispatch_queue> * _thermalNoficationQueue;
+    NSObject<OS_dispatch_queue> * _thermalAndPowerNotificationQueue;
+    int  _thermalPressureLevel;
     int  _thermalPressureNotificationToken;
 }
 
@@ -33,10 +31,11 @@
 + (void)initialize;
 
 - (void)_cleanCompressor;
-- (void)_registerForThermalNotifications;
+- (void)_registerForThermalAndPowerNotifications;
 - (void)_signalBackPressureSemaphore;
-- (void)_turnBFrameRecordingOff;
-- (void)_updateBFrameEligibility;
+- (void)_updatePowerPressureLevel;
+- (void)_updateThermalPressureLevel;
+- (void)_validateBFrameEncodingAbility;
 - (id)backPressureSemaphore;
 - (id)compressionSettings;
 - (void)configurationWithID:(long long)arg1 updatedFormat:(id)arg2 didBecomeLiveForInput:(id)arg3;

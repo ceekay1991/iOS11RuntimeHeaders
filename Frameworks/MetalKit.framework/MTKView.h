@@ -12,8 +12,8 @@
     }  _clearColor;
     double  _clearDepth;
     unsigned int  _clearStencil;
-    NSMutableArray * _colorPixelFormats;
-    NSMutableArray * _colorTextures;
+    unsigned long long  _colorPixelFormats;
+    <MTLTexture> * _colorTextures;
     <CAMetalDrawable> * _currentDrawable;
     <MTKViewDelegate> * _delegate;
     unsigned long long  _depthStencilPixelFormat;
@@ -21,8 +21,10 @@
     <MTLDevice> * _device;
     bool  _deviceReset;
     CADisplayLink * _displayLink;
+    bool  _drawOffscreen;
     int (* _drawRectSubIMP;
     unsigned long long  _drawableAttachmentIndex;
+    unsigned long long  _drawableIdx;
     struct CGSize { 
         double width; 
         double height; 
@@ -31,19 +33,31 @@
         double width; 
         double height; 
     }  _drawableSize;
+    bool  _dumpFirstFrame;
+    unsigned long long  _dumpFrameAtFrame;
+    unsigned long long  _dumpFrameAtSeconds;
+    NSString * _dumpPath;
     bool  _enableSetNeedsDisplay;
+    unsigned int  _frameNum;
+    bool  _framebufferOnly;
     long long  _maxValidAttachmentIndex;
+    unsigned long long  _measureAfterFrame;
+    unsigned long long  _measureAfterSeconds;
     CAMetalLayer * _metalLayer;
     <MTLTexture> * _multisampleColorTexture;
-    NSMutableArray * _multisampleColorTextures;
+    <MTLTexture> * _multisampleColorTextures;
     long long  _nominalFramesPerSecond;
+    MTKOffscreenDrawable * _offscreenSwapChain;
     bool  _paused;
     bool  _pausedOnBackgrounding;
     long long  _preferredFramesPerSecond;
     int  _renderAttachmentDirtyState;
     unsigned long long  _sampleCount;
     bool  _sizeDirty;
+    double  _startTime;
     bool  _subClassOverridesDrawRect;
+    unsigned long long  _terminateAfterFrame;
+    unsigned long long  _terminateAfterSeconds;
 }
 
 @property (nonatomic) bool autoResizeDrawable;
@@ -80,6 +94,8 @@
 - (bool)_canDrawContent;
 - (bool)_controlsOwnScaleFactor;
 - (void)_createDisplayLinkForScreen:(id)arg1;
+- (void)_dumpFrameImageWithFilename:(id)arg1;
+- (void)_dumpFramerate:(double)arg1 withFilename:(id)arg2;
 - (struct CGSize { double x1; double x2; })_pixelSizeFromPointSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_resizeDrawable;
 - (void)_resizeMetalLayerDrawable;
@@ -88,7 +104,7 @@
 - (double)clearDepth;
 - (unsigned int)clearStencil;
 - (unsigned long long)colorPixelFormat;
-- (id)colorTextures;
+- (const id*)colorTextures;
 - (struct CGColorSpace { }*)colorspace;
 - (id)currentDrawable;
 - (id)currentRenderPassDescriptor;
@@ -105,7 +121,9 @@
 - (struct CGSize { double x1; double x2; })drawableSize;
 - (bool)enableSetNeedsDisplay;
 - (void)encodeWithCoder:(id)arg1;
+- (bool)exportToTargaAtLocation:(id)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 size:(unsigned long long)arg4 bytes:(void*)arg5;
 - (bool)framebufferOnly;
+- (void)getEnvironmentSettings;
 - (void)initCommon;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -113,7 +131,7 @@
 - (bool)isPaused;
 - (void)layoutSubviews;
 - (id)multisampleColorTexture;
-- (id)multisampleColorTextures;
+- (const id*)multisampleColorTextures;
 - (long long)nominalFramesPerSecond;
 - (long long)preferredFramesPerSecond;
 - (bool)presentsWithTransaction;

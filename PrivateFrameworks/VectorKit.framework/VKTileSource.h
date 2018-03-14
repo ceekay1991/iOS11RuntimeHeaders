@@ -26,13 +26,12 @@
     }  _taskContext;
     NSString * _tileLoaderClientIdentifier;
     VKTilePool * _tilePool;
-    <VKTileSourceZoomDelegate> * _zoomDelegate;
     int  loadingTiles;
 }
 
 @property (nonatomic) <VKTileSourceClient> *client;
 @property (nonatomic) double contentScale;
-@property (nonatomic, readonly) struct Device { }*device;
+@property (nonatomic, readonly) struct Device { int (**x1)(); struct DeviceVersion { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; struct DeviceCapabilities { bool x_3_1_1; bool x_3_1_2; unsigned int x_3_1_3; unsigned int x_3_1_4; unsigned int x_3_1_5; struct DeviceSize { unsigned int x_6_2_1; unsigned int x_6_2_2; unsigned int x_6_2_3; } x_3_1_6; } x3; struct DeviceAPIProperties { int x_4_1_1; double x_4_1_2; } x4; int x5; int x6; }*device;
 @property (nonatomic) long long mapType;
 @property (nonatomic, readonly) unsigned int maximumDownloadZoomLevel;
 @property (nonatomic, readonly) long long maximumZoomLevel;
@@ -48,7 +47,6 @@
 @property (nonatomic) unsigned char targetDisplay;
 @property (nonatomic, readonly) long long tileSize;
 @property (nonatomic, readonly) long long zEquivalenceClass;
-@property (nonatomic) <VKTileSourceZoomDelegate> *zoomDelegate;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -58,6 +56,7 @@
 - (bool)_shouldDecodeTile:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg1;
 - (bool)_shouldUseDecodedTile:(id)arg1 extraInfo:(id)arg2;
 - (bool)canFetchTileForKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg1;
+- (void)cancelAllDownloads;
 - (void)cancelDownload:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (bool)cancelFetchForKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg1;
 - (bool)cancelFetchForKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg1 sourceKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg2;
@@ -68,7 +67,7 @@
 - (void)decodeData:(id)arg1 downloadKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg2 sourceKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg3;
 - (id)detailedDescription;
 - (id)detailedDescriptionDictionaryRepresentation;
-- (struct Device { }*)device;
+- (struct Device { int (**x1)(); struct DeviceVersion { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; struct DeviceCapabilities { bool x_3_1_1; bool x_3_1_2; unsigned int x_3_1_3; unsigned int x_3_1_4; unsigned int x_3_1_5; struct DeviceSize { unsigned int x_6_2_1; unsigned int x_6_2_2; unsigned int x_6_2_3; } x_3_1_6; } x3; struct DeviceAPIProperties { int x_4_1_1; double x_4_1_2; } x4; int x5; int x6; }*)device;
 - (void)didFailToLoadTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1 error:(id)arg2;
 - (void)didFetchData:(id)arg1 forKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg2;
 - (void)didFinishWithNetwork;
@@ -104,7 +103,6 @@
 - (void)setSharedResources:(id)arg1;
 - (void)setStyleManager:(struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x1; struct __shared_weak_count {} *x2; })arg1;
 - (void)setTargetDisplay:(unsigned char)arg1;
-- (void)setZoomDelegate:(id)arg1;
 - (id)sharedResources;
 - (struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; })sourceKeyForDownloadKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; })sourceKeyForRenderKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg1;
@@ -118,6 +116,5 @@
 - (long long)tileSize;
 - (void)willGoToNetwork;
 - (long long)zEquivalenceClass;
-- (id)zoomDelegate;
 
 @end

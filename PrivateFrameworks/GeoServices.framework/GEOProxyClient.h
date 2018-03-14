@@ -24,6 +24,7 @@
 - (id)bundleVersion;
 - (id)description;
 - (unsigned long long)hash;
+- (id)initWithXPCConnection:(id)arg1;
 - (bool)isApplication;
 - (bool)isEqual:(id)arg1;
 - (void)setAuditToken:(id)arg1;

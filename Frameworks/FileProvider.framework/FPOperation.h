@@ -5,6 +5,7 @@
 @interface FPOperation : NSOperation <FPOperationClient> {
     id  _executionTransaction;
     bool  _finished;
+    id /* block */  _finishedBlock;
     NSObject<OS_dispatch_queue> * _queue;
     <FPCancellable> * _remoteOperation;
     unsigned char  _uuid;
@@ -13,6 +14,7 @@
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *callbackQueue;
 @property (getter=isExecuting, readonly) bool executing;
 @property (getter=isFinished, readonly) bool finished;
+@property (copy) id /* block */ finishedBlock;
 @property (nonatomic, retain) <FPCancellable> *remoteOperation;
 
 - (void).cxx_destruct;
@@ -27,14 +29,17 @@
 - (id)description;
 - (bool)finishIfCancelled;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
+- (id /* block */)finishedBlock;
 - (id)init;
 - (oneway void)invalidate;
 - (bool)isExecuting;
 - (bool)isFinished;
-- (void)operationDidProgressWithIdentifier:(id)arg1 data:(id)arg2 error:(id)arg3 completionHandler:(id /* block */)arg4;
+- (id)operationDescription;
+- (void)operationDidProgressWithInfo:(id)arg1 error:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)remoteOperation;
 - (void)setCallbackQueue:(id)arg1;
 - (oneway void)setCancellationHandler:(id)arg1;
+- (void)setFinishedBlock:(id /* block */)arg1;
 - (void)setRemoteOperation:(id)arg1;
 - (void)start;
 

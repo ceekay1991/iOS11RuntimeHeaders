@@ -19,7 +19,7 @@
 - (void)cancelUserMediaAccessRequest;
 - (void)deny;
 - (void)denyOnlyThisRequest;
-- (id)initWithUserMediaRequest:(struct PassRefPtr<WebCore::UserMediaRequest> { struct UserMediaRequest {} *x1; })arg1;
+- (id)initWithUserMediaRequest:(struct Ref<WebCore::UserMediaRequest> { struct UserMediaRequest {} *x1; }*)arg1;
 - (bool)shouldClearCache;
 
 @end

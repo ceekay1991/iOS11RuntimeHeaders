@@ -12,6 +12,7 @@
     int  _basicPointsToBeIncluded;
     GEODestinationInfo * _destinationInfo;
     int  _destinationType;
+    bool  _enableExperimentalMode;
     struct { 
         unsigned int timepoint : 1; 
         unsigned int basicPointsToBeIncluded : 1; 
@@ -19,6 +20,7 @@
         unsigned int mainTransportType : 1; 
         unsigned int trafficType : 1; 
         unsigned int walkingLimitMeters : 1; 
+        unsigned int enableExperimentalMode : 1; 
         unsigned int includeContingencyRoutes : 1; 
         unsigned int includeCrossLanguagePhonetics : 1; 
         unsigned int includeHistoricTravelTime : 1; 
@@ -67,10 +69,12 @@
 @property (nonatomic) int basicPointsToBeIncluded;
 @property (nonatomic, retain) GEODestinationInfo *destinationInfo;
 @property (nonatomic) int destinationType;
+@property (nonatomic) bool enableExperimentalMode;
 @property (nonatomic, readonly) bool hasAutomobileOptions;
 @property (nonatomic) bool hasBasicPointsToBeIncluded;
 @property (nonatomic, readonly) bool hasDestinationInfo;
 @property (nonatomic) bool hasDestinationType;
+@property (nonatomic) bool hasEnableExperimentalMode;
 @property (nonatomic) bool hasIncludeContingencyRoutes;
 @property (nonatomic) bool hasIncludeCrossLanguagePhonetics;
 @property (nonatomic) bool hasIncludeHistoricTravelTime;
@@ -138,10 +142,12 @@
 - (int)destinationType;
 - (id)destinationTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (bool)enableExperimentalMode;
 - (bool)hasAutomobileOptions;
 - (bool)hasBasicPointsToBeIncluded;
 - (bool)hasDestinationInfo;
 - (bool)hasDestinationType;
+- (bool)hasEnableExperimentalMode;
 - (bool)hasIncludeContingencyRoutes;
 - (bool)hasIncludeCrossLanguagePhonetics;
 - (bool)hasIncludeHistoricTravelTime;
@@ -180,8 +186,10 @@
 - (void)setBasicPointsToBeIncluded:(int)arg1;
 - (void)setDestinationInfo:(id)arg1;
 - (void)setDestinationType:(int)arg1;
+- (void)setEnableExperimentalMode:(bool)arg1;
 - (void)setHasBasicPointsToBeIncluded:(bool)arg1;
 - (void)setHasDestinationType:(bool)arg1;
+- (void)setHasEnableExperimentalMode:(bool)arg1;
 - (void)setHasIncludeContingencyRoutes:(bool)arg1;
 - (void)setHasIncludeCrossLanguagePhonetics:(bool)arg1;
 - (void)setHasIncludeHistoricTravelTime:(bool)arg1;
@@ -229,7 +237,7 @@
 
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
-+ (id)defaultRouteAttributesForNavigation;
++ (id)defaultRouteAttributesForTransportType:(int)arg1;
 
 - (void)setDestinationInfoForWaypoint:(id)arg1;
 

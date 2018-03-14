@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFMediaDetail : NSObject <NSSecureCoding, SFMediaDetail> {
+@interface SFMediaDetail : NSObject <NSCopying, NSSecureCoding, SFMediaDetail> {
     SFText * _content;
     NSString * _title;
 }
@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)content;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

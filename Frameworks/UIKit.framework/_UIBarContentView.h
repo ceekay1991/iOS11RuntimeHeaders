@@ -13,6 +13,7 @@
 @property (setter=_setAppearanceGuideClass:, nonatomic, retain) Class _appearanceGuideClass;
 @property (nonatomic, readonly) id appearanceStorage;
 @property (nonatomic, readonly) double backButtonMargin;
+@property (nonatomic, readonly) double backButtonMaximumWidth;
 @property (nonatomic, retain) UIImage *backIndicatorImage;
 @property (nonatomic, retain) UIImage *backIndicatorMaskImage;
 @property (nonatomic, readonly) long long barMetrics;
@@ -20,6 +21,8 @@
 @property (nonatomic) bool barWantsLetterpress;
 @property (nonatomic) bool centerTextButtons;
 @property (nonatomic, readonly) double defaultEdgeSpacing;
+@property (nonatomic, readonly) double defaultTextPadding;
+@property (nonatomic, readonly) bool isRTL;
 @property (nonatomic, readonly) UIColor *tintColor;
 
 - (void).cxx_destruct;
@@ -49,15 +52,19 @@
 - (double)absorptionForItem:(id)arg1;
 - (id)appearanceStorage;
 - (double)backButtonMargin;
+- (double)backButtonMaximumWidth;
 - (id)backIndicatorImage;
 - (id)backIndicatorMaskImage;
+- (long long)barMetrics;
 - (long long)barType;
 - (bool)barWantsLetterpress;
 - (bool)centerTextButtons;
 - (double)defaultEdgeSpacing;
 - (id)defaultFontDescriptor;
+- (double)defaultTextPadding;
 - (unsigned long long)edgesPaddingBarButtonItem:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)isRTL;
 - (void)setBackIndicatorImage:(id)arg1;
 - (void)setBackIndicatorMaskImage:(id)arg1;
 - (void)setBarWantsLetterpress:(bool)arg1;

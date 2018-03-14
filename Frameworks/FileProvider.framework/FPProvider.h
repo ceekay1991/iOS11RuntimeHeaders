@@ -4,9 +4,11 @@
 
 @interface FPProvider : NSObject <NSCopying, NSSecureCoding> {
     NSFileProviderDomain * _domain;
+    bool  _empty;
     bool  _enabled;
     NSString * _identifier;
     bool  _isReadOnly;
+    FPItemCollection * _itemCollection;
     NSString * _localizedName;
     NSFileProviderManager * _manager;
     NSString * _providerIdentifier;
@@ -19,6 +21,8 @@
 @property (nonatomic, readonly) NSURL *bundleURL;
 @property (nonatomic, readonly) NSString *containingBundleIdentifier;
 @property (nonatomic, readonly) NSFileProviderDomain *domain;
+@property (getter=isEmpty, nonatomic) bool empty;
+@property (getter=isEmpty, nonatomic, readonly) bool empty;
 @property (getter=isEnabled, nonatomic, readonly) bool enabled;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) bool isAvailableSystemWide;
@@ -56,12 +60,14 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isAvailableSystemWide;
+- (bool)isEmpty;
 - (bool)isEnabled;
 - (bool)isEqual:(id)arg1;
 - (bool)isReadOnly;
 - (id)localizedName;
 - (id)manager;
 - (id)providerIdentifier;
+- (void)setEmpty:(bool)arg1;
 - (void)setEnabled:(bool)arg1 completion:(id /* block */)arg2;
 - (void)setEnabled:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)setStorageURL:(id)arg1;

@@ -43,6 +43,7 @@
     struct GEOVersionedTileSet { unsigned int x1; unsigned int x2; } * _tileSets;
     unsigned long long  _tileSetsCount;
     unsigned long long  _tileSetsSpace;
+    PBUnknownFields * _unknownFields;
     struct { 
         unsigned int *list; 
         unsigned long long count; 
@@ -69,9 +70,11 @@
 @property (nonatomic, readonly) unsigned long long textureIndexsCount;
 @property (nonatomic, readonly) struct GEOVersionedTileSet { unsigned int x1; unsigned int x2; }*tileSets;
 @property (nonatomic, readonly) unsigned long long tileSetsCount;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, readonly) unsigned int*xmlIndexs;
 @property (nonatomic, readonly) unsigned long long xmlIndexsCount;
 
+- (void).cxx_destruct;
 - (void)addAttributionIndex:(unsigned int)arg1;
 - (void)addFontIndex:(unsigned int)arg1;
 - (void)addHybridUnavailableRegion:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; })arg1;
@@ -140,6 +143,7 @@
 - (struct GEOVersionedTileSet { unsigned int x1; unsigned int x2; })tileSetAtIndex:(unsigned long long)arg1;
 - (struct GEOVersionedTileSet { unsigned int x1; unsigned int x2; }*)tileSets;
 - (unsigned long long)tileSetsCount;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 - (unsigned int)xmlIndexAtIndex:(unsigned long long)arg1;
 - (unsigned int*)xmlIndexs;

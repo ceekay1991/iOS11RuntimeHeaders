@@ -10,6 +10,7 @@
 @property (nonatomic) unsigned long long cachePolicy;
 @property (getter=isCancelled, nonatomic, readonly) bool cancelled;
 @property (getter=isChainResultSet, nonatomic, readonly) bool chainResultSet;
+@property (nonatomic, readonly) GEOResolvedItem *clientResolvedResult;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
@@ -31,6 +32,6 @@
 
 - (id)initWithRequest:(id)arg1 shiftLocationsIfNeeded:(bool)arg2 traits:(id)arg3;
 - (id)searchQuery;
-- (void)submitWithHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2;
+- (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(id /* block */)arg4;
 
 @end

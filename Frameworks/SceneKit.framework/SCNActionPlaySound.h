@@ -7,6 +7,7 @@
 }
 
 + (id)playAudioSource:(id)arg1 waitForCompletion:(bool)arg2;
++ (bool)supportsSecureCoding;
 
 - (void)_setupDuration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

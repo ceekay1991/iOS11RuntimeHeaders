@@ -13,6 +13,7 @@
 + (bool)automaticallyNotifiesObserversForKey:(id)arg1;
 
 - (bool)_isDeallocating;
+- (bool)_providesConcreteBacking;
 - (bool)_tryRetain;
 - (const void*)bytes;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

@@ -10,14 +10,13 @@
 @property (nonatomic, readonly, copy) INSpeakableString *groupName;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly, copy) NSString *title;
+@property (nonatomic, readonly, copy) INSpeakableString *title;
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (id)content;
-- (id)description;
 - (id)domain;
 - (id)groupName;
 - (id)initWithTitle:(id)arg1 content:(id)arg2 groupName:(id)arg3;

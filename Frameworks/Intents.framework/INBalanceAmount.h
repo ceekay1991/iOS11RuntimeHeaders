@@ -21,6 +21,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currencyCode;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithAmount:(id)arg1 balanceType:(long long)arg2;

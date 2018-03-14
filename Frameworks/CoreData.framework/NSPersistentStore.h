@@ -57,6 +57,7 @@
 - (void)_setMetadataDirty:(bool)arg1;
 - (id)_storeInfoForEntityDescription:(id)arg1;
 - (bool)_unload:(id*)arg1;
+- (void)_updateAncillaryVersionHashesInMetadata:(id)arg1;
 - (void)_updateMetadata;
 - (id)_updatedMetadataWithSeed:(id)arg1 includeVersioning:(bool)arg2;
 - (id)ancillaryModels;

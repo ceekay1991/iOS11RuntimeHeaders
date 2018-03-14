@@ -21,6 +21,7 @@
     NSValue * _selectedRangeValue;
     NSString * _string;
     NSArray * _topLanguages;
+    NSMutableArray * _typologyCandidates;
     NSMutableArray * _typologyCorrections;
 }
 
@@ -30,6 +31,7 @@
 + (void)setTypologyRecordsLimit:(unsigned long long)arg1;
 + (void)writeTypologyRecords;
 
+- (void)addCandidate:(id)arg1;
 - (void)addCorrection:(id)arg1;
 - (void)closeTypologyRecordWithResults:(id)arg1;
 - (void)dealloc;

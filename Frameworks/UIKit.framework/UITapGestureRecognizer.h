@@ -13,6 +13,7 @@
 }
 
 @property (setter=_setButtonType:, nonatomic) long long _buttonType;
+@property (readonly) unsigned long long akNumberOfTapsRequired;
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } centroid;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -24,7 +25,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSArray *touches;
 
-+ (bool)_shouldContinueTouches;
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
++ (bool)_supportsTouchContinuation;
 
 - (void).cxx_destruct;
 - (double)_allowableSeparation;
@@ -78,5 +81,13 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
+
+- (unsigned long long)akNumberOfTapsRequired;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+
+- (id)_automationName;
 
 @end

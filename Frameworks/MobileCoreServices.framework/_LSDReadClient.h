@@ -10,7 +10,7 @@
 - (void)getKernelPackageExtensionsWithCompletionHandler:(id /* block */)arg1;
 - (void)getKnowledgeUUIDAndSequenceNumberWithCompletionHandler:(id /* block */)arg1;
 - (void)getLocalizationDictionaryForTypeWithIdentifier:(id)arg1 unit:(unsigned int)arg2 preferredLocalizations:(id)arg3 completionHandler:(id /* block */)arg4;
-- (void)getLocalizedNameWithBundleType:(id)arg1 bundleIdentifier:(id)arg2 bundleUUID:(id)arg3 context:(id)arg4 shortNameOnly:(bool)arg5 preferredLocalizations:(id)arg6 completionHandler:(id /* block */)arg7;
+- (void)getLocalizedNameWithBundleType:(id)arg1 bundleIdentifier:(id)arg2 bundleUUID:(id)arg3 context:(id)arg4 shortNameOnly:(bool)arg5 preferredLocalizations:(id)arg6 validationToken:(id)arg7 completionHandler:(id /* block */)arg8;
 - (void)getResourceValuesForKeys:(id)arg1 URL:(id)arg2 preferredLocalizations:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)getServerStatusWithCompletionHandler:(id /* block */)arg1;
 - (void)getServerStoreWithCompletionHandler:(id /* block */)arg1;

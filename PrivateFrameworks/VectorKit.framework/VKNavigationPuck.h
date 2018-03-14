@@ -4,8 +4,8 @@
 
 @interface VKNavigationPuck : NSObject <VKTrackableAnnotationPresentation> {
     bool  _animatingToCoordinate;
+    struct AnimationRunner { struct MapEngine {} *x1; } * _animationRunner;
     <VKAnnotation> * _annotation;
-    VKMapModel * _mapModel;
     struct NavigationPuck { struct CPuckStyleInfo {} *x1; struct Coordinate3D<Radians, double> { struct Unit<RadianUnitDescription, double> { double x_1_2_1; } x_2_1_1; struct Unit<RadianUnitDescription, double> { double x_2_2_1; } x_2_1_2; struct Unit<MeterUnitDescription, double> { double x_3_2_1; } x_2_1_3; } x2; struct Unit<RadianUnitDescription, double> { double x_3_1_1; } x3; float x4; float x5; int x6; bool x7; bool x8; bool x9; } * _navigationPuck;
     VKTimedAnimation * _puckStyleAnimation;
     bool  _stale;
@@ -30,8 +30,9 @@
 - (bool)animatingToCoordinate;
 - (id)annotation;
 - (void)dealloc;
+- (void)destroyAnimationRunner;
 - (bool)enabled;
-- (id)initWithMapModel:(id)arg1;
+- (id)initWithAnimationRunner:(struct AnimationRunner { struct MapEngine {} *x1; }*)arg1;
 - (int)mode;
 - (struct { double x1; double x2; })presentationCoordinate;
 - (double)presentationCourse;

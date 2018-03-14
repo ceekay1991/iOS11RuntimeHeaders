@@ -19,7 +19,7 @@
 - (void)cancelMediaDevicesEnumerationRequest;
 - (void)deny;
 - (void)denyOnlyThisRequest;
-- (id)initWithMediaDevicesEnumerationRequest:(struct PassRefPtr<WebCore::MediaDevicesEnumerationRequest> { struct MediaDevicesEnumerationRequest {} *x1; })arg1;
+- (id)initWithMediaDevicesEnumerationRequest:(struct Ref<WebCore::MediaDevicesEnumerationRequest> { struct MediaDevicesEnumerationRequest {} *x1; }*)arg1;
 - (bool)shouldClearCache;
 
 @end

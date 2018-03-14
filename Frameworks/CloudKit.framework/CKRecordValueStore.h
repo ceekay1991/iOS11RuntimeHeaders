@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (void)_sanitizeRecordValue:(id)arg1;
+- (void)_validateKeyUniquenessForKey:(id)arg1;
 - (void)_validateRecordKey:(id)arg1;
 - (void)_validateRecordValue:(id)arg1;
 - (id)allKeys;

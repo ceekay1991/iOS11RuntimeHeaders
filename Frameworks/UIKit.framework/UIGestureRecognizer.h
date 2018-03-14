@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIGestureRecognizer : NSObject <_UIDraggable, _UIExcludable, _UIForceLevelClassifierDelegate, _UITouchable> {
+@interface UIGestureRecognizer : NSObject <TSDGesture, _UIDraggable, _UIExcludable, _UIForceLevelClassifierDelegate, _UITouchable> {
     NSMutableSet * _activeEvents;
     NSArray * _allowedPressTypes;
     long long  _allowedTouchTypes;
@@ -58,9 +58,11 @@
         unsigned int forceRequirementSatisfied : 1; 
         unsigned int wantsDragEvents : 1; 
         unsigned int isDynamicGesture : 1; 
+        unsigned int canExcludeWithActiveRequirements : 1; 
     }  _gestureFlags;
     long long  _initialTouchType;
     NSMutableSet * _internalActiveTouches;
+    bool  _keepTouchesOnContinuation;
     double  _lastTouchTimestamp;
     NSString * _name;
     long long  _requiredPreviewForceState;
@@ -73,9 +75,14 @@
 
 @property (nonatomic, readonly) NSSet *_failureDependents;
 @property (nonatomic, readonly) NSSet *_failureRequirements;
+@property (nonatomic, readonly) bool _fb_isTouchGestureRecognizer;
+@property (setter=_fb_setRecognitionEvent:, nonatomic) long long _fb_recognitionEvent;
+@property (setter=_setKeepTouchesOnContinuation:, nonatomic) bool _keepTouchesOnContinuation;
 @property (nonatomic, readonly) NSMutableSet *_pairedGestureIdentifiers;
+@property (readonly) unsigned long long akNumberOfTouches;
 @property (nonatomic, copy) NSArray *allowedPressTypes;
 @property (nonatomic, copy) NSArray *allowedTouchTypes;
+@property (nonatomic, retain) <TSDGestureTarget> *cachedGestureTarget;
 @property (nonatomic) bool cancelsTouchesInView;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) bool delaysTouchesBegan;
@@ -83,7 +90,10 @@
 @property (nonatomic) <UIGestureRecognizerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (getter=isEnabled, nonatomic) bool enabled;
+@property (nonatomic) <TSDGestureDelegate> *gestureDelegate;
 @property (nonatomic) UIGestureEnvironment *gestureEnvironment;
+@property (nonatomic, retain) NSString *gestureKind;
+@property (nonatomic, readonly) int gestureState;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) double lastTouchTimestamp;
 @property (nonatomic, copy) NSString *name;
@@ -92,12 +102,15 @@
 @property (getter=_requiresSystemGesturesToFail, setter=_setRequiresSystemGesturesToFail:, nonatomic) bool requiresSystemGesturesToFail;
 @property (nonatomic, readonly) long long state;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) TSDRep *targetRep;
 @property (nonatomic, readonly) UIView *view;
 
-+ (bool)_shouldContinueTouches;
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (bool)_shouldDefaultToTouches;
 + (bool)_shouldSupportStylusTouches;
 + (bool)_shouldUseLinearForceLevelClassifier;
++ (bool)_supportsTouchContinuation;
 
 - (void).cxx_destruct;
 - (bool)_acceptsFailureRequirements;
@@ -113,6 +126,7 @@
 - (id)_beganObservable;
 - (id)_briefDescription;
 - (bool)_canExcludeOtherExcludables;
+- (bool)_canExcludeWithActiveRequirements;
 - (void)_cancelRecognition;
 - (struct CGPoint { double x1; double x2; })_centroidOfTouches:(id)arg1 excludingEnded:(bool)arg2;
 - (void)_clearDelayedPresses;
@@ -153,6 +167,7 @@
 - (void)_forceLevelClassifier:(id)arg1 currentForceLevelDidChange:(long long)arg2;
 - (unsigned long long)_forcePressCount;
 - (bool)_forceRequirementSatisfied;
+- (bool)_hasUnmetRequirementsPreventingExclusion;
 - (void)_ignoreActiveEvents;
 - (bool)_inForceCapableEnvironment;
 - (void)_invalidateInitialTouchType;
@@ -160,6 +175,7 @@
 - (bool)_isDirty;
 - (bool)_isExcludedByExcludable:(id)arg1;
 - (bool)_isRecognized;
+- (bool)_keepTouchesOnContinuation;
 - (bool)_needsDynamicDependentRequirementForGestureRecognizer:(id)arg1;
 - (bool)_needsDynamicFailureRequirementForGestureRecognizer:(id)arg1;
 - (id)_pairedGestureIdentifiers;
@@ -179,9 +195,11 @@
 - (bool)_requiresSystemGesturesToFail;
 - (void)_resetGestureRecognizer;
 - (void)_setAcceptsFailureRequiments:(bool)arg1;
+- (void)_setCanExcludeWithActiveRequirements:(bool)arg1;
 - (void)_setDirty;
 - (void)_setForceLevelClassifier:(id)arg1;
 - (void)_setInitialTouchType:(long long)arg1;
+- (void)_setKeepTouchesOnContinuation:(bool)arg1;
 - (void)_setRequiredForceLevel:(long long)arg1;
 - (void)_setRequiresSystemGesturesToFail:(bool)arg1;
 - (void)_setWantsDragEvents:(bool)arg1;
@@ -262,5 +280,59 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)transferTouchesFromGestureRecognizer:(id)arg1;
 - (id)view;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (void)pu_cancel;
+
+// Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
+
+- (struct CGPoint { double x1; double x2; })akLocationInWindow;
+- (unsigned long long)akNumberOfTouches;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
+
+- (bool)_fb_isTouchGestureRecognizer;
+- (long long)_fb_recognitionEvent;
+- (void)_fb_setRecognitionEvent:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
+- (struct CGPoint { double x1; double x2; })hu_locationInGlobalCoordinateSpace;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+
+- (id)_automationName;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (void)px_cancel;
+- (bool)px_isPanGestureRecognizerOfScrollView:(id*)arg1;
+- (struct CGPoint { double x1; double x2; })px_locationInCoordinateSpace:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
+
+- (void)cancel;
+
+// Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
+
+- (void)cancel;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
+- (struct CGPoint { double x1; double x2; })boundsLocationForICC:(id)arg1;
+- (id)cachedGestureTarget;
+- (id)gestureDelegate;
+- (id)gestureKind;
+- (int)gestureState;
+- (id)initWithGestureDispatcher:(id)arg1 gestureKind:(id)arg2;
+- (bool)isDone;
+- (struct CGPoint { double x1; double x2; })naturalLocationForRep:(id)arg1;
+- (void)setCachedGestureTarget:(id)arg1;
+- (void)setGestureDelegate:(id)arg1;
+- (void)setGestureKind:(id)arg1;
+- (void)setTargetRep:(id)arg1;
+- (id)targetRep;
+- (struct CGPoint { double x1; double x2; })unscaledLocationForICC:(id)arg1;
 
 @end

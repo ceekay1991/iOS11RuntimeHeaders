@@ -30,6 +30,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (bool)isForeignOrigin;
+- (bool)isStaleComparedToContext:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (int)origin;
 - (id)originAsString:(int)arg1;
@@ -38,6 +39,7 @@
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setOrigin:(int)arg1;
 - (void)setTimestamp:(unsigned int)arg1;
+- (id)simpleDescription;
 - (unsigned int)timestamp;
 - (void)writeTo:(id)arg1;
 

@@ -85,10 +85,34 @@
 - (Class)contactViewControllerCellClassForPropertyType:(id)arg1;
 - (id)displayString;
 
+// Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
+
+- (void)clearTimeComponents;
+- (id)dateComponents:(unsigned long long)arg1 byAddingComponents:(id)arg2 calendar:(id)arg3;
+- (id)dateComponents:(unsigned long long)arg1 byAddingDays:(int)arg2 calendar:(id)arg3;
+- (id)dateComponentsForDateOnly;
+- (id)dateComponentsForEndOfDay;
+- (struct { int x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; double x6; })gregorianDate;
+- (bool)hasTimeComponents;
+
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
++ (id)hk_componentsWithDays:(long long)arg1;
++ (id)hk_dateComponentsForCalendarUnit:(unsigned long long)arg1;
++ (id)hk_oneDay;
++ (id)hk_oneWeek;
+
+- (id)_hk_dateByAddingFilteredInterval:(long long)arg1 toDate:(id)arg2;
+- (double)hk_approximateDuration;
+- (id)hk_dateByAddingInterval:(long long)arg1 toDate:(id)arg2;
+- (long long)hk_maxComponentValue;
+- (id)hk_populatedCalendarGregorianCalendarDefault;
+- (id)hk_translateDateComponentsToCalendar:(id)arg1 calendarUnits:(unsigned long long)arg2;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
@@ -107,5 +131,62 @@
 - (bool)isSameDayAsComponents:(id)arg1;
 - (bool)isSameMonthAsComponents:(id)arg1;
 - (bool)isSameYearAsComponents:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
+
++ (id)componentForDays:(long long)arg1;
++ (id)componentForHours:(long long)arg1;
++ (id)componentForMinutes:(long long)arg1;
++ (id)componentForMonths:(long long)arg1;
++ (id)componentForWeeks:(long long)arg1;
++ (id)componentForYears:(long long)arg1;
+
+- (bool)isSameDayAsComponents:(id)arg1;
+- (bool)isSameMonthAsComponents:(id)arg1;
+- (bool)isSameYearAsComponents:(id)arg1;
+- (id)representedDate;
+
+// Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
+
+- (id)localTimeDescription;
+
+// Image: /System/Library/PrivateFrameworks/Home.framework/Home
+
++ (unsigned long long)_hf_allPossibleComponents;
++ (id)hf_biweeklyIntervalComponents;
++ (id)hf_componentsWithHour:(long long)arg1 minute:(long long)arg2;
++ (id)hf_dailyIntervalComponents;
++ (id)hf_dailyWeekdayIntervalComponents;
++ (id)hf_monthlyIntervalComponents;
++ (id)hf_weeklyIntervalComponents;
++ (id)hf_yearlyIntervalComponents;
++ (id)hf_zeroDateComponentsWithComponents:(unsigned long long)arg1 calendar:(id)arg2;
+
+- (id)hf_absoluteValue;
+- (long long)hf_compareNextMatchingDate:(id)arg1;
+- (long long)hf_compareNextMatchingDate:(id)arg1 withCalendar:(id)arg2;
+- (bool)hf_isEqualToHomeKitRecurrence:(id)arg1;
+- (id)hf_negativeValue;
+- (double)hf_timeInterval;
+- (unsigned long long)hf_validComponents;
+
+// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+
+- (id)description;
+
+// Image: /System/Library/PrivateFrameworks/WeatherFoundation.framework/WeatherFoundation
+
++ (bool)wf_isSameDayWithComponents:(id)arg1 andComponents:(id)arg2;
++ (long long)wf_minutesBetweenDateComponents:(id)arg1 andComponents:(id)arg2;
++ (id)wf_nowDateComponents;
++ (id)wf_weatherDataClosestToDate:(id)arg1 inArray:(id)arg2;
++ (id)wf_weatherDataOnDate:(id)arg1 inArray:(id)arg2;
++ (id)wf_weatherDatasOnDate:(id)arg1 inArray:(id)arg2;
+
+- (bool)wf_componentsAreTimeless;
+- (id)wf_componentsWithoutTimeZone;
+- (long long)wf_dateComponentsCompare:(id)arg1;
+- (long long)wf_minutesDifferenceFromDate:(id)arg1;
+- (long long)wf_minutesFromNow;
 
 @end

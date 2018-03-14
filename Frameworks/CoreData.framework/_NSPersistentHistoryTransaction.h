@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface _NSPersistentHistoryTransaction : NSPersistentHistoryTransaction {
+@interface _NSPersistentHistoryTransaction : NSPersistentHistoryTransaction <NSSecureCoding> {
     NSString * _author;
     NSString * _bundleID;
     NSArray * _changes;
@@ -14,12 +14,16 @@
     double  _timestamp;
 }
 
++ (bool)supportsSecureCoding;
+
 - (id)_userInfoFromChanges;
 - (id)author;
 - (id)bundleID;
 - (id)changes;
 - (id)contextName;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTransactionRow:(long long)arg1 storeID:(id)arg2 bundleID:(id)arg3 processID:(id)arg4 contextName:(id)arg5 author:(id)arg6 queryGeneration:(id)arg7 timestamp:(double)arg8 changes:(id)arg9;
 - (id)objectIDNotification;
 - (id)processID;

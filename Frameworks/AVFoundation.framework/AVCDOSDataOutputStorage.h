@@ -10,6 +10,7 @@
 }
 
 @property (nonatomic, readonly) AVCaptureOutput<AVCaptureDataOutputDelegateOverride> *dataOutput;
+@property (getter=isLive, nonatomic, readonly) bool live;
 @property (nonatomic, retain) NSMutableArray *mdoTimeStampHistoryQueue;
 @property (nonatomic, readonly) NSMutableArray *synchronizedDataQueue;
 @property (nonatomic, retain) NSMutableArray *timestampAdjustmentsDataQueue;
@@ -17,6 +18,7 @@
 - (id)dataOutput;
 - (void)dealloc;
 - (id)initWithDataOutput:(id)arg1;
+- (bool)isLive;
 - (id)mdoTimeStampHistoryQueue;
 - (void)setMdoTimeStampHistoryQueue:(id)arg1;
 - (void)setTimestampAdjustmentsDataQueue:(id)arg1;

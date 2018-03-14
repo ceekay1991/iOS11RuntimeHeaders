@@ -14,6 +14,7 @@
 - (void)observeDefaultStatusBarHiddenWithBlock:(id /* block */)arg1;
 - (void)observeDefaultStatusBarStyleWithBlock:(id /* block */)arg1;
 - (void)observeDeviceOrientationEventsEnabledWithBlock:(id /* block */)arg1;
+- (void)observeHomeIndicatorAutoHiddenWithBlock:(id /* block */)arg1;
 - (void)observeIdleModeVisualEffectsEnabledWithBlock:(id /* block */)arg1;
 - (void)observeIdleTimerDisabledWithBlock:(id /* block */)arg1;
 - (void)observeInterfaceOrientationChangesDisabledWithBlock:(id /* block */)arg1;
@@ -27,6 +28,7 @@
 - (void)observeStatusBarStyleWithBlock:(id /* block */)arg1;
 - (void)observeSupportedInterfaceOrientationsWithBlock:(id /* block */)arg1;
 - (void)observeUserInterfaceStyleWithBlock:(id /* block */)arg1;
+- (void)observeWantsExclusiveForegroundWithBlock:(id /* block */)arg1;
 - (void)observeWhitePointAdaptivityStyleWithBlock:(id /* block */)arg1;
 - (void)observeWindowOverlayInsetsWithBlock:(id /* block */)arg1;
 

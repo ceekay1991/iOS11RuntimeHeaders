@@ -13,6 +13,7 @@
 - (id)batteryLevel;
 - (id)initWithRouteDescriptor:(id)arg1;
 - (bool)isCarplayRoute;
+- (bool)isHomePodRoute;
 - (bool)isPicked;
 - (bool)isPickedOnPairedDevice;
 - (long long)passwordType;

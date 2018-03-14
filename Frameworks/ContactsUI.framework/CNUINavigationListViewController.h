@@ -25,6 +25,7 @@
 + (bool)itemRequiresDetailCell:(id)arg1;
 
 - (void).cxx_destruct;
+- (bool)canExpandItem:(id)arg1;
 - (double)cellSeparatorHeight;
 - (struct CGSize { double x1; double x2; })contentSizeForExpandedItem:(id)arg1;
 - (id)delegate;

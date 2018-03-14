@@ -25,6 +25,7 @@
     bool  _registeredContactAction;
     bool  _registeredInNotifier;
     <CNCancelable> * _rendererToken;
+    <CNSchedulerProvider> * _schedulerProvider;
     bool  _showsActionsOnForcePress;
     bool  _showsActionsOnTap;
     bool  _showsContactOnTap;
@@ -62,6 +63,7 @@
 @property bool registeredContactAction;
 @property bool registeredInNotifier;
 @property (nonatomic, retain) <CNCancelable> *rendererToken;
+@property (nonatomic, retain) <CNSchedulerProvider> *schedulerProvider;
 @property (nonatomic) bool showsActionsOnForcePress;
 @property (nonatomic) bool showsActionsOnTap;
 @property (nonatomic) bool showsContactOnTap;
@@ -94,8 +96,8 @@
 - (id)avatarCardController:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
 - (long long)avatarCardController:(id)arg1 presentationResultForLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)avatarCardController:(id)arg1 shouldShowContact:(id)arg2;
-- (void)avatarCardController:(id)arg1 willShowActions:(id)arg2;
 - (void)avatarCardControllerDidDismiss:(id)arg1;
+- (void)avatarCardControllerWillBeginPreviewInteraction:(id)arg1;
 - (void)avatarCardControllerWillDismiss:(id)arg1;
 - (bool)bypassActionValidation;
 - (id)cardController;
@@ -127,7 +129,7 @@
 - (id)initWithContactStore:(id)arg1 personaStore:(id)arg2 threeDTouchEnabled:(bool)arg3;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(bool)arg2;
-- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(bool)arg2 style:(unsigned long long)arg3;
+- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(bool)arg2 style:(unsigned long long)arg3 schedulerProvider:(id)arg4;
 - (id)initWithSettings:(id)arg1;
 - (bool)isThreeDTouchEnabled;
 - (void)layoutSubviews;
@@ -141,6 +143,7 @@
 - (bool)registeredContactAction;
 - (bool)registeredInNotifier;
 - (id)rendererToken;
+- (id)schedulerProvider;
 - (void)setActionCategories:(id)arg1;
 - (void)setAllowsAnimation:(bool)arg1;
 - (void)setAsynchronousRendering:(bool)arg1;
@@ -166,6 +169,7 @@
 - (void)setRegisteredContactAction:(bool)arg1;
 - (void)setRegisteredInNotifier:(bool)arg1;
 - (void)setRendererToken:(id)arg1;
+- (void)setSchedulerProvider:(id)arg1;
 - (void)setShowsActionsOnForcePress:(bool)arg1;
 - (void)setShowsActionsOnTap:(bool)arg1;
 - (void)setShowsContactOnTap:(bool)arg1;

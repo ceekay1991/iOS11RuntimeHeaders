@@ -2,8 +2,9 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPAVItem : NSObject <MPAVMetadataItem> {
+@interface MPAVItem : NSObject <MPAVMetadataItem, MusicEntityValueProviding> {
     NSObject<OS_dispatch_queue> * _accessQueue;
+    bool  _activeItem;
     unsigned int  _advancedDuringPlayback;
     NSString * _aggregateDictionaryItemIdentifier;
     long long  _albumStoreID;
@@ -28,11 +29,14 @@
     float  _currentPlaybackRate;
     float  _defaultPlaybackRate;
     bool  _didAttemptToLoadAsset;
+    long long  _exportableArtworkRevision;
     NSString * _externalContentIdentifier;
     NSString * _feedUniqueIdentifier;
     MPQueueFeeder * _feeder;
     unsigned int  _handledFinishTime;
+    bool  _hasFinishedDownloading;
     bool  _hasLoadedPlaybackMode;
+    bool  _hasPerformedErrorResolution;
     unsigned int  _hasPlayedThisSession;
     bool  _hasPostedNaturalSizeChange;
     bool  _hasRegisteredForCaptionsAppearanceChanged;
@@ -40,6 +44,7 @@
     bool  _isAssetLoaded;
     unsigned int  _isStreamable;
     NSError * _itemError;
+    double  _lastLoggedTotalDuration;
     long long  _likedState;
     bool  _likedStateEnabled;
     bool  _limitReadAhead;
@@ -49,6 +54,7 @@
     MPModelGenericObject * _modelGenericObject;
     long long  _playbackMode;
     MPAVController * _player;
+    NSString * _playerIdentifier;
     struct { 
         long long value; 
         int timescale; 
@@ -58,6 +64,7 @@
     <MPAVItemPlaylistIdentifier> * _playlistIdentifier;
     bool  _prefersSeekOverSkip;
     <MPAVItemQueueIdentifier> * _queueIdentifier;
+    bool  _requiresLoadedAssetForAirPlayProperties;
     double  _seekableTimeRangesCacheTime;
     bool  _shouldPreventPlayback;
     float  _soundCheckVolumeNormalization;
@@ -72,9 +79,12 @@
     unsigned int  _watchingAttributes;
 }
 
+@property (nonatomic, readonly) MPCContentItemIdentifierCollection *MPC_contentItemIdentifierCollection;
+@property (nonatomic, readonly) MPUContentItemIdentifierCollection *MPU_contentItemIdentifierCollection;
 @property (getter=_currentPlaybackRate, setter=_setCurrentPlaybackRate:, nonatomic) float _currentPlaybackRate;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } _playerItemDurationIfAvailable;
 @property (nonatomic, readonly) AVPlayerItemAccessLog *accessLog;
+@property (getter=isActiveItem, nonatomic) bool activeItem;
 @property (nonatomic, readonly, copy) NSString *aggregateDictionaryItemIdentifier;
 @property (nonatomic, readonly) NSString *album;
 @property (nonatomic, readonly) NSString *albumArtist;
@@ -101,6 +111,9 @@
 @property (nonatomic, readonly) bool canSeedGenius;
 @property (nonatomic, retain) NSArray *chapterTimeMarkers;
 @property (nonatomic, retain) NSArray *closedCaptionTimeMarkers;
+@property (nonatomic, readonly) NSString *cloudAlbumID;
+@property (nonatomic, readonly) unsigned long long cloudID;
+@property (nonatomic, readonly) NSString *cloudUniversalLibraryID;
 @property (nonatomic, readonly) NSString *composer;
 @property (nonatomic, readonly) unsigned long long composerPersistentID;
 @property (nonatomic, readonly) MPNowPlayingContentItem *contentItem;
@@ -129,6 +142,8 @@
 @property (nonatomic, readonly) NSString *genre;
 @property (nonatomic, readonly) unsigned long long genrePersistentID;
 @property (nonatomic, readonly) bool hasDisplayableText;
+@property (nonatomic, readonly) bool hasFinishedDownloading;
+@property (nonatomic) bool hasPerformedErrorResolution;
 @property (nonatomic) bool hasPlayedThisSession;
 @property (nonatomic, readonly) bool hasStoreLyrics;
 @property (readonly) unsigned long long hash;
@@ -152,13 +167,27 @@
 @property (nonatomic, readonly) unsigned long long mediaType;
 @property (nonatomic, readonly) MPModelGenericObject *modelGenericObject;
 @property (nonatomic, readonly) MPModelPlayEvent *modelPlayEvent;
+@property (nonatomic, readonly) long long mpcReporting_equivalencySourceAdamID;
+@property (nonatomic, readonly) <MPCReportingIdentityPropertiesLoading> *mpcReporting_identityPropertiesLoader;
+@property (nonatomic, readonly) bool mpcReporting_isValidReportingItem;
+@property (nonatomic, readonly) unsigned long long mpcReporting_itemType;
+@property (nonatomic, readonly, copy) NSData *mpcReporting_jingleTimedMetadata;
+@property (nonatomic, readonly, copy) NSNumber *mpcReporting_privateListeningEnabled;
+@property (nonatomic, readonly, copy) NSString *mpcReporting_requestingBundleIdentifier;
+@property (nonatomic, readonly, copy) NSString *mpcReporting_requestingBundleVersion;
+@property (nonatomic, readonly) bool mpcReporting_shouldReportPlayEventsToStore;
+@property (nonatomic, readonly) bool mpcReporting_shouldUseRelativeTimePositions;
+@property (nonatomic, readonly, copy) NSNumber *mpcReporting_siriInitiated;
+@property (nonatomic, readonly, copy) NSData *mpcReporting_trackInfo;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } naturalSize;
 @property (nonatomic, readonly) unsigned long long persistentID;
 @property (nonatomic, readonly) double playableDuration;
 @property (nonatomic, readonly) double playableDurationIfAvailable;
+@property (nonatomic, readonly, copy) NSError *playbackError;
 @property (nonatomic, readonly, copy) NSDictionary *playbackInfo;
 @property (nonatomic, readonly) long long playbackMode;
 @property (nonatomic) MPAVController *player;
+@property (nonatomic, copy) NSString *playerIdentifier;
 @property (nonatomic, retain) AVPlayerItem *playerItem;
 @property (nonatomic, retain) <MPAVItemPlaylistIdentifier> *playlistIdentifier;
 @property (nonatomic, readonly) NSURL *podcastURL;
@@ -166,6 +195,7 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } presentationSize;
 @property (nonatomic, retain) <MPAVItemQueueIdentifier> *queueIdentifier;
 @property (getter=isRadioItem, nonatomic, readonly) bool radioItem;
+@property (nonatomic, readonly) bool requiresLoadedAssetForAirPlayProperties;
 @property (nonatomic, readonly) bool shouldPreventPlayback;
 @property (nonatomic, readonly) bool shouldShowComposer;
 @property (nonatomic) float soundCheckVolumeNormalization;
@@ -191,6 +221,7 @@
 @property (nonatomic, readonly) bool supportsSkipToPreviousItem;
 @property (nonatomic, readonly) double timeOfSeekableEnd;
 @property (nonatomic, readonly) double timeOfSeekableStart;
+@property (nonatomic, readonly) struct OpaqueCMTimebase { }*timebase;
 @property (nonatomic, readonly) NSArray *timedMetadataIfAvailable;
 @property (nonatomic, readonly) long long type;
 @property (nonatomic, readonly) NSString *uniqueIdentifier;
@@ -202,9 +233,12 @@
 @property (nonatomic) bool userSkippedPlayback;
 @property (nonatomic, readonly) bool usesSubscriptionLease;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)URLFromPath:(id)arg1;
 + (void)applyVolumeNormalizationForQueuedItems:(id)arg1;
 + (long long)defaultScaleMode;
++ (bool)isPlaceholder;
 + (void)setDefaultScaleMode:(long long)arg1;
 
 - (void).cxx_destruct;
@@ -212,22 +246,28 @@
 - (void)_captionAppearanceSettingsChanged;
 - (void)_checkAllowsBlockingDurationCall;
 - (void)_clearAsset;
+- (id)_currentContentItemDeviceSpecificUserInfo;
 - (float)_currentPlaybackRate;
 - (void)_currentPlaybackRateDidChange:(float)arg1;
 - (double)_durationFromExternalMetadataIfAvailable;
 - (double)_durationInSeconds;
 - (long long)_expectedPlaybackMode;
+- (double)_expectedStartTimeWithPlaybackInfo:(id)arg1;
+- (double)_expectedStopTimeWithPlaybackInfo:(id)arg1;
 - (void)_handleUpdatedLikedState:(long long)arg1 completion:(id /* block */)arg2;
 - (id)_imageChapterTrackIDsForAsset:(id)arg1;
 - (id)_initialPlaybackStartTimeForPlaybackInfo:(id)arg1;
 - (void)_internalLikedStateDidChangeNotification:(id)arg1;
+- (bool)_isBackgroundPlaybackRestricted;
 - (void)_itemAttributeAvailableKey:(id)arg1;
 - (void)_likedStateDidChange;
 - (void)_loadAssetAndPlayerItem;
 - (void)_loadAssetProperties;
+- (void)_loadAvailableMediaCharacteristicsIfNeeded;
 - (void)_loadMediaItemWithCompletionHandler:(id /* block */)arg1;
 - (void)_loadTimeMarkersAsync;
 - (void)_loadTimeMarkersBlocking;
+- (void)_performContentItemUpdate:(id /* block */)arg1;
 - (long long)_persistedLikedState;
 - (double)_playableDurationForLoadedTimeRanges:(id)arg1;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })_playerItemDurationIfAvailable;
@@ -238,8 +278,10 @@
 - (void)_setCurrentPlaybackRate:(float)arg1;
 - (void)_setListeningForCaptionsAppearanceSettingsChanged:(bool)arg1;
 - (void)_setNeedsPersistedLikedStateUpdate;
+- (bool)_shouldPublishArtworkURL;
 - (id)_timeMarkerFromMarkers:(id)arg1 forTime:(double)arg2;
-- (void)_updateDurationSnapshot;
+- (void)_updateDurationSnapshotWithElapsedTime:(double)arg1 playbackRate:(float)arg2;
+- (void)_updateHasFinishedDownloading;
 - (void)_updateSoundCheckVolumeNormalizationForPlayerItem;
 - (void)_willBecomeActivePlayerItem;
 - (void)_willResignActivePlayerItem;
@@ -261,6 +303,7 @@
 - (id)artist;
 - (unsigned long long)artistPersistentID;
 - (long long)artistStoreID;
+- (id /* block */)artworkCatalogBlock;
 - (id)artworkCatalogForPlaybackTime:(double)arg1;
 - (id)artworkTimeMarkerForTime:(double)arg1;
 - (id)artworkTimeMarkers;
@@ -274,6 +317,9 @@
 - (id)chapterTimeMarkers;
 - (id)closedCaptionTimeMarkerForTime:(double)arg1;
 - (id)closedCaptionTimeMarkers;
+- (id)cloudAlbumID;
+- (unsigned long long)cloudID;
+- (id)cloudUniversalLibraryID;
 - (id)composer;
 - (unsigned long long)composerPersistentID;
 - (id)contentItem;
@@ -304,6 +350,8 @@
 - (bool)hasAlternatesForTypes:(unsigned long long)arg1;
 - (bool)hasDataForItemArtwork;
 - (bool)hasDisplayableText;
+- (bool)hasFinishedDownloading;
+- (bool)hasPerformedErrorResolution;
 - (bool)hasPlayedThisSession;
 - (bool)hasStoreLyrics;
 - (id)init;
@@ -312,6 +360,8 @@
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 options:(id)arg2;
 - (id)initialPlaybackStartTime;
+- (void)invalidateContentItemDeviceSpecificUserInfo;
+- (bool)isActiveItem;
 - (bool)isAd;
 - (bool)isAlwaysLive;
 - (bool)isAssetLoaded;
@@ -348,10 +398,12 @@
 - (unsigned long long)persistentID;
 - (double)playableDuration;
 - (double)playableDurationIfAvailable;
+- (id)playbackError;
 - (id)playbackInfo;
 - (long long)playbackMode;
 - (float)playbackRateForLevel:(unsigned long long)arg1 direction:(long long)arg2 paused:(bool)arg3;
 - (id)player;
+- (id)playerIdentifier;
 - (id)playerItem;
 - (id)playlistIdentifier;
 - (id)podcastURL;
@@ -362,9 +414,11 @@
 - (void)reevaluatePlaybackMode;
 - (void)reevaluateType;
 - (void)replacePlayerItemWithPlayerItem:(id)arg1;
+- (bool)requiresLoadedAssetForAirPlayProperties;
 - (void)resetBookkeeping;
 - (void)resolvePlaybackError:(id)arg1 withCompletion:(id /* block */)arg2;
 - (float)scanIntervalForLevel:(unsigned long long)arg1 paused:(bool)arg2;
+- (void)setActiveItem:(bool)arg1;
 - (void)setAlternateAudioTrackID:(int)arg1;
 - (void)setAlternateAudioTrackLocale:(id)arg1;
 - (void)setArtworkTimeMarkers:(id)arg1;
@@ -375,6 +429,7 @@
 - (void)setFeedUniqueIdentifier:(id)arg1;
 - (void)setFeeder:(id)arg1;
 - (void)setForwardPlaybackEndTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (void)setHasPerformedErrorResolution:(bool)arg1;
 - (void)setHasPlayedThisSession:(bool)arg1;
 - (void)setInWishList:(bool)arg1;
 - (void)setIsAssetLoaded:(bool)arg1;
@@ -387,6 +442,7 @@
 - (void)setPlaybackFinishedTime:(double)arg1;
 - (void)setPlaybackStoppedTime:(double)arg1;
 - (void)setPlayer:(id)arg1;
+- (void)setPlayerIdentifier:(id)arg1;
 - (void)setPlayerItem:(id)arg1;
 - (void)setPlaylistIdentifier:(id)arg1;
 - (void)setQueueIdentifier:(id)arg1;
@@ -424,6 +480,7 @@
 - (bool)supportsSkipToPreviousItem;
 - (double)timeOfSeekableEnd;
 - (double)timeOfSeekableStart;
+- (struct OpaqueCMTimebase { }*)timebase;
 - (id)timedMetadataIfAvailable;
 - (long long)type;
 - (id)uniqueIdentifier;
@@ -436,5 +493,36 @@
 - (float)userRating;
 - (bool)userSkippedPlayback;
 - (bool)usesSubscriptionLease;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
++ (id /* block */)_music_entityValueHandlerForProperty:(id)arg1;
++ (void)_registerCustomEntityValueHandlers;
++ (void)_registerEntityValueHandler:(id /* block */)arg1 forProperty:(id)arg2;
+
+- (id)entityUniqueIdentifier;
+- (id)imageURLForEntityArtworkProperty:(id)arg1 fittingSize:(struct CGSize { double x1; double x2; })arg2 destinationScale:(double)arg3;
+- (id)valueForEntityProperty:(id)arg1;
+- (id)valuesForEntityProperties:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (id)MPU_contentItemIdentifierCollection;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)MPC_contentItemIdentifierCollection;
+- (long long)mpcReporting_equivalencySourceAdamID;
+- (id)mpcReporting_identityPropertiesLoader;
+- (bool)mpcReporting_isValidReportingItem;
+- (unsigned long long)mpcReporting_itemType;
+- (id)mpcReporting_jingleTimedMetadata;
+- (id)mpcReporting_privateListeningEnabled;
+- (id)mpcReporting_requestingBundleIdentifier;
+- (id)mpcReporting_requestingBundleVersion;
+- (bool)mpcReporting_shouldReportPlayEventsToStore;
+- (bool)mpcReporting_shouldUseRelativeTimePositions;
+- (id)mpcReporting_siriInitiated;
+- (id)mpcReporting_trackInfo;
 
 @end

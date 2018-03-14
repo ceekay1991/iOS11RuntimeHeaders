@@ -34,15 +34,17 @@
 - (id)_dictionaryRepresentation;
 - (id)_impl;
 - (long long)_intentHandlingStatus;
+- (id)_intents_cacheableObjects;
+- (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)_payloadResponseMessageData;
 - (id)_responseMessagePBRepresentation;
 - (void)_setPayloadResponseMessageData:(id)arg1;
 - (bool)_shouldForwardIntentToApp;
 - (id)backingStore;
-- (id)cacheableObjects;
 - (long long)code;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;

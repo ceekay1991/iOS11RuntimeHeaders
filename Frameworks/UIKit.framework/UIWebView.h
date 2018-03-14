@@ -89,9 +89,11 @@
 - (void)_updateCheckeredPattern;
 - (void)_updateOpaqueAndBackgroundColor;
 - (void)_updateRequest;
+- (void)_updateScrollViewInsetAdjustmentBehavior;
 - (void)_updateScrollerViewForInputView:(id)arg1;
 - (void)_updateViewSettings;
 - (void)_webView:(id)arg1 commitPreview:(id)arg2;
+- (void)_webView:(id)arg1 didChangeAvoidsUnsafeArea:(bool)arg2;
 - (void)_webView:(id)arg1 didDismissPreview:(id)arg2 committing:(bool)arg3;
 - (id)_webView:(id)arg1 presentationRectsForPreview:(id)arg2;
 - (id)_webView:(id)arg1 presentationSnapshotForPreview:(id)arg2;
@@ -99,6 +101,12 @@
 - (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2;
 - (void)_webView:(id)arg1 willPresentPreview:(id)arg2;
 - (void)_webViewCommonInitWithWebView:(id)arg1 scalesPageToFit:(bool)arg2;
+- (void)dealloc;
+- (id)webThreadWebView:(id)arg1 resource:(id)arg2 willSendRequest:(id)arg3 redirectResponse:(id)arg4 fromDataSource:(id)arg5;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -112,8 +120,6 @@
 - (void)copy:(id)arg1;
 - (struct CGImage { }*)createSnapshotWithRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (unsigned long long)dataDetectorTypes;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (id)delegate;
 - (bool)detectsPhoneNumbers;
@@ -143,6 +149,7 @@
 - (void)saveStateToHistoryItem:(id)arg1 forWebView:(id)arg2;
 - (bool)scalesPageToFit;
 - (id)scrollView;
+- (void)scrollViewDidChangeAdjustedContentInset:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
@@ -179,7 +186,6 @@
 - (bool)suppressesIncrementalRendering;
 - (void)view:(id)arg1 didSetFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 oldFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
 - (id)viewForZoomingInScrollView:(id)arg1;
-- (id)webThreadWebView:(id)arg1 resource:(id)arg2 willSendRequest:(id)arg3 redirectResponse:(id)arg4 fromDataSource:(id)arg5;
 - (id)webView:(id)arg1 connectionPropertiesForResource:(id)arg2 dataSource:(id)arg3;
 - (void)webView:(id)arg1 decidePolicyForGeolocationRequestFromOrigin:(id)arg2 frame:(id)arg3 listener:(id)arg4;
 - (void)webView:(id)arg1 decidePolicyForMIMEType:(id)arg2 request:(id)arg3 frame:(id)arg4 decisionListener:(id)arg5;
@@ -214,5 +220,14 @@
 - (void)webViewMainFrameDidFinishLoad:(id)arg1;
 - (void)webViewMainFrameDidFirstVisuallyNonEmptyLayoutInFrame:(id)arg1;
 - (void)webViewSupportedOrientationsUpdated:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
+
+- (bool)isLayoutSizeDependentOnPerpendicularAxis;
+
+// Image: /System/Library/PrivateFrameworks/HelpKit.framework/HelpKit
+
+- (long long)highlightAllOccurencesOfTokens:(id)arg1;
+- (void)removeAllHighlights;
 
 @end

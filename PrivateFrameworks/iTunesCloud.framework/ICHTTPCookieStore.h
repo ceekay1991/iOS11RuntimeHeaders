@@ -10,8 +10,10 @@
 + (id)sharedCookieStore;
 
 - (void).cxx_destruct;
+- (id)getCookie:(id)arg1 userIdentifier:(id)arg2;
 - (id)getCookiesForURL:(id)arg1;
 - (id)getCookiesForURL:(id)arg1 userIdentifier:(id)arg2;
+- (id)getCookiesForUserIdentifier:(id)arg1;
 - (id)getCookiesHeadersForURL:(id)arg1 userIdentifier:(id)arg2;
 - (id)getGlobalAccountCookiesForURL:(id)arg1;
 - (id)init;

@@ -3,6 +3,7 @@
  */
 
 @interface _MRCommandOptionsProtobuf : PBCodable <NSCopying> {
+    NSString * _commandID;
     NSString * _contentItemID;
     NSString * _contextID;
     NSString * _destinationAppDisplayID;
@@ -17,6 +18,7 @@
         unsigned int playbackRate : 1; 
         unsigned int rating : 1; 
         unsigned int repeatMode : 1; 
+        unsigned int replaceIntent : 1; 
         unsigned int sendOptions : 1; 
         unsigned int shuffleMode : 1; 
         unsigned int skipInterval : 1; 
@@ -41,8 +43,10 @@
     long long  _radioStationID;
     float  _rating;
     int  _repeatMode;
+    int  _replaceIntent;
     bool  _requestDefermentToPlaybackQueuePosition;
     unsigned int  _sendOptions;
+    NSString * _senderID;
     bool  _shouldBeginRadioPlayback;
     bool  _shouldOverrideManuallyCuratedQueue;
     int  _shuffleMode;
@@ -53,10 +57,12 @@
     unsigned long long  _trackID;
 }
 
+@property (nonatomic, retain) NSString *commandID;
 @property (nonatomic, retain) NSString *contentItemID;
 @property (nonatomic, retain) NSString *contextID;
 @property (nonatomic, retain) NSString *destinationAppDisplayID;
 @property (nonatomic) bool externalPlayerCommand;
+@property (nonatomic, readonly) bool hasCommandID;
 @property (nonatomic, readonly) bool hasContentItemID;
 @property (nonatomic, readonly) bool hasContextID;
 @property (nonatomic, readonly) bool hasDestinationAppDisplayID;
@@ -76,8 +82,10 @@
 @property (nonatomic) bool hasRadioStationID;
 @property (nonatomic) bool hasRating;
 @property (nonatomic) bool hasRepeatMode;
+@property (nonatomic) bool hasReplaceIntent;
 @property (nonatomic) bool hasRequestDefermentToPlaybackQueuePosition;
 @property (nonatomic) bool hasSendOptions;
+@property (nonatomic, readonly) bool hasSenderID;
 @property (nonatomic) bool hasShouldBeginRadioPlayback;
 @property (nonatomic) bool hasShouldOverrideManuallyCuratedQueue;
 @property (nonatomic) bool hasShuffleMode;
@@ -101,8 +109,10 @@
 @property (nonatomic) long long radioStationID;
 @property (nonatomic) float rating;
 @property (nonatomic) int repeatMode;
+@property (nonatomic) int replaceIntent;
 @property (nonatomic) bool requestDefermentToPlaybackQueuePosition;
 @property (nonatomic) unsigned int sendOptions;
+@property (nonatomic, retain) NSString *senderID;
 @property (nonatomic) bool shouldBeginRadioPlayback;
 @property (nonatomic) bool shouldOverrideManuallyCuratedQueue;
 @property (nonatomic) int shuffleMode;
@@ -113,7 +123,9 @@
 @property (nonatomic) unsigned long long trackID;
 
 - (int)StringAsRepeatMode:(id)arg1;
+- (int)StringAsReplaceIntent:(id)arg1;
 - (int)StringAsShuffleMode:(id)arg1;
+- (id)commandID;
 - (id)contentItemID;
 - (id)contextID;
 - (void)copyTo:(id)arg1;
@@ -123,6 +135,7 @@
 - (id)destinationAppDisplayID;
 - (id)dictionaryRepresentation;
 - (bool)externalPlayerCommand;
+- (bool)hasCommandID;
 - (bool)hasContentItemID;
 - (bool)hasContextID;
 - (bool)hasDestinationAppDisplayID;
@@ -142,8 +155,10 @@
 - (bool)hasRadioStationID;
 - (bool)hasRating;
 - (bool)hasRepeatMode;
+- (bool)hasReplaceIntent;
 - (bool)hasRequestDefermentToPlaybackQueuePosition;
 - (bool)hasSendOptions;
+- (bool)hasSenderID;
 - (bool)hasShouldBeginRadioPlayback;
 - (bool)hasShouldOverrideManuallyCuratedQueue;
 - (bool)hasShuffleMode;
@@ -172,8 +187,12 @@
 - (bool)readFrom:(id)arg1;
 - (int)repeatMode;
 - (id)repeatModeAsString:(int)arg1;
+- (int)replaceIntent;
+- (id)replaceIntentAsString:(int)arg1;
 - (bool)requestDefermentToPlaybackQueuePosition;
 - (unsigned int)sendOptions;
+- (id)senderID;
+- (void)setCommandID:(id)arg1;
 - (void)setContentItemID:(id)arg1;
 - (void)setContextID:(id)arg1;
 - (void)setDestinationAppDisplayID:(id)arg1;
@@ -188,6 +207,7 @@
 - (void)setHasRadioStationID:(bool)arg1;
 - (void)setHasRating:(bool)arg1;
 - (void)setHasRepeatMode:(bool)arg1;
+- (void)setHasReplaceIntent:(bool)arg1;
 - (void)setHasRequestDefermentToPlaybackQueuePosition:(bool)arg1;
 - (void)setHasSendOptions:(bool)arg1;
 - (void)setHasShouldBeginRadioPlayback:(bool)arg1;
@@ -210,8 +230,10 @@
 - (void)setRadioStationID:(long long)arg1;
 - (void)setRating:(float)arg1;
 - (void)setRepeatMode:(int)arg1;
+- (void)setReplaceIntent:(int)arg1;
 - (void)setRequestDefermentToPlaybackQueuePosition:(bool)arg1;
 - (void)setSendOptions:(unsigned int)arg1;
+- (void)setSenderID:(id)arg1;
 - (void)setShouldBeginRadioPlayback:(bool)arg1;
 - (void)setShouldOverrideManuallyCuratedQueue:(bool)arg1;
 - (void)setShuffleMode:(int)arg1;

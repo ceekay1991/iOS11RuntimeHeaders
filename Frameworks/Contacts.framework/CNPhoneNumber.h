@@ -60,4 +60,8 @@
 
 - (id)_cnui_URLDestinationID;
 
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
+- (id)pkFormattedStringValue;
+
 @end

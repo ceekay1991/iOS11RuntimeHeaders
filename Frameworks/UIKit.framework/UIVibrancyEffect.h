@@ -6,6 +6,8 @@
     _UIVibrancyEffectImpl * _impl;
 }
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (id)_darkVibrantEffectWithLightenColor:(id)arg1 dodgeColor:(id)arg2 compositingColor:(id)arg3;
 + (id)_lightVibrantEffectWithDarkenColor:(id)arg1 burnColor:(id)arg2 compositingColor:(id)arg3;
 + (id)_vibrancyEntryWithType:(id)arg1 inputColor1:(id)arg2 inputColor2:(id)arg3 inputReversed:(bool)arg4;
@@ -34,5 +36,28 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+
+// Image: /System/Library/Frameworks/NotificationCenter.framework/NotificationCenter
+
++ (id)notificationCenterVibrancyEffect;
++ (id)widgetPrimaryHighlightVibrancyEffect;
++ (id)widgetPrimaryVibrancyEffect;
++ (id)widgetQuaternaryVibrancyEffect;
++ (id)widgetSecondaryHighlightVibrancyEffect;
++ (id)widgetSecondaryVibrancyEffect;
++ (id)widgetTertiaryVibrancyEffect;
+
+// Image: /System/Library/PrivateFrameworks/ControlCenterUIKit.framework/ControlCenterUIKit
+
++ (id)controlCenterKeyLineOnDarkVibrancyEffect;
++ (id)controlCenterKeyLineOnLightVibrancyEffect;
++ (id)controlCenterPrimaryVibrancyEffect;
++ (id)controlCenterScrollViewDarkeningVibrancyEffect;
++ (id)controlCenterSecondaryVibrancyEffect;
+
+// Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
+
++ (id)siriui_platterVibrancyEffect;
++ (id)siriui_userUtteranceEditModeVibrancyEffect;
 
 @end

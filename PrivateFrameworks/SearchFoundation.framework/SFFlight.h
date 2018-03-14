@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFFlight : NSObject <NSSecureCoding, SFFlight> {
+@interface SFFlight : NSObject <NSCopying, NSSecureCoding, SFFlight> {
     NSString * _carrierCode;
     NSString * _carrierName;
     NSString * _carrierPhoneNumber;
@@ -34,6 +34,7 @@
 - (id)carrierCode;
 - (id)carrierName;
 - (id)carrierPhoneNumber;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)flightID;

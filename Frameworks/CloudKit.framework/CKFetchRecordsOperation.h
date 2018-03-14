@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKFetchRecordsOperation : CKDatabaseOperation {
+@interface CKFetchRecordsOperation : CKDatabaseOperation <MSPCloudRequest> {
     NSMutableDictionary * _assetInfoByArrayIndexByRecordKeyByRecordID;
     NSDictionary * _assetTransferOptionsByRecordTypeAndKey;
     NSArray * _desiredKeys;
@@ -20,16 +20,18 @@
     NSDictionary * _recordIDsToVersionETags;
     bool  _shouldFetchAssetContent;
     bool  _shouldFetchAssetContentInMemory;
-    NSMutableDictionary * _signaturesOfAssetsByRecordIDAndKey;
     NSDictionary * _webSharingIdentityDataByRecordID;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *assetInfoByArrayIndexByRecordKeyByRecordID;
 @property (nonatomic, retain) NSDictionary *assetTransferOptionsByRecordTypeAndKey;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSArray *desiredKeys;
 @property (nonatomic, copy) NSDictionary *desiredPackageFileIndices;
 @property (nonatomic) bool dropInMemoryAssetContentASAP;
 @property (nonatomic, copy) id /* block */ fetchRecordsCompletionBlock;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) bool isFetchCurrentUserOperation;
 @property (nonatomic, retain) NSMutableSet *packagesToDestroy;
 @property (nonatomic, copy) id /* block */ perRecordCompletionBlock;
@@ -39,10 +41,13 @@
 @property (nonatomic, retain) NSDictionary *recordIDsToETags;
 @property (nonatomic, retain) NSMutableDictionary *recordIDsToRecords;
 @property (nonatomic, retain) NSDictionary *recordIDsToVersionETags;
+@property (nonatomic, readonly) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
 @property (nonatomic) bool shouldFetchAssetContent;
 @property (nonatomic) bool shouldFetchAssetContentInMemory;
-@property (nonatomic, retain) NSMutableDictionary *signaturesOfAssetsByRecordIDAndKey;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) NSDictionary *webSharingIdentityDataByRecordID;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 + (id)fetchCurrentUserRecordOperation;
 
@@ -91,11 +96,17 @@
 - (void)setRecordIDsToVersionETags:(id)arg1;
 - (void)setShouldFetchAssetContent:(bool)arg1;
 - (void)setShouldFetchAssetContentInMemory:(bool)arg1;
-- (void)setSignaturesOfAssetsByRecordIDAndKey:(id)arg1;
 - (void)setWebSharingIdentityDataByRecordID:(id)arg1;
 - (bool)shouldFetchAssetContent;
 - (bool)shouldFetchAssetContentInMemory;
-- (id)signaturesOfAssetsByRecordIDAndKey;
 - (id)webSharingIdentityDataByRecordID;
+
+// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+
+- (void)addCloudAccessCompletionBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (void)ic_removeAllCompletionBlocks;
 
 @end

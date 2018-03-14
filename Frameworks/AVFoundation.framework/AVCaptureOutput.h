@@ -8,6 +8,8 @@
 
 @property (nonatomic, readonly) NSArray *connections;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (id)availableVideoCodecTypesForSourceDevice:(id)arg1 sourceFormat:(id)arg2 outputDimensions:(struct { int x1; int x2; })arg3 fileType:(id)arg4 videoCodecTypesWhiteList:(id)arg5;
 + (long long)dataDroppedReasonFromSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 + (void)initialize;
@@ -50,5 +52,9 @@
 - (id)sinkID;
 - (id)transformedMetadataObjectForMetadataObject:(id)arg1 connection:(id)arg2;
 - (void)updateMetadataTransformForSourceFormat:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
+- (id)currentRequest;
 
 @end

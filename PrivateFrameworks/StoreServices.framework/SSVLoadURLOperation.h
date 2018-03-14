@@ -4,8 +4,10 @@
 
 @interface SSVLoadURLOperation : NSOperation <SSURLSessionManagerDelegate> {
     AKAppleIDSession * _authKitSession;
+    SSBag * _bag;
     NSMutableData * _dataBuffer;
     SSVURLDataConsumer * _dataConsumer;
+    <SSVLoadURLOperationDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     bool  _iTunesStoreRequest;
     NSData * _inputData;
@@ -19,6 +21,7 @@
     NSURL * _redirectURL;
     NSString * _referrerApplicationName;
     NSString * _referrerURLString;
+    SSURLRequestProperties * _requestProperties;
     NSHTTPURLResponse * _response;
     NSRunLoop * _runLoop;
     SSVFairPlaySAPSession * _sapSession;
@@ -39,19 +42,27 @@
 @property (nonatomic, readonly) NSString *URLCacheID;
 @property (readonly) NSURLRequest *URLRequest;
 @property (readonly) NSHTTPURLResponse *URLResponse;
+@property (nonatomic, retain) SSBag *bag;
 @property (readonly) NSCachedURLResponse *cachedURLResponse;
 @property (retain) SSVURLDataConsumer *dataConsumer;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) <SSVLoadURLOperationDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (copy) id /* block */ expiredOutputBlock;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isURLBagRequest;
 @property long long machineDataStyle;
+@property (nonatomic, readonly) NSNumber *metricsLoadURLSamplingPercentage;
+@property (nonatomic, readonly) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (nonatomic, readonly) NSNumber *metricsLoadURLSessionDuration;
 @property (readonly) SSMetricsPageEvent *metricsPageEvent;
 @property (copy) id /* block */ outputBlock;
 @property (copy) id /* block */ prepareRequestBlock;
+@property (nonatomic, readonly) NSData *rawResponseData;
 @property bool recordsMetrics;
 @property (copy) NSString *referrerApplicationName;
 @property (copy) NSString *referrerURLString;
+@property (nonatomic, readonly) SSURLRequestProperties *requestProperties;
 @property (nonatomic, readonly) bool shouldDisableCellular;
 @property (nonatomic, readonly) bool shouldRequireCellular;
 @property (nonatomic, readonly) bool shouldSetCookies;
@@ -59,6 +70,8 @@
 @property (nonatomic, readonly) NSString *sourceAppBundleID;
 @property (copy) NSString *storeFrontSuffix;
 @property (readonly) Class superclass;
+
++ (id)currentAcceptLanguage;
 
 - (void).cxx_destruct;
 - (id)SAPSession;
@@ -90,11 +103,13 @@
 - (bool)_shouldRetryAfterMachineDataRequest:(id)arg1;
 - (void)_stopIfCancelled;
 - (void)_stopRunLoop;
+- (id)bag;
 - (id)cachedURLResponse;
 - (void)cancel;
 - (void)configureWithURLBag:(id)arg1;
 - (void)configureWithURLBagDictionary:(id)arg1;
 - (id)dataConsumer;
+- (id)delegate;
 - (void)dispatchAsync:(id /* block */)arg1;
 - (void)dispatchSync:(id /* block */)arg1;
 - (id /* block */)expiredOutputBlock;
@@ -106,13 +121,20 @@
 - (bool)isITunesStoreRequest;
 - (long long)machineDataStyle;
 - (void)main;
+- (id)metricsLoadURLSamplingPercentage;
+- (id)metricsLoadURLSamplingPercentageCachedResponses;
+- (id)metricsLoadURLSessionDuration;
 - (id)metricsPageEvent;
 - (id /* block */)outputBlock;
 - (id /* block */)prepareRequestBlock;
+- (id)rawResponseData;
 - (bool)recordsMetrics;
 - (id)referrerApplicationName;
 - (id)referrerURLString;
+- (id)requestProperties;
+- (void)setBag:(id)arg1;
 - (void)setDataConsumer:(id)arg1;
+- (void)setDelegate:(id)arg1;
 - (void)setExpiredOutputBlock:(id /* block */)arg1;
 - (void)setITunesStoreRequest:(bool)arg1;
 - (void)setMachineDataStyle:(long long)arg1;

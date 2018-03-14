@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UITextContentView : UIView <UIDragInteractionDelegate, UIDropInteractionDelegate, UITextInput, UITextInputTraits, UITextLinkInteraction, UIWebDraggingDelegate, WebEditingDelegate, WebPolicyDelegate> {
+@interface UITextContentView : UIView <UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, UITextInput, UITextInputTraits, UITextLinkInteraction, UIWebDraggingDelegate, WebEditingDelegate, WebPolicyDelegate> {
     bool  m_allowsEditingTextAttributes;
     bool  m_becomesEditableWithGestures;
     bool  m_becomingFirstResponder;
@@ -74,10 +74,14 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (void)_addShortcut:(id)arg1;
 - (unsigned long long)_allowedLinkTypes;
 - (void)_define:(id)arg1;
 - (void)_didScroll;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint { double x1; double x2; })arg3;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_hideSelectionCommands;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
 - (id)_keyboardResponder;
@@ -95,10 +99,10 @@
 - (void)_showTextStyleOptions:(id)arg1;
 - (void)_sizeChanged;
 - (void)_transliterateChinese:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)allowsEditingTextAttributes;
 - (id)attributedText;
 - (id)automaticallySelectedOverlay;
@@ -129,7 +133,6 @@
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (unsigned long long)dataDetectorTypes;
-- (void)dealloc;
 - (void)decreaseSize:(id)arg1;
 - (id)delegate;
 - (void)deleteBackward;
@@ -140,6 +143,8 @@
 - (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
+- (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
+- (bool)dragInteractionEnabled;
 - (void)dropInteraction:(id)arg1 concludeDrop:(id)arg2;
 - (void)dropInteraction:(id)arg1 item:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
@@ -232,6 +237,7 @@
 - (void)setContentToHTMLString:(id)arg1;
 - (void)setDataDetectorTypes:(unsigned long long)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDragInteractionEnabled:(bool)arg1;
 - (void)setEditable:(bool)arg1;
 - (void)setEditing:(bool)arg1;
 - (void)setFont:(id)arg1;

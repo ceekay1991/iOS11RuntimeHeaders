@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (bool)canPerformAction;
+- (id)initWithContact:(id)arg1;
 - (id)initWithContact:(id)arg1 propertyItem:(id)arg2;
 - (id)initWithContact:(id)arg1 propertyItems:(id)arg2;
 - (void)performActionForItem:(id)arg1 sender:(id)arg2;

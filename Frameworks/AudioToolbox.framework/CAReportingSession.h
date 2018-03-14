@@ -4,6 +4,7 @@
 
 @interface CAReportingSession : NSObject {
     NSMutableArray * _aggregatedPayloadData;
+    NSMutableDictionary * _defaults;
     long long  _reporterID;
     NSObject * _reportingAgentToken;
     RTCReporting * _reportingSession;
@@ -15,6 +16,7 @@
 }
 
 @property (retain) NSMutableArray *aggregatedPayloadData;
+@property (retain) NSMutableDictionary *defaults;
 @property long long reporterID;
 @property (retain) NSObject *reportingAgentToken;
 @property (retain) RTCReporting *reportingSession;
@@ -24,11 +26,14 @@
 @property (retain) NSObject<OS_dispatch_queue> *sessionReportingQueue;
 @property bool started;
 
-+ (void)sendSingleMessage:(id)arg1 category:(unsigned short)arg2 type:(unsigned short)arg3 serviceType:(unsigned short)arg4 reply:(id /* block */)arg5;
++ (void)sendSingleMessage:(id)arg1 category:(unsigned short)arg2 type:(unsigned short)arg3 serviceType:(unsigned short)arg4 defaults:(id)arg5 reply:(id /* block */)arg6;
 
 - (void).cxx_destruct;
 - (id)aggregatedPayloadData;
+- (id)createSummaryEventForSession;
+- (id)defaults;
 - (void)end;
+- (void)endSync:(bool)arg1;
 - (id)initWithID:(long long)arg1;
 - (long long)reporterID;
 - (id)reportingAgentToken;
@@ -39,6 +44,7 @@
 - (id)sessionInfo;
 - (id)sessionReportingQueue;
 - (void)setAggregatedPayloadData:(id)arg1;
+- (void)setDefaults:(id)arg1;
 - (void)setReporterID:(long long)arg1;
 - (void)setReportingAgentToken:(id)arg1;
 - (void)setReportingSession:(id)arg1;
@@ -48,6 +54,8 @@
 - (void)setSessionReportingQueue:(id)arg1;
 - (void)setStarted:(bool)arg1;
 - (void)start;
+- (void)startSync:(bool)arg1;
 - (bool)started;
+- (void)updateDefaults:(id)arg1;
 
 @end

@@ -17,6 +17,7 @@
         float offset; 
     }  _endValidCoordinateRange;
     NSDate * _eta;
+    NSData * _etaResponseID;
     struct { 
         unsigned int index; 
         float offset; 
@@ -41,6 +42,7 @@
 @property (nonatomic) double distanceToIncident;
 @property (nonatomic, readonly) struct { unsigned int x1; float x2; } endValidCoordinateRange;
 @property (nonatomic, retain) NSDate *eta;
+@property (nonatomic, readonly) NSData *etaResponseID;
 @property (nonatomic, readonly) struct { unsigned int x1; float x2; } incidentCoordinate;
 @property (nonatomic, readonly) bool isAutomaticReroute;
 @property (nonatomic, readonly) double newEstimatedTime;
@@ -48,6 +50,7 @@
 @property (nonatomic, readonly) GEORouteIncident *oldETARouteIncident;
 @property (nonatomic, readonly) double oldEstimatedTime;
 @property (nonatomic, readonly) GEOComposedRoute *originalRoute;
+@property (nonatomic, readonly) unsigned long long secondsSaved;
 @property (nonatomic, readonly) NSArray *spokenTexts;
 @property (nonatomic, readonly) struct { unsigned int x1; float x2; } startValidCoordinateRange;
 
@@ -69,8 +72,9 @@
 - (double)distanceToIncident;
 - (struct { unsigned int x1; float x2; })endValidCoordinateRange;
 - (id)eta;
+- (id)etaResponseID;
 - (struct { unsigned int x1; float x2; })incidentCoordinate;
-- (id)initWithRoute:(id)arg1 etaRoute:(id)arg2;
+- (id)initWithRoute:(id)arg1 etaRoute:(id)arg2 etaResponse:(id)arg3;
 - (id)initWithTrafficIncidentAlertDetails:(id)arg1;
 - (bool)isAutomaticReroute;
 - (bool)isSimilarTo:(id)arg1;
@@ -79,6 +83,7 @@
 - (id)oldETARouteIncident;
 - (double)oldEstimatedTime;
 - (id)originalRoute;
+- (unsigned long long)secondsSaved;
 - (void)setDistanceToIncident:(double)arg1;
 - (void)setEta:(id)arg1;
 - (id)spokenTexts;

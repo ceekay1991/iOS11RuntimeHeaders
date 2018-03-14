@@ -8,7 +8,13 @@
 
 @property (nonatomic) float currentPlaybackRate;
 @property (nonatomic) double currentPlaybackTime;
+@property (nonatomic, readonly) unsigned long long indexOfNowPlayingItem;
 @property (nonatomic, readonly) bool isPreparedToPlay;
+@property (nonatomic, copy) MPMediaItem *nowPlayingItem;
+@property (nonatomic, readonly) long long playbackState;
+@property (nonatomic) long long repeatMode;
+@property (nonatomic) long long shuffleMode;
+@property (nonatomic) float volume;
 
 + (id)applicationMusicPlayer;
 + (id)applicationQueuePlayer;
@@ -60,6 +66,7 @@
 - (id)nowPlayingItem;
 - (id)nowPlayingItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfItems;
+- (void)openToPlayQueueDescriptor:(id)arg1;
 - (void)pause;
 - (void)pauseWithFadeoutDuration:(double)arg1;
 - (void)play;
@@ -95,9 +102,12 @@
 - (void)shuffle;
 - (long long)shuffleMode;
 - (bool)skipInDirection:(long long)arg1 error:(id*)arg2;
+- (void)skipToBeginning;
 - (void)skipToBeginningOrPreviousItem;
 - (void)skipToNextChapter;
+- (void)skipToNextItem;
 - (void)skipToPreviousChapter;
+- (void)skipToPreviousItem;
 - (void)stop;
 - (bool)userQueueModificationsDisabled;
 - (float)volume;

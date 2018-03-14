@@ -7,11 +7,13 @@
     ICURLResponseAuthenticationProvider * _authenticationProvider;
     ICClientInfo * _clientInfo;
     ICDeviceInfo * _deviceInfo;
+    ICNetworkConstraints * _networkConstraints;
 }
 
 @property (nonatomic, readonly, copy) ICURLResponseAuthenticationProvider *authenticationProvider;
 @property (nonatomic, readonly, copy) ICClientInfo *clientInfo;
 @property (nonatomic, readonly) ICDeviceInfo *deviceInfo;
+@property (nonatomic, readonly, copy) ICNetworkConstraints *networkConstraints;
 @property (nonatomic, readonly, copy) NSString *userAgent;
 
 - (void).cxx_destruct;
@@ -24,9 +26,11 @@
 - (id)initWithBlock:(id /* block */)arg1;
 - (id)initWithClientInfo:(id)arg1;
 - (id)initWithClientInfo:(id)arg1 authenticationProvider:(id)arg2;
+- (id)networkConstraints;
 - (void)setAuthenticationProvider:(id)arg1;
 - (void)setClientInfo:(id)arg1;
 - (void)setDeviceInfo:(id)arg1;
+- (void)setNetworkConstraints:(id)arg1;
 - (id)userAgent;
 
 @end

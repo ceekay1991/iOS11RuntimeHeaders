@@ -9,10 +9,12 @@
     bool  _lowPowerSphereModeEnabled;
     float  _maximumFrameRate;
     bool  _motionDataInvalid;
+    int  _sphereThermalLevel;
     bool  _sphereVideoEnabled;
     bool  _sphereVideoSupported;
     bool  _stillPreviewActiveAvailable;
     struct OpaqueFigCaptureStream { } * _stream;
+    bool  _tripodModeEnabled;
     bool  _zeroShutterLagEnabled;
 }
 
@@ -23,6 +25,8 @@
 @property (nonatomic) float maximumFrameRate;
 @property (nonatomic) bool sphereVideoEnabled;
 @property (nonatomic) bool sphereVideoSupported;
+@property (nonatomic) int systemThermalLevel;
+@property (nonatomic) bool tripodModeEnabled;
 @property (nonatomic) bool zeroShutterLagEnabled;
 
 + (void)initialize;
@@ -40,9 +44,13 @@
 - (void)setMaximumFrameRate:(float)arg1;
 - (void)setSphereVideoEnabled:(bool)arg1;
 - (void)setSphereVideoSupported:(bool)arg1;
+- (void)setSystemThermalLevel:(int)arg1;
+- (void)setTripodModeEnabled:(bool)arg1;
 - (void)setZeroShutterLagEnabled:(bool)arg1;
 - (bool)sphereVideoEnabled;
 - (bool)sphereVideoSupported;
+- (int)systemThermalLevel;
+- (bool)tripodModeEnabled;
 - (bool)zeroShutterLagEnabled;
 
 @end

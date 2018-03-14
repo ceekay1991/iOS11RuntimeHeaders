@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
  */
 
-@interface SSDownloadPolicyRule : NSObject <NSCoding, NSCopying, SSXPCCoding> {
+@interface SSDownloadPolicyRule : NSObject <NSCoding, NSCopying, NSSecureCoding, SSXPCCoding> {
     NSSet * _applicationStates;
     float  _batteryLevel;
     long long  _cellularDataStates;
@@ -29,6 +29,8 @@
 @property (nonatomic) long long timeLimitStates;
 @property (nonatomic, copy) NSSet *userDefaultStates;
 @property (getter=isWiFiAllowed, nonatomic, readonly) bool wiFiAllowed;
+
++ (bool)supportsSecureCoding;
 
 - (void)addApplicationState:(id)arg1;
 - (void)addNetworkType:(long long)arg1;

@@ -4,6 +4,7 @@
 
 @interface GEODirectionsResponse : PBCodable <NSCopying> {
     GEOClientMetrics * _clientMetrics;
+    NSString * _dataVersion;
     GEOPDDatasetABStatus * _datasetAbStatus;
     unsigned long long  _debugLatencyMs;
     GEOTransitDecoderData * _decoderData;
@@ -36,6 +37,7 @@
     NSMutableArray * _routes;
     unsigned int  _selectedRouteIndex;
     NSMutableArray * _serviceGaps;
+    NSString * _serviceVersion;
     NSData * _sessionState;
     int  _status;
     GEOStyleAttributes * _styleAttributes;
@@ -59,6 +61,7 @@
 }
 
 @property (nonatomic, retain) GEOClientMetrics *clientMetrics;
+@property (nonatomic, retain) NSString *dataVersion;
 @property (nonatomic, retain) GEOPDDatasetABStatus *datasetAbStatus;
 @property (nonatomic) unsigned long long debugLatencyMs;
 @property (nonatomic, retain) GEOTransitDecoderData *decoderData;
@@ -67,6 +70,7 @@
 @property (nonatomic, retain) GEOETAServiceResponseSummary *etaServiceSummary;
 @property (nonatomic, retain) GEOAlert *failureAlert;
 @property (nonatomic, readonly) bool hasClientMetrics;
+@property (nonatomic, readonly) bool hasDataVersion;
 @property (nonatomic, readonly) bool hasDatasetAbStatus;
 @property (nonatomic) bool hasDebugLatencyMs;
 @property (nonatomic, readonly) bool hasDecoderData;
@@ -81,6 +85,7 @@
 @property (nonatomic, readonly) bool hasNonRecommendedRoutesCache;
 @property (nonatomic) bool hasRouteDeviatesFromOriginal;
 @property (nonatomic) bool hasSelectedRouteIndex;
+@property (nonatomic, readonly) bool hasServiceVersion;
 @property (nonatomic, readonly) bool hasSessionState;
 @property (nonatomic, readonly) bool hasStyleAttributes;
 @property (nonatomic) bool hasTimepointUsed;
@@ -100,6 +105,7 @@
 @property (nonatomic, retain) NSMutableArray *routes;
 @property (nonatomic) unsigned int selectedRouteIndex;
 @property (nonatomic, retain) NSMutableArray *serviceGaps;
+@property (nonatomic, retain) NSString *serviceVersion;
 @property (nonatomic, retain) NSData *sessionState;
 @property (nonatomic) int status;
 @property (nonatomic, retain) GEOStyleAttributes *styleAttributes;
@@ -146,6 +152,7 @@
 - (id)clientMetrics;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)dataVersion;
 - (id)datasetAbStatus;
 - (void)dealloc;
 - (unsigned long long)debugLatencyMs;
@@ -157,6 +164,7 @@
 - (id)etaServiceSummary;
 - (id)failureAlert;
 - (bool)hasClientMetrics;
+- (bool)hasDataVersion;
 - (bool)hasDatasetAbStatus;
 - (bool)hasDebugLatencyMs;
 - (bool)hasDecoderData;
@@ -171,6 +179,7 @@
 - (bool)hasNonRecommendedRoutesCache;
 - (bool)hasRouteDeviatesFromOriginal;
 - (bool)hasSelectedRouteIndex;
+- (bool)hasServiceVersion;
 - (bool)hasSessionState;
 - (bool)hasStyleAttributes;
 - (bool)hasTimepointUsed;
@@ -208,8 +217,10 @@
 - (id)serviceGapAtIndex:(unsigned long long)arg1;
 - (id)serviceGaps;
 - (unsigned long long)serviceGapsCount;
+- (id)serviceVersion;
 - (id)sessionState;
 - (void)setClientMetrics:(id)arg1;
+- (void)setDataVersion:(id)arg1;
 - (void)setDatasetAbStatus:(id)arg1;
 - (void)setDebugLatencyMs:(unsigned long long)arg1;
 - (void)setDecoderData:(id)arg1;
@@ -238,6 +249,7 @@
 - (void)setRoutes:(id)arg1;
 - (void)setSelectedRouteIndex:(unsigned int)arg1;
 - (void)setServiceGaps:(id)arg1;
+- (void)setServiceVersion:(id)arg1;
 - (void)setSessionState:(id)arg1;
 - (void)setStatus:(int)arg1;
 - (void)setStyleAttributes:(id)arg1;

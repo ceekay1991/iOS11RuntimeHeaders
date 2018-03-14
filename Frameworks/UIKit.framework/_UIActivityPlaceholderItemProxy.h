@@ -8,6 +8,9 @@
 
 @property (nonatomic, readonly) id placeholderItem;
 
++ (id)unproxiedItemForItem:(id)arg1;
++ (id)unproxiedItemsForItems:(id)arg1;
+
 - (void).cxx_destruct;
 - (Class)class;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

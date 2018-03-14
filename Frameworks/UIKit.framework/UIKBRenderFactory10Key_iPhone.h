@@ -15,6 +15,7 @@
 - (id)shiftLockControlKeyTraits;
 - (id)shiftedControlKeyTraits;
 - (bool)shouldUseRoundCornerForKey:(id)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })symbolFrameInsets;
 - (bool)useRoundCorner;
 
 @end

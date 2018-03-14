@@ -22,9 +22,14 @@
 @property (nonatomic, readonly) CKRecordZone *zone;
 
 + (id)applyCDPrefixToName:(id)arg1;
++ (id)assetStorageDirectoryURLForStore:(id)arg1;
++ (id)assetsOnRecord:(id)arg1 withOptions:(id)arg2;
 + (id)ckAssetAttributeNameForAttributeName:(id)arg1;
++ (id)entityNameForRecordType:(id)arg1;
 + (id)generateCKAssetFileURLForObjectInStore:(id)arg1;
++ (bool)isMirroredRelationshipRecordType:(id)arg1;
 + (bool)isPrivateAttribute:(id)arg1;
++ (id)newArchivedDataForSystemFieldsOfRecord:(id)arg1;
 + (id)newSerializerForOptions:(id)arg1 withZone:(id)arg2 recordNamePrefix:(id)arg3;
 + (id)recordTypeForEntity:(id)arg1;
 

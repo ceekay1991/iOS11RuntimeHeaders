@@ -10,6 +10,7 @@
 @property (copy) NSDictionary *drawableProperties;
 @property double inputTime;
 @property bool lowLatency;
+@property unsigned long long maximumDrawableCount;
 @property (readonly) struct _EAGLNativeWindowObject { int x1; unsigned int x2; int (*x3)(); int (*x4)(); int (*x5)(); int (*x6)(); int (*x7)(); int (*x8)(); int (*x9)(); }*nativeWindow;
 @property bool presentsWithTransaction;
 
@@ -26,14 +27,18 @@
 - (double)inputTime;
 - (bool)isAsynchronous;
 - (bool)isDrawableAvailable;
+- (bool)isDrawableAvailableInternal;
 - (void)layerDidBecomeVisible:(bool)arg1;
 - (bool)lowLatency;
+- (unsigned long long)maximumDrawableCount;
 - (struct _EAGLNativeWindowObject { int x1; unsigned int x2; int (*x3)(); int (*x4)(); int (*x5)(); int (*x6)(); int (*x7)(); int (*x8)(); int (*x9)(); }*)nativeWindow;
 - (bool)presentsWithTransaction;
 - (void)setAsynchronous:(bool)arg1;
 - (void)setDrawableProperties:(id)arg1;
 - (void)setInputTime:(double)arg1;
 - (void)setLowLatency:(bool)arg1;
+- (void)setMaximumDrawableCount:(unsigned long long)arg1;
+- (void)setPresentationHandler:(id /* block */)arg1;
 - (void)setPresentsWithTransaction:(bool)arg1;
 - (bool)shouldArchiveValueForKey:(id)arg1;
 

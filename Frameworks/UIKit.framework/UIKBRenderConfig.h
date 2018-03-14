@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic, readonly) long long backdropStyle;
+@property (nonatomic, readonly) long long blurEffectStyle;
 @property (nonatomic) double blurRadius;
 @property (nonatomic) double blurSaturation;
 @property (nonatomic) long long forceQuality;
@@ -29,6 +30,7 @@
 + (id)lowQualityDarkConfig;
 
 - (long long)backdropStyle;
+- (long long)blurEffectStyle;
 - (double)blurRadius;
 - (double)blurSaturation;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

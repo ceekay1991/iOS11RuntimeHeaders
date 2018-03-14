@@ -5,10 +5,12 @@
 @interface GEORegionalResourceTileData : PBCodable <NSCopying> {
     NSMutableArray * _attributions;
     NSMutableArray * _icons;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSMutableArray *attributions;
 @property (nonatomic, retain) NSMutableArray *icons;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)attributionType;
 + (Class)iconType;
@@ -34,6 +36,7 @@
 - (bool)readFrom:(id)arg1;
 - (void)setAttributions:(id)arg1;
 - (void)setIcons:(id)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

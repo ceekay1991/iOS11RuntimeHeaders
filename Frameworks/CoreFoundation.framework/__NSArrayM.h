@@ -3,13 +3,9 @@
  */
 
 @interface __NSArrayM : NSMutableArray {
-    struct __cow_state_t { struct os_unfair_lock_s { unsigned int x_1_1_1; } x1; unsigned long long x2; unsigned long long x3; struct { int (*x_4_1_1)(); int (*x_4_1_2)(); int (*x_4_1_3)(); int (*x_4_1_4)(); } x4; } * cow;
-    unsigned long long  mutations;
-    /* Warning: unhandled struct encoding: '{?="used"Q"offset"Q"size"Q"list"^@}' */ struct { 
-        unsigned long long used; 
-        unsigned long long offset; 
-        unsigned long long size; 
-        id *list; 
+    /* Warning: Unrecognized filer type: '^' using 'void*' */ void* cow;
+    /* Warning: unhandled struct encoding: '{?="list"^@"offset"I"size"I"state"(?="mutations"Q""{?="muts"I"used"I})}' */ struct { 
+        offset **list; 
     }  storage;
 }
 

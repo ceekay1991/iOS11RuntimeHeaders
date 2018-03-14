@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFUserActivityData : NSObject <NSSecureCoding, SFUserActivityData> {
+@interface SFUserActivityData : NSObject <NSCopying, NSSecureCoding, SFUserActivityData> {
     NSString * _activityType;
     NSArray * _userInfo;
 }
@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)activityType;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFColor : NSObject <NSSecureCoding, SFColor> {
+@interface SFColor : NSObject <NSCopying, NSSecureCoding, SFColor> {
     double  _alphaComponent;
     double  _blueComponent;
     double  _greenComponent;
@@ -30,6 +30,7 @@
 
 - (double)alphaComponent;
 - (double)blueComponent;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (double)greenComponent;

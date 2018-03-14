@@ -3,6 +3,7 @@
  */
 
 @interface _NSCFServer : NSObject {
+    NSDictionary * _configuration;
     bool  _enableCoprocessorInterface;
     NSString * _interface;
     NSObject<OS_tcp_listener> * _listener;
@@ -11,6 +12,7 @@
     long long  _type;
 }
 
+@property (retain) NSDictionary *configuration;
 @property (getter=isCoprocessorInterfaceEnabled) bool enableCoprocessorInterface;
 @property (retain) NSString *interface;
 @property (retain) NSObject<OS_tcp_listener> *listener;
@@ -24,6 +26,7 @@
 + (bool)stopAll;
 
 - (void).cxx_destruct;
+- (id)configuration;
 - (void)dealloc;
 - (id)init;
 - (id)initWithType:(long long)arg1;
@@ -34,6 +37,7 @@
 - (id)listener;
 - (id)listenerID;
 - (long long)listenerPort;
+- (void)setConfiguration:(id)arg1;
 - (void)setEnableCoprocessorInterface:(bool)arg1;
 - (void)setInterface:(id)arg1;
 - (void)setListener:(id)arg1;

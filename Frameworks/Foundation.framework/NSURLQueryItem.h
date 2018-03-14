@@ -32,4 +32,9 @@
 
 - (id)_geo_unescapedValue;
 
+// Image: /System/Library/PrivateFrameworks/TelephonyUtilities.framework/TelephonyUtilities
+
++ (id)queryItemForHandleType:(long long)arg1;
++ (id)queryItemValueForHandleType:(long long)arg1;
+
 @end

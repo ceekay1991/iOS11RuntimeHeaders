@@ -10,9 +10,11 @@
     CNContact * _contact;
     CNContactStore * _contactStore;
     <CNPropertyGroupItemDelegate> * _delegate;
+    CNUIContactsEnvironment * _environment;
     CNCardPropertyGroup * _group;
     CNLabeledValue * _labeledValue;
     CNLabeledValue * _originalLabeledValue;
+    unsigned long long  _policyFlags;
     NSString * _property;
 }
 
@@ -30,6 +32,7 @@
 @property (nonatomic, readonly) NSString *displayValue;
 @property (nonatomic, readonly) NSString *editingStringValue;
 @property (getter=isEmpty, nonatomic, readonly) bool empty;
+@property (nonatomic, readonly) CNUIContactsEnvironment *environment;
 @property (getter=isFavorite, nonatomic, readonly) bool favorite;
 @property (nonatomic, readonly) CNCardPropertyGroup *group;
 @property (nonatomic, retain) CNLabeledValue *labeledValue;
@@ -38,16 +41,20 @@
 @property (nonatomic, readonly) id normalizedValue;
 @property (nonatomic, retain) CNLabeledValue *originalLabeledValue;
 @property (nonatomic, readonly) NSString *placeholderString;
+@property (nonatomic) unsigned long long policyFlags;
 @property (nonatomic, retain) NSString *property;
 @property (getter=isReadonly, nonatomic, readonly) bool readonly;
 @property (getter=isSuggested, nonatomic, readonly) bool suggested;
 @property (nonatomic, readonly) NSArray *supportedLabels;
 
 + (Class)classForProperty:(id)arg1;
++ (void)deleteCoreRecentsEntriesMatchingProperty:(id)arg1 recentsManager:(id)arg2;
 + (id)emptyValueForLabel:(id)arg1;
 + (id)newPropertyGroupItemForProperty:(id)arg1;
 + (id)propertyGroupItemWithLabel:(id)arg1 group:(id)arg2 contact:(id)arg3;
++ (id)propertyGroupItemWithLabel:(id)arg1 group:(id)arg2 contact:(id)arg3 environment:(id)arg4;
 + (id)propertyGroupItemWithLabeledValue:(id)arg1 group:(id)arg2 contact:(id)arg3;
++ (id)propertyGroupItemWithLabeledValue:(id)arg1 group:(id)arg2 contact:(id)arg3 environment:(id)arg4;
 
 - (void).cxx_destruct;
 - (void)_removeSuggestion;
@@ -71,11 +78,12 @@
 - (id)displayStringForValue:(id)arg1;
 - (id)displayValue;
 - (id)editingStringValue;
+- (id)environment;
 - (id)group;
 - (id)init;
 - (id)initWithGroup:(id)arg1;
-- (id)initWithLabel:(id)arg1 group:(id)arg2 contact:(id)arg3;
-- (id)initWithLabeledValue:(id)arg1 group:(id)arg2 contact:(id)arg3;
+- (id)initWithLabel:(id)arg1 group:(id)arg2 contact:(id)arg3 environment:(id)arg4;
+- (id)initWithLabeledValue:(id)arg1 group:(id)arg2 contact:(id)arg3 environment:(id)arg4;
 - (bool)isEmpty;
 - (bool)isEqual:(id)arg1;
 - (bool)isEquivalentToItem:(id)arg1;
@@ -94,6 +102,7 @@
 - (id)normalizedValue;
 - (id)originalLabeledValue;
 - (id)placeholderString;
+- (unsigned long long)policyFlags;
 - (id)property;
 - (void)rejectSuggestion;
 - (id)replacementForInvalidValue:(id)arg1;
@@ -106,6 +115,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setLabeledValue:(id)arg1;
 - (void)setOriginalLabeledValue:(id)arg1;
+- (void)setPolicyFlags:(unsigned long long)arg1;
 - (void)setProperty:(id)arg1;
 - (bool)shouldCreateNewMeContactToSaveChangesTo;
 - (id)supportedLabels;

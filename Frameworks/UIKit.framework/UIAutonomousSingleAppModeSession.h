@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)__gaxTrampoline_endSessionWithCompletion:(id /* block */)arg1;
 - (void)_guidedAccessStateDidChange:(id)arg1;
+- (void)dealloc;
 - (id)effectiveConfiguration;
 - (void)endWithCompletion:(id /* block */)arg1;
 - (id)initWithEffectiveConfiguration:(id)arg1;

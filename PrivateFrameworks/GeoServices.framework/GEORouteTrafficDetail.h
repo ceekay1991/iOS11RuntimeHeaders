@@ -8,14 +8,17 @@
     }  _has;
     int  _routeTrafficCondition;
     NSString * _spokenRouteName;
+    NSString * _unabbreviatedRouteName;
     NSString * _writtenRouteName;
 }
 
 @property (nonatomic) bool hasRouteTrafficCondition;
 @property (nonatomic, readonly) bool hasSpokenRouteName;
+@property (nonatomic, readonly) bool hasUnabbreviatedRouteName;
 @property (nonatomic, readonly) bool hasWrittenRouteName;
 @property (nonatomic) int routeTrafficCondition;
 @property (nonatomic, retain) NSString *spokenRouteName;
+@property (nonatomic, retain) NSString *unabbreviatedRouteName;
 @property (nonatomic, retain) NSString *writtenRouteName;
 
 - (void).cxx_destruct;
@@ -26,6 +29,7 @@
 - (id)dictionaryRepresentation;
 - (bool)hasRouteTrafficCondition;
 - (bool)hasSpokenRouteName;
+- (bool)hasUnabbreviatedRouteName;
 - (bool)hasWrittenRouteName;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
@@ -36,8 +40,10 @@
 - (void)setHasRouteTrafficCondition:(bool)arg1;
 - (void)setRouteTrafficCondition:(int)arg1;
 - (void)setSpokenRouteName:(id)arg1;
+- (void)setUnabbreviatedRouteName:(id)arg1;
 - (void)setWrittenRouteName:(id)arg1;
 - (id)spokenRouteName;
+- (id)unabbreviatedRouteName;
 - (void)writeTo:(id)arg1;
 - (id)writtenRouteName;
 

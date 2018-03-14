@@ -16,7 +16,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)loadAttributionInfoForIdentifier:(id)arg1 version:(unsigned int)arg2 completionHandler:(id /* block */)arg3 errorHandler:(id /* block */)arg4;
+- (void)loadAttributionInfoForIdentifiers:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)serverProxy;
 
 @end

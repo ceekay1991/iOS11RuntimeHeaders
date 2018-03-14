@@ -24,7 +24,6 @@
 + (void)_removeMediaTypesFromContainerWithPersistentID:(long long)arg1 mediaTypes:(id)arg2 connection:(id)arg3;
 + (void)_updateContainedMediaTypeInContainerWithPersistentID:(long long)arg1 connection:(id)arg2 itemUpdateBlock:(id /* block */)arg3;
 + (id)autoCreatedBuiltInSmartPlaylistsPIDs:(id)arg1;
-+ (bool)createMissingBuiltInSmartPlaylists:(id)arg1;
 + (id)databaseTable;
 + (id)defaultFilterPredicates;
 + (id)defaultOrderingTerms;

@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2 categories:(id)arg3;
 - (id)resultSectionHeaderForCategory:(id)arg1;
+- (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 networkActivity:(id /* block */)arg3;
 - (void)submitWithHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2;
 
 @end

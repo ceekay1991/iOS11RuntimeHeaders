@@ -12,6 +12,7 @@
     NSArray * _imageComponents;
     unsigned long long  _itemIndex;
     bool  _precisionMode;
+    _DUIPreview * _preview;
     double  _rotation;
     struct CGVector { 
         double dx; 
@@ -30,6 +31,7 @@
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } imageFrame;
 @property (nonatomic) unsigned long long itemIndex;
 @property (nonatomic) bool precisionMode;
+@property (nonatomic, copy) _DUIPreview *preview;
 @property (nonatomic) double rotation;
 @property (nonatomic) struct CGVector { double x1; double x2; } targetVelocity;
 @property (nonatomic) struct CGVector { double x1; double x2; } velocity;
@@ -48,6 +50,7 @@
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)itemIndex;
 - (bool)precisionMode;
+- (id)preview;
 - (double)rotation;
 - (void)setCenter:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setConstrainSize:(bool)arg1;
@@ -55,6 +58,7 @@
 - (void)setImageComponents:(id)arg1;
 - (void)setItemIndex:(unsigned long long)arg1;
 - (void)setPrecisionMode:(bool)arg1;
+- (void)setPreview:(id)arg1;
 - (void)setRotation:(double)arg1;
 - (void)setTargetVelocity:(struct CGVector { double x1; double x2; })arg1;
 - (void)setVelocity:(struct CGVector { double x1; double x2; })arg1;

@@ -13,6 +13,9 @@
 @property (nonatomic, readonly) struct MPLibraryAddStatusObserverConfiguration { bool x1; bool x2; bool x3; bool x4; bool x5; } libraryAddStatusObserverConfiguration;
 @property (nonatomic, readonly) long long libraryRemovalSupportedOptions;
 @property (nonatomic, readonly) MPIdentifierSet *originalIdentifierSet;
+@property (nonatomic, readonly) NSString *syncInfoContainerIdentifier;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (void)initialize;
 + (void)performWithoutEnforcement:(id /* block */)arg1;
@@ -43,5 +46,24 @@
 - (id)originalIdentifierSet;
 - (id)storeItemMetadataRequestItemIdentifier;
 - (bool)storeItemMetadataRequestNeedsPersonalization;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mpc_remotePlaybackQueueRequiredProperties;
++ (id)mqf_requiredPlaybackProperties;
+
+- (id)_radioStationMatchMetadata;
+- (bool)_shouldMatchArtist;
+- (id)mpc_protoContainerRepresentation;
+- (id)mpc_protoItemRepresentation;
+- (id)mpc_radioContentReference;
+- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
+- (id)mqf_newPlaybackItemMetadata;
+- (id)mqf_playbackItemMetadataModelObject;
+- (id)radioStationMatchContext;
+
+// Image: /System/Library/PrivateFrameworks/NanoMusicSync.framework/NanoMusicSync
+
+- (id)syncInfoContainerIdentifier;
 
 @end

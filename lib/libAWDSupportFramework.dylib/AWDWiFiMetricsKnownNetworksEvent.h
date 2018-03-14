@@ -3,6 +3,7 @@
  */
 
 @interface AWDWiFiMetricsKnownNetworksEvent : PBCodable <NSCopying> {
+    NSString * _bundleID;
     unsigned int  _colocatedState;
     unsigned int  _eventType;
     struct { 
@@ -15,7 +16,7 @@
         unsigned int switchToCount : 1; 
         unsigned int switchedAwayFromCount : 1; 
     }  _has;
-    unsigned int  _networkScore;
+    int  _networkScore;
     unsigned int  _networkSecurity;
     unsigned int  _networkTypeBitMap;
     NSData * _oui;
@@ -24,8 +25,10 @@
     unsigned long long  _timestamp;
 }
 
+@property (nonatomic, retain) NSString *bundleID;
 @property (nonatomic) unsigned int colocatedState;
 @property (nonatomic) unsigned int eventType;
+@property (nonatomic, readonly) bool hasBundleID;
 @property (nonatomic) bool hasColocatedState;
 @property (nonatomic) bool hasEventType;
 @property (nonatomic) bool hasNetworkScore;
@@ -35,7 +38,7 @@
 @property (nonatomic) bool hasSwitchToCount;
 @property (nonatomic) bool hasSwitchedAwayFromCount;
 @property (nonatomic) bool hasTimestamp;
-@property (nonatomic) unsigned int networkScore;
+@property (nonatomic) int networkScore;
 @property (nonatomic) unsigned int networkSecurity;
 @property (nonatomic) unsigned int networkTypeBitMap;
 @property (nonatomic, retain) NSData *oui;
@@ -43,6 +46,7 @@
 @property (nonatomic) unsigned int switchedAwayFromCount;
 @property (nonatomic) unsigned long long timestamp;
 
+- (id)bundleID;
 - (unsigned int)colocatedState;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -50,6 +54,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned int)eventType;
+- (bool)hasBundleID;
 - (bool)hasColocatedState;
 - (bool)hasEventType;
 - (bool)hasNetworkScore;
@@ -62,11 +67,12 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (unsigned int)networkScore;
+- (int)networkScore;
 - (unsigned int)networkSecurity;
 - (unsigned int)networkTypeBitMap;
 - (id)oui;
 - (bool)readFrom:(id)arg1;
+- (void)setBundleID:(id)arg1;
 - (void)setColocatedState:(unsigned int)arg1;
 - (void)setEventType:(unsigned int)arg1;
 - (void)setHasColocatedState:(bool)arg1;
@@ -77,7 +83,7 @@
 - (void)setHasSwitchToCount:(bool)arg1;
 - (void)setHasSwitchedAwayFromCount:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
-- (void)setNetworkScore:(unsigned int)arg1;
+- (void)setNetworkScore:(int)arg1;
 - (void)setNetworkSecurity:(unsigned int)arg1;
 - (void)setNetworkTypeBitMap:(unsigned int)arg1;
 - (void)setOui:(id)arg1;

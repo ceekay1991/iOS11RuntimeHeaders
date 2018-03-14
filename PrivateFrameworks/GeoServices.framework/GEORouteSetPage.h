@@ -37,7 +37,6 @@
 - (void)_buildAllRouteTypes:(id)arg1;
 - (id)_composedRouteForRoute:(id)arg1;
 - (void)_createAlternateStartRoutesLookup;
-- (void)_createIncidentsOnRoute:(id)arg1;
 - (void)_debugAddGuidanceEventsForRoute:(id)arg1 response:(id)arg2;
 - (id)_lazyRoutesAtIndex:(unsigned long long)arg1 partial:(bool)arg2;
 - (void)_setupDriveWalkRoutesForResponse:(id)arg1;

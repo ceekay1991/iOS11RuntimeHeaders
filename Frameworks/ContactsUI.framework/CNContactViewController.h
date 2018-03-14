@@ -77,6 +77,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIViewController<CNContactContentViewController> *viewController;
 
+// Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
+
 + (id)descriptorForRequiredKeys;
 + (id)viewControllerForContact:(id)arg1;
 + (id)viewControllerForNewContact:(id)arg1;
@@ -185,5 +187,9 @@
 - (void)viewDidAppear;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (id)_mf_viewControllerForUnknownContactWithEmailAddress:(id)arg1;
 
 @end

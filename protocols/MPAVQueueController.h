@@ -6,13 +6,14 @@
 @required
 
 - (long long)_indexForStringIdentifier:(NSString *)arg1;
-- (void)_setCurrentItemDidLoadDurationTimeRange:(bool)arg1;
+- (bool)allowsQueueResetWhenReachingEnd;
 - (MPAVController *)avController;
 - (bool)canSeekItem:(MPAVItem *)arg1;
 - (bool)canSkipItem:(MPAVItem *)arg1;
 - (bool)canSkipToPreviousItem;
 - (bool)canSkipToPreviousItemForItem:(MPAVItem *)arg1;
 - (void)connectPlayer;
+- (NSString *)contentItemIDForPlaylistIndex:(long long)arg1;
 - (long long)currentIndex;
 - (MPAVItem *)currentItem;
 - (id)delegate;
@@ -25,6 +26,7 @@
 - (unsigned long long)indexForContentItemID:(NSString *)arg1;
 - (long long)indexOfItemIdentifier:(id <MPAVItemQueueIdentifier>)arg1;
 - (long long)indexWithDelta:(long long)arg1 fromIndex:(long long)arg2 ignoreElapsedTime:(bool)arg3 didReachEnd:(bool*)arg4;
+- (bool)isPlaceholderItemForContentItemID:(NSString *)arg1;
 - (bool)isTransitioningSource;
 - (MPAVItem *)itemForContentItemID:(NSString *)arg1;
 - (MPAVItem *)itemForPlaylistIndex:(long long)arg1;
@@ -37,6 +39,10 @@
 - (void)setCurrentIndex:(long long)arg1 selectionDirection:(long long)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setRepeatMode:(long long)arg1;
+- (void)setShouldDeferItemLoading:(bool)arg1;
+- (bool)shouldDeferItemLoading;
+- (long long)upNextItemCount;
 - (void)updateForSoundCheckDefaultsChange;
+- (void)updateLocationDependentPropertiesForItem:(MPAVItem *)arg1;
 
 @end

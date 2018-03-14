@@ -49,6 +49,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)__fittingContentSizingViewAllowingSelf;
 - (id)__fittingContentSizingViewIfNotSelf;
 - (id)_actionViewState;
@@ -83,17 +84,16 @@
 - (void)_updateHighlightAndPressedFeedback;
 - (void)_updateLoadedContentsHierarchyByInsertingOrRemovingIfNecessary;
 - (id)_viewDisplayingBackground;
+- (void)dealloc;
 - (id)description;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)action;
 - (id)actionViewStateContext;
 - (id)backgroundHighlightView;
 - (bool)canBecomeFocused;
 - (bool)canRemoveContentFromHierarchyWhenNotVisible;
-- (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (bool)hasLayoutHeightConstraintsIdenticalToRepresentationView:(id)arg1;
 - (id)initWithAction:(id)arg1;

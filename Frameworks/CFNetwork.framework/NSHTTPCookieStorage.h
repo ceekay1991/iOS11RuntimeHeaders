@@ -8,6 +8,8 @@
 
 @property unsigned long long cookieAcceptPolicy;
 @property (readonly, copy) NSArray *cookies;
+@property (readonly) unsigned long long webui_safariCookieAcceptPolicyEnumValue;
+@property (readonly) bool webui_trackerProtectionEnabled;
 
 // Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
 
@@ -48,8 +50,22 @@
 - (id)sortedCookiesUsingDescriptors:(id)arg1;
 - (void)storeCookies:(id)arg1 forTask:(id)arg2;
 
+// Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
+
++ (id)vs_sharedCookieStorage;
+
+- (void)vs_saveCookies;
+
 // Image: /System/Library/PrivateFrameworks/AppleAccount.framework/AppleAccount
 
 + (id)aa_icloudCookies;
+
+// Image: /System/Library/PrivateFrameworks/WebUI.framework/WebUI
+
+- (float)_safariCookieAcceptPolicyFloatValue;
+- (void)webui_applySafariCookieAcceptPolicy;
+- (id)webui_safariCookieAcceptPolicy;
+- (unsigned long long)webui_safariCookieAcceptPolicyEnumValue;
+- (bool)webui_trackerProtectionEnabled;
 
 @end

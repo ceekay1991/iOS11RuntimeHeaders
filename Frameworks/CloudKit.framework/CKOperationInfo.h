@@ -17,6 +17,7 @@
     CKOperationConfiguration * _perOpConfiguration;
     CKOperationConfiguration * _resolvedConfiguration;
     CKContainerSetupInfo * _setupInfo;
+    bool  _wantsRequestStatistics;
 }
 
 @property (nonatomic, retain) CKOperationMMCSRequestOptions *MMCSRequestOptions;
@@ -39,10 +40,12 @@
 @property (nonatomic, readonly) long long qualityOfService;
 @property (nonatomic, readonly) CKOperationConfiguration *resolvedConfiguration;
 @property (nonatomic, retain) CKContainerSetupInfo *setupInfo;
+@property (nonatomic, readonly) bool shouldSkipZonePCSUpdate;
 @property (nonatomic, readonly) NSString *sourceApplicationBundleIdentifier;
 @property (nonatomic, readonly) NSString *sourceApplicationSecondaryIdentifier;
 @property (nonatomic, readonly) double timeoutIntervalForRequest;
 @property (nonatomic, readonly) double timeoutIntervalForResource;
+@property (nonatomic) bool wantsRequestStatistics;
 
 + (bool)supportsSecureCoding;
 
@@ -83,11 +86,14 @@
 - (void)setParentSectionID:(id)arg1;
 - (void)setPerOpConfiguration:(id)arg1;
 - (void)setSetupInfo:(id)arg1;
+- (void)setWantsRequestStatistics:(bool)arg1;
 - (id)setupInfo;
+- (bool)shouldSkipZonePCSUpdate;
 - (id)sourceApplicationBundleIdentifier;
 - (id)sourceApplicationSecondaryIdentifier;
 - (void)takeValuesFrom:(id)arg1;
 - (double)timeoutIntervalForRequest;
 - (double)timeoutIntervalForResource;
+- (bool)wantsRequestStatistics;
 
 @end

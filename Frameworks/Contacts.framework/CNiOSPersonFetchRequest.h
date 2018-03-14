@@ -28,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)batchSize;
-- (id)initWithPredicate:(id)arg1 keysToFetch:(id)arg2 shouldSort:(bool)arg3 sortOrder:(unsigned int)arg4 unifiedFetch:(bool)arg5 options:(unsigned long long)arg6;
+- (id)initWithPredicate:(id)arg1 keysToFetch:(id)arg2 shouldSort:(bool)arg3 sortOrder:(unsigned int)arg4 unifiedFetch:(bool)arg5 batchSize:(unsigned long long)arg6 options:(unsigned long long)arg7;
 - (id)keysToFetch;
 - (unsigned long long)options;
 - (id)predicate;

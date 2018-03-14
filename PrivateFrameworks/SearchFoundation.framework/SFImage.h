@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFImage : NSObject <NSSecureCoding, SFImage> {
+@interface SFImage : NSObject <NSCopying, NSSecureCoding, SFImage> {
     NSString * _contentType;
     double  _cornerRadius;
     struct { 
@@ -48,6 +48,7 @@
 
 - (void).cxx_destruct;
 - (id)contentType;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (double)cornerRadius;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;

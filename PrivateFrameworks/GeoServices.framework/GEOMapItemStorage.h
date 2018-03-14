@@ -11,6 +11,7 @@
     GEOPDPlace * _placeData;
     GEOPlaceResult * _placeResult;
     PBUnknownFields * _unknownFields;
+    GEOMapItemStorageUserValues * _userValues;
 }
 
 @property (getter=_acceptsApplePay, nonatomic, readonly) bool acceptsApplePay;
@@ -21,6 +22,7 @@
 @property (nonatomic, readonly) NSArray *areasOfInterest;
 @property (getter=_associatedApp, nonatomic, readonly) GEOAssociatedApp *associatedApp;
 @property (getter=_attribution, nonatomic, readonly) GEOMapItemPlaceAttribution *attribution;
+@property (getter=_browseCategories, nonatomic, readonly) NSArray *browseCategories;
 @property (getter=_businessClaim, nonatomic, readonly) GEOPDBusinessClaim *businessClaim;
 @property (getter=_businessURL, nonatomic, readonly) NSString *businessURL;
 @property (nonatomic, readonly) struct { double x1; double x2; } centerCoordinate;
@@ -85,6 +87,7 @@
 @property (getter=_hasTelephone, nonatomic, readonly) bool hasTelephone;
 @property (getter=_hasTransit, nonatomic, readonly) bool hasTransit;
 @property (getter=_hasUserRatingScore, nonatomic, readonly) bool hasUserRatingScore;
+@property (nonatomic, readonly) bool hasUserValues;
 @property (getter=_hasVenueFeatureType, nonatomic, readonly) bool hasVenueFeatureType;
 @property (getter=_hasWifiFingerprintConfidence, nonatomic, readonly) bool hasWifiFingerprintConfidence;
 @property (getter=_hasWifiFingerprintLabelStatusCode, nonatomic, readonly) bool hasWifiFingerprintLabelStatusCode;
@@ -95,6 +98,7 @@
 @property (nonatomic, retain) GEOPDResultDetourInfo *internalDetourInfo;
 @property (nonatomic, readonly) bool isEventAllDay;
 @property (getter=_isStandaloneBrand, nonatomic, readonly) bool isStandAloneBrand;
+@property (getter=_isTransitDisplayFeature, nonatomic, readonly) bool isTransitDisplayFeature;
 @property (nonatomic, readonly) GEOMapRegion *mapRegion;
 @property (nonatomic, retain) NSString *mapsURL;
 @property (getter=_messageLink, nonatomic, readonly) GEOMessageLink *messageLink;
@@ -106,6 +110,7 @@
 @property (getter=_operatingHours, nonatomic, readonly) NSArray *operatingHours;
 @property (getter=_optsOutOfTelephoneAds, nonatomic, readonly) bool optsOutOfTelephoneAds;
 @property (nonatomic, retain) GEOLatLng *originatingCoordinate;
+@property (getter=_parsecSectionType, nonatomic, readonly) int parsecSectionType;
 @property (getter=_photos, nonatomic, readonly) NSArray *photos;
 @property (getter=_photosAttribution, nonatomic, readonly) GEOMapItemPhotosAttribution *photosAttribution;
 @property (getter=_place, nonatomic, readonly) GEOPlace *place;
@@ -113,6 +118,8 @@
 @property (getter=_placeData, nonatomic, readonly) GEOPDPlace *placeData;
 @property (nonatomic, retain) GEOPDPlace *placeData;
 @property (getter=_placeDataAsData, nonatomic, readonly) NSData *placeDataAsData;
+@property (getter=_placeDisplayStyle, nonatomic, readonly) int placeDisplayStyle;
+@property (getter=_placeDisplayType, nonatomic, readonly) int placeDisplayType;
 @property (nonatomic, retain) GEOPlaceResult *placeResult;
 @property (getter=_placeType, nonatomic, readonly) int placeType;
 @property (getter=_poiPinpointURLString, nonatomic, readonly) NSString *poiPinpointURLString;
@@ -140,9 +147,9 @@
 @property (getter=_transitAttribution, nonatomic, readonly) <GEOTransitAttribution> *transitAttribution;
 @property (getter=_transitInfo, nonatomic, readonly) <GEOMapItemTransitInfo> *transitInfo;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
+@property (nonatomic, retain) GEOMapItemStorageUserValues *userValues;
 @property (getter=isValid, nonatomic, readonly) bool valid;
 @property (getter=_vendorID, nonatomic, readonly, copy) NSString *vendorID;
-@property (getter=_venueCategoryBrowseType, nonatomic, readonly) int venueCategoryBrowseType;
 @property (getter=_venueFeatureType, nonatomic, readonly) int venueFeatureType;
 @property (getter=_venueInfo, nonatomic, readonly) <GEOMapItemVenueInfo> *venueInfo;
 @property (getter=_webURL, nonatomic, readonly, copy) NSURL *webURL;
@@ -156,8 +163,10 @@
 + (id)mapItemStorageForGEOMapItem:(id)arg1 forUseType:(unsigned long long)arg2;
 + (id)mapItemStorageForPlace:(id)arg1;
 + (id)mapItemStorageForPlace:(id)arg1 clientAttributes:(id)arg2;
++ (id)mapItemStorageForPlace:(id)arg1 clientAttributes:(id)arg2 userValues:(id)arg3;
 + (id)mapItemStorageForPlaceData:(id)arg1;
 + (id)mapItemStorageForPlaceData:(id)arg1 detourInfo:(id)arg2;
++ (id)mapItemStorageForPlaceData:(id)arg1 detourInfo:(id)arg2 userValues:(id)arg3;
 + (id)mapItemStorageForPlaceResult:(id)arg1;
 + (id)mapItemStorageForSerializedMapItemStorage:(id)arg1;
 + (id)mapItemStorageForSerializedPlaceData:(id)arg1;
@@ -173,6 +182,7 @@
 - (id)_associatedApp;
 - (id)_attribution;
 - (id)_bestBrandIconURLForSize:(struct CGSize { double x1; double x2; })arg1 allowSmaller:(bool)arg2;
+- (id)_browseCategories;
 - (id)_businessClaim;
 - (id)_businessURL;
 - (id)_childPlaces;
@@ -208,7 +218,6 @@
 - (bool)_hasTakesReservationsAmenity;
 - (bool)_hasTelephone;
 - (bool)_hasTransit;
-- (bool)_hasTravelTimeForTransportType:(int)arg1;
 - (bool)_hasUserRatingScore;
 - (bool)_hasVenueFeatureType;
 - (bool)_hasWifiFingerprintConfidence;
@@ -217,6 +226,7 @@
 - (id)_identifier;
 - (bool)_isInLinkedPlaceRelationship;
 - (bool)_isStandaloneBrand;
+- (bool)_isTransitDisplayFeature;
 - (id)_localizedCategoryNamesForType:(unsigned int)arg1;
 - (id)_mapItemByStrippingOptionalData;
 - (id)_messageLink;
@@ -226,11 +236,14 @@
 - (unsigned long long)_openingHoursOptions;
 - (id)_operatingHours;
 - (bool)_optsOutOfTelephoneAds;
+- (int)_parsecSectionType;
 - (id)_photos;
 - (id)_photosAttribution;
 - (id)_place;
 - (id)_placeData;
 - (id)_placeDataAsData;
+- (int)_placeDisplayStyle;
+- (int)_placeDisplayType;
 - (int)_placeType;
 - (id)_poiPinpointURLString;
 - (id)_poiSurveyURLString;
@@ -238,7 +251,6 @@
 - (unsigned int)_priceRange;
 - (id)_providerURL;
 - (id)_quickLinks;
-- (int)_recommendedTransportType;
 - (bool)_responseStatusIsIncomplete;
 - (int)_resultProviderID;
 - (unsigned int)_resultSnippetDistanceDisplayThreshold;
@@ -254,10 +266,7 @@
 - (id)_tips;
 - (id)_transitAttribution;
 - (id)_transitInfo;
-- (unsigned int)_travelDistanceForTransportType:(int)arg1;
-- (unsigned int)_travelTimeForTransportType:(int)arg1;
 - (id)_vendorID;
-- (int)_venueCategoryBrowseType;
 - (int)_venueFeatureType;
 - (id)_venueInfo;
 - (id)_webURL;
@@ -299,9 +308,10 @@
 - (bool)hasPlace;
 - (bool)hasPlaceData;
 - (bool)hasPlaceResult;
+- (bool)hasUserValues;
 - (unsigned long long)hash;
-- (id)initWithPlace:(id)arg1 clientAttributes:(id)arg2;
-- (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2 clientAttributes:(id)arg3;
+- (id)initWithPlace:(id)arg1 clientAttributes:(id)arg2 userValues:(id)arg3;
+- (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2 clientAttributes:(id)arg3 userValues:(id)arg4;
 - (id)initWithPlaceResult:(id)arg1;
 - (id)internalDetourInfo;
 - (bool)isDisputed;
@@ -326,10 +336,13 @@
 - (void)setPlace:(id)arg1;
 - (void)setPlaceData:(id)arg1;
 - (void)setPlaceResult:(id)arg1;
+- (void)setUserValues:(id)arg1;
+- (id)shortAddress;
 - (id)spatialMappedCategories;
 - (id)spokenNameForLocale:(id)arg1;
 - (id)timezone;
 - (id)unknownFields;
+- (id)userValues;
 - (id)weatherDisplayName;
 - (void)writeTo:(id)arg1;
 

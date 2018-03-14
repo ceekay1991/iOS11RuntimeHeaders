@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKQueryOperation : CKDatabaseOperation {
+@interface CKQueryOperation : CKDatabaseOperation <MSPCloudRequest> {
     NSDictionary * _assetTransferOptionsByKey;
     CKQueryCursor * _cursor;
     NSArray * _desiredKeys;
@@ -19,16 +19,23 @@
 
 @property (nonatomic, retain) NSDictionary *assetTransferOptionsByKey;
 @property (nonatomic, copy) CKQueryCursor *cursor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSArray *desiredKeys;
 @property (nonatomic) bool fetchAllResults;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) CKQuery *query;
 @property (nonatomic, copy) id /* block */ queryCompletionBlock;
 @property (nonatomic, copy) id /* block */ queryCursorFetchedBlock;
 @property (nonatomic, copy) id /* block */ recordFetchedBlock;
 @property (nonatomic, retain) CKQueryCursor *resultsCursor;
 @property (nonatomic) unsigned long long resultsLimit;
+@property (nonatomic, readonly) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
 @property (nonatomic) bool shouldFetchAssetContent;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) CKRecordZoneID *zoneID;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 - (void).cxx_destruct;
 - (bool)CKOperationShouldRun:(id*)arg1;
@@ -67,5 +74,9 @@
 - (void)setZoneID:(id)arg1;
 - (bool)shouldFetchAssetContent;
 - (id)zoneID;
+
+// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+
+- (void)addCloudAccessCompletionBlock:(id /* block */)arg1;
 
 @end

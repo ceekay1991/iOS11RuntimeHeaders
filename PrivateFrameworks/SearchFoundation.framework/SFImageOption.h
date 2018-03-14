@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFImageOption : NSObject <NSSecureCoding, SFImageOption> {
+@interface SFImageOption : NSObject <NSCopying, NSSecureCoding, SFImageOption> {
     NSString * _defaultValue;
     NSString * _name;
     NSDictionary * _options;
@@ -21,6 +21,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)defaultValue;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;

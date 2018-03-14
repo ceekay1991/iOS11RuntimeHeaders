@@ -21,6 +21,7 @@
     <UIViewControllerInteractiveTransitioning> * _currentInteractionController;
     NSUUID * _currentRunningAnimationsUUID;
     <UIViewControllerAnimatedTransitioning> * _currentTransitionController;
+    UIView * _customViewForTouchContinuation;
     <UIAdaptivePresentationControllerDelegate> * _delegate;
     SEL  _didEndSelector;
     bool  _didUpdateLayoutForStatusBarAndInterfaceOrientation;
@@ -74,6 +75,7 @@
 @property (setter=_setContainerView:, nonatomic, retain) UIView *containerView;
 @property (getter=_currentInteractionController, setter=_setCurrentInteractionController:, nonatomic, retain) <UIViewControllerInteractiveTransitioning> *currentInteractionController;
 @property (getter=_currentTransitionController, setter=_setCurrentTransitionController:, nonatomic, retain) <UIViewControllerAnimatedTransitioning> *currentTransitionController;
+@property (getter=_customViewForTouchContinuation, setter=_setCustomViewForTouchContinuation:, nonatomic, retain) UIView *customViewForTouchContinuation;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <UIAdaptivePresentationControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -86,6 +88,7 @@
 @property (nonatomic, readonly) UIView *preferredFocusedView;
 @property (nonatomic, readonly) long long presentationStyle;
 @property (getter=_presentationView, setter=_setPresentationView:, nonatomic, retain) UIView *presentationView;
+@property (nonatomic, readonly) NCNotificationViewController *presentedNotificationViewController;
 @property (nonatomic, readonly) UIView *presentedView;
 @property (setter=_setPresentedViewController:, nonatomic, retain) UIViewController *presentedViewController;
 @property (setter=_setPresentingViewController:, nonatomic, retain) UIViewController *presentingViewController;
@@ -98,7 +101,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) UITraitCollection *traitCollection;
 
-+ (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_defaultBaseContentInsetsForFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inView:(id)arg2;
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
++ (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_defaultBaseContentInsetsForView:(id)arg1 leftMargin:(double*)arg2 rightMargin:(double*)arg3;
 + (bool)_preventsAppearanceProxyCustomization;
 + (bool)_shouldPostPresentationControllerNotifications;
 
@@ -111,7 +116,7 @@
 - (id)_animatorForContainmentTransition;
 - (id)_appearanceContainer;
 - (Class)_appearanceGuideClass;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_baseContentInsets;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_baseContentInsetsWithLeftMargin:(double*)arg1 rightMargin:(double*)arg2;
 - (void)_beginOcclusionIfNecessary:(bool)arg1;
 - (bool)_changedPresentingViewControllerDuringAdaptation;
 - (id)_childPresentationController;
@@ -128,6 +133,7 @@
 - (id /* block */)_currentTransitionDidComplete;
 - (id /* block */)_customFromViewForCurrentTransition;
 - (id /* block */)_customToViewForCurrentTransition;
+- (id)_customViewForTouchContinuation;
 - (long long)_defaultPresentationStyleForTraitCollection:(id)arg1;
 - (id)_descriptionForPrintingViewControllerHierarchy;
 - (void)_disableMenuPressForBackGesture;
@@ -168,6 +174,7 @@
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (bool)_preserveResponderAcrossWindows;
 - (void)_releaseSnapshot;
+- (id)_rootPresentingViewControllerForNestedPresentation;
 - (void)_sendDelegateWillPresentWithAdaptiveStyle:(long long)arg1 transitionCoordinator:(id)arg2;
 - (void)_sendPresentationControllerNotification:(id)arg1;
 - (void)_setAdaptiveTransitionContext:(id)arg1;
@@ -178,6 +185,7 @@
 - (void)_setCurrentInteractionController:(id)arg1;
 - (void)_setCurrentPresentationSuperview:(id)arg1;
 - (void)_setCurrentTransitionController:(id)arg1;
+- (void)_setCustomViewForTouchContinuation:(id)arg1;
 - (void)_setPreferredContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_setPresentationView:(id)arg1;
 - (void)_setPresentedViewController:(id)arg1;
@@ -276,5 +284,9 @@
 - (void)updateFocusIfNeeded;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
+
+- (id)presentedNotificationViewController;
 
 @end

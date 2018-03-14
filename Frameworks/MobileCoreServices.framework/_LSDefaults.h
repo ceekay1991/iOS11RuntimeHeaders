@@ -5,6 +5,11 @@
 @interface _LSDefaults : NSObject {
     bool  _appleInternal;
     long long  _currentDisplayGamut;
+    NSMutableDictionary * _darwinNotificationNames;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _darwinNotificationNamesLock;
+    unsigned int  _darwinNotificationNamesUID;
     bool  _hasPersistentPreferences;
     bool  _hasServer;
     NSData * _hmacSecret;
@@ -22,6 +27,7 @@
 @property (nonatomic, readonly) bool abortIfMayNotMapDatabase;
 @property (nonatomic, readonly) bool allowsAlternateIcons;
 @property (getter=isAppleInternal, nonatomic, readonly) bool appleInternal;
+@property (readonly) long long concurrentInstallOperations;
 @property (readonly) unsigned int currentSchemaVersion;
 @property (readonly) double databaseSaveInterval;
 @property (readonly) double databaseSaveLatency;
@@ -60,6 +66,7 @@
 - (bool)abortIfMayNotMapDatabase;
 - (bool)allowsAlternateIcons;
 - (id)classesWithNameForXCTests:(const char *)arg1;
+- (long long)concurrentInstallOperations;
 - (unsigned int)currentSchemaVersion;
 - (id)darwinNotificationNameForCurrentUser:(id)arg1;
 - (double)databaseSaveInterval;

@@ -18,6 +18,7 @@
     long long  _mutability;
     unsigned long long  _options;
     _DUIPreview * _preview;
+    id /* block */  _previewProvider;
     id  _privateLocalContext;
     NSItemProvider * _provider;
     double  _rotationAngle;
@@ -44,6 +45,8 @@
 @property (nonatomic) double scale;
 @property (nonatomic) <_UIDraggingItemVisualTarget> *sourceVisualTarget;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 - (void).cxx_destruct;
 - (void)_clearDirty;
 - (unsigned long long)_dirtyReasons;
@@ -54,13 +57,14 @@
 - (bool)_isDirty;
 - (long long)_mutability;
 - (id)_preview;
+- (id /* block */)_previewProvider;
 - (id)_privateLocalContext;
 - (void)_setDirtyForReason:(unsigned long long)arg1;
 - (void)_setDirtyReasons:(unsigned long long)arg1;
 - (void)_setDropItemProvider:(id)arg1;
 - (void)_setDroppedSnapshotViewProvider:(id /* block */)arg1;
 - (void)_setMutability:(long long)arg1;
-- (void)_setPreview:(id)arg1;
+- (void)_setPreviewProvider:(id /* block */)arg1;
 - (void)_setPrivateLocalContext:(id)arg1;
 - (void)_updateFromInternalItem:(id)arg1;
 - (struct CGPoint { double x1; double x2; })anchorPoint;
@@ -89,5 +93,9 @@
 - (void)setScale:(double)arg1;
 - (void)setSourceVisualTarget:(id)arg1;
 - (id)sourceVisualTarget;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
++ (id)px_draggingItemForAsset:(id)arg1 sourceVisualTarget:(id)arg2 hintIndexPath:(id)arg3 imageComponentsProvider:(id /* block */)arg4;
 
 @end

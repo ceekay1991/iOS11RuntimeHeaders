@@ -15,6 +15,7 @@
         unsigned int identifier : 1; 
         unsigned int offsetForDistanceString : 1; 
         unsigned int startValidDistance : 1; 
+        unsigned int sticky : 1; 
     }  _has;
     unsigned int  _identifier;
     GEOVisualLaneGuidance * _laneGuidance;
@@ -24,6 +25,7 @@
     GEOSignGuidance * _signGuidance;
     GEOSpokenGuidance * _spokenGuidance;
     int  _startValidDistance;
+    bool  _sticky;
 }
 
 @property (nonatomic) int distanceZilchIndex;
@@ -40,6 +42,7 @@
 @property (nonatomic, readonly) bool hasSignGuidance;
 @property (nonatomic, readonly) bool hasSpokenGuidance;
 @property (nonatomic) bool hasStartValidDistance;
+@property (nonatomic) bool hasSticky;
 @property (nonatomic) unsigned int identifier;
 @property (nonatomic, retain) GEOVisualLaneGuidance *laneGuidance;
 @property (nonatomic) double maxSpeed;
@@ -48,6 +51,7 @@
 @property (nonatomic, retain) GEOSignGuidance *signGuidance;
 @property (nonatomic, retain) GEOSpokenGuidance *spokenGuidance;
 @property (nonatomic) int startValidDistance;
+@property (nonatomic) bool sticky;
 
 - (void).cxx_destruct;
 - (int)StringAsEventType:(id)arg1;
@@ -70,6 +74,7 @@
 - (bool)hasSignGuidance;
 - (bool)hasSpokenGuidance;
 - (bool)hasStartValidDistance;
+- (bool)hasSticky;
 - (unsigned long long)hash;
 - (unsigned int)identifier;
 - (bool)isEqual:(id)arg1;
@@ -90,6 +95,7 @@
 - (void)setHasMinSpeed:(bool)arg1;
 - (void)setHasOffsetForDistanceString:(bool)arg1;
 - (void)setHasStartValidDistance:(bool)arg1;
+- (void)setHasSticky:(bool)arg1;
 - (void)setIdentifier:(unsigned int)arg1;
 - (void)setLaneGuidance:(id)arg1;
 - (void)setMaxSpeed:(double)arg1;
@@ -98,9 +104,11 @@
 - (void)setSignGuidance:(id)arg1;
 - (void)setSpokenGuidance:(id)arg1;
 - (void)setStartValidDistance:(int)arg1;
+- (void)setSticky:(bool)arg1;
 - (id)signGuidance;
 - (id)spokenGuidance;
 - (int)startValidDistance;
+- (bool)sticky;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -25,6 +25,8 @@
 @property (nonatomic, copy) NSString *multichannelAudioStrategy;
 @property (nonatomic, readonly) long long status;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (int)_createFigPlayerWithType:(long long)arg1 player:(struct OpaqueFigPlayer {}**)arg2;
 + (bool)automaticallyNotifiesObserversOfActionAtItemEnd;
 + (bool)automaticallyNotifiesObserversOfAirPlayVideoActive;
@@ -37,6 +39,9 @@
 + (bool)automaticallyNotifiesObserversOfUsesAudioOnlyModeForExternalPlayback;
 + (bool)automaticallyNotifiesObserversOfUsesLegacyAutomaticWaitingBehavior;
 + (bool)automaticallyNotifiesObserversOfVibrationPattern;
++ (long long)availableHDRModes;
++ (void)checkForAvailableHDRModesChanges;
++ (void)fireAvailableHDRModesDidChangeNotification;
 + (void)initialize;
 + (bool)isIAPDExtendedModeActive;
 + (id)keyPathsForValuesAffectingActionAtItemEnd;
@@ -47,6 +52,7 @@
 + (id)playerWithPlayerItem:(id)arg1;
 + (id)playerWithURL:(id)arg1;
 + (long long)propertyStorageCachePolicy;
++ (void)registerForScreenConnectionChanges;
 
 - (bool)_CALayerDestinationIsTVOut;
 - (long long)_actionAtItemEnd;
@@ -92,6 +98,7 @@
 - (void)_didFinishSuspension:(id)arg1;
 - (bool)_disallowsAMRAudio;
 - (bool)_disallowsHardwareAcceleratedVideoDecoder;
+- (bool)_disallowsVideoLayerDisplayCompositing;
 - (id)_displaysUsedForPlayback;
 - (bool)_dynamicallyChoosesInitialVariant;
 - (void)_enqueuePlayQueueModification_invokeOnIvarAccessQueue:(id)arg1;
@@ -111,6 +118,7 @@
 - (bool)_isIAPDExtendedModeActive;
 - (bool)_isMuted;
 - (bool)_isPIPModePossible;
+- (bool)_isVideoPlaybackAllowedWhileInBackground;
 - (void)_itemIsReadyToPlay:(id)arg1;
 - (long long)_itemOkayToPlayWhileTransitioningToBackground:(id)arg1;
 - (id)_items;
@@ -150,6 +158,7 @@
 - (void)_setClientName:(id)arg1;
 - (void)_setClientPriority:(long long)arg1;
 - (void)_setCurrentItem:(id)arg1;
+- (void)_setDisallowsVideoLayerDisplayCompositing:(bool)arg1;
 - (void)_setDisplaysUsedForPlayback:(id)arg1;
 - (void)_setDynamicallyChoosesInitialVariant:(bool)arg1;
 - (void)_setEQPreset:(int)arg1;
@@ -307,5 +316,9 @@
 - (id)vibrationPattern;
 - (float)volume;
 - (void)willChangeValueForKey:(id)arg1;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (id)pu_generateSnapshotImageAtTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 
 @end

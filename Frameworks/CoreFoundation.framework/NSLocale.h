@@ -6,6 +6,7 @@
 
 @property (readonly) long long _calendarDirection;
 @property (nonatomic, readonly) NSString *languageIdentifier;
+@property (nonatomic) int wf_temperatureUnit;
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
 
@@ -99,6 +100,68 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
++ (unsigned long long)pu_currentCharacterDirection;
+
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
++ (bool)_sf_isRTL;
+
+// Image: /System/Library/Frameworks/Social.framework/Social
+
++ (id)currentDeviceLanguageForFacebook;
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
++ (id)_UIKBPreferredLocale;
+
+// Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
+
++ (id)vs_systemLanaguage;
+
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
+
+- (bool)CalLanguageIsSimplifiedChinese;
+- (bool)CalPrefersFullMonthDisplayNames;
+- (bool)CalRegionIsChina;
+- (bool)CalShouldUseAbbreviatedDayNames;
+- (bool)CalUnableToAbbreviateMonthNames;
+- (bool)CalUsesCelsius;
+- (bool)_calendarIsIslamic;
+- (bool)_languageIsArabic;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
++ (id)__ck_currentLocale;
++ (void)__ck_setTestLocale:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/InternationalSupport.framework/InternationalSupport
+
++ (id)_ICUdisplayNameForLanguage:(id)arg1 capitalization:(struct ULocaleDisplayNames { }*)arg2;
++ (id)_addLikelySubtagsForLocaleIdentifier:(id)arg1;
++ (id)_displayNameForNormalizedLanguage:(id)arg1 context:(long long)arg2 displayLanguage:(id)arg3;
++ (id)_filterLanguageList:(id)arg1 forRegion:(id)arg2 fromLanguages:(id)arg3;
++ (id)_languageNameOverrides;
++ (id)_languagesForRegionWithoutFiltering:(id)arg1;
++ (id)_languagesToExemplarStrings;
++ (id)_normalizedLanguageIdentifierFromString:(id)arg1;
++ (id)_parentLocaleIdentifierForIdentifier:(id)arg1;
++ (id)baseLanguageFromLanguage:(id)arg1;
++ (id)baseSystemLanguages;
++ (id)deviceLanguage;
++ (id)displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
++ (id)displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(bool)arg4;
++ (id)exemplarForLanguage:(id)arg1;
++ (id)languageFromLanguage:(id)arg1 byReplacingRegion:(id)arg2;
++ (id)matchedLanguagesFromAvailableLanguages:(id)arg1 forPreferredLanguages:(id)arg2;
++ (id)supportedLanguages;
++ (id)supportedRegions;
++ (id)systemLanguagesForRegion:(id)arg1;
+
+- (id)displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
+- (id)displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(bool)arg4;
+
 // Image: /System/Library/PrivateFrameworks/IntlPreferences.framework/IntlPreferences
 
 + (id)addLikelySubtagsForLocaleIdentifier:(id)arg1;
@@ -132,15 +195,44 @@
 - (id)languageIdentifier;
 - (id)localeByChangingLanguageTo:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
+
++ (void)__loadSwizzledCurrentLocaleIfNeeded;
++ (void)__setCurrentLocal:(id)arg1;
++ (id)__userCurrentLocale;
+
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
 + (id)_localeOverridesForLocaleWithCountryCode:(id)arg1;
 + (void)_navigation_overrideDistanceUnit:(long long)arg1;
++ (id)_navigation_overrideDistanceUnitProvider;
++ (void)_navigation_setNeedsUpdateOverrideDistanceUnit;
++ (void)set_navigation_overrideDistanceUnitProvider:(id)arg1;
 
 - (bool)_navigation_distanceUsesMetricSystem;
 - (bool)_navigation_distanceUsesMetricSystemIgnoringUserPreference:(bool)arg1;
 - (id)_navigation_objectForKey:(id)arg1;
 - (bool)_navigation_useYardsForShortDistances;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
++ (id)fc_preferredLanguageCodes;
+
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
++ (id)tsu_firstPreferredLocalization;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
++ (id)pk_preferredLocale;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
++ (unsigned long long)px_currentCharacterDirection;
+
+// Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
+
++ (id)safari_localeIdentifiersForMostWidelyUsedLanguages;
 
 // Image: /System/Library/PrivateFrameworks/TextInput.framework/TextInput
 
@@ -149,5 +241,18 @@
 // Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
 
 + (long long)_vk_indexForLocale:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Weather.framework/Weather
+
+- (bool)isEqualToLocaleForWeather:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/WeatherFoundation.framework/WeatherFoundation
+
+- (void)setWf_temperatureUnit:(int)arg1;
+- (int)wf_temperatureUnit;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (id)tsu_firstPreferredLocalization;
 
 @end

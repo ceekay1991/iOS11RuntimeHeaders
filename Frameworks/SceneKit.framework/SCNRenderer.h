@@ -4,6 +4,7 @@
 
 @interface SCNRenderer : NSObject <SCNSceneRenderer, SCNTechniqueSupport> {
     unsigned long long  __antialiasingMode;
+    void __drawableSafeAreaInsets;
     double  __nextFrameTime;
     NSObject<OS_dispatch_queue> * __renderingQueue;
     struct SCNVector4 { 
@@ -33,8 +34,10 @@
     double  _currentSystemTime;
     id  _delegate;
     unsigned int  _delegateSupportsDidApplyAnimations;
+    unsigned int  _delegateSupportsDidApplyConstraints;
     unsigned int  _delegateSupportsDidRender;
     unsigned int  _delegateSupportsDidSimulatePhysics;
+    unsigned int  _delegateSupportsInputTime;
     unsigned int  _delegateSupportsUpdate;
     unsigned int  _delegateSupportsWillRender;
     double  _deltaTime;
@@ -70,6 +73,7 @@
     SCNRenderer * _preloadRenderer;
     <SCNSceneRenderer> * _privateRendererOwner;
     unsigned int  _privateRendererOwnerSupportsDidApplyAnimations;
+    unsigned int  _privateRendererOwnerSupportsDidApplyConstraints;
     unsigned int  _privateRendererOwnerSupportsDidRender;
     unsigned int  _privateRendererOwnerSupportsDidSimulatePhysics;
     unsigned int  _privateRendererOwnerSupportsUpdate;
@@ -148,6 +152,7 @@
 - (bool)_drawSceneWithLegacyRenderer:(struct __C3DScene { }*)arg1;
 - (bool)_drawSceneWithNewRenderer:(struct __C3DScene { }*)arg1;
 - (void)_drawWithJitteringPresentationMode;
+- (void)_drawableSafeAreaInsets;
 - (bool)_enablesDeferredShading;
 - (void)_endFrame;
 - (struct __C3DEngineContext { }*)_engineContext;
@@ -289,6 +294,7 @@
 - (void)set_collectCompilationErrors:(bool)arg1;
 - (void)set_deltaTime:(double)arg1;
 - (void)set_disableLinearRendering:(bool)arg1;
+- (void)set_drawableSafeAreaInsets;
 - (void)set_enablesDeferredShading:(bool)arg1;
 - (void)set_nextFrameTime:(double)arg1;
 - (void)set_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:(bool)arg1;

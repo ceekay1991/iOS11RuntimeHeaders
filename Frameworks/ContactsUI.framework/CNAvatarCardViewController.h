@@ -6,6 +6,7 @@
     CNContactActionsController * _actionsController;
     UIView * _actionsListView;
     NSLayoutConstraint * _actionsViewControllerHeightConstraint;
+    double  _borderMargin;
     CNAvatarCardController * _cardController;
     <CNAvatarCardViewControllerDelegate> * _delegate;
     UIView * _effectView;
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) UIView *actionsListView;
 @property (nonatomic) bool actionsReversed;
 @property (nonatomic, retain) NSLayoutConstraint *actionsViewControllerHeightConstraint;
+@property (nonatomic) double borderMargin;
 @property (nonatomic) bool bypassActionValidation;
 @property (nonatomic) CNAvatarCardController *cardController;
 @property (readonly, copy) NSString *debugDescription;
@@ -60,10 +62,10 @@
 - (bool)actionsReversed;
 - (id)actionsView;
 - (id)actionsViewControllerHeightConstraint;
+- (double)borderMargin;
 - (bool)bypassActionValidation;
 - (void)cardActionsView:(id)arg1 didShowActions:(id)arg2;
 - (id)cardActionsView:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
-- (void)cardActionsView:(id)arg1 willShowActions:(id)arg2;
 - (id)cardController;
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
 - (void)contentSizeCategoryDidChange:(id)arg1;
@@ -86,6 +88,7 @@
 - (void)setActionsListView:(id)arg1;
 - (void)setActionsReversed:(bool)arg1;
 - (void)setActionsViewControllerHeightConstraint:(id)arg1;
+- (void)setBorderMargin:(double)arg1;
 - (void)setBypassActionValidation:(bool)arg1;
 - (void)setCardController:(id)arg1;
 - (void)setDelegate:(id)arg1;
@@ -113,6 +116,7 @@
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
+- (id)viewForTouchContinuation;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)willAddActionsViewToHierarchy;

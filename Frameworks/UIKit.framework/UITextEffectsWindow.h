@@ -3,9 +3,16 @@
  */
 
 @interface UITextEffectsWindow : UIAutoRotatingWindow <_UIScreenBasedObject> {
+    UIScreen * __intendedScreen;
     unsigned long long  _activeEffectsCount;
     unsigned long long  _activeRemoteViewCount;
     double  _defaultWindowLevel;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _hostedSafeInsets;
     struct CGSize { 
         double width; 
         double height; 
@@ -29,13 +36,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } hostedFrame;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } hostedSafeInsets;
 @property (nonatomic) struct CGSize { double x1; double x2; } hostedSceneSize;
 @property (nonatomic) struct CGPoint { double x1; double x2; } hostedWindowOffset;
 @property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
-+ (id)_sharedTextEffectsWindowforScreen:(id)arg1 aboveStatusBar:(bool)arg2 allowHosted:(bool)arg3 matchesStatusBarOrientationOnAccess:(bool)arg4;
++ (id)_sharedTextEffectsWindowforScreen:(id)arg1 aboveStatusBar:(bool)arg2 allowHosted:(bool)arg3 matchesStatusBarOrientationOnAccess:(bool)arg4 shouldCreateIfNecessary:(bool)arg5;
 + (id)activeTextEffectsWindowForScreen:(id)arg1;
 + (void)lowerTextEffectsWindowsForHideNotificationCenter;
 + (void)raiseTextEffectsWindowsForShowNotificationCenter;
@@ -44,6 +52,7 @@
 + (id)sharedTextEffectsWindowAboveStatusBar;
 + (id)sharedTextEffectsWindowForScreen:(id)arg1;
 
+- (void).cxx_destruct;
 - (bool)_canActAsKeyWindowForScreen:(id)arg1;
 - (bool)_canAffectStatusBarAppearance;
 - (void)_commonTextEffectsInit;
@@ -74,10 +83,10 @@
 - (void)_updateTransformLayer;
 - (void)_updateTransformLayerForClassicPresentation;
 - (void)_willSnapshot;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)aboveStatusBarWindow;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })actualSceneBounds;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })actualSceneBoundsForLandscape:(bool)arg1;
@@ -93,13 +102,13 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 fromWindow:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 toView:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 toWindow:(id)arg2;
-- (void)dealloc;
 - (double)defaultWindowLevel;
 - (void)delayHideWindow;
 - (void)didAddSubview:(id)arg1;
 - (bool)enableRemoteHosting;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })hostedFrame;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })hostedSafeInsets;
 - (struct CGSize { double x1; double x2; })hostedSceneSize;
 - (struct CGPoint { double x1; double x2; })hostedWindowOffset;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -109,6 +118,7 @@
 - (void)sendSubviewToBack:(id)arg1;
 - (void)setDefaultWindowLevel:(double)arg1;
 - (void)setEnableRemoteHosting:(bool)arg1;
+- (void)setHostedSafeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setHostedSceneSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setHostedWindowOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)sortSubviews;

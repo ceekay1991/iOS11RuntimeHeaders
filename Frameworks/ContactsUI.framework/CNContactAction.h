@@ -31,6 +31,7 @@
 - (id)contact;
 - (id)delegate;
 - (id)description;
+- (id)init;
 - (id)initWithContact:(id)arg1;
 - (id)initWithTitle:(id)arg1 target:(id)arg2 selector:(SEL)arg3 destructive:(bool)arg4;
 - (bool)isDestructive;

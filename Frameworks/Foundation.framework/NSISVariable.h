@@ -3,9 +3,10 @@
  */
 
 @interface NSISVariable : NSObject <NSCoding> {
+    NSISEngine * _crossIndexEngine;
+    NSMutableSet * _crossIndexSet;
     <NSISVariableDelegate> * _delegate;
     unsigned int  _ident;
-    int  _refCount;
 }
 
 @property <NSISVariableDelegate> *delegate;
@@ -17,8 +18,6 @@
 + (id)variableWithName:(id)arg1 valueRestriction:(int)arg2 shouldBeMinimized:(bool)arg3;
 + (id)variableWithName:(id)arg1 valueRestriction:(int)arg2 shouldBeMinimized:(bool)arg3 valueIsUserObservable:(bool)arg4;
 
-- (bool)_isDeallocating;
-- (bool)_tryRetain;
 - (double)allowedMagnitudeForIntegralizationAdjustmentOfMarkedConstraint;
 - (id)delegate;
 - (id)description;
@@ -28,9 +27,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)markedConstraint;
 - (bool)markedConstraintIsEligibleForIntegralizationAdjustment;
-- (oneway void)release;
-- (id)retain;
-- (unsigned long long)retainCount;
 - (void)setDelegate:(id)arg1;
 - (bool)shouldBeIntegral;
 - (bool)shouldBeMinimized;

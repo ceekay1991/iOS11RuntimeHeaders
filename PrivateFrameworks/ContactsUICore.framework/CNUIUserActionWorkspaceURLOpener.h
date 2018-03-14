@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithWorkspace:(id)arg1;
+- (id)openURL:(id)arg1 isSensitive:(bool)arg2 withScheduler:(id)arg3;
 - (id)openURL:(id)arg1 withScheduler:(id)arg2;
 - (id)workspace;
 

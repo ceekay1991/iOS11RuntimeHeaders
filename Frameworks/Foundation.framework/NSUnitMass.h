@@ -4,6 +4,8 @@
 
 @interface NSUnitMass : NSDimension <NSSecureCoding>
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)baseUnit;
 + (id)carats;
@@ -22,5 +24,10 @@
 + (id)shortTons;
 + (id)slugs;
 + (id)stones;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
+- (id)hk_equivalentBaseUnit;
+- (id)hk_equivalentUnitWithConstant:(double)arg1 coefficient:(double)arg2;
 
 @end

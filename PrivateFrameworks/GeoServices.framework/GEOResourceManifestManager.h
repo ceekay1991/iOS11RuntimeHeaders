@@ -70,6 +70,7 @@
 - (id)allResourcePaths;
 - (id)authToken;
 - (id)baseURLStringForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
+- (void)cancelCurrentManifestUpdate;
 - (void)closeServerConnection;
 - (void)deactivateResourceScale:(int)arg1;
 - (void)deactivateResourceScenario:(int)arg1;
@@ -77,7 +78,7 @@
 - (id)detailedDescription;
 - (id)detailedDescriptionDictionaryRepresentation;
 - (void)devResourcesFolderDidChange;
-- (id)disputedBordersQueryStringForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1 country:(id)arg2 region:(id)arg3;
+- (id)disputedBordersQueryItemsForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1 country:(id)arg2 region:(id)arg3;
 - (void)fakeTileGroupChange;
 - (void)forceUpdate;
 - (void)getResourceManifestWithHandler:(id /* block */)arg1;
@@ -97,6 +98,7 @@
 - (void)removeDevResources;
 - (void)removeServerProxyObserver:(id)arg1;
 - (void)removeTileGroupObserver:(id)arg1;
+- (int)requestStyleForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (void)resetActiveTileGroup;
 - (id)serverProxy;
 - (oneway void)serverProxy:(id)arg1 didChangeActiveTileGroup:(id)arg2 finishedCallback:(id /* block */)arg3;
@@ -113,7 +115,9 @@
 - (bool)supportsTileStyle:(int)arg1 size:(int)arg2 scale:(int)arg3;
 - (double)timeToLiveForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (void)updateManifest:(id /* block */)arg1;
+- (void)updateManifest:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)updateManifestIfNecessary:(id /* block */)arg1;
+- (id)updateProgress;
 - (unsigned int)versionForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 
 @end

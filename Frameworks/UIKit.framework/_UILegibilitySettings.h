@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UILegibilitySettings : NSObject <NSSecureCoding> {
+@interface _UILegibilitySettings : NSObject <BSDescriptionProviding, NSSecureCoding> {
     UIColor * _contentColor;
     double  _imageOutset;
     double  _minFillHeight;
@@ -16,6 +16,9 @@
 }
 
 @property (nonatomic, retain) UIColor *contentColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double imageOutset;
 @property (nonatomic) double minFillHeight;
 @property (nonatomic, retain) UIColor *primaryColor;
@@ -25,6 +28,9 @@
 @property (nonatomic, copy) NSString *shadowCompositingFilterName;
 @property (nonatomic) double shadowRadius;
 @property (nonatomic) long long style;
+@property (readonly) Class superclass;
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (id)sharedInstanceForStyle:(long long)arg1;
 + (bool)supportsSecureCoding;
@@ -59,5 +65,16 @@
 - (id)shadowCompositingFilterName;
 - (double)shadowRadius;
 - (long long)style;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardFoundation.framework/SpringBoardFoundation
+
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)sb_copy;
+- (id)sb_description;
+- (bool)sb_isEqualToLegibilitySettings:(id)arg1;
+- (id)sb_styleString;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end

@@ -4,6 +4,7 @@
 
 @interface UIKBRenderFactoryiPadLandscape : UIKBRenderFactoryiPad
 
+- (id)ZWNJKeyImageName;
 - (double)bottomRowDefaultFontSize;
 - (double)defaultVariantSizeThreshold;
 - (double)deleteKeyFontSize;

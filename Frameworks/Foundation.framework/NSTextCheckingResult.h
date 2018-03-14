@@ -45,6 +45,7 @@
 - (id)phoneNumber;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })range;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })rangeAtIndex:(unsigned long long)arg1;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })rangeWithName:(id)arg1;
 - (id)referenceDate;
 - (id)regularExpression;
 - (id)replacementString;

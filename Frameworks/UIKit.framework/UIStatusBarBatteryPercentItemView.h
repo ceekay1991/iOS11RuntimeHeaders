@@ -6,9 +6,13 @@
     NSString * _percentString;
 }
 
-// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (void).cxx_destruct;
+
+// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+
+- (id)accessibilityHUDRepresentation;
 - (bool)animatesDataChange;
 - (id)contentsImage;
 - (double)extraRightPadding;

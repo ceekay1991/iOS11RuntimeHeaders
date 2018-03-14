@@ -2,28 +2,28 @@
    Image: /System/Library/PrivateFrameworks/MediaRemote.framework/MediaRemote
  */
 
-@interface MRNowPlayingClient : NSObject {
+@interface MRNowPlayingClient : NSObject <MRNowPlayingClientState> {
     void * _activePlayer;
-    void * _activePlayerPath;
     void * _client;
-    int  _notifyRestoreClientStateForLaunch;
-    NSArray * _nowPlayingClients;
     NSMutableArray * _playerClients;
+    void * _playerPath;
     NSObject<OS_dispatch_queue> * _serialQueue;
 }
 
-@property (nonatomic) void*activePlayerPath;
-@property (nonatomic, readonly) void*client;
-@property (nonatomic, readonly) NSArray *nowPlayingClients;
+@property (nonatomic) void*activePlayer;
+@property (nonatomic) void*client;
+@property (nonatomic, readonly) NSArray *playerClients;
 
 - (void*)activePlayer;
-- (void*)activePlayerPath;
 - (void*)client;
 - (void)dealloc;
 - (id)description;
-- (id)initWithClient:(void*)arg1;
-- (id)nowPlayingClients;
+- (id)initWithPlayerPath:(void*)arg1;
 - (id)nowPlayingPlayerClientForPlayerPath:(void*)arg1;
-- (void)setActivePlayerPath:(void*)arg1;
+- (id)playerClients;
+- (void)removePlayer:(void*)arg1;
+- (void)restoreNowPlayingClientState;
+- (void)setActivePlayer:(void*)arg1;
+- (void)setClient:(void*)arg1;
 
 @end

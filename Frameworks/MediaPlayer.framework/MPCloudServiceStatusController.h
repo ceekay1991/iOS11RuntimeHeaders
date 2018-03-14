@@ -2,13 +2,15 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPCloudServiceStatusController : NSObject <ISURLBagObserver, SSVPlaybackLeaseDelegate> {
+@interface MPCloudServiceStatusController : NSObject <ICEnvironmentMonitorObserver, ISURLBagObserver, SSVPlaybackLeaseDelegate> {
     unsigned long long  _URLBagObservationCount;
     NSObject<OS_dispatch_queue> * _accessQueue;
     unsigned long long  _accountStoreChangeObservationCount;
     unsigned long long  _automaticLeaseRefreshCount;
     NSObject<OS_dispatch_queue> * _calloutQueue;
     unsigned long long  _cloudLibraryObservationCount;
+    long long  _cloudLibraryStatus;
+    NSObject<OS_dispatch_queue> * _cloudLibraryStatusAccessQueue;
     NSOperationQueue * _fairPlayOperationQueue;
     SSVFairPlaySubscriptionController * _fairPlaySubscriptionController;
     unsigned long long  _fairPlaySubscriptionStatusObservationCount;
@@ -63,7 +65,6 @@
 - (id)_fairPlaySubscriptionController;
 - (void)_fairPlaySubscriptionControllerSubscriptionStatusDidChangeNotification:(id)arg1;
 - (void)_getCurrentFairPlaySubscriptionStatusWithCompletionHandler:(id /* block */)arg1;
-- (void)_networkReachabilityDidChangeNotification:(id)arg1;
 - (void)_setHasSubscriptionLease:(bool)arg1 endReasonType:(unsigned long long)arg2;
 - (id)_subscriptionOperationQueue;
 - (void)_subscriptionStatusDidChangeNotification:(id)arg1;
@@ -71,6 +72,7 @@
 - (void)_updateMatchStatus;
 - (void)_updateSubscriptionInformationWithEndReasonType:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)_updateWithURLBagDictionary:(id)arg1;
+- (void)_userIdentityStoreDidChange:(id)arg1;
 - (void)acquireSubscriptionLeaseWithCompletionHandler:(id /* block */)arg1;
 - (void)bagDidChange:(id)arg1;
 - (void)beginAutomaticallyRefreshingSubscriptionLease;
@@ -92,6 +94,7 @@
 - (void)endObservingSubscriptionAvailability;
 - (void)endObservingSubscriptionLease;
 - (void)endObservingSubscriptionStatus;
+- (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (void)getFairPlaySubscriptionStatusWithCompletionHandler:(id /* block */)arg1;
 - (void)getSubscriptionAssetWithRequest:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getSubscriptionStatusWithOptions:(id)arg1 statusBlock:(id /* block */)arg2;

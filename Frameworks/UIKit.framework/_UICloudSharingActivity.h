@@ -17,6 +17,7 @@
 @property (readonly) Class superclass;
 
 + (bool)_allowDocumentSharing;
++ (bool)_allowFolderSharing;
 + (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;
 

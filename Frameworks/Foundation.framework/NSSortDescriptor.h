@@ -52,4 +52,12 @@
 
 - (int)_MPMediaLibraryEntityTranslator_MLCoreSortDescriptorOrdering;
 
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (id)CKDPQuerySort;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (id)FCCKPQuerySort;
+
 @end

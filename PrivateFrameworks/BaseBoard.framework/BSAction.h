@@ -17,7 +17,7 @@
         unsigned int port; 
         NSObject<OS_xpc_object> *endpoint; 
     }  _queue_listenerTokens;
-    BSPortDeathWatcher * _queue_portDeathWatcher;
+    BSPortDeathSentinel * _queue_portDeathSentinel;
     BSMachPortReceiveRight * _queue_receiveRight;
     BSActionResponse * _queue_response;
     BSMachPortTransferableSendRight * _queue_sendRight;

@@ -30,6 +30,8 @@
 
 - (void).cxx_destruct;
 - (id)artworkValue;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)priceValue;
 - (void)setArtworkValue:(id)arg1;
 - (void)setPriceValue:(id)arg1;

@@ -13,6 +13,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateValuesForProperties:(id)arg1 usingBlock:(id /* block */)arg2;
 - (bool)existsInLibrary;
+- (void)incrementPlayCount;
 - (void)incrementPlayCountForPlayingToEnd;
 - (bool)incrementPlayCountForStopTime:(double)arg1;
 - (void)incrementSkipCount;

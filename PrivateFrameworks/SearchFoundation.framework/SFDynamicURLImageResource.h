@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFDynamicURLImageResource : NSObject <NSSecureCoding, SFDynamicURLImageResource> {
+@interface SFDynamicURLImageResource : NSObject <NSCopying, NSSecureCoding, SFDynamicURLImageResource> {
     NSString * _formatURL;
     struct { 
         unsigned int pixelWidth : 1; 
@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (id)_sf_replacementStringForPropertyEntryKey:(id)arg1 value:(id)arg2;
 - (id)_sf_urlForSettings:(id)arg1 shouldResize:(bool)arg2 width:(double)arg3 height:(double)arg4;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)formatURL;

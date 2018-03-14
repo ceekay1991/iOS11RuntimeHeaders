@@ -17,6 +17,7 @@
     UIBarButtonItemGroup * m_predictionGroup;
     NSLayoutConstraint * m_predictionWidthConstraint;
     UIKeyboardCandidatePocketShadow * m_rightBorder;
+    bool  m_setShowsCandidateInline;
     bool  m_show;
     struct CGRect { 
         struct CGPoint { 
@@ -45,6 +46,8 @@
 + (id)sharedInstance;
 + (double)sideBarWidthForOrientation:(long long)arg1;
 
+- (void)dealloc;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (id)BIUGenerator;
@@ -65,7 +68,6 @@
 - (id)barButtonItem:(unsigned long long)arg1;
 - (bool)canPerformAction:(int)arg1;
 - (id)currentAssistantItem;
-- (void)dealloc;
 - (id)defaultAssistantItem;
 - (id)deleteButtonItem;
 - (double)deleteKeyWidth;

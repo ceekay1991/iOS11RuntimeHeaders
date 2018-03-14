@@ -9,6 +9,8 @@
 
 @property (nonatomic, retain) MPModelTVEpisode *episode;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)requiredProperties;
 
 - (void).cxx_destruct;
@@ -36,5 +38,9 @@
 - (id)storeAsset;
 - (unsigned long long)storeSagaID;
 - (long long)storeSubscriptionAdamID;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)mqf_playbackItemMetadataModelObject;
 
 @end

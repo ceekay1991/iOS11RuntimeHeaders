@@ -3,6 +3,7 @@
  */
 
 @interface _UICollectionViewPlaceholderContext : NSObject <UICollectionViewPlaceholderContext, _UICollectionViewDropPlaceholderContext> {
+    _UIDropAnimationHandlers * _animationHandlers;
     id /* block */  _cellUpdateHandler;
     <_UICollectionViewPlaceholderContextDelegate> * _delegate;
     UIDragItem * _dragItem;
@@ -11,6 +12,7 @@
     NSUUID * _shadowUpdateIdentifier;
 }
 
+@property (nonatomic, retain) _UIDropAnimationHandlers *animationHandlers;
 @property (nonatomic, copy) id /* block */ cellUpdateHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <_UICollectionViewPlaceholderContextDelegate> *delegate;
@@ -23,6 +25,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)addAnimations:(id /* block */)arg1;
+- (void)addCompletion:(id /* block */)arg1;
+- (id)animationHandlers;
 - (id /* block */)cellUpdateHandler;
 - (bool)commitInsertionWithDataSourceUpdates:(id /* block */)arg1;
 - (id)delegate;
@@ -32,6 +37,7 @@
 - (id)initWithOriginalInsertionIndexPath:(id)arg1 dragItem:(id)arg2 reuseIdentifier:(id)arg3 delegate:(id)arg4 cellUpdateHandler:(id /* block */)arg5;
 - (id)originalInsertionIndexPath;
 - (id)reuseIdentifier;
+- (void)setAnimationHandlers:(id)arg1;
 - (void)setCellUpdateHandler:(id /* block */)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDragItem:(id)arg1;

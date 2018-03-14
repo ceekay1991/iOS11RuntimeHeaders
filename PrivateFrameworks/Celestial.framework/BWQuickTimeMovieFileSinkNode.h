@@ -97,6 +97,7 @@
         long long epoch; 
     }  _startingPTS;
     NSArray * _structuralDependentTrackReferenceListForMetadataInputs;
+    NSDictionary * _temporalScalabilityProperties;
     NSObject<OS_dispatch_queue> * _thumbnailGenerationDispatchQueue;
     struct __IOSurface { } * _thumbnailSurface;
     int * _trackIDs;

@@ -3,7 +3,6 @@
  */
 
 @interface BWColorLookupCache : NSObject {
-    NSBundle * _coreImageBundle;
     NSObject<OS_dispatch_queue> * _coreImageCacheIsolationQueue;
     NSMutableDictionary * _coreImageTableCache;
 }

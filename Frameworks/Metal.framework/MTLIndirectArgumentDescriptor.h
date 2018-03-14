@@ -2,10 +2,11 @@
    Image: /System/Library/Frameworks/Metal.framework/Metal
  */
 
-@interface MTLIndirectArgumentDescriptor : NSObject <NSCopying>
+@interface MTLIndirectArgumentDescriptor : MTLArgumentDescriptor
 
 @property (nonatomic) unsigned long long access;
 @property (nonatomic) unsigned long long arrayLength;
+@property (nonatomic) unsigned long long constantBlockAlignment;
 @property (nonatomic) unsigned long long dataType;
 @property (nonatomic) unsigned long long index;
 @property (nonatomic) unsigned long long textureType;

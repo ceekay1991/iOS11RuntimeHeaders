@@ -21,6 +21,7 @@
 @property (getter=isDemoAccount, nonatomic) bool demoAccount;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool displaysOnLockScreen;
+@property (nonatomic) bool forceDaemonAuthentication;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *initialPassword;
 @property (nonatomic, copy) NSString *okButtonLabel;
@@ -41,6 +42,7 @@
 @property (nonatomic, copy) NSDictionary *signupRequestParameters;
 @property (readonly) Class superclass;
 @property (nonatomic) long long tokenType;
+@property (nonatomic, copy) NSString *touchIDContinueToken;
 @property (nonatomic, copy) NSArray *userAgentComponents;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -59,6 +61,7 @@
 - (void)setClientIdentifierHeader:(id)arg1;
 - (void)setDemoAccount:(bool)arg1;
 - (void)setDisplaysOnLockScreen:(bool)arg1;
+- (void)setForceDaemonAuthentication:(bool)arg1;
 - (void)setHTTPHeaders:(id)arg1;
 - (void)setInitialPassword:(id)arg1;
 - (void)setOkButtonLabel:(id)arg1;
@@ -78,6 +81,7 @@
 - (void)setShouldSuppressDialogs:(bool)arg1;
 - (void)setSignupRequestParameters:(id)arg1;
 - (void)setTokenType:(long long)arg1;
+- (void)setTouchIDContinueToken:(id)arg1;
 - (void)setUserAgentComponents:(id)arg1;
 - (void)setValue:(id)arg1 forHTTPHeaderField:(id)arg2;
 - (void)setValuesWithAccount:(id)arg1;

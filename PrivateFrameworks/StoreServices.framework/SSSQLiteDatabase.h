@@ -31,7 +31,7 @@
 - (int)_openFlags;
 - (int)_resetAndReopenDatabaseWithPath:(id)arg1;
 - (void)_resetCorruptDatabase;
-- (bool)_resetDatabaseWithPath:(id)arg1;
+- (void)_resetDatabaseWithPath:(id)arg1;
 - (struct sqlite3_stmt { }*)_statementForSQL:(id)arg1 cache:(bool)arg2;
 - (void)accessDatabaseUsingBlock:(id /* block */)arg1;
 - (void)beginTaskCompletionAssertion;

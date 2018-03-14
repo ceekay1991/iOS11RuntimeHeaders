@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (unsigned int)cameraPriority;
+- (id)description;
 - (id)detailFormatForLocation:(id)arg1;
 - (bool)hasCameraPriority;
 - (bool)hasSpeedLimitText;

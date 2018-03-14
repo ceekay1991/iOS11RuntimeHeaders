@@ -3,34 +3,32 @@
  */
 
 @interface GEOMapItemVenueInfo : NSObject <GEOMapItemVenueInfo> {
-    NSArray * _buildings;
     <GEOMapItemVenueContents> * _contents;
+    NSArray * _filters;
     GEOMapItemParentVenue * _parent;
-    int  _venueBrowseType;
     int  _venueFeatureType;
     <GEOVenueIdentifier> * _venueIdentifier;
 }
 
-@property (nonatomic, readonly) NSArray *buildings;
 @property (nonatomic, readonly) <GEOMapItemVenueContents> *contents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) NSArray *filters;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) GEOMapItemParentVenue *parent;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) int venueBrowseType;
 @property (nonatomic, readonly) int venueFeatureType;
 @property (nonatomic, readonly) <GEOVenueIdentifier> *venueIdentifier;
 
 + (id)fakeVenueInfoForPlace:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)buildings;
+- (id)_filtersFromVenueInfo:(id)arg1;
 - (id)contents;
-- (id)initWithIdentifier:(id)arg1 featureType:(int)arg2 browseType:(int)arg3 buildings:(id)arg4 parent:(id)arg5 contents:(id)arg6;
+- (id)filters;
+- (id)initWithIdentifier:(id)arg1 featureType:(int)arg2 filters:(id)arg3 parent:(id)arg4 contents:(id)arg5;
 - (id)initWithVenueInfo:(id)arg1;
 - (id)parent;
-- (int)venueBrowseType;
 - (int)venueFeatureType;
 - (id)venueIdentifier;
 

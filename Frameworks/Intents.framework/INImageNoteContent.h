@@ -17,9 +17,9 @@
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)_initWithImage:(id)arg1;
-- (id)cacheableObjects;
+- (id)_intents_cacheableObjects;
+- (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)image;

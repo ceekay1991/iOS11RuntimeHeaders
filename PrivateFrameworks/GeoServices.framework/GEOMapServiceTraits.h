@@ -4,6 +4,7 @@
 
 @interface GEOMapServiceTraits : PBCodable <NSCopying> {
     int  _action;
+    NSString * _analyticsAppIdentifier;
     NSString * _appIdentifier;
     NSString * _appMajorVersion;
     NSString * _appMinorVersion;
@@ -32,11 +33,13 @@
         unsigned int carHeadunitPixelHeight : 1; 
         unsigned int carHeadunitPixelWidth : 1; 
         unsigned int mapZoomLevel : 1; 
+        unsigned int sessionRelativeTimestamp : 1; 
         unsigned int action : 1; 
         unsigned int carHeadunitConnectionType : 1; 
         unsigned int carHeadunitInteractionModel : 1; 
         unsigned int deviceBatteryState : 1; 
         unsigned int deviceInterfaceOrientation : 1; 
+        unsigned int httpRequestPriority : 1; 
         unsigned int mode : 1; 
         unsigned int photosCount : 1; 
         unsigned int requestMode : 1; 
@@ -51,9 +54,11 @@
         unsigned int navigating : 1; 
         unsigned int supportDirectionIntentSearch : 1; 
         unsigned int supportDymSuggestion : 1; 
+        unsigned int useBackgroundUrl : 1; 
         unsigned int wantsBrandIcon : 1; 
     }  _has;
     NSMutableArray * _historicalLocations;
+    unsigned int  _httpRequestPriority;
     bool  _isAPICall;
     bool  _isRedoSearch;
     struct { 
@@ -76,6 +81,7 @@
         unsigned long long _high; 
         unsigned long long _low; 
     }  _sessionId;
+    double  _sessionRelativeTimestamp;
     int  _source;
     bool  _supportDirectionIntentSearch;
     bool  _supportDymSuggestion;
@@ -89,12 +95,14 @@
         unsigned long long size; 
     }  _transportTypes;
     PBUnknownFields * _unknownFields;
+    bool  _useBackgroundUrl;
     GEOPDVenueIdentifier * _venueIdentifier;
     GEOWalkingOptions * _walkingOptions;
     bool  _wantsBrandIcon;
 }
 
 @property (nonatomic) int action;
+@property (nonatomic, retain) NSString *analyticsAppIdentifier;
 @property (nonatomic, retain) NSString *appIdentifier;
 @property (nonatomic, retain) NSString *appMajorVersion;
 @property (nonatomic, retain) NSString *appMinorVersion;
@@ -116,6 +124,7 @@
 @property (nonatomic, readonly) int*engineTypes;
 @property (nonatomic, readonly) unsigned long long engineTypesCount;
 @property (nonatomic) bool hasAction;
+@property (nonatomic, readonly) bool hasAnalyticsAppIdentifier;
 @property (nonatomic, readonly) bool hasAppIdentifier;
 @property (nonatomic, readonly) bool hasAppMajorVersion;
 @property (nonatomic, readonly) bool hasAppMinorVersion;
@@ -133,6 +142,7 @@
 @property (nonatomic, readonly) bool hasDeviceLocation;
 @property (nonatomic, readonly) bool hasDeviceSpokenLocale;
 @property (nonatomic, readonly) bool hasDisplayRegion;
+@property (nonatomic) bool hasHttpRequestPriority;
 @property (nonatomic) bool hasIsAPICall;
 @property (nonatomic) bool hasIsRedoSearch;
 @property (nonatomic, readonly) bool hasMapRegion;
@@ -145,6 +155,7 @@
 @property (nonatomic) bool hasReviewUserPhotosCount;
 @property (nonatomic) bool hasSequenceNumber;
 @property (nonatomic) bool hasSessionId;
+@property (nonatomic) bool hasSessionRelativeTimestamp;
 @property (nonatomic) bool hasSource;
 @property (nonatomic) bool hasSupportDirectionIntentSearch;
 @property (nonatomic) bool hasSupportDymSuggestion;
@@ -152,10 +163,12 @@
 @property (nonatomic) bool hasTimeSinceMapViewportChanged;
 @property (nonatomic, readonly) bool hasTransitOptions;
 @property (nonatomic, readonly) bool hasTransitScheduleFilter;
+@property (nonatomic) bool hasUseBackgroundUrl;
 @property (nonatomic, readonly) bool hasVenueIdentifier;
 @property (nonatomic, readonly) bool hasWalkingOptions;
 @property (nonatomic) bool hasWantsBrandIcon;
 @property (nonatomic, retain) NSMutableArray *historicalLocations;
+@property (nonatomic) unsigned int httpRequestPriority;
 @property (nonatomic) bool isAPICall;
 @property (nonatomic) bool isRedoSearch;
 @property (nonatomic, readonly) int*knownClientResolvedTypes;
@@ -172,6 +185,7 @@
 @property (nonatomic) unsigned int reviewUserPhotosCount;
 @property (nonatomic) unsigned int sequenceNumber;
 @property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionId;
+@property (nonatomic) double sessionRelativeTimestamp;
 @property (nonatomic) int source;
 @property (nonatomic) bool supportDirectionIntentSearch;
 @property (nonatomic) bool supportDymSuggestion;
@@ -182,6 +196,7 @@
 @property (nonatomic, readonly) int*transportTypes;
 @property (nonatomic, readonly) unsigned long long transportTypesCount;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
+@property (nonatomic) bool useBackgroundUrl;
 @property (nonatomic, retain) GEOPDVenueIdentifier *venueIdentifier;
 @property (nonatomic, retain) GEOWalkingOptions *walkingOptions;
 @property (nonatomic) bool wantsBrandIcon;
@@ -212,6 +227,7 @@
 - (void)addPhotoSizes:(id)arg1;
 - (void)addReviewUserPhotoSizes:(id)arg1;
 - (void)addTransportType:(int)arg1;
+- (id)analyticsAppIdentifier;
 - (id)appIdentifier;
 - (id)appMajorVersion;
 - (id)appMinorVersion;
@@ -253,6 +269,7 @@
 - (id)engineTypesAsString:(int)arg1;
 - (unsigned long long)engineTypesCount;
 - (bool)hasAction;
+- (bool)hasAnalyticsAppIdentifier;
 - (bool)hasAppIdentifier;
 - (bool)hasAppMajorVersion;
 - (bool)hasAppMinorVersion;
@@ -270,6 +287,7 @@
 - (bool)hasDeviceLocation;
 - (bool)hasDeviceSpokenLocale;
 - (bool)hasDisplayRegion;
+- (bool)hasHttpRequestPriority;
 - (bool)hasIsAPICall;
 - (bool)hasIsRedoSearch;
 - (bool)hasMapRegion;
@@ -282,6 +300,7 @@
 - (bool)hasReviewUserPhotosCount;
 - (bool)hasSequenceNumber;
 - (bool)hasSessionId;
+- (bool)hasSessionRelativeTimestamp;
 - (bool)hasSource;
 - (bool)hasSupportDirectionIntentSearch;
 - (bool)hasSupportDymSuggestion;
@@ -289,6 +308,7 @@
 - (bool)hasTimeSinceMapViewportChanged;
 - (bool)hasTransitOptions;
 - (bool)hasTransitScheduleFilter;
+- (bool)hasUseBackgroundUrl;
 - (bool)hasVenueIdentifier;
 - (bool)hasWalkingOptions;
 - (bool)hasWantsBrandIcon;
@@ -296,6 +316,7 @@
 - (id)historicalLocations;
 - (id)historicalLocationsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)historicalLocationsCount;
+- (unsigned int)httpRequestPriority;
 - (bool)isAPICall;
 - (bool)isEqual:(id)arg1;
 - (bool)isRedoSearch;
@@ -323,7 +344,9 @@
 - (unsigned int)reviewUserPhotosCount;
 - (unsigned int)sequenceNumber;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionId;
+- (double)sessionRelativeTimestamp;
 - (void)setAction:(int)arg1;
+- (void)setAnalyticsAppIdentifier:(id)arg1;
 - (void)setAppIdentifier:(id)arg1;
 - (void)setAppMajorVersion:(id)arg1;
 - (void)setAppMinorVersion:(id)arg1;
@@ -351,6 +374,7 @@
 - (void)setHasDeviceBatteryState:(bool)arg1;
 - (void)setHasDeviceInVehicle:(bool)arg1;
 - (void)setHasDeviceInterfaceOrientation:(bool)arg1;
+- (void)setHasHttpRequestPriority:(bool)arg1;
 - (void)setHasIsAPICall:(bool)arg1;
 - (void)setHasIsRedoSearch:(bool)arg1;
 - (void)setHasMapZoomLevel:(bool)arg1;
@@ -361,13 +385,16 @@
 - (void)setHasReviewUserPhotosCount:(bool)arg1;
 - (void)setHasSequenceNumber:(bool)arg1;
 - (void)setHasSessionId:(bool)arg1;
+- (void)setHasSessionRelativeTimestamp:(bool)arg1;
 - (void)setHasSource:(bool)arg1;
 - (void)setHasSupportDirectionIntentSearch:(bool)arg1;
 - (void)setHasSupportDymSuggestion:(bool)arg1;
 - (void)setHasTimeSinceMapEnteredForeground:(bool)arg1;
 - (void)setHasTimeSinceMapViewportChanged:(bool)arg1;
+- (void)setHasUseBackgroundUrl:(bool)arg1;
 - (void)setHasWantsBrandIcon:(bool)arg1;
 - (void)setHistoricalLocations:(id)arg1;
+- (void)setHttpRequestPriority:(unsigned int)arg1;
 - (void)setIsAPICall:(bool)arg1;
 - (void)setIsRedoSearch:(bool)arg1;
 - (void)setKnownClientResolvedTypes:(int*)arg1 count:(unsigned long long)arg2;
@@ -383,6 +410,7 @@
 - (void)setReviewUserPhotosCount:(unsigned int)arg1;
 - (void)setSequenceNumber:(unsigned int)arg1;
 - (void)setSessionId:(struct GEOSessionID { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setSessionRelativeTimestamp:(double)arg1;
 - (void)setSource:(int)arg1;
 - (void)setSupportDirectionIntentSearch:(bool)arg1;
 - (void)setSupportDymSuggestion:(bool)arg1;
@@ -391,6 +419,7 @@
 - (void)setTransitOptions:(id)arg1;
 - (void)setTransitScheduleFilter:(id)arg1;
 - (void)setTransportTypes:(int*)arg1 count:(unsigned long long)arg2;
+- (void)setUseBackgroundUrl:(bool)arg1;
 - (void)setVenueIdentifier:(id)arg1;
 - (void)setWalkingOptions:(id)arg1;
 - (void)setWantsBrandIcon:(bool)arg1;
@@ -408,6 +437,7 @@
 - (unsigned long long)transportTypesCount;
 - (int)uiActionType;
 - (id)unknownFields;
+- (bool)useBackgroundUrl;
 - (id)venueIdentifier;
 - (id)walkingOptions;
 - (bool)wantsBrandIcon;

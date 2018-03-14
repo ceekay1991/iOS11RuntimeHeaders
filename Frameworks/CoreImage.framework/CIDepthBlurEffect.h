@@ -4,6 +4,7 @@
 
 @interface CIDepthBlurEffect : CIFilter {
     NSNumber * inputAperture;
+    id  inputAuxDataMetadata;
     AVCameraCalibrationData * inputCalibrationData;
     CIVector * inputChinPositions;
     CIImage * inputDisparityImage;
@@ -14,10 +15,10 @@
     CIVector * inputNosePositions;
     CIVector * inputRightEyePositions;
     NSNumber * inputScaleFactor;
-    NSDictionary * inputTuningParameters;
 }
 
 @property (nonatomic, retain) NSNumber *inputAperture;
+@property (nonatomic, retain) id inputAuxDataMetadata;
 @property (nonatomic, copy) AVCameraCalibrationData *inputCalibrationData;
 @property (nonatomic, retain) CIVector *inputChinPositions;
 @property (retain) CIImage *inputDisparityImage;
@@ -28,11 +29,12 @@
 @property (nonatomic, retain) CIVector *inputNosePositions;
 @property (nonatomic, retain) CIVector *inputRightEyePositions;
 @property (nonatomic, retain) NSNumber *inputScaleFactor;
-@property (nonatomic, copy) NSDictionary *inputTuningParameters;
 
 + (id)customAttributes;
 
+- (id)_getFocusRect:(id)arg1 focusRect:(id)arg2;
 - (id)inputAperture;
+- (id)inputAuxDataMetadata;
 - (id)inputCalibrationData;
 - (id)inputChinPositions;
 - (id)inputDisparityImage;
@@ -43,9 +45,9 @@
 - (id)inputNosePositions;
 - (id)inputRightEyePositions;
 - (id)inputScaleFactor;
-- (id)inputTuningParameters;
 - (id)outputImage;
 - (void)setInputAperture:(id)arg1;
+- (void)setInputAuxDataMetadata:(id)arg1;
 - (void)setInputCalibrationData:(id)arg1;
 - (void)setInputChinPositions:(id)arg1;
 - (void)setInputDisparityImage:(id)arg1;
@@ -56,7 +58,6 @@
 - (void)setInputNosePositions:(id)arg1;
 - (void)setInputRightEyePositions:(id)arg1;
 - (void)setInputScaleFactor:(id)arg1;
-- (void)setInputTuningParameters:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 
 @end

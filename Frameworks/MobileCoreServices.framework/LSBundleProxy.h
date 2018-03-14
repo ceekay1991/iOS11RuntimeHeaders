@@ -8,6 +8,7 @@
     _LSLazyPropertyList * __environmentVariables;
     _LSLazyPropertyList * __groupContainers;
     _LSLazyPropertyList * __infoDictionary;
+    _LSBundleIDValidationToken * __validationToken;
     NSString * _bundleExecutable;
     unsigned long long  _bundleFlags;
     NSString * _bundleType;
@@ -33,6 +34,7 @@
 @property (setter=_setEnvironmentVariables:, nonatomic, copy) _LSLazyPropertyList *_environmentVariables;
 @property (setter=_setGroupContainers:, nonatomic, copy) _LSLazyPropertyList *_groupContainers;
 @property (setter=_setInfoDictionary:, nonatomic, copy) _LSLazyPropertyList *_infoDictionary;
+@property (setter=_setValidationToken:, nonatomic, retain) _LSBundleIDValidationToken *_validationToken;
 @property (nonatomic, readonly) NSURL *appStoreReceiptURL;
 @property (nonatomic, readonly) NSURL *bundleContainerURL;
 @property (nonatomic, readonly) NSString *bundleExecutable;
@@ -61,6 +63,7 @@
 // Image: /System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
 
 + (id)bundleProxyForCurrentProcess;
++ (bool)bundleProxyForCurrentProcessNeedsUpdate:(id)arg1;
 + (id)bundleProxyForIdentifier:(id)arg1;
 + (id)bundleProxyForURL:(id)arg1;
 + (bool)canInstantiateFromDatabase;
@@ -81,6 +84,8 @@
 - (void)_setEnvironmentVariables:(id)arg1;
 - (void)_setGroupContainers:(id)arg1;
 - (void)_setInfoDictionary:(id)arg1;
+- (void)_setValidationToken:(id)arg1;
+- (id)_validationToken;
 - (id)_valueForEqualityTesting;
 - (id)appStoreReceiptName;
 - (id)appStoreReceiptURL;
@@ -120,15 +125,23 @@
 - (id)sdkVersion;
 - (unsigned long long)sequenceNumber;
 - (void)setMachOUUIDs:(id)arg1;
-- (void)setPropertyListCachingStrategy:(unsigned long long)arg1;
 - (void)setSDKVersion:(id)arg1;
 - (id)signerIdentity;
 - (id)signerOrganization;
 - (id)uniqueIdentifier;
 
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
++ (id)_hk_appExtensionContainerBundleProxyWithProperties:(id)arg1;
++ (id)hk_appExtensionContainerBundleForConnection:(id)arg1;
+
 // Image: /System/Library/Frameworks/UserNotifications.framework/UserNotifications
 
 - (id)un_applicationBundleIdentifier;
 - (id)un_applicationBundleURL;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
+- (id)__ck_icon;
 
 @end

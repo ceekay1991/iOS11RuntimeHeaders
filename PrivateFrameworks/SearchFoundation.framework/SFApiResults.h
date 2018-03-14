@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFApiResults : NSObject <NSSecureCoding, SFApiResults> {
+@interface SFApiResults : NSObject <NSCopying, NSSecureCoding, SFApiResults> {
     NSArray * _flights;
     struct { 
         unsigned int status : 1; 
@@ -25,6 +25,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)flights;

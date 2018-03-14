@@ -18,16 +18,18 @@
     long long  _barStyle;
     UIColor * _barTintColor;
     long long  _barTranslucence;
+    int  _currentPushTransition;
     <_UINavigationBarDelegatePrivate> * _delegate;
-    UIImage * _largeTitleBackgroundImage;
     NSDictionary * _largeTitleTextAttributes;
     _UIViewControllerTransitionContext * _navControllerAnimatingContext;
     struct { 
         unsigned int titleAutosizesToFit : 1; 
         unsigned int forceFullHeightInLandscape : 1; 
         unsigned int isLocked : 1; 
+        unsigned int isIgnoringLock : 1; 
         unsigned int isContainedInPopover : 1; 
         unsigned int layoutInProgress : 1; 
+        unsigned int delegateRespondsToFreezeLayoutForDismissalSelector : 1; 
     }  _navbarFlags;
     bool  _prefersLargeTitles;
     long long  _requestedContentSize;
@@ -86,7 +88,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isMinibar;
 @property (nonatomic, copy) NSArray *items;
-@property (nonatomic, retain) UIImage *largeTitleBackgroundImage;
 @property (nonatomic, copy) NSDictionary *largeTitleTextAttributes;
 @property (getter=isLocked, nonatomic) bool locked;
 @property (nonatomic) bool prefersLargeTitles;
@@ -117,6 +118,7 @@
 + (struct CGSize { double x1; double x2; })defaultSizeWithPrompt;
 + (struct CGSize { double x1; double x2; })defaultSizeWithPromptForOrientation:(long long)arg1;
 
+- (void).cxx_destruct;
 - (id)_accessibilityButtonBackgroundTintColor;
 - (void)_accessibilityButtonShapesDidChangeNotification:(id)arg1;
 - (void)_accessibilityButtonShapesParametersDidChange;
@@ -133,6 +135,7 @@
 - (void)_addItems:(id)arg1 withEffectiveDelegate:(id)arg2 transition:(int)arg3;
 - (id)_allViews;
 - (bool)_allowInteractionDuringTransition;
+- (void)_animateForSearchPresentation:(bool)arg1;
 - (id)_animationIds;
 - (id)_appearanceStorage;
 - (void)_applySPIAppearanceToButtons;
@@ -145,7 +148,7 @@
 - (id)_backgroundView;
 - (id)_backgroundViewForPalette:(id)arg1;
 - (long long)_barPosition;
-- (void)_barSizeDidChange;
+- (void)_barSizeDidChange:(struct CGSize { double x1; double x2; })arg1;
 - (long long)_barStyle;
 - (long long)_barTranslucence;
 - (bool)_canHandleStatusBarTouchAtLocation:(struct CGPoint { double x1; double x2; })arg1;
@@ -179,6 +182,7 @@
 - (id)_effectiveBarTintColor;
 - (void)_effectiveBarTintColorDidChangeWithPreviousColor:(id)arg1;
 - (id)_effectiveDelegate;
+- (long long)_effectiveMetricsForMetrics:(long long)arg1;
 - (void)_enableAnimation;
 - (void)_evaluateBackIndicatorForHilightedState:(bool)arg1 ofBarButtonItem:(id)arg2 inNavigationItem:(id)arg3;
 - (void)_fadeAllViewsIn;
@@ -187,9 +191,12 @@
 - (void)_getBackgroundImage:(id*)arg1 shouldRespectOversizedBackgroundImage:(bool*)arg2 actualBarMetrics:(long long*)arg3 actualBarPosition:(long long*)arg4;
 - (bool)_hasBackButton;
 - (bool)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long*)arg1;
+- (bool)_hasLegacyProvider;
 - (double)_heightIncludingBackground;
 - (struct { double x1; double x2; })_heightRangeForNavigationItem:(id)arg1 fittingWidth:(double)arg2;
 - (bool)_hidesShadow;
+- (bool)_hostsLayoutEngineAllowsTAMIC_NO;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_incomingNavigationBarFrame;
 - (double)_internalShadowAlpha;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (bool)_isAlwaysHidden;
@@ -200,6 +207,7 @@
 - (bool)_modernIsTranslucent;
 - (double)_overrideBackgroundExtension;
 - (void)_palette:(id)arg1 isAttaching:(bool)arg2 didComplete:(bool)arg3;
+- (void)_performUpdatesIgnoringLock:(id /* block */)arg1;
 - (id)_popNavigationItemWithTransition:(int)arg1;
 - (void)_popNavigationItemWithTransitionAssistant:(id)arg1;
 - (void)_popNestedNavigationItem;
@@ -207,6 +215,7 @@
 - (void)_propagateEffectiveBarTintColorWithPreviousColor:(id)arg1;
 - (void)_pushNavigationItem:(id)arg1 transition:(int)arg2;
 - (void)_pushNavigationItem:(id)arg1 transitionAssistant:(id)arg2;
+- (void)_pushNavigationItemUsingCurrentTransition:(id)arg1;
 - (void)_pushNestedNavigationItem:(id)arg1;
 - (void)_redisplayItems;
 - (void)_reenableUserInteraction;
@@ -267,6 +276,7 @@
 - (double)_titleOpacity;
 - (id)_titleTextColor;
 - (int)_transitionForOldItems:(id)arg1 newItems:(id)arg2;
+- (void)_uikit_applyValueFromTraitStorage:(id)arg1 forKeyPath:(id)arg2;
 - (void)_updateActiveBarMetrics;
 - (void)_updateBackButtonVisibilityIfTop:(id)arg1 animated:(bool)arg2;
 - (void)_updateBackIndicatorImage;
@@ -284,10 +294,15 @@
 - (bool)_wantsLargeTitleDisplayed;
 - (bool)_wantsLetterpressContent;
 - (void)_willMoveToWindow:(id)arg1;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)addConstraint:(id)arg1;
 - (bool)alwaysUseDefaultMetrics;
 - (long long)animationDisabledCount;
@@ -310,11 +325,9 @@
 - (long long)currentContentSize;
 - (id)currentLeftView;
 - (id)currentRightView;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (double)defaultBackButtonAlignmentHeight;
 - (double)defaultHeight;
+- (double)defaultHeightForMetrics:(long long)arg1;
 - (struct CGSize { double x1; double x2; })defaultSizeForOrientation:(long long)arg1;
 - (id)delegate;
 - (void)didAddSubview:(id)arg1;
@@ -339,7 +352,6 @@
 - (bool)isMinibar;
 - (bool)isTranslucent;
 - (id)items;
-- (id)largeTitleBackgroundImage;
 - (id)largeTitleTextAttributes;
 - (void)layoutMarginsDidChange;
 - (void)layoutSublayersOfLayer:(id)arg1;
@@ -375,7 +387,6 @@
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setItems:(id)arg1;
 - (void)setItems:(id)arg1 animated:(bool)arg2;
-- (void)setLargeTitleBackgroundImage:(id)arg1;
 - (void)setLargeTitleTextAttributes:(id)arg1;
 - (void)setLocked:(bool)arg1;
 - (void)setNavigationItems:(id)arg1;
@@ -419,5 +430,20 @@
 // Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
 
 - (void)_cnui_applyContactStyle;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
+- (void)setBizEffectStyle:(bool)arg1;
+- (void)setDarkEffectStyle:(bool)arg1;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
+
+- (void)_gkApplyTheme:(id)arg1;
+- (void)_gkApplyTheme:(id)arg1 navbarStyle:(long long)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
 
 @end

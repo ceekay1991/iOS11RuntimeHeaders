@@ -13,10 +13,9 @@
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (id)attribute;
-- (id)description;
 - (id)domain;
 - (id)entities;
 - (id)initWithEntities:(id)arg1 attribute:(id)arg2;

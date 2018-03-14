@@ -6,7 +6,7 @@
     FPXExtensionContext * _context;
     id  _exportedObject;
     NSXPCInterface * _interface;
-    NSString * _messageInterfaceName;
+    NSString * _serviceName;
 }
 
 @property (nonatomic, retain) FPXExtensionContext *context;
@@ -15,7 +15,7 @@
 @property (nonatomic, retain) id exportedObject;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSXPCInterface *interface;
-@property (nonatomic, copy) NSString *messageInterfaceName;
+@property (nonatomic, copy) NSString *serviceName;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -23,10 +23,10 @@
 - (id)exportedObject;
 - (id)interface;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (id)messageInterfaceName;
+- (id)serviceName;
 - (void)setContext:(id)arg1;
 - (void)setExportedObject:(id)arg1;
 - (void)setInterface:(id)arg1;
-- (void)setMessageInterfaceName:(id)arg1;
+- (void)setServiceName:(id)arg1;
 
 @end

@@ -27,6 +27,7 @@
 + (id)hardMix;
 + (id)hue;
 + (id)kernelWithString:(id)arg1;
++ (id)kernelWithString:(id)arg1 extentType:(int)arg2;
 + (id)lighten;
 + (id)lighterColor;
 + (id)linearBurn;
@@ -49,6 +50,8 @@
 + (id)subtract;
 + (id)vividLight;
 
+- (id)applyWithForeground:(id)arg1 background:(id)arg2;
 - (id)initWithString:(id)arg1;
+- (id)initWithString:(id)arg1 extentType:(int)arg2;
 
 @end

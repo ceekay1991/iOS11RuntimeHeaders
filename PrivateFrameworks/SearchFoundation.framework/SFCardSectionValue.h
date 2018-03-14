@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFCardSectionValue : NSObject <NSSecureCoding, SFCardSectionValue> {
+@interface SFCardSectionValue : NSObject <NSCopying, NSSecureCoding, SFCardSectionValue> {
     SFActivityIndicatorCardSection * _activityIndicatorCardSection;
     SFAppLinkCardSection * _appLinkCardSection;
     SFAudioPlaybackCardSection * _audioPlaybackCardSection;
@@ -30,6 +30,7 @@
     SFTextColumnsCardSection * _textColumnsCardSection;
     SFTitleCardSection * _titleCardSection;
     SFTrackListCardSection * _trackListCardSection;
+    SFWatchListCardSection * _watchListCardSection;
     SFWebCardSection * _webCardSection;
 }
 
@@ -66,6 +67,7 @@
 @property (nonatomic, retain) SFTextColumnsCardSection *textColumnsCardSection;
 @property (nonatomic, retain) SFTitleCardSection *titleCardSection;
 @property (nonatomic, retain) SFTrackListCardSection *trackListCardSection;
+@property (nonatomic, retain) SFWatchListCardSection *watchListCardSection;
 @property (nonatomic, retain) SFWebCardSection *webCardSection;
 
 + (bool)supportsSecureCoding;
@@ -74,6 +76,7 @@
 - (id)activityIndicatorCardSection;
 - (id)appLinkCardSection;
 - (id)audioPlaybackCardSection;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)descriptionCardSection;
 - (id)detailedRowCardSection;
 - (id)dictionaryRepresentation;
@@ -122,6 +125,7 @@
 - (void)setTextColumnsCardSection:(id)arg1;
 - (void)setTitleCardSection:(id)arg1;
 - (void)setTrackListCardSection:(id)arg1;
+- (void)setWatchListCardSection:(id)arg1;
 - (void)setWebCardSection:(id)arg1;
 - (id)socialMediaPostCardSection;
 - (id)stockChartCardSection;
@@ -131,6 +135,7 @@
 - (id)textColumnsCardSection;
 - (id)titleCardSection;
 - (id)trackListCardSection;
+- (id)watchListCardSection;
 - (id)webCardSection;
 
 @end

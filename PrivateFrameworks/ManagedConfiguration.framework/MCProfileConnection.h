@@ -25,6 +25,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSXPCConnection *xpcConnection;
 
+// Image: /System/Library/PrivateFrameworks/ManagedConfiguration.framework/ManagedConfiguration
+
 + (id)profileInstallationErrorWithUnderlyingError:(id)arg1;
 + (id)sharedConnection;
 
@@ -112,7 +114,15 @@
 - (id)deviceDepartmentName;
 - (id)deviceIfLostMessage;
 - (id)deviceLockScreenFootnote;
+- (id)deviceOrganizationAddress;
+- (id)deviceOrganizationAddressLine1;
+- (id)deviceOrganizationAddressLine2;
+- (id)deviceOrganizationAddressLine3;
+- (id)deviceOrganizationCity;
+- (id)deviceOrganizationCountry;
 - (id)deviceOrganizationName;
+- (id)deviceOrganizationRegion;
+- (id)deviceOrganizationZipCode;
 - (id)deviceProvisionalEnrollmentFootnote;
 - (id)diagnosticsUploadURL;
 - (void)doMCICDidBeginInstallingNextProfileData:(id)arg1 completion:(id /* block */)arg2;
@@ -124,6 +134,9 @@
 - (void)doMCICDidUpdateStatus:(id)arg1 completion:(id /* block */)arg2;
 - (id)doNotBackupAppIDs;
 - (id)doNotDocumentSyncAppIDs;
+- (long long)dragDropBidirectionalManagementStateForBaseBundleID:(id)arg1;
+- (long long)dragDropSourceManagementStateForBundleID:(id)arg1;
+- (long long)dragDropTargetManagementStateForBundleID:(id)arg1;
 - (id)effectiveBlacklistedAppBundleIDs;
 - (id)effectiveBlacklistedAppBundleIDsExcludingRemovedSystemApps;
 - (void)effectiveBlacklistedAppBundleIDsExcludingRemovedSystemApps:(bool)arg1 completion:(id /* block */)arg2;
@@ -180,6 +193,7 @@
 - (id)installedSystemProfileWithIdentifier:(id)arg1;
 - (id)installedUserProfileDataWithIdentifier:(id)arg1;
 - (id)installedUserProfileWithIdentifier:(id)arg1;
+- (bool)isAccessibilitySpeechAllowed;
 - (bool)isActivationLockAllowed;
 - (bool)isActivityContinuationAllowed;
 - (bool)isAdTrackingLimited;
@@ -203,6 +217,8 @@
 - (bool)isAppRatingLimitInEffect;
 - (bool)isAppRemovalAllowed;
 - (bool)isAssistantUserGeneratedContentAllowed;
+- (bool)isAttentionAwareAutoLockAllowed;
+- (bool)isAuthenticationBeforeAutoFillRequired;
 - (bool)isAutoCorrectionAllowed;
 - (bool)isAutomaticAppDownloadsAllowed;
 - (bool)isAutomaticAppUpdatesAllowed;
@@ -210,6 +226,8 @@
 - (bool)isAwaitingDeviceConfigured;
 - (bool)isBluetoothModificationAllowed;
 - (bool)isBoolSettingLockedDownByRestrictions:(id)arg1;
+- (bool)isBundleIDAccountBasedForDragDrop:(id)arg1;
+- (bool)isCellularPlanModificationAllowed;
 - (bool)isChaperoned;
 - (bool)isClassroomAutomaticClassJoiningForced;
 - (bool)isClassroomEnabled;
@@ -277,6 +295,7 @@
 - (void)isProfileInstalledWithIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (bool)isProfileUIInstallationAllowed;
 - (bool)isProvisionallyEnrolled;
+- (bool)isProximitySetupToNewDeviceAllowed;
 - (bool)isRemoteAppPairingAllowed;
 - (bool)isSafariPasswordAutoFillAllowedForURL:(id)arg1;
 - (bool)isScreenRecordingAllowed;
@@ -308,6 +327,7 @@
 - (bool)isWebFilterUIActive;
 - (bool)isWebTextDefineAllowed;
 - (bool)isWheelchairDataSubmissionAllowed;
+- (bool)isWiFiPasswordSharingAllowed;
 - (bool)isWiFiWhitelistingEnforced;
 - (bool)isiCloudDriveAllowed;
 - (bool)isiTunesAllowed;
@@ -319,6 +339,7 @@
 - (void)lockDeviceImmediately:(bool)arg1;
 - (void)lockdownDidReceiveActivationRecord:(id)arg1;
 - (id)lockedDownRootCertificatesWithOutLocalizedSourceDescription:(id*)arg1;
+- (id)managedAppBundleIDs;
 - (id)managedAppIDs;
 - (id)managedAppIDsWithFlags:(int)arg1;
 - (id)managedEmailDomains;
@@ -336,7 +357,7 @@
 - (bool)mayShowLocalAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
 - (void)migratePostDataMigrator;
 - (void)migratePostMDMDataMigratorWithContext:(int)arg1 completion:(id /* block */)arg2;
-- (void)migrateWithContext:(int)arg1 passcodeWasSetInBackup:(bool)arg2 forceAllowHostPairing:(bool)arg3 completion:(id /* block */)arg4;
+- (void)migrateWithContext:(int)arg1 passcodeWasSetInBackup:(bool)arg2 completion:(id /* block */)arg3;
 - (int)minimumNewPasscodeEntryScreenTypeWithOutSimplePasscodeType:(int*)arg1;
 - (bool)mustInstallProfileNonInteractively:(id)arg1;
 - (int)newPasscodeEntryScreenType;
@@ -387,10 +408,13 @@
 - (void)removeOrphanedClientRestrictionsWithCompletion:(id /* block */)arg1;
 - (void)removeProfileAsyncWithIdentifier:(id)arg1;
 - (void)removeProfileAsyncWithIdentifier:(id)arg1 installationType:(long long)arg2;
+- (void)removeProfileAsyncWithIdentifier:(id)arg1 installationType:(long long)arg2 completion:(id /* block */)arg3;
 - (void)removeProfileWithIdentifier:(id)arg1;
 - (void)removeProfileWithIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)removeProfileWithIdentifier:(id)arg1 installationType:(long long)arg2;
 - (void)removeProfileWithIdentifier:(id)arg1 installationType:(long long)arg2 completion:(id /* block */)arg3;
+- (void)removeProtectedProfileAsyncWithIdentifier:(id)arg1 installationType:(long long)arg2;
+- (void)removeProtectedProfileAsyncWithIdentifier:(id)arg1 installationType:(long long)arg2 completion:(id /* block */)arg3;
 - (bool)removeProvisioningProfileWithUUID:(id)arg1 outError:(id*)arg2;
 - (void)removeValueSetting:(id)arg1;
 - (void)removeWebContentFilterUserBlacklistedURLString:(id)arg1;
@@ -437,7 +461,7 @@
 - (void)setAutomaticAppUpdatesAllowed:(bool)arg1;
 - (void)setBoolValue:(bool)arg1 ask:(bool)arg2 forSetting:(id)arg3 configurationUUID:(id)arg4 toSystem:(bool)arg5 user:(bool)arg6 passcode:(id)arg7;
 - (void)setBoolValue:(bool)arg1 ask:(bool)arg2 forSetting:(id)arg3 configurationUUID:(id)arg4 toSystem:(bool)arg5 user:(bool)arg6 passcode:(id)arg7 completion:(id /* block */)arg8;
-- (void)setBoolValue:(bool)arg1 ask:(bool)arg2 forSetting:(id)arg3 configurationUUID:(id)arg4 toSystem:(bool)arg5 user:(bool)arg6 passcode:(id)arg7 waitUntilCompleted:(bool)arg8 completion:(id /* block */)arg9;
+- (void)setBoolValue:(bool)arg1 ask:(bool)arg2 forSetting:(id)arg3 configurationUUID:(id)arg4 toSystem:(bool)arg5 user:(bool)arg6 passcode:(id)arg7 credentialSet:(id)arg8 waitUntilCompleted:(bool)arg9 completion:(id /* block */)arg10;
 - (void)setBoolValue:(bool)arg1 ask:(bool)arg2 forSetting:(id)arg3 passcode:(id)arg4;
 - (void)setBoolValue:(bool)arg1 ask:(bool)arg2 forSetting:(id)arg3 passcode:(id)arg4 completion:(id /* block */)arg5;
 - (void)setBoolValue:(bool)arg1 ask:(bool)arg2 forSetting:(id)arg3 toSystem:(bool)arg4 user:(bool)arg5 passcode:(id)arg6 completion:(id /* block */)arg7;
@@ -457,6 +481,7 @@
 - (void)setExplicitContentAllowed:(bool)arg1 ask:(bool)arg2 completion:(id /* block */)arg3;
 - (void)setFeatureM1Allowed:(bool)arg1;
 - (void)setFindMyCarAllowed:(bool)arg1;
+- (void)setFingerprintUnlockAllowed:(bool)arg1 credentialSet:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)setFingerprintUnlockAllowed:(bool)arg1 passcode:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)setGracePeriod:(unsigned long long)arg1 passcode:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)setHealthDataSubmission2Allowed:(bool)arg1;
@@ -469,7 +494,7 @@
 - (void)setParameters:(id)arg1 forBoolSetting:(id)arg2;
 - (void)setParameters:(id)arg1 forValueSetting:(id)arg2;
 - (void)setParametersForSettingsByType:(id)arg1;
-- (void)setParametersForSettingsByType:(id)arg1 configurationUUID:(id)arg2 toSystem:(bool)arg3 user:(bool)arg4 passcode:(id)arg5 waitUntilCompleted:(bool)arg6 completion:(id /* block */)arg7;
+- (void)setParametersForSettingsByType:(id)arg1 configurationUUID:(id)arg2 toSystem:(bool)arg3 user:(bool)arg4 passcode:(id)arg5 credentialSet:(id)arg6 waitUntilCompleted:(bool)arg7 completion:(id /* block */)arg8;
 - (void)setParametersForSettingsByType:(id)arg1 passcode:(id)arg2;
 - (void)setParametersForSettingsByType:(id)arg1 passcode:(id)arg2 completion:(id /* block */)arg3;
 - (void)setParametersForSettingsByType:(id)arg1 toSystem:(bool)arg2 user:(bool)arg3;
@@ -553,5 +578,9 @@
 - (id)webContentFilterEffectiveBlacklistedURLStrings;
 - (id)webContentFilterUserBlacklistedURLStrings;
 - (id)xpcConnection;
+
+// Image: /System/Library/PrivateFrameworks/WebUI.framework/WebUI
+
+- (bool)installConfigurationProfileWithData:(id)arg1;
 
 @end

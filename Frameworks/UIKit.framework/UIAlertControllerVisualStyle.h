@@ -28,6 +28,9 @@
 - (double)_scaledMarginBelowLastLabelLastBaseline;
 - (double)_scaledMarginBelowMessageLabelLastBaseline;
 - (double)_scaledMarginBelowTitleLabelLastBaseline;
+- (double)_scaledMessageSafeBaselineHeightInAlertControllerView:(id)arg1;
+- (double)_scaledSafeBaselineHeightForLabelFont:(id)arg1 inAlertControllerView:(id)arg2;
+- (double)_scaledTitleLabelSafeBaselineHeightInAlertControllerView:(id)arg1;
 - (bool)_shouldReverseActions;
 - (double)_spacingBetweenDismissButtonAndContent;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })actionImageMarginForAction;

@@ -32,13 +32,13 @@
 
 + (id)defaultDimmingColor;
 
+- (void).cxx_destruct;
 - (id)_backdropViewsToAnimate;
 - (void)_simulateTap;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
-- (void)dealloc;
 - (id)delegate;
 - (id)dimmingColor;
 - (void)dimmingRemovalAnimationDidStop;

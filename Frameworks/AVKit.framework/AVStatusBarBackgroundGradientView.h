@@ -4,22 +4,21 @@
 
 @interface AVStatusBarBackgroundGradientView : UIView {
     double  _gradientOpacity;
-    bool  _showsGradientWhenUnderlappingStatusBar;
+    bool  _showsGradientWhenStatusBarVisible;
 }
 
 @property (nonatomic) double gradientOpacity;
-@property (nonatomic) bool showsGradientWhenUnderlappingStatusBar;
+@property (nonatomic) bool showsGradientWhenStatusBarVisible;
 
 + (Class)layerClass;
 
-- (bool)_shouldAnimatePropertyWithKey:(id)arg1;
-- (void)_updateGradientOpacityIfNeeded;
+- (void)_updateGradientOpacity;
+- (void)dealloc;
 - (double)gradientOpacity;
 - (id)init;
 - (void)layoutSubviews;
-- (void)safeAreaInsetsDidChange;
 - (void)setGradientOpacity:(double)arg1;
-- (void)setShowsGradientWhenUnderlappingStatusBar:(bool)arg1;
-- (bool)showsGradientWhenUnderlappingStatusBar;
+- (void)setShowsGradientWhenStatusBarVisible:(bool)arg1;
+- (bool)showsGradientWhenStatusBarVisible;
 
 @end

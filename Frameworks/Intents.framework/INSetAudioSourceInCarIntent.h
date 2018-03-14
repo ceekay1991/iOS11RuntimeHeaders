@@ -13,10 +13,9 @@
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (long long)audioSource;
-- (id)description;
 - (id)domain;
 - (id)initWithAudioSource:(long long)arg1 relativeAudioSourceReference:(long long)arg2;
 - (id)parametersByName;

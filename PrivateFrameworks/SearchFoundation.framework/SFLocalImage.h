@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFLocalImage : SFImage <NSSecureCoding, SFLocalImage> {
+@interface SFLocalImage : SFImage <NSCopying, NSSecureCoding, SFLocalImage> {
     struct { 
         unsigned int localImageType : 1; 
     }  _has;
@@ -29,6 +29,7 @@
 
 + (bool)supportsSecureCoding;
 
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasLocalImageType;

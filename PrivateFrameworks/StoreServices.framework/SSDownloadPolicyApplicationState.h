@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
  */
 
-@interface SSDownloadPolicyApplicationState : NSObject <NSCoding, NSCopying, SSXPCCoding> {
+@interface SSDownloadPolicyApplicationState : NSObject <NSCoding, NSCopying, NSSecureCoding, SSXPCCoding> {
     NSString * _applicationIdentifier;
     NSSet * _applicationStates;
 }
@@ -13,6 +13,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+
++ (bool)supportsSecureCoding;
 
 - (void)addApplicationState:(long long)arg1;
 - (id)applicationIdentifier;

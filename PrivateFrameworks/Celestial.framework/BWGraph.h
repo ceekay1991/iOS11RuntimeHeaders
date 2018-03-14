@@ -10,12 +10,14 @@
     int  _errorStatus;
     long long  _inflightConfigurationID;
     NSMutableArray * _nodes;
+    NSMutableArray * _nodesToPrepareConcurrently;
     NSMutableArray * _outputsWithSharedPools;
     NSMutableDictionary * _outputsWithSharedPoolsForAttachedMedia;
     bool  _prefetchesPixelBufferPools;
     bool  _running;
     NSMutableArray * _sinkNodes;
     NSMutableArray * _sourceNodes;
+    NSObject<OS_dispatch_group> * _sourceNodesStartGroup;
     NSObject<OS_dispatch_group> * _startGroup;
     <BWGraphStatusDelegate> * _statusDelegate;
     bool  _supportsLiveReconfiguration;
@@ -31,6 +33,8 @@
 - (id)_breadthFirstEnumerator;
 - (id)_depthFirstEnumeratorWithVertexOrdering:(int)arg1;
 - (id)_getOutputsWithSharedPoolsForAttachedMediaKey:(id)arg1;
+- (void)_logActiveNodesAfterGraphStopTimeout;
+- (void)_logActiveSinkNodesAfterGraphStopTimeout;
 - (void)_makeParentConfigurationChangesLive;
 - (id)_newDispatchGroupForSinksToBecomeLiveWithConfigurationID:(long long)arg1;
 - (id)_newDispatchGroupForSinksToTransitionToState:(int)arg1;
@@ -42,6 +46,7 @@
 - (id)_reverseDepthFirstEnumeratorWithVertexOrdering:(int)arg1;
 - (id)_sinkNodes;
 - (id)_sourceNodes;
+- (void)_timedOutWaitingForOperationToCompleteWithDescription:(id)arg1;
 - (void)_waitForOutstandingStartOrCommitOperationToComplete;
 - (bool)addNode:(id)arg1 error:(id*)arg2;
 - (void)beginConfiguration;
@@ -49,6 +54,7 @@
 - (bool)connectOutput:(id)arg1 toInput:(id)arg2 pipelineStage:(id)arg3;
 - (void)dealloc;
 - (id)dotString;
+- (void)enableConcurrentPrepareForNode:(id)arg1;
 - (int)errorStatus;
 - (id)init;
 - (bool)prefetchesPixelBufferPools;
@@ -60,5 +66,6 @@
 - (bool)stop:(id*)arg1;
 - (bool)supportsLiveReconfiguration;
 - (void)waitForOutstandingStartOrCommitOperationToComplete;
+- (void)waitForSourceNodesToStart;
 
 @end

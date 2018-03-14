@@ -34,6 +34,7 @@
 - (void)lockDatabaseForReason:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)performBackupOfDatabaseAtPath:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)performDatabaseOperation:(unsigned long long)arg1 withAttributes:(id)arg2 options:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)performDiagnosticWithCompletionHandler:(id /* block */)arg1;
 - (void)performImport:(id)arg1 fromSource:(unsigned long long)arg2 withProgressBlock:(id /* block */)arg3 completionHandler:(id /* block */)arg4;
 - (void)performMaintenanceTasksForDatabaseAtPath:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)performRestoreOfLatestBackupForDatabaseAtPath:(id)arg1 withCompletion:(id /* block */)arg2;

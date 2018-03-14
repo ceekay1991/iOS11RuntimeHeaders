@@ -9,6 +9,7 @@
     struct __CFString { } * containerPath;
     struct __CFString { } * domain;
     bool  managed;
+    bool  managedUsesContainer;
     struct __CFString { } * userName;
 }
 

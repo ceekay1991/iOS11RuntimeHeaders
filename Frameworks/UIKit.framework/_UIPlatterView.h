@@ -46,27 +46,6 @@
     }  _contentSize;
     _UIPlatterShadowView * _diffuseShadowView;
     bool  _flipped;
-    struct CGRect { 
-        struct CGPoint { 
-            double x; 
-            double y; 
-        } origin; 
-        struct CGSize { 
-            double width; 
-            double height; 
-        } size; 
-    }  _gradientMaskCroppingRect;
-    struct CGRect { 
-        struct CGPoint { 
-            double x; 
-            double y; 
-        } origin; 
-        struct CGSize { 
-            double width; 
-            double height; 
-        } size; 
-    }  _gradientMaskFullRect;
-    UIImageView * _gradientMaskView;
     bool  _lifted;
     struct CGPoint { 
         double x; 
@@ -105,9 +84,6 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } contentSize;
 @property (nonatomic, readonly) _UIPlatterShadowView *diffuseShadowView;
 @property (getter=isFlipped, nonatomic) bool flipped;
-@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } gradientMaskCroppingRect;
-@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } gradientMaskFullRect;
-@property (nonatomic, readonly) UIImageView *gradientMaskView;
 @property (getter=isLifted, nonatomic) bool lifted;
 @property (nonatomic) struct CGPoint { double x1; double x2; } offset;
 @property (nonatomic) double orientationRotation;
@@ -124,9 +100,8 @@
 @property (nonatomic) UIView *sourceView;
 @property (nonatomic) double stackRotation;
 
-+ (id)gradientMaskWithHorizontalEdge:(bool)arg1 verticalEdge:(bool)arg2;
-
 - (void).cxx_destruct;
+- (void)_unmaskPlatterView;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })additionalTransform;
 - (id)anchorPointValueToAdjustToOnMoveToWindow;
 - (bool)appliesOriginalRotation;
@@ -141,10 +116,8 @@
 - (struct CGPoint { double x1; double x2; })contentOffset;
 - (struct CGSize { double x1; double x2; })contentSize;
 - (void)didMoveToSuperview;
+- (void)didMoveToWindow;
 - (id)diffuseShadowView;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })gradientMaskCroppingRect;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })gradientMaskFullRect;
-- (id)gradientMaskView;
 - (id)initWithDUIPreview:(id)arg1;
 - (bool)isBackgroundVisible;
 - (bool)isFlipped;

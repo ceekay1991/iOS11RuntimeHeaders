@@ -88,6 +88,7 @@
 - (void)_updateSelectionForInputManager;
 - (bool)_wantsKeyDownForEvent:(id)arg1;
 - (id)_webView;
+- (bool)_web_isDrawingIntoAcceleratedLayer;
 - (bool)_web_isDrawingIntoLayer;
 - (void)_web_makePluginSubviewsPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)_web_updateLayoutAndStyleIfNeededRecursive;

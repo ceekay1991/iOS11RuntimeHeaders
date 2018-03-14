@@ -24,6 +24,8 @@
 @property (nonatomic, copy) NSArray *sectionSortDescriptors;
 @property (nonatomic) bool shouldIncludeContentItemID;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)sharedQueue;
 + (bool)supportsSecureCoding;
 
@@ -56,5 +58,11 @@
 - (void)setSectionSortDescriptors:(id)arg1;
 - (void)setShouldIncludeContentItemID:(bool)arg1;
 - (bool)shouldIncludeContentItemID;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (void)MPC_consumeSiriAssetInfo:(id)arg1 withCompletion:(id /* block */)arg2;
+
+- (id)playbackIntentWithStartItemIdentifiers:(id)arg1;
 
 @end

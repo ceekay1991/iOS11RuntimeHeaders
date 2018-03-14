@@ -5,14 +5,13 @@
 @interface _UIStackedImageContainerLayer : CALayer <CALayerDelegate> {
     bool  _animatingStateChange;
     bool  _animatingToNormalState;
-    double  _animationDelay;
-    double  _animationDelayReference;
     UIView * _animationView;
     _UIStackedImageConfiguration * _configuration;
     unsigned long long  _controlState;
     CALayer * _cursorLayer;
     CALayer * _cursorLayerContainer;
     CATransformLayer * _cursorRotationTransformLayer;
+    bool  _deferredInflationPending;
     id  _flatImage;
     CALayer * _flatLayer;
     struct CGPoint { 
@@ -29,6 +28,9 @@
     CATransformLayer * _imageRotationTransformLayer;
     NSString * _imageStackContentsGravity;
     <UINamedLayerStack> * _layerStack;
+    bool  _layerStackInflated;
+    unsigned long long  _layerStackInflationSeed;
+    bool  _layerStackSupportsInflation;
     _UIStackedImageLayerDelegate * _layoutDelegate;
     CALayer * _maskLayer;
     CATransformLayer * _maskPerspectiveTransformLayer;
@@ -53,6 +55,7 @@
     double  _selectionStartTime;
     long long  _selectionStyle;
     CALayer * _shadowLayer;
+    bool  _singleLayerNoMask;
     CALayer * _specularLayer;
     struct CGPoint { 
         double x; 
@@ -82,6 +85,7 @@
 - (void)_applyFocusDirectionTransform;
 - (void)_applyFocusDirectionTransformWithAnimationCoordinator:(id)arg1;
 - (bool)_aspectMatchesLayerStack;
+- (struct CGImage { }*)_cgImageForLayeredImage:(id)arg1;
 - (bool)_configuredForNonOpaqueShadow;
 - (id)_contentLayers;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_cursorBounds;
@@ -126,6 +130,7 @@
 - (void)_setFocusDirection:(struct CGPoint { double x1; double x2; })arg1 duration:(double)arg2;
 - (void)_setIdleModeFocusSizeOffset:(double)arg1;
 - (void)_setImageStackContentsGravity:(id)arg1;
+- (void)_setLayerStackInflated:(bool)arg1 seed:(unsigned long long)arg2;
 - (void)_setOverlayLayer:(id)arg1;
 - (void)_setParallaxImages:(id)arg1;
 - (void)_setParallaxLayerDepths:(id)arg1;
@@ -154,6 +159,7 @@
 - (void)_updateShadowBounds;
 - (void)_updateShadowPositionWithOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_updateShadowWithAnimationCoordinator:(id)arg1;
+- (void)_updateSingleLayerNoMaskFromLayerStack;
 - (void)_updateSpecularLayerContents;
 - (void)_updateSpecularLayerContentsRect;
 - (void)_wrapLayerInView:(id)arg1;

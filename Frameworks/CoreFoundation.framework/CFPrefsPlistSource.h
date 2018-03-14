@@ -29,7 +29,7 @@
 - (void*)alreadylocked_copyValueForKey:(struct __CFString { }*)arg1;
 - (long long)alreadylocked_generationCount;
 - (bool)alreadylocked_requestNewData;
-- (void)alreadylocked_setValues:(const void**)arg1 forKeys:(const struct __CFString {}**)arg2 count:(long long)arg3;
+- (void)alreadylocked_setValues:(const void**)arg1 forKeys:(const struct __CFString {}**)arg2 count:(long long)arg3 from:(id)arg4;
 - (void)alreadylocked_updateObservingRemoteChanges;
 - (bool)attachAccessTokenToMessage:(id)arg1 accessType:(int)arg2;
 - (struct __CFString { }*)container;

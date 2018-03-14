@@ -11,10 +11,15 @@
     NSString * _deviceModel;
     unsigned int  _fairPlayDeviceType;
     NSString * _hardwarePlatform;
+    struct atomic_flag { 
+        bool _Value; 
+    }  _hasRegisteredForNameNotifications;
     NSString * _name;
+    struct MGNotificationTokenStruct { } * _nameNotificationToken;
     NSString * _pairedDeviceGUID;
     NSString * _productVersion;
     NSString * _rawDeviceModel;
+    NSString * _serialNumber;
     NSString * _systemReleaseType;
 }
 
@@ -28,6 +33,7 @@
 @property (nonatomic, readonly, copy) NSString *hardwarePlatform;
 @property (getter=isInternalBuild, nonatomic, readonly) bool internalBuild;
 @property (nonatomic, readonly) bool isAppleTV;
+@property (nonatomic, readonly) bool isAudioAccessory;
 @property (nonatomic, readonly) bool isIPad;
 @property (nonatomic, readonly) bool isIPhone;
 @property (nonatomic, readonly) bool isIPod;
@@ -37,6 +43,7 @@
 @property (nonatomic, readonly, copy) NSString *productPlatform;
 @property (nonatomic, readonly, copy) NSString *productVersion;
 @property (nonatomic, readonly, copy) NSString *rawDeviceModel;
+@property (nonatomic, readonly, copy) NSString *serialNumber;
 @property (nonatomic, readonly, copy) NSString *systemReleaseType;
 
 + (id)currentDeviceInfo;
@@ -46,6 +53,7 @@
 - (int)_gestaltDeviceClass;
 - (id)buildVersion;
 - (id)currentLocale;
+- (void)dealloc;
 - (int)deviceClass;
 - (id)deviceGUID;
 - (id)deviceGUIDData;
@@ -53,6 +61,7 @@
 - (unsigned int)fairPlayDeviceType;
 - (id)hardwarePlatform;
 - (bool)isAppleTV;
+- (bool)isAudioAccessory;
 - (bool)isIPad;
 - (bool)isIPhone;
 - (bool)isIPod;
@@ -63,6 +72,7 @@
 - (id)productPlatform;
 - (id)productVersion;
 - (id)rawDeviceModel;
+- (id)serialNumber;
 - (id)systemReleaseType;
 
 @end

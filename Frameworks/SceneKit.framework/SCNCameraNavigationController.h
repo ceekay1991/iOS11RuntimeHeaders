@@ -9,7 +9,11 @@
     float  _cameraOriginalFieldOfView;
     <SCNCameraNavigationControllerDelegate> * _delegate;
     bool  _didEverFocusNode;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _drawAtTimeLock;
     bool  _enableFreeCamera;
+    bool  _enabled;
     float  _fieldOfViewZoomFactor;
     double  _flyModeVelocity;
     SCNNode * _freeViewCameraNode;
@@ -33,7 +37,9 @@
     bool  _isDraggingWithOneFinger;
     bool  _isSceneBoundingSphereComputed;
     struct { 
-        NSLock *lock; 
+        struct os_unfair_lock_s { 
+            unsigned int _os_unfair_lock_opaque; 
+        } lock; 
         NSDictionary *keyCodeConfiguration; 
         struct set<unsigned short, std::__1::less<unsigned short>, std::__1::allocator<unsigned short> > { 
             struct __tree<unsigned short, std::__1::less<unsigned short>, std::__1::allocator<unsigned short> > { 
@@ -100,6 +106,7 @@
         bool hasShift; 
         bool hasOption; 
     }  _scrollWheelModifiers;
+    bool  _shouldIgnoreMomentumEvents;
     bool  _shouldUpdateTarget;
     struct { 
         bool stickyMoveEnabled; 
@@ -126,6 +133,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool enableFreeCamera;
 @property (nonatomic) bool enableInertia;
+@property (nonatomic) bool enabled;
 @property (nonatomic) double flyModeVelocity;
 @property (nonatomic, readonly) SCNNode *freeCamera;
 @property (nonatomic) double friction;
@@ -165,9 +173,11 @@
 - (void)_setPointOfViewOrthographicScale:(float)arg1;
 - (void)_setupUpVector;
 - (void)_startBrowsingIfNeeded:(struct CGPoint { double x1; double x2; })arg1;
+- (void)_stopInertia;
 - (void)_switchToFreeViewCamera;
 - (void)_translateToViewPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (float)_translationCoef;
+- (void)_willBeginInteraction;
 - (void)activateFreeCamera;
 - (bool)allowsTranslation;
 - (bool)autoSwitchToFreeCamera;
@@ -184,6 +194,7 @@
 - (id)delegate;
 - (bool)enableFreeCamera;
 - (bool)enableInertia;
+- (bool)enabled;
 - (double)flyModeVelocity;
 - (void)focusNode:(id)arg1;
 - (void)focusNodes:(id)arg1;
@@ -212,6 +223,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setEnableFreeCamera:(bool)arg1;
 - (void)setEnableInertia:(bool)arg1;
+- (void)setEnabled:(bool)arg1;
 - (void)setFlyModeVelocity:(double)arg1;
 - (void)setFriction:(double)arg1;
 - (void)setGimbalLockMode:(bool)arg1;

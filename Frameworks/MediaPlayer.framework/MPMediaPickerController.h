@@ -13,6 +13,7 @@
     MPRemoteMediaPickerController * _remoteViewController;
     bool  _showsCloudItems;
     bool  _showsItemsWithProtectedAssets;
+    unsigned int  _watchCompatibilityVersion;
 }
 
 @property (nonatomic) bool allowsPickingMultipleItems;
@@ -51,11 +52,13 @@
 - (void)setPrompt:(id)arg1;
 - (void)setShowsCloudItems:(bool)arg1;
 - (void)setShowsItemsWithProtectedAssets:(bool)arg1;
+- (void)setWatchCompatibilityVersion:(unsigned int)arg1;
 - (bool)showsCloudItems;
 - (bool)showsItemsWithProtectedAssets;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
+- (unsigned int)watchCompatibilityVersion;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

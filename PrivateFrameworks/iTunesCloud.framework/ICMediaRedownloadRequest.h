@@ -11,6 +11,7 @@
     ICStoreRequestContext * _requestContext;
     NSString * _requestURLBagKey;
     ICStoreURLRequest * _storeURLRequest;
+    bool  _usePrioritizedURLSession;
 }
 
 @property (nonatomic) bool includeKeybagSyncData;
@@ -19,8 +20,10 @@
 @property (nonatomic, copy) NSDictionary *redownloadParameters;
 @property (nonatomic, copy) ICStoreRequestContext *requestContext;
 @property (nonatomic, copy) NSString *requestURLBagKey;
+@property (nonatomic) bool usePrioritizedURLSession;
 
 - (void).cxx_destruct;
+- (void)_executeWithActiveICloudAccountProperties:(id)arg1;
 - (void)cancel;
 - (void)execute;
 - (bool)includeKeybagSyncData;
@@ -39,5 +42,7 @@
 - (void)setRedownloadParameters:(id)arg1;
 - (void)setRequestContext:(id)arg1;
 - (void)setRequestURLBagKey:(id)arg1;
+- (void)setUsePrioritizedURLSession:(bool)arg1;
+- (bool)usePrioritizedURLSession;
 
 @end

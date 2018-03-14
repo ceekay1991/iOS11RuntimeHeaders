@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFText : NSObject <NSSecureCoding, SFText> {
+@interface SFText : NSObject <NSCopying, NSSecureCoding, SFText> {
     struct { 
         unsigned int maxLines : 1; 
     }  _has;
@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasMaxLines;

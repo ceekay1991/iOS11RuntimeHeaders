@@ -45,6 +45,7 @@
 
 + (Class)_contentViewClass;
 
+- (void).cxx_destruct;
 - (bool)_canFocusProgrammatically;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentViewFrame;
 - (bool)_descendantsShouldHighlight;
@@ -84,17 +85,16 @@
 - (void)_updateGhostedAppearance;
 - (void)_updateHighlightColorsForAnimationHalfwayPoint;
 - (void)_updateHighlightColorsForView:(id)arg1 highlight:(bool)arg2;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)backgroundView;
 - (bool)canBecomeFocused;
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)contentView;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
-- (void)dealloc;
 - (void)dragStateDidChange:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -117,5 +117,9 @@
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+
+// Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
+
+- (void)unloadExpensiveViews;
 
 @end

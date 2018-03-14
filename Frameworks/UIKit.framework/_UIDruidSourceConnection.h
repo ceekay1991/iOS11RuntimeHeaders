@@ -3,19 +3,19 @@
  */
 
 @interface _UIDruidSourceConnection : NSObject <_DUIClientSessionSource, _DUIClientSource> {
+    id /* block */  _canHandOffCancelledItemsBlock;
     bool  _cancelled;
     NSXPCConnection * _connection;
     id /* block */  _dataTransferFinishedBlock;
     id /* block */  _dragCompletionBlock;
     id /* block */  _handOffCancelledItemsBlock;
-    bool  _hostIsActive;
     id /* block */  _itemDetailProviderBlock;
     id /* block */  _itemImageProviderBlock;
     id /* block */  _itemUpdateBlock;
-    bool  _originatedInHostedWindow;
     <_DUIServerSessionSource> * _serverSession;
 }
 
+@property (nonatomic, copy) id /* block */ canHandOffCancelledItemsBlock;
 @property (getter=isCancelled, nonatomic, readonly) bool cancelled;
 @property (nonatomic, copy) id /* block */ dataTransferFinishedBlock;
 @property (nonatomic, copy) id /* block */ dragCompletionBlock;
@@ -25,11 +25,10 @@
 @property (nonatomic, copy) id /* block */ itemUpdateBlock;
 
 - (void).cxx_destruct;
-- (void)_hostDidDeactivate;
-- (void)_hostWillBecomeActive;
 - (void)_internalDragFailed;
 - (id)addItems:(id)arg1 withOldItemCollection:(id)arg2;
-- (void)beginDragWithTouches:(id)arg1 touchRoutingPolicy:(id)arg2 items:(id)arg3 accessibilityEndpoint:(id)arg4 completion:(id /* block */)arg5;
+- (void)beginDragWithTouches:(id)arg1 touchRoutingPolicy:(id)arg2 items:(id)arg3 sourceDataOwner:(long long)arg4 accessibilityEndpoint:(id)arg5 centroid:(struct CGPoint { double x1; double x2; })arg6 completion:(id /* block */)arg7;
+- (id /* block */)canHandOffCancelledItemsBlock;
 - (void)cancelDrag;
 - (oneway void)checkCanHandOffCancelledItemsWithReply:(id /* block */)arg1;
 - (id /* block */)dataTransferFinishedBlock;
@@ -48,6 +47,7 @@
 - (id /* block */)itemUpdateBlock;
 - (oneway void)requestDetailForItemIndex:(unsigned long long)arg1 reply:(id /* block */)arg2;
 - (oneway void)requestImageForItemIndex:(unsigned long long)arg1 reply:(id /* block */)arg2;
+- (void)setCanHandOffCancelledItemsBlock:(id /* block */)arg1;
 - (void)setDataTransferFinishedBlock:(id /* block */)arg1;
 - (void)setDragCompletionBlock:(id /* block */)arg1;
 - (void)setHandOffCancelledItemsBlock:(id /* block */)arg1;

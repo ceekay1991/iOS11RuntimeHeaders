@@ -7,6 +7,7 @@
     NSMutableArray * _childrens;
     NSMutableArray * _iconChecksums;
     NSMutableArray * _icons;
+    PBUnknownFields * _unknownFields;
     unsigned int  _x;
     unsigned int  _y;
     unsigned int  _z;
@@ -16,6 +17,7 @@
 @property (nonatomic, retain) NSMutableArray *childrens;
 @property (nonatomic, retain) NSMutableArray *iconChecksums;
 @property (nonatomic, retain) NSMutableArray *icons;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned int x;
 @property (nonatomic) unsigned int y;
 @property (nonatomic) unsigned int z;
@@ -62,6 +64,7 @@
 - (void)setX:(unsigned int)arg1;
 - (void)setY:(unsigned int)arg1;
 - (void)setZ:(unsigned int)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 - (unsigned int)x;
 - (unsigned int)y;

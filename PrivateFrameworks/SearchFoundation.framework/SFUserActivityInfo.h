@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFUserActivityInfo : NSObject <NSSecureCoding, SFUserActivityInfo> {
+@interface SFUserActivityInfo : NSObject <NSCopying, NSSecureCoding, SFUserActivityInfo> {
     struct { 
         unsigned int valueType : 1; 
     }  _has;
@@ -26,6 +26,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasValueType;

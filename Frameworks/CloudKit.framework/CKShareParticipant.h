@@ -38,6 +38,8 @@
 @property (nonatomic) long long type;
 @property (nonatomic, retain) CKUserIdentity *userIdentity;
 
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -84,5 +86,11 @@
 - (long long)type;
 - (id)unifiedContactsInStore:(id)arg1 keysToFetch:(id)arg2 error:(id*)arg3;
 - (id)userIdentity;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (void)_decryptPersonalInfoWithPCSBlob:(struct _OpaquePCSShareProtection { }*)arg1 inShareWithID:(id)arg2 pcsManager:(id)arg3;
+- (void)_encryptPersonalInfoWithPCSBlob:(struct _OpaquePCSShareProtection { }*)arg1 inShareWithID:(id)arg2 pcsManager:(id)arg3;
+- (bool)hasEncryptedPersonalInfo;
 
 @end

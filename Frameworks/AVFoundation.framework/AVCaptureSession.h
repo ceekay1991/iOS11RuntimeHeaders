@@ -16,6 +16,8 @@
 @property (nonatomic, copy) NSString *sessionPreset;
 @property (nonatomic) bool usesApplicationAudioSession;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (void)_beginConfiguringActiveColorSpaceForDevice:(id)arg1;
 + (void)_finishConfiguringActiveColorSpaceForDevice:(id)arg1;
 + (bool)_isActiveColorSpaceBeingConfiguredForDevice:(id)arg1;
@@ -85,6 +87,7 @@
 - (bool)canAddInput:(id)arg1;
 - (bool)canAddOutput:(id)arg1;
 - (bool)canSetSessionPreset:(id)arg1;
+- (void)cancelForegroundAutoResumeAfterDate:(id)arg1;
 - (void)commitConfiguration;
 - (void)dealloc;
 - (id)description;
@@ -111,5 +114,17 @@
 - (bool)usesApplicationAudioSession;
 - (id)valueForUndefinedKey:(id)arg1;
 - (bool)videoHDREnabledForDevice:(id)arg1 format:(id)arg2 sessionPreset:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
+- (bool)cam_ensureInputs:(id)arg1;
+- (bool)cam_ensureInputs:(id)arg1 exclusively:(bool)arg2;
+- (bool)cam_ensureOutputs:(id)arg1 exclusively:(bool)arg2;
+- (bool)cam_ensureOutputs:(id)arg1 whileRemoving:(id)arg2;
+- (bool)cam_hasAddedInput:(id)arg1;
+- (bool)cam_hasAddedOutput:(id)arg1;
+- (void)cam_removeAllInputs;
+- (void)cam_removeAllOutputs;
+- (void)cam_removeInputs:(id)arg1;
 
 @end

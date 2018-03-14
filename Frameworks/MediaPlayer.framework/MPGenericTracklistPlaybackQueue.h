@@ -14,6 +14,8 @@
 @property (nonatomic, readonly) long long shuffleType;
 @property (nonatomic, readonly) NSArray *trackIdentifiers;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 - (void).cxx_destruct;
 - (id)description;
 - (id)firstTrackIdentifier;
@@ -22,5 +24,9 @@
 - (long long)shuffleType;
 - (id)trackIdentifiers;
 - (bool)verifyWithError:(id*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (void)getPlaybackContextWithCompletion:(id /* block */)arg1;
 
 @end

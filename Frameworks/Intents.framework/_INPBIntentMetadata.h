@@ -17,6 +17,7 @@
         unsigned int backgroundLaunch : 1; 
         unsigned int confirmed : 1; 
     }  _has;
+    NSString * _intentDescription;
     NSString * _intentId;
     int  _triggerMethod;
     PBUnknownFields * _unknownFields;
@@ -31,11 +32,13 @@
 @property (nonatomic) bool confirmed;
 @property (nonatomic) bool hasBackgroundLaunch;
 @property (nonatomic) bool hasConfirmed;
+@property (nonatomic, readonly) bool hasIntentDescription;
 @property (nonatomic, readonly) bool hasIntentId;
 @property (nonatomic, readonly) bool hasLaunchId;
 @property (nonatomic, readonly) bool hasSystemExtensionBundleId;
 @property (nonatomic) bool hasTriggerMethod;
 @property (nonatomic, readonly) bool hasUserUtterance;
+@property (nonatomic, retain) NSString *intentDescription;
 @property (nonatomic, retain) NSString *intentId;
 @property (nonatomic) int triggerMethod;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
@@ -62,12 +65,14 @@
 - (id)dictionaryRepresentation;
 - (bool)hasBackgroundLaunch;
 - (bool)hasConfirmed;
+- (bool)hasIntentDescription;
 - (bool)hasIntentId;
 - (bool)hasLaunchId;
 - (bool)hasSystemExtensionBundleId;
 - (bool)hasTriggerMethod;
 - (bool)hasUserUtterance;
 - (unsigned long long)hash;
+- (id)intentDescription;
 - (id)intentId;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
@@ -77,6 +82,7 @@
 - (void)setHasBackgroundLaunch:(bool)arg1;
 - (void)setHasConfirmed:(bool)arg1;
 - (void)setHasTriggerMethod:(bool)arg1;
+- (void)setIntentDescription:(id)arg1;
 - (void)setIntentId:(id)arg1;
 - (void)setLaunchId:(id)arg1;
 - (void)setRequiredEntitlements:(int*)arg1 count:(unsigned long long)arg2;

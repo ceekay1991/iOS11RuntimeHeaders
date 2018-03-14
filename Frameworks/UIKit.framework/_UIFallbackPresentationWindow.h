@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UIFallbackPresentationWindow : UIWindow
+@interface _UIFallbackPresentationWindow : UIApplicationRotationFollowingWindow
 
 + (bool)_isSystemWindow;
 

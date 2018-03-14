@@ -41,8 +41,11 @@
 
 @property (getter=_previousVelocitySample, readonly) UIPanGestureVelocitySample *_previousVelocitySample;
 @property (getter=_velocitySample, readonly) UIPanGestureVelocitySample *_velocitySample;
+@property (nonatomic, readonly) struct CGPoint { double x1; double x2; } direction;
 @property (nonatomic) unsigned long long maximumNumberOfTouches;
 @property (nonatomic) unsigned long long minimumNumberOfTouches;
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (double)_defaultHysteresis;
 + (void)_setPanGestureRecognizersEnabled:(bool)arg1;
@@ -63,6 +66,8 @@
 - (bool)_failsPastHysteresisWithoutMinTouches;
 - (void)_handleEndedTouches:(id)arg1 withFinalStateAdjustments:(id /* block */)arg2;
 - (double)_hysteresis;
+- (void)_ignoreTouchForTouchIdentifier:(unsigned int)arg1;
+- (void)_ignoreTouches:(id)arg1 forEvent:(id)arg2;
 - (bool)_ignoresStationaryTouches;
 - (long long)_lastTouchCount;
 - (struct UIOffset { double x1; double x2; })_offsetInViewFromSceneReferenceLocation:(struct CGPoint { double x1; double x2; })arg1 toSceneReferenceLocation:(struct CGPoint { double x1; double x2; })arg2;
@@ -113,5 +118,13 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (struct CGPoint { double x1; double x2; })translationInView:(id)arg1;
 - (struct CGPoint { double x1; double x2; })velocityInView:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+
+- (id)_automationName;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
+- (struct CGPoint { double x1; double x2; })direction;
 
 @end

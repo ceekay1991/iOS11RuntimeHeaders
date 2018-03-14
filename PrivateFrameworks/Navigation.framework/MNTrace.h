@@ -9,6 +9,7 @@
     NSArray * _bookmarks;
     NSArray * _commuteDestinations;
     NSArray * _commuteDirectionsRequests;
+    bool  _copyToCrashReporter;
     struct sqlite3 { } * _db;
     NSArray * _directions;
     NSData * _endWaypointData;
@@ -38,6 +39,7 @@
 @property (nonatomic, retain) NSArray *bookmarks;
 @property (nonatomic, retain) NSArray *commuteDestinations;
 @property (nonatomic, retain) NSArray *commuteDirectionsRequests;
+@property (nonatomic) bool copyToCrashReporter;
 @property (nonatomic, readonly) struct sqlite3 { }*db;
 @property (nonatomic, retain) NSArray *directions;
 @property (nonatomic, retain) NSData *endWaypointData;
@@ -72,6 +74,8 @@
 - (bool)closeTrace;
 - (id)commuteDestinations;
 - (id)commuteDirectionsRequests;
+- (bool)copyToCrashReporter;
+- (void)copyTraceToCrashReporter;
 - (bool)createTempTraceForRecording;
 - (struct sqlite3 { }*)db;
 - (void)dealloc;
@@ -96,6 +100,7 @@
 - (void)setBookmarks:(id)arg1;
 - (void)setCommuteDestinations:(id)arg1;
 - (void)setCommuteDirectionsRequests:(id)arg1;
+- (void)setCopyToCrashReporter:(bool)arg1;
 - (void)setDirections:(id)arg1;
 - (void)setEndWaypointData:(id)arg1;
 - (void)setEtaUpdates:(id)arg1;

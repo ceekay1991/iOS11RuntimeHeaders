@@ -29,6 +29,9 @@
 @property (readonly) unsigned int rawPhotoPixelFormatType;
 @property (readonly) long long uniqueID;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
++ (id)burstQualityPhotoSettings;
 + (id)photoSettings;
 + (id)photoSettingsFromPhotoSettings:(id)arg1;
 + (id)photoSettingsWithFormat:(id)arg1;
@@ -38,7 +41,7 @@
 + (long long)uniqueID;
 
 - (long long)HDRMode;
-- (id)_initWithFormat:(id)arg1 processedFileType:(id)arg2 rawPixelFormatType:(unsigned int)arg3 rawFileType:(id)arg4 uniqueID:(long long)arg5 exceptionReason:(id*)arg6;
+- (id)_initWithFormat:(id)arg1 processedFileType:(id)arg2 rawPixelFormatType:(unsigned int)arg3 rawFileType:(id)arg4 burstQualityCaptureEnabled:(bool)arg5 uniqueID:(long long)arg6 exceptionReason:(id*)arg7;
 - (id)_sanitizedLivePhotoMovieMetadataForArray:(id)arg1 exceptionReason:(id*)arg2;
 - (id)adjustedPhotoFilters;
 - (id)availableEmbeddedThumbnailPhotoCodecTypes;
@@ -57,6 +60,7 @@
 - (id)init;
 - (bool)isAutoDualCameraFusionEnabled;
 - (bool)isAutoStillImageStabilizationEnabled;
+- (bool)isBurstQualityCaptureEnabled;
 - (bool)isCameraCalibrationDataDeliveryEnabled;
 - (bool)isDepthDataDeliveryEnabled;
 - (bool)isDepthDataFiltered;
@@ -110,5 +114,9 @@
 - (unsigned int)shutterSound;
 - (long long)uniqueID;
 - (unsigned long long)userInitiatedPhotoRequestTime;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
+- (id)initWithRequest:(id)arg1;
 
 @end

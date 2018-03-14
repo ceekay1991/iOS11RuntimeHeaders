@@ -38,6 +38,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (bool)_allowsZeroCountDownDuration;
 - (bool)_allowsZeroTimeInterval;
 - (bool)_contentHuggingDefault_isUsuallyFixedHeight;
@@ -78,16 +79,18 @@
 - (bool)_usesBlackChrome;
 - (bool)_usesModernStyle;
 
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)awakeFromNib;
 - (id)calendar;
 - (double)countDownDuration;
 - (id)date;
 - (id)dateComponents;
 - (long long)datePickerMode;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)didReceiveBindingsUpdate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
@@ -126,5 +129,10 @@
 - (id)timeZone;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)willReceiveBindingsUpdate;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
 
 @end

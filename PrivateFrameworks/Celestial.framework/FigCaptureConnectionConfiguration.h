@@ -22,6 +22,7 @@
 @property (nonatomic, retain) FigCaptureSourceConfiguration *sourceConfiguration;
 @property (readonly) FigCaptureStillImageSinkConfiguration *stillImageSinkConfiguration;
 @property (readonly) Class superclass;
+@property (readonly) FigCaptureVideoThumbnailSinkConfiguration *thumbnailSinkConfiguration;
 @property (readonly) FigCaptureVideoDataSinkConfiguration *videoDataSinkConfiguration;
 @property (readonly) FigCaptureVideoPreviewSinkConfiguration *videoPreviewSinkConfiguration;
 
@@ -44,6 +45,7 @@
 - (id)sinkConfiguration;
 - (id)sourceConfiguration;
 - (id)stillImageSinkConfiguration;
+- (id)thumbnailSinkConfiguration;
 - (id)videoDataSinkConfiguration;
 - (id)videoPreviewSinkConfiguration;
 

@@ -45,4 +45,47 @@
 - (id)initWithCoder:(id)arg1;
 - (id)replacementObjectForPortCoder:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+
+- (id)xct_formattedDescription;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
++ (void)errnoRaise:(id)arg1 format:(id)arg2;
+
+- (int)localErrno;
+
+// Image: /System/Library/PrivateFrameworks/NanoRegistry.framework/NanoRegistry
+
+- (id)nr_safeDescription;
+
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
++ (void)sfu_errnoRaise:(id)arg1 format:(id)arg2;
++ (void)tsu_raiseWithError:(id)arg1;
+
+- (id)gsu_descriptionWithStacktrace;
+- (int)sfu_localErrno;
+- (id)tsu_error;
+
+// Image: /System/Library/PrivateFrameworks/PairedSync.framework/PairedSync
+
+- (id)psy_safeDescription;
+
+// Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
+
++ (void)errnoRaise:(id)arg1 format:(id)arg2;
++ (void)tsu_raiseWithError:(id)arg1;
+
+- (int)localErrno;
+- (id)tsu_error;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (void)sfu_errnoRaise:(id)arg1 format:(id)arg2;
++ (void)tsu_raiseWithError:(id)arg1;
+
+- (int)sfu_localErrno;
+- (id)tsu_error;
+
 @end

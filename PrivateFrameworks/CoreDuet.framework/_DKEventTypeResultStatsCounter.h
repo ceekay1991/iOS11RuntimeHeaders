@@ -6,10 +6,7 @@
     _DKEventStatsCounterInternal * _internal;
 }
 
-@property (nonatomic, readonly) NSString *eventName;
-@property (nonatomic, readonly) NSString *eventType;
 @property (retain) _DKEventStatsCounterInternal *internal;
-@property (nonatomic, readonly) NSArray *typeValues;
 
 + (id)counterInCollection:(id)arg1 withEventName:(id)arg2 eventType:(id)arg3 eventTypePossibleValues:(id)arg4;
 

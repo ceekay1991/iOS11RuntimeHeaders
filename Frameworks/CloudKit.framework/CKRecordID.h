@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKRecordID : NSObject <CKSQLiteItem, CKXPCSuitableString, NSCopying, NSSecureCoding> {
+@interface CKRecordID : NSObject <CKSQLiteItem, CKXPCSuitableString, ICHasDatabaseScope, NSCopying, NSSecureCoding, PQLValuable> {
     NSString * _recordName;
     CKRecordZoneID * _zoneID;
 }
@@ -13,6 +13,8 @@
 @property (nonatomic, retain) NSString *recordName;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) CKRecordZoneID *zoneID;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 + (bool)isValidRecordName:(id)arg1 outError:(id*)arg2;
 + (bool)supportsSecureCoding;
@@ -39,5 +41,48 @@
 - (void)setZoneID:(id)arg1;
 - (id)sqliteRepresentation;
 - (id)zoneID;
+
+// Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
+
++ (id)brc_fetchShareIDWithSharedItem:(id)arg1;
++ (id)newFromSqliteValue:(struct sqlite3_value { }*)arg1;
+
+- (id)_itemIDWithLibraryRowID:(id)arg1 session:(id)arg2;
+- (id)brc_appLibraryDocumentsZoneName;
+- (id)brc_appLibraryRootZoneName;
+- (bool)brc_isAppLibraryDocumentsRecordID;
+- (bool)brc_isAppLibraryRootRecordID;
+- (bool)brc_isZoneRootRecordID;
+- (id)brc_itemIDOfTargetWithLibraryRowID:(id)arg1 session:(id)arg2;
+- (id)brc_itemIDWithSession:(id)arg1;
+- (id)brc_itemIDWithSession:(id)arg1 error:(id*)arg2;
+- (BOOL)brc_itemType;
+- (id)brc_shareItemID;
+- (id)brc_shareZoneName;
+- (id)initShareIDWithItemID:(id)arg1 zoneID:(id)arg2;
+- (id)initShareIDWithRecordID:(id)arg1 serverZone:(id)arg2;
+- (id)initShareIDWithRecordID:(id)arg1 zoneID:(id)arg2 session:(id)arg3;
+- (id)initShareIDWithShareableItem:(id)arg1;
+- (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
++ (id)newFromSqliteStatement:(struct sqlite3_stmt { }*)arg1 atIndex:(int)arg2;
++ (id)newFromSqliteValue:(struct sqlite3_value { }*)arg1;
+
+- (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
+
++ (id)parseFromString:(id)arg1;
+
+- (id)encodeForKey;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (long long)databaseScope;
+- (bool)ic_isOwnedByCurrentUser;
+- (id)ic_loggingDescription;
+- (id)ic_loggingDescriptionIncludingBrackets:(bool)arg1;
 
 @end

@@ -8,6 +8,8 @@
     NSMutableDictionary * _pendingUpdateRecordByStoreAdamID;
 }
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)_mediaLibrary;
 + (id)sharedController;
 
@@ -31,5 +33,12 @@
 - (long long)tasteTypeForModel:(id)arg1;
 - (long long)tasteTypeForPlaylistGlobalID:(id)arg1;
 - (long long)tasteTypeForStoreAdamID:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
++ (bool)MPU_tasteTypeSupportedForContentItemIdentifierCollection:(id)arg1;
+
+- (void)MPU_setTasteType:(unsigned long long)arg1 forContentItemIdentifierCollection:(id)arg2 withCompletionHandler:(id /* block */)arg3;
+- (unsigned long long)MPU_tasteTypeForContentItemIdentifierCollection:(id)arg1;
 
 @end

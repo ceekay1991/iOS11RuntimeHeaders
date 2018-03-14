@@ -54,7 +54,6 @@
 - (void)_showDocumentPickerMenu;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (bool)_string:(id)arg1 hasPrefixCaseInsensitive:(id)arg2;
-- (void)_uploadItemForImage:(id)arg1 withAssetURL:(id)arg2 successBlock:(id /* block */)arg3 failureBlock:(id /* block */)arg4;
 - (void)_uploadItemForImageData:(id)arg1 imageName:(id)arg2 successBlock:(id /* block */)arg3 failureBlock:(id /* block */)arg4;
 - (void)_uploadItemForJPEGRepresentationOfImage:(id)arg1 successBlock:(id /* block */)arg2 failureBlock:(id /* block */)arg3;
 - (void)_uploadItemFromMediaInfo:(id)arg1 successBlock:(id /* block */)arg2 failureBlock:(id /* block */)arg3;

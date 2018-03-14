@@ -3,7 +3,6 @@
  */
 
 @interface CBPeripheralManager : CBManager {
-    NSData * _advertisingAddress;
     NSMapTable * _centrals;
     NSMutableDictionary * _characteristicIDs;
     <CBPeripheralManagerDelegate> * _delegate;
@@ -31,7 +30,6 @@
     bool  _waitingForReady;
 }
 
-@property (nonatomic, readonly, copy) NSData *advertisingAddress;
 @property (nonatomic, readonly, retain) NSMapTable *centrals;
 @property (nonatomic, readonly, retain) NSMutableDictionary *characteristicIDs;
 @property (nonatomic) <CBPeripheralManagerDelegate> *delegate;
@@ -48,7 +46,6 @@
 
 - (void).cxx_destruct;
 - (void)addService:(id)arg1;
-- (id)advertisingAddress;
 - (id)centralWithInfo:(id)arg1;
 - (id)centrals;
 - (id)characteristicIDs;
@@ -83,7 +80,7 @@
 - (id)multipleAdvertisingSupported;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)peerWithInfo:(id)arg1;
-- (void)publishL2CAPChannel:(unsigned short)arg1 requiresEncryption:(bool)arg2;
+- (void)publishL2CAPChannel:(unsigned short)arg1 requiresEncryption:(bool)arg2 options:(id)arg3;
 - (void)publishL2CAPChannelWithEncryption:(bool)arg1;
 - (bool)readyForUpdates;
 - (void)removeAllL2CAPChannels;

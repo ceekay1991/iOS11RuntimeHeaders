@@ -9,6 +9,7 @@
     struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; } * _tileRanges;
     unsigned long long  _tileRangesCount;
     unsigned long long  _tileRangesSpace;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSMutableArray *attributions;
@@ -16,6 +17,7 @@
 @property (nonatomic, retain) NSMutableArray *icons;
 @property (nonatomic, readonly) struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*tileRanges;
 @property (nonatomic, readonly) unsigned long long tileRangesCount;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)attributionType;
 + (Class)iconChecksumType;
@@ -55,6 +57,7 @@
 - (struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; })tileRangeAtIndex:(unsigned long long)arg1;
 - (struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*)tileRanges;
 - (unsigned long long)tileRangesCount;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

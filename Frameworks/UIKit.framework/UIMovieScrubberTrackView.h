@@ -46,6 +46,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_createImageViewForTimestamp:(id)arg1 isSummaryThumbnail:(bool)arg2;
 - (void)_reallyReloadData;
 - (void)_setOverlayViewIsZoomed:(bool)arg1 minValue:(float)arg2 maxValue:(float)arg3;
@@ -54,7 +55,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)animateFillFramesAway;
 - (void)clear;
 - (id)dataSource;

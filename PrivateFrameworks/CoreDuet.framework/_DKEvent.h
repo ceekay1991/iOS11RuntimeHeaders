@@ -26,6 +26,8 @@
 @property (retain) NSTimeZone *timeZone;
 @property (retain) _DKObject *value;
 
+// Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
+
 + (bool)copyMetadata:(id)arg1 toManagedObject:(id)arg2;
 + (id)entityName;
 + (id)eventStreamFromManagedObject:(id)arg1 forValue:(id)arg2 cache:(id)arg3;
@@ -45,6 +47,7 @@
 + (id)eventWithStream:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 value:(id)arg4;
 + (id)eventWithStream:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 value:(id)arg4 confidence:(double)arg5 metadata:(id)arg6;
 + (id)eventWithStream:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 value:(id)arg4 metadata:(id)arg5;
++ (id)fetchCustomMetadataWithName:(id)arg1 valueHash:(id)arg2 context:(id)arg3;
 + (id)fromPBCodable:(id)arg1;
 + (id)interactionWithEvent:(id)arg1;
 + (id)metadataForInteraction:(id)arg1;
@@ -88,5 +91,9 @@
 - (id)timeZone;
 - (id)toPBCodable;
 - (id)value;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
+
+- (id)shortDescription;
 
 @end

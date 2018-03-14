@@ -40,8 +40,8 @@
 + (long long)roundNumber:(long long)arg1 usingSignificantDigits:(unsigned long long)arg2;
 + (bool)shouldLogGivenSamplePercentage:(float)arg1;
 
+- (void).cxx_destruct;
 - (id)customProperties;
-- (void)dealloc;
 - (id)domain;
 - (id)domainScope;
 - (id)domainVersion;

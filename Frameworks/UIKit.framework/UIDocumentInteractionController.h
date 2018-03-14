@@ -81,6 +81,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *uniqueIdentifier;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (id)_UTIForFileURL:(id)arg1;
 + (id)_archiveDecompressQueue;
 + (id)interactionControllerWithURL:(id)arg1;
@@ -197,5 +199,9 @@
 - (bool)sourceIsManaged;
 - (id)subitemsInArchive:(id /* block */)arg1;
 - (id)uniqueIdentifier;
+
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
++ (id)_sf_interactionControllerWithDocumentURL:(id)arg1 sourceURL:(id)arg2;
 
 @end

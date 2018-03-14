@@ -6,7 +6,6 @@
     _DKEventStatsCounterInternal * _internal;
 }
 
-@property (nonatomic, readonly) NSString *eventName;
 @property (retain) _DKEventStatsCounterInternal *internal;
 
 + (id)counterInCollection:(id)arg1 withEventName:(id)arg2;

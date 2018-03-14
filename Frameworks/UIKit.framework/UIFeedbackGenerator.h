@@ -42,7 +42,7 @@
 + (id)behaviorWithCoordinateSpace:(id)arg1;
 
 - (void).cxx_destruct;
-- (void)__activateWithStyle:(long long)arg1 completionBlock:(id /* block */)arg2;
+- (void)__activateWithStyle:(long long)arg1 forFeedback:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)__deactivateWithStyle:(long long)arg1;
 - (void)_activateWithStyle:(long long)arg1 completionBlock:(id /* block */)arg2;
 - (void)_activated;
@@ -75,9 +75,9 @@
 - (void)_setMuted:(bool)arg1;
 - (void)_setOutputMode:(long long)arg1;
 - (void)_setPreparationTimer:(id)arg1 forStyle:(long long)arg2;
-- (void)_setup;
 - (void)_setupAutoDeactivateTimer;
-- (void)_setupEnginesIfNeeded;
+- (void)_setupEnginesIfNeededForFeedback:(id)arg1;
+- (void)_setupForFeedback:(id)arg1;
 - (void)_startFeedbackWarming;
 - (id)_statsSuffix;
 - (void)_stats_activationDidChangeTo:(bool)arg1;

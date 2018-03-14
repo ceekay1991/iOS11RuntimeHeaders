@@ -20,13 +20,16 @@
 }
 
 + (bool)activateFontsFromAssetURL:(id)arg1;
++ (id)attributesFromFontInfo:(id)arg1 assetDesignLanguages:(id)arg2;
 + (id)availableFontAttributesArrayMatchingRequests:(id)arg1 options:(unsigned long long)arg2;
-+ (id)availableMobileAssets:(bool)arg1 error:(id*)arg2;
++ (id)availableMobileAssetsWithOptions:(unsigned int)arg1 error:(id*)arg2;
++ (id)availableMobileAssetsWithOptions:(unsigned int)arg1 manager:(id)arg2 error:(id*)arg3;
 + (unsigned long long)calculateDownloadSize:(id)arg1;
++ (unsigned int)defaultQueryOptions;
 + (id)enabledKeyboardLanguages;
-+ (bool)fontInfo:(id)arg1 matchDescriptor:(struct __CTFontDescriptor { }*)arg2;
++ (bool)fontInfo:(id)arg1 andAssetDesignLanguages:(id)arg2 matchesRequest:(id)arg3;
 + (Class)getASAssetQueryClass;
-+ (bool)shouldIgnoreFontAsset:(id)arg1;
++ (bool)shouldIgnoreFontAssetWithAttributes:(id)arg1;
 + (bool)shouldRetryWithServer;
 + (bool)shouldTryServer;
 

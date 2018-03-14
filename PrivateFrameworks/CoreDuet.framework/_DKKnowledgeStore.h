@@ -19,6 +19,7 @@
 + (id)knowledgeStoreWithDirectReadOnlyAccessWithConnection:(id)arg1 storeDirectory:(id)arg2;
 + (id)knowledgeStoreWithDirectReadOnlyAccessWithStore:(id)arg1 storeDirectory:(id)arg2;
 + (id)userKnowledgeStore;
++ (id)userKnowledgeStoreWithDirectReadOnlyAccess;
 
 - (void).cxx_destruct;
 - (bool)confirmConnectionWithError:(id*)arg1;

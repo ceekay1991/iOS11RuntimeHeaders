@@ -5,27 +5,27 @@
 @interface MKPlaceReviewsViewCell : MKPlaceSectionRowView {
     NSString * _author;
     NSLayoutConstraint * _authorLabelBaselineConstraint;
+    MKPlaceReviewAvatarGenerator * _avatarGenerator;
     NSDate * _date;
     _MKUILabel * _detailLabel;
     UIImageView * _pictureView;
     unsigned long long  _rating;
     _MKUILabel * _reviewLabel;
     NSLayoutConstraint * _reviewLabelToAuthorLabelConstraint;
-    NSLayoutConstraint * _reviewLabelToBottomConstraint;
     NSLayoutConstraint * _reviewLabelTopConstraint;
 }
 
 @property (nonatomic, copy) NSString *author;
+@property (nonatomic, retain) MKPlaceReviewAvatarGenerator *avatarGenerator;
 @property (nonatomic, retain) NSDate *date;
-@property (nonatomic) UIImage *picture;
 @property (nonatomic) unsigned long long rating;
-@property (nonatomic) NSString *reviewText;
 
 - (void).cxx_destruct;
 - (void)_contentSizeDidChange;
 - (void)_updateBaselineConstraints;
 - (void)_updatePictureTheme:(id)arg1;
 - (id)author;
+- (id)avatarGenerator;
 - (id)date;
 - (id)detailLabelText;
 - (void)infoCardThemeChanged:(id)arg1;
@@ -33,14 +33,11 @@
 - (unsigned long long)maxCharacters;
 - (unsigned long long)rating;
 - (void)setAuthor:(id)arg1;
-- (void)setAuthor:(id)arg1 date:(id)arg2 rating:(unsigned long long)arg3;
+- (void)setAvatarGenerator:(id)arg1;
 - (void)setDate:(id)arg1;
-- (void)setLocale:(id)arg1;
 - (void)setPicture:(id)arg1;
 - (void)setRating:(unsigned long long)arg1;
+- (void)setReview:(id)arg1;
 - (void)setReviewText:(id)arg1;
-- (id)standardDateAuthorLabel;
-- (void)updateConstraints;
-- (void)updateDetailLabelText;
 
 @end

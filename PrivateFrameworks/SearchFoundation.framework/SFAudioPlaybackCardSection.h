@@ -2,13 +2,14 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFAudioPlaybackCardSection : SFCardSection <NSSecureCoding, SFAudioPlaybackCardSection> {
+@interface SFAudioPlaybackCardSection : SFCardSection <NSCopying, NSSecureCoding, SFAudioPlaybackCardSection> {
     SFColor * _backgroundColor;
     SFImage * _bottomImage;
     NSString * _bottomImageEmoji;
     SFText * _bottomSubtitle;
     SFText * _bottomText;
     bool  _canBeHidden;
+    SFRichText * _detailText;
     struct { 
         unsigned int canBeHidden : 1; 
         unsigned int hasTopPadding : 1; 
@@ -25,6 +26,9 @@
     int  _separatorStyle;
     int  _state;
     NSArray * _stopCommands;
+    SFRichText * _subtitle;
+    SFImage * _thumbnail;
+    SFRichText * _title;
     SFImage * _topImage;
     NSString * _topImageEmoji;
     NSString * _topSecondaryText;
@@ -42,6 +46,7 @@
 @property (nonatomic, copy) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, retain) SFRichText *detailText;
 @property (nonatomic, readonly) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) bool hasBottomPadding;
 @property (nonatomic) bool hasTopPadding;
@@ -54,10 +59,14 @@
 @property (nonatomic, copy) NSArray *punchoutOptions;
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
+@property (nonatomic, copy) NSString *resultIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (nonatomic) int state;
 @property (nonatomic, copy) NSArray *stopCommands;
+@property (nonatomic, retain) SFRichText *subtitle;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) SFImage *thumbnail;
+@property (nonatomic, retain) SFRichText *title;
 @property (nonatomic, retain) SFImage *topImage;
 @property (nonatomic, copy) NSString *topImageEmoji;
 @property (nonatomic, copy) NSString *topSecondaryText;
@@ -73,6 +82,8 @@
 - (id)bottomSubtitle;
 - (id)bottomText;
 - (bool)canBeHidden;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)detailText;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasBottomPadding;
@@ -96,6 +107,7 @@
 - (void)setBottomSubtitle:(id)arg1;
 - (void)setBottomText:(id)arg1;
 - (void)setCanBeHidden:(bool)arg1;
+- (void)setDetailText:(id)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
 - (void)setPlayCommands:(id)arg1;
@@ -105,6 +117,9 @@
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setState:(int)arg1;
 - (void)setStopCommands:(id)arg1;
+- (void)setSubtitle:(id)arg1;
+- (void)setThumbnail:(id)arg1;
+- (void)setTitle:(id)arg1;
 - (void)setTopImage:(id)arg1;
 - (void)setTopImageEmoji:(id)arg1;
 - (void)setTopSecondaryText:(id)arg1;
@@ -112,6 +127,9 @@
 - (void)setType:(id)arg1;
 - (int)state;
 - (id)stopCommands;
+- (id)subtitle;
+- (id)thumbnail;
+- (id)title;
 - (id)topImage;
 - (id)topImageEmoji;
 - (id)topSecondaryText;

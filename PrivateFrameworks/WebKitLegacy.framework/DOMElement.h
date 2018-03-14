@@ -15,6 +15,9 @@
 @property (copy) NSString *innerHTML;
 @property (readonly, copy) NSString *innerText;
 @property (readonly) DOMElement *lastElementChild;
+@property (readonly) DOMElement *mf_containingQuoteBlockElement;
+@property (readonly) bool mf_isContainedInQuoteBlock;
+@property (readonly) bool mf_isContainedInTable;
 @property (readonly) DOMElement *nextElementSibling;
 @property (readonly) int offsetHeight;
 @property (readonly) int offsetLeft;
@@ -108,6 +111,23 @@
 - (id)uiactions;
 - (bool)webkitMatchesSelector:(id)arg1;
 - (id)webkitRegionOverset;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (bool)isRichTextStyle:(id)arg1;
+
+- (bool)hasMarginsOfZero;
+- (bool)isRichTextElement;
+- (bool)isRichTextElementType;
+- (id)mf_computedBackgroundColor;
+- (id)mf_containingQuoteBlockElement;
+- (bool)mf_hasBackgroundColorOrImage;
+- (bool)mf_isContainedInAnyElementInSet:(id)arg1;
+- (bool)mf_isContainedInQuoteBlock;
+- (bool)mf_isContainedInTable;
+- (int)mf_quoteLevelDelta;
+- (void)mf_stripCSSStyle;
+- (void)recursivelyRemoveMailAttributes;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 

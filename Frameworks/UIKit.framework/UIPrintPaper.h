@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)_initWithPrintKitPaper:(id)arg1;
+- (id)_keywordForPDFMetadata;
 - (id)_localizedMediaTypeName;
 - (id)_localizedName;
 - (int)_paperOrientation;

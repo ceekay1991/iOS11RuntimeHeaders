@@ -20,6 +20,7 @@
     MKAttributionLabel * _attributionLabel;
     bool  _automaticallySnapsToNorth;
     MKBasicMapView * _basicMapView;
+    id  _bottomLayoutGuide;
     short  _cachedDisplayedFloorOrdinalForVenueWithFocus;
     unsigned long long  _cachedVenueIDWithFocus;
     MKMapCamera * _camera;
@@ -30,6 +31,7 @@
         double bottom; 
         double right; 
     }  _compassInsets;
+    bool  _compassSuppressedForFloorPicker;
     MKCompassView * _compassView;
     long long  _compassViewSize;
     long long  _compassViewStyle;
@@ -107,7 +109,6 @@
         unsigned int changingMapType : 1; 
         unsigned int userRotatedAwayFromVerticalYaw : 1; 
         unsigned int goingToDefaultLocation : 1; 
-        unsigned int delayLocationUpdatesUntilInitialRendering : 1; 
         unsigned int isDraggingAnnotationView : 1; 
         unsigned int showsPressedLabelMarkerEffect : 1; 
         unsigned int shouldLoadFallbackTiles : 1; 
@@ -120,6 +121,9 @@
         unsigned int delegateWillChangeRegion : 1; 
         unsigned int delegateDidChangeUserTrackingMode : 1; 
         unsigned int delegateDidChangeUserTrackingModeButton : 1; 
+        unsigned int useSafeAreaInsets : 1; 
+        unsigned int useLayoutGuideInsets : 1; 
+        unsigned int useLayoutMargins : 1; 
     }  _flags;
     bool  _forceLayoutOnBoundsChange;
     MKMapGestureController * _gestureController;
@@ -136,6 +140,13 @@
     VKMapView * _mapView;
     VKNavContext * _navContext;
     UITapGestureRecognizer * _nonselectingTapGestureRecognizer;
+    double  _oldAltitude;
+    struct CLLocationCoordinate2D { 
+        double latitude; 
+        double longitude; 
+    }  _oldCenterCoordinate;
+    double  _oldHeading;
+    double  _oldPitch;
     long long  _originalLoopRate;
     MKOverlayContainerView * _overlayContainer;
     long long  _preGesturingLoopRate;
@@ -147,6 +158,7 @@
     bool  _scaleVisible;
     UIView * _scrollContainerView;
     id /* block */  _selectAnnotationViewAfterRedrawBlock;
+    MKMapViewLabelMarkerState * _selectedLabelMarkerState;
     UITapGestureRecognizer * _selectingTapGestureRecognizer;
     id /* block */  _showCalloutAfterRegionChangeBlock;
     bool  _showsCompass;
@@ -154,6 +166,7 @@
     bool  _showsScaleDuringZoom;
     NSTimer * _startEffectsTimer;
     unsigned long long  _suspendedEffectsCount;
+    id  _topLayoutGuide;
     <MKMapViewDelegate><MKMapViewDelegatePrivate> * _unsafeDelegate;
     bool  _useBalloonCalloutsForLabels;
     unsigned long long  _userInteractionDisabledCount;
@@ -194,9 +207,11 @@
 @property (getter=isCompassEnabled, nonatomic) bool compassEnabled;
 @property (getter=_compassInsetEdges, setter=_setCompassInsetEdges:, nonatomic) unsigned long long compassInsetEdges;
 @property (getter=_compassInsets, setter=_setCompassInsets:, nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } compassInsets;
+@property (getter=_isCompassSuppressedForFloorPicker, setter=_setCompassSuppressedForFloorPicker:, nonatomic) bool compassSuppressedForFloorPicker;
 @property (nonatomic, readonly) long long compassViewSize;
 @property (nonatomic, readonly) long long compassViewStyle;
 @property (getter=_compassVisibleRotationThreshold, setter=_setCompassVisibleRotationThreshold:, nonatomic) double compassVisibleRotationThreshold;
+@property (getter=_currentEnvironmentLabelFrame, nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } currentEnvironmentLabelFrame;
 @property (getter=_currentFlyoverAnimationID, setter=_setCurrentFlyoverAnimationID:, nonatomic) unsigned long long currentFlyoverAnimationID;
 @property (getter=_debugConsole, nonatomic, readonly) MKDebugLocationConsole *debugConsole;
 @property (getter=_debugConsoleAdditionalInfoProvider, setter=_setDebugConsoleAdditionalInfoProvider:, nonatomic, copy) id /* block */ debugConsoleAdditionalInfoProvider;
@@ -247,7 +262,6 @@
 @property (getter=_selectedLabelMarker, nonatomic, readonly) VKLabelMarker *selectedLabelMarker;
 @property (getter=_selectingTapGestureRecognizer, nonatomic, readonly) UITapGestureRecognizer *selectingTapGestureRecognizer;
 @property (getter=_shouldAnimatePositionWithRouteMatch, setter=_setShouldAnimatePositionWithRouteMatch:, nonatomic) bool shouldAnimatePositionWithRouteMatch;
-@property (getter=_shouldDelayLocationUpdatesUntilInitialRendering, setter=_setShouldDelayLocationUpdatesUntilInitialRendering:, nonatomic) bool shouldDelayLocationUpdatesUntilIntialRendering;
 @property (getter=_shouldLoadFallbackTiles, setter=_setShouldLoadFallbackTiles:, nonatomic) bool shouldLoadFallbackTiles;
 @property (getter=_shouldSplitRouteLine, setter=_setShouldSplitRouteLine:, nonatomic) bool shouldSplitRouteLine;
 @property (getter=_showHeadingIndicatorForStepping, setter=_setShowHeadingIndicatorForStepping:, nonatomic) bool showHeadingIndicatorForStepping;
@@ -349,6 +363,7 @@
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })_convertRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 toMapRectFromView:(id)arg2;
 - (struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })_convertRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 toRegionFromView:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_convertRegion:(struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1 toRectToView:(id)arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_currentEnvironmentLabelFrame;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_currentEnvironmentNameFrame;
 - (unsigned long long)_currentFlyoverAnimationID;
 - (id)_debugConsole;
@@ -370,9 +385,13 @@
 - (id)_edgeInsetsLayoutGuide;
 - (void)_endZoomForExternalGesture;
 - (void)_enter3DMode;
+- (void)_enterARMode;
+- (void)_enterARModeWithLocation:(id)arg1;
 - (void)_exit3DMode;
+- (void)_exitARMode;
 - (id)_findLayoutGuideVC;
 - (void)_fixUserLocationFromPresentationValue;
+- (id)_flattenedAnnotationsForAnnotationViews:(id)arg1 maxdisplayPriority:(float*)arg2;
 - (bool)_forceDisplayEffects;
 - (void)_forceFrame;
 - (double)_goToCenterCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 zoomLevel:(double)arg2 animated:(bool)arg3;
@@ -390,6 +409,7 @@
 - (long long)_interfaceOrientation;
 - (bool)_isCalloutExpanded;
 - (bool)_isChangingRegionForGesture;
+- (bool)_isCompassSuppressedForFloorPicker;
 - (bool)_isDimmingOutsideVenueWithFocus;
 - (bool)_isHandlingNonselectingTap;
 - (bool)_isHandlingUserEvent;
@@ -418,6 +438,7 @@
 - (id)_mapLayer;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })_mapRectWithFraction:(double)arg1 ofVisible:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (id)_mapRegionWithCenterCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 zoomScale:(double)arg2;
+- (bool)_mapViewHasUpdatedCamera;
 - (double)_maximumZoomLevel;
 - (double)_minimumZoomLevel;
 - (bool)_mustWaitUntilSized;
@@ -458,6 +479,7 @@
 - (id)_selectingTapGestureRecognizer;
 - (void)_setAdditionalManifestConfiguration:(id)arg1;
 - (void)_setAllowsPopoverWhenNotInWindow:(bool)arg1;
+- (void)_setAlternateRouteContextAnnotationETAComparison:(unsigned char)arg1 forRoute:(id)arg2;
 - (void)_setAlwaysShowHeadingIndicatorIfSupported:(bool)arg1;
 - (void)_setAnnotationTrackingZoomStyle:(long long)arg1;
 - (void)_setApplicationState:(int)arg1;
@@ -474,6 +496,7 @@
 - (void)_setClearUserLocationOnLocationReset:(bool)arg1;
 - (void)_setCompassInsetEdges:(unsigned long long)arg1;
 - (void)_setCompassInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)_setCompassSuppressedForFloorPicker:(bool)arg1;
 - (void)_setCompassViewSize:(long long)arg1 style:(long long)arg2;
 - (void)_setCompassVisible:(bool)arg1 animated:(bool)arg2;
 - (void)_setCompassVisibleRotationThreshold:(double)arg1;
@@ -494,14 +517,13 @@
 - (void)_setMapType:(unsigned long long)arg1 onInit:(bool)arg2 animated:(bool)arg3;
 - (void)_setMapType:(unsigned long long)arg1 onInit:(bool)arg2 animated:(bool)arg3 forceSetting:(bool)arg4;
 - (void)_setPanWithMomentum:(bool)arg1;
-- (void)_setRouteContextAnnotationText:(id)arg1 forRoute:(id)arg2;
+- (void)_setRouteContextAnnotationText:(id)arg1 tollCurrency:(unsigned char)arg2 forRoute:(id)arg3;
 - (void)_setRouteContextForRoute:(id)arg1;
 - (void)_setRouteContextForRoutes:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (void)_setRouteContextInspectedLegIndex:(unsigned long long)arg1 inspectedStepIndex:(unsigned long long)arg2;
 - (void)_setSafeDelegate:(id)arg1;
 - (void)_setSelectedFeatureID:(unsigned long long)arg1;
 - (void)_setShouldAnimatePositionWithRouteMatch:(bool)arg1;
-- (void)_setShouldDelayLocationUpdatesUntilInitialRendering:(bool)arg1;
 - (void)_setShouldLoadFallbackTiles:(bool)arg1;
 - (void)_setShouldSplitRouteLine:(bool)arg1;
 - (void)_setShowHeadingIndicator:(bool)arg1;
@@ -525,10 +547,10 @@
 - (void)_setVisibleMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1 duration:(double)arg2 completionHandler:(id /* block */)arg3;
 - (void)_setZoomScale:(double)arg1 centerCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg2 duration:(double)arg3 animated:(bool)arg4;
 - (void)_setZoomScale:(double)arg1 centerMapPoint:(struct { double x1; double x2; })arg2 duration:(double)arg3 animated:(bool)arg4;
+- (struct multimap<unsigned int, std::__1::vector<URS::RouteShare, std::__1::allocator<URS::RouteShare> >, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::vector<URS::RouteShare, std::__1::allocator<URS::RouteShare> > > > > { struct __tree<std::__1::__value_type<unsigned int, std::__1::vector<URS::RouteShare, std::__1::allocator<URS::RouteShare> > >, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::vector<URS::RouteShare, std::__1::allocator<URS::RouteShare> > >, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, std::__1::vector<URS::RouteShare, std::__1::allocator<URS::RouteShare> > > > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *x_1_1_1; struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, std::__1::vector<URS::RouteShare, std::__1::allocator<URS::RouteShare> > >, void *> > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> { struct __tree_node_base<void *> {} *x_1_3_1; } x_2_2_1; } x_1_1_2; struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, std::__1::vector<URS::RouteShare, std::__1::allocator<URS::RouteShare> > >, std::__1::less<unsigned int>, true> > { unsigned long long x_3_2_1; } x_1_1_3; } x1; })_shareSectionsForRoutes:(id)arg1;
 - (bool)_shouldAnimatePositionWithRouteMatch;
 - (bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (bool)_shouldCalculateAnimationDuration;
-- (bool)_shouldDelayLocationUpdatesUntilInitialRendering;
 - (bool)_shouldDisplayScaleForCurrentRegion;
 - (bool)_shouldLoadFallbackTiles;
 - (bool)_shouldSplitRouteLine;
@@ -563,7 +585,6 @@
 - (id)_transitLineMarkersInCurrentViewport;
 - (id)_twoFingerPanGestureRecognizer;
 - (id)_twoFingerTapGestureRecognizer;
-- (struct vector<URS::PolylineCoordinateRange, std::__1::allocator<URS::PolylineCoordinateRange> > { struct PolylineCoordinateRange {} *x1; struct PolylineCoordinateRange {} *x2; struct __compressed_pair<URS::PolylineCoordinateRange *, std::__1::allocator<URS::PolylineCoordinateRange> > { struct PolylineCoordinateRange {} *x_3_1_1; } x3; })_uniqueRangesForRoutes:(id)arg1;
 - (void)_updateAttribution;
 - (void)_updateCameraState;
 - (void)_updateCompassPosition;
@@ -587,7 +608,7 @@
 - (bool)_updateRotationSupported;
 - (void)_updateScale;
 - (void)_updateScalePosition;
-- (void)_updateScrollContainerView:(bool)arg1 midstream:(bool)arg2;
+- (void)_updateScrollContainerView:(bool)arg1 forReason:(long long)arg2;
 - (void)_updateScrollingAndGestures;
 - (void)_updateShouldDisplayEffects;
 - (void)_updateShowHeadingIndicator;
@@ -688,9 +709,11 @@
 - (id)dequeueReusableAnnotationViewWithIdentifier:(id)arg1 forAnnotation:(id)arg2;
 - (void)deselectAnnotation:(id)arg1 animated:(bool)arg2;
 - (void)deselectAnnotationRepresentation:(id)arg1 animated:(bool)arg2;
+- (void)deselectVenuePoiFeatureId;
 - (void)deviceOrientationDidChange:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
+- (bool)displayedFloorIsDefaultForBuildingsInVenue:(id)arg1;
 - (short)displayedFloorOrdinalForBuildingsInVenue:(id)arg1;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forViewPrintFormatter:(id)arg2;
 - (bool)drawsBlackOnWhiteScale;
@@ -764,12 +787,15 @@
 - (id)logContextForLogMsgEvent:(id)arg1;
 - (id)mapAttributionWithStringAttributes:(id)arg1;
 - (id)mapAttributionWithStringAttributes:(id)arg1 allowMultiLine:(bool)arg2;
+- (void)mapLayer:(id)arg1 arSessionWasInterrupted:(unsigned long long)arg2;
+- (void)mapLayer:(id)arg1 arTrackingStateDidChange:(unsigned long long)arg2 reason:(unsigned long long)arg3;
 - (void)mapLayer:(id)arg1 canEnter3DModeDidChange:(bool)arg2;
 - (void)mapLayer:(id)arg1 canShowFlyoverDidChange:(bool)arg2;
 - (void)mapLayer:(id)arg1 canZoomInDidChange:(bool)arg2;
 - (void)mapLayer:(id)arg1 canZoomOutDidChange:(bool)arg2;
 - (void)mapLayer:(id)arg1 didBecomePitched:(bool)arg2;
 - (void)mapLayer:(id)arg1 didChangeRegionAnimated:(bool)arg2;
+- (void)mapLayer:(id)arg1 didEncounterARError:(id)arg2;
 - (void)mapLayer:(id)arg1 didStopFlyoverTourCompleted:(bool)arg2;
 - (void)mapLayer:(id)arg1 didUpdateVerticalYawTo:(double)arg2;
 - (void)mapLayer:(id)arg1 flyoverModeDidChange:(int)arg2;
@@ -782,10 +808,13 @@
 - (void)mapLayer:(id)arg1 venueWithFocusDidChange:(id)arg2 building:(id)arg3;
 - (void)mapLayer:(id)arg1 willChangeRegionAnimated:(bool)arg2;
 - (void)mapLayer:(id)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;
+- (void)mapLayerARSessionInterruptionEnded:(id)arg1;
 - (void)mapLayerDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(bool)arg2;
 - (void)mapLayerDidBecomePartiallyDrawn:(id)arg1;
 - (void)mapLayerDidChangeVisibleRegion:(id)arg1;
 - (void)mapLayerDidDraw:(id)arg1;
+- (void)mapLayerDidEnterAR:(id)arg1;
+- (void)mapLayerDidExitAR:(id)arg1;
 - (void)mapLayerDidFailLoadingTiles:(id)arg1 withError:(id)arg2;
 - (void)mapLayerDidFinishInitialTrackingAnimation:(id)arg1;
 - (void)mapLayerDidFinishLoadingTiles:(id)arg1;
@@ -794,6 +823,7 @@
 - (void)mapLayerNavigationCameraDidReturnToDefaultZoom:(id)arg1;
 - (void)mapLayerNavigationCameraHasStartedPanning:(id)arg1;
 - (void)mapLayerNavigationCameraHasStoppedPanning:(id)arg1;
+- (void)mapLayerWillEnterAR:(id)arg1;
 - (void)mapLayerWillStartFlyoverTour:(id)arg1;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })mapRectThatFits:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })mapRectThatFits:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1 edgePadding:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
@@ -822,6 +852,7 @@
 - (void)removeUserLocation;
 - (id)rendererForOverlay:(id)arg1;
 - (bool)rendersInBackground;
+- (void)resetDisplayedFloorOrdinalForAllVenues;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (void)resumeUserHeadingUpdates;
@@ -863,7 +894,7 @@
 - (void)setScaleEnabled:(bool)arg1;
 - (void)setScrollEnabled:(bool)arg1;
 - (void)setSelectedAnnotations:(id)arg1;
-- (void)setSelectedVenueComponentId:(unsigned long long)arg1;
+- (void)setSelectedVenuePoiFeatureId:(unsigned long long)arg1;
 - (void)setShowsAttribution:(bool)arg1;
 - (void)setShowsAttributionBadge:(bool)arg1;
 - (void)setShowsBuildings:(bool)arg1;
@@ -917,5 +948,12 @@
 // Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
 
 - (id)debugHierarchyPropertyDescriptions;
+
+// Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
+
+- (struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })regionToFitAnnotations;
+- (struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })regionToFitLocations:(id)arg1;
+- (void)zoomToFitAnnotations;
+- (void)zoomToFitLocations:(id)arg1 animated:(bool)arg2;
 
 @end

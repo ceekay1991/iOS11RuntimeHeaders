@@ -11,6 +11,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) GEOMapServiceTraits *traits;
 
+- (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 networkActivity:(id /* block */)arg3;
 - (void)submitWithHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2;
 
 @end

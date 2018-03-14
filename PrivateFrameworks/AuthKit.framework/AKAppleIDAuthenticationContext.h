@@ -2,12 +2,13 @@
    Image: /System/Library/PrivateFrameworks/AuthKit.framework/AuthKit
  */
 
-@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, CDPAuthProvider, NSSecureCoding> {
+@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, NSSecureCoding> {
     NSString * _DSID;
     struct __CFUserNotification { } * _activeSecondFactoryEntryPrompt;
     NSString * _altDSID;
     <AKAnisetteServiceProtocol> * _anisetteDataProvider;
     bool  _anticipateEscrowAttempt;
+    unsigned long long  _attemptIndex;
     unsigned long long  _capabilityForUIDisplay;
     <CDPStateUIProvider> * _cdpUiProvider;
     id  _clientInfo;
@@ -26,7 +27,6 @@
     NSString * _helpBook;
     NSDictionary * _httpHeadersForRemoteUI;
     NSUUID * _identifier;
-    AKAccountRecoveryContext * _inProgressRecoveryContext;
     NSString * _interpolatedReason;
     NSNumber * _isAppleIDLoginEnabled;
     bool  _isEphemeral;
@@ -39,6 +39,7 @@
     NSNumber * _longitude;
     long long  _maximumLoginAttempts;
     NSString * _message;
+    AKNativeAccountRecoveryController * _nativeRecoveryController;
     bool  _needsCredentialRecovery;
     bool  _needsNewAppleID;
     bool  _needsPasswordChange;
@@ -49,9 +50,9 @@
     AKDevice * _proxiedDevice;
     AKAnisetteData * _proxiedDeviceAnisetteData;
     NSString * _reason;
-    CDPRecoveryController * _recoveryController;
     NSObject<OS_dispatch_queue> * _secondFactorQueue;
     id /* block */  _secondFactoryEntryCompletion;
+    NSString * _securityUpgradeContext;
     NSArray * _serviceIdentifiers;
     long long  _serviceType;
     NSString * _shortLivedToken;
@@ -64,6 +65,7 @@
     bool  _shouldRequestRecoveryPET;
     bool  _shouldRequestShortLivedToken;
     bool  _shouldSendIdentityTokenForRemoteUI;
+    bool  _shouldSkipInitialReachabilityCheck;
     bool  _shouldSkipSettingsLaunchAlert;
     bool  _shouldUpdatePersistentServiceTokens;
     bool  _supportsPiggybacking;
@@ -72,6 +74,7 @@
 }
 
 @property (nonatomic, copy) NSString *DSID;
+@property (nonatomic) unsigned long long _attemptIndex;
 @property (nonatomic, readonly) unsigned long long _capabilityForUIDisplay;
 @property (nonatomic, readonly) NSUUID *_identifier;
 @property (nonatomic, readonly) NSString *_interpolatedReason;
@@ -84,6 +87,7 @@
 @property (setter=_setProxiedAppName:, nonatomic, copy) NSString *_proxiedAppName;
 @property (setter=_setShortLivedToken:, nonatomic, copy) NSString *_shortLivedToken;
 @property (nonatomic) bool _shouldSendIdentityTokenForRemoteUI;
+@property (nonatomic, readonly) bool _shouldSkipInitialReachabilityCheck;
 @property (nonatomic, copy) NSString *altDSID;
 @property (nonatomic, copy) <AKAnisetteServiceProtocol> *anisetteDataProvider;
 @property (nonatomic) bool anticipateEscrowAttempt;
@@ -120,6 +124,7 @@
 @property (nonatomic, copy) AKDevice *proxiedDevice;
 @property (nonatomic, retain) AKAnisetteData *proxiedDeviceAnisetteData;
 @property (nonatomic, copy) NSString *reason;
+@property (nonatomic, copy) NSString *securityUpgradeContext;
 @property (nonatomic, copy) NSString *serviceIdentifier;
 @property (nonatomic, copy) NSArray *serviceIdentifiers;
 @property (nonatomic) long long serviceType;
@@ -138,10 +143,13 @@
 @property (retain) NSString *title;
 @property (nonatomic, copy) NSString *username;
 
+// Image: /System/Library/PrivateFrameworks/AuthKit.framework/AuthKit
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)DSID;
+- (unsigned long long)_attemptIndex;
 - (unsigned long long)_capabilityForUIDisplay;
 - (void)_handleSecondFactorCodeEntry;
 - (id)_identifier;
@@ -150,7 +158,6 @@
 - (bool)_isPasswordEditable;
 - (bool)_isProxyingForApp;
 - (bool)_localUserHasEmptyPassword;
-- (id)_mapICSCRecoveryResultsToAuthKit:(id)arg1;
 - (id)_message;
 - (id)_password;
 - (id)_passwordPromptTitle;
@@ -166,14 +173,13 @@
 - (void)_setShortLivedToken:(id)arg1;
 - (id)_shortLivedToken;
 - (bool)_shouldSendIdentityTokenForRemoteUI;
+- (bool)_shouldSkipInitialReachabilityCheck;
 - (void)_startListeningForSecondFactorCodeEntryNotification;
 - (void)_stopListeningForSecondFactorCodeEntryNotification;
 - (void)_updateWithValuesFromContext:(id)arg1;
 - (id)altDSID;
 - (id)anisetteDataProvider;
 - (bool)anticipateEscrowAttempt;
-- (void)cdpContext:(id)arg1 performSilentRecoveryTokenRenewal:(id /* block */)arg2;
-- (void)cdpContext:(id)arg1 verifyMasterKey:(id)arg2 completion:(id /* block */)arg3;
 - (id)cdpUiProvider;
 - (id)clientInfo;
 - (id)companionDevice;
@@ -217,6 +223,7 @@
 - (id)proxiedDevice;
 - (id)proxiedDeviceAnisetteData;
 - (id)reason;
+- (id)securityUpgradeContext;
 - (id)serviceIdentifier;
 - (id)serviceIdentifiers;
 - (long long)serviceType;
@@ -253,6 +260,7 @@
 - (void)setProxiedDevice:(id)arg1;
 - (void)setProxiedDeviceAnisetteData:(id)arg1;
 - (void)setReason:(id)arg1;
+- (void)setSecurityUpgradeContext:(id)arg1;
 - (void)setServiceIdentifier:(id)arg1;
 - (void)setServiceIdentifiers:(id)arg1;
 - (void)setServiceType:(long long)arg1;
@@ -270,6 +278,7 @@
 - (void)setTitle:(id)arg1;
 - (void)setTriggeredByNotification:(bool)arg1;
 - (void)setUsername:(id)arg1;
+- (void)set_attemptIndex:(unsigned long long)arg1;
 - (void)set_isPasswordEditable:(bool)arg1;
 - (void)set_passwordPromptTitle:(id)arg1;
 - (void)set_shouldSendIdentityTokenForRemoteUI:(bool)arg1;
@@ -286,5 +295,9 @@
 - (bool)supportsPiggybacking;
 - (id)title;
 - (id)username;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (id)pk_AKAppleIDAuthenticationInAppContext;
 
 @end

@@ -17,6 +17,8 @@
 @property (nonatomic, retain) UITableView *tableView;
 
 - (void).cxx_destruct;
+- (void)_flush;
+- (void)_forceViewLayout;
 - (void)_sliderValueChanged:(id)arg1;
 - (void)_visibleSwitchValueChanged:(id)arg1;
 - (void)createDataItems;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
  */
 
-@interface BSMachPortRight : NSObject <BSXPCCoding, NSSecureCoding> {
+@interface BSMachPortRight : NSObject <BSInvalidatable, BSXPCCoding, NSSecureCoding> {
     int  _owner;
     unsigned int  _queue_port;
     unsigned int  _rawPort;

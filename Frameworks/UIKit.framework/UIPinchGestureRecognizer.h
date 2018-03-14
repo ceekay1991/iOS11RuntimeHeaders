@@ -38,6 +38,8 @@
 @property (nonatomic) struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } transform;
 @property (nonatomic, readonly) double velocity;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (bool)_shouldDefaultToTouches;
 
 - (void).cxx_destruct;
@@ -63,5 +65,9 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })transform;
 - (double)velocity;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+
+- (id)_automationName;
 
 @end

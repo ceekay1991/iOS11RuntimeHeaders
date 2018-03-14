@@ -15,7 +15,6 @@
     bool  _displaysTitles;
     bool  _displaysUnavailableActionTypes;
     <CNSchedulerProvider> * _schedulerProvider;
-    bool  _shouldCompressLabelsToFitSize;
     NSArray * _supportedActionTypes;
     NSArray * _tokens;
     long long  _viewStyle;
@@ -38,7 +37,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) <CNUIObjectViewControllerDelegate> *objectViewControllerDelegate;
 @property (nonatomic, retain) <CNSchedulerProvider> *schedulerProvider;
-@property (nonatomic) bool shouldCompressLabelsToFitSize;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSArray *supportedActionTypes;
 @property (nonatomic, readonly) double throttleDelay;
@@ -93,16 +91,15 @@
 - (void)setDisplaysUnavailableActionTypes:(bool)arg1;
 - (void)setObjectViewControllerDelegate:(id)arg1;
 - (void)setSchedulerProvider:(id)arg1;
-- (void)setShouldCompressLabelsToFitSize:(bool)arg1;
 - (void)setSupportedActionTypes:(id)arg1;
 - (void)setTokens:(id)arg1;
 - (void)setViewStyle:(long long)arg1;
-- (bool)shouldCompressLabelsToFitSize;
 - (void)showDisambiguationFromSourceView:(id)arg1 actionType:(id)arg2;
 - (id)supportedActionTypes;
 - (double)throttleDelay;
 - (id)tokens;
 - (void)updateActionItem:(id)arg1 withDefaultAction:(id)arg2;
+- (void)updateDesiredTitleFontSizeIfNeeded;
 - (void)updateVisibleActionItems:(id)arg1;
 - (void)viewDidLoad;
 - (long long)viewStyle;

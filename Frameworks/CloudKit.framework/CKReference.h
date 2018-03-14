@@ -2,17 +2,20 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKReference : NSObject <CKRecordValue, NSCopying, NSSecureCoding> {
+@interface CKReference : NSObject <CKRecordValue, MSPCloudReference, NSCopying, NSSecureCoding> {
     CKRecordID * _recordID;
     unsigned long long  _referenceAction;
 }
 
+@property (nonatomic, readonly) NSString *cloudRecordName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) CKRecordID *recordID;
 @property (nonatomic, readonly) unsigned long long referenceAction;
 @property (readonly) Class superclass;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 + (unsigned long long)ckReferenceActionForCKDPRecordReferenceType:(int)arg1;
 + (int)ckdpReferenceTypeForCKReferenceAction:(unsigned long long)arg1;
@@ -36,5 +39,9 @@
 - (id)recordID;
 - (unsigned long long)referenceAction;
 - (void)setRecordID:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+
+- (id)cloudRecordName;
 
 @end

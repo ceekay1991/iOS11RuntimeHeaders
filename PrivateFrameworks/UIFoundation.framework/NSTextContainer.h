@@ -42,6 +42,8 @@
 @property (nonatomic) struct CGSize { double x1; double x2; } size;
 @property (nonatomic) bool widthTracksTextView;
 
+// Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
+
 + (void)initialize;
 
 - (void)_commonInit;
@@ -85,5 +87,15 @@
 - (struct CGPoint { double x1; double x2; })textContainerOrigin;
 - (id)textView;
 - (bool)widthTracksTextView;
+
+// Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
+
+- (struct CGSize { double x1; double x2; })akContainerSize;
+- (void)akSetContainerSize:(struct CGSize { double x1; double x2; })arg1;
+- (id)initWithContainerSize:(struct CGSize { double x1; double x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
+- (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1 textAlignmentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg2 isSingleLine:(bool*)arg3;
 
 @end

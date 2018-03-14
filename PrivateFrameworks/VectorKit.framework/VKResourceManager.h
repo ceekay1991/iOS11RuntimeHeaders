@@ -4,6 +4,7 @@
 
 @interface VKResourceManager : NSObject {
     GEOResourceManifestConfiguration * _manifestConfiguration;
+    NSBundle * _vkBundle;
 }
 
 - (id)_localNameForResourceName:(id)arg1;

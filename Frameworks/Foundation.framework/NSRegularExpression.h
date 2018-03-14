@@ -15,12 +15,15 @@
 @property (readonly) unsigned long long options;
 @property (readonly, copy) NSString *pattern;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)escapedPatternForString:(id)arg1;
 + (id)escapedTemplateForString:(id)arg1;
 + (void)initialize;
 + (id)regularExpressionWithPattern:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
 + (bool)supportsSecureCoding;
 
+- (unsigned long long)_captureGroupNumberWithName:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
@@ -40,5 +43,14 @@
 - (unsigned long long)replaceMatchesInString:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 withTemplate:(id)arg4;
 - (id)replacementStringForResult:(id)arg1 inString:(id)arg2 offset:(long long)arg3 template:(id)arg4;
 - (id)stringByReplacingMatchesInString:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 withTemplate:(id)arg4;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (id)mf_attributionExpression;
++ (id)mf_attributionPrefixExpression;
++ (id)mf_copyAttributionRegularExpressionForType:(int)arg1;
++ (id)mf_forwardSeparatorExpression;
++ (id)mf_horizontalSeparatorExpression;
++ (id)mf_signatureExpression;
 
 @end

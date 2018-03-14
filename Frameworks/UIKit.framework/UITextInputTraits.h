@@ -35,6 +35,7 @@
     unsigned int  keyboardAppearance;
     unsigned int  keyboardType;
     bool  learnsCorrections;
+    bool  loadKeyboardsForSiriLanguage;
     bool  manageRecentInputs;
     NSString * recentInputIdentifier;
     NSString * responseContext;
@@ -102,6 +103,7 @@
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
 @property (nonatomic) bool learnsCorrections;
+@property (nonatomic) bool loadKeyboardsForSiriLanguage;
 @property (nonatomic) bool manageRecentInputs;
 @property (nonatomic, copy) NSString *recentInputIdentifier;
 @property (nonatomic, copy) NSString *responseContext;
@@ -178,6 +180,7 @@
 - (long long)keyboardAppearance;
 - (long long)keyboardType;
 - (bool)learnsCorrections;
+- (bool)loadKeyboardsForSiriLanguage;
 - (bool)manageRecentInputs;
 - (bool)publicTraitsMatchTraits:(id)arg1;
 - (id)recentInputIdentifier;
@@ -218,6 +221,7 @@
 - (void)setKeyboardAppearance:(long long)arg1;
 - (void)setKeyboardType:(long long)arg1;
 - (void)setLearnsCorrections:(bool)arg1;
+- (void)setLoadKeyboardsForSiriLanguage:(bool)arg1;
 - (void)setManageRecentInputs:(bool)arg1;
 - (void)setPINEntrySeparatorIndexes:(id)arg1;
 - (void)setRecentInputIdentifier:(id)arg1;

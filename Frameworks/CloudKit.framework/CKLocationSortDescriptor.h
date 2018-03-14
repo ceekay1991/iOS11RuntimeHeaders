@@ -8,6 +8,8 @@
 
 @property (nonatomic, copy) CLLocation *relativeLocation;
 
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -20,5 +22,9 @@
 - (id)initWithKey:(id)arg1 relativeLocation:(id)arg2;
 - (id)relativeLocation;
 - (void)setRelativeLocation:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (id)CKDPQuerySort;
 
 @end

@@ -4,6 +4,6 @@
 
 @interface GVDummyNode : GVNode
 
-- (bool)isDummyNode;
+- (void)computePriority;
 
 @end

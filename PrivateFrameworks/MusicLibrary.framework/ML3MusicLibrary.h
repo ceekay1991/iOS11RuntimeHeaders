@@ -14,6 +14,7 @@
     NSArray * _libraryPublicContainerFilterPredicates;
     NSArray * _libraryPublicEntityFilterPredicates;
     NSString * _libraryUID;
+    NSLock * _libraryUIDLock;
     ML3LibraryNotificationManager * _notificationManager;
     NSMutableDictionary * _optimizedLibraryContainerFilterPredicatesByContainerClass;
     NSMutableDictionary * _optimizedLibraryEntityFilterPredicatesByEntityClass;
@@ -181,7 +182,6 @@
 - (void)connectionWillOpenDatabase:(id)arg1;
 - (unsigned long long)countOfChangedPersistentIdsAfterRevision:(long long)arg1 revisionTrackingCode:(unsigned long long)arg2 maximumRevisionType:(int)arg3;
 - (bool)createIndexes;
-- (bool)createMissingBuiltInSmartPlaylists;
 - (long long)currentContentRevision;
 - (int)currentDatabaseVersion;
 - (id)currentDevicePlaybackHistoryPlaylist;

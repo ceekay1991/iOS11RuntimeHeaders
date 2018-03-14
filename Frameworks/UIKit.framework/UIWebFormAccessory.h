@@ -41,12 +41,12 @@
 - (id)_tab;
 - (void)_tabSegmentedControlDidChange:(id)arg1;
 - (void)_updateFrame;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (void)autoFill:(id)arg1;
 - (void)clear:(id)arg1;
-- (void)dealloc;
 - (id)delegate;
 - (void)done:(id)arg1;
 - (void)hideAutoFillButton;

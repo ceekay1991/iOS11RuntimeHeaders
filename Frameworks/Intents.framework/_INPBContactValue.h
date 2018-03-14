@@ -15,6 +15,7 @@
     _INPBImageValue * _image;
     bool  _isMe;
     NSString * _lastName;
+    NSString * _nickName;
     NSString * _relationship;
     int  _suggestionType;
     PBUnknownFields * _unknownFields;
@@ -33,12 +34,14 @@
 @property (nonatomic, readonly) bool hasImage;
 @property (nonatomic) bool hasIsMe;
 @property (nonatomic, readonly) bool hasLastName;
+@property (nonatomic, readonly) bool hasNickName;
 @property (nonatomic, readonly) bool hasRelationship;
 @property (nonatomic) bool hasSuggestionType;
 @property (nonatomic, readonly) bool hasValueMetadata;
 @property (nonatomic, retain) _INPBImageValue *image;
 @property (nonatomic) bool isMe;
 @property (nonatomic, retain) NSString *lastName;
+@property (nonatomic, retain) NSString *nickName;
 @property (nonatomic, retain) NSString *relationship;
 @property (nonatomic) int suggestionType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
@@ -68,6 +71,7 @@
 - (bool)hasImage;
 - (bool)hasIsMe;
 - (bool)hasLastName;
+- (bool)hasNickName;
 - (bool)hasRelationship;
 - (bool)hasSuggestionType;
 - (bool)hasValueMetadata;
@@ -77,6 +81,7 @@
 - (bool)isMe;
 - (id)lastName;
 - (void)mergeFrom:(id)arg1;
+- (id)nickName;
 - (bool)readFrom:(id)arg1;
 - (id)relationship;
 - (void)setAliases:(id)arg1;
@@ -89,6 +94,7 @@
 - (void)setImage:(id)arg1;
 - (void)setIsMe:(bool)arg1;
 - (void)setLastName:(id)arg1;
+- (void)setNickName:(id)arg1;
 - (void)setRelationship:(id)arg1;
 - (void)setSuggestionType:(int)arg1;
 - (void)setValueMetadata:(id)arg1;

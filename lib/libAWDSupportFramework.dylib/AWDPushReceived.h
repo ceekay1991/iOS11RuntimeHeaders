@@ -20,6 +20,7 @@
     unsigned int  _payloadSize;
     unsigned int  _receiveOffset;
     unsigned long long  _timestamp;
+    NSString * _topic;
 }
 
 @property (nonatomic) unsigned int connectionType;
@@ -33,11 +34,13 @@
 @property (nonatomic) bool hasPayloadSize;
 @property (nonatomic) bool hasReceiveOffset;
 @property (nonatomic) bool hasTimestamp;
+@property (nonatomic, readonly) bool hasTopic;
 @property (nonatomic) unsigned int isFromStorage;
 @property (nonatomic) int linkQuality;
 @property (nonatomic) unsigned int payloadSize;
 @property (nonatomic) unsigned int receiveOffset;
 @property (nonatomic) unsigned long long timestamp;
+@property (nonatomic, retain) NSString *topic;
 
 - (unsigned int)connectionType;
 - (void)copyTo:(id)arg1;
@@ -55,6 +58,7 @@
 - (bool)hasPayloadSize;
 - (bool)hasReceiveOffset;
 - (bool)hasTimestamp;
+- (bool)hasTopic;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (unsigned int)isFromStorage;
@@ -78,7 +82,9 @@
 - (void)setPayloadSize:(unsigned int)arg1;
 - (void)setReceiveOffset:(unsigned int)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
+- (void)setTopic:(id)arg1;
 - (unsigned long long)timestamp;
+- (id)topic;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIButton : UIControl <ABText, DebugHierarchyObject, NSCoding, UIAccessibilityContentSizeCategoryImageAdjusting, UIGestureRecognizerDelegate, _UIFloatingContentViewDelegate> {
+@interface UIButton : UIControl <ABText, CAMAccessibilityHUDItemProvider, DebugHierarchyObject, NSCoding, TSDPlatformButtonProtocol, UIAccessibilityContentSizeCategoryImageAdjusting, UIGestureRecognizerDelegate, _UIFloatingContentViewDelegate> {
     long long  __imageContentMode;
     UIColor * __plainButtonBackgroundColor;
     UIImageView * _backgroundView;
@@ -23,6 +23,7 @@
         unsigned int suppressAccessibilityUnderline : 1; 
         unsigned int requiresLayoutForPropertyChange : 1; 
         unsigned int adjustsImageSizeForAccessibilityContentSizeCategory : 1; 
+        unsigned int disableAutomaticTitleAnimations : 1; 
     }  _buttonFlags;
     UIVisualEffectView * _contentBackdropView;
     NSArray * _contentConstraints;
@@ -66,6 +67,7 @@
 
 @property (setter=_setContentConstraints:, nonatomic, copy) NSArray *_contentConstraints;
 @property (nonatomic, readonly, retain) UIColor *_currentImageColor;
+@property (getter=_disableAutomaticTitleAnimations, setter=_setDisableAutomaticTitleAnimations:, nonatomic) bool _disableAutomaticTitleAnimations;
 @property (setter=_setExternalFlatEdge:) unsigned long long _externalFlatEdge;
 @property (setter=_setImageContentMode:, nonatomic) long long _imageContentMode;
 @property (setter=_setInternalTitlePaddingInsets:, nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } _internalTitlePaddingInsets;
@@ -96,6 +98,7 @@
 @property (nonatomic, retain) UIColor *tintColor;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } titleEdgeInsets;
 @property (nonatomic, readonly) UILabel *titleLabel;
+@property (nonatomic, copy) NSString *vs_normalTitle;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
@@ -122,6 +125,7 @@
 + (id)_xImage;
 + (id)buttonWithType:(long long)arg1;
 
+- (void).cxx_destruct;
 - (id)__scalarStatisticsForUserTouchUpInsideEvent;
 - (bool)_accessibilityShouldActivateOnHUDLift;
 - (bool)_alwaysHandleScrollerMouseEvent;
@@ -151,6 +155,7 @@
 - (id)_currentImageColor;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(bool)arg3;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (bool)_disableAutomaticTitleAnimations;
 - (double)_drawingStrokeForState:(unsigned long long)arg1;
 - (double)_drawingStrokeForStyle:(long long)arg1;
 - (long long)_drawingStyleForState:(unsigned long long)arg1;
@@ -186,6 +191,7 @@
 - (void)_installSelectGestureRecognizer;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_internalTitlePaddingInsets;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
+- (struct CGSize { double x1; double x2; })_intrinsicSizeForTitle:(id)arg1 attributedTitle:(id)arg2 image:(id)arg3 backgroundImage:(id)arg4 titlePaddingInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg5;
 - (struct CGSize { double x1; double x2; })_intrinsicSizeWithinSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_invalidateContentConstraints;
 - (bool)_isCarPlaySystemTypeButton;
@@ -213,6 +219,7 @@
 - (void)_prepareMaskAnimationViewIfNecessary;
 - (void)_reducedTransparencyDidChange:(id)arg1;
 - (bool)_requiresLayoutForPropertyChange;
+- (struct CGSize { double x1; double x2; })_roundSize:(struct CGSize { double x1; double x2; })arg1;
 - (double)_scaleFactorForImage;
 - (void)_selectGestureChanged:(id)arg1;
 - (double)_selectedIndicatorAlpha;
@@ -227,6 +234,7 @@
 - (void)_setContentBackgroundHidden:(bool)arg1;
 - (void)_setContentConstraints:(id)arg1;
 - (void)_setContentHuggingPriorities:(struct CGSize { double x1; double x2; })arg1;
+- (void)_setDisableAutomaticTitleAnimations:(bool)arg1;
 - (void)_setDrawingStroke:(double)arg1 forState:(unsigned long long)arg2;
 - (void)_setDrawingStyle:(long long)arg1 forState:(unsigned long long)arg2;
 - (void)_setExternalFlatEdge:(unsigned long long)arg1;
@@ -271,6 +279,7 @@
 - (struct CGSize { double x1; double x2; })_titleShadowOffset;
 - (id)_titleView;
 - (id)_transitionAnimationWithKeyPath:(id)arg1;
+- (void)_uikit_applyValueFromTraitStorage:(id)arg1 forKeyPath:(id)arg2;
 - (void)_uninstallSelectGestureRecognizer;
 - (void)_updateBackgroundImageView;
 - (void)_updateContentBackdropView;
@@ -283,12 +292,15 @@
 - (bool)_wantsAccessibilityUnderline;
 - (bool)_wantsContentBackdropView;
 - (void)_willMoveToWindow:(id)arg1;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
-- (id)ab_text;
-- (id)ab_textAttributes;
 - (bool)adjustsImageSizeForAccessibilityContentSizeCategory;
 - (bool)adjustsImageWhenDisabled;
 - (bool)adjustsImageWhenHighlighted;
@@ -309,9 +321,6 @@
 - (id)currentTitle;
 - (id)currentTitleColor;
 - (id)currentTitleShadowColor;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (unsigned long long)defaultAccessibilityTraits;
 - (void)encodeWithCoder:(id)arg1;
 - (void)floatingContentView:(id)arg1 isTransitioningFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
@@ -335,8 +344,6 @@
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (bool)reversesTitleShadowWhenHighlighted;
-- (void)setAb_text:(id)arg1;
-- (void)setAb_textAttributes:(id)arg1;
 - (void)setAdjustsImageSizeForAccessibilityContentSizeCategory:(bool)arg1;
 - (void)setAdjustsImageWhenDisabled:(bool)arg1;
 - (void)setAdjustsImageWhenHighlighted:(bool)arg1;
@@ -389,11 +396,94 @@
 - (void)updateConstraints;
 - (id)viewForLastBaselineLayout;
 
+// Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
+
+- (id)ab_text;
+- (id)ab_textAttributes;
+- (void)setAb_text:(id)arg1;
+- (void)setAb_textAttributes:(id)arg1;
+
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (id)_mapkit_accessoryControlToExtendWithCallout;
 - (void)_mapkit_setAttributedTitle:(id)arg1;
 - (void)_mapkit_setImage:(id)arg1;
 - (id)_mapkit_title;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (void)pu_sendActionForControlEventsWithHighlightTimeout:(unsigned long long)arg1;
+- (void)pu_setRTLAwareContentEdgeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)pu_setTitle:(id)arg1 withFallback:(id /* block */)arg2 forState:(unsigned long long)arg3;
+
+// Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
+
+- (long long)_nui_isUIButtonType;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_nui_rectInsetsForBaseline;
+- (double)effectiveBaselineOffsetFromContentBottom;
+- (double)effectiveFirstBaselineOffsetFromContentTop;
+
+// Image: /System/Library/PrivateFrameworks/AuthKitUI.framework/AuthKitUI
+
++ (id)ak_passwordRecoveryButton;
+
+- (void)_ak_passwordRecoveryButtonTapped:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CameraKit.framework/CameraKit
+
+- (void)cam_updateContentInsetsToCenterImageWithinMinimumSize:(struct CGSize { double x1; double x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
++ (id)hk_buttonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
++ (id)hk_multiLineRoundRectButtonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
++ (id)hk_roundRectButtonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (void)mpu_configureButtonWithTextDrawingContext:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
++ (id)_buttonBackgroundImageForType:(unsigned long long)arg1 color:(id)arg2 controlState:(unsigned long long)arg3;
++ (id)buttonWithPXType:(unsigned long long)arg1 color:(id)arg2;
+
+- (void)px_setTitle:(id)arg1 orAttributedTitle:(id)arg2 forState:(unsigned long long)arg3;
+- (void)px_updateTitleUsingBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
+
++ (id)SKUITrending_defaultButtonFont;
++ (id)SKUITrending_searchButtonWithElement:(id)arg1;
++ (id)SKUITrending_searchButtonWithTitle:(id)arg1;
+
+- (void)SKUITrending_applyConfigurationFromElement:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
++ (id)tsdPlatformButtonWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+
+- (void)setAlternateImageNamed:(id)arg1 inBundle:(id)arg2;
+- (void)setImageNamed:(id)arg1 inBundle:(id)arg2;
+- (void)setTarget:(id)arg1 action:(SEL)arg2;
+
+// Image: /System/Library/PrivateFrameworks/VideoSubscriberAccountUI.framework/VideoSubscriberAccountUI
+
+- (void)setVs_normalTitle:(id)arg1;
+- (id)vs_normalTitle;
+
+// Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
+
+- (void)configureFromScriptButton:(id)arg1;
 
 @end

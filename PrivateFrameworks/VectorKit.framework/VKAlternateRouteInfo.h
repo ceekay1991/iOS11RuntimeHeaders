@@ -22,7 +22,8 @@
 - (struct PolylineCoordinate { unsigned int x1; float x2; })convergenceCoordinate;
 - (struct PolylineCoordinate { unsigned int x1; float x2; })divergenceCoordinate;
 - (unsigned char)etaComparisionToMain;
-- (id)initWithComposedRoute:(id)arg1 etaText:(id)arg2 uniqueStart:(struct PolylineCoordinate { unsigned int x1; float x2; })arg3 uniqueEnd:(struct PolylineCoordinate { unsigned int x1; float x2; })arg4 divergenceRouteCoordinate:(struct PolylineCoordinate { unsigned int x1; float x2; })arg5 convergenceRouteCoordinate:(struct PolylineCoordinate { unsigned int x1; float x2; })arg6;
+- (id)initWithComposedRoute:(id)arg1 etaDescription:(id)arg2 divergenceRouteCoordinate:(struct PolylineCoordinate { unsigned int x1; float x2; })arg3 convergenceRouteCoordinate:(struct PolylineCoordinate { unsigned int x1; float x2; })arg4;
+- (id)initWithComposedRoute:(id)arg1 etaText:(id)arg2 divergenceRouteCoordinate:(struct PolylineCoordinate { unsigned int x1; float x2; })arg3 convergenceRouteCoordinate:(struct PolylineCoordinate { unsigned int x1; float x2; })arg4;
 - (void)setEtaComparisionToMain:(unsigned char)arg1;
 
 @end

@@ -10,6 +10,7 @@
     unsigned long long  _maxCountAfterAutocorrectionGuesses;
     unsigned long long  _maxCountAfterSpellingGuesses;
     unsigned long long  _maxEditDistance;
+    bool  _showRevertingAutocorrectionInPredictionView;
     UITextChecker * _textChecker;
 }
 

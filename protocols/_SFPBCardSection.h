@@ -15,6 +15,7 @@
 - (unsigned long long)commandsCount;
 - (bool)hasCardSectionId;
 - (bool)hasNextCard;
+- (bool)hasResultIdentifier;
 - (bool)hasType;
 - (bool)hasValue;
 - (id)initWithDictionary:(NSDictionary *)arg1;
@@ -24,10 +25,12 @@
 - (NSArray *)parameterKeyPaths;
 - (NSString *)parameterKeyPathsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)parameterKeyPathsCount;
+- (NSString *)resultIdentifier;
 - (void)setCardSectionId:(NSString *)arg1;
 - (void)setCommands:(NSArray *)arg1;
 - (void)setNextCard:(_SFPBCard *)arg1;
 - (void)setParameterKeyPaths:(NSArray *)arg1;
+- (void)setResultIdentifier:(NSString *)arg1;
 - (void)setType:(int)arg1;
 - (void)setValue:(_SFPBCardSectionValue *)arg1;
 - (int)type;

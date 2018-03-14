@@ -19,12 +19,11 @@
 
 - (void).cxx_destruct;
 - (id)_cachedStateOfType:(int)arg1;
-- (void)_captureLogMsgEvent:(id)arg1 withMergedContext:(id)arg2;
+- (void)_captureLogMsgEvent:(id)arg1 userSessionSnapshot:(id)arg2 withMergedContext:(id)arg3;
 - (void)cachedStateOfType:(int)arg1 getCachedStateOfTypeBlock:(id /* block */)arg2;
-- (void)captureLogMsgEvent:(id)arg1;
-- (void)captureLogMsgEvent:(id)arg1 withLogContext:(id)arg2;
+- (void)captureLogMsgEvent:(id)arg1 userSessionSnapshot:(id)arg2;
+- (void)captureLogMsgEvent:(id)arg1 userSessionSnapshot:(id)arg2 withLogContext:(id)arg3;
 - (void)dealloc;
-- (void)experimentConfigurationDidChange:(id)arg1;
 - (id)init;
 - (void)registerLogContextDelegate:(id)arg1;
 - (void)registerLogMsgState:(id)arg1;

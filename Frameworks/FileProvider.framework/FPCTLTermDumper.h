@@ -14,6 +14,7 @@
     unsigned long long  _usedTermWidth;
 }
 
+@property (nonatomic, readonly) int fd;
 @property (nonatomic, readonly) bool isatty;
 @property (nonatomic, readonly) bool supportsEscapeSequences;
 @property (nonatomic, readonly) bool useColor;
@@ -33,6 +34,7 @@
 - (void)cursorRight:(unsigned int)arg1;
 - (void)cursorSave;
 - (void)cursorUp:(unsigned int)arg1;
+- (void)dumpImage:(id)arg1 characterWidth:(unsigned long long)arg2 characterHeight:(unsigned long long)arg3;
 - (void)dumpImage:(id)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
 - (void)endLine;
 - (void)eraseEndOfLine;
@@ -40,6 +42,7 @@
 - (void)eraseScreenDown;
 - (void)eraseScreenUp;
 - (void)eraseStartOfLine;
+- (int)fd;
 - (void)forgetRemainingSpace;
 - (id)initWithFd:(int)arg1 forceColor:(bool)arg2;
 - (bool)isatty;

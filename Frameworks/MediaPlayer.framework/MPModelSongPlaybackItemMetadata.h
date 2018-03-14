@@ -9,6 +9,8 @@
 
 @property (nonatomic, retain) MPModelSong *song;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)requiredProperties;
 
 - (void).cxx_destruct;
@@ -41,5 +43,9 @@
 - (unsigned long long)storeSagaID;
 - (long long)storeSubscriptionAdamID;
 - (float)volumeNormalization;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)mqf_playbackItemMetadataModelObject;
 
 @end

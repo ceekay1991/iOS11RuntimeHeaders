@@ -53,6 +53,8 @@
 - (id)label;
 - (struct MTLLibraryData { int (**x1)(); int x2; id x3; }*)libraryData;
 - (id)name;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
+- (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id*)arg2;
 - (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
 - (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id*)arg2;
 - (id)newSerializedVertexDataWithVertexDescriptor:(id)arg1;

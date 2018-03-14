@@ -20,6 +20,7 @@
 - (id)client;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)customDescription;
 - (id)customDictionaryRepresentation;
 - (void)dealloc;
 - (id)description;

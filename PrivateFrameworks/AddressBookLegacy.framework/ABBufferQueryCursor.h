@@ -7,6 +7,7 @@
     unsigned long long  _blobLength;
     int  _contactLinkUUIDColumn;
     int  _contactPreferredForImageColumn;
+    unsigned long long  _countOfContactsInBuffer;
     long long  _currentMultivalue;
     int  _currentMultivalueIdentifier;
     int  _currentPropertyID;
@@ -14,6 +15,7 @@
     bool  _hasFoundAnyImageDataForCurrentContact;
     struct sqlite3_blob { } * _incompleteBlob;
     unsigned long long  _maxBufferSize;
+    unsigned long long  _maxContactsPerBatch;
     int  _multivalueEntryKeyColumn;
     int  _multivalueEntryValueColumn;
     int  _multivalueIdentifierColumn;
@@ -31,6 +33,7 @@
 @property (nonatomic) unsigned long long blobLength;
 @property (nonatomic) int contactLinkUUIDColumn;
 @property (nonatomic) int contactPreferredForImageColumn;
+@property (nonatomic) unsigned long long countOfContactsInBuffer;
 @property (nonatomic) long long currentMultivalue;
 @property (nonatomic) int currentMultivalueIdentifier;
 @property (nonatomic) int currentPropertyID;
@@ -38,6 +41,7 @@
 @property (nonatomic) bool hasFoundAnyImageDataForCurrentContact;
 @property (nonatomic) struct sqlite3_blob { }*incompleteBlob;
 @property (nonatomic) unsigned long long maxBufferSize;
+@property (nonatomic) unsigned long long maxContactsPerBatch;
 @property (nonatomic) int multivalueEntryKeyColumn;
 @property (nonatomic) int multivalueEntryValueColumn;
 @property (nonatomic) int multivalueIdentifierColumn;
@@ -54,6 +58,7 @@
 - (unsigned long long)blobLength;
 - (int)contactLinkUUIDColumn;
 - (int)contactPreferredForImageColumn;
+- (unsigned long long)countOfContactsInBuffer;
 - (long long)currentMultivalue;
 - (int)currentMultivalueIdentifier;
 - (int)currentPropertyID;
@@ -66,6 +71,7 @@
 - (id)initWithAddressBook:(void*)arg1 query:(id)arg2 queryBinder:(id /* block */)arg3 propertyIdentifierSet:(struct __CFSet { }*)arg4 includeLinkedContacts:(bool)arg5 sortOrder:(unsigned int)arg6 suggestedContactsPerBatch:(unsigned long long)arg7;
 - (id)initWithQuery:(id)arg1 batchSize:(unsigned long long)arg2;
 - (unsigned long long)maxBufferSize;
+- (unsigned long long)maxContactsPerBatch;
 - (int)multivalueEntryKeyColumn;
 - (int)multivalueEntryValueColumn;
 - (int)multivalueIdentifierColumn;
@@ -81,6 +87,7 @@
 - (void)setBlobLength:(unsigned long long)arg1;
 - (void)setContactLinkUUIDColumn:(int)arg1;
 - (void)setContactPreferredForImageColumn:(int)arg1;
+- (void)setCountOfContactsInBuffer:(unsigned long long)arg1;
 - (void)setCurrentMultivalue:(long long)arg1;
 - (void)setCurrentMultivalueIdentifier:(int)arg1;
 - (void)setCurrentPropertyID:(int)arg1;
@@ -88,6 +95,7 @@
 - (void)setHasFoundAnyImageDataForCurrentContact:(bool)arg1;
 - (void)setIncompleteBlob:(struct sqlite3_blob { }*)arg1;
 - (void)setMaxBufferSize:(unsigned long long)arg1;
+- (void)setMaxContactsPerBatch:(unsigned long long)arg1;
 - (void)setMultivalueEntryKeyColumn:(int)arg1;
 - (void)setMultivalueEntryValueColumn:(int)arg1;
 - (void)setMultivalueIdentifierColumn:(int)arg1;

@@ -11,6 +11,8 @@
 @property (readonly) unsigned long long storagePolicy;
 @property (readonly, copy) NSDictionary *userInfo;
 
+// Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+
 + (bool)supportsSecureCoding;
 
 - (const struct _CFCachedURLResponse { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __CFCachedURLResponse {} *x2; }*)_CFCachedURLResponse;
@@ -29,5 +31,9 @@
 - (id)response;
 - (unsigned long long)storagePolicy;
 - (id)userInfo;
+
+// Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
+
+- (id)_cacheTime;
 
 @end

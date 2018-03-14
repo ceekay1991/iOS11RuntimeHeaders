@@ -10,8 +10,8 @@
 - (unsigned long long)functionType;
 - (NSString *)label;
 - (NSString *)name;
-- (<MTLIndirectArgumentEncoder> *)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
-- (<MTLIndirectArgumentEncoder> *)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id*)arg2;
+- (<MTLArgumentEncoder> *)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
+- (<MTLArgumentEncoder> *)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id*)arg2;
 - (long long)patchControlPointCount;
 - (unsigned long long)patchType;
 - (void)setLabel:(NSString *)arg1;

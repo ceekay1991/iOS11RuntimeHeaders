@@ -51,9 +51,44 @@
 - (void)writeData:(id)arg1;
 - (id /* block */)writeabilityHandler;
 
+// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsUtilities.framework/DVTInstrumentsUtilities
+
+- (bool)xr_writeStringWithFormat:(id)arg1;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
+- (void)hk_readLinesInFile:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AppleServiceToolkit.framework/AppleServiceToolkit
+
++ (id)fileHandleForCreatingURL:(id)arg1 protection:(id)arg2 error:(id*)arg3;
+
+- (bool)isOpenForUpdating;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (void)writeString:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
+
+- (unsigned long long)writeWithCompression:(id)arg1 andUpdateAdler32:(struct adler32_t { unsigned long long x1; }*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
+
+- (bool)hk_readValue:(void*)arg1 ofSize:(unsigned long long)arg2 error:(id*)arg3;
+- (bool)hk_writeValue:(const void*)arg1 size:(unsigned long long)arg2 error:(id*)arg3;
+
+// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+
+- (bool)_maps_writeData:(id)arg1 error:(id*)arg2;
+
 // Image: /System/Library/PrivateFrameworks/MusicLibrary.framework/MusicLibrary
 
 - (void)ml_lock;
 - (void)ml_unlock;
+
+// Image: /System/Library/PrivateFrameworks/SpotlightServices.framework/SpotlightServices
+
+- (id)prs_mappedData;
 
 @end

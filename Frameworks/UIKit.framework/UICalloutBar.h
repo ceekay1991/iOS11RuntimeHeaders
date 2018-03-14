@@ -83,6 +83,7 @@
             double height; 
         } size; 
     }  m_targetRect;
+    UIWindow * m_targetWindow;
     NSString * m_untruncatedString;
     UIScrollView * m_verticalScrollView;
     UIStackView * m_verticalStackView;
@@ -108,6 +109,7 @@
 @property (nonatomic) bool targetHorizontal;
 @property (nonatomic) struct CGPoint { double x1; double x2; } targetPoint;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } targetRect;
+@property (nonatomic) UIWindow *targetWindow;
 @property (nonatomic, copy) NSString *untruncatedString;
 @property (nonatomic, readonly) UIScrollView *verticalScrollView;
 @property (nonatomic, readonly) UIStackView *verticalStackView;
@@ -123,16 +125,17 @@
 + (id)sharedCalloutBar;
 + (bool)sharedCalloutBarIsVisible;
 
+- (void).cxx_destruct;
 - (void)_endOngoingAppearOrFadeAnimations;
 - (void)_fadeAfterCommand:(SEL)arg1;
 - (void)_showNextItems:(id)arg1;
 - (void)_showPreviousItems:(id)arg1;
 - (bool)_touchesInsideShouldHideCalloutBar;
 - (bool)_updateVisibleItemsAnimated:(bool)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)addRectToEvade:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)addVerticalSeparatorAfterButton:(id)arg1;
 - (void)adjustFrameToAvoidDividerOnArrow;
@@ -152,7 +155,6 @@
 - (void)configureButtonsForVerticalView:(double)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })controlFrame;
 - (id)currentAppearOrFadeContext;
-- (void)dealloc;
 - (id)delegate;
 - (id)extraItems;
 - (void)fade;
@@ -194,9 +196,10 @@
 - (void)setTargetHorizontal:(bool)arg1;
 - (void)setTargetPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setTargetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (void)setTargetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 arrowDirection:(int)arg2;
-- (void)setTargetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 pointBelowControls:(struct CGPoint { double x1; double x2; })arg2 pointAboveControls:(struct CGPoint { double x1; double x2; })arg3;
-- (void)setTargetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 pointLeftOfControls:(struct CGPoint { double x1; double x2; })arg2 pointRightOfControls:(struct CGPoint { double x1; double x2; })arg3;
+- (void)setTargetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 view:(id)arg2 arrowDirection:(int)arg3;
+- (void)setTargetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 view:(id)arg2 pointBelowControls:(struct CGPoint { double x1; double x2; })arg3 pointAboveControls:(struct CGPoint { double x1; double x2; })arg4;
+- (void)setTargetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 view:(id)arg2 pointLeftOfControls:(struct CGPoint { double x1; double x2; })arg3 pointRightOfControls:(struct CGPoint { double x1; double x2; })arg4;
+- (void)setTargetWindow:(id)arg1;
 - (void)setUntruncatedString:(id)arg1;
 - (void)show;
 - (bool)showAllReplacements;
@@ -209,8 +212,9 @@
 - (bool)targetHorizontal;
 - (struct CGPoint { double x1; double x2; })targetPoint;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })targetRect;
+- (id)targetWindow;
 - (int)textEffectsVisibilityLevel;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })textEffectsWindowBoundsWithoutStatusBar;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })textEffectsWindowSafeArea;
 - (id)untruncatedString;
 - (void)update;
 - (void)updateAnimated:(bool)arg1;

@@ -79,6 +79,7 @@
 - (void)_loadValueForAggregateFunction:(id)arg1 entityClass:(Class)arg2 property:(id)arg3 query:(id)arg4 completionBlock:(id /* block */)arg5;
 - (void)_postEvents;
 - (bool)_removeEntitiesWithIdentifiers:(long long*)arg1 count:(unsigned long long)arg2 entityClass:(Class)arg3;
+- (id)_storePlatformRequestContext;
 - (void)_syncGenerationDidChange:(id)arg1;
 - (void)addGlobalPlaylistWithID:(id)arg1 andAddToCloudLibrary:(bool)arg2 completion:(id /* block */)arg3;
 - (void)addItemWithIdentifier:(long long)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(id /* block */)arg3;
@@ -91,6 +92,7 @@
 - (id)artworkDataSource;
 - (void)clearLocationPropertiesOfItemWithIdentifier:(long long)arg1;
 - (bool)collectionExistsContainedWithinPersistentIDs:(const unsigned long long*)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long*)arg4;
+- (bool)collectionExistsContainedWithinSyncIDs:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long*)arg3;
 - (bool)collectionExistsWithName:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long*)arg3;
 - (bool)collectionExistsWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2;
 - (bool)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long*)arg3;

@@ -24,7 +24,6 @@
 - (id)_responseMessagePBRepresentation;
 - (bool)_shouldForwardIntentToApp;
 - (long long)code;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;

@@ -18,7 +18,8 @@
 @property (copy) NSArray *presentedFiles;
 @property (nonatomic, readonly) NSString *providerIdentifier;
 
-+ (void)addDomain:(id)arg1 completion:(id /* block */)arg2;
+// Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
+
 + (void)addDomain:(id)arg1 completionHandler:(id /* block */)arg2;
 + (void)addDomain:(id)arg1 forProviderIdentifier:(id)arg2 completionHandler:(id /* block */)arg3;
 + (id)defaultManager;
@@ -27,7 +28,6 @@
 + (id)placeholderURLForURL:(id)arg1;
 + (void)removeAllDomainsForProviderIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 + (void)removeAllDomainsWithCompletionHandler:(id /* block */)arg1;
-+ (void)removeDomain:(id)arg1 completion:(id /* block */)arg2;
 + (void)removeDomain:(id)arg1 completionHandler:(id /* block */)arg2;
 + (void)removeDomain:(id)arg1 forProviderIdentifier:(id)arg2 completionHandler:(id /* block */)arg3;
 + (bool)writePlaceholderAtURL:(id)arg1 withDictionary:(id)arg2 error:(id*)arg3;
@@ -44,11 +44,13 @@
 - (id)itemIDForIdentifier:(id)arg1;
 - (id)presentedFiles;
 - (id)providerIdentifier;
-- (void)registerURLSessionTask:(id)arg1 forItemWithIdentifier:(id)arg2;
 - (void)registerURLSessionTask:(id)arg1 forItemWithIdentifier:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)remoteFileProviderWithCompletionHandler:(id /* block */)arg1;
 - (void)setPresentedFiles:(id)arg1;
-- (void)signalEnumeratorForContainerItemIdentifier:(id)arg1;
 - (void)signalEnumeratorForContainerItemIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
+
++ (id)brc_sharedProviderManager;
 
 @end

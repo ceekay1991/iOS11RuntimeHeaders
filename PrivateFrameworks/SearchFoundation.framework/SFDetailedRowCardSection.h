@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFDetailedRowCardSection : SFCardSection <NSSecureCoding, SFDetailedRowCardSection> {
+@interface SFDetailedRowCardSection : SFCardSection <NSCopying, NSSecureCoding, SFDetailedRowCardSection, SearchUIAuxilliaryFieldProtocol> {
     SFActionItem * _action;
     SFColor * _backgroundColor;
     SFButton * _button;
@@ -35,10 +35,16 @@
     NSString * _type;
 }
 
+@property (readonly) SFActionItem *action;
 @property (nonatomic, retain) SFActionItem *action;
+@property (readonly) NSString *auxiliaryBottomText;
+@property (readonly) int auxiliaryBottomTextColor;
+@property (readonly) NSString *auxiliaryMiddleText;
+@property (readonly) NSString *auxiliaryTopText;
 @property (nonatomic, retain) SFColor *backgroundColor;
 @property (nonatomic, retain) SFButton *button;
 @property (nonatomic) bool canBeHidden;
+@property (readonly) SFCard *card;
 @property (nonatomic, copy) NSString *cardSectionId;
 @property (nonatomic, copy) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
@@ -58,16 +64,21 @@
 @property (nonatomic, copy) NSArray *punchoutOptions;
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
+@property (nonatomic, copy) NSString *resultIdentifier;
 @property (nonatomic, retain) SFFormattedText *secondaryTitle;
 @property (nonatomic, retain) SFImage *secondaryTitleImage;
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
+@property (readonly) SFImage *thumbnail;
 @property (nonatomic, retain) SFImage *thumbnail;
+@property (readonly) SFRichText *title;
 @property (nonatomic, retain) SFRichText *title;
 @property (nonatomic, retain) SFFormattedText *trailingBottomText;
 @property (nonatomic, retain) SFFormattedText *trailingMiddleText;
 @property (nonatomic, retain) SFFormattedText *trailingTopText;
 @property (nonatomic, copy) NSString *type;
+
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
 
 + (bool)supportsSecureCoding;
 
@@ -76,6 +87,7 @@
 - (id)backgroundColor;
 - (id)button;
 - (bool)canBeHidden;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)descriptions;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
@@ -127,5 +139,13 @@
 - (id)trailingMiddleText;
 - (id)trailingTopText;
 - (id)type;
+
+// Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
+
+- (id)auxiliaryBottomText;
+- (int)auxiliaryBottomTextColor;
+- (id)auxiliaryMiddleText;
+- (id)auxiliaryTopText;
+- (id)card;
 
 @end

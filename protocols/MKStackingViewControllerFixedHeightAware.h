@@ -5,7 +5,6 @@
 
 @required
 
-- (double)extraHeightToReserveInLayout;
 - (bool)resizableViewsDisabled;
 - (void)setResizableViewsDisabled:(bool)arg1;
 

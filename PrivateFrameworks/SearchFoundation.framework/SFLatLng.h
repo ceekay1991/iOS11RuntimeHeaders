@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFLatLng : NSObject <NSSecureCoding, SFLatLng> {
+@interface SFLatLng : NSObject <NSCopying, NSSecureCoding, SFLatLng> {
     struct { 
         unsigned int lat : 1; 
         unsigned int lng : 1; 
@@ -22,6 +22,7 @@
 
 + (bool)supportsSecureCoding;
 
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasLat;

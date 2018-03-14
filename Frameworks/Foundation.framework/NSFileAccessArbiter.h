@@ -3,12 +3,14 @@
  */
 
 @interface NSFileAccessArbiter : NSObject <NSFileAccessArbiterXPCInterface, NSXPCListenerDelegate> {
+    NSMutableDictionary * _accessClaimTransactionsByID;
     NSMutableDictionary * _accessClaimsByID;
     NSObject<OS_dispatch_source> * _debugSignalSource;
     bool  _isStopped;
     bool  _isSubarbiter;
     NSXPCListener * _listenerConnection;
     NSObject<OS_dispatch_queue> * _queue;
+    NSMutableDictionary * _reactorTransactionsByID;
     NSMutableDictionary * _reactorsByID;
     NSFileAccessNode * _rootNode;
     NSMutableDictionary * _subarbitrationClaimsByID;
@@ -21,9 +23,8 @@
 @property (readonly) NSXPCConnection *superarbitrationConnection;
 @property (readonly) Class superclass;
 
-+ (void)_gainedBirdProviderFromClient:(id)arg1;
-+ (void)_lostBirdProviderFromClient:(id)arg1;
-+ (void)_registerForTokenChangeNotificationsWithQueue:(id)arg1;
++ (void)_gainedBirdProvider:(id)arg1;
++ (void)_lostBirdProvider:(id)arg1;
 + (void)_wakeUpBirdWithUID:(unsigned int)arg1 queue:(id)arg2 thenContinue:(id /* block */)arg3;
 + (void)ensureProvidersIfNecessaryForClaim:(id)arg1 readingAtLocation:(id)arg2 queue:(id)arg3 thenContinue:(id /* block */)arg4;
 

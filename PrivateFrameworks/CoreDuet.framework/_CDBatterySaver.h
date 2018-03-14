@@ -7,6 +7,7 @@
 }
 
 + (id)batterySaver;
++ (id)sharedInstance;
 
 - (void).cxx_destruct;
 - (void)dealloc;

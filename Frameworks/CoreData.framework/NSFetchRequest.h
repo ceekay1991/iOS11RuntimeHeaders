@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSFetchRequest : NSPersistentStoreRequest <NSCoding> {
+@interface NSFetchRequest : NSPersistentStoreRequest <NSCoding, NSSecureCoding> {
     id * _additionalPrivateIvars;
     unsigned long long  _batchSize;
     NSEntityDescription * _entity;
@@ -54,6 +54,7 @@
 + (id)decodeFromXPCArchive:(id)arg1 withContext:(id)arg2;
 + (id)fetchRequestWithEntityName:(id)arg1;
 + (void)initialize;
++ (bool)supportsSecureCoding;
 
 - (id)_XPCEncodedFlags;
 - (id)_asyncResultHandle;

@@ -28,7 +28,9 @@
 + (id)createContextForBindable:(id)arg1 withSubstrate:(id)arg2;
 
 - (void).cxx_destruct;
+- (id)_attachedBindablePointersAsCopy:(bool)arg1;
 - (id)_contextForBindable:(id)arg1;
+- (id)_enrolledBindablePointersAsCopy:(bool)arg1;
 - (void)_synchronizeDrawing;
 - (unsigned int)_synchronizeDrawingAcrossProcesses;
 - (void)_synchronizeDrawingAcrossProcessesOverPort:(unsigned int)arg1;
@@ -39,6 +41,7 @@
 - (id)_synchronizedDrawingFence;
 - (void)attachBindable:(id)arg1;
 - (id)attachedBindables;
+- (bool)bindableIsTopmostAttached:(id)arg1;
 - (bool)bindbleEnrolled:(id)arg1;
 - (long long)contextManagementPolicy;
 - (void)createContextsWithTest:(id /* block */)arg1 creationAction:(id /* block */)arg2;
@@ -53,6 +56,7 @@
 - (void)recreateContextForBindable:(id)arg1;
 - (void)setContextManagementPolicy:(long long)arg1;
 - (id)substrate;
+- (void)updateBindable:(id)arg1;
 - (void)updateBindableOrderWithTest:(id /* block */)arg1;
 - (void)updateBindableOrderWithTest:(id /* block */)arg1 force:(bool)arg2;
 

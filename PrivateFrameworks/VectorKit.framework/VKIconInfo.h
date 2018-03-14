@@ -9,6 +9,7 @@
     struct CGColor { } * _glyphColor;
     struct CGColor { } * _haloColor;
     VKImage * _image;
+    float  _strokeWeight;
     unsigned char  _style;
 }
 
@@ -18,6 +19,7 @@
 @property (nonatomic) struct CGColor { }*glyphColor;
 @property (nonatomic) struct CGColor { }*haloColor;
 @property (nonatomic, retain) VKImage *image;
+@property (nonatomic) float strokeWeight;
 @property (nonatomic) unsigned char style;
 
 - (float)alpha;
@@ -33,7 +35,9 @@
 - (void)setGlyphColor:(struct CGColor { }*)arg1;
 - (void)setHaloColor:(struct CGColor { }*)arg1;
 - (void)setImage:(id)arg1;
+- (void)setStrokeWeight:(float)arg1;
 - (void)setStyle:(unsigned char)arg1;
+- (float)strokeWeight;
 - (unsigned char)style;
 
 @end

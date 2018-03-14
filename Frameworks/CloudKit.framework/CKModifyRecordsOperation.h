@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKModifyRecordsOperation : CKDatabaseOperation {
+@interface CKModifyRecordsOperation : CKDatabaseOperation <MSPCloudRequest> {
     NSMutableDictionary * _assetsByRecordIDAndRecordKey;
     bool  _atomic;
     NSData * _clientChangeTokenData;
@@ -29,7 +29,10 @@
 @property (nonatomic) bool atomic;
 @property (nonatomic, copy) NSData *clientChangeTokenData;
 @property (nonatomic, retain) NSDictionary *conflictLosersToResolveByRecordID;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, retain) NSMutableArray *deletedRecordIDs;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) id /* block */ modifyRecordsCompletionBlock;
 @property (nonatomic, retain) NSMutableSet *packagesToDestroy;
 @property (nonatomic, copy) id /* block */ perRecordCompletionBlock;
@@ -43,8 +46,12 @@
 @property (nonatomic, copy) NSArray *recordsToSave;
 @property (nonatomic) long long savePolicy;
 @property (nonatomic, retain) NSMutableArray *savedRecords;
+@property (nonatomic, readonly) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
 @property (nonatomic) bool shouldOnlySaveAssetContent;
 @property (nonatomic) bool shouldReportRecordsInFlight;
+@property (readonly) Class superclass;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 - (void).cxx_destruct;
 - (bool)CKOperationShouldRun:(id*)arg1;
@@ -101,5 +108,13 @@
 - (void)setShouldReportRecordsInFlight:(bool)arg1;
 - (bool)shouldOnlySaveAssetContent;
 - (bool)shouldReportRecordsInFlight;
+
+// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+
+- (void)addCloudAccessCompletionBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (void)ic_removeAllCompletionBlocks;
 
 @end

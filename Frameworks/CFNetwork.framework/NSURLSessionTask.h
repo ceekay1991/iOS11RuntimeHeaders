@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
  */
 
-@interface NSURLSessionTask : NSObject <NSCopying, NSProgressReporting> {
+@interface NSURLSessionTask : NSObject <FCOperationPrioritizing, NSCopying, NSProgressReporting> {
     bool  __extractorFinishedDecoding;
     bool  __extractorPreparedForExtraction;
     double  __loadingPriority;
@@ -12,6 +12,7 @@
 
 @property (copy) NSDictionary *_DuetActivityProperties;
 @property (copy) NSData *_TCPConnectionMetadata;
+@property (readonly) unsigned short _TLSNegotiatedCipherSuite;
 @property unsigned long long _allowedProtocolTypes;
 @property bool _allowsCellular;
 @property (nonatomic) bool _allowsQUIC;
@@ -30,14 +31,20 @@
 @property (setter=_setConnectionIsCellular:) bool _connectionIsCellular;
 @property (copy) NSArray *_contentDispositionFallbackArray;
 @property int _cookieAcceptPolicy;
+@property long long _countOfBytesReceivedEncoded;
+@property long long _countOfPendingBytesReceivedEncoded;
 @property (retain) struct _CFURLRequest { }*_currentCFURLRequest;
 @property unsigned int _darkWakePowerAssertion;
 @property (nonatomic, retain) NSDictionary *_dependencyInfo;
 @property bool _disallowCellular;
+@property (nonatomic) bool _doesSZExtractorConsumeExtractedData;
 @property long long _expectedWorkload;
-@property (nonatomic, retain) <SZExtractor> *_extractor;
+@property (setter=set_extractor:, nonatomic, retain) <SZExtractor> *_extractor;
 @property bool _extractorFinishedDecoding;
 @property bool _extractorPreparedForExtraction;
+@property (nonatomic) bool _hasSZExtractor;
+@property (nonatomic, retain) NSURLSessionTaskMetrics *_incompleteTaskMetrics;
+@property (nonatomic, readonly) bool _isAVAssetTask;
 @property (copy) NSURL *_ledBellyFallbackURL;
 @property (copy) NSString *_ledBellyServiceIdentifier;
 @property (copy) NSDictionary *_legacySocketStreamProperties;
@@ -47,6 +54,7 @@
 @property (copy) NSString *_pathToDownloadTaskFile;
 @property (nonatomic, retain) struct __PerformanceTiming { }*_performanceTiming;
 @property unsigned int _powerAssertion;
+@property (nonatomic) bool _preconnect;
 @property bool _preventsIdleSystemSleep;
 @property bool _preventsSystemHTTPProxyAuthentication;
 @property long long _priority;
@@ -91,6 +99,7 @@
 @property (copy) NSURLRequest *originalRequest;
 @property float priority;
 @property (readonly) NSProgress *progress;
+@property (nonatomic) long long relativePriority;
 @property (copy) NSURLResponse *response;
 @property (retain) NSURLSession *session;
 @property double startTime;
@@ -101,9 +110,13 @@
 @property unsigned long long taskIdentifier;
 @property (readonly, retain) NSObject<OS_dispatch_queue> *workQueue;
 
+// Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+
 + (id)taskForWrappedRequest:(id)arg1;
 
+- (void)_appendCountOfPendingBytesReceivedEncoded:(long long)arg1;
 - (void)_completeUploadProgress;
+- (void)_consumePendingBytesReceivedEncoded;
 - (struct _CFURLRequest { }*)_copyCurrentCFURLRequest;
 - (struct _CFHSTSPolicy { }*)_copyHSTSPolicy;
 - (struct _CFURLRequest { }*)_copyOriginalCFURLRequest;
@@ -115,6 +128,7 @@
 - (bool)_extractorPreparedForExtraction;
 - (void)_finishProgressReporting;
 - (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;
+- (bool)_isAVAssetTask;
 - (double)_loadingPriority;
 - (id)_loggableDescription;
 - (void)_onSessionQueue_cleanupAndBreakCycles;
@@ -137,6 +151,7 @@
 - (float)priority;
 - (void)resume;
 - (void)setPriority:(float)arg1;
+- (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_extractorFinishedDecoding:(bool)arg1;
 - (void)set_extractorPreparedForExtraction:(bool)arg1;
 - (void)set_loadingPriority:(double)arg1;
@@ -144,5 +159,10 @@
 - (bool)shouldHandleCookiesAndSchemeIsAppropriate;
 - (void)suspend;
 - (void)updateCurrentRequest:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (long long)relativePriority;
+- (void)setRelativePriority:(long long)arg1;
 
 @end

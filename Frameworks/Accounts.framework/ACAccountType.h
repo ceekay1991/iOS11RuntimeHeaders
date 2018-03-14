@@ -11,6 +11,7 @@
     bool  _encryptAccountProperties;
     NSString * _identifier;
     NSURL * _objectID;
+    bool  _obsolete;
     NSString * _owningBundleID;
     NSSet * _supportedDataclasses;
     int  _supportsAuthentication;
@@ -32,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, retain) NSURL *objectID;
+@property (getter=isObsolete, nonatomic) bool obsolete;
 @property (nonatomic, retain) NSString *owningBundleID;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSSet *supportedDataclasses;
@@ -66,6 +68,7 @@
 - (id)initWithManagedAccountType:(id)arg1;
 - (id)initWithManagedAccountType:(id)arg1 accountStore:(id)arg2;
 - (bool)isEqual:(id)arg1;
+- (bool)isObsolete;
 - (id)objectID;
 - (id)owningBundleID;
 - (void)setAccountStore:(id)arg1;
@@ -74,6 +77,7 @@
 - (void)setCredentialType:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setObjectID:(id)arg1;
+- (void)setObsolete:(bool)arg1;
 - (void)setOwningBundleID:(id)arg1;
 - (void)setSupportsAuthentication:(int)arg1;
 - (void)setSupportsMultipleAccounts:(bool)arg1;

@@ -18,8 +18,8 @@
 @property (nonatomic, readonly) bool hasLabelTextString;
 @property (nonatomic) bool hasLabelType;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) <GEOTransitArtworkDataSource> *labelArtwork;
 @property (nonatomic, retain) GEOPBTransitArtwork *labelArtwork;
+@property (nonatomic, readonly) <GEOTransitArtworkDataSource> *labelArtwork;
 @property (nonatomic, readonly) NSString *labelString;
 @property (nonatomic, retain) NSString *labelTextString;
 @property (nonatomic) int labelType;

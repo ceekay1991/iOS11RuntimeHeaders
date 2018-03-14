@@ -45,7 +45,7 @@
 - (void)setOriginalRoute:(id)arg1;
 - (void)setRequestPriority:(id)arg1;
 - (void)setWaypoints:(id)arg1;
-- (void)submitWithHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2;
+- (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 networkActivity:(id /* block */)arg3;
 - (id)waypoints;
 
 @end

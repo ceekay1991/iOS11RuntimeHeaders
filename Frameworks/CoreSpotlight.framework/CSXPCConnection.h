@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) NSString *machServiceName;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 
++ (id)appIdentifierFromTeamAppTuple:(id)arg1;
 + (id)copyNSStringArrayFromXPCArray:(id)arg1;
 + (id)copyNSStringForKey:(const char *)arg1 fromXPCDictionary:(id)arg2;
 + (id)copyNSStringSetFromXPCArray:(id)arg1;

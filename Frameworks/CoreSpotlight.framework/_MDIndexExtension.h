@@ -8,6 +8,7 @@
     bool  _entitlementVerified;
     NSExtension * _extension;
     NSString * _extensionID;
+    NSSet * _identifiers;
     NSObject<OS_dispatch_queue> * _queue;
 }
 
@@ -17,6 +18,7 @@
 @property (nonatomic) bool entitlementVerified;
 @property (nonatomic, retain) NSExtension *extension;
 @property (nonatomic, retain) NSString *extensionID;
+@property (copy) NSSet *identifiers;
 @property (readonly) bool isEnabled;
 @property (readonly) bool isInternal;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
@@ -31,6 +33,7 @@
 - (bool)entitlementVerified;
 - (id)extension;
 - (id)extensionID;
+- (id)identifiers;
 - (id)initWithExtension:(id)arg1 queue:(id)arg2 containerPath:(id)arg3 containerID:(id)arg4;
 - (bool)isEnabled;
 - (bool)isInternal;
@@ -41,6 +44,7 @@
 - (void)setEntitlementVerified:(bool)arg1;
 - (void)setExtension:(id)arg1;
 - (void)setExtensionID:(id)arg1;
+- (void)setIdentifiers:(id)arg1;
 - (void)setQueue:(id)arg1;
 
 @end

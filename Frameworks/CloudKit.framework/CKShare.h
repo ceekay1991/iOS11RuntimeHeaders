@@ -46,6 +46,8 @@
 @property (nonatomic) bool serializePersonalInfo;
 @property (nonatomic, copy) CKShareID *shareID;
 
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -127,5 +129,24 @@
 - (id)shareID;
 - (id)shareURL;
 - (id)updateFromServerShare:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
+
+- (bool)_brc_isOwner;
+- (bool)deserializeSharingOptions:(unsigned long long*)arg1 error:(id*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (void)_decryptPersonalInfoWithPCSBlob:(struct _OpaquePCSShareProtection { }*)arg1 pcsManager:(id)arg2;
+- (void)_encryptPersonalInfoWithPCSBlob:(struct _OpaquePCSShareProtection { }*)arg1 pcsManager:(id)arg2;
+- (bool)_prepPCSDataWithContext:(id)arg1 databaseScope:(long long)arg2 error:(id*)arg3;
+- (bool)_prepPCSDataWithContext:(id)arg1 databaseScope:(long long)arg2 removeServerSpecifiedKeys:(bool)arg3 error:(id*)arg4;
+- (bool)hasEncryptedPersonalInfo;
+- (struct _OpaquePCSShareProtection { }*)privatePCS;
+- (struct _OpaquePCSShareProtection { }*)publicPCS;
+- (void)setPrivatePCS:(struct _OpaquePCSShareProtection { }*)arg1;
+- (void)setPublicPCS:(struct _OpaquePCSShareProtection { }*)arg1;
+- (void)setSharePCSData:(id)arg1;
+- (void)setSharePCSData:(id)arg1 isUnitTestAccount:(bool)arg2;
 
 @end

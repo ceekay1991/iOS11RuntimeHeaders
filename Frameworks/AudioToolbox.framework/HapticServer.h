@@ -32,7 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long initCount;
-@property (readonly) /* Warning: unhandled struct encoding: '{ServerManager={map<unsigned long' */ struct *manager; /* unknown property attribute:  unsigned int>=II}^{HapticSynth}{HapticMutex=^^?*^{_opaque_pthread_t}{_opaque_pthread_mutex_t=q[56c]}}^{VibeConfiguration}d^{opaqueCMSession}iBiBBBBB@^{RealtimeMessenger}Q} */
+@property (readonly) /* Warning: unhandled struct encoding: '{ServerManager={map<unsigned long' */ struct *manager; /* unknown property attribute:  ServerManager::MuteCount>={MuteCount=Q}{MuteCount=Q}}^{HapticSynth}{HapticMutex=^^?*^{_opaque_pthread_t}{_opaque_pthread_mutex_t=q[56c]}}^{VibeConfiguration}d^{opaqueCMSession}iBiBBBBB@^{RealtimeMessenger}Q} */
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;

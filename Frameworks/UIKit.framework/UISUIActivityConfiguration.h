@@ -13,6 +13,7 @@
     NSString * _defaultActivityTitle;
     long long  _defaultSortGroup;
     long long  _encodingType;
+    NSString * _fallbackActivityType;
     unsigned long long  _indexInApplicationDefinedActivities;
     NSString * _overrideTitle;
     NSString * _positionBeforeActivityType;
@@ -34,6 +35,7 @@
 @property (nonatomic, readonly) NSString *defaultActivityTitle;
 @property (nonatomic, readonly) long long defaultSortGroup;
 @property (nonatomic) long long encodingType;
+@property (nonatomic, readonly) NSString *fallbackActivityType;
 @property (nonatomic, readonly) unsigned long long indexInApplicationDefinedActivities;
 @property (nonatomic, retain) NSString *overrideTitle;
 @property (nonatomic, readonly) NSString *positionBeforeActivityType;
@@ -66,6 +68,7 @@
 - (long long)defaultSortGroup;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)encodingType;
+- (id)fallbackActivityType;
 - (unsigned long long)indexInApplicationDefinedActivities;
 - (id)initWithActivity:(id)arg1 encodingType:(long long)arg2;
 - (id)initWithCoder:(id)arg1;

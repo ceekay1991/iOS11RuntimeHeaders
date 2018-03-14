@@ -15,13 +15,14 @@
 - (void)navigationSession:(MNNavigationSession *)arg1 didEnableGuidancePrompts:(bool)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didInvalidateTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
 - (void)navigationSession:(void *)arg1 didReceiveTrafficIncidentAlert:(void *)arg2 responseCallback:(void *)arg3; // needs 3 arg types, found 8: MNNavigationSession *, MNTrafficIncidentAlert *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
-- (void)navigationSession:(MNNavigationSession *)arg1 didReroute:(MNActiveRouteInfo *)arg2 withLocation:(MNLocation *)arg3;
+- (void)navigationSession:(MNNavigationSession *)arg1 didReroute:(MNActiveRouteInfo *)arg2 withLocation:(MNLocation *)arg3 withAlternateRoutes:(NSArray *)arg4;
 - (void)navigationSession:(MNNavigationSession *)arg1 didSignalAlightForStepAtIndex:(unsigned long long)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didStartSpeakingPrompt:(NSString *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(MNActiveRouteInfo *)arg3;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateAlternateRoutes:(NSArray *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateDestination:(GEOComposedWaypoint *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateDisplayETA:(NSDate *)arg2 displayRemainingMinutes:(unsigned long long)arg3 forRoute:(MNActiveRouteInfo *)arg4;
+- (void)navigationSession:(MNNavigationSession *)arg1 didUpdateETAResponseForRoute:(MNActiveRouteInfo *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateFeedback:(GEOAlightNotificationFeedback *)arg2 forAlightingStepAtIndex:(unsigned long long)arg3;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateHeading:(double)arg2 accuracy:(double)arg3;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateMatchedLocation:(MNLocation *)arg2;
@@ -35,14 +36,20 @@
 - (void)navigationSession:(MNNavigationSession *)arg1 failedRerouteWithErrorCode:(long long)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 hideLaneDirectionsForId:(NSUUID *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 matchedToStepIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3;
+- (void)navigationSession:(MNNavigationSession *)arg1 newGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 proceedToRouteDistance:(double)arg2 displayString:(NSString *)arg3 closestStepIndex:(unsigned long long)arg4;
 - (void)navigationSession:(MNNavigationSession *)arg1 showLaneDirections:(MNGuidanceLaneInfo *)arg2;
+- (void)navigationSession:(MNNavigationSession *)arg1 triggerHaptics:(int)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 updateSignsWithInfo:(MNGuidanceSignInfo *)arg2;
+- (void)navigationSession:(MNNavigationSession *)arg1 updatedGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
+- (void)navigationSession:(MNNavigationSession *)arg1 usePersistentDisplay:(bool)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 willAnnounce:(unsigned long long)arg2 inSeconds:(double)arg3;
+- (void)navigationSessionBeginGuidanceUpdate:(MNNavigationSession *)arg1;
 - (void)navigationSessionDidArrive:(MNNavigationSession *)arg1;
 - (void)navigationSessionDidCancelReroute:(MNNavigationSession *)arg1;
 - (void)navigationSessionDidStart:(MNNavigationSession *)arg1;
 - (void)navigationSessionDidStop:(MNNavigationSession *)arg1;
+- (void)navigationSessionEndGuidanceUpdate:(MNNavigationSession *)arg1;
 - (void)navigationSessionHideSecondaryStep:(MNNavigationSession *)arg1;
 - (void)navigationSessionWillPause:(MNNavigationSession *)arg1;
 - (void)navigationSessionWillReroute:(MNNavigationSession *)arg1;

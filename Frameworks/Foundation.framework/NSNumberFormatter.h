@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSNumberFormatter : NSFormatter <NSObservable, NSObserver> {
+@interface NSNumberFormatter : NSFormatter <HKNumberFormatter, NSObservable, NSObserver> {
     NSMutableDictionary * _attributes;
     unsigned long long  _behavior;
     long long  _cacheGeneration;
@@ -74,6 +74,8 @@
 @property bool usesGroupingSeparator;
 @property bool usesSignificantDigits;
 @property (copy) NSString *zeroSymbol;
+
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (unsigned long long)defaultFormatterBehavior;
 + (void)initialize;
@@ -226,5 +228,46 @@
 - (bool)usesGroupingSeparator;
 - (bool)usesSignificantDigits;
 - (id)zeroSymbol;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
++ (id)hk_heartRateNumberFormatter;
++ (id)hk_percentNumberFormatter;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (id)mf_formatInteger:(long long)arg1 withGrouping:(bool)arg2;
++ (id)mf_formatUnsignedInteger:(unsigned long long)arg1 withGrouping:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
+
+- (id)stringFromInteger:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+
++ (id)gkRankFormatter;
++ (id)gk_formatInteger:(long long)arg1 withGrouping:(bool)arg2;
++ (id)gk_formatUnsignedInteger:(unsigned long long)arg1 withGrouping:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
+- (bool)returnsUnitWithValueForDisplay;
+- (id)stringFromNumber:(id)arg1 displayType:(id)arg2 unitController:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/PencilKit.framework/PencilKit
+
++ (id)pkaxLocalizedDouble:(double)arg1;
++ (id)pkaxLocalizedDouble:(double)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
++ (id)pkaxLocalizedNumber:(id)arg1;
++ (id)pkaxLocalizedNumber:(id)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
++ (id)pkaxLocalizedNumber:(id)arg1 numberStyle:(unsigned long long)arg2;
++ (id)pkaxLocalizedNumber:(id)arg1 numberStyle:(unsigned long long)arg2 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg3;
++ (id)pkaxLocalizedPercentage:(double)arg1;
++ (id)pkaxLocalizedPercentage:(double)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
++ (id)pkaxLocalizedUnsignedInteger:(unsigned long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
+
++ (id)siriui_localizedStringFromNumber:(id)arg1;
 
 @end

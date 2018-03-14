@@ -8,6 +8,7 @@
 @property (nonatomic, readonly) NSArray *alternateTrackGroups;
 @property (getter=_assetAnalysisMessages, nonatomic, readonly) NSArray *assetAnalysisMessages;
 @property (nonatomic, readonly) NSArray *availableMetadataFormats;
+@property (nonatomic, readonly) NSArray *availableVideoDynamicRanges;
 @property (nonatomic, readonly) bool canContainFragments;
 @property (nonatomic, readonly) NSArray *commonMetadata;
 @property (getter=isCompatibleWithAirPlayVideo, nonatomic, readonly) bool compatibleWithAirPlayVideo;
@@ -45,6 +46,7 @@
 - (id)_mediaSelectionGroupDictionaries;
 - (id)alternateTrackGroups;
 - (id)availableMetadataFormats;
+- (id)availableVideoDynamicRanges;
 - (bool)canContainFragments;
 - (id)commonMetadata;
 - (bool)containsFragments;

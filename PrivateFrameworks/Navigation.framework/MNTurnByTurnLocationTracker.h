@@ -43,7 +43,7 @@
 - (id)_ticketForNewDestination:(id)arg1 fromLocation:(id)arg2 transportType:(int)arg3;
 - (void)_updateForArrival;
 - (void)_updateForLocation:(id)arg1;
-- (void)_updateForReroute:(id)arg1;
+- (void)_updateForReroute:(id)arg1 rerouteReason:(unsigned long long)arg2 request:(id)arg3 response:(id)arg4;
 - (void)_updateStateForLocation:(id)arg1;
 - (void)_updateSwitchTransportTypeForLocation:(id)arg1;
 - (void)dealloc;

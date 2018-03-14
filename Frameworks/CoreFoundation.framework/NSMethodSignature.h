@@ -37,8 +37,9 @@
 - (const char *)methodReturnType;
 - (unsigned long long)numberOfArguments;
 
-// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 
-- (bool)_cheapTypeString:(char *)arg1 maxLength:(long long)arg2;
+- (bool)_gkHasReplyBlock;
+- (bool)_gkTakesBlockAtIndex:(unsigned long long)arg1;
 
 @end

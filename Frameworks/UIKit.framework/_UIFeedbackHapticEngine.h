@@ -4,12 +4,14 @@
 
 @interface _UIFeedbackHapticEngine : _UIFeedbackEngine {
     AVHapticPlayer * _feedbackPlayer;
+    NSTimer * _finishTimeoutTimer;
     NSMutableIndexSet * _freeChannelIndexes;
     NSMutableSet * _playersInUse;
     bool  _serverDown;
 }
 
 @property (nonatomic, retain) AVHapticPlayer *feedbackPlayer;
+@property (nonatomic, retain) NSTimer *finishTimeoutTimer;
 @property (nonatomic) bool serverDown;
 
 + (void)_setHapticPlayerCreationBlock:(id /* block */)arg1;
@@ -37,9 +39,11 @@
 - (bool)_teardownUnderlyingPlayerIfPossible;
 - (double)currentTime;
 - (id)feedbackPlayer;
+- (id)finishTimeoutTimer;
 - (id)init;
 - (bool)serverDown;
 - (void)setFeedbackPlayer:(id)arg1;
+- (void)setFinishTimeoutTimer:(id)arg1;
 - (void)setServerDown:(bool)arg1;
 
 @end

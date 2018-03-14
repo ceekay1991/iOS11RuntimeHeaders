@@ -47,6 +47,7 @@
 @property (getter=isQuadraHighResStillImageSupported, readonly) bool quadraHighResStillImageSupported;
 @property (readonly) int rawBitDepth;
 @property (readonly) struct { int x1; int x2; } sensorDimensions;
+@property (getter=isStereoFusionSupported, readonly) bool stereoFusionSupported;
 @property (getter=isStillImageISPMultiBandNoiseReductionSupported, readonly) bool stillImageISPMultiBandNoiseReductionSupported;
 @property (getter=isStillImageStabilizationSupported, readonly) bool stillImageStabilizationSupported;
 @property (readonly) NSArray *supportedColorSpaces;
@@ -78,9 +79,11 @@
 - (id)frontEndScalerCompanionFormats;
 - (bool)hasSensorHDRCompanionIndex;
 - (struct { int x1; int x2; })highResStillImageDimensions;
+- (int)horizontalSensorBinningFactor;
 - (id)initWithFigCaptureStreamFormatDictionary:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
 - (bool)isBinned;
+- (bool)isCompatibleWithInfraredFormat:(id)arg1;
 - (bool)isDepthSupported;
 - (bool)isDisparitySupported;
 - (bool)isExternalFormat;
@@ -96,6 +99,7 @@
 - (bool)isPhotoFormat;
 - (bool)isQuadraHighResStillImageSupported;
 - (bool)isStabilizationModeSupported:(int)arg1;
+- (bool)isStereoFusionSupported;
 - (bool)isStillImageISPChromaNoiseReductionEnabled;
 - (bool)isStillImageISPMultiBandNoiseReductionSupported;
 - (bool)isStillImageStabilizationSupported;
@@ -117,9 +121,9 @@
 - (float)minZoomFactorForDepthDataDelivery;
 - (bool)needsPreviewDPCC;
 - (bool)prefersSensorHDREnabled;
+- (int)previewImageQueueSyncStrategy;
 - (int)rawBitDepth;
 - (id)rawLensShadingCorrection;
-- (float)sensorBinningRatio;
 - (struct { int x1; int x2; })sensorCropDimensions;
 - (struct { int x1; int x2; })sensorDimensions;
 - (int)sensorHDRCompanionIndex;
@@ -131,6 +135,7 @@
 - (id)supportedDepthDataFormats;
 - (unsigned int)supportedRawPixelFormat;
 - (int)temporalNoiseReductionMode;
+- (int)verticalSensorBinningFactor;
 - (float)zoomFactorUpscaleThreshold;
 
 @end

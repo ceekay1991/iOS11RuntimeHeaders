@@ -8,7 +8,9 @@
 
 @property (nonatomic, readonly) <CNDonationLoggerProvider> *loggerProvider;
 
-+ (id)observableWithExtensions;
++ (id)continuousExtensionsObservable;
++ (id)currentExtensionsObservable;
++ (id)extensionAttributes;
 
 - (void).cxx_destruct;
 - (id)donorWithIdentifier:(id)arg1;

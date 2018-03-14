@@ -24,7 +24,7 @@
 - (id)composer;
 - (id)initWithAnimation:(id)arg1 completion:(id /* block */)arg2 composer:(id)arg3;
 - (bool)invalidated;
-- (void)performCompletionCallbackFinished:(bool)arg1 retargeted:(bool)arg2;
+- (void)performCompletionCallbackFinished:(bool)arg1;
 - (void)performWithLock:(id /* block */)arg1;
 - (void)performWithoutLock:(id /* block */)arg1;
 - (bool)running;

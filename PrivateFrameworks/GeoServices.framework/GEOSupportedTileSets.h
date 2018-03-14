@@ -4,9 +4,11 @@
 
 @interface GEOSupportedTileSets : PBCodable <NSCopying> {
     NSMutableArray * _tileSets;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSMutableArray *tileSets;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)tileSetType;
 
@@ -25,6 +27,7 @@
 - (id)tileSetAtIndex:(unsigned long long)arg1;
 - (id)tileSets;
 - (unsigned long long)tileSetsCount;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

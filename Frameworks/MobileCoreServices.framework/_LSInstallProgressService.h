@@ -22,6 +22,7 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (id)_LSFindPlaceholderApplications;
 - (void)_placeholderIconUpdatedForApp:(id)arg1;
 - (id)_prepareApplicationProxiesForNotification:(int)arg1 identifiers:(id)arg2 withPlugins:(bool)arg3 options:(id)arg4;
 - (void)addObserver:(id)arg1;

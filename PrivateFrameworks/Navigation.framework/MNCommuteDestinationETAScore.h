@@ -23,7 +23,7 @@
 + (double)weight;
 
 - (void).cxx_destruct;
-- (id)_directionsRequestFeedbackForState:(id)arg1;
+- (id)_directionsRequestFeedback;
 - (void)_handleDirectionsResponse:(id)arg1 error:(id)arg2 forRequest:(id)arg3;
 - (bool)_readyForRoute;
 - (void)_requestRoute;

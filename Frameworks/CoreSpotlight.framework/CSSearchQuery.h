@@ -63,7 +63,8 @@
 - (id /* block */)completionHandler;
 - (id /* block */)countChangedHandler;
 - (bool)counting;
-- (id)createCSSearchableItemWithOID:(long long)arg1 values:(id*)arg2 valueCount:(unsigned long long)arg3 protectionClass:(id)arg4;
+- (id)createCSSearchableItemWithOID:(long long)arg1 values:(id*)arg2 valueCount:(unsigned long long)arg3 protectionClass:(id)arg4 isTopHitQuery:(bool)arg5;
+- (id)debugDescription;
 - (id)description;
 - (void)didFinishWithError:(id)arg1;
 - (void)didResolveFriendlyAttributeNames:(id)arg1;
@@ -85,11 +86,11 @@
 - (id)liveIndexBundleIDToIndexItemIDMap;
 - (id)options;
 - (void)processAttributesData:(id)arg1 update:(bool)arg2 protectionClass:(id)arg3;
-- (void)processLiveResultsData:(id)arg1 oidData:(id)arg2 protectionClass:(id)arg3;
+- (void)processLiveResultsData:(id)arg1 oidData:(id)arg2 protectionClass:(id)arg3 isTopHitQuery:(bool)arg4;
 - (void)processRemoveResultsData:(id)arg1 protectionClass:(id)arg2;
-- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long*)arg4 oidCount:(unsigned int)arg5 items:(id)arg6;
-- (id)processResultFromPlist:(id)arg1 protectionClass:(id)arg2;
-- (void)processResultsData:(id)arg1 protectionClass:(id)arg2;
+- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long*)arg4 oidCount:(unsigned int)arg5 items:(id)arg6 isTopHitQuery:(bool)arg7;
+- (id)processResultFromPlist:(id)arg1 protectionClass:(id)arg2 isTopHitQuery:(bool)arg3;
+- (void)processResultsData:(id)arg1 protectionClass:(id)arg2 isTopHitQuery:(bool)arg3;
 - (id)protectionClasses;
 - (id)queryContext;
 - (id)queryString;

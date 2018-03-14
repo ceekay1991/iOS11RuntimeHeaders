@@ -9,8 +9,8 @@
 - (id)init;
 - (void)setGroupName:(INSpeakableString *)arg1;
 - (void)setTaskTitles:(NSArray *)arg1;
-- (void)setTitle:(NSString *)arg1;
+- (void)setTitle:(INSpeakableString *)arg1;
 - (NSArray *)taskTitles;
-- (NSString *)title;
+- (INSpeakableString *)title;
 
 @end

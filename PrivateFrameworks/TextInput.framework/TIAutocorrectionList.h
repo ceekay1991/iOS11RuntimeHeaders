@@ -26,6 +26,7 @@
 - (id)autocorrection;
 - (id)candidates;
 - (void)dealloc;
+- (id)description;
 - (id)emojiList;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAutocorrection:(id)arg1 predictions:(id)arg2 emojiList:(id)arg3 proactiveTriggers:(id)arg4;

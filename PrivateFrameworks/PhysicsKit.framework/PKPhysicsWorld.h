@@ -47,6 +47,8 @@
 @property (nonatomic) double speed;
 @property (nonatomic) double velocityThreshold;
 
+// Image: /System/Library/PrivateFrameworks/PhysicsKit.framework/PhysicsKit
+
 + (id)world;
 
 - (id).cxx_construct;
@@ -103,5 +105,9 @@
 - (double)speed;
 - (bool)stepWithTime:(double)arg1 velocityIterations:(unsigned long long)arg2 positionIterations:(unsigned long long)arg3;
 - (double)velocityThreshold;
+
+// Image: /System/Library/Frameworks/SpriteKit.framework/SpriteKit
+
+- (bool)isKindOfClass:(Class)arg1;
 
 @end

@@ -8,12 +8,14 @@
     UIToolbar * _toolbar;
 }
 
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } backgroundFrame;
 @property (nonatomic, readonly) UIView *currentBackgroundView;
 @property (nonatomic, retain) UIView *customBackgroundView;
 @property (nonatomic, readonly) UIToolbar *toolbar;
 @property (nonatomic, readonly) bool toolbarIsSmall;
 
 - (void).cxx_destruct;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })backgroundFrame;
 - (id)currentBackgroundView;
 - (id)customBackgroundView;
 - (void)customViewChangedForButtonItem:(id)arg1;

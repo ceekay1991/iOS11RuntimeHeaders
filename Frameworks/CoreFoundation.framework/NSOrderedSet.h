@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSOrderedSet : NSObject <NSCopying, NSFastEnumeration, NSMutableCopying, NSSecureCoding>
+@interface NSOrderedSet : NSObject <FCOrderedCollectionAdditions, NSCopying, NSFastEnumeration, NSMutableCopying, NSSecureCoding>
 
 @property (readonly) unsigned long long count;
 
@@ -117,5 +117,54 @@
 - (id)sortedArrayUsingDescriptors:(id)arg1;
 - (id)valueForKey:(id)arg1;
 - (id)valueForKeyPath:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+
+- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDistinctValuesForKeyPath:(id)arg1;
+- (id)_gkFilteredOrderedSetUsingPredicate:(id)arg1;
+- (id)_gkFirstObject;
+- (bool)_gkIsEqualToOrderedSet:(id)arg1;
+- (id)_gkMapDictionaryWithKeyPath:(id)arg1;
+- (id)_gkMapDictionaryWithKeyPath:(id)arg1 valueKeyPath:(id)arg2;
+- (id)_gkSortedOrderedSetUsingDescriptors:(id)arg1;
+- (id)_gkValuesForKeyPath:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
+- (id)deepCopy;
+- (id)shallowCopy;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (bool)fc_containsObjectPassingTest:(id /* block */)arg1;
+- (id)fc_diffAgainstOrderedSet:(id)arg1;
+- (id)fc_diffAgainstOrderedSet:(id)arg1 withEqualityTest:(id /* block */)arg2 identityValueProvider:(id /* block */)arg3;
+- (id)fc_diffAgainstSortedOrderedCollection:(id)arg1 usingComparator:(id /* block */)arg2;
+- (void)fc_enumerateObjectsPairwiseUsingBlock:(id /* block */)arg1;
+- (id)fc_firstObjectPassingTest:(id /* block */)arg1;
+- (id)fc_indexesOfObjectsInOrderedSet:(id)arg1;
+- (bool)fc_isEqualToOrderedSet:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
+- (bool)fc_isSortedUsingComparator:(id /* block */)arg1;
+- (id)fc_orderedSetByCollectingObjectsWithBlock:(id /* block */)arg1;
+- (id)fc_orderedSetByMinusingOrderedSet:(id)arg1;
+- (id)fc_orderedSetByTransformingWithBlock:(id /* block */)arg1;
+- (id)fc_orderedSetWithObjectsAtIndexes:(id)arg1;
+- (id)fc_orderedSetWithObjectsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
+- (id)ic_objectsMovedFromOrderedSet:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (unsigned long long)pl_indexOfObjectIdenticalTo:(id)arg1;
+- (bool)pl_isSortedUsingComparator:(id /* block */)arg1;
+- (id)pl_shortDescription;
+
+// Image: /System/Library/PrivateFrameworks/VisualVoicemail.framework/VisualVoicemail
+
+- (id)arrayByIntersectingWithOrderedSet:(id)arg1;
+- (id)arrayBySubtractingOrderedSet:(id)arg1;
 
 @end

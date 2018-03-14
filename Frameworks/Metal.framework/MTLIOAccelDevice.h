@@ -27,6 +27,8 @@
     unsigned int  _fenceBitmapSearchStart;
     unsigned int  _fenceMaximumCount;
     int  _numCommandBuffers;
+    unsigned long long  _registryID;
+    unsigned long long  _resourceMemoryAllocated;
     unsigned long long  _segmentByteThreshold;
     unsigned long long  _sharedMemorySize;
     struct __IOAccelShared { } * _sharedRef;
@@ -40,24 +42,29 @@
 }
 
 @property (readonly) unsigned int acceleratorPort;
+@property (readonly) unsigned long long currentAllocatedSize;
 @property (readonly) unsigned long long dedicatedMemorySize;
 @property (readonly) unsigned int hwResourcePoolCount;
 @property (readonly) id*hwResourcePools;
 @property (readonly) int numCommandBuffers;
 @property (getter=areProgrammableSamplePositionsSupported, readonly) bool programmableSamplePositionsSupported;
 @property (readonly) unsigned long long recommendedMaxWorkingSetSize;
+@property (readonly) unsigned long long registryID;
 @property (readonly) unsigned long long sharedMemorySize;
 @property (readonly) bool supportPriorityBand;
 
 + (void)registerDevices;
 + (void)registerService:(unsigned int)arg1;
 
+- (void)_addResource:(id)arg1;
 - (void)_purgeDevice;
+- (void)_removeResource:(id)arg1;
 - (unsigned int)acceleratorPort;
 - (id)akPrivateResourceListPool;
 - (id)akResourceListPool;
 - (id)allocBufferSubDataWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 alignment:(int)arg3 heapIndex:(short*)arg4 bufferIndex:(short*)arg5 bufferOffset:(int*)arg6;
 - (bool)areProgrammableSamplePositionsSupported;
+- (unsigned long long)currentAllocatedSize;
 - (void)dealloc;
 - (void)deallocBufferSubData:(id)arg1 heapIndex:(short)arg2 bufferIndex:(short)arg3 bufferOffset:(int)arg4 length:(int)arg5;
 - (unsigned long long)dedicatedMemorySize;
@@ -76,6 +83,7 @@
 - (id)newIndirectArgumentEncoderWithLayout:(id)arg1;
 - (int)numCommandBuffers;
 - (unsigned long long)recommendedMaxWorkingSetSize;
+- (unsigned long long)registryID;
 - (void)releaseFenceIndex:(unsigned int)arg1;
 - (void)setComputePipelineStateCommandShmemSize:(unsigned int)arg1;
 - (void)setHwResourcePool:(id*)arg1 count:(int)arg2;

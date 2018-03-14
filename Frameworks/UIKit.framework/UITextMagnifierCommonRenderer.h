@@ -2,26 +2,30 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UITextMagnifierCommonRenderer : UITextMagnifierRenderer {
-    UIImage * m_hiImageHorizontal;
-    UIImage * m_hiImageVertical;
-    UIImage * m_loImageHorizontal;
-    UIImage * m_loImageVertical;
+@interface UITextMagnifierCommonRenderer : UIView {
+    bool  _isRegisteredForGeometryChanges;
+    CALayer * m_back;
+    CALayer * m_content;
+    CALayer * m_front;
+    NSDictionary * m_images;
     bool  m_loaded;
-    UIImage * m_maskImageHorizontal;
-    UIImage * m_maskImageVertical;
+    CALayer * m_mask;
+    NSDictionary * m_offsets;
 }
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
+- (void).cxx_destruct;
+- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
-- (struct CGPoint { double x1; double x2; })calculateCompositePointWithOrientation:(bool)arg1;
-- (struct CGPoint { double x1; double x2; })calculateFinalCompositionPointForCompositePoint:(struct CGPoint { double x1; double x2; })arg1;
-- (struct CGImage { }*)captureSnapshotAtRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forMagnifier:(id)arg2 withRotation:(double)arg3 onlyTarget:(bool)arg4 outTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg5;
-- (void)drawMagnifier:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (id)filenamesForMagnifier;
+- (id)backgroundColourIfNecessary;
+- (void)didMoveToSuperview;
 - (void)loadImages;
-- (double)offsetForMagnifier:(id)arg1;
-- (void)performOperations:(id /* block */)arg1 forMagnifier:(id)arg2;
+- (id)magnifier;
+- (void)performOperations:(id /* block */)arg1;
+- (void)update;
+- (id)visualsForMagnifier;
 
 @end

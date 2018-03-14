@@ -47,6 +47,7 @@
 - (id)error;
 - (void)finalize;
 - (bool)finishWriting;
+- (id)finishWritingDelegate;
 - (void)finishWritingWithCompletionHandler:(id /* block */)arg1;
 - (id)init;
 - (id)initWithURL:(id)arg1 fileType:(id)arg2 error:(id*)arg3;
@@ -62,6 +63,7 @@
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })preferredTransform;
 - (float)preferredVolume;
 - (void)setDirectoryForTemporaryFiles:(id)arg1;
+- (void)setFinishWritingDelegate:(id)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setMovieFragmentInterval:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setMovieTimeScale:(int)arg1;

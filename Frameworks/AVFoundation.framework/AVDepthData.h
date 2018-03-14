@@ -11,6 +11,7 @@
 @property (readonly) long long depthDataAccuracy;
 @property (getter=isDepthDataFiltered, readonly) bool depthDataFiltered;
 @property (readonly) struct __CVBuffer { }*depthDataMap;
+@property (readonly) long long depthDataQuality;
 @property (readonly) unsigned int depthDataType;
 
 + (id)_allSupportedDepthDataPixelFormatTypes;
@@ -31,6 +32,7 @@
 - (id)depthDataByConvertingToDepthDataType:(unsigned int)arg1;
 - (id)depthDataByReplacingDepthDataMapWithPixelBuffer:(struct __CVBuffer { }*)arg1 error:(id*)arg2;
 - (struct __CVBuffer { }*)depthDataMap;
+- (long long)depthDataQuality;
 - (unsigned int)depthDataType;
 - (short)depthDataVersionMajor;
 - (short)depthDataVersionMinor;
@@ -39,5 +41,7 @@
 - (id)initWithPixelBuffer:(struct __CVBuffer { }*)arg1 auxiliaryMetadata:(struct CGImageMetadata { }*)arg2;
 - (id)initWithPixelBuffer:(struct __CVBuffer { }*)arg1 depthMetadataDictionary:(id)arg2;
 - (bool)isDepthDataFiltered;
+- (float)portraitScore;
+- (bool)portraitScoreIsHigh;
 
 @end

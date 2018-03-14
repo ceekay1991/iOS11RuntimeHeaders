@@ -6,20 +6,31 @@
     id  _implementation;
 }
 
+@property (getter=isAirPlayVideoActive, nonatomic, readonly) bool airPlayVideoActive;
+@property (nonatomic) bool allowsAirPlay;
 @property (nonatomic, readonly) UIView *backgroundView;
 @property (nonatomic, copy) NSURL *contentURL;
 @property (nonatomic) long long controlStyle;
 @property (nonatomic) float currentPlaybackRate;
 @property (nonatomic) double currentPlaybackTime;
+@property (nonatomic, readonly) double duration;
+@property (nonatomic) double endPlaybackTime;
 @property (getter=isFullscreen, nonatomic) bool fullscreen;
+@property (nonatomic) double initialPlaybackTime;
 @property (nonatomic, readonly) bool isPreparedToPlay;
 @property (nonatomic, readonly) unsigned long long loadState;
+@property (nonatomic, readonly) unsigned long long movieMediaTypes;
+@property (nonatomic) long long movieSourceType;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } naturalSize;
+@property (nonatomic, readonly) double playableDuration;
 @property (nonatomic, readonly) long long playbackState;
 @property (nonatomic, readonly) bool readyForDisplay;
 @property (nonatomic) long long repeatMode;
 @property (nonatomic) long long scalingMode;
 @property (nonatomic) bool shouldAutoplay;
 @property (nonatomic, readonly) UIView *view;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (void)allInstancesResignActive;
 
@@ -79,5 +90,12 @@
 - (void)skipToPreviousItem;
 - (void)stop;
 - (id)view;
+
+// Image: /System/Library/Frameworks/iAd.framework/iAd
+
++ (void)preparePrerollAds;
+
+- (void)cancelPreroll;
+- (void)playPrerollAdWithCompletionHandler:(id /* block */)arg1;
 
 @end

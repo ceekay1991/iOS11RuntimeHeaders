@@ -10,6 +10,7 @@
     int  _bracketType;
     bool  _bravoDualImageDeliveryEnabled;
     int  _bravoImageFusionMode;
+    bool  _burstQualityCaptureEnabled;
     bool  _cameraCalibrationDataDeliveryEnabled;
     bool  _clientInitiatedPrepareSettings;
     bool  _depthDataDeliveryEnabled;
@@ -71,6 +72,7 @@
 @property (nonatomic, readonly) int bracketType;
 @property (nonatomic) bool bravoDualImageDeliveryEnabled;
 @property (nonatomic) int bravoImageFusionMode;
+@property (nonatomic) bool burstQualityCaptureEnabled;
 @property (nonatomic) bool cameraCalibrationDataDeliveryEnabled;
 @property (getter=isClientInitiatedPrepareSettings, nonatomic) bool clientInitiatedPrepareSettings;
 @property (nonatomic) bool depthDataDeliveryEnabled;
@@ -131,6 +133,7 @@
 - (int)bracketType;
 - (bool)bravoDualImageDeliveryEnabled;
 - (int)bravoImageFusionMode;
+- (bool)burstQualityCaptureEnabled;
 - (bool)cameraCalibrationDataDeliveryEnabled;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -175,6 +178,7 @@
 - (void)setBracketType:(int)arg1 imageCount:(unsigned int)arg2;
 - (void)setBravoDualImageDeliveryEnabled:(bool)arg1;
 - (void)setBravoImageFusionMode:(int)arg1;
+- (void)setBurstQualityCaptureEnabled:(bool)arg1;
 - (void)setCameraCalibrationDataDeliveryEnabled:(bool)arg1;
 - (void)setClientInitiatedPrepareSettings:(bool)arg1;
 - (void)setDepthDataDeliveryEnabled:(bool)arg1;

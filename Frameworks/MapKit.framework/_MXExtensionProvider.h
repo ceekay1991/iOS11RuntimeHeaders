@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface _MXExtensionProvider : NSObject <INExtensionContextHostDelegate> {
+@interface _MXExtensionProvider : NSObject {
     _MXAssetStorage * _assetStorage;
     NSArray * _blacklistedContainingApplications;
     NSArray * _blacklistedExtensions;
@@ -16,13 +16,9 @@
 }
 
 @property (nonatomic, retain) _MXAssetStorage *assetStorage;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, retain) _MXExtensionDispatchCenter *dispatchCenter;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) _MXExtensionMatchingMerger *merger;
 @property (nonatomic, retain) _MXExtensionServiceCenter *serviceCenter;
-@property (readonly) Class superclass;
 
 + (id)sharedProvider;
 

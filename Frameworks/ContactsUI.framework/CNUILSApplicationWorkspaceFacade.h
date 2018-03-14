@@ -20,5 +20,6 @@
 - (id)init;
 - (id)initWithApplicationWorkspace:(id)arg1 schedulerProvider:(id)arg2;
 - (void)openSensitiveURLInBackground:(id)arg1 withOptions:(id)arg2;
+- (void)openUserActivity:(id)arg1 completionHandler:(id /* block */)arg2;
 
 @end

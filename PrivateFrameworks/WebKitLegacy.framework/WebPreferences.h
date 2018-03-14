@@ -6,6 +6,7 @@
     /* Warning: unhandled struct encoding: '{WebPreferencesPrivate={RetainPtr<NSMutableDictionary>=^v}B{RetainPtr<NSString>=^v}BBI@}' */ struct WebPreferencesPrivate { struct RetainPtr<NSMutableDictionary> { void *x_1_1_1; } x1; bool x2; struct RetainPtr<NSString> { void *x_3_1_1; } x3; bool x4; bool x5; unsigned int x6; id x7; } * _private;
 }
 
+@property (nonatomic) bool allowMediaContentTypesRequiringHardwareSupportAsFallback;
 @property (nonatomic) bool allowsAirPlayForMediaPlayback;
 @property (nonatomic) bool allowsAnimatedImageLooping;
 @property (nonatomic) bool allowsAnimatedImages;
@@ -14,23 +15,29 @@
 @property (nonatomic) bool attachmentElementEnabled;
 @property (nonatomic) bool autosaves;
 @property (nonatomic) unsigned long long cacheModel;
+@property (nonatomic) bool constantPropertiesEnabled;
 @property (nonatomic) bool credentialManagementEnabled;
 @property (nonatomic, copy) NSString *cursiveFontFamily;
 @property (nonatomic) int defaultFixedFontSize;
 @property (nonatomic) int defaultFontSize;
 @property (nonatomic, copy) NSString *defaultTextEncodingName;
+@property (nonatomic) bool displayContentsEnabled;
 @property (nonatomic, copy) NSString *fantasyFontFamily;
 @property (nonatomic, copy) NSString *fixedFontFamily;
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (nonatomic) bool intersectionObserverEnabled;
+@property (nonatomic) bool isSecureContextAttributeEnabled;
 @property (getter=isJavaEnabled, nonatomic) bool javaEnabled;
 @property (nonatomic) bool javaScriptCanOpenWindowsAutomatically;
 @property (getter=isJavaScriptEnabled, nonatomic) bool javaScriptEnabled;
 @property (nonatomic) bool javaScriptMarkupEnabled;
 @property (nonatomic) bool largeImageAsyncDecodingEnabled;
+@property (nonatomic) bool legacyEncryptedMediaAPIEnabled;
 @property (nonatomic) bool linkPreloadEnabled;
 @property (nonatomic) bool loadsImagesAutomatically;
+@property (nonatomic) NSString *mediaContentTypesRequiringHardwareSupport;
 @property (nonatomic) bool mediaDataLoadsAutomatically;
+@property (nonatomic) bool mediaUserGestureInheritsFromDocument;
 @property (nonatomic) int minimumFontSize;
 @property (nonatomic) int minimumLogicalFontSize;
 @property (getter=arePlugInsEnabled, nonatomic) bool plugInsEnabled;
@@ -45,7 +52,10 @@
 @property (nonatomic, retain) NSURL *userStyleSheetLocation;
 @property (nonatomic) bool userTimingEnabled;
 @property (nonatomic) bool usesPageCache;
+@property (nonatomic) bool viewportFitEnabled;
 @property (nonatomic) bool visualViewportEnabled;
+
+// Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
 
 + (id)_IBCreatorID;
 + (void)_checkLastReferenceForIdentifier:(id)arg1;
@@ -120,6 +130,7 @@
 - (bool)acceleratedCompositingEnabled;
 - (bool)acceleratedDrawingEnabled;
 - (bool)allowFileAccessFromFileURLs;
+- (bool)allowMediaContentTypesRequiringHardwareSupportAsFallback;
 - (bool)allowUniversalAccessFromFileURLs;
 - (bool)allowsAirPlayForMediaPlayback;
 - (bool)allowsAlternateFullscreen;
@@ -132,6 +143,7 @@
 - (long long)applicationCacheTotalQuota;
 - (bool)applicationChromeModeEnabled;
 - (bool)arePlugInsEnabled;
+- (bool)asyncFrameScrollingEnabled;
 - (bool)asynchronousSpellCheckingEnabled;
 - (bool)attachmentElementEnabled;
 - (bool)audioPlaybackRequiresUserGesture;
@@ -143,6 +155,7 @@
 - (bool)backspaceKeyNavigationEnabled;
 - (unsigned long long)cacheModel;
 - (bool)canvasUsesAcceleratedDrawing;
+- (bool)constantPropertiesEnabled;
 - (bool)credentialManagementEnabled;
 - (id)cursiveFontFamily;
 - (bool)customElementsEnabled;
@@ -154,6 +167,7 @@
 - (bool)developerExtrasEnabled;
 - (bool)diagnosticLoggingEnabled;
 - (void)didRemoveFromWebView;
+- (bool)displayContentsEnabled;
 - (bool)displayListDrawingEnabled;
 - (bool)domTimersThrottlingEnabled;
 - (bool)downloadAttributeEnabled;
@@ -166,6 +180,7 @@
 - (id)fixedFontFamily;
 - (bool)forceLowPowerGPUForWebGL;
 - (bool)forceSoftwareWebGLRendering;
+- (int)frameFlattening;
 - (bool)fullScreenEnabled;
 - (bool)gamepadsEnabled;
 - (bool)hiddenPageCSSAnimationSuspensionEnabled;
@@ -194,6 +209,7 @@
 - (bool)isJavaEnabled;
 - (bool)isJavaScriptEnabled;
 - (bool)isQTKitEnabled;
+- (bool)isSecureContextAttributeEnabled;
 - (bool)isSpatialNavigationEnabled;
 - (bool)isVideoPluginProxyEnabled;
 - (bool)isWebSecurityEnabled;
@@ -203,6 +219,7 @@
 - (bool)javaScriptMarkupEnabled;
 - (int)javaScriptRuntimeFlags;
 - (bool)largeImageAsyncDecodingEnabled;
+- (bool)legacyEncryptedMediaAPIEnabled;
 - (bool)linkPreloadEnabled;
 - (bool)loadsImagesAutomatically;
 - (bool)loadsSiteIconsIgnoringImageLoadingPreference;
@@ -210,6 +227,7 @@
 - (bool)localStorageEnabled;
 - (bool)lowPowerVideoAudioBufferSizeEnabled;
 - (bool)mediaCaptureRequiresSecureConnection;
+- (id)mediaContentTypesRequiringHardwareSupport;
 - (bool)mediaControlsScaleWithPageZoom;
 - (bool)mediaDataLoadsAutomatically;
 - (bool)mediaDevicesEnabled;
@@ -217,12 +235,15 @@
 - (bool)mediaPlaybackAllowsAirPlay;
 - (bool)mediaPlaybackAllowsInline;
 - (bool)mediaPlaybackRequiresUserGesture;
+- (bool)mediaPreloadingEnabled;
 - (bool)mediaSourceEnabled;
 - (bool)mediaStreamEnabled;
+- (bool)mediaUserGestureInheritsFromDocument;
 - (bool)metaRefreshEnabled;
 - (int)minimumFontSize;
 - (int)minimumLogicalFontSize;
 - (bool)mockCaptureDevicesEnabled;
+- (bool)mockCaptureDevicesPromptEnabled;
 - (bool)mockScrollbarsEnabled;
 - (bool)modernMediaControlsEnabled;
 - (bool)needsStorageAccessFromFileURLsQuirk;
@@ -252,6 +273,7 @@
 - (void)setAcceleratedCompositingEnabled:(bool)arg1;
 - (void)setAcceleratedDrawingEnabled:(bool)arg1;
 - (void)setAllowFileAccessFromFileURLs:(bool)arg1;
+- (void)setAllowMediaContentTypesRequiringHardwareSupportAsFallback:(bool)arg1;
 - (void)setAllowUniversalAccessFromFileURLs:(bool)arg1;
 - (void)setAllowsAirPlayForMediaPlayback:(bool)arg1;
 - (void)setAllowsAlternateFullscreen:(bool)arg1;
@@ -263,6 +285,7 @@
 - (void)setApplicationCacheDefaultOriginQuota:(long long)arg1;
 - (void)setApplicationCacheTotalQuota:(long long)arg1;
 - (void)setApplicationChromeModeEnabled:(bool)arg1;
+- (void)setAsyncFrameScrollingEnabled:(bool)arg1;
 - (void)setAsynchronousSpellCheckingEnabled:(bool)arg1;
 - (void)setAttachmentElementEnabled:(bool)arg1;
 - (void)setAudioPlaybackRequiresUserGesture:(bool)arg1;
@@ -274,6 +297,7 @@
 - (void)setCSSGridLayoutEnabled:(bool)arg1;
 - (void)setCacheModel:(unsigned long long)arg1;
 - (void)setCanvasUsesAcceleratedDrawing:(bool)arg1;
+- (void)setConstantPropertiesEnabled:(bool)arg1;
 - (void)setCredentialManagementEnabled:(bool)arg1;
 - (void)setCursiveFontFamily:(id)arg1;
 - (void)setCustomElementsEnabled:(bool)arg1;
@@ -287,6 +311,7 @@
 - (void)setDeveloperExtrasEnabled:(bool)arg1;
 - (void)setDiagnosticLoggingEnabled:(bool)arg1;
 - (void)setDiskImageCacheEnabled:(bool)arg1;
+- (void)setDisplayContentsEnabled:(bool)arg1;
 - (void)setDisplayListDrawingEnabled:(bool)arg1;
 - (void)setDownloadAttributeEnabled:(bool)arg1;
 - (void)setEditableLinkBehavior:(int)arg1;
@@ -298,6 +323,7 @@
 - (void)setFixedFontFamily:(id)arg1;
 - (void)setForceSoftwareWebGLRendering:(bool)arg1;
 - (void)setForceWebGLUsesLowPower:(bool)arg1;
+- (void)setFrameFlattening:(int)arg1;
 - (void)setFrameFlatteningEnabled:(bool)arg1;
 - (void)setFullScreenEnabled:(bool)arg1;
 - (void)setGamepadsEnabled:(bool)arg1;
@@ -312,6 +338,7 @@
 - (void)setInlineMediaPlaybackRequiresPlaysInlineAttribute:(bool)arg1;
 - (void)setIntersectionObserverEnabled:(bool)arg1;
 - (void)setInvisibleAutoplayNotPermitted:(bool)arg1;
+- (void)setIsSecureContextAttributeEnabled:(bool)arg1;
 - (void)setJavaEnabled:(bool)arg1;
 - (void)setJavaScriptCanAccessClipboard:(bool)arg1;
 - (void)setJavaScriptCanOpenWindowsAutomatically:(bool)arg1;
@@ -319,6 +346,7 @@
 - (void)setJavaScriptMarkupEnabled:(bool)arg1;
 - (void)setJavaScriptRuntimeFlags:(int)arg1;
 - (void)setLargeImageAsyncDecodingEnabled:(bool)arg1;
+- (void)setLegacyEncryptedMediaAPIEnabled:(bool)arg1;
 - (void)setLinkPreloadEnabled:(bool)arg1;
 - (void)setLoadsImagesAutomatically:(bool)arg1;
 - (void)setLoadsSiteIconsIgnoringImageLoadingPreference:(bool)arg1;
@@ -326,6 +354,7 @@
 - (void)setLocalStorageEnabled:(bool)arg1;
 - (void)setLowPowerVideoAudioBufferSizeEnabled:(bool)arg1;
 - (void)setMediaCaptureRequiresSecureConnection:(bool)arg1;
+- (void)setMediaContentTypesRequiringHardwareSupport:(id)arg1;
 - (void)setMediaControlsScaleWithPageZoom:(bool)arg1;
 - (void)setMediaDataLoadsAutomatically:(bool)arg1;
 - (void)setMediaDevicesEnabled:(bool)arg1;
@@ -333,12 +362,15 @@
 - (void)setMediaPlaybackAllowsAirPlay:(bool)arg1;
 - (void)setMediaPlaybackAllowsInline:(bool)arg1;
 - (void)setMediaPlaybackRequiresUserGesture:(bool)arg1;
+- (void)setMediaPreloadingEnabled:(bool)arg1;
 - (void)setMediaSourceEnabled:(bool)arg1;
 - (void)setMediaStreamEnabled:(bool)arg1;
+- (void)setMediaUserGestureInheritsFromDocument:(bool)arg1;
 - (void)setMetaRefreshEnabled:(bool)arg1;
 - (void)setMinimumFontSize:(int)arg1;
 - (void)setMinimumLogicalFontSize:(int)arg1;
 - (void)setMockCaptureDevicesEnabled:(bool)arg1;
+- (void)setMockCaptureDevicesPromptEnabled:(bool)arg1;
 - (void)setMockScrollbarsEnabled:(bool)arg1;
 - (void)setModernMediaControlsEnabled:(bool)arg1;
 - (void)setNeedsStorageAccessFromFileURLsQuirk:(bool)arg1;
@@ -380,10 +412,8 @@
 - (void)setStorageTrackerEnabled:(bool)arg1;
 - (void)setSubpixelAntialiasedLayerTextEnabled:(bool)arg1;
 - (void)setSubpixelCSSOMElementMetricsEnabled:(bool)arg1;
-- (void)setSubtleCryptoEnabled:(bool)arg1;
 - (void)setSuppressesIncrementalRendering:(bool)arg1;
 - (void)setTextDirectionSubmenuInclusionBehavior:(int)arg1;
-- (void)setUseAVFoundationAudioCapture:(bool)arg1;
 - (void)setUseLegacyTextAlignPositionedElementBehavior:(bool)arg1;
 - (void)setUsePreHTML5ParserQuirks:(bool)arg1;
 - (void)setUserStyleSheetEnabled:(bool)arg1;
@@ -393,6 +423,7 @@
 - (void)setUsesPageCache:(bool)arg1;
 - (void)setVideoPlaybackRequiresUserGesture:(bool)arg1;
 - (void)setVideoPluginProxyEnabled:(bool)arg1;
+- (void)setViewportFitEnabled:(bool)arg1;
 - (void)setVisualViewportEnabled:(bool)arg1;
 - (void)setWantsBalancedSetDefersLoadingBehavior:(bool)arg1;
 - (void)setWebAnimationsEnabled:(bool)arg1;
@@ -422,10 +453,8 @@
 - (bool)storageTrackerEnabled;
 - (bool)subpixelAntialiasedLayerTextEnabled;
 - (bool)subpixelCSSOMElementMetricsEnabled;
-- (bool)subtleCryptoEnabled;
 - (bool)suppressesIncrementalRendering;
 - (int)textDirectionSubmenuInclusionBehavior;
-- (bool)useAVFoundationAudioCapture;
 - (bool)useLegacyTextAlignPositionedElementBehavior;
 - (bool)usePreHTML5ParserQuirks;
 - (bool)userStyleSheetEnabled;
@@ -434,6 +463,7 @@
 - (bool)usesEncodingDetector;
 - (bool)usesPageCache;
 - (bool)videoPlaybackRequiresUserGesture;
+- (bool)viewportFitEnabled;
 - (bool)visualViewportEnabled;
 - (bool)wantsBalancedSetDefersLoadingBehavior;
 - (bool)webAnimationsEnabled;
@@ -446,5 +476,9 @@
 - (void)willAddToWebView;
 - (bool)writableStreamAPIEnabled;
 - (bool)zoomsTextOnly;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (id)standardMailWebPreferencesForDisplayStyle:(int)arg1 regenerate:(bool)arg2;
 
 @end

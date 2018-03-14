@@ -42,12 +42,15 @@
 @property (nonatomic, retain) MPMediaLibrary *mediaLibrary;
 @property (getter=_orderingDirectionMappings, setter=_setOrderingDirectionMappings:, nonatomic, copy) NSDictionary *orderingDirectionMappings;
 @property (getter=_orderingProperties, setter=_setOrderingProperties:, nonatomic, copy) NSArray *orderingProperties;
+@property (getter=isPlaylistItemsQuery, nonatomic, readonly) bool playlistItemsQuery;
 @property (nonatomic) bool shouldIncludeNonLibraryEntities;
 @property (nonatomic) bool sortItems;
 @property (nonatomic, readonly) bool specifiesPlaylistItems;
 @property (readonly) Class superclass;
 @property (nonatomic) bool useSections;
 @property (nonatomic, readonly) bool willGroupEntities;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (id)ITunesUAudioQuery;
 + (id)ITunesUQuery;
@@ -108,6 +111,7 @@
 - (bool)_isFilteringDisabled;
 - (id)_orderingDirectionMappings;
 - (id)_orderingProperties;
+- (unsigned long long)_playlistItemPersistentIDForItemPersistentID:(unsigned long long)arg1;
 - (id)_representativeCollection;
 - (long long)_representativeCollectionGroupingType;
 - (void)_setOrderingDirectionMappings:(id)arg1;
@@ -144,6 +148,7 @@
 - (id)initWithFilterPredicates:(id)arg1;
 - (id)initWithProtobufferDecodableObject:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (bool)isPlaylistItemsQuery;
 - (id)itemPersistentIdentifiers;
 - (id)itemPropertiesToFetch;
 - (id)itemSectionInfo;
@@ -177,5 +182,9 @@
 - (id)valueForAggregateFunction:(id)arg1 onCollectionsForProperty:(id)arg2;
 - (id)valueForAggregateFunction:(id)arg1 onItemsForProperty:(id)arg2;
 - (bool)willGroupEntities;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (id)_MPUSDS_searchPredicate;
 
 @end

@@ -38,7 +38,6 @@
 
 + (id)_alertViewForSessionWithRemoteViewController:(id)arg1;
 + (id)_alertViewForWindow:(id)arg1;
-+ (id)_alertWindow;
 + (bool)_isAlertControllerShimClass;
 + (id)_remoteAlertViewWithBlock:(id /* block */)arg1;
 + (void)_setSpringBoardAlertDisplayingOverApplicationAlert:(bool)arg1;
@@ -46,6 +45,7 @@
 + (void)applyTransformToAllAlerts:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 + (struct CGSize { double x1; double x2; })minimumSize;
 
+- (void).cxx_destruct;
 - (id)_addButtonWithTitle:(id)arg1;
 - (id)_addButtonWithTitleText:(id)arg1;
 - (id)_addTextFieldWithValue:(id)arg1 label:(id)arg2;
@@ -93,15 +93,14 @@
 - (void)_updateMessageAndSubtitle;
 - (void)_useLegacyUI:(bool)arg1;
 - (void)_useUndoStyle:(bool)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (long long)addButtonWithTitle:(id)arg1;
 - (id)addButtonWithTitle:(id)arg1 buttonClass:(Class)arg2;
 - (id)addButtonWithTitle:(id)arg1 label:(id)arg2;
 - (id)addTextFieldWithValue:(id)arg1 label:(id)arg2;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (long long)alertViewStyle;
 - (struct CGSize { double x1; double x2; })backgroundSize;
 - (int)bodyMaxLineCount;
@@ -112,7 +111,6 @@
 - (id)buttonTitleAtIndex:(long long)arg1;
 - (long long)cancelButtonIndex;
 - (id)context;
-- (void)dealloc;
 - (id)defaultButton;
 - (long long)defaultButtonIndex;
 - (id)delegate;
@@ -146,7 +144,6 @@
 - (void)presentSheetToAboveView:(id)arg1;
 - (void)replaceAlert:(id)arg1;
 - (bool)requiresPortraitOrientation;
-- (id)rtb_initWithTitle:(id)arg1 message:(id)arg2 leftButtonTitle:(id)arg3 leftButtonAction:(id /* block */)arg4 rightButtonTitle:(id)arg5 rightButtonAction:(id /* block */)arg6;
 - (bool)runsModal;
 - (void)setAlertViewStyle:(long long)arg1;
 - (void)setBodyText:(id)arg1;
@@ -187,8 +184,16 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })titleRect;
 - (id)window;
 
-// Image: /var/containers/Bundle/Application/65BC6EE3-1C0D-476E-BA6A-4243E859BFDC/OCRuntime.app/OCRuntime
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
+- (id)initWithError:(id)arg1;
+- (void)showWithCompletionHandler:(id /* block */)arg1;
+
+// Image: /var/containers/Bundle/Application/9FA5E7E0-0979-49BB-AD45-554AFA2B5092/OCRuntime.app/OCRuntime
 
 + (void)rtb_displayAlertWithTitle:(id)arg1 message:(id)arg2 leftButtonTitle:(id)arg3 leftButtonAction:(id /* block */)arg4 rightButtonTitle:(id)arg5 rightButtonAction:(id /* block */)arg6;
+
+- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
+- (id)rtb_initWithTitle:(id)arg1 message:(id)arg2 leftButtonTitle:(id)arg3 leftButtonAction:(id /* block */)arg4 rightButtonTitle:(id)arg5 rightButtonAction:(id /* block */)arg6;
 
 @end

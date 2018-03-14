@@ -7,15 +7,13 @@
     bool  _hasNonDefaultMinVolumeSliderImage;
     bool  _hasNonDefaultRouteButtonImages;
     bool  _hidesRouteLabelWhenNoRouteChoice;
+    MPMediaControlsStandaloneViewController * _mediaControlsViewController;
     bool  _pushedRouteDiscoveryModeState;
     UIButton * _routeButton;
     bool  _routeButtonShowsTouchWhenHighlighted;
     bool  _routeDiscoveryEnabled;
     UILabel * _routeLabel;
-    MPAudioVideoRoutingPopoverController * _routePopoverController;
-    unsigned long long  _routePopoverPermittedArrowDirections;
     MPAVRoutingController * _routingController;
-    MPAVRoutingSheet * _routingSheet;
     bool  _showingButton;
     bool  _showingLabel;
     bool  _showingSlider;
@@ -35,7 +33,6 @@
 @property (nonatomic, readonly) bool isShowingRouteButton;
 @property (nonatomic, readonly) bool isVisible;
 @property (nonatomic) bool routeButtonShowsTouchWhenHighlighted;
-@property (nonatomic) unsigned long long routePopoverPermittedArrowDirections;
 @property (nonatomic) bool showsRouteButton;
 @property (nonatomic) bool showsVolumeSlider;
 @property (nonatomic, readonly) long long style;
@@ -54,13 +51,14 @@
 - (void)_displayAudioRoutePicker;
 - (void)_getDefaultVolumeSliderFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1 routeButtonFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg2 forBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
 - (void)_initWithStyle:(long long)arg1;
-- (void)_registerNotifications;
+- (void)_loadAudioRoutePickerIfNeeded;
 - (id)_routeButton;
+- (void)_routingControllerDidUpdateVolumeControlState:(id)arg1;
 - (void)_setRouteDiscoveryEnabled:(bool)arg1;
 - (void)_setShowsRouteButton:(bool)arg1 animated:(bool)arg2;
 - (void)_setShowsVolumeSlider:(bool)arg1;
-- (void)_setVolumeAudioCategory:(id)arg1;
-- (void)_unregisterNotifications;
+- (void)_startPrewarmingAudioRoutePicker;
+- (void)_stopPrewarmingAudioRoutePicker;
 - (void)_updateWirelessRouteStatus;
 - (bool)areWirelessRoutesAvailable;
 - (void)dealloc;
@@ -80,11 +78,10 @@
 - (id)maximumVolumeSliderImageForState:(unsigned long long)arg1;
 - (id)minimumVolumeSliderImageForState:(unsigned long long)arg1;
 - (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
-- (void)popoverControllerDidDismissPopover:(id)arg1;
 - (id)routeButtonImageForState:(unsigned long long)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })routeButtonRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)routeButtonShowsTouchWhenHighlighted;
-- (unsigned long long)routePopoverPermittedArrowDirections;
+- (void)routingController:(id)arg1 volumeControlAvailabilityDidChange:(bool)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setAlpha:(double)arg1;
 - (void)setHidden:(bool)arg1;
@@ -93,7 +90,6 @@
 - (void)setMinimumVolumeSliderImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setRouteButtonImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setRouteButtonShowsTouchWhenHighlighted:(bool)arg1;
-- (void)setRoutePopoverPermittedArrowDirections:(unsigned long long)arg1;
 - (void)setShowsRouteButton:(bool)arg1;
 - (void)setShowsVolumeSlider:(bool)arg1;
 - (void)setVolumeSliderShrinksFromBothEnds:(bool)arg1;
@@ -109,6 +105,5 @@
 - (id)volumeThumbImageForState:(unsigned long long)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })volumeThumbRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 volumeSliderRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 value:(float)arg3;
 - (id)volumeWarningSliderImage;
-- (void)willMoveToWindow:(id)arg1;
 
 @end

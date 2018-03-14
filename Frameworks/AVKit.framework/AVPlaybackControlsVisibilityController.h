@@ -9,6 +9,7 @@
     bool  _hidesViewQuicklyWhenPlaybackBegins;
     bool  _inAutoplayPhase;
     AVKeyValueObservationController * _keyValueObservationController;
+    bool  _loadingIndicatorWasShownAndVisibilityNotToggledAfterLoadingIndicatorShown;
     bool  _pictureInPictureActive;
     bool  _playbackWasPausedAndVisibilityNotToggledAfterPausing;
     AVPlayerController * _playerController;
@@ -21,6 +22,8 @@
     double  _prefersViewsVisibleTimerInterval;
     double  _prefersViewsVisibleTimerIntervalForQuicklyHiding;
     bool  _scrubbing;
+    bool  _showsViewsWhileWaitingToPlay;
+    bool  _statusBarAppearanceNeedsUpdate;
     bool  _temporarilyAvoidAnimationsWhenStartingToControlViewVisibility;
     bool  _transitionInProgress;
     AVUserInteractionObserverGestureRecognizer * _userInteractionObserverGestureRecognizer;
@@ -38,8 +41,8 @@
 @property (getter=isPictureInPictureActive, nonatomic) bool pictureInPictureActive;
 @property (nonatomic, retain) AVPlayerController *playerController;
 @property (getter=isPopoverPresented, nonatomic) bool popoverPresented;
-@property (getter=isScrubbing, nonatomic) bool scrubbing;
 @property (nonatomic, readonly) bool showsViewPreferingStatusBarVisible;
+@property (nonatomic) bool showsViewsWhileWaitingToPlay;
 @property (nonatomic) UIView *viewForUserInteractionObservation;
 @property double volumeChangeHidePlaybackControlTimerInterval;
 
@@ -50,8 +53,8 @@
 - (bool)_hasViewsThatCanBeShown;
 - (void)_hideRegularViews;
 - (void)_hideViewsShownForVolumeChange;
+- (void)_performForEachView:(id /* block */)arg1;
 - (void)_setVisibilityNeedsUpdate;
-- (void)_showInitiallyHiddenViews;
 - (void)_showRegularViews;
 - (void)_showRegularViewsAndHideAfterDelay;
 - (void)_showRegularViewsAndHideAfterDelayIfPlaying;
@@ -62,6 +65,8 @@
 - (void)_startTimerToHideRegularViewsAfterDelay:(double)arg1 ifPlaying:(bool)arg2;
 - (void)_startTimerToHideRegularViewsIfPlaying;
 - (void)_startTimerToHideViewsShownForVolumeChange;
+- (void)_stopInitiallyHidingViews;
+- (void)_stopInitiallyHidingViewsThatAreShownForVolumeChanges;
 - (void)_stopTimerToHideRegularControlsIfPlaying;
 - (void)_stopTimerToHideViewsShownForVolumeChangeIfPlaying;
 - (void)_updateControlViewVisibilityIfNeeded;
@@ -82,7 +87,6 @@
 - (id)init;
 - (bool)isPictureInPictureActive;
 - (bool)isPopoverPresented;
-- (bool)isScrubbing;
 - (id)playerController;
 - (void)setAnimationDuration:(double)arg1;
 - (void)setCanHideViews:(bool)arg1;
@@ -92,10 +96,11 @@
 - (void)setPictureInPictureActive:(bool)arg1;
 - (void)setPlayerController:(id)arg1;
 - (void)setPopoverPresented:(bool)arg1;
-- (void)setScrubbing:(bool)arg1;
+- (void)setShowsViewsWhileWaitingToPlay:(bool)arg1;
 - (void)setViewForUserInteractionObservation:(id)arg1;
 - (void)setVolumeChangeHidePlaybackControlTimerInterval:(double)arg1;
 - (bool)showsViewPreferingStatusBarVisible;
+- (bool)showsViewsWhileWaitingToPlay;
 - (void)startControllingVisibilityOfView:(id)arg1 visibilityBehaviorOptions:(long long)arg2;
 - (void)startHidingViewQuicklyWhenPlaybackBegins;
 - (void)stopControllingVisibilityOfView:(id)arg1;

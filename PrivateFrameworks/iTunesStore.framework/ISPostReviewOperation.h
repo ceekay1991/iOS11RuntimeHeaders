@@ -11,6 +11,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSNumber *metricsLoadURLSamplingPercentage;
+@property (nonatomic, readonly) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
+@property (nonatomic, readonly) NSNumber *metricsLoadURLSessionDuration;
 @property (retain) ISReview *review;
 @property (readonly) Class superclass;
 

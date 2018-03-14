@@ -6,6 +6,7 @@
     NSObject<OS_nw_array> * child_endpoint_handlers;
     void * child_timer;
     NWConcrete_nw_endpoint_handler * connected_child;
+    void * desperate_ivan_timer;
     NSObject<OS_nw_array> * failed_child_endpoint_handlers;
     unsigned int  failed_to_start_next_child;
     int  last_resolver_status;

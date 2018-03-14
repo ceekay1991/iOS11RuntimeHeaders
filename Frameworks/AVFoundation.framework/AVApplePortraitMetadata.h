@@ -7,7 +7,6 @@
 }
 
 @property (readonly) float apertureFocalRatio;
-@property (getter=isDisparityNormalized, readonly) bool disparityNormalized;
 @property (readonly) NSData *faceObservationsData;
 @property (readonly) int faceOrientation;
 @property (readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } focusRectangle;
@@ -17,6 +16,7 @@
 + (bool)supportsSecureCoding;
 
 - (float)apertureFocalRatio;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)faceObservationsData;
 - (int)faceOrientation;
@@ -25,7 +25,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInternal:(id)arg1;
 - (id)initWithPortraitMetadataDictionary:(id)arg1;
-- (bool)isDisparityNormalized;
 - (float)luminanceNoiseAmplitude;
 
 @end

@@ -3,17 +3,47 @@
  */
 
 @interface MPAVOutputDeviceRoutingDataSource : MPAVRoutingDataSource {
-    MPAVEndpointRoutingDataSource * _endpointDataSource;
+    void * _applicationOutputContext;
+    NSError * _applicationOutputContextCreationError;
+    bool  _attemptedToInitializeAppOutputContext;
+    void * _callbackToken;
+    void * _discoverySession;
+    MPAVEndpointRoute * _endpointRoute;
+    NSArray * _outputDeviceRoutes;
+    NSObject<OS_dispatch_queue> * _serialQueue;
+    bool  _supportsMultipleSelection;
 }
 
+@property (nonatomic, retain) MPAVEndpointRoute *endpointRoute;
+@property (nonatomic, copy) NSString *routingContextUID;
+
++ (id)_globalAudioSessionLock;
+
 - (void).cxx_destruct;
-- (void)_endpointsDidChange:(id)arg1;
-- (id)_flattenedRoutes:(id)arg1;
+- (void*)_copyApplicationOutputContext:(id*)arg1;
+- (void*)_createDefaultApplicationOutputContext:(id*)arg1 outAudioSessionID:(unsigned int*)arg2;
+- (void)_endpointsDidChangeNotification:(id)arg1;
+- (id)_outputDeviceRouteWithUID:(id)arg1;
+- (void)_outputDeviceVolumeDidChangeNotification:(id)arg1;
+- (void)_outputDevicesDidChange:(id)arg1;
+- (void)_outputDevicesDidChangeNotification:(id)arg1;
+- (void)_registerNotifications;
+- (void)_routeStatusDidChangeNotification:(id)arg1;
+- (void)_unregisterNotifications;
+- (void)addRouteToGroup:(id)arg1 completion:(id /* block */)arg2;
 - (void)dealloc;
+- (bool)devicePresenceDetected;
 - (long long)discoveryMode;
+- (id)endpointRoute;
 - (void)getRoutesForCategory:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)init;
+- (void)removeRouteFromGroup:(id)arg1 completion:(id /* block */)arg2;
+- (bool)routeIsLeaderOfEndpoint:(id)arg1;
+- (id)routingContextUID;
 - (void)setDiscoveryMode:(long long)arg1;
+- (void)setEndpointRoute:(id)arg1;
 - (void)setPickedRoute:(id)arg1 withPassword:(id)arg2 completion:(id /* block */)arg3;
+- (void)setRoutingContextUID:(id)arg1;
+- (bool)supportsMultipleSelection;
 
 @end

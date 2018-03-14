@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFPunchout : NSObject <NSSecureCoding, SFPunchout> {
+@interface SFPunchout : NSObject <NSCopying, NSSecureCoding, SFPunchout> {
     NSString * _actionTarget;
     NSString * _bundleIdentifier;
     NSString * _label;
@@ -32,6 +32,7 @@
 - (id)actionTarget;
 - (id)bundleIdentifier;
 - (bool)canOpenURL:(id)arg1;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -23,7 +23,7 @@
 - (void)setContentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setHighlighted:(bool)arg1 animated:(bool)arg2;
 - (void)setSelected:(bool)arg1 animated:(bool)arg2;
-- (id)standardStarView;
+- (bool)shouldShowStar;
 - (id)standardTransportIcon;
 - (void)transportButtonClicked:(id)arg1;
 - (id)variableConstraints;

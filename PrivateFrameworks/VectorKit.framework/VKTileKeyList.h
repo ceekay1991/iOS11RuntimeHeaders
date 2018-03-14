@@ -26,6 +26,8 @@
 - (id)initWithMaxCapacity:(unsigned long long)arg1;
 - (bool)isEqualToList:(id)arg1;
 - (id)listWithout:(id)arg1;
+- (void)removeAllKeys;
+- (void)removeAllListNodes;
 - (bool)removeKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg1;
 - (void)removeKeysMatchingPredicate:(id /* block */)arg1;
 - (void)sort:(id /* block */)arg1;

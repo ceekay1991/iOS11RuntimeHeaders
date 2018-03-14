@@ -14,13 +14,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (bool)isContactEmpty:(id)arg1;
++ (id)log;
 + (id)mapperIdentifier;
 
 - (void).cxx_destruct;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id*)arg2;
-- (id)contactsForFetchRequest:(id)arg1 error:(id*)arg2;
-- (id)contactsForFetchRequest:(id)arg1 matchInfos:(id*)arg2 error:(id*)arg3;
+- (id)contactObservableForFetchRequest:(id)arg1;
 - (id)containersMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)defaultContainerIdentifier;
 - (id)donationStore;
@@ -30,7 +29,7 @@
 - (id)groupsMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)initWithContactsEnvironment:(id)arg1;
 - (id)initWithDonationStore:(id)arg1 environment:(id)arg2;
-- (id)meContactIdentifierWithError:(id*)arg1;
+- (id)meContactIdentifiers:(id*)arg1;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id*)arg2;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (bool)requestAccessForEntityType:(long long)arg1 error:(id*)arg2;

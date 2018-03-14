@@ -7,6 +7,8 @@
 }
 
 + (bool)_usesATSTypesetter;
++ (bool)allowsDefaultLineBreakStrategy;
++ (unsigned long long)defaultLineBreakStrategy;
 + (long long)defaultStringDrawingTypesetterBehavior;
 + (long long)defaultTypesetterBehavior;
 + (void)initialize;

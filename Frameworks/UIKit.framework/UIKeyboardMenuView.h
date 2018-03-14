@@ -59,19 +59,19 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (void)_delayedFade;
 - (int)_internationalKeyRoundedCornerInLayout:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)applicationWillSuspend:(id)arg1;
 - (void)autoscrollTimerFired:(id)arg1;
 - (bool)centerPopUpOverKey;
 - (void)clear;
 - (id)containerView;
 - (void)customizeCell:(id)arg1 forItemAtIndex:(unsigned long long)arg2;
-- (void)dealloc;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;
 - (id)dimmingView;
@@ -89,6 +89,7 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)inputView;
 - (void)insertSelExtraView;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })interactiveBounds;
 - (bool)isVisible;
 - (id)layout;
 - (id)localizedTitleForItemAtIndex:(unsigned long long)arg1;

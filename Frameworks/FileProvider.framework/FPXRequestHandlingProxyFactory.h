@@ -4,7 +4,7 @@
 
 @interface FPXRequestHandlingProxyFactory : NSObject <FPXRequestHandlingProxyCreating> {
     FPXExtensionContext * _context;
-    NSFileProviderMessageInterface * _messageInterface;
+    FPFileProviderService * _service;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -14,6 +14,6 @@
 
 - (void).cxx_destruct;
 - (void)fetchProxyForItemIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
-- (id)initWithMessageInterface:(id)arg1 context:(id)arg2;
+- (id)initWithService:(id)arg1 context:(id)arg2;
 
 @end

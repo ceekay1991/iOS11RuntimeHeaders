@@ -6,6 +6,9 @@
     NSArray * _customURLProtocols;
     NSObject<OS_dispatch_queue> * _eventQueue;
     SSCircularBuffer * _httpArchiveBuffer;
+    unsigned long long  _memoryPressureCachedMaxSize;
+    NSObject<OS_dispatch_source> * _memoryPressureSource;
+    unsigned int  _memoryPressureStatus;
     SSMetricsController * _metricsController;
     NSMutableDictionary * _recordResponseMap;
     NSObject<OS_dispatch_queue> * _recordResponseQueue;
@@ -46,11 +49,16 @@
 + (id)_DNSServerIPAddresses;
 + (id)_bagPerformanceValues;
 + (id)_bagValueForKey:(id)arg1;
++ (id)_fetchNetworkQualityReports;
 + (double)_localTimeIntervalToServerTimeInterval:(double)arg1;
++ (unsigned long long)_messageSizeFromTask:(id)arg1 isRequest:(bool)arg2 delegate:(id)arg3;
 + (id)_resolvedIPAddressFromTask:(id)arg1;
 + (bool)_shouldCollectNetworkLogs;
 + (bool)_shouldCreateLocalCache;
++ (id)_tidStateForTask:(id)arg1 delegate:(id)arg2;
 + (double)_timingDataMetricToServerTimeInterval:(id)arg1;
++ (id)eventFromTimingData:(id)arg1 delegate:(id)arg2 task:(id)arg3 error:(id)arg4;
++ (id)eventFromTimingData:(id)arg1 requestProperties:(id)arg2 task:(id)arg3 error:(id)arg4;
 + (id)eventFromTimingData:(id)arg1 task:(id)arg2;
 + (id)eventFromTimingData:(id)arg1 task:(id)arg2 error:(id)arg3;
 + (id)sharedManager;
@@ -70,6 +78,7 @@
 - (void)_appendResponseData:(id)arg1 forSessionTask:(id)arg2;
 - (id)_delegateForTask:(id)arg1;
 - (void)_insertEventIntoDatabase:(id)arg1;
+- (void)_listenForLowMemoryWarning;
 - (void)_logCacheHitForTask:(id)arg1 metrics:(id)arg2;
 - (void)_removeDelegateForTask:(id)arg1;
 - (void)_removeRecordResponseDataForSessionTask:(id)arg1;

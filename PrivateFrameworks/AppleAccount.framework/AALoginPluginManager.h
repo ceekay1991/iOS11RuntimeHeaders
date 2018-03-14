@@ -9,7 +9,6 @@
     NSArray * _plugins;
     bool  _shouldSkipiTunesPlugin;
     bool  _shouldStashLoginResponse;
-    AAStorableLoginContext * _stashedLoginContext;
 }
 
 @property (nonatomic) bool shouldSkipiTunesPlugin;

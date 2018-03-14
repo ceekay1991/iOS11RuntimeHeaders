@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSManagedObjectModel : NSObject <NSCoding, NSCopying, NSFastEnumeration> {
+@interface NSManagedObjectModel : NSObject <NSCoding, NSCopying, NSFastEnumeration, NSSecureCoding> {
     NSMutableDictionary * _configurations;
     id  _dataForOptimization;
     NSMutableDictionary * _entities;
@@ -13,7 +13,8 @@
         unsigned int _isImmutable : 1; 
         unsigned int _isOptimizedForEncoding : 1; 
         unsigned int _hasEntityWithConstraints : 1; 
-        unsigned int _reservedEntityDescription : 28; 
+        unsigned int _skipUserInfoTombstones : 1; 
+        unsigned int _reservedEntityDescription : 27; 
     }  _managedObjectModelFlags;
     id * _optimizationHints;
     NSSet * _versionIdentifiers;
@@ -24,9 +25,13 @@
 @property (readonly, copy) NSDictionary *entitiesByName;
 @property (readonly, copy) NSDictionary *entityVersionHashesByName;
 @property (readonly, copy) NSDictionary *fetchRequestTemplatesByName;
+@property (nonatomic, readonly) NSString *ic_versionHash;
 @property (retain) NSDictionary *localizationDictionary;
 @property (copy) NSSet *versionIdentifiers;
 
+// Image: /System/Library/Frameworks/CoreData.framework/CoreData
+
++ (long long)_debugOptimizedModelLayout;
 + (void)_deepCollectEntitiesInArray:(id)arg1 entity:(id)arg2;
 + (id)_modelPathsFromBundles:(id)arg1;
 + (id)_newModelFromOptimizedEncoding:(id)arg1 error:(id*)arg2;
@@ -35,6 +40,7 @@
 + (id)mergedModelFromBundles:(id)arg1 forStoreMetadata:(id)arg2;
 + (id)modelByMergingModels:(id)arg1;
 + (id)modelByMergingModels:(id)arg1 forStoreMetadata:(id)arg2;
++ (bool)supportsSecureCoding;
 
 - (void)_addEntities:(id)arg1 toConfiguration:(id)arg2;
 - (void)_addEntity:(id)arg1;
@@ -48,10 +54,13 @@
 - (void)_flattenProperties;
 - (bool)_hasEntityWithUniquenessConstraints;
 - (bool)_hasPrecomputedKeyOrder;
+- (id)_initWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2;
 - (id)_initWithEntities:(id)arg1;
 - (bool)_isConfiguration:(id)arg1 inStyle:(unsigned long long)arg2 compatibleWithStoreMetadata:(id)arg3;
 - (bool)_isOptimizedForEncoding;
+- (bool)_isSkippingUserInfoTombstones;
 - (id)_localizationPolicy;
+- (void)_markTombstones;
 - (id)_modelForVersionHashes:(id)arg1;
 - (id)_optimizedEncoding:(id*)arg1;
 - (id)_precomputedKeysForEntity:(id)arg1;
@@ -62,6 +71,7 @@
 - (void)_setIsEditable:(bool)arg1;
 - (void)_setIsEditable:(bool)arg1 optimizationStyle:(unsigned long long)arg2;
 - (void)_setLocalizationPolicy:(id)arg1;
+- (void)_skipUserInfoTombstones:(bool)arg1;
 - (id)_sortedEntitiesForConfiguration:(id)arg1;
 - (void)_stripForMigration;
 - (void)_throwIfNotEditable;
@@ -98,5 +108,15 @@
 - (void)setVersionIdentifiers:(id)arg1;
 - (id)versionHash;
 - (id)versionIdentifiers;
+
+// Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
+
++ (id)vs_developerModeModelForVersion:(long long)arg1;
++ (id)vs_identityProviderEntityForVersion:(long long)arg1;
++ (id)vs_subscriptionModelForVersion:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (id)ic_versionHash;
 
 @end

@@ -44,6 +44,8 @@
 @property (nonatomic, copy) NSString *tagline;
 @property (nonatomic, copy) NSString *title;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)__MPModelPropertyMovieArtwork__PROPERTY;
 + (id)__MPModelPropertyMovieDescriptionText__PROPERTY;
 + (id)__MPModelPropertyMovieDuration__PROPERTY;
@@ -142,5 +144,14 @@
 - (id)storeAsset;
 - (id)tagline;
 - (id)title;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mqf_requiredPlaybackProperties;
+
+- (id)mpc_protoItemRepresentation;
+- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
+- (id)mqf_newPlaybackItemMetadata;
+- (id)mqf_playbackItemMetadataModelObject;
 
 @end

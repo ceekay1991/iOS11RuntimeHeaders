@@ -18,6 +18,7 @@
     bool  _shouldPlayETARequests;
     double  _speedMultiplier;
     MNTrace * _trace;
+    double  _traceStartTimestamp;
 }
 
 @property (nonatomic, readonly) NSDate *currentLocationDate;

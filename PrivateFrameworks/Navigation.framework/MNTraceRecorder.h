@@ -11,7 +11,6 @@
     NSMapTable * _commuteDirectionsRequests;
     struct sqlite3_stmt { } * _commuteDirectionsResponseUpdate;
     struct sqlite3_stmt { } * _compassHeadingInsert;
-    bool  _copyToCrashReporterDirectory;
     bool  _corrupted;
     bool  _created;
     GEOComposedRouteLeg * _currentLeg;
@@ -68,7 +67,6 @@
 
 - (void).cxx_destruct;
 - (void)_closeTraceDB;
-- (void)_copyTraceToCrashReporter;
 - (void)_createTrace;
 - (void)_dispatchWrite:(id /* block */)arg1;
 - (void)_initializeTraceDB;
@@ -140,8 +138,9 @@
 - (void)setTimeSinceRecordingBeganHandler:(id /* block */)arg1;
 - (void)startWritingTraceToFile;
 - (void)startWritingTraceToFileAtPath:(id)arg1;
-- (void)startWritingTraceToFileAtPath:(id)arg1 completion:(id /* block */)arg2;
+- (void)startWritingTraceToFileAtPath:(id)arg1 shouldPrepareStatements:(bool)arg2 completion:(id /* block */)arg3;
 - (void)startWritingTraceToFileIfNecessaryWithCompletion:(id /* block */)arg1;
+- (void)startWritingTraceToFileWithCompletion:(id /* block */)arg1;
 - (double)timeSinceRecordingBegan;
 - (id /* block */)timeSinceRecordingBeganHandler;
 - (id)trace;

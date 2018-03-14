@@ -17,6 +17,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
++ (id)activeCaretMagnifier;
 + (id)sharedCaretMagnifier;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
@@ -26,6 +27,7 @@
 - (id)initWithFrame;
 - (bool)isHorizontal;
 - (struct CGPoint { double x1; double x2; })offset;
+- (double)offsetFromMagnificationPoint;
 - (void)remove;
 - (void)setAnimationPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setAutoscrollDirections:(int)arg1;

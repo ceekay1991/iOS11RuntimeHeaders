@@ -8,6 +8,7 @@
     struct sqlite3_stmt { } * _insertMirrorKey;
     struct sqlite3_stmt { } * _insertWatch;
     struct sqlite3_stmt { } * _insertWatchKey;
+    struct sqlite3_stmt { } * _markMirrorKey;
     NSObject<OS_os_log> * _oslog;
     struct sqlite3_stmt { } * _queryMissingKeys;
     struct sqlite3_stmt { } * _queryWatches;
@@ -24,6 +25,7 @@
 @property struct sqlite3_stmt { }*insertMirrorKey;
 @property struct sqlite3_stmt { }*insertWatch;
 @property struct sqlite3_stmt { }*insertWatchKey;
+@property struct sqlite3_stmt { }*markMirrorKey;
 @property (retain) NSObject<OS_os_log> *oslog;
 @property struct sqlite3_stmt { }*queryMissingKeys;
 @property struct sqlite3_stmt { }*queryWatches;
@@ -49,6 +51,8 @@
 - (struct sqlite3_stmt { }*)insertMirrorKey;
 - (struct sqlite3_stmt { }*)insertWatch;
 - (struct sqlite3_stmt { }*)insertWatchKey;
+- (struct sqlite3_stmt { }*)markMirrorKey;
+- (bool)markMirrorKey:(int)arg1 type:(int)arg2;
 - (id)missingKeysFromDevice:(id)arg1 type:(int)arg2;
 - (id)oslog;
 - (bool)prepare:(const char *)arg1 statement:(struct sqlite3_stmt {}**)arg2;
@@ -65,6 +69,7 @@
 - (void)setInsertMirrorKey:(struct sqlite3_stmt { }*)arg1;
 - (void)setInsertWatch:(struct sqlite3_stmt { }*)arg1;
 - (void)setInsertWatchKey:(struct sqlite3_stmt { }*)arg1;
+- (void)setMarkMirrorKey:(struct sqlite3_stmt { }*)arg1;
 - (bool)setMirrorKey:(id)arg1 service:(int)arg2 type:(int)arg3 publicIdentity:(id)arg4;
 - (void)setOslog:(id)arg1;
 - (void)setQueryMissingKeys:(struct sqlite3_stmt { }*)arg1;
@@ -81,7 +86,7 @@
 - (id)syncDevices;
 - (bool)syncedKeyToDevice:(id)arg1 type:(int)arg2 device:(id)arg3;
 - (struct sqlite3_stmt { }*)updateMirrorKey;
-- (bool)updateMirrorKey:(id)arg1 service:(int)arg2 type:(int)arg3 current:(bool)arg4;
+- (bool)updateMirrorKey:(id)arg1 service:(int)arg2 type:(int)arg3 newType:(int)arg4 current:(bool)arg5;
 - (bool)updateSyncDevice:(id)arg1 seen:(id)arg2 version:(id)arg3;
 - (struct sqlite3_stmt { }*)updateWatch;
 - (int)userVersion;

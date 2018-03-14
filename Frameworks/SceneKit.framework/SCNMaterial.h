@@ -140,6 +140,7 @@
 - (id)description;
 - (id)diffuse;
 - (id)displacement;
+- (bool)doubleSided;
 - (id)emission;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)fillMode;
@@ -157,6 +158,7 @@
 - (bool)isLitPerPixel;
 - (bool)isPausedOrPausedByInheritance;
 - (id)lightingModelName;
+- (bool)litPerPixel;
 - (bool)locksAmbientWithDiffuse;
 - (struct __C3DMaterial { }*)materialRef;
 - (struct __C3DMaterial { }*)materialRefCreateIfNeeded;

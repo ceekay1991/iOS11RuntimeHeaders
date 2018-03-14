@@ -21,6 +21,10 @@
     NSDictionary * _clientDefinedTraits;
 }
 
+@property (nonatomic, readonly) bool MPU_hasCompactHeight;
+@property (nonatomic, readonly) bool MPU_hasCompactWidth;
+@property (nonatomic, readonly) bool MPU_hasRegularHeight;
+@property (nonatomic, readonly) bool MPU_hasRegularWidth;
 @property (nonatomic, readonly) long long barMetrics;
 @property (nonatomic, readonly) long long barPosition;
 @property (nonatomic, readonly) long long displayGamut;
@@ -28,16 +32,22 @@
 @property (nonatomic, readonly) long long forceTouchCapability;
 @property (nonatomic, readonly) long long horizontalSizeClass;
 @property (nonatomic, readonly) long long layoutDirection;
+@property (getter=music_isContainedWithinSplitViewDetail, nonatomic, readonly) bool music_containedWithinSplitViewDetail;
+@property (getter=music_isContainedWithinSplitViewPrimary, nonatomic, readonly) bool music_containedWithinSplitViewPrimary;
 @property (nonatomic, readonly, copy) NSString *preferredContentSizeCategory;
 @property (nonatomic, readonly) long long userInterfaceIdiom;
 @property (nonatomic, readonly) long long userInterfaceStyle;
 @property (nonatomic, readonly) long long verticalSizeClass;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
++ (id)_defaultTraitCollection;
 + (id)_emptyTraitCollection;
 + (id)_traitCollectionWithValue:(id)arg1 forTraitNamed:(id)arg2;
 + (bool)supportsSecureCoding;
 + (id)traitCollectionWithBarMetrics:(long long)arg1;
 + (id)traitCollectionWithBarPosition:(long long)arg1;
++ (id)traitCollectionWithDisplayCornerRadius:(double)arg1;
 + (id)traitCollectionWithDisplayGamut:(long long)arg1;
 + (id)traitCollectionWithDisplayScale:(double)arg1;
 + (id)traitCollectionWithForceTouchCapability:(long long)arg1;
@@ -65,6 +75,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
+- (double)displayCornerRadius;
 - (long long)displayGamut;
 - (double)displayScale;
 - (void)encodeWithCoder:(id)arg1;
@@ -82,5 +93,39 @@
 - (long long)userInterfaceIdiom;
 - (long long)userInterfaceStyle;
 - (long long)verticalSizeClass;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (long long)mf_correspondingBarMetrics;
+- (bool)mf_hasCompactDimension;
+- (bool)mf_supportsPopoverPresentation;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
++ (id)music_traitCollectionWithContainedWithinSplitViewDetail:(bool)arg1;
++ (id)music_traitCollectionWithContainedWithinSplitViewPrimary:(bool)arg1;
+
+- (bool)music_isContainedWithinSplitViewDetail;
+- (bool)music_isContainedWithinSplitViewPrimary;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (bool)MPU_hasCompactHeight;
+- (bool)MPU_hasCompactWidth;
+- (bool)MPU_hasRegularHeight;
+- (bool)MPU_hasRegularWidth;
+
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
+- (bool)tsu_isCompactHeight;
+- (bool)tsu_isCompactWidth;
+
+// Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
+
+- (bool)isPreferredContentSizeCategoryAccessible;
+
+// Image: /System/Library/PrivateFrameworks/WiFiKitUI.framework/WiFiKitUI
+
+- (bool)isLargeTextTraitCollection;
 
 @end

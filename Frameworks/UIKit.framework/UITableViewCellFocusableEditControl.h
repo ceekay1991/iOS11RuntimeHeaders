@@ -8,6 +8,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_currentImage;
 - (void)_ensureFocusedFloatingContentView;
 - (bool)_shouldHandlePressEvent:(id)arg1;
@@ -15,7 +16,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)layoutSubviews;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;

@@ -18,11 +18,11 @@
 
 + (double)_checkmarkOffset;
 
+- (void).cxx_destruct;
 - (bool)_isSelectable;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)checkedColor;
 - (bool)isChecked;
 - (bool)isHighlighted;

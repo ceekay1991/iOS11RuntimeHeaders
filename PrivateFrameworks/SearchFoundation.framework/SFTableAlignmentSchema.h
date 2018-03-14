@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFTableAlignmentSchema : NSObject <NSSecureCoding, SFTableAlignmentSchema> {
+@interface SFTableAlignmentSchema : NSObject <NSCopying, NSSecureCoding, SFTableAlignmentSchema> {
     NSDictionary * _metadata;
     NSArray * _tableColumnAlignment;
 }
@@ -19,6 +19,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

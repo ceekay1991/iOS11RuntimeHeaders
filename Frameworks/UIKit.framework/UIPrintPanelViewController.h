@@ -59,7 +59,6 @@
 - (void).cxx_destruct;
 - (void)_keyWindowWillRotate:(id)arg1;
 - (void)_presentInParentAnimated:(bool)arg1;
-- (void)_presentWindow;
 - (id)_removeRollsFrom:(id)arg1;
 - (bool)annotationsImaged;
 - (void)cancelPrinting;

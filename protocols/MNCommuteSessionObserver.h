@@ -10,5 +10,6 @@
 @optional
 
 - (void)commuteSession:(MNCommuteSession *)arg1 didChangeToState:(unsigned long long)arg2;
+- (void)commuteSessionDidArrive:(MNCommuteSession *)arg1;
 
 @end

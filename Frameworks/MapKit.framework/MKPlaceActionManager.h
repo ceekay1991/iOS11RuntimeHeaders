@@ -3,6 +3,7 @@
  */
 
 @interface MKPlaceActionManager : NSObject <MKPlaceActionManagerProtocol> {
+    MKPlaceCardActionItem * _brandStoreActionItem;
     MKPlaceCardActionItem * _callActionItem;
     TUCallProvider * _callProvider;
     MKPlaceCardActionItem * _favoriteActionItem;
@@ -25,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)_canMakeCalls:(id /* block */)arg1;
+- (void)_enableStoreAction;
 - (void)_launchMaps;
 - (bool)_showReportAProblem;
 - (id)contact;
@@ -41,11 +43,13 @@
 - (id)placeCardDelegate;
 - (bool)placeInBookmarks;
 - (id)placeItem;
+- (id)reportAProblemFooterAction;
 - (void)setIsCurrentLocation:(bool)arg1;
 - (void)setPlaceCardDelegate:(id)arg1;
 - (void)setPlaceInBookmarks:(bool)arg1;
 - (void)setShowContactActions:(bool)arg1;
 - (void)setTransitCardDelegate:(id)arg1;
+- (id)shortPlacecardFooterActions;
 - (bool)showContactActions;
 - (id)transitCardDelegate;
 - (id)transitDelegate;

@@ -13,6 +13,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic) <UITextPasteConfigurationSupporting_Internal> *supportingView;
 
++ (id)combineAttributedStrings:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)_clampRange:(id)arg1;
 - (id)_combineItemAttributedStrings:(id)arg1 forRange:(id)arg2;

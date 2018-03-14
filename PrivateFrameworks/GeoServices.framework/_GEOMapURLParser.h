@@ -11,6 +11,8 @@
         double latitude; 
         double longitude; 
     }  _centerCoordinate;
+    NSString * _cnAddressIdentifier;
+    NSString * _cnContactIdentifier;
     NSString * _contentProvider;
     NSString * _contentProviderID;
     NSString * _directionsDestinationAddressString;
@@ -58,6 +60,8 @@
 @property (readonly) NSString *addressString;
 @property (readonly) double altitude;
 @property (readonly) struct { double x1; double x2; } centerCoordinate;
+@property (readonly) NSString *cnAddressIdentifier;
+@property (readonly) NSString *cnContactIdentifier;
 @property (readonly) NSString *contentProvider;
 @property (readonly) NSString *contentProviderID;
 @property (readonly) NSString *directionsDestinationAddressString;
@@ -93,6 +97,8 @@
 - (id)addressString;
 - (double)altitude;
 - (struct { double x1; double x2; })centerCoordinate;
+- (id)cnAddressIdentifier;
+- (id)cnContactIdentifier;
 - (id)contentProvider;
 - (id)contentProviderID;
 - (id)directionsDestinationAddressString;

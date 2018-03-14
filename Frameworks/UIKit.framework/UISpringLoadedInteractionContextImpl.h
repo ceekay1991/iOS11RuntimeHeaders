@@ -14,6 +14,7 @@
 @property (nonatomic) UISpringLoadedGestureRecognizer *currentRecognizer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) <UIDropSession> *dropSession;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) id overrideTargetItem;
 @property (nonatomic, retain) UIView *overrideTargetView;
@@ -24,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)currentRecognizer;
+- (id)dropSession;
 - (struct CGPoint { double x1; double x2; })locationInView:(id)arg1;
 - (id)overrideTargetItem;
 - (id)overrideTargetView;

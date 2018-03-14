@@ -11,6 +11,7 @@
 @property (readonly) float minSupportedFrameRate;
 
 - (id)copyWithNewPixelFormat:(unsigned int)arg1;
+- (struct { int x1; int x2; })depthEngineOutputDimensions;
 - (struct { int x1; int x2; })dimensions;
 - (float)fieldOfView;
 - (struct opaqueCMFormatDescription { }*)formatDescription;

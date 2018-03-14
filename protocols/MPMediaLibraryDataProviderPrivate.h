@@ -14,6 +14,7 @@
 - (void)addTracksToMyLibrary:(NSArray *)arg1;
 - (void)clearLocationPropertiesOfItemWithIdentifier:(long long)arg1;
 - (bool)collectionExistsContainedWithinPersistentIDs:(const unsigned long long*)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long*)arg4;
+- (bool)collectionExistsContainedWithinSyncIDs:(NSArray *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long*)arg3;
 - (bool)collectionExistsWithName:(NSString *)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long*)arg3;
 - (bool)collectionExistsWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2;
 - (bool)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long*)arg3;

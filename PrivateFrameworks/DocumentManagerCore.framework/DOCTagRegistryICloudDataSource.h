@@ -12,6 +12,8 @@
 @property (nonatomic, retain) NSObject *iCloudToken;
 @property (nonatomic, retain) NSUbiquitousKeyValueStore *store;
 
++ (bool)isICloudAvailable;
+
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)delegate;
@@ -27,7 +29,8 @@
 - (void)setICloudToken:(id)arg1;
 - (void)setStore:(id)arg1;
 - (id)store;
-- (void)synchronizeTagsToCloud;
-- (void)ubiquityIdentityDidChange:(id)arg1;
+- (void)syncTagsWithCloud:(bool)arg1;
+- (void)ubiquityIdentityDidChange;
+- (void)writeTagsToCloud;
 
 @end

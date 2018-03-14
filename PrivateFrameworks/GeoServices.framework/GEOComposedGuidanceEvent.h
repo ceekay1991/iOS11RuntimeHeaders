@@ -7,11 +7,14 @@
     unsigned long long  _creationOrder;
     double  _distanceForStrings;
     double  _endValidDistance;
+    unsigned long long  _enrouteNoticeIndex;
     GEOGuidanceEvent * _guidanceEvent;
     NSMutableArray * _lanes;
     GEOJunction * _maneuverJunction;
     double  _referencePointDistance;
     GEOComposedRoute * _route;
+    unsigned long long  _source;
+    unsigned long long  _sourceIndex;
     double  _startValidDistance;
     unsigned long long  _stepIndex;
     NSUUID * _uniqueID;
@@ -22,12 +25,14 @@
 @property (nonatomic, readonly) double distanceForStrings;
 @property (nonatomic, readonly) int drivingSide;
 @property (nonatomic, readonly) double endValidDistance;
+@property (nonatomic, readonly) unsigned long long enrouteNoticeIndex;
 @property (nonatomic, readonly) NSString *exclusiveSetIdentifier;
 @property (nonatomic, retain) GEOGuidanceEvent *guidanceEvent;
 @property (nonatomic, readonly) bool hasHaptics;
 @property (nonatomic, readonly) bool hasSignGuidance;
 @property (nonatomic, readonly) bool hasSpokenGuidance;
 @property (nonatomic, readonly) bool isLaneGuidanceForManeuver;
+@property (nonatomic, readonly) bool isSticky;
 @property (nonatomic, readonly) NSArray *laneInstructions;
 @property (nonatomic, readonly) NSArray *lanes;
 @property (nonatomic, readonly) int maneuverArrow;
@@ -38,13 +43,16 @@
 @property (nonatomic, readonly) GEONameInfo *shieldInfo;
 @property (nonatomic, readonly) NSArray *signDetails;
 @property (nonatomic, readonly) NSArray *signTitles;
+@property (nonatomic, readonly) unsigned long long source;
+@property (nonatomic, readonly) unsigned long long sourceIndex;
 @property (nonatomic, readonly) unsigned long long stackRanking;
 @property (nonatomic, readonly) double startValidDistance;
 @property (nonatomic, readonly) GEOComposedRouteStep *step;
 @property (nonatomic, readonly) NSUUID *uniqueID;
 
 - (void).cxx_destruct;
-- (void)_commonInitWithComposedRoute:(id)arg1;
+- (bool)_MapsCarPlay_isEqual:(id)arg1;
+- (void)_findSource;
 - (void)_lazyInit;
 - (bool)_needsLazyInit;
 - (id)announcements;
@@ -58,6 +66,7 @@
 - (int)drivingSide;
 - (double)endDistanceForSpeed:(double)arg1;
 - (double)endValidDistance;
+- (unsigned long long)enrouteNoticeIndex;
 - (id)exclusiveSetIdentifier;
 - (id)guidanceEvent;
 - (bool)hasHaptics;
@@ -65,6 +74,7 @@
 - (bool)hasSpokenGuidance;
 - (id)initWithGuidanceEvent:(id)arg1 stepIndex:(unsigned long long)arg2 composedRoute:(id)arg3 clampToStep:(bool)arg4;
 - (bool)isLaneGuidanceForManeuver;
+- (bool)isSticky;
 - (bool)isValidForSpeed:(double)arg1;
 - (id)laneInstructions;
 - (id)lanes;
@@ -77,6 +87,8 @@
 - (id)shieldInfo;
 - (id)signDetails;
 - (id)signTitles;
+- (unsigned long long)source;
+- (unsigned long long)sourceIndex;
 - (unsigned long long)stackRanking;
 - (double)startDistanceForSpeed:(double)arg1;
 - (double)startValidDistance;

@@ -22,6 +22,7 @@
     NSString * _problemSubmissionURL;
     NSString * _simpleETAURL;
     NSString * _spatialLookupURL;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSString *addressCorrectionInitURL;
@@ -56,6 +57,7 @@
 @property (nonatomic, retain) NSString *problemSubmissionURL;
 @property (nonatomic, retain) NSString *simpleETAURL;
 @property (nonatomic, retain) NSString *spatialLookupURL;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
 - (id)addressCorrectionInitURL;
@@ -115,6 +117,7 @@
 - (void)setSpatialLookupURL:(id)arg1;
 - (id)simpleETAURL;
 - (id)spatialLookupURL;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

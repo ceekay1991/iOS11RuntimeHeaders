@@ -10,8 +10,12 @@
     NSMutableString * _domainName;
     bool  _done;
     int  _numberOfAuthVersionSupported;
+    NSMutableString * _password;
+    int  _passwordLen;
     int  _portLen;
     unsigned long long  _state;
+    NSMutableString * _username;
+    int  _usernameLen;
     unsigned char  ipaddr;
 }
 

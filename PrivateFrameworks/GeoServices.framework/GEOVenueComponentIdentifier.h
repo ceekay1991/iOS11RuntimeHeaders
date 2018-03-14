@@ -4,11 +4,9 @@
 
 @interface GEOVenueComponentIdentifier : NSObject <GEOVenueComponentIdentifier> {
     unsigned long long  _buildingID;
-    unsigned long long  _directoryGroupingID;
     unsigned long long  _fixtureID;
     <GEOVenueFloorInfo> * _floorInfo;
     bool  _hasBuildingID;
-    bool  _hasDirectoryGroupingID;
     bool  _hasFixtureID;
     bool  _hasUnitID;
     NSArray * _sectionIDs;
@@ -18,11 +16,9 @@
 @property (nonatomic, readonly) unsigned long long buildingID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) unsigned long long directoryGroupingID;
 @property (nonatomic, readonly) unsigned long long fixtureID;
 @property (nonatomic, readonly) <GEOVenueFloorInfo> *floorInfo;
 @property (getter=_hasBuildingID, nonatomic, readonly) bool hasBuildingID;
-@property (getter=_hasDirectoryGroupingID, nonatomic, readonly) bool hasDirectoryGroupingID;
 @property (getter=_hasFixtureID, nonatomic, readonly) bool hasFixtureID;
 @property (getter=_hasUnitID, nonatomic, readonly) bool hasUnitID;
 @property (readonly) unsigned long long hash;
@@ -32,16 +28,13 @@
 
 - (void).cxx_destruct;
 - (bool)_hasBuildingID;
-- (bool)_hasDirectoryGroupingID;
 - (bool)_hasFixtureID;
 - (bool)_hasUnitID;
 - (unsigned long long)buildingID;
-- (unsigned long long)directoryGroupingID;
 - (unsigned long long)fixtureID;
 - (id)floorInfo;
 - (id)init;
 - (id)initWithBuildingID:(unsigned long long)arg1;
-- (id)initWithBuildingID:(unsigned long long)arg1 directoryGroupingID:(unsigned long long)arg2;
 - (id)initWithBuildingID:(unsigned long long)arg1 floorInfo:(id)arg2;
 - (id)initWithBuildingID:(unsigned long long)arg1 floorInfo:(id)arg2 fixtureID:(unsigned long long)arg3;
 - (id)initWithBuildingID:(unsigned long long)arg1 floorInfo:(id)arg2 unitID:(unsigned long long)arg3;

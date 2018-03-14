@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)alternateContentsWereUpdatedAtURL:(id)arg1 forItem:(id)arg2;
 - (void)dealloc;
+- (id)description;
 - (void)enumerateChangesFromToken:(id)arg1 reply:(id /* block */)arg2;
 - (void)enumerateItemsFromPage:(id)arg1 reply:(id /* block */)arg2;
 - (void)forceItemUpdate:(id)arg1;

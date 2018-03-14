@@ -25,7 +25,7 @@
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (id)attributeSet;
 - (unsigned long long)attributes;
@@ -33,7 +33,6 @@
 - (id)contents;
 - (long long)contentsOperator;
 - (id)dateTimeRange;
-- (id)description;
 - (id)domain;
 - (id)groupNames;
 - (long long)groupNamesOperator;

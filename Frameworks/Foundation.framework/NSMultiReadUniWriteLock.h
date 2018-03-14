@@ -6,6 +6,8 @@
     void * _priv;
 }
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 
 - (void)dealloc;
@@ -21,5 +23,10 @@
 - (bool)tryLockForReading;
 - (bool)tryLockForWriting;
 - (void)unlock;
+
+// Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
+
+- (void)performReadingBlock:(id /* block */)arg1;
+- (void)performWritingBlock:(id /* block */)arg1;
 
 @end

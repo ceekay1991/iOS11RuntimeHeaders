@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFKeyValueTuple : NSObject <NSSecureCoding, SFKeyValueTuple> {
+@interface SFKeyValueTuple : NSObject <NSCopying, NSSecureCoding, SFKeyValueTuple> {
     NSString * _key;
     NSString * _value;
 }
@@ -19,6 +19,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

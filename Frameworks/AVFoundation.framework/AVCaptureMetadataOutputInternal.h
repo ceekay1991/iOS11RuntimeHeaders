@@ -5,6 +5,7 @@
 @interface AVCaptureMetadataOutputInternal : NSObject {
     AVWeakReferencingDelegateStorage * delegateOverrideStorage;
     AVWeakReferencingDelegateStorage * delegateStorage;
+    bool  faceTrackingMetadataObjectTypesAvailable;
     NSArray * metadataObjectTypes;
     NSObject<OS_dispatch_queue> * objectQueue;
     struct CGRect { 

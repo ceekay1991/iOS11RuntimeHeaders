@@ -17,6 +17,7 @@
     long long  _discNumber;
     double  _duration;
     bool  _explicitSong;
+    MPGaplessInfo * _gaplessInfo;
     MPModelGenre * _genre;
     NSString * _grouping;
     bool  _hasCloudSyncSource;
@@ -36,6 +37,7 @@
     NSString * _title;
     long long  _trackNumber;
     float  _userRating;
+    float  _volumeAdjustment;
     float  _volumeNormalization;
     long long  _year;
 }
@@ -54,6 +56,7 @@
 @property (nonatomic) long long discNumber;
 @property (nonatomic) double duration;
 @property (getter=isExplicitSong, nonatomic) bool explicitSong;
+@property (nonatomic, retain) MPGaplessInfo *gaplessInfo;
 @property (nonatomic, retain) MPModelGenre *genre;
 @property (nonatomic, copy) NSString *grouping;
 @property (nonatomic) bool hasCloudSyncSource;
@@ -73,8 +76,11 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic) long long trackNumber;
 @property (nonatomic) float userRating;
+@property (nonatomic) float volumeAdjustment;
 @property (nonatomic) float volumeNormalization;
 @property (nonatomic) long long year;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (id)__MPModelPropertySongArtistUploadedContent__PROPERTY;
 + (id)__MPModelPropertySongArtwork__PROPERTY;
@@ -87,6 +93,7 @@
 + (id)__MPModelPropertySongDiscNumber__PROPERTY;
 + (id)__MPModelPropertySongDuration__PROPERTY;
 + (id)__MPModelPropertySongExplicit__PROPERTY;
++ (id)__MPModelPropertySongGaplessInfo__PROPERTY;
 + (id)__MPModelPropertySongGrouping__PROPERTY;
 + (id)__MPModelPropertySongHasCloudSyncSource__PROPERTY;
 + (id)__MPModelPropertySongHasVideo__PROPERTY;
@@ -100,6 +107,7 @@
 + (id)__MPModelPropertySongTitle__PROPERTY;
 + (id)__MPModelPropertySongTrackNumber__PROPERTY;
 + (id)__MPModelPropertySongUserRating__PROPERTY;
++ (id)__MPModelPropertySongVolumeAdjustment__PROPERTY;
 + (id)__MPModelPropertySongVolumeNormalization__PROPERTY;
 + (id)__MPModelPropertySongYear__PROPERTY;
 + (id)__MPModelRelationshipSongAlbum__PROPERTY;
@@ -125,6 +133,7 @@
 + (id)__discNumber__KEY;
 + (id)__duration__KEY;
 + (id)__explicitSong__KEY;
++ (id)__gaplessInfo__KEY;
 + (id)__genre__KEY;
 + (id)__grouping__KEY;
 + (id)__hasCloudSyncSource__KEY;
@@ -144,6 +153,7 @@
 + (id)__title__KEY;
 + (id)__trackNumber__KEY;
 + (id)__userRating__KEY;
++ (id)__volumeAdjustment__KEY;
 + (id)__volumeNormalization__KEY;
 + (id)__year__KEY;
 + (id)kindWithVariants:(unsigned long long)arg1;
@@ -173,6 +183,7 @@
 - (id)descriptionWithType:(long long)arg1;
 - (long long)discNumber;
 - (double)duration;
+- (id)gaplessInfo;
 - (id)genre;
 - (id)grouping;
 - (bool)hasCloudSyncSource;
@@ -209,6 +220,7 @@
 - (void)setDiscNumber:(long long)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setExplicitSong:(bool)arg1;
+- (void)setGaplessInfo:(id)arg1;
 - (void)setGenre:(id)arg1;
 - (void)setGrouping:(id)arg1;
 - (void)setHasCloudSyncSource:(bool)arg1;
@@ -228,6 +240,7 @@
 - (void)setTitle:(id)arg1;
 - (void)setTrackNumber:(long long)arg1;
 - (void)setUserRating:(float)arg1;
+- (void)setVolumeAdjustment:(float)arg1;
 - (void)setVolumeNormalization:(float)arg1;
 - (void)setYear:(long long)arg1;
 - (bool)shouldExcludeFromShuffle;
@@ -236,7 +249,20 @@
 - (id)title;
 - (long long)trackNumber;
 - (float)userRating;
+- (float)volumeAdjustment;
 - (float)volumeNormalization;
 - (long long)year;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mpc_remotePlaybackQueueRequiredProperties;
++ (id)mqf_requiredPlaybackProperties;
+
+- (id)_radioStationMatchMetadata;
+- (id)mpc_protoItemRepresentation;
+- (id)mpc_radioContentReference;
+- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
+- (id)mqf_newPlaybackItemMetadata;
+- (id)mqf_playbackItemMetadataModelObject;
 
 @end

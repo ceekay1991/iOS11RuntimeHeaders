@@ -5,6 +5,9 @@
 @interface _CDPortraitMetadataKey : NSObject
 
 + (id)algorithm;
++ (id)assetVersion;
 + (id)decayRate;
++ (id)osBuild;
++ (id)score;
 
 @end

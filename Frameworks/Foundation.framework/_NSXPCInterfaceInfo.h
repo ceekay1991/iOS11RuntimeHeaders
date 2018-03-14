@@ -4,9 +4,8 @@
 
 @interface _NSXPCInterfaceInfo : NSObject {
     struct __CFDictionary { } * _knownSelectors;
-    struct _opaque_pthread_rwlock_t { 
-        long long __sig; 
-        BOOL __opaque[192]; 
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
     }  _knownSelectorsLock;
     struct __CFDictionary { } * _methodInfo;
     unsigned long long  _remoteVersion;

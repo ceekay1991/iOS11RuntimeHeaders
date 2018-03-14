@@ -18,12 +18,12 @@
 - (void)_didScroll;
 - (void)_screenChanged:(id)arg1;
 - (void)_updateForScreen:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (unsigned int)adjustedMaxTileCount;
 - (bool)allowsPaintingAndScriptsWhilePanning;
-- (void)dealloc;
 - (void)drawImageIntoTiles:(struct CGImage { }*)arg1;
 - (bool)drawsGrid;
 - (void)dumpTiles;

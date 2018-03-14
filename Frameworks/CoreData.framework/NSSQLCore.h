@@ -36,6 +36,7 @@
     int  _transactionInMemorySequence;
 }
 
+@property (nonatomic, readonly) NSDictionary *ancillaryModels;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -180,11 +181,13 @@
 - (id)processBatchDelete:(id)arg1 inContext:(id)arg2 error:(id*)arg3;
 - (id)processBatchUpdate:(id)arg1 inContext:(id)arg2 error:(id*)arg3;
 - (id)processChangeRequest:(id)arg1 inContext:(id)arg2 error:(id*)arg3;
+- (id)processCloudKitMirroringRequest:(id)arg1 inContext:(id)arg2 error:(id*)arg3;
 - (id)processCloudMetadataRequest:(id)arg1 inContext:(id)arg2 error:(id*)arg3;
 - (id)processCountRequest:(id)arg1 inContext:(id)arg2;
 - (id)processFetchRequest:(id)arg1 inContext:(id)arg2;
 - (id)processRefreshObjects:(id)arg1 inContext:(id)arg2;
 - (id)processSaveChanges:(id)arg1 forContext:(id)arg2;
+- (void)purgeCloudKitMetadataTables;
 - (void)recomputePrimaryKeyMaxForEntities:(id)arg1;
 - (void)removeRowCacheForGenerationWithIdentifier:(id)arg1;
 - (void)removeUbiquityMetadata;

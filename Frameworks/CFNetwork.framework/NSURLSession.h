@@ -164,4 +164,13 @@
 + (void)_geo_sendAsynchronousRequest:(id)arg1 queue:(id)arg2 connectionProperties:(id)arg3 completionHandler:(id /* block */)arg4;
 + (id)_geo_sendSynchronousRequest:(id)arg1 connectionProperties:(id)arg2 returningResponse:(id*)arg3 error:(id*)arg4;
 
+// Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
+
++ (id)safari_sharedSession;
+
+- (void)_safari_downloadFirstValidImageWithURLs:(id)arg1 failedURLDownloadsToErrorsDictionary:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)safari_downloadFirstValidImageWithURLs:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)safari_downloadImageWithURL:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)safari_downloadImageWithURL:(id)arg1 completionHandlerIncludingErrors:(id /* block */)arg2;
+
 @end

@@ -3,17 +3,18 @@
  */
 
 @interface AVCapturePhotoInternal : NSObject {
+    unsigned int  actualPhotoProcessingFlags;
     AVCaptureBracketedStillImageSettings * bracketSettings;
     AVCameraCalibrationData * cameraCalibrationData;
     AVDepthData * depthData;
     bool  didTryToDecodeDepthData;
     NSDictionary * embeddedThumbnailPhotoFormat;
     struct __CVBuffer { } * embeddedThumbnailSourcePixelBuffer;
+    unsigned int  expectedPhotoProcessingFlags;
     bool  isRawPhoto;
     NSDictionary * metadata;
     unsigned long long  photoCount;
     struct __CVBuffer { } * photoPixelBuffer;
-    unsigned int  photoProcessingFlags;
     struct __IOSurface { } * photoSurface;
     unsigned long long  photoSurfaceSize;
     AVApplePortraitMetadata * portraitMetadata;

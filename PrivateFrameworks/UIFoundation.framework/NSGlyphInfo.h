@@ -22,7 +22,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned short)glyph;
+- (unsigned short)glyphID;
 - (id)glyphName;
 - (id)initWithBaseString:(id)arg1;
 - (id)initWithCoder:(id)arg1;

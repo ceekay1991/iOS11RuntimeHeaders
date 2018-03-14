@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSCoding> {
+@interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, MusicEntityValueProviding, NSCoding> {
     long long  _activeShuffleType;
     <MPQueueFeederDelegate> * _delegate;
     MPMutableBidirectionalDictionary * _exportableItemIDs;
@@ -24,7 +24,10 @@
     NSString * _uniqueIdentifier;
 }
 
+@property (nonatomic, readonly) MPCContentItemIdentifierCollection *MPC_contentItemIdentifierCollection;
+@property (nonatomic, readonly) MPUContentItemIdentifierCollection *MPU_contentItemIdentifierCollection;
 @property (nonatomic) long long activeShuffleType;
+@property (nonatomic, readonly) bool allowsQueueResetWhenReachingEnd;
 @property (nonatomic, readonly) bool allowsUserVisibleUpcomingItems;
 @property (nonatomic, readonly) bool canReorder;
 @property (nonatomic, readonly) bool canSeek;
@@ -53,12 +56,15 @@
 @property (nonatomic, readonly) NSString *uniqueIdentifier;
 @property (nonatomic, readonly) bool userCanChangeShuffleAndRepeatType;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (bool)supportsStateRestoration;
 
 - (void).cxx_destruct;
 - (bool)_canPurgeNextStartTimes;
 - (id)_itemForIndex:(long long)arg1 queueIdentifier:(id)arg2;
 - (long long)activeShuffleType;
+- (bool)allowsQueueResetWhenReachingEnd;
 - (bool)allowsUserVisibleUpcomingItems;
 - (void)applyVolumeNormalizationForItem:(id)arg1;
 - (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
@@ -89,6 +95,7 @@
 - (void)invalidateAssets;
 - (void)invalidateRealRepeatType;
 - (void)invalidateRealShuffleType;
+- (bool)isPlaceholderItemForQueueIdentifier:(id)arg1;
 - (Class)itemClass;
 - (unsigned long long)itemCount;
 - (id)itemForIdentifier:(id)arg1;
@@ -142,5 +149,21 @@
 - (unsigned long long)state;
 - (id)uniqueIdentifier;
 - (bool)userCanChangeShuffleAndRepeatType;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
+- (id)entityUniqueIdentifier;
+- (id)imageURLForEntityArtworkProperty:(id)arg1 fittingSize:(struct CGSize { double x1; double x2; })arg2 destinationScale:(double)arg3;
+- (id)valueForEntityProperty:(id)arg1;
+- (id)valuesForEntityProperties:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (id)MPU_contentItemIdentifierCollection;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)MPC_contentItemIdentifierCollection;
+- (bool)isRadioQueueFeeder;
 
 @end

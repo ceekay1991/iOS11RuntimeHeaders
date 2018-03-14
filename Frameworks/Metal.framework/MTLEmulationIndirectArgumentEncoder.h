@@ -7,6 +7,7 @@
     MTLEmulationIndirectArgumentBufferLayout * _emulationLayout;
 }
 
+@property (readonly) unsigned long long alignment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) <MTLDevice> *device;
@@ -16,11 +17,11 @@
 @property (nonatomic, readonly) _MTLIndirectArgumentBufferLayout *layout;
 @property (readonly) Class superclass;
 
+- (unsigned long long)alignment;
 - (void*)constantDataAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (unsigned long long)encodedLength;
 - (id)initWithLayout:(id)arg1 device:(id)arg2;
-- (id)newIndirectArgumentEncoderForBufferAtIndex:(unsigned long long)arg1;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setBuffers:(const id*)arg1 offsets:(const unsigned long long*)arg2 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
 - (void)setIndirectArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;

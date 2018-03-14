@@ -24,7 +24,6 @@
     }  _pointsToFrame;
     GEOComposedRoute * _route;
     GEORouteMatch * _routeMatch;
-    GEORouteMatcher * _routeMatcher;
 }
 
 @property (nonatomic) unsigned long long currentStepIndex;
@@ -33,7 +32,6 @@
 @property (nonatomic) unsigned long long navigationCameraHeadingOverride;
 @property (nonatomic, readonly) GEOComposedRoute *route;
 @property (nonatomic, retain) GEORouteMatch *routeMatch;
-@property (nonatomic, readonly) GEORouteMatcher *routeMatcher;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -54,7 +52,6 @@
 - (void)removeObserver:(id)arg1;
 - (id)route;
 - (id)routeMatch;
-- (id)routeMatcher;
 - (void)setCurrentStepIndex:(unsigned long long)arg1;
 - (void)setGroupedManeuverCounts:(id)arg1;
 - (void)setNavigationCameraHeadingOverride:(unsigned long long)arg1;

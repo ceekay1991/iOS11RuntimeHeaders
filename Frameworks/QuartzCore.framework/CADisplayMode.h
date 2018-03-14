@@ -23,7 +23,9 @@
 
 @property (nonatomic, readonly, copy) NSString *colorGamut;
 @property (nonatomic, readonly, copy) NSString *colorMode;
+@property (nonatomic, readonly, copy) NSString *hdrMode;
 @property (nonatomic, readonly) unsigned long long height;
+@property (nonatomic, readonly) unsigned long long internalRepresentation;
 @property (nonatomic, readonly) bool isVirtual;
 @property (nonatomic, readonly) double pixelAspectRatio;
 @property (nonatomic, readonly) unsigned long long preferredScale;
@@ -42,7 +44,9 @@
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
+- (id)hdrMode;
 - (unsigned long long)height;
+- (unsigned long long)internalRepresentation;
 - (bool)isEqual:(id)arg1;
 - (bool)isVirtual;
 - (double)pixelAspectRatio;

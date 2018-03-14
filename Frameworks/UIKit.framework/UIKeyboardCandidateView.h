@@ -29,16 +29,17 @@
 
 + (double)defaultExtendedControlHeight;
 
+- (void).cxx_destruct;
 - (bool)_needsBackdrop;
 - (unsigned long long)_numberOfColumns:(bool)arg1;
 - (void)_toggleExtendedCandidateView:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)activeCandidateList;
 - (void)candidatesDidChange;
 - (int)candidatesVisualStyle;
+- (long long)currentOrientation;
 - (void)dimKeys:(id)arg1;
 - (double)extendedViewAnimationDuration;
 - (double)extendedViewHeight;

@@ -15,11 +15,13 @@
 @property (nonatomic, readonly) NSString *version;
 
 + (id)extensionPointForIdentifier:(id)arg1;
++ (id)identifierForCurrentProcess;
 + (bool)supportsSecureCoding;
 
 - (id)_initWithIdentifier:(id)arg1 andData:(id)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;

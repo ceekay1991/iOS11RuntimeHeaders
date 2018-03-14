@@ -3,6 +3,7 @@
  */
 
 @interface MNActiveRouteDetails : PBCodable <NSCopying> {
+    NSData * _activeRouteInfoData;
     int  _alternateRouteIndex;
     GEOTransitDecoderData * _decoderData;
     GEOComposedWaypoint * _destination;
@@ -31,9 +32,11 @@
     int  _transportType;
 }
 
+@property (nonatomic, retain) NSData *activeRouteInfoData;
 @property (nonatomic) int alternateRouteIndex;
 @property (nonatomic, retain) GEOTransitDecoderData *decoderData;
 @property (nonatomic, retain) GEOComposedWaypoint *destination;
+@property (nonatomic, readonly) bool hasActiveRouteInfoData;
 @property (nonatomic) bool hasAlternateRouteIndex;
 @property (nonatomic, readonly) bool hasDecoderData;
 @property (nonatomic, readonly) bool hasDestination;
@@ -61,13 +64,15 @@
 @property (nonatomic, retain) NSMutableArray *trafficIncidents;
 @property (nonatomic) int transportType;
 
++ (id)_activeRouteDetailsForRoute:(id)arg1;
 + (id)activeRouteDetailsForActiveRouteInfo:(id)arg1;
-+ (id)activeRouteDetailsForRoute:(id)arg1;
 + (Class)trafficIncidentsType;
 
 - (void).cxx_destruct;
 - (int)StringAsNavigationType:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
+- (id)activeRouteInfo;
+- (id)activeRouteInfoData;
 - (void)addTrafficIncidentOffsets:(unsigned int)arg1;
 - (void)addTrafficIncidents:(id)arg1;
 - (int)alternateRouteIndex;
@@ -80,6 +85,7 @@
 - (id)description;
 - (id)destination;
 - (id)dictionaryRepresentation;
+- (bool)hasActiveRouteInfoData;
 - (bool)hasAlternateRouteIndex;
 - (bool)hasDecoderData;
 - (bool)hasDestination;
@@ -106,6 +112,7 @@
 - (id)route;
 - (id)routeDetailsID;
 - (unsigned int)routeIndex;
+- (void)setActiveRouteInfoData:(id)arg1;
 - (void)setAlternateRouteIndex:(int)arg1;
 - (void)setDecoderData:(id)arg1;
 - (void)setDestination:(id)arg1;

@@ -13,11 +13,11 @@
 
 + (double)cornerRadius;
 
+- (void).cxx_destruct;
 - (id)_imageForCornerWithStyle:(int)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (int)cornerStyle;
 - (id)initForAlignment:(int)arg1 style:(int)arg2;
 - (void)layoutSubviews;

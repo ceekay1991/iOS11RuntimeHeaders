@@ -17,7 +17,9 @@
     NSString * _clientIdentifierHeader;
     bool  _demoAccount;
     bool  _displaysOnLockScreen;
+    bool  _forceDaemonAuthentication;
     NSDictionary * _httpHeaders;
+    NSString * _logUUID;
     NSString * _okButtonLabel;
     NSString * _password;
     NSString * _passwordEquivalentToken;
@@ -35,6 +37,7 @@
     bool  _shouldSuppressDialogs;
     NSDictionary * _signupRequestParameters;
     long long  _tokenType;
+    NSString * _touchIDContinueToken;
     NSArray * _userAgentComponents;
 }
 
@@ -56,8 +59,10 @@
 @property (getter=isDemoAccount, nonatomic, readonly) bool demoAccount;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool displaysOnLockScreen;
+@property (nonatomic, readonly) bool forceDaemonAuthentication;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *initialPassword;
+@property (readonly) NSString *logUUID;
 @property (nonatomic, readonly, copy) NSString *okButtonLabel;
 @property (nonatomic, readonly, copy) NSString *password;
 @property (nonatomic, readonly, copy) NSString *passwordEquivalentToken;
@@ -76,6 +81,7 @@
 @property (nonatomic, readonly, copy) NSDictionary *signupRequestParameters;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) long long tokenType;
+@property (nonatomic, readonly, copy) NSString *touchIDContinueToken;
 @property (nonatomic, readonly, copy) NSArray *userAgentComponents;
 
 + (id)contextForSignIn;
@@ -102,6 +108,7 @@
 - (id)copyXPCEncoding;
 - (id)description;
 - (bool)displaysOnLockScreen;
+- (bool)forceDaemonAuthentication;
 - (id)init;
 - (id)initWithAccount:(id)arg1;
 - (id)initWithAccountIdentifier:(id)arg1;
@@ -109,6 +116,7 @@
 - (id)initialPassword;
 - (bool)isAccountNameEditable;
 - (bool)isDemoAccount;
+- (id)logUUID;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)okButtonLabel;
 - (id)password;
@@ -127,6 +135,7 @@
 - (bool)shouldSuppressDialogs;
 - (id)signupRequestParameters;
 - (long long)tokenType;
+- (id)touchIDContinueToken;
 - (id)userAgentComponents;
 
 @end

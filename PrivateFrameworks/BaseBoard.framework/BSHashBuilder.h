@@ -6,6 +6,8 @@
     unsigned long long  _hash;
 }
 
+// Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
+
 + (id)builder;
 
 - (id)appendArray:(id)arg1;
@@ -28,5 +30,9 @@
 - (id)appendString:(id)arg1;
 - (id)appendUnsignedInteger:(unsigned long long)arg1;
 - (unsigned long long)hash;
+
+// Image: /System/Library/PrivateFrameworks/UserNotificationsServer.framework/UserNotificationsServer
+
+- (id)uns_appendCMTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 
 @end

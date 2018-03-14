@@ -16,14 +16,19 @@
     __NSCFURLSession * _session;
     struct __CFDictionary { } * _socketProperties;
     NSMutableArray * _transactionMetrics;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _unfair_lock;
     NSString * _uniqueIdentifier;
 }
 
 - (const struct __CFDictionary {}**)_DuetActivityProperties;
 - (const struct __CFData {}**)_TCPConnectionMetadata;
+- (unsigned short)_TLSNegotiatedCipherSuite;
 - (unsigned long long)_allowedProtocolTypes;
 - (id)_allowsCellular;
 - (bool)_allowsQUIC;
+- (void)_appendCountOfPendingBytesReceivedEncoded:(long long)arg1;
 - (id)_backgroundTaskTimingData;
 - (id)_boundInterfaceIdentifier;
 - (long long)_bytesPerSecondLimit;
@@ -34,6 +39,7 @@
 - (id)_cfCreds;
 - (id)_cfHSTS;
 - (id)_connectionPropertyDuet;
+- (void)_consumePendingBytesReceivedEncoded;
 - (id)_contentDispositionFallbackArray;
 - (int)_cookieAcceptPolicy;
 - (struct __CFDictionary { }*)_copyATSState;
@@ -41,6 +47,8 @@
 - (struct _CFHSTSPolicy { }*)_copyHSTSPolicy;
 - (struct _CFURLRequest { }*)_copyOriginalCFURLRequest;
 - (struct __CFDictionary { }*)_copySocketStreamProperties;
+- (id)_countOfBytesReceivedEncoded;
+- (id)_countOfPendingBytesReceivedEncoded;
 - (const struct XCookieStorage { int (**x1)(); struct __CFAllocator {} *x2; int x3; }*)_createXCookieStorage;
 - (const struct XCredentialStorage { int (**x1)(); struct __CFAllocator {} *x2; int x3; }*)_createXCredentialStorage;
 - (const struct XURLCache { int (**x1)(); struct __CFAllocator {} *x2; int x3; }*)_createXURLCache;
@@ -50,10 +58,12 @@
 - (id)_expectedWorkload;
 - (void)_getAuthenticationHeadersForResponse:(struct _CFURLResponse { }*)arg1 completionHandler:(id /* block */)arg2;
 - (struct __CFSet { }*)_getAuthenticatorStatusCodes;
+- (id)_incompleteTaskMetrics;
 - (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;
 - (id)_loggableDescription;
 - (id)_networkServiceType;
 - (struct __PerformanceTiming { }*)_performanceTiming;
+- (bool)_preconnect;
 - (void)_prepareNewTimingDataContainer;
 - (unsigned char)_preventsIdleSystemSleep;
 - (bool)_preventsSystemHTTPProxyAuthentication;
@@ -97,7 +107,10 @@
 - (float)priority;
 - (id)session;
 - (void)set_TCPConnectionMetadata:(id)arg1;
+- (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_allowsQUIC:(bool)arg1;
+- (void)set_incompleteTaskMetrics:(id)arg1;
+- (void)set_preconnect:(bool)arg1;
 - (void)set_protocolForTask:(id)arg1;
 - (void)set_trailers:(id)arg1;
 - (bool)shouldHandleCookiesAndSchemeIsAppropriate;

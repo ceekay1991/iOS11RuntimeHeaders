@@ -6,14 +6,17 @@
     int  _activeClientPID;
     BKSApplicationStateMonitor * _applicationStateMonitor;
     long long  _applicationStateMonitorCount;
+    NSObject<OS_dispatch_queue> * _applicationStateMonitorQueue;
     NSMutableArray * _clientPorts;
     NSMutableDictionary * _clientPortsForPIDs;
     NSMutableDictionary * _clientStateForPIDs;
     <MPMusicPlayerControllerServerDelegate> * _delegate;
+    bool  _hasAttemptedQueuePreparation;
     unsigned int  _hasSentQueuePrepared;
+    bool  _isInsidePrepareQueue;
     MPMusicPlayerControllerServer * _musicPlayerServer;
+    NSMutableSet * _pendingPreparationClientPIDs;
     unsigned int  _queuePrepared;
-    MPVideoViewController * _videoViewController;
 }
 
 + (bool)_canSeedGeniusWithItem:(id)arg1;
@@ -30,20 +33,18 @@
 - (bool)_currentClientPIDHasPermissionToPlay;
 - (void)_endPlayback;
 - (void)_endPlaybackForClientIfNecessary:(int)arg1;
+- (void)_handlePendingPreparationClientPIDs;
 - (void)_itemDidChangeNotification:(id)arg1;
 - (void)_itemPlaybackDidEndNotification:(id)arg1;
 - (unsigned long long)_numberOfItems;
 - (void)_playbackBufferingStateDidChangeNotification:(id)arg1;
 - (void)_playbackErrorPostedNotification:(id)arg1;
 - (void)_playbackStateDidChangeNotification:(id)arg1;
-- (void)_prepareQueueIfNecessary;
+- (void)_prepareQueueIfNecessaryWithCompletion:(id /* block */)arg1;
 - (void)_queueDidInvalidateNotification:(id)arg1;
 - (void)_registerClientPort:(unsigned int)arg1 forProcessID:(int)arg2 hasAudioBackgroundMode:(bool)arg3;
 - (void)_setQueuePrepared:(bool)arg1;
 - (void)_setQueueWithQuery:(id)arg1;
-- (void)_tearDownVideoView;
-- (void)_tvOutCapabilityDidChangeNotification:(id)arg1;
-- (void)_updateVideoView;
 - (void)appendQueueDescriptor:(id)arg1;
 - (void)beginSeekingBackward;
 - (void)beginSeekingForward;
@@ -68,6 +69,7 @@
 - (void)prepareQueueForPlayback;
 - (void)prepareToPlay;
 - (void)prependQueueDescriptor:(id)arg1;
+- (id)queueAsQuery;
 - (id)queueAsRadioStation;
 - (id)queueWithUUID:(id)arg1;
 - (void)registerForServerDiedNotifications;

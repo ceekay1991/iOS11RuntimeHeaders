@@ -12,6 +12,7 @@
 @property (nonatomic, readonly) NSData *initializationData;
 @property (readonly) long long status;
 
+- (bool)_canRespondByRequestingPersistableContentKeyRequest;
 - (void)_clearContext;
 - (void)_ensureResponseInfoSentToCustomURLHandler;
 - (id)_getRetryReasonForError:(int)arg1;
@@ -20,6 +21,7 @@
 - (id)_keySystem;
 - (int)_prepareForKeyRenewal;
 - (void)_sendDataToCustomURLHandler:(id)arg1;
+- (void)_sendDictionaryForURLRequest:(id)arg1;
 - (void)_sendFinishLoadingToCustomURLHandler;
 - (void)_sendFinishLoadingToCustomURLHandlerWithError:(id)arg1;
 - (void)_sendResponseInfoToCustomURLHandler;
@@ -44,6 +46,7 @@
 - (void)removeFigCryptorListeners;
 - (void)renewExpiringContentKeyResponseData;
 - (void)respondByRequestingPersistableContentKeyRequest;
+- (bool)respondByRequestingPersistableContentKeyRequestAndReturnError:(id*)arg1;
 - (long long)status;
 
 @end

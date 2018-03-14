@@ -33,6 +33,6 @@
 - (void)setRoutes:(id)arg1;
 - (void)startUpdating;
 - (void)stopUpdating;
-- (void)updateDisplayETAForRoute:(id)arg1;
+- (void)updateDisplayETAForRoute:(id)arg1 shouldNotifyDelegate:(bool)arg2;
 
 @end

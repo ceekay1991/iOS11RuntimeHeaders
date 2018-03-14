@@ -6,8 +6,10 @@
     AVOutputContextCommunicationChannelInternal * _ivars;
 }
 
+@property (nonatomic, readonly) const struct __CFString { }*commChannelUUID;
 @property (nonatomic, readonly) <AVOutputContextCommunicationChannelImpl> *impl;
 
+- (const struct __CFString { }*)commChannelUUID;
 - (void)dealloc;
 - (id)impl;
 - (id)init;

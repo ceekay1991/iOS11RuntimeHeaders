@@ -2,7 +2,11 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSCoder : NSObject
+@interface NSCoder : NSObject <MTCoder>
+
+@property (readonly) unsigned long long hmd_homeManagerOptions;
+@property (readonly) HMFMessage *hmd_message;
+@property (getter=isXPCTransport, readonly) bool xpcTransport;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -49,6 +53,7 @@
 - (id)decodeTopLevelObjectOfClass:(Class)arg1 forKey:(id)arg2 error:(id*)arg3;
 - (id)decodeTopLevelObjectOfClasses:(id)arg1 forKey:(id)arg2 error:(id*)arg3;
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void*)arg2;
+- (void)decodeValueOfObjCType:(const char *)arg1 at:(void*)arg2 size:(unsigned long long)arg3;
 - (void)decodeValuesOfObjCTypes:(const char *)arg1;
 - (long long)decodingFailurePolicy;
 - (void)encodeArrayOfObjCType:(const char *)arg1 count:(unsigned long long)arg2 at:(const void*)arg3;
@@ -98,12 +103,25 @@
 - (void)encodeCMTimeMapping:(struct { struct { struct { long long x_1_2_1; int x_1_2_2; unsigned int x_1_2_3; long long x_1_2_4; } x_1_1_1; struct { long long x_2_2_1; int x_2_2_2; unsigned int x_2_2_3; long long x_2_2_4; } x_1_1_2; } x1; struct { struct { long long x_1_2_1; int x_1_2_2; unsigned int x_1_2_3; long long x_1_2_4; } x_2_1_1; struct { long long x_2_2_1; int x_2_2_2; unsigned int x_2_2_3; long long x_2_2_4; } x_2_1_2; } x2; })arg1 forKey:(id)arg2;
 - (void)encodeCMTimeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1 forKey:(id)arg2;
 
+// Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
+
+- (id)decodeArrayOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
+- (id)decodeSetOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
+- (void)encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
+- (void)encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
+
 // Image: /System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
 
 - (id)ls_decodeArrayWithValuesOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)ls_decodeDictionaryWithKeysOfClass:(Class)arg1 valuesOfClass:(Class)arg2 forKey:(id)arg3;
 - (id)ls_decodeDictionaryWithKeysOfClass:(Class)arg1 valuesOfClasses:(id)arg2 forKey:(id)arg3;
 - (id)ls_decodeSetWithValuesOfClass:(Class)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/Frameworks/Photos.framework/Photos
+
+- (id)_ph_sandboxExtensionTokenKeyForURLKey:(id)arg1;
+- (id)ph_decodeSandboxedURLForKey:(id)arg1 sandboxExtensionWrapper:(id*)arg2;
+- (void)ph_encodeSandboxedURL:(id)arg1 forKey:(id)arg2;
 
 // Image: /System/Library/Frameworks/QuartzCore.framework/QuartzCore
 
@@ -141,6 +159,37 @@
 - (void)un_encodeCGRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
 - (void)un_encodeCMTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 forKey:(id)arg2;
 
+// Image: /System/Library/Frameworks/Vision.framework/Vision
+
+- (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })vn_decode3x3MatrixForKey:(id)arg1;
+- (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })vn_decode4x4MatrixForKey:(id)arg1;
+- (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })vn_decodeCGAffineTransformForKey:(id)arg1;
+- (unsigned int)vn_decodeCodingVersionForKey:(id)arg1;
+- (void)vn_encode3x3Matrix:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1 forKey:(id)arg2;
+- (void)vn_encode4x4Matrix:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1 forKey:(id)arg2;
+- (void)vn_encodeCGAffineTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1 forKey:(id)arg2;
+- (void)vn_encodeCodingVersion:(unsigned int)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/AXMediaUtilities.framework/AXMediaUtilities
+
+- (struct CGPoint { double x1; double x2; })axmDecodePointForKey:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })axmDecodeRectForKey:(id)arg1;
+- (struct CGSize { double x1; double x2; })axmDecodeSizeForKey:(id)arg1;
+- (void)axmEncodePoint:(struct CGPoint { double x1; double x2; })arg1 forKey:(id)arg2;
+- (void)axmEncodeRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)axmEncodeSize:(struct CGSize { double x1; double x2; })arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
+
+- (id)akDecodeColorForKey:(id)arg1;
+- (id)akDecodeImageForKey:(id)arg1;
+- (void)akEncodeColor:(id)arg1 forKey:(id)arg2;
+- (void)akEncodeImage:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/BarcodeSupport.framework/BarcodeSupport
+
+- (id)_bcs_strictlyDecodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/CoreUI.framework/CoreUI
 
 - (unsigned long long)decodeTheme;
@@ -153,6 +202,47 @@
 - (double)geo_decodeGEOMachAbsoluteTimeForKey:(id)arg1;
 - (void)geo_encodeGEOMachAbsoluteTime:(double)arg1 forKey:(id)arg2;
 
+// Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
+
+- (id)applicationBundleIdentifier;
+- (id)decodeArrayOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
+- (id)decodeSetOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
+- (void)encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
+- (void)encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
+- (unsigned long long)hmd_homeManagerOptions;
+- (id)hmd_message;
+- (bool)isAuthorizedForLocationAccess;
+- (bool)isEntitledForSPIAccess;
+- (bool)isForNonAdminSharedUser;
+- (bool)isLocalStore;
+- (bool)isRemoteGatewayCoder;
+- (bool)isRemoteTransport;
+- (bool)isRemoteTransportOnSameAccount;
+- (bool)isRemoteUserAdministrator;
+- (bool)isXPCTransport;
+- (id)supportedFeatures;
+- (id)user;
+
+// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+
+- (void)_lp_encodeArrayIfNotEmpty:(id)arg1 forKey:(id)arg2;
+- (void)_lp_encodeObjectIfNotNil:(id)arg1 forKey:(id)arg2;
+- (id)_lp_strictlyDecodeArrayOfObjectsOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)_lp_strictlyDecodeDictionaryOfObjectsWithKeysOfClass:(Class)arg1 andObjectsOfClass:(Class)arg2 forKey:(id)arg3;
+- (id)_lp_strictlyDecodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
+
+- (bool)mt_isReadingFromPersistence;
+- (bool)mt_isWritingToPersistence;
+- (bool)mt_isWritingToStorage;
+
+// Image: /System/Library/PrivateFrameworks/PhotoEditSupport.framework/PhotoEditSupport
+
+- (void)decodeObjectsForKeys:(id)arg1 forObject:(id)arg2;
+- (void)encodeObjectIfNotNil:(id)arg1 forKey:(id)arg2;
+- (void)encodeObjectsForKeys:(id)arg1 forObject:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/PhysicsKit.framework/PhysicsKit
 
 - (struct CGPoint { double x1; double x2; })decodeCGPointForKey:(id)arg1;
@@ -161,5 +251,25 @@
 - (void)encodeCGPoint:(struct CGPoint { double x1; double x2; })arg1 forKey:(id)arg2;
 - (void)encodeCGSize:(struct CGSize { double x1; double x2; })arg1 forKey:(id)arg2;
 - (void)encodeCGVector:(struct CGVector { double x1; double x2; })arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/SpotlightServices.framework/SpotlightServices
+
+- (id)prs_URLForKey:(id)arg1;
+- (id)prs_arrayForKey:(id)arg1;
+- (bool)prs_boolForKey:(id)arg1;
+- (id)prs_dataForKey:(id)arg1;
+- (id)prs_dateForKey:(id)arg1;
+- (id)prs_dictionaryForKey:(id)arg1;
+- (double)prs_doubleForKey:(id)arg1;
+- (float)prs_floatForKey:(id)arg1;
+- (int)prs_intForKey:(id)arg1;
+- (long long)prs_integerForKey:(id)arg1;
+- (id)prs_numberForKey:(id)arg1;
+- (id)prs_stringForKey:(id)arg1;
+- (double)prs_timestampForKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
+
+- (void)safeEncodeUIColor:(id)arg1 forKey:(id)arg2;
 
 @end

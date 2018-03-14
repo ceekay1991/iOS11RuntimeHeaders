@@ -10,12 +10,14 @@
     NSObject<OS_dispatch_queue> * _operationQueue;
     bool  _paused;
     NSMutableOrderedSet * _pendingRequests;
+    NSObject<OS_dispatch_source> * _requestTimeoutTimer;
     NSURLSession * _urlSession;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) unsigned long long maxConcurrentRequests;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSURLSession *urlSession;
 
@@ -29,13 +31,18 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(id /* block */)arg5;
+- (void)_checkRequestTimeouts;
 - (void)_enqueueRequest:(id)arg1;
 - (void)_finishRequest:(id)arg1;
 - (id)_newResponseForRequest:(id)arg1;
 - (void)_processPendingRequests;
 - (void)_processRequest:(id)arg1;
 - (id)_requestForTask:(id)arg1;
+- (void)_scheduleNextRequestTimeoutCheck;
+- (double)_timeoutForRequest:(id)arg1;
+- (void)_updateProgressForRequest:(id)arg1 withTotalBytesWritten:(long long)arg2 totalBytesExpectedToWrite:(long long)arg3;
 - (void)cancelRequest:(id)arg1;
+- (void)cancelRequest:(id)arg1 withError:(id)arg2;
 - (void)dealloc;
 - (void)enqueueAVDownloadRequest:(id)arg1 toDestination:(id)arg2 withOptions:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)enqueueAVDownloadRequest:(id)arg1 withOptions:(id)arg2 completionHandler:(id /* block */)arg3;
@@ -46,6 +53,8 @@
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 maxConcurrentRequests:(unsigned long long)arg2;
+- (id)initWithConfiguration:(id)arg1 maxConcurrentRequests:(unsigned long long)arg2 qualityOfService:(long long)arg3;
+- (unsigned long long)maxConcurrentRequests;
 - (void)pause;
 - (void)processCompletedResponse:(id)arg1 toRequest:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)processInitialResponse:(id)arg1 toRequest:(id)arg2 withCompletionHandler:(id /* block */)arg3;

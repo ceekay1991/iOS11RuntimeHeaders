@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/AVKit.framework/AVKit
  */
 
-@interface AVTransportControlsView : AVView <AVButtonAvailabilityObserver> {
+@interface AVTransportControlsView : AVView <AVPlaybackControlsViewItemAvailabilityObserver, AVScrubberDelegate> {
     AVBackdropView * _backdropView;
     bool  _backdropViewNeedsLayout;
     bool  _collapsed;
@@ -14,18 +14,15 @@
         double width; 
         double height; 
     }  _extrinsicContentSize;
-    UIView * _flexibleWidthView;
     bool  _hasAlternateAppearance;
     bool  _hasFullScreenAppearance;
     bool  _included;
     AVLabel * _liveBroadcastLabel;
     AVLabel * _liveBroadcastScrubberLabel;
     bool  _liveStreamingControlsIncludeScrubber;
-    AVLabel * _loadingIndicatorTextLabel;
-    AVLoadingSpinner * _loadingSpinner;
     AVButton * _mediaSelectionButton;
     double  _minimumRequiredWidth;
-    AVButton * _routePickerButton;
+    AVPlaybackControlsRoutePickerView * _routePickerView;
     AVBackdropView * _scrubInstructionsBackdrop;
     UILabel * _scrubInstructionsBackdropLabel;
     UIView * _scrubInstructionsContainer;
@@ -54,7 +51,6 @@
 @property (getter=isDoubleRowLayoutEnabled, nonatomic) bool doubleRowLayoutEnabled;
 @property (nonatomic, readonly) AVLabel *elapsedTimeLabel;
 @property (nonatomic) struct CGSize { double x1; double x2; } extrinsicContentSize;
-@property (nonatomic, readonly) UIView *flexibleWidthView;
 @property (nonatomic) bool hasAlternateAppearance;
 @property (nonatomic) bool hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
@@ -62,11 +58,9 @@
 @property (nonatomic, readonly) AVLabel *liveBroadcastLabel;
 @property (nonatomic, readonly) AVLabel *liveBroadcastScrubberLabel;
 @property (nonatomic) bool liveStreamingControlsIncludeScrubber;
-@property (nonatomic, readonly) AVLabel *loadingIndicatorTextLabel;
-@property (nonatomic, readonly) AVLoadingSpinner *loadingSpinner;
 @property (nonatomic, readonly) AVButton *mediaSelectionButton;
 @property (nonatomic, readonly) double minimumRequiredWidth;
-@property (nonatomic, readonly) AVButton *routePickerButton;
+@property (nonatomic, readonly) AVPlaybackControlsRoutePickerView *routePickerView;
 @property (nonatomic, retain) AVBackdropView *scrubInstructionsBackdrop;
 @property (nonatomic, readonly) UILabel *scrubInstructionsBackdropLabel;
 @property (nonatomic, readonly) UIView *scrubInstructionsContainer;
@@ -93,14 +87,12 @@
 - (id)backdropView;
 - (bool)backdropViewNeedsLayout;
 - (void)beginScrubbing:(id)arg1;
-- (void)buttonChangedAvailability:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (id)doubleRowLayoutConstraints;
 - (id)elapsedTimeLabel;
 - (void)endScrubbing:(id)arg1;
 - (struct CGSize { double x1; double x2; })extrinsicContentSize;
-- (id)flexibleWidthView;
 - (bool)hasAlternateAppearance;
 - (bool)hasFullScreenAppearance;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -113,11 +105,10 @@
 - (id)liveBroadcastLabel;
 - (id)liveBroadcastScrubberLabel;
 - (bool)liveStreamingControlsIncludeScrubber;
-- (id)loadingIndicatorTextLabel;
-- (id)loadingSpinner;
 - (id)mediaSelectionButton;
 - (double)minimumRequiredWidth;
-- (id)routePickerButton;
+- (void)playbackControlsViewItemChangedAvailability:(id)arg1;
+- (id)routePickerView;
 - (id)scrubInstructionsBackdrop;
 - (id)scrubInstructionsBackdropLabel;
 - (id)scrubInstructionsContainer;
@@ -125,6 +116,7 @@
 - (id)scrubInstructionsTimer;
 - (id)scrubber;
 - (id)scrubberInstructionsDoubleRowActiveConstraint;
+- (void)scrubberSlowKnobMovementDetected:(id)arg1;
 - (void)scrubberValueChanged:(id)arg1;
 - (float)scrubberValueWhenScrubInstructionsTimerBegan;
 - (void)setBackdropViewNeedsLayout:(bool)arg1;

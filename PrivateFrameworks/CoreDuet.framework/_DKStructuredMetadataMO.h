@@ -4,6 +4,13 @@
 
 @interface _DKStructuredMetadataMO : NSManagedObject
 
+@property (nonatomic, copy) NSString *_CDEntityMetadataKey__bestLanguage;
+@property (nonatomic, copy) NSString *_CDEntityMetadataKey__name;
+@property (nonatomic) short _CDPortraitMetadataKey__algorithm;
+@property (nonatomic) short _CDPortraitMetadataKey__assetVersion;
+@property (nonatomic) double _CDPortraitMetadataKey__decayRate;
+@property (nonatomic, copy) NSString *_CDPortraitMetadataKey__osBuild;
+@property (nonatomic) double _CDPortraitMetadataKey__score;
 @property (nonatomic, copy) NSNumber *_DKAppInstallMetadataKey__isInstall;
 @property (nonatomic, copy) NSString *_DKAppInstallMetadataKey__primaryCategory;
 @property (nonatomic, retain) NSData *_DKAppInstallMetadataKey__subCategories;
@@ -12,7 +19,7 @@
 @property (nonatomic, copy) NSDate *_DKApplicationActivityMetadataKey__expirationDate;
 @property (nonatomic, copy) NSNumber *_DKApplicationActivityMetadataKey__isPubliclyIndexable;
 @property (nonatomic, copy) NSString *_DKApplicationActivityMetadataKey__itemIdentifier;
-@property (nonatomic, copy) NSString *_DKApplicationActivityMetadataKey__itemRelatedContentURL;
+@property (nonatomic, copy) NSURL *_DKApplicationActivityMetadataKey__itemRelatedContentURL;
 @property (nonatomic, copy) NSString *_DKApplicationActivityMetadataKey__itemRelatedUniqueIdentifier;
 @property (nonatomic, copy) NSString *_DKApplicationActivityMetadataKey__title;
 @property (nonatomic, copy) NSString *_DKApplicationMetadataKey__backboardState;
@@ -28,6 +35,7 @@
 @property (nonatomic, copy) NSString *_DKAudioMetadataKey__preferredDataSource;
 @property (nonatomic, copy) NSNumber *_DKAudioMetadataKey__routeChangeReason;
 @property (nonatomic, copy) NSString *_DKAudioMetadataKey__selectedDataSource;
+@property (nonatomic, copy) NSString *_DKBatterySaverMetadataKey__source;
 @property (nonatomic, copy) NSString *_DKBluetoothMetadataKey__address;
 @property (nonatomic, copy) NSNumber *_DKBluetoothMetadataKey__deviceType;
 @property (nonatomic, copy) NSString *_DKBluetoothMetadataKey__name;
@@ -86,7 +94,7 @@
 @property (nonatomic, copy) NSNumber *_DKNowPlayingMetadataKey__elapsed;
 @property (nonatomic, copy) NSString *_DKNowPlayingMetadataKey__genre;
 @property (nonatomic, copy) NSNumber *_DKNowPlayingMetadataKey__identifier;
-@property (nonatomic, copy) NSNumber *_DKNowPlayingMetadataKey__playing;
+@property (nonatomic) short _DKNowPlayingMetadataKey__playing;
 @property (nonatomic, copy) NSString *_DKNowPlayingMetadataKey__title;
 @property (nonatomic, copy) NSDate *_DKPeriodMetadataKey__periodEnd;
 @property (nonatomic, copy) NSDate *_DKPeriodMetadataKey__periodStart;
@@ -102,6 +110,12 @@
 @property (nonatomic, copy) NSDate *_DKSunriseSunsetMetadataKey__nextSunset;
 @property (nonatomic, copy) NSDate *_DKSunriseSunsetMetadataKey__previousSunrise;
 @property (nonatomic, copy) NSDate *_DKSunriseSunsetMetadataKey__previousSunset;
+@property (nonatomic, retain) NSData *_QPMetricsMetadataKey__CandidateList;
+@property (nonatomic, copy) NSString *_QPMetricsMetadataKey__Query;
+@property (nonatomic, copy) NSNumber *_QPMetricsMetadataKey__QueryEngaged;
+@property (nonatomic, retain) NSData *_QPMetricsMetadataKey__QueryList;
+@property (nonatomic, copy) NSNumber *_QPMetricsMetadataKey__ResultEngaged;
+@property (nonatomic, copy) NSNumber *_QPMetricsMetadataKey__TimeStamp;
 @property (nonatomic, copy) NSNumber *com_apple_calendarUIKit_userActivity_date;
 @property (nonatomic, copy) NSNumber *com_apple_calendarUIKit_userActivity_endDate;
 @property (nonatomic, copy) NSString *com_apple_calendarUIKit_userActivity_externalID;

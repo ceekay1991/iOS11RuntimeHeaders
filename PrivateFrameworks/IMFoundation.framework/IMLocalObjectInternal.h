@@ -10,7 +10,6 @@
     NSObject<OS_xpc_object> * _connection;
     IMMessageContext * _currentMessageContext;
     NSObject<OS_dispatch_semaphore> * _deathLock;
-    bool  _forceSecureCoding;
     NSRecursiveLock * _lock;
     bool  _offMainThread;
     bool  _pendingComponentQueueProcessing;
@@ -20,6 +19,7 @@
     NSObject<OS_dispatch_queue> * _queue;
     struct __CFRunLoopSource { } * _runloopSource;
     id  _target;
+    NSArray * _whitelistedClasses;
 }
 
 - (void)dealloc;

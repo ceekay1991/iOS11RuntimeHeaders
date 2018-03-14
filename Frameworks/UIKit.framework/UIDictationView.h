@@ -29,6 +29,8 @@
 + (id)sharedInstance;
 + (struct CGSize { double x1; double x2; })viewSize;
 
+- (void)dealloc;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (void)applicationEnteredBackground;
@@ -37,7 +39,6 @@
 - (struct CGPoint { double x1; double x2; })backgroundOffset;
 - (struct CGPoint { double x1; double x2; })contentOffset;
 - (struct CGSize { double x1; double x2; })currentScreenSize;
-- (void)dealloc;
 - (void)didEndIndirectSelectionGesture;
 - (id)displayDelegate;
 - (bool)drawsOwnBackground;

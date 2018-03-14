@@ -2,51 +2,48 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UICollectionViewDropCoordinatorItem : NSObject {
-    UIView * _containerView;
+@interface _UICollectionViewDropCoordinatorItem : NSObject <UIDragAnimating> {
+    _UIDropAnimationHandlers * _animationHandlers;
     NSIndexPath * _destinationIndexPath;
     UIDragItem * _dragItem;
     int  _kind;
-    struct CGPoint { 
-        double x; 
-        double y; 
-    }  _location;
+    id /* block */  _previewParametersProvider;
     bool  _shouldRemainInHierarchy;
-    struct CGAffineTransform { 
-        double a; 
-        double b; 
-        double c; 
-        double d; 
-        double tx; 
-        double ty; 
-    }  _transform;
+    UIDragPreviewTarget * _target;
 }
 
-@property (nonatomic) UIView *containerView;
+@property (nonatomic, retain) _UIDropAnimationHandlers *animationHandlers;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSIndexPath *destinationIndexPath;
 @property (nonatomic) UIDragItem *dragItem;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) int kind;
-@property (nonatomic) struct CGPoint { double x1; double x2; } location;
+@property (nonatomic, copy) id /* block */ previewParametersProvider;
 @property (nonatomic) bool shouldRemainInHierarchy;
-@property (nonatomic) struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } transform;
+@property (readonly) Class superclass;
+@property (nonatomic, copy) UIDragPreviewTarget *target;
 
 - (void).cxx_destruct;
-- (id)containerView;
+- (void)addAnimations:(id /* block */)arg1;
+- (void)addCompletion:(id /* block */)arg1;
+- (id)animationHandlers;
 - (id)description;
 - (id)destinationIndexPath;
 - (id)dragItem;
 - (id)initWithDestinationIndexPath:(id)arg1 dragItem:(id)arg2;
-- (id)initWithLocation:(struct CGPoint { double x1; double x2; })arg1 inContainerView:(id)arg2 withTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg3 dragItem:(id)arg4;
+- (id)initWithDestinationIndexPath:(id)arg1 dragItem:(id)arg2 placeholderConfiguration:(id)arg3;
+- (id)initWithDragItem:(id)arg1 target:(id)arg2;
 - (int)kind;
-- (struct CGPoint { double x1; double x2; })location;
-- (void)setContainerView:(id)arg1;
+- (id /* block */)previewParametersProvider;
+- (void)setAnimationHandlers:(id)arg1;
 - (void)setDestinationIndexPath:(id)arg1;
 - (void)setDragItem:(id)arg1;
 - (void)setKind:(int)arg1;
-- (void)setLocation:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setPreviewParametersProvider:(id /* block */)arg1;
 - (void)setShouldRemainInHierarchy:(bool)arg1;
-- (void)setTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
+- (void)setTarget:(id)arg1;
 - (bool)shouldRemainInHierarchy;
-- (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })transform;
+- (id)target;
 
 @end

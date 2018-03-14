@@ -4,18 +4,4 @@
 
 @interface MPBrowsableContentItem : MPContentItem
 
-@property (getter=isContainer, nonatomic) bool container;
-@property (getter=isExplicitContent, nonatomic) bool explicitContent;
-@property (getter=isPlayable, nonatomic) bool playable;
-@property (getter=isStreamingContent, nonatomic) bool streamingContent;
-
-- (bool)isContainer;
-- (bool)isExplicitContent;
-- (bool)isPlayable;
-- (bool)isStreamingContent;
-- (void)setContainer:(bool)arg1;
-- (void)setExplicitContent:(bool)arg1;
-- (void)setPlayable:(bool)arg1;
-- (void)setStreamingContent:(bool)arg1;
-
 @end

@@ -28,6 +28,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (int)placeDisplayType;
 - (int)placeType;
 - (id)placeTypeAsString:(int)arg1;
 - (bool)readFrom:(id)arg1;

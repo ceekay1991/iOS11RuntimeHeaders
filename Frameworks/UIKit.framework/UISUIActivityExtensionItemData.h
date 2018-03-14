@@ -20,7 +20,7 @@
 @property (nonatomic, readonly) NSMutableDictionary *previewImagesByItemUUID;
 @property (nonatomic, readonly) NSMutableDictionary *subjectsByItemUUID;
 
-+ (id)extensionItemsByPreparingToSendExtensionItems:(id)arg1 toDestinationExtension:(id)arg2;
++ (id)_onBackgroundQueue_extensionItemsByPreparingToSendExtensionItems:(id)arg1 toDestinationExtension:(id)arg2;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -46,8 +46,8 @@
 - (id)initWithCoder:(id)arg1;
 - (struct __CFDictionary { }*)itemProviderOrExtensionItemWithMetadataToUUID;
 - (id)openURLAnnotationsByURL;
-- (void)prepareForSendingAsCompletionWithExtensionContext:(id)arg1;
-- (void)prepareForSendingToExtension:(id)arg1;
+- (void)prepareForSendingAsCompletionWithExtensionContext:(id)arg1 readyBlock:(id /* block */)arg2;
+- (void)prepareForSendingToExtension:(id)arg1 readyBlock:(id /* block */)arg2;
 - (id)previewImageForItem:(id)arg1;
 - (id)previewImagesByItemUUID;
 - (void)setExtensionItems:(id)arg1;

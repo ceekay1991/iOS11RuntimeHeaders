@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSManagedObject : NSObject <NSFetchRequestResult> {
+@interface NSManagedObject : NSObject <NSFetchRequestResult, _KSTIUserDictionaryEntry> {
     unsigned int  _cd_extraFlags;
     void * _cd_extras;
     unsigned int  _cd_lockingInfo;
@@ -26,7 +26,10 @@
 @property (getter=isInserted, nonatomic, readonly) bool inserted;
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, readonly) NSManagedObjectID *objectID;
+@property (nonatomic, copy) NSString *phrase;
+@property (nonatomic, copy) NSString *shortcut;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) NSDate *timestamp;
 @property (getter=isUpdated, nonatomic, readonly) bool updated;
 
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
@@ -228,5 +231,44 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)setValuesWithObject:(id)arg1;
 - (bool)validateRequiredAttributesForObject:(id)arg1 error:(id*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CoreThemeDefinition.framework/CoreThemeDefinition
+
++ (bool)isTracked;
+
+// Image: /System/Library/PrivateFrameworks/CourseKit.framework/CourseKit
+
+- (bool)updateKey:(id)arg1 withValue:(id)arg2 condition:(id /* block */)arg3;
+
+// Image: /System/Library/PrivateFrameworks/KeyboardServices.framework/KeyboardServices
+
+- (void)_copyAttributeValuesFromObject:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
++ (id)objectFromObjectID:(id)arg1 context:(id)arg2;
++ (id)objectIDsFromObjects:(id)arg1;
++ (id)objectIDsMatchingPredicate:(id)arg1 context:(id)arg2;
++ (id)objectIDsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 context:(id)arg3;
++ (id)objectsFromObjectIDs:(id)arg1 context:(id)arg2;
++ (id)objectsFromObjectIDs:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 context:(id)arg3;
++ (id)objectsMatchingPredicate:(id)arg1 context:(id)arg2;
++ (id)objectsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 context:(id)arg3;
++ (id)objectsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 relationshipKeyPathsForPrefetching:(id)arg3 context:(id)arg4;
++ (id)permanentObjectIDsFromObjects:(id)arg1;
++ (id)resultsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 resultType:(unsigned long long)arg3 relationshipKeyPathsForPrefetching:(id)arg4 context:(id)arg5;
+
+- (bool)obtainPermanentObjectIDIfNecessary;
+- (id)permanentObjectID;
+- (void)postNotificationOnMainThreadAfterSaveWithName:(id)arg1;
+- (void)postNotificationOnMainThreadWithName:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (id)pl_shortDescription;
+
+// Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
+
+- (id)uri;
 
 @end

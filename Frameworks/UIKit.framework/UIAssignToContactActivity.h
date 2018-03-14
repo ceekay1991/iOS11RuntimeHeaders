@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIAssignToContactActivity : UIActivity <CNContactPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface UIAssignToContactActivity : UIActivity <CNContactPickerDelegate, CNContactViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     UIImage * _image;
     UIImagePickerController * _imagePickerController;
     CNContactPickerViewController * _peoplePicker;
@@ -31,6 +31,8 @@
 - (bool)canPerformWithActivityItems:(id)arg1;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
+- (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
+- (bool)contactViewController:(id)arg1 shouldPerformDefaultActionForContactProperty:(id)arg2;
 - (id)image;
 - (id)imagePickerController;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;

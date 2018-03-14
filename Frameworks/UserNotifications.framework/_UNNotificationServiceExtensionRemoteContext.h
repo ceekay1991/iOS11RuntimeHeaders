@@ -15,11 +15,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)initialize;
+
 - (void).cxx_destruct;
 - (id)_stageAttachmentsForNotificationContent:(id)arg1;
 - (void)didReceiveNotificationRequest:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (id)extensionInstance;
-- (id)init;
+- (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
 - (void)serviceExtensionTimeWillExpire;
 - (void)setExtensionInstance:(id)arg1;
 

@@ -25,6 +25,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currencyCode;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMaximumPrice:(id)arg1 currencyCode:(id)arg2;

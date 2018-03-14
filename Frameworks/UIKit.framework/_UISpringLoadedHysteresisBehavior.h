@@ -23,7 +23,6 @@
 @property (nonatomic, retain) _UIVelocityIntegrator *velocityIntegrator;
 
 - (void).cxx_destruct;
-- (bool)_shouldRecognizeInteraction;
 - (void)_tick:(id)arg1;
 - (double)beginningVelocityThreshold;
 - (double)cancelingVelocityThreshold;
@@ -39,8 +38,6 @@
 - (void)setVelocityIntegrator:(id)arg1;
 - (void)setupDisplayLink;
 - (bool)shouldAllowInteraction:(id)arg1 withContext:(id)arg2;
-- (bool)shouldBeginInteraction:(id)arg1 withGestureRecognizer:(id)arg2;
-- (bool)shouldContinueInteraction:(id)arg1 withGestureRecognizer:(id)arg2;
 - (id)velocityIntegrator;
 
 @end

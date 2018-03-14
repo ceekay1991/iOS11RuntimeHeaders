@@ -33,9 +33,9 @@
     unsigned int  _originalDataCount;
     bool  _readonly;
     long long  _snapToAlignCount;
-    struct { float x1; struct __C3DNode {} *x2; float x3; } * _snapToAlignOnX;
-    struct { float x1; struct __C3DNode {} *x2; float x3; } * _snapToAlignOnY;
-    struct { float x1; struct __C3DNode {} *x2; float x3; } * _snapToAlignOnZ;
+    struct { float x1; void *x2; float x3; } * _snapToAlignOnX;
+    struct { float x1; void *x2; float x3; } * _snapToAlignOnY;
+    struct { float x1; void *x2; float x3; } * _snapToAlignOnZ;
     NSMutableIndexSet * _snapXIndexes;
     NSMutableIndexSet * _snapYIndexes;
     NSMutableIndexSet * _snapZIndexes;
@@ -112,7 +112,7 @@
 - (void)setZAlignment:(long long)arg1;
 - (id)setupClones;
 - (id)snapGuideIndexesOnAxis:(unsigned long long)arg1;
-- (const struct { float x1; struct __C3DNode {} *x2; float x3; }*)snapInfoAtIndex:(unsigned long long)arg1 axis:(unsigned long long)arg2;
+- (const struct { float x1; void *x2; float x3; }*)snapInfoAtIndex:(unsigned long long)arg1 axis:(unsigned long long)arg2;
 - (id)target;
 - (id)targets;
 - (struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })transform;

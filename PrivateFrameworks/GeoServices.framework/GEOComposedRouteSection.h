@@ -52,6 +52,7 @@
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 - (void).cxx_destruct;
+- (bool)_MapsCarPlay_isEqual:(id)arg1;
 - (void)_initStepForRoute:(id)arg1;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })bounds;
 - (id)composedRouteLeg;
@@ -75,6 +76,7 @@
 // Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
 
 - (id)pathsForRenderRegion:(id)arg1 inOverlay:(id)arg2;
+- (id)pathsForRenderRegion:(id)arg1 inOverlay:(id)arg2 excludedSegments:(const struct vector<gm::Range<unsigned int>, std::__1::allocator<gm::Range<unsigned int> > > { struct Range<unsigned int> {} *x1; struct Range<unsigned int> {} *x2; struct __compressed_pair<gm::Range<unsigned int> *, std::__1::allocator<gm::Range<unsigned int> > > { struct Range<unsigned int> {} *x_3_1_1; } x3; }*)arg3;
 - (id)pathsForRenderRegion:(id)arg1 inOverlay:(id)arg2 shouldSnapToTransit:(bool)arg3 verifySnapping:(bool)arg4;
 - (struct Box<double, 2> { struct Matrix<double, 2, 1> { double x_1_1_1[2]; } x1; struct Matrix<double, 2, 1> { double x_2_1_1[2]; } x2; })vkBounds;
 

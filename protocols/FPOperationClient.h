@@ -6,7 +6,7 @@
 @required
 
 - (NSString *)description;
-- (void)operationDidProgressWithIdentifier:(void *)arg1 data:(void *)arg2 error:(void *)arg3 completionHandler:(void *)arg4; // needs 4 arg types, found 8: NSString *, NSData *, NSError *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
+- (void)operationDidProgressWithInfo:(void *)arg1 error:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 7: NSDictionary *, NSError *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
 - (oneway void)setCancellationHandler:(id <FPCancellable>)arg1;
 
 @end

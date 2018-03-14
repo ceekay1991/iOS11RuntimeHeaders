@@ -15,6 +15,7 @@
     }  __size;
     UIViewController * __unpinnedController;
     long long  __visibilityState;
+    double  _backgroundUnderlapHeight;
     _UIBarBackground * _backgroundView;
     unsigned long long  _boundaryEdge;
     UINavigationController * _navController;
@@ -59,6 +60,9 @@
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } preferredContentInsets;
 @property (getter=isVisibleWhenPinningBarIsHidden, nonatomic) bool visibleWhenPinningBarIsHidden;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
+- (id)_attachedPinningTopBar;
 - (bool)_attachmentIsChanging;
 - (id)_backgroundConstraints;
 - (id)_backgroundView;
@@ -72,6 +76,7 @@
 - (bool)_isPalettePinningBarHidden;
 - (bool)_paletteOverridesPinningBar;
 - (id)_pinningBar;
+- (void)_propagateBackgroundToContents;
 - (void)_resetConstraintConstants:(double)arg1;
 - (void)_resetHeightConstraintConstant;
 - (void)_resetVisibilityStateIfNecessary;
@@ -95,9 +100,13 @@
 - (void)_setVisualAltitudeBias:(struct CGSize { double x1; double x2; })arg1;
 - (void)_setupBackgroundViewIfNecessary;
 - (bool)_shouldHideWhenScrolling;
+- (bool)_shouldUpdateBackground;
 - (struct CGSize { double x1; double x2; })_size;
+- (bool)_supportsSpecialSearchBarTransitions;
 - (id)_unpinnedController;
+- (void)_updateBackgroundConstraintsIfNecessary;
 - (void)_updateBackgroundView;
+- (void)_updateLayoutForCurrentConfiguration;
 - (long long)_visibilityState;
 - (unsigned long long)boundaryEdge;
 - (void)dealloc;
@@ -120,5 +129,15 @@
 - (void)setPreferredContentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setVisibleWhenPinningBarIsHidden:(bool)arg1;
 - (void)set_unpinnedController:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
+- (void)__ck_setPaletteFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
+
+- (void)SKUI_beginHidingPaletteShadow;
+- (void)SKUI_endHidingPaletteShadow;
+- (void)resetBackgroundConstraints;
 
 @end

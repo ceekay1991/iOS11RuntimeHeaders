@@ -17,6 +17,7 @@
 
 + (id)idsIDForEmail:(id)arg1;
 + (id)idsIDForPhoneNumber:(id)arg1;
++ (id)supportedContactPropertyKeys;
 
 - (void).cxx_destruct;
 - (id)_cnui_IDSIDRepresentation;

@@ -10,7 +10,6 @@
     <SCNCameraControllerDelegate> * _delegate;
     bool  _drivenBydefaultNavigationCameraController;
     bool  _handlingInteraction;
-    float  _horizontalMaximumAngle;
     struct { 
         bool inertiaEnabled; 
         bool inertiaRunning; 
@@ -24,13 +23,14 @@
         /* Warning: Unrecognized filer type: '"' using 'void*' */ void*start; 
     }  _inputLocation;
     long long  _interactionMode;
+    void _maximumAngles;
+    void _minimumAngles;
     struct { 
         /* Warning: Unrecognized filer type: '"' using 'void*' */ void*angles; 
     }  _orientationState;
     SCNNode * _pointOfView;
     void _target;
     void _up;
-    float  _verticalMaximumAngle;
 }
 
 @property (nonatomic) bool automaticTarget;
@@ -43,6 +43,8 @@
 @property (nonatomic) long long interactionMode;
 @property (nonatomic) float maximumHorizontalAngle;
 @property (nonatomic) float maximumVerticalAngle;
+@property (nonatomic) float minimumHorizontalAngle;
+@property (nonatomic) float minimumVerticalAngle;
 @property (nonatomic, retain) SCNNode *pointOfView;
 @property (nonatomic) void simdTarget;
 @property (nonatomic) void simdUp;
@@ -51,6 +53,7 @@
 @property (nonatomic) float verticalMaximumAngle;
 @property (nonatomic) struct SCNVector3 { float x1; float x2; float x3; } worldUp;
 
+- (void)_capOrientationAnglesToMaximum;
 - (struct { })_convertRotationFromWorldToPointOfView:(struct { })arg1;
 - (void)_directionForScreenPoint:(struct CGPoint { double x1; double x2; })arg1 viewport:(struct CGSize { double x1; double x2; })arg2;
 - (void)_endDraggingWithVelocity:(struct CGPoint { double x1; double x2; })arg1;
@@ -72,8 +75,8 @@
 - (void)continueInteraction:(struct CGPoint { double x1; double x2; })arg1 withViewport:(struct CGSize { double x1; double x2; })arg2 sensitivity:(double)arg3;
 - (void)dealloc;
 - (id)delegate;
-- (void)dollyZoomBy:(float)arg1 onScreenPoint:(struct CGPoint { double x1; double x2; })arg2 viewport:(struct CGSize { double x1; double x2; })arg3;
-- (void)dollyZoomToTarget:(float)arg1;
+- (void)dollyBy:(float)arg1 onScreenPoint:(struct CGPoint { double x1; double x2; })arg2 viewport:(struct CGSize { double x1; double x2; })arg3;
+- (void)dollyToTarget:(float)arg1;
 - (bool)drivenByDefaultNavigationCameraController;
 - (void)endInteraction:(struct CGPoint { double x1; double x2; })arg1 withViewport:(struct CGSize { double x1; double x2; })arg2 velocity:(struct CGPoint { double x1; double x2; })arg3;
 - (void)frameNodes:(id)arg1;
@@ -86,6 +89,8 @@
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })lookAtWithtarget;
 - (float)maximumHorizontalAngle;
 - (float)maximumVerticalAngle;
+- (float)minimumHorizontalAngle;
+- (float)minimumVerticalAngle;
 - (id)pointOfView;
 - (void)rollAroundTarget:(float)arg1;
 - (void)rollBy:(float)arg1 aroundScreenPoint:(struct CGPoint { double x1; double x2; })arg2 viewport:(struct CGSize { double x1; double x2; })arg3;
@@ -100,6 +105,8 @@
 - (void)setInteractionMode:(long long)arg1;
 - (void)setMaximumHorizontalAngle:(float)arg1;
 - (void)setMaximumVerticalAngle:(float)arg1;
+- (void)setMinimumHorizontalAngle:(float)arg1;
+- (void)setMinimumVerticalAngle:(float)arg1;
 - (void)setPointOfView:(id)arg1;
 - (void)setPointOfView:(id)arg1 updateUpTransform:(bool)arg2;
 - (void)setSimdTarget;

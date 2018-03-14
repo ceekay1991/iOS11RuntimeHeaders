@@ -9,12 +9,9 @@
 + (id)bootstrapLookUpPortWithName:(id)arg1;
 + (id)bootstrapLookUpWithName:(id)arg1;
 + (bool)supportsSecureCoding;
-+ (id)taskNameForPID:(int)arg1;
 + (id)taskNamePortForPID:(int)arg1;
 + (id)wrapSendRight:(unsigned int)arg1;
 
-- (id)_initWithCopyOfPort:(unsigned int)arg1 previousTrace:(id)arg2;
-- (id)_initWithPort:(unsigned int)arg1 previousTrace:(id)arg2;
 - (bool)_queue_isUsable;
 - (bool)_shouldInvalidateOnEncode;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

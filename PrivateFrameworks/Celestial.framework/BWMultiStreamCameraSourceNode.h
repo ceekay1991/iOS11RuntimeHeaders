@@ -17,6 +17,7 @@
         float pixelsPerMicron; 
         bool isFrontCamera; 
     }  _cameraData;
+    bool  _cameraIntrinsicMatrixDeliveryOnPreviewOutputEnabled;
     bool  _cameraIntrinsicMatrixDeliveryOnVideoCaptureOutputEnabled;
     BWFigVideoCaptureDevice * _captureDevice;
     BWFigVideoCaptureStream * _captureStream;
@@ -50,25 +51,31 @@
     bool  _discardsDepthDataForStillImages;
     bool  _discardsUnstableSphereVideoFrames;
     NSMutableDictionary * _dutyCycleMetadataCache;
-    bool  _facePresenceDetectionEnabled;
     struct { 
         int width; 
         int height; 
     }  _firmwareStillImageDimensionsAfterOverscanCropping;
     int  _firmwareStillImageOutputRetainedBufferCountOverride;
+    int  _firmwareTimeMachineBufferCapacity;
+    int  _horizontalSensorBinningFactor;
+    unsigned long long  _infraredProjectorUptimeInUsForHighPowerSparse;
+    unsigned long long  _infraredProjectorUptimeInUsForLowPowerSparse;
+    bool  _isInfraredSourceNode;
     bool  _ispMultiBandNoiseReductionEnabled;
     bool  _keypointDetectionEnabled;
-    bool  _logAllDrops;
     float  _maxFrameRate;
     int  _maxIntegrationTimeOverride;
     float  _minFrameRate;
     int  _motionAttachmentsSource;
     BWMotionDataPreserver * _motionDataPreserver;
-    int  _numConsecutiveDrops;
     struct CGSize { 
         double width; 
         double height; 
     }  _onDemandStillOverscanPercentage;
+    bool  _originalCameraIntrinsicMatrixDeliveryOnDepthOutputEnabled;
+    bool  _originalCameraIntrinsicMatrixDeliveryOnPreviewOutputEnabled;
+    bool  _originalCameraIntrinsicMatrixDeliveryOnStillImageOutputEnabled;
+    bool  _originalCameraIntrinsicMatrixDeliveryOnVideoCaptureOutputEnabled;
     struct BWStreamOutputStorage { 
         int type; 
         unsigned int flags; 
@@ -87,12 +94,14 @@
     }  _overscanPercentage;
     float  _overscanPercentageForZoom;
     float  _pixelsPerMicron;
+    NSArray * _portTypesForBufferPoolSharing;
     struct { 
         int width; 
         int height; 
     }  _preferredPreviewDimensions;
     BWNodeOutput * _previewOutput;
     bool  _previewOutputEnabled;
+    int  _previousInfraredCaptureID;
     NSDictionary * _qHDRSensorDefectivePixelInfo;
     struct OpaqueFigSampleBufferProcessor { } * _qrmSampleBufferProcessor;
     struct { 
@@ -102,26 +111,33 @@
     bool  _quadraHighResStillImageCaptureEnabled;
     struct opaqueCMFormatDescription { } * _quadraStillOutputFormatDescription;
     struct opaqueCMSimpleQueue { } * _quadraYUVBufferQueue;
+    bool  _reduceBufferCountOnSharedStillPools;
+    bool  _reduceBufferCountOnSharedStreamingPools;
     bool  _reflectsStillsOnStreamingOutputs;
     int  _resolvedFormatIndex;
     bool  _resolvedFormatIndexUpToDate;
     bool  _secondaryScalerIsNotAvailable;
-    float  _sensorBinningRatio;
     struct { 
         int width; 
         int height; 
     }  _sensorCropDimensions;
     struct { 
-        float sphereShiftX; 
-        float sphereShiftY; 
         struct { 
             float x; 
             float y; 
-        } teleShpereShift; 
+        } lastWideSpherePos; 
         struct { 
             float x; 
             float y; 
-        } previousPos; 
+        } lastTeleSpherePos; 
+        struct { 
+            float x; 
+            float y; 
+        } currentTeleSpherePos; 
+        struct { 
+            float x; 
+            float y; 
+        } previousTeleSpherePos; 
         bool supportAverageSpherePositionKey; 
     }  _sphereShiftState;
     bool  _stillImageKeypointDetectionEnabled;
@@ -138,8 +154,10 @@
     int  _streamFormatIndex;
     NSArray * _supportedFormats;
     bool  _temporalNoiseReductionEnabled;
+    bool  _usesFIFOFirmwareTimeMachine;
     bool  _usesFirmwareStillImageOutput;
     bool  _usesISPBackEndScalers;
+    int  _verticalSensorBinningFactor;
     struct { 
         int width; 
         int height; 
@@ -159,6 +177,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) BWNodeOutput *detectedFacesOutput;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) unsigned long long infraredProjectorUptimeInUsForHighPowerSparse;
+@property (nonatomic, readonly) unsigned long long infraredProjectorUptimeInUsForLowPowerSparse;
 @property (readonly) BWNodeOutput *previewOutput;
 @property (readonly) BWNodeOutput *stillImageOutput;
 @property (readonly) Class superclass;
@@ -188,10 +208,12 @@
 - (void)_registerForStreamNotifications;
 - (void)_registerStreamOutputHandlers;
 - (bool)_requiresOneStreamingOutputForMetadata;
+- (void)_retrieveCameraCharacterizationDataForCameraIntrinsicMatrixDelivery;
 - (bool)_secondaryScalerIsAvailable;
 - (void)_serviceZoomForPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (int)_setupBayerProcessingSessionForQuadraStillImageCaptures;
 - (int)_setupQRMSampleBufferProcessor;
+- (bool)_shouldEnableStillImageOutput;
 - (bool)_shouldEnableStreamCaptureOutput;
 - (bool)_shouldEnableStreamPreviewOutput;
 - (id)_streamOutputIDForCapture;
@@ -212,6 +234,7 @@
 - (float)aeMaxGain;
 - (struct OpaqueFigCaptureISPProcessingSession { }*)bayerProcessingSession;
 - (float)bravoShiftMitigationMaxZoomFactor;
+- (bool)cameraIntrinsicMatrixDeliveryOnPreviewOutputEnabled;
 - (bool)cameraIntrinsicMatrixDeliveryOnVideoCaptureOutputEnabled;
 - (id)captureDevice;
 - (id)captureStream;
@@ -233,22 +256,31 @@
 - (bool)detectedFacesOutputEnabled;
 - (bool)discardsDepthDataForStillImages;
 - (bool)discardsUnstableSphereVideoFrames;
-- (bool)facePresenceDetectionEnabled;
+- (struct { int x1; int x2; })finalPreviewOutputDimensions;
 - (struct { int x1; int x2; })firmwareStillImageDimensionsAfterOverscanCropping;
 - (int)firmwareStillImageOutputRetainedBufferCountOverride;
+- (int)firmwareTimeMachineBufferCapacity;
 - (int)formatIndex;
 - (bool)handlesHDRReferenceFrameReporting;
 - (bool)hasNonLiveConfigurationChanges;
+- (int)horizontalSensorBinningFactor;
+- (unsigned long long)infraredProjectorUptimeInUsForHighPowerSparse;
+- (unsigned long long)infraredProjectorUptimeInUsForLowPowerSparse;
 - (bool)ispMultiBandNoiseReductionEnabled;
 - (bool)keypointDetectionEnabled;
 - (bool)ltmLookUpTableMetadataEnabled;
 - (bool)lumaHistogramMetadataEnabled;
 - (void)makeCurrentConfigurationLive;
+- (void)makeOutputsLiveIfNeeded;
 - (float)maxFrameRate;
 - (int)maxIntegrationTimeOverride;
 - (float)minFrameRate;
 - (int)motionAttachmentsSource;
 - (id)nodeSubType;
+- (bool)originalCameraIntrinsicMatrixDeliveryOnDepthOutputEnabled;
+- (bool)originalCameraIntrinsicMatrixDeliveryOnPreviewOutputEnabled;
+- (bool)originalCameraIntrinsicMatrixDeliveryOnStillImageOutputEnabled;
+- (bool)originalCameraIntrinsicMatrixDeliveryOnVideoCaptureOutputEnabled;
 - (struct CGSize { double x1; double x2; })overscanPercentage;
 - (float)overscanPercentageForZoom;
 - (struct { int x1; int x2; })preferredPreviewDimensions;
@@ -261,11 +293,11 @@
 - (bool)quadraHighResStillImageCaptureEnabled;
 - (bool)reflectsStillsOnStreamingOutputs;
 - (bool)secondaryScalerIsNotAvailable;
-- (float)sensorBinningRatio;
 - (struct { int x1; int x2; })sensorCropDimensions;
 - (void)setAeMaxGain:(float)arg1;
 - (void)setBayerProcessingSession:(struct OpaqueFigCaptureISPProcessingSession { }*)arg1;
 - (void)setBravoShiftMitigationMaxZoomFactor:(float)arg1;
+- (void)setCameraIntrinsicMatrixDeliveryOnPreviewOutputEnabled:(bool)arg1;
 - (void)setCameraIntrinsicMatrixDeliveryOnVideoCaptureOutputEnabled:(bool)arg1;
 - (void)setChromaNoiseReductionEnabled:(bool)arg1;
 - (void)setColorSpaceProperties:(int)arg1;
@@ -280,10 +312,11 @@
 - (void)setDetectedFacesOutputEnabled:(bool)arg1;
 - (void)setDiscardsDepthDataForStillImages:(bool)arg1;
 - (void)setDiscardsUnstableSphereVideoFrames:(bool)arg1;
-- (void)setFacePresenceDetectionEnabled:(bool)arg1;
 - (void)setFirmwareStillImageOutputRetainedBufferCountOverride:(int)arg1;
+- (void)setFirmwareTimeMachineBufferCapacity:(int)arg1;
 - (void)setFormatIndex:(int)arg1;
 - (void)setHandlesHDRReferenceFrameReporting:(bool)arg1;
+- (void)setHorizontalSensorBinningFactor:(int)arg1;
 - (void)setIspMultiBandNoiseReductionEnabled:(bool)arg1;
 - (void)setKeypointDetectionEnabled:(bool)arg1;
 - (void)setLtmLookUpTableMetadataEnabled:(bool)arg1;
@@ -292,6 +325,10 @@
 - (void)setMaxIntegrationTimeOverride:(int)arg1;
 - (void)setMinFrameRate:(float)arg1;
 - (void)setMotionAttachmentsSource:(int)arg1;
+- (void)setOriginalCameraIntrinsicMatrixDeliveryOnDepthOutputEnabled:(bool)arg1;
+- (void)setOriginalCameraIntrinsicMatrixDeliveryOnPreviewOutputEnabled:(bool)arg1;
+- (void)setOriginalCameraIntrinsicMatrixDeliveryOnStillImageOutputEnabled:(bool)arg1;
+- (void)setOriginalCameraIntrinsicMatrixDeliveryOnVideoCaptureOutputEnabled:(bool)arg1;
 - (void)setOverscanPercentage:(struct CGSize { double x1; double x2; })arg1;
 - (void)setOverscanPercentageForZoom:(float)arg1;
 - (void)setPreferredPreviewDimensions:(struct { int x1; int x2; })arg1;
@@ -301,14 +338,15 @@
 - (void)setQuadraHighResStillImageCaptureEnabled:(bool)arg1;
 - (void)setReflectsStillsOnStreamingOutputs:(bool)arg1;
 - (void)setSecondaryScalerIsNotAvailable:(bool)arg1;
-- (void)setSensorBinningRatio:(float)arg1;
 - (void)setSensorCropDimensions:(struct { int x1; int x2; })arg1;
 - (void)setStillImageKeypointDetectionEnabled:(bool)arg1;
 - (void)setStillImageOutputEnabled:(bool)arg1;
 - (void)setStillImageOutputSushiRawAttachmentOptionEnabled:(bool)arg1;
 - (void)setTemporalNoiseReductionEnabled:(bool)arg1;
+- (void)setUsesFIFOFirmwareTimeMachine:(bool)arg1;
 - (void)setUsesFirmwareStillImageOutput:(bool)arg1;
 - (void)setUsesISPBackEndScalers:(bool)arg1;
+- (void)setVerticalSensorBinningFactor:(int)arg1;
 - (void)setVideoCaptureDimensions:(struct { int x1; int x2; })arg1;
 - (void)setVideoCaptureOutputColorInfoOverride:(id)arg1;
 - (void)setVideoCaptureOutputEnabled:(bool)arg1;
@@ -324,8 +362,10 @@
 - (bool)supportsDecoupledPrimaryScalerFromStreaming;
 - (bool)temporalNoiseReductionEnabled;
 - (int)updateOutputRequirements;
+- (bool)usesFIFOFirmwareTimeMachine;
 - (bool)usesFirmwareStillImageOutput;
 - (bool)usesISPBackEndScalers;
+- (int)verticalSensorBinningFactor;
 - (struct { int x1; int x2; })videoCaptureDimensions;
 - (id)videoCaptureOutput;
 - (id)videoCaptureOutputColorInfoOverride;
@@ -333,6 +373,5 @@
 - (bool)videoCaptureOutputPixelBufferAttachmentModificationAllowed;
 - (unsigned int)videoPixelFormat;
 - (bool)videoStabilizationEnabled;
-- (void)willStop;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UISearchBarTextField : UITextField {
+@interface UISearchBarTextField : UITextField <_UISearchBarTextFieldOrMailReplacement> {
     bool  __preventSelectionViewActivation;
     long long  __textInputSource;
     bool  _animatePlaceholderOnResignFirstResponder;
@@ -17,12 +17,18 @@
 @property (setter=_setPreventSelectionViewActivation:, nonatomic) bool _preventSelectionViewActivation;
 @property (setter=_setSearchTextOffetValue:, nonatomic, retain) NSValue *_searchTextOffsetValue;
 @property (nonatomic) long long _textInputSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (void)_activateSelectionView;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_adjustedTextOrEditingRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_adjustmentsForSearchIconViewRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)_applyHighlightedAnimated:(bool)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_availableTextRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forEditing:(bool)arg2;
 - (void)_becomeFirstResponder;
 - (bool)_becomeFirstResponderWhenPossible;
@@ -40,6 +46,8 @@
 - (void)_removeEffectsBackgroundViews;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_searchIconViewRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)_searchTextOffsetValue;
+- (void)_setAnimatesBackgroundCornerRadius:(bool)arg1;
+- (void)_setBackgroundViewsAlpha:(double)arg1;
 - (void)_setBottomEffectBackgroundVisible:(bool)arg1;
 - (void)_setClearButtonImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setEnabled:(bool)arg1 animated:(bool)arg2;
@@ -59,7 +67,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)canBecomeFirstResponder;
 - (bool)canResignFirstResponder;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })clearButtonRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

@@ -16,6 +16,7 @@
     unsigned long long  _muid;
     unsigned long long  _preferredMuid;
     int  _referenceFrame;
+    GEOMapItemInitialRequestData * _requestData;
     int  _resultProviderId;
     int  _status;
     PBUnknownFields * _unknownFields;
@@ -27,6 +28,7 @@
 @property (nonatomic) bool hasMuid;
 @property (nonatomic) bool hasPreferredMuid;
 @property (nonatomic) bool hasReferenceFrame;
+@property (nonatomic, readonly) bool hasRequestData;
 @property (nonatomic) bool hasResultProviderId;
 @property (nonatomic) bool hasStatus;
 @property (nonatomic) bool hasUpdateVersion;
@@ -34,6 +36,7 @@
 @property (nonatomic) unsigned long long muid;
 @property (nonatomic) unsigned long long preferredMuid;
 @property (nonatomic) int referenceFrame;
+@property (nonatomic, retain) GEOMapItemInitialRequestData *requestData;
 @property (nonatomic) int resultProviderId;
 @property (nonatomic) int status;
 @property (getter=isSupportedVenue, nonatomic, readonly) bool supportedVenue;
@@ -55,9 +58,11 @@
 - (void)addComponent:(id)arg1;
 - (id)bestName;
 - (id)businessURL;
+- (id)cacheKey;
 - (void)clearComponents;
 - (id)compactDebugDescription;
 - (id)componentAtIndex:(unsigned long long)arg1;
+- (id)componentOfType:(int)arg1 options:(unsigned long long)arg2;
 - (id)components;
 - (unsigned long long)componentsCount;
 - (void)copyTo:(id)arg1;
@@ -66,6 +71,12 @@
 - (id)copyWithoutETAComponents;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (void)enumerateComponentOfType:(int)arg1 enumerationOptions:(unsigned long long)arg2 usingBlock:(id /* block */)arg3;
+- (void)enumerateComponentValuesOfType:(int)arg1 enumerationOptions:(unsigned long long)arg2 usingBlock:(id /* block */)arg3;
+- (void)enumerateComponentsWithOptions:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
+- (void)enumerateValidComponentValuesOfType:(int)arg1 usingBlock:(id /* block */)arg2;
+- (void)enumerateValidComponentWithValuesOfType:(int)arg1 usingBlock:(id /* block */)arg2;
+- (void)enumerateValidComponentsWithValuesUsingBlock:(id /* block */)arg1;
 - (id)geoMapItem;
 - (id)geoMapItemWithDetourInfo:(id)arg1;
 - (bool)hasExpiredComponentsAsOf:(double)arg1;
@@ -73,6 +84,7 @@
 - (bool)hasMuid;
 - (bool)hasPreferredMuid;
 - (bool)hasReferenceFrame;
+- (bool)hasRequestData;
 - (bool)hasResultProviderId;
 - (bool)hasStatus;
 - (bool)hasUpdateVersion;
@@ -89,10 +101,12 @@
 - (unsigned long long)muid;
 - (bool)phoneNumberOptsOutOfAds:(id)arg1;
 - (id)phoneNumbers;
+- (int)placeDisplayType;
 - (unsigned long long)preferredMuid;
 - (bool)readFrom:(id)arg1;
 - (int)referenceFrame;
 - (id)referenceFrameAsString:(int)arg1;
+- (id)requestData;
 - (int)resultProviderId;
 - (void)setComponents:(id)arg1;
 - (void)setFirstSeenTimestamp:(double)arg1;
@@ -106,6 +120,7 @@
 - (void)setMuid:(unsigned long long)arg1;
 - (void)setPreferredMuid:(unsigned long long)arg1;
 - (void)setReferenceFrame:(int)arg1;
+- (void)setRequestData:(id)arg1;
 - (void)setResultProviderId:(int)arg1;
 - (void)setStatus:(int)arg1;
 - (void)setUpdateVersion:(unsigned long long)arg1;
@@ -113,6 +128,7 @@
 - (int)status;
 - (id)statusAsString:(int)arg1;
 - (bool)statusCodeIsValid;
+- (id)successfulComponentWithValuesOfType:(int)arg1;
 - (id)unknownFields;
 - (unsigned long long)updateVersion;
 - (void)writeTo:(id)arg1;

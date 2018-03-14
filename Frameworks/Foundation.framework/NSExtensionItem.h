@@ -32,6 +32,10 @@
 - (void)setUserInfo:(id)arg1;
 - (id)userInfo;
 
+// Image: /System/Library/Frameworks/ReplayKit.framework/ReplayKit
+
++ (id)itemWithTitle:(id)arg1 attachmentItem:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/AuthKit.framework/AuthKit
 
 + (id)extensionItemWithAppleIDAuthenticationContext:(id)arg1;

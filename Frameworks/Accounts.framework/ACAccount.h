@@ -40,6 +40,15 @@
 }
 
 @property (setter=_aa_setRawPassword:, nonatomic, copy) NSString *_aa_rawPassword;
+@property (nonatomic, readonly) NSNumber *_ss_DSID;
+@property (nonatomic, readonly) NSString *_ss_altDSID;
+@property (nonatomic, readonly) NSString *_ss_hashedDescription;
+@property (nonatomic, readonly) bool _ss_isAppleAuthenticationAccount;
+@property (nonatomic, readonly) bool _ss_isIDMSAccount;
+@property (nonatomic, readonly) bool _ss_isLocalAccount;
+@property (nonatomic, readonly) bool _ss_isiCloudAccount;
+@property (nonatomic, readonly) bool _ss_isiTunesAccount;
+@property (setter=_ss_setSecureToken:, nonatomic, copy) NSString *_ss_secureToken;
 @property (nonatomic, readonly) NSDictionary *aa_accountFirstDisplayAlert;
 @property (nonatomic, readonly) NSDictionary *aa_accountFooterButton;
 @property (nonatomic, readonly) NSString *aa_accountFooterText;
@@ -56,6 +65,7 @@
 @property (nonatomic, readonly) ACAccount *aa_fmipAccount;
 @property (nonatomic, readonly) NSString *aa_fmipToken;
 @property (nonatomic, readonly) NSString *aa_formattedUsername;
+@property (nonatomic, readonly) bool aa_hasOptionalTerms;
 @property (nonatomic, readonly) NSString *aa_hsaToken;
 @property (setter=aa_setCloudDocsMigrationComplete:, nonatomic) bool aa_isCloudDocsMigrationComplete;
 @property (nonatomic, readonly) bool aa_isManagedAppleID;
@@ -89,7 +99,43 @@
 @property (getter=isActive, nonatomic) bool active;
 @property (getter=isAuthenticated, nonatomic) bool authenticated;
 @property (nonatomic, readonly) NSString *authenticationType;
+@property bool calAttachmentDownloadHasTakenPlace;
+@property (readonly) NSArray *calCalDAVChildAccounts;
+@property (retain) NSString *calCollectionSetName;
+@property (readonly) NSURL *calExchangeWebServicesURL;
+@property (readonly) NSURL *calExternalExchangeWebServicesURL;
+@property (copy) NSURL *calExternalURL;
+@property (retain) NSString *calHostname;
+@property (copy) NSString *calIdentityEmailAddress;
+@property (readonly) bool calIsAutoRefreshed;
+@property (readonly) bool calIsCalDAVAccount;
+@property (readonly) bool calIsDirty;
+@property (readonly) bool calIsEnabled;
+@property bool calIsEnabledForCalendar;
+@property bool calIsEnabledForReminders;
+@property (readonly) bool calIsExchangeAccount;
+@property (readonly) bool calIsGenericCalDAVAccount;
+@property (readonly) bool calIsMissingParentAccount;
+@property (readonly) bool calIsRestrictedForCalendar;
+@property bool calLocalDataMigrationHasTakenPlace;
+@property (copy) NSString *calMainPrincipalUID;
+@property (copy) NSNumber *calPort;
+@property (readonly, copy) NSDictionary *calPrincipals;
+@property bool calPushDisabled;
+@property long long calRefreshInterval;
+@property (copy) NSString *calRootFolderID;
+@property bool calServerSyncHasTakenPlace;
+@property (copy) NSURL *calServerURL;
+@property bool calSkipCredentialVerification;
+@property bool calUseExternalURL;
+@property bool calUseKerberos;
+@property bool calUseSSL;
+@property (copy) NSString *calWebServicesRecordGUID;
 @property (nonatomic, readonly) NSArray *childAccounts;
+@property (nonatomic, readonly) NSDictionary *ck_accountProperties;
+@property (nonatomic, readonly) ACAccount *ck_cloudKitAccount;
+@property (nonatomic, readonly) NSDictionary *ck_dataclassProperties;
+@property (nonatomic, readonly) NSString *ck_identifier;
 @property (nonatomic, readonly) NSString *clientToken;
 @property (nonatomic, retain) NSDictionary *communicationServiceRules;
 @property (nonatomic, retain) NSDate *creationDate;
@@ -121,6 +167,7 @@
 @property (nonatomic, retain) NSString *mcConfigurationProfileIdentifier;
 @property (nonatomic, retain) NSString *mcPayloadUUID;
 @property (nonatomic, retain) NSString *mcProfileUUID;
+@property (nonatomic, readonly) NSDictionary *messagePayload;
 @property (nonatomic, readonly) NSURL *objectID;
 @property (nonatomic, retain) ACAccount *parentAccount;
 @property (nonatomic, readonly) NSString *parentAccountIdentifier;
@@ -156,6 +203,7 @@
 - (void)_markPropertyDirty:(id)arg1;
 - (void)_setAccountStore:(id)arg1;
 - (void)_setObjectID:(id)arg1;
+- (void)_unsafe_markPropertyDirty:(id)arg1;
 - (bool)_useParentForCredentials;
 - (id)accountByCleaningThirdPartyTransformations;
 - (id)accountDescription;
@@ -232,6 +280,7 @@
 - (void)setCredential:(id)arg1;
 - (void)setCredentialType:(id)arg1;
 - (void)setDataclassProperties:(id)arg1;
+- (void)setDirty:(bool)arg1 forProperty:(id)arg2;
 - (void)setEnabled:(bool)arg1 forDataclass:(id)arg2;
 - (void)setEnabledDataclasses:(id)arg1;
 - (void)setIdentifier:(id)arg1;
@@ -253,6 +302,10 @@
 - (void)takeValuesFromModifiedAccount:(id)arg1;
 - (id)userFullName;
 - (id)username;
+
+// Image: /System/Library/PrivateFrameworks/AccountsUI.framework/AccountsUI
+
+- (id)displayUsername;
 
 // Image: /System/Library/PrivateFrameworks/AppleAccount.framework/AppleAccount
 
@@ -284,6 +337,7 @@
 - (id)aa_fmipAccount;
 - (id)aa_fmipToken;
 - (id)aa_formattedUsername;
+- (bool)aa_hasOptionalTerms;
 - (id)aa_hsaToken;
 - (id)aa_hsaTokenWithError:(id*)arg1;
 - (bool)aa_isCloudDocsMigrationComplete;
@@ -333,8 +387,15 @@
 - (id)dsid;
 - (id)initWithAppleID:(id)arg1 password:(id)arg2;
 - (int)mobileMeAccountStatus;
+- (id)normalizedDSID;
 - (void)setDSID:(id)arg1;
 - (void)storeOriginalUsername;
+
+// Image: /System/Library/PrivateFrameworks/AppleAccountUI.framework/AppleAccountUI
+
+- (id)aaui_compositeName;
+- (long long)aaui_compositeNameFormat;
+- (bool)aaui_isRestrictedForDataclass:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/AppleIDSSOAuthentication.framework/AppleIDSSOAuthentication
 
@@ -344,6 +405,132 @@
 - (id)aida_tokenForService:(id)arg1;
 - (id)aida_tokenWithExpirationCheck;
 - (id)aida_tokenWithExpiryCheckForService:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
+
+- (id)_accountPropertiesKeys;
+- (id)_calDAVDataclassProperties;
+- (id)_createExchangeWebServicesURLFromURL:(id)arg1;
+- (bool)_dataclassIsEnabled:(id)arg1;
+- (id)_diffAccountPropertiesWithAccount:(id)arg1 firstPropertyOnly:(bool)arg2;
+- (id)_diffPropertiesWithAccount:(id)arg1 firstPropertyOnly:(bool)arg2;
+- (id)_diffWithAccount:(id)arg1 firstPropertyOnly:(bool)arg2;
+- (id)_schemeStringForUseSSL:(bool)arg1;
+- (void)_setCalInternalValue:(id)arg1 forAccountPropertyKey:(id)arg2;
+- (void)_setIsEnabled:(bool)arg1 forDataclass:(id)arg2;
+- (id)_updateURL:(id)arg1 withHost:(id)arg2 port:(id)arg3 useSSL:(id)arg4;
+- (bool)_useSSLForSchemeString:(id)arg1;
+- (void)addPrincipal:(id)arg1 withUID:(id)arg2;
+- (bool)calAttachmentDownloadHasTakenPlace;
+- (id)calCalDAVChildAccounts;
+- (id)calCollectionSetName;
+- (id)calExchangeWebServicesURL;
+- (id)calExternalExchangeWebServicesURL;
+- (id)calExternalURL;
+- (id)calHostname;
+- (id)calIdentityEmailAddress;
+- (bool)calIsAutoRefreshed;
+- (bool)calIsCalDAVAccount;
+- (bool)calIsDirty;
+- (bool)calIsEnabled;
+- (bool)calIsEnabledForCalendar;
+- (bool)calIsEnabledForReminders;
+- (bool)calIsExchangeAccount;
+- (bool)calIsGenericCalDAVAccount;
+- (bool)calIsMissingParentAccount;
+- (bool)calIsRestrictedForCalendar;
+- (bool)calLocalDataMigrationHasTakenPlace;
+- (id)calMainPrincipalUID;
+- (id)calPort;
+- (id)calPrincipalURLForMainPrincipal;
+- (id)calPrincipalURLForPrincipalWithUID:(id)arg1;
+- (id)calPrincipals;
+- (bool)calPushDisabled;
+- (long long)calRefreshInterval;
+- (id)calRootFolderID;
+- (bool)calServerSyncHasTakenPlace;
+- (id)calServerURL;
+- (bool)calSkipCredentialVerification;
+- (bool)calUseExternalURL;
+- (bool)calUseKerberos;
+- (bool)calUseSSL;
+- (id)calWebServicesRecordGUID;
+- (void)createDictionaryForPrincipalWithUID:(id)arg1;
+- (id)diffWithAccount:(id)arg1;
+- (id)firstDifferentPropertyWithAccount:(id)arg1;
+- (void)removeAccountPropertyForKey:(id)arg1;
+- (bool)removePrincipalWithUID:(id)arg1;
+- (void)setCalAttachmentDownloadHasTakenPlace:(bool)arg1;
+- (void)setCalCollectionSetName:(id)arg1;
+- (void)setCalExternalURL:(id)arg1;
+- (void)setCalHostname:(id)arg1;
+- (void)setCalIdentityEmailAddress:(id)arg1;
+- (void)setCalIsEnabledForCalendar:(bool)arg1;
+- (void)setCalIsEnabledForReminders:(bool)arg1;
+- (void)setCalLocalDataMigrationHasTakenPlace:(bool)arg1;
+- (void)setCalMainPrincipalUID:(id)arg1;
+- (void)setCalPort:(id)arg1;
+- (void)setCalPrincipals:(id)arg1;
+- (void)setCalPushDisabled:(bool)arg1;
+- (void)setCalRefreshInterval:(long long)arg1;
+- (void)setCalRootFolderID:(id)arg1;
+- (void)setCalServerSyncHasTakenPlace:(bool)arg1;
+- (void)setCalServerURL:(id)arg1;
+- (void)setCalSkipCredentialVerification:(bool)arg1;
+- (void)setCalUseExternalURL:(bool)arg1;
+- (void)setCalUseKerberos:(bool)arg1;
+- (void)setCalUseSSL:(bool)arg1;
+- (void)setCalWebServicesRecordGUID:(id)arg1;
+- (bool)setValue:(id)arg1 forKey:(id)arg2 forPrincipalWithUID:(id)arg3;
+- (id)valueForAccountPropertyKey:(id)arg1;
+- (id)valueForKey:(id)arg1 forPrincipalWithUID:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
+
+- (id)br_displayName;
+- (id)br_dsid;
+- (id)br_firstName;
+- (bool)br_isCloudDocsMigrated;
+- (bool)br_isCloudDocsMigrationComplete;
+- (bool)br_isEnabledForCloudDocs;
+- (bool)br_isEnabledForDesktopSync;
+- (bool)br_isEnabledForUbiquity;
+- (bool)br_isEnabledForiCloudDesktop;
+- (bool)br_isManagedAppleID;
+- (bool)br_isPrimaryAccount;
+- (bool)br_isPrimaryiCloudAccount;
+- (bool)br_isiCloudAccount;
+- (id)br_lastName;
+- (void)br_setCloudDocsMigrated:(bool)arg1;
+- (void)br_setCloudDocsMigrationComplete:(bool)arg1;
+- (void)br_setEnabledForiCloudDesktop:(bool)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (id)ck_accountProperties;
+- (id)ck_cloudKitAccount;
+- (id)ck_dataclassProperties;
+- (id)ck_identifier;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+
+- (id)_gkCredentialForEnvironment:(long long)arg1;
+- (id)_gkCredentials;
+- (id)_gkCredentialsForEnvironment:(long long)arg1;
+- (bool)_gkIsPrimaryForEnvironment:(long long)arg1;
+- (id)_gkModifiedDateForProperty:(id)arg1 environment:(long long)arg2;
+- (id)_gkPerEnvironmentTokens;
+- (id)_gkPlayerInternal;
+- (id)_gkPropertyForKey:(id)arg1 environment:(long long)arg2;
+- (void)_gkSetPlayerInternal:(id)arg1;
+- (void)_gkSetProperty:(id)arg1 forKey:(id)arg2 environment:(long long)arg3;
+- (void)_gkSetToken:(id)arg1 forEnvironment:(long long)arg2;
+- (id)_gkTokenForEnvironment:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
+
+- (id)description;
+- (id)messagePayload;
 
 // Image: /System/Library/PrivateFrameworks/ManagedConfiguration.framework/ManagedConfiguration
 
@@ -360,6 +547,36 @@
 - (void)setMcConfigurationProfileIdentifier:(id)arg1;
 - (void)setMcPayloadUUID:(id)arg1;
 - (void)setMcProfileUUID:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MobileSync.framework/MobileSync
+
+- (id)_usernameFromProperties:(id)arg1;
+- (void)applySyncProperties:(id)arg1;
+- (bool)isMobileMeAccount;
+- (void)setPasswordFromSync:(id)arg1;
+- (id)syncIdentityString;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (bool)ic_hasICloudEmailAddress;
+- (bool)ic_isManagedAppleID;
+- (bool)ic_isNotesMigrated;
+- (bool)ic_isPrimaryAppleAccount;
+- (bool)ic_supportsHTMLNotes;
+
+// Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
+
+- (id)_ss_DSID;
+- (id)_ss_altDSID;
+- (id)_ss_hashedDescription;
+- (bool)_ss_isAppleAuthenticationAccount;
+- (bool)_ss_isDuplicate:(id)arg1;
+- (bool)_ss_isIDMSAccount;
+- (bool)_ss_isLocalAccount;
+- (bool)_ss_isiCloudAccount;
+- (bool)_ss_isiTunesAccount;
+- (id)_ss_secureToken;
+- (void)_ss_setSecureToken:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/iTunesCloud.framework/iTunesCloud
 

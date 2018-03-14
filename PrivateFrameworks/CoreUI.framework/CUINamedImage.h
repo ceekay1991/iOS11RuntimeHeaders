@@ -13,7 +13,8 @@
         unsigned int isAlphaCropped : 1; 
         unsigned int isFlippable : 1; 
         unsigned int isTintable : 1; 
-        unsigned int _reserved : 17; 
+        unsigned int preservedVectorRepresentation : 1; 
+        unsigned int _reserved : 16; 
     }  _imageProperties;
     double  _scale;
 }
@@ -35,6 +36,7 @@
 @property (nonatomic, readonly) bool isVectorBased;
 @property (nonatomic, readonly) long long layoutDirection;
 @property (nonatomic, readonly) double opacity;
+@property (nonatomic, readonly) bool preservedVectorRepresentation;
 @property (nonatomic, readonly) long long resizingMode;
 @property (nonatomic, readonly) double scale;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } size;
@@ -69,6 +71,7 @@
 - (double)opacity;
 - (struct CGSize { double x1; double x2; })originalUncroppedSize;
 - (double)positionOfSliceBoundary:(unsigned int)arg1;
+- (bool)preservedVectorRepresentation;
 - (long long)resizingMode;
 - (long long)resizingModeWithSubtype:(long long)arg1;
 - (double)scale;

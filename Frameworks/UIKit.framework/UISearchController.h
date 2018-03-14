@@ -17,7 +17,8 @@
     _UISearchControllerDidScrollDelegate * _didScrollDelegate;
     UITapGestureRecognizer * _doneButtonGestureRecognizer;
     bool  _hidesNavigationBarDuringPresentation;
-    _UINavigationControllerPalette * _managedPalette;
+    long long  _lastKnownInterfaceOrientation;
+    _UINavigationControllerManagedSearchPalette * _managedPalette;
     bool  _obscuresBackgroundDuringPresentation;
     UIView * _resultsControllerViewContainer;
     UISearchBar * _searchBar;
@@ -29,7 +30,7 @@
 }
 
 @property (nonatomic, readonly) int _barPresentationStyle;
-@property (setter=_setManagedPalette:, nonatomic, retain) _UINavigationControllerPalette *_managedPalette;
+@property (nonatomic, readonly, retain) _UINavigationControllerManagedSearchPalette *_managedPalette;
 @property (nonatomic) long long _previousSearchBarPosition;
 @property (nonatomic) double _resultsContentScrollViewPresentationOffset;
 @property (nonatomic, retain) UIView *_resultsControllerViewContainer;
@@ -55,12 +56,14 @@
 
 - (void).cxx_destruct;
 - (void)_adjustSearchBarSizeForOrientation:(long long)arg1;
+- (void)_adjustSearchBarSizeForOrientation:(long long)arg1 oldPaletteFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (bool)_allowFormSheetStylePresentation;
 - (id)_animatorForBarPresentationStyle:(int)arg1 dismissing:(bool)arg2;
 - (int)_barPresentationStyle;
 - (void)_beginWatchingPresentingController;
 - (void)_commonInit;
 - (void)_connectSearchBar:(id)arg1;
+- (bool)_containedInNavigationPaletteAndNotHidden;
 - (id)_createAnimationCoordinator;
 - (void)_createSystemInputViewControllerIfNeededForTraitEnvironment:(id)arg1;
 - (id)_defaultAnimationController;
@@ -96,10 +99,11 @@
 - (void)_searchBarTextDidBeginEditing:(id)arg1;
 - (id)_searchPresentationController;
 - (bool)_searchbarWasTableHeaderView;
-- (void)_setManagedPalette:(id)arg1;
 - (void)_setShowResultsForEmptySearch:(bool)arg1;
 - (bool)_showResultsForEmptySearch;
 - (void)_sizeSearchViewToPresentingViewController:(id)arg1;
+- (void)_startManagingPalette:(id)arg1;
+- (void)_stopManagingPalette;
 - (id)_systemInputViewController;
 - (void)_uninstallBackGestureRecognizer;
 - (void)_uninstallDoneGestureRecognizer;
@@ -148,6 +152,7 @@
 - (double)transitionDuration:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(bool)arg2;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 

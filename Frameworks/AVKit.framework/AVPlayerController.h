@@ -113,6 +113,7 @@
 @property (getter=isCompatibleWithAirPlayVideo, nonatomic) bool compatibleWithAirPlayVideo;
 @property (getter=isComposable, nonatomic) bool composable;
 @property (nonatomic, retain) NSArray *contentChapters;
+@property (nonatomic, readonly) NSDate *currentDate;
 @property (getter=isDeviceBatteryChargingOrFull, nonatomic) bool deviceBatteryChargingOrFull;
 @property (getter=isDisablingAutomaticTermination, nonatomic) bool disablingAutomaticTermination;
 @property (nonatomic, readonly) NSError *error;
@@ -128,7 +129,7 @@
 @property (nonatomic) double rateBeforeScrubBegan;
 @property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } reversePlaybackEndTime;
 @property (getter=isScrubbing, nonatomic) bool scrubbing;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *seekTimer;
+@property (nonatomic, readonly) NSObject<OS_dispatch_source> *seekTimer;
 @property (nonatomic) double seekToTime;
 @property struct { long long x1; int x2; unsigned int x3; long long x4; } seekToTimeInternal;
 @property (getter=isSeeking, nonatomic) bool seeking;
@@ -185,11 +186,13 @@
 + (id)keyPathsForValuesAffectingSegmentDuration;
 + (id)keyPathsForValuesAffectingShouldPreventIdleDisplaySleep;
 + (id)keyPathsForValuesAffectingStatus;
++ (id)keyPathsForValuesAffectingTimeControlStatus;
 
 - (void).cxx_destruct;
 - (void)_cancelPendingSeeksIfNeeded;
 - (void)_disableLegibleMediaSelectionOptions:(id)arg1;
 - (void)_enableAutoMediaSelection:(id)arg1;
+- (void)_handleSeekTimerEvent;
 - (bool)_isMarkedNotSerializablePlayerItem:(id)arg1;
 - (bool)_isRestrictedFromSavingPlayerItem:(id)arg1;
 - (id)_optionsForGroup:(id)arg1;
@@ -232,6 +235,7 @@
 - (double)contentDuration;
 - (double)contentDurationWithinEndTimes;
 - (id)currentAudioMediaSelectionOption;
+- (id)currentDate;
 - (id)currentLegibleMediaSelectionOption;
 - (double)currentTime;
 - (double)currentTimeWithinEndTimes;
@@ -377,6 +381,7 @@
 - (void)stopAllowingIdleSleepPrevention;
 - (void)stopUsingNetworkResourcesForLiveStreamingWhilePaused;
 - (void)throttledSeekToTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 toleranceBefore:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 toleranceAfter:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3;
+- (long long)timeControlStatus;
 - (id)timing;
 - (void)toggleCaptions;
 - (void)toggleMuted:(id)arg1;

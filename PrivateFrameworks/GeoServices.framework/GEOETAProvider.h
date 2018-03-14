@@ -6,6 +6,12 @@
     GEOApplicationAuditToken * _auditToken;
     bool  _cancelled;
     GEOETATrafficUpdateRequest * _currentRequest;
+    struct GEOOnce_s { 
+        struct os_unfair_lock_s { 
+            unsigned int _os_unfair_lock_opaque; 
+        } lock; 
+        bool didRun; 
+    }  _didStart;
     id /* block */  _errorHandler;
     id /* block */  _finishedHandler;
     GEOProtobufSession * _protobufSession;
@@ -13,7 +19,7 @@
     id /* block */  _willSendRequestHandler;
 }
 
-@property (nonatomic, retain) GEOETATrafficUpdateRequest *currentRequest;
+@property (retain) GEOETATrafficUpdateRequest *currentRequest;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) id /* block */ errorHandler;
@@ -25,7 +31,7 @@
 @property (nonatomic, copy) id /* block */ willSendRequestHandler;
 
 - (void).cxx_destruct;
-- (id)cancelError;
+- (void)_startRequest:(id)arg1 connectionProperties:(id)arg2 willSendRequest:(id /* block */)arg3 finished:(id /* block */)arg4 error:(id /* block */)arg5;
 - (void)cancelRequest;
 - (id)currentRequest;
 - (void)didCompleteTask;
@@ -35,6 +41,7 @@
 - (id)initWithAuditToken:(id)arg1;
 - (id)protobufSession;
 - (void)protobufSession:(id)arg1 didCompleteTask:(id)arg2;
+- (void)protobufSession:(id)arg1 willSendRequestForTask:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setCurrentRequest:(id)arg1;
 - (void)setErrorHandler:(id /* block */)arg1;
 - (void)setFinishedHandler:(id /* block */)arg1;

@@ -17,7 +17,7 @@
 - (long long)count;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateValuesUsingBlock:(id /* block */)arg1;
-- (id)firstValueAfterTimestamp:(unsigned long long)arg1;
+- (id)firstValueAfterOrEqualToTimestamp:(unsigned long long)arg1;
 - (id)firstValueBeforeTimestamp:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

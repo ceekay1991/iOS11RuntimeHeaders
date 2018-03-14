@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSMutableOrderedSet : NSOrderedSet
+@interface NSMutableOrderedSet : NSOrderedSet <FCOrderedMutableCollectionAdditions>
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
 
@@ -81,5 +81,19 @@
 
 - (void)filterUsingPredicate:(id)arg1;
 - (void)sortUsingDescriptors:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (void)fc_insertObjects:(id)arg1 atIndex:(unsigned long long)arg2;
+- (id)fc_mergeSortedOrderedCollection:(id)arg1 usingComparator:(id /* block */)arg2;
+- (id)fc_removeAndReturnObjectsPassingTest:(id /* block */)arg1;
+- (void)fc_transformWithBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (void)ml_insertObjects:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)pl_addObjectsFromArray:(id)arg1;
+- (void)pl_insertObjects:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)pl_removeObjectsInArray:(id)arg1;
 
 @end

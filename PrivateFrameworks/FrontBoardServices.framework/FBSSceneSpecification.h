@@ -5,6 +5,7 @@
 @interface FBSSceneSpecification : NSObject <BSDescriptionProviding, NSCopying>
 
 @property (nonatomic, readonly) Class clientAgentClass;
+@property (nonatomic, readonly, copy) FBUISceneClientIdentity *clientIdentity;
 @property (nonatomic, readonly) Class clientSettingsClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -13,6 +14,8 @@
 @property (nonatomic, readonly) Class settingsClass;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) Class transitionContextClass;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
 
 + (id)specification;
 
@@ -30,5 +33,10 @@
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (Class)transitionContextClass;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoardUIServices.framework/FrontBoardUIServices
+
+- (id)clientIdentity;
+- (id)initWithClientIdentity:(id)arg1;
 
 @end

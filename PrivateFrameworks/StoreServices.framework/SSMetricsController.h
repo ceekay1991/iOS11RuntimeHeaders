@@ -35,6 +35,7 @@
 - (bool)isFlushTimerEnabled;
 - (id)locationWithPosition:(long long)arg1 type:(id)arg2 fieldData:(id)arg3;
 - (id)pingURLs;
+- (void)recordAnalyticsForMetricsDialogEvent:(id)arg1 withTopic:(id)arg2;
 - (id)serialQueue;
 - (void)setFlushTimerEnabled:(bool)arg1;
 - (void)setGlobalConfiguration:(id)arg1;

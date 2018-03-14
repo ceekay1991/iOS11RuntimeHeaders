@@ -12,6 +12,8 @@
 @property (nonatomic, readonly) NSArray *standardLabels;
 @property (nonatomic, readonly) Class valueClass;
 
+// Image: /System/Library/Frameworks/Contacts.framework/Contacts
+
 - (struct __CFString { }*)ABMultiValueLabelFromCNLabeledValueLabel:(id)arg1;
 - (void*)ABMultiValueValueFromCNLabeledValueValue:(id)arg1;
 - (void*)ABMultiValueValueFromCNLabeledValueValue:(id)arg1 gettersByABKeys:(id)arg2;
@@ -40,5 +42,15 @@
 - (id)stringForIndexingForContact:(id)arg1;
 - (Class)valueClass;
 - (id)valueWithResetIdentifiers:(id)arg1;
+
+// Image: /System/Library/Frameworks/AddressBook.framework/AddressBook
+
+- (id /* block */)ABSMultiValueLabeledValueFromCNLabeledValueTransform;
+- (const void*)ABSValueFromCNValue:(id)arg1;
+- (id /* block */)CNLabeledValueFromABSMultiValueTranform;
+- (id)CNValueFromABSValue:(void*)arg1;
+- (id /* block */)dictionaryBasedMultiValueTransformWithLabelMapping:(id)arg1 inputKeys:(id)arg2 destinationClass:(Class)arg3 valueMapping:(id)arg4;
+- (id /* block */)multiValueTransformWithLabelMapping:(id)arg1 valueTransform:(id /* block */)arg2;
+- (id /* block */)passThroughMultivalueTransformWithLabelMapping:(id)arg1;
 
 @end

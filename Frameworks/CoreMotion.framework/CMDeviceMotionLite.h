@@ -3,42 +3,42 @@
  */
 
 @interface CMDeviceMotionLite : NSObject <NSCopying, NSSecureCoding> {
-    CMAttitude * fAttitude;
-    float  fCompassTemperature;
+    CMAttitude * _attitude;
+    float  _compassTemperature;
     struct { 
         double x; 
         double y; 
         double z; 
-    }  fGravity;
-    float  fGyroTemperature;
-    unsigned long long  fMachTimestamp;
-    NSString * fPhysicalDeviceUniqueID;
+    }  _gravity;
+    float  _gyroTemperature;
+    unsigned long long  _machTimestamp;
+    NSString * _physicalDeviceUniqueID;
     struct { 
         double x; 
         double y; 
         double z; 
-    }  fRawAcceleration;
+    }  _rawAcceleration;
     struct { 
         double x; 
         double y; 
         double z; 
-    }  fRawMagneticField;
+    }  _rawMagneticField;
     struct { 
         double x; 
         double y; 
         double z; 
-    }  fRawRotationRate;
+    }  _rawRotationRate;
     struct { 
         double x; 
         double y; 
         double z; 
-    }  fRotationRate;
+    }  _rotationRate;
     struct { 
         double x; 
         double y; 
         double z; 
-    }  fUserAcceleration;
-    bool  fUsingCompass;
+    }  _userAcceleration;
+    bool  _usingCompass;
 }
 
 @property (nonatomic, readonly) CMAttitude *attitude;
@@ -46,7 +46,7 @@
 @property (nonatomic, readonly) struct { double x1; double x2; double x3; } gravity;
 @property (nonatomic, readonly) float gyroTemperature;
 @property (nonatomic, readonly) unsigned long long machTimestamp;
-@property (nonatomic, readonly, retain) NSString *physicalDeviceUniqueID;
+@property (nonatomic, readonly, copy) NSString *physicalDeviceUniqueID;
 @property (nonatomic, readonly) struct { double x1; double x2; double x3; } rawAcceleration;
 @property (nonatomic, readonly) struct { double x1; double x2; double x3; } rawMagneticField;
 @property (nonatomic, readonly) struct { double x1; double x2; double x3; } rawRotationRate;

@@ -11,6 +11,7 @@
 }
 
 + (void)initialize;
++ (bool)supportsSecureCoding;
 
 - (id)_relatedNodes;
 - (void)_setMap:(id)arg1;

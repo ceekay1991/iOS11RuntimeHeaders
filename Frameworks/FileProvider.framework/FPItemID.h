@@ -24,6 +24,7 @@
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProviderIdentifier:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3;
+- (id)initWithSearchableItem:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToItemID:(id)arg1;
 - (id)providerIdentifier;

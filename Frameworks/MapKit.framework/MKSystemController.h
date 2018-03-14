@@ -12,6 +12,7 @@
 
 - (void).cxx_destruct;
 - (id)_defaultOpenURLOptions;
+- (bool)_isRunningInLockScreen;
 - (bool)_openURLsOnBackgroundThread;
 - (bool)_shouldUseLaunchServices;
 - (bool)isDevicePluggedIn;

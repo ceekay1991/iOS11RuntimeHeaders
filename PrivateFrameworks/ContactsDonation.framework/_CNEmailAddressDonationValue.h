@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (void)acceptDonationValueVisitor:(id)arg1;
+- (id)copyWithNewExpirationDate:(id)arg1;
 - (id)description;
 - (id)emailAddress;
 - (void)encodeWithCoder:(id)arg1;

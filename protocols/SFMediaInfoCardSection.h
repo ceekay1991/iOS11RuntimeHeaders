@@ -33,11 +33,13 @@
 - (void)setPunchoutPickerDismissText:(NSString *)arg1;
 - (void)setPunchoutPickerTitle:(NSString *)arg1;
 - (void)setSeparatorStyle:(int)arg1;
+- (void)setSpecialOfferButtonLabel:(SFRichText *)arg1;
 - (void)setType:(NSString *)arg1;
 - (void)setWatchListButtonLabel:(NSString *)arg1;
 - (void)setWatchListConfirmationText:(NSString *)arg1;
 - (void)setWatchListContinuationText:(NSString *)arg1;
 - (void)setWatchListIdentifier:(NSString *)arg1;
+- (SFRichText *)specialOfferButtonLabel;
 - (NSString *)type;
 - (NSString *)watchListButtonLabel;
 - (NSString *)watchListConfirmationText;

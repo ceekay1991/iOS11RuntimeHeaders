@@ -71,6 +71,7 @@
 @property (nonatomic, readonly) long long _transitionStyle;
 @property (setter=_setViewControllers:, nonatomic, retain) NSArray *_viewControllers;
 @property (setter=_setViewControllersStashedForRotation:, nonatomic, retain) NSArray *_viewControllersStashedForRotation;
+@property (nonatomic) bool accessibilityScreenChangeOnScroll;
 @property (nonatomic) <UIPageViewControllerDataSource> *dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <UIPageViewControllerDelegate> *delegate;
@@ -219,5 +220,10 @@
 // Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
 
 - (id)debugHierarchyPropertyDescriptions;
+
+// Image: /System/Library/PrivateFrameworks/UIAccessibility.framework/UIAccessibility
+
+- (bool)accessibilityScreenChangeOnScroll;
+- (void)setAccessibilityScreenChangeOnScroll:(bool)arg1;
 
 @end

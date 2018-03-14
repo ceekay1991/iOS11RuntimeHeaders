@@ -43,6 +43,10 @@
 
 - (id)minimalFormInContext:(id)arg1;
 
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
+- (id)hk_filterRepresentationForDataTypes:(id)arg1 filterClasses:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/AddressBookLegacy.framework/AddressBookLegacy
 
 - (void)ab_addCallbackContextToArray:(id)arg1;
@@ -51,5 +55,24 @@
 - (void)ab_bindWhereClauseComponentOfStatement:(struct CPSqliteStatement { struct CPSqliteConnection {} *x1; struct sqlite3_stmt {} *x2; double x3; bool x4; }*)arg1 withBindingOffset:(int*)arg2 predicateIdentifier:(int)arg3;
 - (bool)ab_hasCallback;
 - (id)ab_newQueryWithSortOrder:(unsigned int)arg1 ranked:(bool)arg2 addressBook:(void*)arg3 propertyIndices:(const struct __CFDictionary {}**)arg4;
+
+// Image: /System/Library/PrivateFrameworks/CloudDocs.framework/CloudDocs
+
+- (id)_br_watchedParentURLWithORPredicate1:(id)arg1 predicate2:(id)arg2;
+- (id)_br_watchedURLWithORPredicate1:(id)arg1 predicate2:(id)arg2;
+- (id)br_urlWithWatchedChildren;
+- (id)br_watchedURL;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (id)CKDPQueryFiltersWithTranslator:(id)arg1 error:(id*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
+
+- (id)_sqlPredicateForSelect;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (id)FCCKPQueryFiltersWithTranslator:(id)arg1 error:(id*)arg2;
 
 @end

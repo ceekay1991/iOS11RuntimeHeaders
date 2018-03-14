@@ -29,9 +29,6 @@
 @property (nonatomic) int transportType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
-+ (id)etaForPlaceData:(id)arg1 transportType:(int)arg2;
-+ (int)recommendedTransportTypeForPlaceData:(id)arg1;
-
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
 - (void)copyTo:(id)arg1;

@@ -10,6 +10,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_associatedScalingLabel;
 - (id)_disabledFontColor;
 - (id)_parentSegment;
@@ -17,7 +18,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)associatedLabel;
 - (id)init;
 - (void)setAssociatedLabel:(id)arg1;

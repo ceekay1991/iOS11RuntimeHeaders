@@ -3,6 +3,8 @@
  */
 
 @interface MNETAManager : NSObject <GEOETAUpdaterDelegate> {
+    GEOApplicationAuditToken * _auditToken;
+    GEOETATrafficUpdateResponse * _currentResponse;
     double  _debugInitialRequestDelay;
     <MNETAManagerDelegate> * _delegate;
     NSMapTable * _etaRoutesTable;
@@ -11,6 +13,7 @@
     NSArray * _routes;
 }
 
+@property (nonatomic, retain) GEOApplicationAuditToken *auditToken;
 @property (nonatomic) double debugBackgroundTimeWindow;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double debugInitialRequestDelay;
@@ -19,11 +22,13 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long maxAlternateRoutesCount;
 @property (nonatomic) double requestInterval;
+@property (nonatomic, retain) NSString *requestingAppIdentifier;
 @property (nonatomic, retain) NSArray *routes;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (bool)_updateRouteWithETATrafficUpdateResponse:(id)arg1 currentStep:(id)arg2 percentOfCurrentStepRemaining:(double)arg3;
+- (id)auditToken;
 - (void)dealloc;
 - (double)debugBackgroundTimeWindow;
 - (double)debugInitialRequestDelay;
@@ -39,13 +44,16 @@
 - (id)initWithDestination:(id)arg1 routeAttributes:(id)arg2 tracePlayer:(id)arg3;
 - (unsigned long long)maxAlternateRoutesCount;
 - (double)requestInterval;
+- (id)requestingAppIdentifier;
 - (void)reset;
 - (id)routes;
+- (void)setAuditToken:(id)arg1;
 - (void)setDebugBackgroundTimeWindow:(double)arg1;
 - (void)setDebugInitialRequestDelay:(double)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setMaxAlternateRoutesCount:(unsigned long long)arg1;
 - (void)setRequestInterval:(double)arg1;
+- (void)setRequestingAppIdentifier:(id)arg1;
 - (void)setRoutes:(id)arg1;
 - (void)startUpdateRequests;
 - (void)stopUpdateRequests;

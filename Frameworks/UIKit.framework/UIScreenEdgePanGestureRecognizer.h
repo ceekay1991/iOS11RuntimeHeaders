@@ -2,8 +2,9 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIScreenEdgePanGestureRecognizer : UIPanGestureRecognizer <_UIScreenEdgePanRecognizerDelegate> {
-    _UIScreenEdgePanRecognizer * _recognizer;
+@interface UIScreenEdgePanGestureRecognizer : UIPanGestureRecognizer <_UIScreenEdgePanRecognizingDelegate> {
+    bool  _ignoreSubsequentTouches;
+    <_UIScreenEdgePanRecognizing> * _recognizer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -18,6 +19,7 @@
 - (void).cxx_destruct;
 - (double)_edgeRegionSize;
 - (struct CGPoint { double x1; double x2; })_locationForTouch:(id)arg1;
+- (id)_recognizer;
 - (void)_setEdgeRegionSize:(double)arg1;
 - (void)_setHysteresis:(double)arg1;
 - (bool)_shouldTryToBeginWithEvent:(id)arg1;
@@ -26,14 +28,18 @@
 - (void)dealloc;
 - (unsigned long long)edges;
 - (void)encodeWithCoder:(id)arg1;
+- (bool)ignoreSubsequentTouches;
+- (void)incorporateTouches:(id)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2 type:(long long)arg3;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2 type:(long long)arg3 maxTouches:(unsigned long long)arg4;
 - (bool)isRequiringLongPress;
 - (bool)recognizeAlongEdge;
 - (bool)recognizeImmediatelyFromEdgeLocked;
+- (id)recognizerTouchesToIgnoreForEvent:(id)arg1;
 - (void)reset;
-- (void)screenEdgePanRecognizerStateDidChange:(id)arg1;
+- (void)screenEdgePanRecognizingStateDidChange:(id)arg1;
 - (void)setEdges:(unsigned long long)arg1;
 - (void)setRecognizeAlongEdge:(bool)arg1;
 - (void)setRecognizeImmediatelyFromEdgeLocked:(bool)arg1;

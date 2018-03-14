@@ -56,7 +56,6 @@
 - (id)init;
 - (bool)isOnlyDriving;
 - (bool)isUsingCurrentLocationForOrigin;
-- (void)loadETAsFromMapItemForTransportType:(unsigned long long)arg1;
 - (id)mapItem;
 - (struct CLLocationCoordinate2D { double x1; double x2; })originCoordinate;
 - (id)originMapItem;

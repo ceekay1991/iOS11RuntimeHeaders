@@ -20,7 +20,6 @@
     NSMutableDictionary * dateCache;
     bool  delayedUpdatePending;
     int  focalAppToken;
-    NSDate * lastUpdate;
     int  localFocalInfoToken;
     int  resourceCallToken;
     NSMutableArray * resourceCallbackList;
@@ -41,6 +40,7 @@
 
 - (void).cxx_destruct;
 - (id)_initWithSession:(id)arg1 name:(id)arg2 type:(long long)arg3 integerId:(unsigned long long)arg4 weak:(bool)arg5 error:(id*)arg6;
+- (bool)accumulateCostDictionary:(id)arg1 meteringToken:(unsigned long long)arg2 date:(id)arg3;
 - (bool)activityStartedWithValue:(id)arg1 cost:(long long)arg2 error:(id*)arg3;
 - (bool)activityStartedWithValue:(id)arg1 cost:(long long)arg2 onDate:(id)arg3 error:(id*)arg4;
 - (bool)activityStoppedWithValue:(id)arg1 cost:(long long)arg2 error:(id*)arg3;
@@ -90,6 +90,7 @@
 - (id)repeatedStatistic:(long long)arg1 forHistoryWindow:(id)arg2 deviceDescription:(id)arg3 error:(id*)arg4;
 - (id)repeatedStatistic:(long long)arg1 forHistoryWindow:(id)arg2 error:(id*)arg3;
 - (id)repeatedStatisticXPCObjectToArray:(id)arg1 error:(id*)arg2;
+- (void)reportAccumulatedCost;
 - (bool)requestPeerForecastFromDevice:(id)arg1 withValue:(id)arg2 forHistoryWindow:(id)arg3 forecastType:(long long)arg4 error:(id*)arg5 handler:(id /* block */)arg6;
 - (bool)requestStatisticFromDevice:(id)arg1 statistic:(long long)arg2 forHistoryWindow:(id)arg3 error:(id*)arg4 handler:(id /* block */)arg5;
 - (bool)requestTemporalForecastFromDevice:(id)arg1 withValue:(id)arg2 forHistoryWindow:(id)arg3 forecastType:(long long)arg4 error:(id*)arg5 handler:(id /* block */)arg6;
@@ -114,7 +115,5 @@
 - (id)temporalForecastOfValue:(id)arg1 forHistoryWindow:(id)arg2 forecastType:(long long)arg3 maximumElements:(unsigned long long)arg4 error:(id*)arg5;
 - (id)temporalForecastXPCObjectToArray:(id)arg1 attributeValue:(id)arg2 forecastType:(long long)arg3 error:(id*)arg4;
 - (long long)type;
-- (id)updateCostOnDownload:(id)arg1 meteringToken:(unsigned long long)arg2 date:(id)arg3;
-- (void)updateDuetWithCost;
 
 @end

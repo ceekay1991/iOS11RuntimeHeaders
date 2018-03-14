@@ -19,7 +19,7 @@
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(id /* block */)arg2;
 - (bool)_requiresDatabaseMappingEntitlement;
 - (bool)_shouldCacheResolvedResults;
-- (int)calculatePriorityForApp:(id)arg1 cloudOwner:(id)arg2 preferredHandler:(id)arg3;
+- (int)calculatePriorityForApp:(id)arg1 cloudOwner:(id)arg2 preferredHandler:(id)arg3 typeIsWildcard:(bool)arg4;
 - (void)dealloc;
 - (id)documentProxy;
 - (void)encodeWithCoder:(id)arg1;

@@ -43,7 +43,6 @@
 - (bool)hasVelocity;
 - (double)hysteresisTimeInterval;
 - (id)init;
-- (double)magnitude;
 - (struct CGVector { double x1; double x2; })memoizedVelocity;
 - (double)minimumRequiredMovement;
 - (struct CGVector { double x1; double x2; })offset;

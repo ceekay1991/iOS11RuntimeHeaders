@@ -4,6 +4,7 @@
 
 @interface CLLocationManagerStateTracker : CLStateTracker {
     void * _identifier;
+    bool  _inTransaction;
     struct _CLLocationManagerStateTrackerState { 
         double distanceFilter; 
         double desiredAccuracy; 
@@ -23,6 +24,7 @@
         int pausesLocationUpdatesAutomatically; 
         bool paused; 
         bool allowsBackgroundLocationUpdates; 
+        bool showsBackgroundLocationIndicator; 
         bool allowsMapCorrection; 
         bool batchingLocation; 
         bool updatingVehicleSpeed; 
@@ -51,6 +53,7 @@
 @property (nonatomic) bool previousAuthorizationStatusValid;
 @property (nonatomic) bool requestingLocation;
 @property (nonatomic) bool requestingRanging;
+@property (nonatomic) bool showsBackgroundLocationIndicator;
 @property (nonatomic) bool updatingHeading;
 @property (nonatomic) bool updatingLocation;
 @property (nonatomic) bool updatingRanging;
@@ -75,7 +78,9 @@
 - (double)headingFilter;
 - (void*)identifier;
 - (id)initInSilo:(id)arg1 withIdentifier:(void*)arg2;
-- (id)initWithQueue:(id)arg1 withIdentifier:(void*)arg2;
+- (id)initInSilo:(id)arg1 withIdentifier:(void*)arg2 state:(id /* block */)arg3;
+- (id)initWithQueue:(id)arg1 identifier:(void*)arg2;
+- (id)initWithQueue:(id)arg1 identifier:(void*)arg2 state:(id /* block */)arg3;
 - (bool)matchInfoEnabled;
 - (bool)paused;
 - (int)pausesLocationUpdatesAutomatically;
@@ -103,11 +108,14 @@
 - (void)setPreviousAuthorizationStatusValid:(bool)arg1;
 - (void)setRequestingLocation:(bool)arg1;
 - (void)setRequestingRanging:(bool)arg1;
+- (void)setShowsBackgroundLocationIndicator:(bool)arg1;
 - (void)setUpdatingHeading:(bool)arg1;
 - (void)setUpdatingLocation:(bool)arg1;
 - (void)setUpdatingRanging:(bool)arg1;
 - (void)setUpdatingVehicleHeading:(bool)arg1;
 - (void)setUpdatingVehicleSpeed:(bool)arg1;
+- (bool)showsBackgroundLocationIndicator;
+- (void)updateState:(id /* block */)arg1;
 - (bool)updatingHeading;
 - (bool)updatingLocation;
 - (bool)updatingRanging;

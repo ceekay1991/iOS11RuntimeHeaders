@@ -7,6 +7,7 @@
     NSString * _containerIdentifier;
     CKContainerOptions * _containerOptions;
     bool  _initializeSchema;
+    NSNumber * _operationMemoryThresholdBytes;
     bool  _useEncryptedStorage;
 }
 
@@ -14,6 +15,7 @@
 @property (nonatomic, retain) NSString *containerIdentifier;
 @property (nonatomic, retain) CKContainerOptions *containerOptions;
 @property (nonatomic) bool initializeSchema;
+@property (nonatomic, retain) NSNumber *operationMemoryThresholdBytes;
 @property (nonatomic) bool useEncryptedStorage;
 
 - (id)ckAssetThresholdBytes;
@@ -22,12 +24,13 @@
 - (id)copy;
 - (void)dealloc;
 - (id)description;
-- (id)initFromStoreOptions:(id)arg1;
 - (bool)initializeSchema;
+- (id)operationMemoryThresholdBytes;
 - (void)setCkAssetThresholdBytes:(id)arg1;
 - (void)setContainerIdentifier:(id)arg1;
 - (void)setContainerOptions:(id)arg1;
 - (void)setInitializeSchema:(bool)arg1;
+- (void)setOperationMemoryThresholdBytes:(id)arg1;
 - (void)setUseEncryptedStorage:(bool)arg1;
 - (bool)useEncryptedStorage;
 

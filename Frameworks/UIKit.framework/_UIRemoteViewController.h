@@ -12,6 +12,7 @@
     unsigned int  _deferredContextID;
     NSString * _deferredDisplayUUID;
     bool  _focusWasDeferredBeforeDeactivation;
+    bool  _focusWasDeferredBeforeResignKey;
     _UITextEffectsRemoteView * _fullScreenTextEffectsRemoteView;
     UIView * _fullScreenTextEffectsSnapshotView;
     UIDimmingView * _hostedDimmingView;
@@ -23,6 +24,8 @@
     long long  _preferredStatusBarStyle;
     long long  _preferredStatusBarUpdateAnimation;
     int  _preferredStatusBarVisibility;
+    long long  _preferredUserInterfaceStyle;
+    bool  _prefersHomeIndicatorAutoHidden;
     long long  _proxiedEditAlertToken;
     UIAlertView * _proxiedEditAlertView;
     long long  _redoButtonIndex;
@@ -92,7 +95,6 @@
 - (void)__handleFocusMovementAction:(id)arg1;
 - (bool)__interdictServiceViewTouches;
 - (void)__setInterdictServiceViewTouches:(bool)arg1;
-- (void)__setServiceMaxFrameSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)__setSupportedInterfaceOrientations:(id)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(bool)arg1;
 - (bool)__shouldRemoteViewControllerFenceOperations;
@@ -106,7 +108,9 @@
 - (void)__viewServiceDidUnregisterScrollToTopView;
 - (void)__viewServiceDidUpdatePreferredScreenEdgesDeferringSystemGestures:(long long)arg1;
 - (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 preferredStatusBarVisibility:(int)arg2 updateAnimation:(long long)arg3 currentAnimationSettings:(id)arg4;
+- (void)__viewServiceDidUpdatePreferredUserInterfaceStyle:(long long)arg1;
 - (void)__viewServiceDidUpdatePreferredWhitePointAdaptationStyle:(long long)arg1 animationSettings:(id)arg2;
+- (void)__viewServiceDidUpdatePrefersHomeIndicatorAutoHidden:(bool)arg1;
 - (void)__viewServiceDidUpdateTintColor:(id)arg1 duration:(double)arg2;
 - (void)__viewServiceInstrinsicContentSizeDidChange:(struct CGSize { double x1; double x2; })arg1 fence:(id)arg2;
 - (void)__viewServicePopoverDidChangeContentSize:(struct CGSize { double x1; double x2; })arg1 animated:(bool)arg2 fence:(id)arg3 withReplyHandler:(id /* block */)arg4;
@@ -126,7 +130,6 @@
 - (void)_cancelProxiedEditAlertViewAnimated:(bool)arg1;
 - (id)_cancelTouchesForCurrentEventInHostedContent;
 - (id)_clientDeferralProperties;
-- (void)_configureSizeViewConstraintsForWindow:(id)arg1 interfaceOrientation:(long long)arg2;
 - (bool)_customizesForPresentationInPopover;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_didRotateFromInterfaceOrientation:(long long)arg1 forwardToChildControllers:(bool)arg2 skipSelf:(bool)arg3;
@@ -140,7 +143,9 @@
 - (void)_initializeAccessibilityPortInformation;
 - (bool)_isDeallocating;
 - (bool)_isUpdatingSize;
+- (bool)_needsDocumentManagerWorkaround;
 - (bool)_needsUnderflowPropertyUpdate;
+- (void)_noteWindowState:(bool)arg1;
 - (int)_preferredStatusBarVisibility;
 - (void)_prepareTouchDeliveryPolicy;
 - (bool)_requiresKeyboardWindowWhenFirstResponder;
@@ -166,6 +171,8 @@
 - (id)_touchDeliveryPolicyAssertion;
 - (void)_traitCollectionDidChange:(id)arg1;
 - (bool)_tryRetain;
+- (void)_uirvc_windowBecameKey:(id)arg1;
+- (void)_uirvc_windowResignedKey:(id)arg1;
 - (void)_updateTintColor;
 - (void)_updateTouchGrabbingView;
 - (void)_updateUnderflowProperties;
@@ -189,7 +196,9 @@
 - (unsigned long long)preferredScreenEdgesDeferringSystemGestures;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
+- (long long)preferredUserInterfaceStyle;
 - (long long)preferredWhitePointAdaptivityStyle;
+- (bool)prefersHomeIndicatorAutoHidden;
 - (oneway void)release;
 - (void)restoreStateForSession:(id)arg1 anchor:(id)arg2;
 - (id)retain;

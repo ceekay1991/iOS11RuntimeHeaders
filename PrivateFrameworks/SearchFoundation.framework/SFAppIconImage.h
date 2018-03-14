@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFAppIconImage : SFImage <NSSecureCoding, SFAppIconImage> {
+@interface SFAppIconImage : SFImage <NSCopying, NSSecureCoding, SFAppIconImage> {
     NSString * _bundleIdentifier;
 }
 
@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)bundleIdentifier;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

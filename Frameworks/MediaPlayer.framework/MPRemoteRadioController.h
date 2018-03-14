@@ -11,15 +11,17 @@
     RadioRecentStationsController * _recentStationsController;
 }
 
-@property (nonatomic, retain) RadioAvailabilityController *availabilityController;
+@property (nonatomic, readonly) RadioAvailabilityController *availabilityController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) RadioRecentStationsController *recentStationsController;
+@property (nonatomic, readonly) RadioRecentStationsController *recentStationsController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addConnection:(id)arg1;
+- (void)_handleRecentStationsControllerDidChange;
+- (void)_playActivityReportingControllerDidFlushEventsNotification:(id)arg1;
 - (void)_radioAvailabilityControllerRadioAvailableDidChangeNotification:(id)arg1;
 - (void)_recentStationsControllerDidChangeStationsNotification:(id)arg1;
 - (void)_removeConnection:(id)arg1;
@@ -30,8 +32,6 @@
 - (id)recentStationsController;
 - (void)serviceRadioControllerGetRadioAvailabilityWithCompletionHandler:(id /* block */)arg1;
 - (void)serviceRadioControllerGetRecentStationGroupsWithCompletionHandler:(id /* block */)arg1;
-- (void)setAvailabilityController:(id)arg1;
-- (void)setRecentStationsController:(id)arg1;
 - (void)start;
 
 @end

@@ -14,6 +14,7 @@
     GEOPDExternalTransitLookupParameters * _externalTransitLookupParameters;
     GEOPDFeatureIdGeocodingParameters * _featureIdGeocodingParameters;
     GEOPDGeocodingParameters * _geocodingParameters;
+    GEOPDIpGeoLookupParameters * _ipGeoLookupParameters;
     GEOPDLocationDirectedSearchParameters * _locationDirectedSearchParameters;
     GEOPDMapsIdentifierPlaceLookupParameters * _mapsIdentifierPlaceLookupParameters;
     GEOPDMerchantLookupParameters * _merchantLookupParameters;
@@ -54,6 +55,7 @@
 @property (nonatomic, readonly) bool hasExternalTransitLookupParameters;
 @property (nonatomic, readonly) bool hasFeatureIdGeocodingParameters;
 @property (nonatomic, readonly) bool hasGeocodingParameters;
+@property (nonatomic, readonly) bool hasIpGeoLookupParameters;
 @property (nonatomic, readonly) bool hasLocationDirectedSearchParameters;
 @property (nonatomic, readonly) bool hasMapsIdentifierPlaceLookupParameters;
 @property (nonatomic, readonly) bool hasMerchantLookupParameters;
@@ -69,6 +71,7 @@
 @property (nonatomic, readonly) bool hasSiriSearchParameters;
 @property (nonatomic, readonly) bool hasVendorSpecificPlaceRefinementParameters;
 @property (nonatomic, readonly) bool hasWifiFingerprintParameters;
+@property (nonatomic, retain) GEOPDIpGeoLookupParameters *ipGeoLookupParameters;
 @property (nonatomic, retain) GEOPDLocationDirectedSearchParameters *locationDirectedSearchParameters;
 @property (nonatomic, retain) GEOPDMapsIdentifierPlaceLookupParameters *mapsIdentifierPlaceLookupParameters;
 @property (nonatomic, retain) GEOPDMerchantLookupParameters *merchantLookupParameters;
@@ -113,6 +116,7 @@
 - (bool)hasExternalTransitLookupParameters;
 - (bool)hasFeatureIdGeocodingParameters;
 - (bool)hasGeocodingParameters;
+- (bool)hasIpGeoLookupParameters;
 - (bool)hasLocationDirectedSearchParameters;
 - (bool)hasMapsIdentifierPlaceLookupParameters;
 - (bool)hasMerchantLookupParameters;
@@ -148,6 +152,7 @@
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(struct { double x1; double x2; })arg2 muid:(unsigned long long)arg3 resultProviderId:(int)arg4;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(struct { double x1; double x2; })arg2 muid:(unsigned long long)arg3 resultProviderId:(int)arg4 contentProvider:(id)arg5;
 - (id)initWithVendorSpecificPlaceRefinementParameters:(id)arg1 traits:(id)arg2;
+- (id)ipGeoLookupParameters;
 - (bool)isEqual:(id)arg1;
 - (id)locationDirectedSearchParameters;
 - (id)mapsIdentifierPlaceLookupParameters;
@@ -174,6 +179,7 @@
 - (void)setExternalTransitLookupParameters:(id)arg1;
 - (void)setFeatureIdGeocodingParameters:(id)arg1;
 - (void)setGeocodingParameters:(id)arg1;
+- (void)setIpGeoLookupParameters:(id)arg1;
 - (void)setLocationDirectedSearchParameters:(id)arg1;
 - (void)setMapsIdentifierPlaceLookupParameters:(id)arg1;
 - (void)setMerchantLookupParameters:(id)arg1;

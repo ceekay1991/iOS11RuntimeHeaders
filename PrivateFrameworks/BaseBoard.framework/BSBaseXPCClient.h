@@ -5,7 +5,7 @@
 @interface BSBaseXPCClient : NSObject {
     bool  _clientInvalidated;
     NSObject<OS_xpc_object> * _connection;
-    BSSignal * _invalidationSignal;
+    BSAtomicSignal * _invalidationSignal;
     int  _notifyToken;
     NSObject<OS_dispatch_queue> * _queue;
     NSObject<OS_xpc_object> * _serverEndpoint;
@@ -43,11 +43,10 @@
 - (void)queue_connectionWasSuspended;
 - (void)queue_handleError:(id)arg1;
 - (void)queue_handleMessage:(id)arg1;
-- (void)queue_invalidate;
+- (void)queue_invalidateAndFlush:(bool)arg1;
 - (bool)queue_isSuspended;
 - (void)queue_reconnectToResumedServerIfNecessary;
 - (void)queue_registerWithServerIfNecessary;
-- (void)queue_reregister;
 - (void)queue_resumeConnection;
 - (void)queue_suspendConnection;
 - (void)reconnectIfNecessary;

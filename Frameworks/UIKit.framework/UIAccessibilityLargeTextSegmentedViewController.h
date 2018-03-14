@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)_configureSegmentViews;
+- (void)_orientationChanged:(id)arg1;
 - (void)buttonPress:(id)arg1;
 - (void)buttonTouchDown:(id)arg1;
 - (void)buttonTouchUp:(id)arg1;

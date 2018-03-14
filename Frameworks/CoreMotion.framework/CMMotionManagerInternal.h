@@ -17,6 +17,10 @@
     unsigned long long  fAttitudeReferenceFrame;
     long long  fCaptureMode;
     bool  fCompassCalibrationHud;
+    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fCompensatedAmbientPressureDispatcher;
+    id /* block */  fCompensatedAmbientPressureHandler;
+    NSOperationQueue * fCompensatedAmbientPressureQueue;
+    double  fCompensatedAmbientPressureUpdateInterval;
     struct CLConnectionClient { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> > { struct __rep { union { struct __long { char *x_1_5_1; unsigned long long x_1_5_2; unsigned long long x_1_5_3; } x_1_4_1; struct __short { BOOL x_2_5_1[23]; struct { unsigned char x_2_6_1; } x_2_5_2; } x_1_4_2; struct __raw { unsigned long long x_3_5_1[3]; } x_1_4_3; } x_1_3_1; } x_1_2_1; } x_1_1_1; } x1; id x2; id x3; struct CLConnection {} x4; bool x5; struct CLNameValuePair { int (**x_6_1_1)(); struct __CFDictionary {} *x_6_1_2; } x6; struct CLNameValuePair { int (**x_7_1_1)(); struct __CFDictionary {} *x_7_1_2; } x7; struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> > { struct __rep { union { struct __long { char *x_1_5_1; unsigned long long x_1_5_2; unsigned long long x_1_5_3; } x_1_4_1; struct __short { BOOL x_2_5_1[23]; struct { unsigned char x_2_6_1; } x_2_5_2; } x_1_4_2; struct __raw { unsigned long long x_3_5_1[3]; } x_1_4_3; } x_1_3_1; } x_1_2_1; } x_8_1_1; } x8; } * fConnection;
     NSObject<OS_dispatch_queue> * fConnectionQueue;
     /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fDeviceMotionDispatcher;
@@ -51,9 +55,12 @@
     double  fGyroUpdateInterval;
     bool  fHaveSentDeviceRequiresMovementError;
     bool  fHaveSentTrueNorthUnavailableError;
-    bool  fInactive;
+    bool  fIsApplicationActive;
+    bool  fIsCompassCalibrated;
+    bool  fIsUsingCalibratedCompass;
     double  fLastAccelerometerNotificationTimestamp;
     double  fLastAmbientPressureNotificationTimestamp;
+    double  fLastCompensatedAmbientPressureNotificationTimestamp;
     double  fLastDeviceMotionNotificationTimestamp;
     double  fLastGyroNotificationTimestamp;
     double  fLastMagnetometerNotificationTimestamp;
@@ -72,6 +79,13 @@
             float temperature; 
         } pressureData; 
     }  fLatestAmbientPressureSample;
+    struct Sample { 
+        double timestamp; 
+        struct { 
+            float pressure; 
+            float temperature; 
+        } pressureData; 
+    }  fLatestCompensatedAmbientPressureSample;
     struct Sample { 
         double timestamp; 
         struct { 
@@ -115,7 +129,6 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  fSampleLock;
-    bool  fShowCompassCalibrationHudOnResume;
     bool  fShowsDeviceMovementDisplay;
     bool  fSidebandSensorFusionEnabled;
     bool  fSidebandSensorFusionLatency;

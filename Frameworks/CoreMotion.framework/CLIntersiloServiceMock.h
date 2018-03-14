@@ -24,5 +24,7 @@
 - (void)setKeyedPayloads:(id)arg1;
 - (void)setPayload:(id)arg1 forKey:(id)arg2;
 - (void)setPayload:(id)arg1 forSelector:(SEL)arg2;
+- (id)syncgetPayloadForKey:(id)arg1;
+- (id)syncgetPayloadForSelector:(SEL)arg1;
 
 @end

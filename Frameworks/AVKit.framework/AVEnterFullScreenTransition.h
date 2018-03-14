@@ -9,8 +9,7 @@
 - (void)animateAlongsideNonInteractiveTransitionAnimation;
 - (void)completeTransition:(bool)arg1;
 - (id)fullScreenViewController;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })initialFrameForToViewController;
 - (void)transitionWillBegin;
-- (void)updateWithPercentComplete:(double)arg1 translation:(struct CGPoint { double x1; double x2; })arg2 rotation:(double)arg3;
+- (void)updateWithPercentComplete:(double)arg1 translation:(struct CGPoint { double x1; double x2; })arg2 rotation:(double)arg3 locationInWindow:(struct CGPoint { double x1; double x2; })arg4;
 
 @end

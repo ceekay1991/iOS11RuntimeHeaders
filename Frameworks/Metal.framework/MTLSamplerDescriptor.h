@@ -19,6 +19,7 @@
 @property (nonatomic) bool normalizedCoordinates;
 @property (nonatomic) unsigned long long rAddressMode;
 @property (nonatomic) unsigned long long sAddressMode;
+@property (nonatomic) bool supportArgumentBuffers;
 @property (nonatomic) unsigned long long tAddressMode;
 
 + (id)alloc;

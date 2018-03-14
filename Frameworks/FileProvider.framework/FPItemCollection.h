@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
  */
 
-@interface FPItemCollection : NSObject <FPXEnumeratorObserver> {
+@interface FPItemCollection : NSObject <FPReachabilityObserver, FPXEnumeratorObserver> {
     NSData * _changeToken;
     _FPItemList * _currentItems;
     <FPItemCollectionDelegate> * _delegate;
@@ -32,6 +32,7 @@
     bool  _shouldRetryOnceAfterCrash;
     bool  _shouldUpdate;
     NSArray * _sortDescriptors;
+    bool  _started;
     FPPacer * _updatePacer;
     NSObject<OS_dispatch_queue> * _updateQueue;
     NSArray * _updateSortDescriptors;
@@ -43,7 +44,7 @@
 @property (nonatomic) <FPItemCollectionDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSString *domainIdentifier;
-@property (getter=isGathering, nonatomic, readonly) bool gathering;
+@property (getter=isGathering, nonatomic) bool gathering;
 @property (nonatomic, readonly) bool hasMoreUpdates;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *identifier;
@@ -66,6 +67,7 @@
 + (void)initialize;
 + (bool)isEnumerationSuspended;
 + (bool)item:(id)arg1 isValidForObservedItemID:(id)arg2;
++ (void)removeActiveCollection:(id)arg1;
 + (void)replacePlaceholders:(id)arg1 withActualItems:(id)arg2;
 + (void)resumeVendorEnumeration;
 + (void)suspendVendorEnumeration;
@@ -77,18 +79,19 @@
 - (void)_didEncounterError:(id)arg1 forObservationID:(unsigned long long)arg2;
 - (void)_flushPendingUpdates;
 - (void)_gatherInitialItems;
-- (void)_gatherMoreItemsAfterPage:(id)arg1;
+- (void)_gatherMoreItemsAfterPage:(id)arg1 section:(unsigned long long)arg2;
 - (unsigned long long)_indexOfItem:(id)arg1;
 - (unsigned long long)_indexOfItemID:(id)arg1;
 - (bool)_isObservingID:(unsigned long long)arg1;
 - (id)_itemsMutableCopy;
 - (long long)_numberOfItems;
 - (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
+- (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 forceFlush:(bool)arg3;
 - (void)_recomputeHierarchyOfItemList:(id)arg1;
 - (void)_restartObservation;
 - (id)_t_items;
 - (void)_updateItems;
-- (void)_updateItemsWithUpdatesCount:(unsigned long long)arg1;
+- (void)_updateItemsWithUpdatesCount:(unsigned long long)arg1 section:(unsigned long long)arg2;
 - (void)_updateObservedItem:(id)arg1;
 - (void)dealloc;
 - (id)debugDescription;
@@ -106,17 +109,20 @@
 - (bool)isGathering;
 - (bool)isImmutable;
 - (id /* block */)isItemMatchingQueryBlock;
+- (bool)isRegatheringAfterSignal;
 - (id)itemAtIndexPath:(id)arg1;
 - (id)itemFilteringPredicate;
 - (id)items;
 - (long long)numberOfItems;
 - (bool)observing;
 - (id)providerIdentifier;
+- (void)reachabilityMonitor:(id)arg1 didChangeReachabilityStatusTo:(bool)arg2;
 - (void)receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
 - (void)reorderItemsWithSortDescriptors:(id)arg1;
 - (void)replaceContentsWithVendorItems:(id)arg1;
 - (void)replacePlaceholders:(id)arg1 withActualItems:(id)arg2;
 - (void)setDelegate:(id)arg1;
+- (void)setGathering:(bool)arg1;
 - (void)setIsItemMatchingQueryBlock:(id /* block */)arg1;
 - (void)setItemFilteringPredicate:(id)arg1;
 - (void)setObserving:(bool)arg1;

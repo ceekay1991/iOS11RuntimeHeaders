@@ -3,12 +3,13 @@
  */
 
 @interface MTLIndirectArgumentDescriptorInternal : MTLIndirectArgumentDescriptor {
-    struct MTLIndirectArgumentDescriptorPrivate { 
+    struct MTLArgumentDescriptorPrivate { 
         unsigned long long dataType; 
         unsigned long long index; 
         unsigned long long arrayLength; 
         unsigned long long access; 
         unsigned long long textureType; 
+        unsigned long long constantBlockAlignment; 
     }  _private;
 }
 
@@ -16,6 +17,7 @@
 
 - (unsigned long long)access;
 - (unsigned long long)arrayLength;
+- (unsigned long long)constantBlockAlignment;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)dataType;
 - (id)description;
@@ -26,6 +28,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)setAccess:(unsigned long long)arg1;
 - (void)setArrayLength:(unsigned long long)arg1;
+- (void)setConstantBlockAlignment:(unsigned long long)arg1;
 - (void)setDataType:(unsigned long long)arg1;
 - (void)setIndex:(unsigned long long)arg1;
 - (void)setTextureType:(unsigned long long)arg1;

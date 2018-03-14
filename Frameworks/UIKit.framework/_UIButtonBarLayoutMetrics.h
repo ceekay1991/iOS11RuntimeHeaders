@@ -3,6 +3,7 @@
  */
 
 @interface _UIButtonBarLayoutMetrics : NSObject <NSCopying, _UIButtonBarLayoutMetricsData> {
+    bool  _allowsViewWrappers;
     bool  _createsPopoverLayoutGuides;
     NSLayoutDimension * _flexibleSpaceGuide;
     NSLayoutDimension * _groupSizeGuide;
@@ -13,6 +14,7 @@
     NSLayoutDimension * _verticalSizeGuide;
 }
 
+@property (nonatomic) bool allowsViewWrappers;
 @property (nonatomic) bool createsPopoverLayoutGuides;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -28,6 +30,7 @@
 - (void).cxx_destruct;
 - (id)_copyWithModifications:(id /* block */)arg1;
 - (id)_upcastIfReadOnly;
+- (bool)allowsViewWrappers;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)createsPopoverLayoutGuides;
 - (id)description;
@@ -36,6 +39,7 @@
 - (id)groupSpacingGuide;
 - (id)minimumSpaceGuide;
 - (id)popoverGuideTopAnchor;
+- (void)setAllowsViewWrappers:(bool)arg1;
 - (void)setCreatesPopoverLayoutGuides:(bool)arg1;
 - (void)setFlexibleSpaceGuide:(id)arg1;
 - (void)setGroupSizeGuide:(id)arg1;

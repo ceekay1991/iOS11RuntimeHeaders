@@ -4,8 +4,10 @@
 
 @interface GEOABAssignmentResponse : PBCodable <NSCopying> {
     NSMutableArray * _assignments;
+    unsigned long long  _branchExpirationTtlHours;
     GEOABClientConfig * _clientConfig;
     struct { 
+        unsigned int branchExpirationTtlHours : 1; 
         unsigned int refreshIntervalSeconds : 1; 
         unsigned int timestamp : 1; 
         unsigned int invalidatePoiCache : 1; 
@@ -25,7 +27,9 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *assignments;
+@property (nonatomic) unsigned long long branchExpirationTtlHours;
 @property (nonatomic, retain) GEOABClientConfig *clientConfig;
+@property (nonatomic) bool hasBranchExpirationTtlHours;
 @property (nonatomic, readonly) bool hasClientConfig;
 @property (nonatomic) bool hasInvalidatePoiCache;
 @property (nonatomic) bool hasInvalidateTileCache;
@@ -59,12 +63,14 @@
 - (id)assignmentAtIndex:(unsigned long long)arg1;
 - (id)assignments;
 - (unsigned long long)assignmentsCount;
+- (unsigned long long)branchExpirationTtlHours;
 - (void)clearAssignments;
 - (id)clientConfig;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (bool)hasBranchExpirationTtlHours;
 - (bool)hasClientConfig;
 - (bool)hasInvalidatePoiCache;
 - (bool)hasInvalidateTileCache;
@@ -88,7 +94,9 @@
 - (unsigned long long)refreshIntervalSeconds;
 - (id)requestGuid;
 - (void)setAssignments:(id)arg1;
+- (void)setBranchExpirationTtlHours:(unsigned long long)arg1;
 - (void)setClientConfig:(id)arg1;
+- (void)setHasBranchExpirationTtlHours:(bool)arg1;
 - (void)setHasInvalidatePoiCache:(bool)arg1;
 - (void)setHasInvalidateTileCache:(bool)arg1;
 - (void)setHasRefreshIntervalSeconds:(bool)arg1;

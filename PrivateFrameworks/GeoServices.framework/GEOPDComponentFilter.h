@@ -9,6 +9,7 @@
     GEOPDAmenitiesFilter * _amenitiesFilter;
     GEOPDAssociatedAppFilter * _associatedAppFilter;
     GEOPDBoundsFilter * _boundsFilter;
+    GEOPDBrowseCategoriesFilter * _browseCategoriesFilter;
     GEOPDBusinessClaimFilter * _businessClaimFilter;
     GEOPDCaptionedPhotoFilter * _captionedPhotoFilter;
     GEOPDContainedPlaceFilter * _containedPlaceFilter;
@@ -53,6 +54,7 @@
 @property (nonatomic, retain) GEOPDAmenitiesFilter *amenitiesFilter;
 @property (nonatomic, retain) GEOPDAssociatedAppFilter *associatedAppFilter;
 @property (nonatomic, retain) GEOPDBoundsFilter *boundsFilter;
+@property (nonatomic, retain) GEOPDBrowseCategoriesFilter *browseCategoriesFilter;
 @property (nonatomic, retain) GEOPDBusinessClaimFilter *businessClaimFilter;
 @property (nonatomic, retain) GEOPDCaptionedPhotoFilter *captionedPhotoFilter;
 @property (nonatomic, retain) GEOPDContainedPlaceFilter *containedPlaceFilter;
@@ -67,6 +69,7 @@
 @property (nonatomic, readonly) bool hasAmenitiesFilter;
 @property (nonatomic, readonly) bool hasAssociatedAppFilter;
 @property (nonatomic, readonly) bool hasBoundsFilter;
+@property (nonatomic, readonly) bool hasBrowseCategoriesFilter;
 @property (nonatomic, readonly) bool hasBusinessClaimFilter;
 @property (nonatomic, readonly) bool hasCaptionedPhotoFilter;
 @property (nonatomic, readonly) bool hasContainedPlaceFilter;
@@ -138,6 +141,7 @@
 - (id)amenitiesFilter;
 - (id)associatedAppFilter;
 - (id)boundsFilter;
+- (id)browseCategoriesFilter;
 - (id)businessClaimFilter;
 - (id)captionedPhotoFilter;
 - (id)containedPlaceFilter;
@@ -156,6 +160,7 @@
 - (bool)hasAmenitiesFilter;
 - (bool)hasAssociatedAppFilter;
 - (bool)hasBoundsFilter;
+- (bool)hasBrowseCategoriesFilter;
 - (bool)hasBusinessClaimFilter;
 - (bool)hasCaptionedPhotoFilter;
 - (bool)hasContainedPlaceFilter;
@@ -196,7 +201,6 @@
 - (id)iconFilter;
 - (id)initAddressObjectFilterWithLibraryVersion:(id)arg1;
 - (id)initCaptionedPhotoFilterWithTraits:(id)arg1;
-- (id)initETAFilterWithTraits:(id)arg1;
 - (id)initEntityFilterWithSpokenNames;
 - (id)initPhotoFilterWithTraits:(id)arg1;
 - (id)initRestaurantReservationLinkFilterWithTraits:(id)arg1;
@@ -226,6 +230,7 @@
 - (void)setAmenitiesFilter:(id)arg1;
 - (void)setAssociatedAppFilter:(id)arg1;
 - (void)setBoundsFilter:(id)arg1;
+- (void)setBrowseCategoriesFilter:(id)arg1;
 - (void)setBusinessClaimFilter:(id)arg1;
 - (void)setCaptionedPhotoFilter:(id)arg1;
 - (void)setContainedPlaceFilter:(id)arg1;

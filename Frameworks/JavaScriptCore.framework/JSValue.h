@@ -17,6 +17,8 @@
 @property (readonly) bool isString;
 @property (readonly) bool isUndefined;
 
+// Image: /System/Library/Frameworks/JavaScriptCore.framework/JavaScriptCore
+
 + (SEL)selectorForStructToValue:(const char *)arg1;
 + (SEL)selectorForValueToStruct:(const char *)arg1;
 + (id)valueWithBool:(bool)arg1 inContext:(id)arg2;
@@ -82,5 +84,38 @@
 - (unsigned int)toUInt32;
 - (id)valueAtIndex:(unsigned long long)arg1;
 - (id)valueForProperty:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
+
++ (id)nujs_valueWithFunction:(id)arg1 params:(id)arg2 body:(id)arg3 sourceURL:(id)arg4 inContext:(id)arg5;
+
+- (id)nu_unwrapJSValue;
+- (id)nujs_callWithArguments:(id)arg1 thisObject:(id)arg2;
+- (id)nujs_functionSource;
+- (bool)nujs_isFunction;
+- (bool)nujs_isString;
+- (id)nujs_properties;
+- (id)nujs_toArray;
+- (id)nujs_toDictionary;
+
+// Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusKit.framework/OpusKit
+
++ (id)valueWithCATransform3D:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg1 inContext:(id)arg2;
++ (id)valueWithCoodinateRegion:(struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1 inContext:(id)arg2;
++ (id)valueWithEdgeInsets:(struct OKEdgeInsets { double x1; double x2; double x3; double x4; })arg1 inContext:(id)arg2;
++ (id)valueWithLocationCoordinate2D:(struct OKLocationCoordinate2D { double x1; double x2; })arg1 inContext:(id)arg2;
++ (id)valueWithOffset:(struct UIOffset { double x1; double x2; })arg1 inContext:(id)arg2;
++ (id)valueWithVector3:(struct SCNVector3 { float x1; float x2; float x3; })arg1 inContext:(id)arg2;
++ (id)valueWithVector4:(struct SCNVector4 { float x1; float x2; float x3; float x4; })arg1 inContext:(id)arg2;
+
+- (bool)isVector3;
+- (bool)isVector4;
+- (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })toCATransform3D;
+- (struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })toCoordinateRegion;
+- (struct OKEdgeInsets { double x1; double x2; double x3; double x4; })toEdgeInsets;
+- (struct OKLocationCoordinate2D { double x1; double x2; })toLocationCoordinate2D;
+- (struct UIOffset { double x1; double x2; })toOffset;
+- (struct SCNVector3 { float x1; float x2; float x3; })toVector3;
+- (struct SCNVector4 { float x1; float x2; float x3; float x4; })toVector4;
 
 @end

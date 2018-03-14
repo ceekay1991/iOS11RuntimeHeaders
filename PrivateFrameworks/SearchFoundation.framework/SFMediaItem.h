@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFMediaItem : NSObject <NSSecureCoding, SFMediaItem> {
+@interface SFMediaItem : NSObject <NSCopying, NSSecureCoding, SFMediaItem> {
     NSArray * _buyOptions;
     NSString * _contentAdvisory;
     SFImage * _contentAdvisoryImage;
@@ -40,6 +40,7 @@
 - (id)buyOptions;
 - (id)contentAdvisory;
 - (id)contentAdvisoryImage;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -8,6 +8,7 @@
     NSArray * _contacts;
     <CNUILikenessRendering> * _imageRenderer;
     PRPersonaStore * _personaStore;
+    <CNSchedulerProvider> * _schedulerProvider;
     unsigned long long  _style;
     bool  _threeDTouchEnabled;
 }
@@ -19,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <CNUILikenessRendering> *imageRenderer;
 @property (nonatomic, readonly) PRPersonaStore *personaStore;
+@property (nonatomic, readonly) <CNSchedulerProvider> *schedulerProvider;
 @property (nonatomic) unsigned long long style;
 @property (readonly) Class superclass;
 @property (getter=isThreeDTouchEnabled, nonatomic) bool threeDTouchEnabled;
@@ -34,6 +36,7 @@
 - (void)loadView;
 - (id)personaStore;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
+- (id)schedulerProvider;
 - (void)setAvatarView:(id)arg1;
 - (void)setContacts:(id)arg1;
 - (void)setStyle:(unsigned long long)arg1;

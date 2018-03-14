@@ -4,52 +4,48 @@
 
 @interface FPXSpotlightIndexer : NSObject <CSSearchableIndexDelegate> {
     unsigned long long  _clientState;
-    FPXDomainContext * _context;
+    NSObject<OS_dispatch_semaphore> * _clientStateSemaphore;
+    NSOperation * _currentOperation;
+    FPXDomainContext * _domainContext;
     CSSearchableIndex * _index;
     NSString * _indexName;
-    bool  _initialIndexingDone;
     bool  _isCanceled;
-    bool  _isIndexingExtension;
     NSData * _lastIndexState;
     NSOperationQueue * _operationQueue;
     NSString * _providerIdentifier;
     NSObject<OS_dispatch_queue> * _queue;
+    <NSFileProviderEnumerator> * _vendorEnumerator;
 }
 
-@property (nonatomic, readonly) FPXDomainContext *context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) FPXDomainContext *domainContext;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) CSSearchableIndex *index;
 @property (nonatomic, readonly) NSData *lastIndexState;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
-
-+ (id)_currentIndexerVersion;
+@property (readonly) <NSFileProviderEnumerator> *vendorEnumerator;
 
 - (void).cxx_destruct;
-- (bool)_clientStateResetNeeded;
-- (void)_dropIndexWithCompletionHandler:(id /* block */)arg1;
-- (void)_fetchClientStateIfNeeded;
-- (bool)_isInInitialIndexing;
-- (void)_markClientStateResetDone;
-- (void)_readyForIndexingWithAckedIndexState:(id)arg1;
-- (id)context;
+- (void)_indexOneBatchWithCompletionHandler:(id /* block */)arg1;
+- (void)_invalidate;
+- (void)_learnNewIndexState:(id)arg1;
+- (void)dealloc;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)description;
+- (id)domainContext;
+- (void)dropIndexAndInvalidateWithCompletionHandler:(id /* block */)arg1;
 - (void)dropIndexWithCompletionHandler:(id /* block */)arg1;
 - (void)dumpStateTo:(id)arg1;
 - (id)index;
-- (void)indexExtension;
-- (void)indexExtensionWithCompletionHandler:(id /* block */)arg1;
-- (void)indexItem:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)indexOneBatchWithCompletionHandler:(id /* block */)arg1;
 - (id)initWithIndexName:(id)arg1 context:(id)arg2;
 - (void)invalidate;
 - (id)lastIndexState;
-- (void)markInitialIndexingDoneIfNeeded;
 - (id)queue;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(id /* block */)arg2;
 - (void)searchableIndex:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(id /* block */)arg3;
-- (bool)shouldSwizzleLastUsedDate;
+- (id)vendorEnumerator;
 
 @end

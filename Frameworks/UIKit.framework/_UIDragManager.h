@@ -19,9 +19,9 @@
 
 - (void).cxx_destruct;
 - (void)_willAddDeactivationReason:(id)arg1;
-- (id)beginDragDestinationWithEvent:(id)arg1;
-- (id)beginDragWithItems:(id)arg1 touches:(id)arg2 orInitialCentroid:(struct CGPoint { double x1; double x2; })arg3 requiredContextIds:(id)arg4 shouldPerformHitTesting:(bool)arg5 sourceView:(id)arg6 accessibilityEndpoint:(id)arg7;
+- (id)beginDragWithItems:(id)arg1 dataOwner:(long long)arg2 touches:(id)arg3 orInitialCentroid:(struct CGPoint { double x1; double x2; })arg4 requiredContextIds:(id)arg5 shouldPerformHitTesting:(bool)arg6 sourceView:(id)arg7 accessibilityEndpoint:(id)arg8;
 - (void)deleteSlots:(id)arg1;
+- (id)dragDestinationWithEvent:(id)arg1;
 - (id)dragImageContext;
 - (id)dragSessionDestinations;
 - (id)dragSessionSources;

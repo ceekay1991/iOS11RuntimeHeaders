@@ -17,13 +17,13 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (void)_applyContinuousCornerRadius:(double)arg1;
 - (double)_heightForTraitCollection:(id)arg1;
 - (void)_setupDismissButton;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)dismissButton;
 - (id)init;
 - (id)initWithContinuousCornerRadius:(double)arg1;

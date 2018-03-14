@@ -4,20 +4,20 @@
 
 @interface INTaskList : NSObject <NSCopying, NSSecureCoding> {
     NSDateComponents * _createdDateComponents;
-    NSString * _groupName;
+    INSpeakableString * _groupName;
     NSString * _identifier;
     NSDateComponents * _modifiedDateComponents;
     NSArray * _tasks;
-    NSString * _title;
+    INSpeakableString * _title;
 }
 
 @property (readonly, copy) NSDateComponents *createdDateComponents;
-@property (readonly, copy) NSString *groupName;
+@property (readonly, copy) INSpeakableString *groupName;
 @property (readonly, copy) NSString *identifier;
 @property (readonly, copy) NSDateComponents *modifiedDateComponents;
 @property (readonly) long long taskListType;
 @property (readonly, copy) NSArray *tasks;
-@property (readonly, copy) NSString *title;
+@property (readonly, copy) INSpeakableString *title;
 
 + (bool)supportsSecureCoding;
 
@@ -26,6 +26,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)createdDateComponents;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)groupName;
 - (unsigned long long)hash;

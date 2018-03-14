@@ -62,5 +62,6 @@
 - (bool)updateDoubleHeightItem;
 - (bool)updateItemsWithData:(id)arg1 actions:(int)arg2 animated:(bool)arg3;
 - (bool)usesVerticalLayout;
+- (id)visibleItemViewAtPoint:(struct CGPoint { double x1; double x2; })arg1 inForegroundView:(id)arg2;
 
 @end

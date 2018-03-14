@@ -4,6 +4,7 @@
 
 @interface _LSCurrentBundleProxyQuery : _LSBundleQuery
 
++ (double)cacheInterval;
 + (id)currentBundleProxyQuery;
 + (bool)supportsSecureCoding;
 

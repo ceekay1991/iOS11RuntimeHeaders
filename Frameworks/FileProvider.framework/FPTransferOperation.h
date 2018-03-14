@@ -4,6 +4,7 @@
 
 @interface FPTransferOperation : FPActionOperation <NSProgressReporting> {
     FPItem * _destinationFolder;
+    NSMutableDictionary * _errorsByItem;
     bool  _isCopyOperation;
     NSArray * _items;
     unsigned long long  _lastUsageUpdatePolicy;
@@ -17,6 +18,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) NSDictionary *errorsByItem;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long lastUsageUpdatePolicy;
 @property (readonly) NSProgress *progress;
@@ -26,12 +28,16 @@
 
 - (void).cxx_destruct;
 - (id)_initWithNamesAndURLsList:(id)arg1 destinationFolder:(id)arg2 copyItems:(bool)arg3;
+- (id)errorsByItem;
+- (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithItems:(id)arg1 destinationFolder:(id)arg2 copyItems:(bool)arg3;
 - (id)initWithNamesAndSourceURLs:(id)arg1 destinationFolder:(id)arg2 copyItems:(bool)arg3;
 - (id)initWithSourceURLs:(id)arg1 destinationFolder:(id)arg2 copyItems:(bool)arg3;
 - (id)initWithSourceURLsAndNames:(id)arg1 destinationFolder:(id)arg2 copyItems:(bool)arg3;
 - (unsigned long long)lastUsageUpdatePolicy;
 - (void)mainWithExtensionProxy:(id)arg1;
+- (id)operationDescription;
+- (bool)preflightOperation;
 - (void)presendNotifications;
 - (id)progress;
 - (void)setLastUsageUpdatePolicy:(unsigned long long)arg1;

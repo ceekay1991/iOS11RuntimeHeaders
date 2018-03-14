@@ -10,7 +10,7 @@
 }
 
 @property (nonatomic, copy) NSArray *identifierSets;
-@property (nonatomic, retain) MPMediaLibraryView *libraryView;
+@property (nonatomic, copy) MPMediaLibraryView *libraryView;
 @property (nonatomic) Class modelClass;
 @property (nonatomic, copy) id /* block */ responseHandler;
 

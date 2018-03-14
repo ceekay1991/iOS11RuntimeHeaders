@@ -5,32 +5,34 @@
 @interface INNote : NSObject <INCacheableContainer, NSCopying, NSSecureCoding> {
     NSArray * _contents;
     NSDateComponents * _createdDateComponents;
-    NSString * _groupName;
+    INSpeakableString * _groupName;
     NSString * _identifier;
     NSDateComponents * _modifiedDateComponents;
-    NSString * _title;
+    INSpeakableString * _title;
 }
 
 @property (readonly, copy) NSArray *contents;
 @property (readonly, copy) NSDateComponents *createdDateComponents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *groupName;
+@property (readonly, copy) INSpeakableString *groupName;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *identifier;
 @property (readonly, copy) NSDateComponents *modifiedDateComponents;
 @property (readonly) Class superclass;
-@property (readonly, copy) NSString *title;
+@property (readonly, copy) INSpeakableString *title;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)cacheableObjects;
+- (id)_intents_cacheableObjects;
+- (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)contents;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)createdDateComponents;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)groupName;
 - (unsigned long long)hash;

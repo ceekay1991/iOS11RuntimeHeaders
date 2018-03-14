@@ -32,6 +32,7 @@
 @property double borderWidth;
 @property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } bounds;
 @property bool canDrawConcurrently;
+@property (nonatomic, readonly) struct CGPoint { double x1; double x2; } center;
 @property bool clearsContext;
 @property double coefficientOfRestitution;
 @property (retain) id compositingFilter;
@@ -46,6 +47,7 @@
 @property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } contentsRect;
 @property double contentsScale;
 @property (copy) NSString *contentsScaling;
+@property (copy) NSString *contentsSwizzle;
 @property struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } contentsTransform;
 @property bool continuousCorners;
 @property (retain) id cornerContents;
@@ -69,7 +71,11 @@
 @property (readonly) unsigned long long hash;
 @property (getter=isHidden) bool hidden;
 @property bool hitTestsAsOpaque;
+@property bool inheritsTiming;
 @property bool invertsShadow;
+@property (setter=is_setBlurRadius:, nonatomic) double is_blurRadius;
+@property (nonatomic) struct CGPoint { double x1; double x2; } lastPosition;
+@property (nonatomic) double lastScale;
 @property bool literalContentsCenter;
 @property (copy) NSString *magnificationFilter;
 @property (retain) CALayer *mask;
@@ -86,9 +92,11 @@
 @property bool needsLayoutOnGeometryChange;
 @property float opacity;
 @property (getter=isOpaque) bool opaque;
+@property (nonatomic) double originalOpacity;
 @property struct CGPoint { double x1; double x2; } position;
 @property bool preloadsCache;
 @property (copy) NSArray *presentationModifiers;
+@property (nonatomic, readonly) bool px_supportsAlphaBlending;
 @property bool rasterizationPrefersDisplayCompositing;
 @property double rasterizationScale;
 @property float repeatCount;
@@ -141,7 +149,7 @@
 - (void)_cancelAnimationTimer;
 - (void)_colorSpaceDidChange;
 - (void)_contentsFormatDidChange:(id)arg1;
-- (struct Layer { int (**x1)(); struct Atomic { struct { int x_1_2_1; } x_2_1_1; } x2; struct Data { struct Vec4<float> { float x_1_2_1; float x_1_2_2; float x_1_2_3; float x_1_2_4; } x_3_1_1; unsigned char x_3_1_2; unsigned char x_3_1_3; unsigned char x_3_1_4; unsigned char x_3_1_5; unsigned int x_3_1_6 : 3; unsigned int x_3_1_7 : 3; unsigned int x_3_1_8 : 4; unsigned int x_3_1_9 : 4; unsigned int x_3_1_10 : 4; unsigned int x_3_1_11 : 1; unsigned int x_3_1_12 : 1; unsigned int x_3_1_13 : 1; unsigned int x_3_1_14 : 1; unsigned int x_3_1_15 : 1; unsigned int x_3_1_16 : 1; unsigned int x_3_1_17 : 1; unsigned int x_3_1_18 : 1; unsigned int x_3_1_19 : 1; unsigned int x_3_1_20 : 1; unsigned int x_3_1_21 : 1; unsigned int x_3_1_22 : 1; unsigned int x_3_1_23 : 1; unsigned int x_3_1_24 : 1; unsigned int x_3_1_25 : 1; unsigned int x_3_1_26 : 1; unsigned int x_3_1_27 : 1; unsigned int x_3_1_28 : 1; unsigned int x_3_1_29 : 1; unsigned int x_3_1_30 : 1; unsigned int x_3_1_31 : 1; unsigned int x_3_1_32 : 1; unsigned int x_3_1_33 : 1; unsigned int x_3_1_34 : 1; unsigned int x_3_1_35 : 1; unsigned int x_3_1_36 : 1; struct Vec2<double> { double x_37_2_1; double x_37_2_2; } x_3_1_37; } x3; }*)_copyRenderLayer:(struct Transaction { struct Shared {} *x1; int x2; struct HashTable<CA::Layer *, unsigned int *> {} *x3; struct SpinLock {} *x4; unsigned int x5; struct Level {} *x6; struct List<void (^)()> {} *x7; struct Command {} *x8; struct Deleted {} *x9; struct List<const void *> {} *x10; struct Context {} *x11; struct HashTable<CA::Layer *, CA::Layer *> {} *x12; struct __CFRunLoop {} *x13; struct __CFRunLoopObserver {} *x14; struct LayoutList {} *x15; struct List<CA::Layer *> {} *x16; struct Atomic { struct { int x_1_2_1; } x_17_1_1; } x17; unsigned int x18 : 1; unsigned int x19 : 1; unsigned int x20 : 1; unsigned int x21 : 1; unsigned int x22 : 1; }*)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int*)arg3;
+- (struct Layer { int (**x1)(); struct Atomic { struct { int x_1_2_1; } x_2_1_1; } x2; struct Data { struct Vec4<float> { float x_1_2_1; float x_1_2_2; float x_1_2_3; float x_1_2_4; } x_3_1_1; unsigned char x_3_1_2; unsigned char x_3_1_3; unsigned char x_3_1_4; unsigned char x_3_1_5; unsigned int x_3_1_6 : 3; unsigned int x_3_1_7 : 3; unsigned int x_3_1_8 : 4; unsigned int x_3_1_9 : 4; unsigned int x_3_1_10 : 4; unsigned int x_3_1_11 : 4; unsigned int x_3_1_12 : 1; unsigned int x_3_1_13 : 1; unsigned int x_3_1_14 : 1; unsigned int x_3_1_15 : 1; unsigned int x_3_1_16 : 1; unsigned int x_3_1_17 : 1; unsigned int x_3_1_18 : 1; unsigned int x_3_1_19 : 1; unsigned int x_3_1_20 : 1; unsigned int x_3_1_21 : 1; unsigned int x_3_1_22 : 1; unsigned int x_3_1_23 : 1; unsigned int x_3_1_24 : 1; unsigned int x_3_1_25 : 1; unsigned int x_3_1_26 : 1; unsigned int x_3_1_27 : 1; unsigned int x_3_1_28 : 1; unsigned int x_3_1_29 : 1; unsigned int x_3_1_30 : 1; unsigned int x_3_1_31 : 1; unsigned int x_3_1_32 : 1; unsigned int x_3_1_33 : 1; unsigned int x_3_1_34 : 1; unsigned int x_3_1_35 : 1; unsigned int x_3_1_36 : 1; unsigned int x_3_1_37 : 1; } x3; }*)_copyRenderLayer:(struct Transaction { struct Shared {} *x1; int x2; struct HashTable<CA::Layer *, unsigned int *> {} *x3; struct SpinLock {} *x4; unsigned int x5; struct Level {} *x6; struct List<void (^)()> {} *x7; struct Command {} *x8; struct Deleted {} *x9; struct List<const void *> {} *x10; struct Context {} *x11; struct HashTable<CA::Layer *, CA::Layer *> {} *x12; struct __CFRunLoop {} *x13; struct __CFRunLoopObserver {} *x14; struct LayoutList {} *x15; struct List<CA::Layer *> {} *x16; struct Atomic { struct { int x_1_2_1; } x_17_1_1; } x17; unsigned int x18 : 1; unsigned int x19 : 1; unsigned int x20 : 1; unsigned int x21 : 1; unsigned int x22 : 1; }*)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int*)arg3;
 - (void)_dealloc;
 - (bool)_defersDidBecomeVisiblePostCommit;
 - (void)_didCommitLayer:(struct Transaction { struct Shared {} *x1; int x2; struct HashTable<CA::Layer *, unsigned int *> {} *x3; struct SpinLock {} *x4; unsigned int x5; struct Level {} *x6; struct List<void (^)()> {} *x7; struct Command {} *x8; struct Deleted {} *x9; struct List<const void *> {} *x10; struct Context {} *x11; struct HashTable<CA::Layer *, CA::Layer *> {} *x12; struct __CFRunLoop {} *x13; struct __CFRunLoopObserver {} *x14; struct LayoutList {} *x15; struct List<CA::Layer *> {} *x16; struct Atomic { struct { int x_1_2_1; } x_17_1_1; } x17; unsigned int x18 : 1; unsigned int x19 : 1; unsigned int x20 : 1; unsigned int x21 : 1; unsigned int x22 : 1; }*)arg1;
@@ -208,6 +216,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })contentsRect;
 - (double)contentsScale;
 - (id)contentsScaling;
+- (id)contentsSwizzle;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })contentsTransform;
 - (id)context;
 - (bool)continuousCorners;
@@ -225,6 +234,7 @@
 - (id)debugDescription;
 - (id)delegate;
 - (id)dependentStatesOfState:(id)arg1;
+- (unsigned int)disableUpdateMask;
 - (void)display;
 - (void)displayIfNeeded;
 - (bool)doubleSided;
@@ -246,6 +256,7 @@
 - (bool)hitTestsAsOpaque;
 - (bool)ignoresHitTesting;
 - (id)implicitAnimationForKeyPath:(id)arg1;
+- (bool)inheritsTiming;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayer:(id)arg1;
@@ -349,6 +360,7 @@
 - (void)setContentsRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setContentsScale:(double)arg1;
 - (void)setContentsScaling:(id)arg1;
+- (void)setContentsSwizzle:(id)arg1;
 - (void)setContentsTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (void)setContinuousCorners:(bool)arg1;
 - (void)setCornerContents:(id)arg1;
@@ -356,6 +368,7 @@
 - (void)setCornerContentsMasksEdges:(bool)arg1;
 - (void)setCornerRadius:(double)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDisableUpdateMask:(unsigned int)arg1;
 - (void)setDoubleSided:(bool)arg1;
 - (void)setDrawsAsynchronously:(bool)arg1;
 - (void)setDuration:(double)arg1;
@@ -369,6 +382,7 @@
 - (void)setGeometryFlipped:(bool)arg1;
 - (void)setHidden:(bool)arg1;
 - (void)setHitTestsAsOpaque:(bool)arg1;
+- (void)setInheritsTiming:(bool)arg1;
 - (void)setInvertsShadow:(bool)arg1;
 - (void)setLights:(id)arg1;
 - (void)setLiteralContentsCenter:(bool)arg1;
@@ -470,6 +484,18 @@
 - (void)setDoubleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setDoublePosition:(struct CGPoint { double x1; double x2; })arg1;
 
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
++ (void)pu_animateAlongsideView:(id)arg1 animations:(id /* block */)arg2;
+
+- (id)_pu_uniqueAnimationKeyWithProposedKey:(id)arg1;
+- (void)pu_setPosition:(struct CGPoint { double x1; double x2; })arg1;
+- (void)pu_setTransform:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg1;
+
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
+- (void)_sf_copyAnimationsFromLayer:(id)arg1 withBlock:(id /* block */)arg2;
+
 // Image: /System/Library/Frameworks/SceneKit.framework/SceneKit
 
 + (id)SCNJSExportProtocol;
@@ -484,8 +510,248 @@
 - (void)setPerspectiveDistance:(double)arg1;
 - (bool)uiHasFilterWithName:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
++ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundsForMaskImage:(id)arg1 withOriginalSize:(struct CGSize { double x1; double x2; })arg2;
++ (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })extraInsetsForImage:(id)arg1;
++ (double)maxInsetForImage:(id)arg1;
+
+- (void)setMaskImage:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ControlCenterUIKit.framework/ControlCenterUIKit
+
+- (void)_ccuiEnumerateSubtreeUsingBlock:(id /* block */)arg1 stop:(bool*)arg2;
+- (void)ccuiEnumerateSubtreeUsingBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
+
+- (id)_gkDescriptionWithChildren:(int)arg1;
+- (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_gkParentSublayerTransform;
+- (id)_gkRecursiveDescription;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
+- (id)hu_addAnimationAdditively:(id)arg1 applyModelValue:(bool)arg2;
+- (void)hu_applyModelValueFromAnimation:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
+
+- (bool)layerHierarchyContainsAnimations;
+- (double)longestAnimationRuntimeRecursive;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
+- (double)_pkui_elapsedDurationForAnimation:(id)arg1;
+- (id)_pkui_nextAdditiveAnimationKeyWithKeyPath:(id)arg1;
+- (id)pkui_addAdditiveAnimation:(id)arg1;
+- (id)pkui_addAdditiveAnimation:(id)arg1 withKeyPath:(id)arg2;
+- (id)pkui_additiveAnimationKeyPrefixForKeyPath:(id)arg1;
+- (double)pkui_animateToOpacity:(double)arg1 withCompletion:(id /* block */)arg2;
+- (double)pkui_elapsedDurationForAnimationWithKey:(id)arg1;
+- (bool)pkui_hasAdditiveAnimationForKeyPath:(id)arg1;
+- (double)pkui_remainingDurationForAnimationWithKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotosPlayer.framework/PhotosPlayer
+
+- (id)_is_blurFilter;
+- (void)_is_removeBlurFilterIfNeeded;
+- (void)_is_setBlurFilter:(id)arg1;
+- (void)is_addBlurFilterIfNeeded;
+- (double)is_blurRadius;
+- (void)is_setBlurRadius:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (bool)px_supportsAlphaBlending;
+
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
+
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameUsingCenterAndBounds;
+- (void)setAnchorPointWithoutChangingPosition:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setFrameUsingCenterAndBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
+
+- (void)alignOnPixels;
+- (void)animateMoveTo:(struct CGPoint { double x1; double x2; })arg1;
+- (void)animateOpacityTo:(float)arg1;
+- (void)animateResizeTo:(struct CGSize { double x1; double x2; })arg1;
+- (void)animateTransformTo:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg1;
+- (bool)containsLayer:(id)arg1;
+- (void)removeFromSuperlayerInstantly;
+- (id)sublayerNamed:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
+- (void)addDistortAnimationWithVector:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addDragRotationAnimationWithDelta:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addFlipTransitionAnimationToLayer:(id)arg1;
+- (void)addJiggleAnimation;
+- (void)addJiggleAnimationWithDuration:(double)arg1 angle:(double)arg2;
+- (void)addPerspectiveProjection;
+- (void)addPerspectiveSublayerProjectionUsingScreenSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)addPopInAnimation:(id)arg1;
+- (void)addPopOutAnimation:(id)arg1;
+- (void)addPulseAnimation;
+- (void)addReflectionSubLayerWithHeight:(double)arg1 startOpacity:(double)arg2;
+- (void)addResetAnimation;
+- (void)addResetAnimationWithDelegate:(id)arg1;
+- (void)addRippleAnimationFromPosition:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addRippleAnimationFromPosition:(struct CGPoint { double x1; double x2; })arg1 withScale:(double)arg2;
+- (void)addRippleAnimationFromPosition:(struct CGPoint { double x1; double x2; })arg1 withScale:(double)arg2 addPerspectiveProjection:(bool)arg3;
+- (void)addRotateInAnimationWithDuration:(double)arg1 delay:(double)arg2;
+- (void)addSproingAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addWaveAnimation;
+- (void)addWaveAnimationWithOffset:(struct CGSize { double x1; double x2; })arg1 zPosition:(double)arg2;
+- (void)addWaveAnimationWithScale:(double)arg1 offset:(struct CGSize { double x1; double x2; })arg2 zPosition:(double)arg3;
+- (void)addWaveAnimationWithScale:(double)arg1 offset:(struct CGSize { double x1; double x2; })arg2 zPosition:(double)arg3 addPerspectiveProjection:(bool)arg4;
+- (void)addZoomAnimation;
+- (void)addZoomAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addZoomAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1 startingScale:(double)arg2;
+- (void)addZoomDownAnimation;
+- (void)addZoomDownAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addZoomDownAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1 endingScale:(double)arg2 delay:(double)arg3;
+- (void)animationDidStop:(id)arg1 finished:(bool)arg2;
+- (id)bakedLayer;
+- (struct CGPoint { double x1; double x2; })center;
+- (double)durationOfAllAnimations;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameIncludingSublayers;
+- (bool)hasPopInAnimation;
+- (id)layerByAddingReflectionWithHeight:(double)arg1 startOpacity:(double)arg2;
+- (void)makeStretchableLayerWithImage:(struct CGImage { }*)arg1 leftCap:(double)arg2 rightCap:(double)arg3 topCap:(double)arg4 bottomCap:(double)arg5;
+- (void)makeStretchableLayerWithImage:(struct CGImage { }*)arg1 leftCap:(double)arg2 topCap:(double)arg3;
+- (void)makeStretchableLayerWithUIImage:(id)arg1 leftCap:(double)arg2 rightCap:(double)arg3 topCap:(double)arg4 bottomCap:(double)arg5;
+- (void)makeStretchableLayerWithUIImage:(id)arg1 leftCap:(double)arg2 topCap:(double)arg3;
+- (void)makeStretchableLayerWithoutImage:(struct CGImage { }*)arg1 leftCap:(double)arg2 rightCap:(double)arg3 topCap:(double)arg4 bottomCap:(double)arg5;
+- (void)makeStretchableLayerWithoutImage:(struct CGImage { }*)arg1 leftCap:(double)arg2 topCap:(double)arg3;
+- (struct CGImage { }*)newRasterizedImageRef;
+- (double)opacityByApplyingAnimation:(id)arg1 atTime:(double)arg2 animationCache:(id)arg3;
+- (void)p_clearAllLayerDelegates;
+- (double)p_perspectiveZDistanceUsingSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)pause;
+- (void)pauseAtTime:(double)arg1;
+- (void)removeAllAnimationsOnLayerTree;
+- (void)removeDistortAnimation;
+- (void)removeDragRotationAnimation;
+- (void)removeFlipTransitionAnimation;
+- (void)removeJiggleAnimation;
+- (void)removePopInAnimation;
+- (void)removePopOutAnimation;
+- (void)removePulseAnimation;
+- (void)removeResetAnimation;
+- (void)removeRippleAnimation;
+- (void)removeRotateInAnimation;
+- (void)removeSproingAnimation;
+- (void)removeWaveAnimation;
+- (void)removeWaveAnimationAnimated:(bool)arg1;
+- (void)removeZoomAnimation;
+- (void)removeZoomDownAnimation;
+- (void)resume;
+- (void)resumeAtTime:(double)arg1;
+- (void)scale:(double)arg1 aroundAnchorPoint:(struct CGPoint { double x1; double x2; })arg2 afterOffset:(struct CGPoint { double x1; double x2; })arg3;
+- (void)scale:(double)arg1 aroundBoundsPoint:(struct CGPoint { double x1; double x2; })arg2 afterOffset:(struct CGPoint { double x1; double x2; })arg3;
+- (void)setIfDifferentFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 orTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg2;
+- (void)setNeedsDisplayForDirtyTiles:(id)arg1;
+- (void)setNeedsLayoutForTilingLayers;
+- (void)setTileContents:(id)arg1;
+- (id)tileContentsLayer;
+- (bool)tilingSafeHasContents;
+- (void)tilingSafeSetSublayers:(id)arg1;
+- (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })transform3DByApplyingAnimation:(id)arg1 atTime:(double)arg2 offset:(struct CGPoint { double x1; double x2; })arg3 parentFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 animationCache:(id)arg5;
+- (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })transformToScale:(double)arg1 aroundAnchorPoint:(struct CGPoint { double x1; double x2; })arg2 afterOffset:(struct CGPoint { double x1; double x2; })arg3;
+- (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })transformToScale:(double)arg1 aroundBoundsPoint:(struct CGPoint { double x1; double x2; })arg2 afterOffset:(struct CGPoint { double x1; double x2; })arg3;
+- (id)zoomDownAnimation;
+
+// Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
+
+- (void)tsu_recursivelySetAllowsEdgeAntialiasing:(bool)arg1;
+- (void)tsu_transformToQuadrilateralWithTopLeft:(struct CGPoint { double x1; double x2; })arg1 topRight:(struct CGPoint { double x1; double x2; })arg2 bottomLeft:(struct CGPoint { double x1; double x2; })arg3 bottomRight:(struct CGPoint { double x1; double x2; })arg4;
+
 // Image: /System/Library/PrivateFrameworks/WebCore.framework/WebCore
 
 - (void)web_disableAllActions;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
+- (void)addCDEChartFlipAnimationFromPosition:(struct CGPoint { double x1; double x2; })arg1 beginTime:(double)arg2 toLeft:(bool)arg3 cameraDistance:(double)arg4;
+- (void)addCDEChartFlipAnimationToFinalPosition:(struct CGPoint { double x1; double x2; })arg1 beginTime:(double)arg2 fromLeft:(bool)arg3 cameraDistance:(double)arg4;
+- (void)addCDEEditorFlipInAnimationFromPosition:(struct CGPoint { double x1; double x2; })arg1 beginTime:(double)arg2 fromLeft:(bool)arg3 cameraDistance:(double)arg4;
+- (void)addCDEEditorFlipOutAnimationToPosition:(struct CGPoint { double x1; double x2; })arg1 beginTime:(double)arg2 toLeft:(bool)arg3 cameraDistance:(double)arg4;
+- (void)addCDEShieldInAnimation:(double)arg1;
+- (void)addCDEShieldOutAnimation:(double)arg1;
+- (void)addCallbackAnimationWithName:(id)arg1 beginTime:(double)arg2 duration:(double)arg3 target:(id)arg4 selector:(SEL)arg5;
+- (void)addDistortAnimationWithVector:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addDragRotationAnimationWithDelta:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addFlipTransitionAnimationToLayer:(id)arg1;
+- (void)addJiggleAnimation;
+- (void)addJiggleAnimationWithDuration:(double)arg1 angle:(double)arg2;
+- (void)addPerspectiveProjection;
+- (void)addPerspectiveProjectionWithDistance:(double)arg1;
+- (void)addPerspectiveSublayerProjectionUsingScreenSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)addPopInAnimation:(id)arg1;
+- (void)addPopOutAnimation:(id)arg1;
+- (void)addPulseAnimation;
+- (void)addReflectionSubLayerWithHeight:(double)arg1 startOpacity:(double)arg2;
+- (void)addResetAnimation;
+- (void)addResetAnimationWithDelegate:(id)arg1;
+- (void)addRippleAnimationFromPosition:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addRippleAnimationFromPosition:(struct CGPoint { double x1; double x2; })arg1 withScale:(double)arg2;
+- (void)addRippleAnimationFromPosition:(struct CGPoint { double x1; double x2; })arg1 withScale:(double)arg2 addPerspectiveProjection:(bool)arg3;
+- (void)addRotateInAnimationWithDuration:(double)arg1 delay:(double)arg2;
+- (void)addScaleInAnimationWithDuration:(double)arg1 delay:(double)arg2;
+- (void)addSproingAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addWaveAnimation;
+- (void)addWaveAnimationWithOffset:(struct CGSize { double x1; double x2; })arg1 zPosition:(double)arg2;
+- (void)addWaveAnimationWithScale:(double)arg1 offset:(struct CGSize { double x1; double x2; })arg2 zPosition:(double)arg3;
+- (void)addWaveAnimationWithScale:(double)arg1 offset:(struct CGSize { double x1; double x2; })arg2 zPosition:(double)arg3 addPerspectiveProjection:(bool)arg4;
+- (void)addZoomAnimation;
+- (void)addZoomAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addZoomAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1 speed:(double)arg2;
+- (void)addZoomAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1 startingScale:(double)arg2;
+- (void)addZoomDownAnimation;
+- (void)addZoomDownAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)addZoomDownAnimationFromPoint:(struct CGPoint { double x1; double x2; })arg1 endingScale:(double)arg2 delay:(double)arg3;
+- (void)animationDidStop:(id)arg1 finished:(bool)arg2;
+- (id)bakedLayer;
+- (double)durationOfAllAnimations;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameIncludingSublayers;
+- (bool)hasPopInAnimation;
+- (id)layerByAddingReflectionWithHeight:(double)arg1 startOpacity:(double)arg2;
+- (struct CGImage { }*)newRasterizedImageRef;
+- (double)opacityByApplyingAnimation:(id)arg1 atTime:(double)arg2 animationCache:(id)arg3;
+- (double)p_perspectiveZDistanceUsingSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)pause;
+- (void)pauseAtTime:(double)arg1;
+- (void)removeAllAnimationsOnLayerTree;
+- (void)removeCDEChartFlipAnimationFromPosition;
+- (void)removeCDEChartFlipAnimationToFinalPosition;
+- (void)removeCDEEditorFlipInAnimation;
+- (void)removeCDEEditorFlipOutAnimation;
+- (void)removeCDEShieldInAnimation;
+- (void)removeCDEShieldOutAnimation;
+- (void)removeCallbackAnimationWithName:(id)arg1;
+- (void)removeDistortAnimation;
+- (void)removeDragRotationAnimation;
+- (void)removeFlipTransitionAnimation;
+- (void)removeJiggleAnimation;
+- (void)removePopInAnimation;
+- (void)removePopOutAnimation;
+- (void)removePulseAnimation;
+- (void)removeResetAnimation;
+- (void)removeRippleAnimation;
+- (void)removeRotateInAnimation;
+- (void)removeScaleInAnimation;
+- (void)removeSproingAnimation;
+- (void)removeWaveAnimation;
+- (void)removeWaveAnimationAnimated:(bool)arg1;
+- (void)removeZoomAnimation;
+- (void)removeZoomAnimation;
+- (void)removeZoomDownAnimation;
+- (void)resume;
+- (void)resumeAtTime:(double)arg1;
+- (void)setIfDifferentFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 orTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg2;
+- (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })transform3DByApplyingAnimation:(id)arg1 atTime:(double)arg2 offset:(struct CGPoint { double x1; double x2; })arg3 animationCache:(id)arg4;
+- (void)tsu_transformToQuadrilateralWithTopLeft:(struct CGPoint { double x1; double x2; })arg1 topRight:(struct CGPoint { double x1; double x2; })arg2 bottomLeft:(struct CGPoint { double x1; double x2; })arg3 bottomRight:(struct CGPoint { double x1; double x2; })arg4;
+- (id)zoomDownAnimation;
 
 @end

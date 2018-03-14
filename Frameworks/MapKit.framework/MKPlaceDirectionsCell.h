@@ -59,7 +59,7 @@
 - (bool)offlineMode;
 - (unsigned long long)preferredDirectionsTypeForQuickRoute;
 - (void)quickRouteManager:(id)arg1 didUpdateETA:(id)arg2 error:(id)arg3 animated:(bool)arg4;
-- (bool)quickRouteShouldIncludeTransit;
+- (bool)quickRouteShouldIncludeTransitWhenNotPreferredTransportType;
 - (bool)quickRouteShouldOnlyUseAutomobile;
 - (id /* block */)requestDirectionsBlock;
 - (void)setMapItem:(id)arg1;

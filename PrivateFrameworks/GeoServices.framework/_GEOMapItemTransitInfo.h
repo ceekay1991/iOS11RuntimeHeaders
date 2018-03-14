@@ -3,6 +3,7 @@
  */
 
 @interface _GEOMapItemTransitInfo : NSObject <GEOMapItemTransitInfo> {
+    NSMapTable * _cachedHeadSignsForLine;
     NSArray * _connections;
     NSArray * _departureSequences;
     NSString * _displayName;
@@ -42,6 +43,7 @@
 - (id)directionsForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 validForDateFromBlock:(id /* block */)arg3 hasSequencesWithNoDirection:(out bool*)arg4;
 - (id)displayName;
 - (bool)hasTransitIncidentComponent;
+- (id)headSignsForLine:(id)arg1;
 - (id)inactiveLinesForSystem:(id)arg1 relativeToDateFromBlock:(id /* block */)arg2 excludingIncidentEntities:(id)arg3;
 - (id)incidents;
 - (id)initWithTransitInfo:(id)arg1 schedule:(id)arg2 timeZone:(id)arg3 incidents:(id)arg4 hasTransitIncidentComponent:(bool)arg5 incidentExpirationDate:(id)arg6 providerID:(int)arg7;

@@ -6,12 +6,15 @@
     UIKBKeyView * _keyView;
 }
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
+- (void)dealloc;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (void)changeBackgroundToActiveIfNecessary;
 - (void)changeBackgroundToEnabled;
 - (id)contentsKeyView;
-- (void)dealloc;
 - (void)dimKeys:(id)arg1;
 - (void)displayLayer:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })drawFrame;

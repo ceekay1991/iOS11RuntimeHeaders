@@ -43,6 +43,7 @@
 + (Class)_contentViewClassForStyle:(long long)arg1;
 + (id)_defaultColor;
 
+- (void).cxx_destruct;
 - (void)_addInsetHeight:(double)arg1;
 - (void)_addInsets;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_appliedInsets;
@@ -52,6 +53,7 @@
 - (id)_contentView;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_didScroll;
+- (void)_endRefreshingAnimated:(bool)arg1;
 - (id)_host;
 - (bool)_hostAdjustsContentOffset;
 - (double)_impactIntensityForVelocity:(double)arg1;
@@ -79,14 +81,16 @@
 - (void)_updateSnappingHeight;
 - (double)_visibleHeight;
 - (double)_visibleHeightForContentOffset:(struct CGPoint { double x1; double x2; })arg1 origin:(struct CGPoint { double x1; double x2; })arg2;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)attributedTitle;
 - (void)beginRefreshing;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)didMoveToSuperview;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endRefreshing;

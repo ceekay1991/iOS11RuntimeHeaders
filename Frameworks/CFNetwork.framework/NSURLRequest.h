@@ -12,6 +12,7 @@
 @property (readonly) bool HTTPShouldHandleCookies;
 @property (readonly) bool HTTPShouldUsePipelining;
 @property (readonly, copy) NSURL *URL;
+@property (getter=_gkSAPSession, setter=_gkSetSAPSession:, nonatomic, retain) GKFairPlaySAPSession *_gkSAPSession;
 @property (readonly, copy) NSDictionary *allHTTPHeaderFields;
 @property (readonly) bool allowsCellularAccess;
 @property (readonly) unsigned long long cachePolicy;
@@ -44,13 +45,17 @@
 - (id)URL;
 - (struct _CFURLRequest { }*)_CFURLRequest;
 - (bool)_URLHasScheme:(id)arg1;
+- (id)_allHTTPHeaderFieldsAsArrays;
 - (id)_copyReplacingURLWithURL:(id)arg1;
+- (bool)_ignoreHSTS;
 - (id)_initWithCFURLRequest:(struct _CFURLRequest { }*)arg1;
 - (bool)_isSafeRequestForBackgroundDownload;
 - (double)_payloadTransmissionTimeout;
+- (bool)_preventHSTSStorage;
 - (id)_propertyForKey:(id)arg1;
 - (void)_removePropertyForKey:(id)arg1;
 - (bool)_requiresShortConnectionTimeout;
+- (bool)_schemeWasUpgradedDueToDynamicHSTS;
 - (void)_setProperty:(id)arg1 forKey:(id)arg2;
 - (id)_startTimeoutDate;
 - (double)_timeWindowDelay;
@@ -80,6 +85,27 @@
 // Image: /System/Library/PrivateFrameworks/AuthKit.framework/AuthKit
 
 - (bool)ak_usesHTTPSScheme;
+
+// Image: /System/Library/PrivateFrameworks/DataAccess.framework/DataAccess
+
+- (id)DARequestByApplyingStorageSession:(struct __CFURLStorageSession { }*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+
+- (id)_gkDictionaryKey;
+- (id)_gkSAPSession;
+- (void)_gkSetSAPSession:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
++ (id)frRequestWithURL:(id)arg1;
++ (id)frRequestWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
++ (id)overrideUserAgent;
++ (void)setupFeldsparUserAgent;
+
+// Image: /System/Library/PrivateFrameworks/Stocks.framework/Stocks
+
+- (id)HTTPBodyString;
 
 // Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
 

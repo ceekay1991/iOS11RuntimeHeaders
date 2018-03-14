@@ -4,6 +4,7 @@
 
 @interface UISwipeActionPullView : UIView {
     NSArray * _actions;
+    bool  _autosizesButtons;
     UIColor * _backgroundPullColor;
     NSMutableArray * _buttons;
     bool  _buttonsUnderlapSwipedView;
@@ -27,6 +28,7 @@
     bool  _swipeActionsDidChange;
 }
 
+@property (nonatomic) bool autosizesButtons;
 @property (nonatomic, copy) UIColor *backgroundPullColor;
 @property (nonatomic) bool buttonsUnderlapSwipedView;
 @property (nonatomic, readonly) unsigned long long cellEdge;
@@ -43,6 +45,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (Class)_buttonClass;
 - (double)_directionalMultiplier;
 - (void)_pressedButton:(id)arg1;
@@ -54,7 +57,7 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
+- (bool)autosizesButtons;
 - (id)backgroundPullColor;
 - (bool)buttonsUnderlapSwipedView;
 - (unsigned long long)cellEdge;
@@ -74,6 +77,7 @@
 - (bool)primaryActionIsDestructive;
 - (id)primarySwipeAction;
 - (void)resetView;
+- (void)setAutosizesButtons:(bool)arg1;
 - (void)setBackgroundPullColor:(id)arg1;
 - (void)setButtonsUnderlapSwipedView:(bool)arg1;
 - (void)setContentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;

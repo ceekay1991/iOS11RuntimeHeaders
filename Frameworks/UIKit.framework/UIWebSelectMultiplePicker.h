@@ -27,13 +27,13 @@
 - (int)_itemIndexForRowIndex:(int)arg1;
 - (id)_selectionNode;
 - (id)_singleSelectionItem;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (void)controlBeginEditing;
 - (void)controlEndEditing;
 - (id)controlView;
-- (void)dealloc;
 - (id)initWithDOMHTMLSelectElement:(id)arg1 cachedItems:(id)arg2 singleSelectionItem:(id)arg3 singleSelectionIndex:(unsigned long long)arg4 multipleSelection:(bool)arg5;
 - (void)layoutSubviews;
 - (long long)numberOfComponentsInPickerView:(id)arg1;

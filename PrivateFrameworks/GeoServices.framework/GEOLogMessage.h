@@ -20,15 +20,19 @@
 
 + (id)acceptedLogMsgEvents;
 + (id)acceptedLogMsgEventsForLogMessageType:(int)arg1;
-+ (void)initializeAcceptedLogMsgEventTypes;
++ (id)allowedSessionTypes;
++ (bool)disallowedStateWithStateType:(int)arg1 logMsgEvent:(id)arg2 logMessage:(id)arg3;
++ (id)disallowedStatesForLogMsgEvent:(id)arg1 logMessage:(id)arg2;
 + (bool)logMessageType:(int)arg1 acceptsLogMsgEventType:(int)arg2;
 + (id)logMessagesForEvent:(id)arg1;
 + (Class)logMsgEventType;
++ (bool)supportsCohortSessionForLogMsgEvent:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsLogMessageType:(id)arg1;
-- (bool)acceptsLogMsgEventType:(int)arg1;
+- (bool)acceptsLogMsgEvent:(id)arg1;
 - (void)addLogMsgEvent:(id)arg1;
+- (unsigned long long)allowedSessionType;
 - (void)clearLogMsgEvents;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -44,6 +48,10 @@
 - (bool)hasLogMessageType;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
+- (bool)isFullCarPlayStateAllowed;
+- (bool)isFullExperimentsStateAllowed;
+- (bool)isNavigationSessionAllowed;
+- (bool)isStateAllowed:(id)arg1;
 - (int)logMessageType;
 - (id)logMessageTypeAsString:(int)arg1;
 - (id)logMsgEventAtIndex:(unsigned long long)arg1;
@@ -51,6 +59,7 @@
 - (unsigned long long)logMsgEventsCount;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
+- (void)removeUnsupportedStatesFromEvent;
 - (void)setGroupRetryCount:(unsigned int)arg1;
 - (void)setHasGroupRetryCount:(bool)arg1;
 - (void)setHasLogMessageType:(bool)arg1;

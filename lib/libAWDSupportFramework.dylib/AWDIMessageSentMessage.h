@@ -3,10 +3,12 @@
  */
 
 @interface AWDIMessageSentMessage : PBCodable <NSCopying> {
+    unsigned int  _connectionType;
     int  _fzError;
     NSString * _guid;
     struct { 
         unsigned int timestamp : 1; 
+        unsigned int connectionType : 1; 
         unsigned int fzError : 1; 
         unsigned int hasAttachments : 1; 
         unsigned int isGroupMessage : 1; 
@@ -26,9 +28,11 @@
     unsigned long long  _timestamp;
 }
 
+@property (nonatomic) unsigned int connectionType;
 @property (nonatomic) int fzError;
 @property (nonatomic, retain) NSString *guid;
 @property (nonatomic) unsigned int hasAttachments;
+@property (nonatomic) bool hasConnectionType;
 @property (nonatomic) bool hasFzError;
 @property (nonatomic, readonly) bool hasGuid;
 @property (nonatomic) bool hasHasAttachments;
@@ -47,6 +51,7 @@
 @property (nonatomic) unsigned int sendDuration;
 @property (nonatomic) unsigned long long timestamp;
 
+- (unsigned int)connectionType;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -55,6 +60,7 @@
 - (int)fzError;
 - (id)guid;
 - (unsigned int)hasAttachments;
+- (bool)hasConnectionType;
 - (bool)hasFzError;
 - (bool)hasGuid;
 - (bool)hasHasAttachments;
@@ -75,9 +81,11 @@
 - (unsigned int)messageError;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)sendDuration;
+- (void)setConnectionType:(unsigned int)arg1;
 - (void)setFzError:(int)arg1;
 - (void)setGuid:(id)arg1;
 - (void)setHasAttachments:(unsigned int)arg1;
+- (void)setHasConnectionType:(bool)arg1;
 - (void)setHasFzError:(bool)arg1;
 - (void)setHasHasAttachments:(bool)arg1;
 - (void)setHasIsGroupMessage:(bool)arg1;

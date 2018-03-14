@@ -94,6 +94,7 @@
 - (id)initWithView:(id)arg1;
 - (void)layoutChangedByScrolling:(bool)arg1;
 - (id)linkInteractionView;
+- (Class)loupeClusterClass;
 - (id)loupeGesture;
 - (struct CGPoint { double x1; double x2; })loupeGestureEndPoint;
 - (void)loupeGestureWithState:(long long)arg1 atGesturePoint:(id /* block */)arg2 shouldCancel:(bool*)arg3;
@@ -134,6 +135,7 @@
 - (void)setNeedsGestureUpdate:(bool)arg1;
 - (void)setSelectionWithPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setWillHandoffLoupeMagnifier;
+- (bool)shouldEnqueueObserverUpdates;
 - (bool)shouldSuppressSelectionCommands;
 - (id)singleTapGesture;
 - (void)startAutoscroll:(struct CGPoint { double x1; double x2; })arg1;

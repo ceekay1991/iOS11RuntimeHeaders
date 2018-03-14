@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFTextColumnsCardSection : SFCardSection <NSSecureCoding, SFTextColumnsCardSection> {
+@interface SFTextColumnsCardSection : SFCardSection <NSCopying, NSSecureCoding, SFTextColumnsCardSection> {
     SFColor * _backgroundColor;
     bool  _canBeHidden;
     NSArray * _columns;
@@ -42,6 +42,7 @@
 @property (nonatomic, copy) NSArray *punchoutOptions;
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
+@property (nonatomic, copy) NSString *resultIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *title;
@@ -54,6 +55,7 @@
 - (id)backgroundColor;
 - (bool)canBeHidden;
 - (id)columns;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasBottomPadding;

@@ -4,6 +4,8 @@
 
 @interface CATransaction : NSObject
 
+// Image: /System/Library/Frameworks/QuartzCore.framework/QuartzCore
+
 + (id)_implicitAnimationForLayer:(id)arg1 keyPath:(id)arg2;
 + (void)activate;
 + (void)activateBackground:(bool)arg1;
@@ -45,5 +47,9 @@
 + (void)synchronize;
 + (void)unlock;
 + (id)valueForKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
++ (void)hk_performWithoutAnimations:(id /* block */)arg1;
 
 @end

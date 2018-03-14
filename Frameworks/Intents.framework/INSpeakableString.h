@@ -44,6 +44,7 @@
 - (void)setSpokenPhrase:(id)arg1;
 - (void)setVocabularyIdentifier:(id)arg1;
 - (id)spokenPhrase;
+- (id)spokenPhrases;
 - (id)vocabularyIdentifier;
 
 @end

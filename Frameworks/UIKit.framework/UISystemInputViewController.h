@@ -32,6 +32,7 @@
     UITextInputTraits * _textInputTraits;
     NSLayoutConstraint * _verticalAlignment;
     bool  _willPresentFullscreen;
+    bool  _willUpdateBackgroundEffectOnInputModeChange;
 }
 
 @property (nonatomic, retain) UILabel *_promptLabel;
@@ -64,8 +65,11 @@
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } unfocusedFocusGuideOutsets;
 @property (nonatomic, retain) NSLayoutConstraint *verticalAlignment;
 @property (nonatomic) bool willPresentFullscreen;
+@property (nonatomic) bool willUpdateBackgroundEffectOnInputModeChange;
 
 + (id)_canonicalTraitsForResponder:(id)arg1;
++ (id)_iOS_systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3 traitCollection:(id)arg4;
++ (id)_tvOS_systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3 traitCollection:(id)arg4;
 + (bool)canUseSystemInputViewControllerForResponder:(id)arg1;
 + (id)systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2;
 + (id)systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3;
@@ -155,6 +159,7 @@
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setVerticalAlignment:(id)arg1;
 - (void)setWillPresentFullscreen:(bool)arg1;
+- (void)setWillUpdateBackgroundEffectOnInputModeChange:(bool)arg1;
 - (void)set_promptLabel:(id)arg1;
 - (void)setupKeyboard;
 - (bool)supportsRecentInputsIntegration;
@@ -174,5 +179,6 @@
 - (void)viewWillLayoutSubviews;
 - (bool)willPresentFullscreen;
 - (bool)willShowRecentsList;
+- (bool)willUpdateBackgroundEffectOnInputModeChange;
 
 @end

@@ -12,6 +12,7 @@
 @property (nonatomic, readonly) bool removeSpaceBefore;
 @property (nonatomic, readonly) NSArray *tokens;
 
++ (id)serializedInterpretationFromTokens:(id)arg1 transform:(const struct __CFString { }*)arg2;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -24,8 +25,8 @@
 - (bool)isEqual:(id)arg1;
 - (bool)removeSpaceAfter;
 - (bool)removeSpaceBefore;
+- (id)serializedInterpretationWithTransform:(const struct __CFString { }*)arg1;
 - (void)setAverageConfidenceScore:(double)arg1;
-- (id)textWithShiftState:(unsigned long long)arg1 ranges:(id*)arg2 filter:(id /* block */)arg3;
 - (id)tokens;
 
 @end

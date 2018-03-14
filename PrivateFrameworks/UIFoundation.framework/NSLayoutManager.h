@@ -407,6 +407,6 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
-- (id)_commonTextViewController;
+- (id)_commonTextInputController;
 
 @end

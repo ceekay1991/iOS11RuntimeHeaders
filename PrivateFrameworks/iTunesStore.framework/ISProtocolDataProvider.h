@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)_checkDownloadQueues;
 - (void)_checkInAppPurchaseQueueForAction:(id)arg1;
+- (id)_metricsDictionaryForResponse:(id)arg1;
 - (void)_performActionsForResponse:(id)arg1;
 - (void)_presentDialog:(id)arg1;
 - (bool)_processFailureTypeFromDictionary:(id)arg1 error:(id*)arg2;

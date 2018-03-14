@@ -20,6 +20,7 @@
     unsigned int  _hasPivot;
     unsigned int  _hidden;
     unsigned int  _ignoreAnimationWhenCopying_tmp;
+    unsigned int  _isFocusableOrHasFocusableChild;
     unsigned int  _isJoint;
     unsigned int  _isPresentationInstance;
     unsigned int  _lightLoaded;
@@ -92,9 +93,12 @@
 @property (nonatomic) void simdRotation;
 @property (nonatomic) void simdScale;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } simdTransform;
+@property (nonatomic, readonly) void simdWorldFront;
 @property (nonatomic) struct { } simdWorldOrientation;
 @property (nonatomic) void simdWorldPosition;
+@property (nonatomic, readonly) void simdWorldRight;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } simdWorldTransform;
+@property (nonatomic, readonly) void simdWorldUp;
 @property (nonatomic, retain) SCNSkinner *skinner;
 @property (readonly) Class superclass;
 @property (nonatomic) struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; } transform;
@@ -146,14 +150,16 @@
 - (void)_copyAnimationsFrom:(id)arg1;
 - (id)_copyRecursively;
 - (void)_customDecodingOfSCNNode:(id)arg1;
-- (void)_customEncodingOfSCNNode:(id)arg1;
+- (void)_customEncodingOfSCNNode:(id)arg1 usePresentationInstance:(bool)arg2;
 - (void)_didDecodeSCNNode:(id)arg1;
 - (void)_dump:(id)arg1;
 - (id)_dumpTree;
+- (void)_encodeNodePropertiesWithCoder:(id)arg1;
 - (bool)_enumerateChildNodesUsingBlock:(id /* block */)arg1;
 - (void)_euler;
 - (void)_expandChildArrayIfNeeded;
 - (id)_findComponentWithType:(long long)arg1;
+- (void)_focusableCandidates:(id)arg1;
 - (void)_initChildNodesArray;
 - (bool)_isAReference;
 - (bool)_isEffectivelyHidden;
@@ -172,6 +178,7 @@
 - (id)_scnBindings;
 - (void)_setAttributes:(id)arg1;
 - (void)_setComponent:(id)arg1 withType:(long long)arg2;
+- (void)_setHasFocusableChild;
 - (void)_setParent:(id)arg1;
 - (void)_setPausedOrPausedByInheritance:(bool)arg1;
 - (void)_setPosition;
@@ -182,6 +189,7 @@
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
 - (void)_updateAffine;
+- (void)_updateFocusableCache;
 - (void)_updateTransform;
 - (id)actionForKey:(id)arg1;
 - (id)actionKeys;

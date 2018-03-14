@@ -16,7 +16,6 @@
 @property (nonatomic, retain) MKMapSnapshotRequest *servingRequest;
 @property (readonly) Class superclass;
 
-+ (bool)supportsHighResolutionSnapshots;
 + (bool)supportsSharingThumbnails;
 
 - (void).cxx_destruct;

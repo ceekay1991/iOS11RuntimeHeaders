@@ -23,6 +23,7 @@
 @property (nonatomic, readonly) GEOComposedTrafficCamera *trafficCamera;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)detailFormatForLocation:(id)arg1;
 - (unsigned int)groupIdentifier;
 - (id)guidanceEvents;

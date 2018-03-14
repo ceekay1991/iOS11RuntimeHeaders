@@ -28,6 +28,8 @@
 @property (nonatomic, copy) NSArray *urls;
 @property (nonatomic, retain) _SFPBUserActivityData *userActivityData;
 
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
+
 - (void).cxx_destruct;
 - (id)actionTarget;
 - (void)addUrls:(id)arg1;
@@ -59,5 +61,9 @@
 - (unsigned long long)urlsCount;
 - (id)userActivityData;
 - (void)writeTo:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Cards.framework/Cards
+
++ (id)punchoutWithURL:(id)arg1;
 
 @end

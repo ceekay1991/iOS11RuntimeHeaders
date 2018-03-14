@@ -18,6 +18,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_contentsImageFromString:(id)arg1 withWidth:(double)arg2 letterSpacing:(double)arg3;
 - (id)_crossfadeContentsImage;
 - (void)_crossfadeStepAnimation;
@@ -29,7 +30,7 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
+- (id)accessibilityHUDRepresentation;
 - (double)addContentOverlap:(double)arg1;
 - (bool)animatesDataChange;
 - (id)contentsImage;

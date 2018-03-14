@@ -11,20 +11,17 @@
 + (id)inferredVisualStyleWithStyleSubject:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)attributeNamesToEdit;
 - (id)defaultFocusedTextColor;
 - (id)defaultTextColor;
 - (id)defaultTextColorForKeyboardAppearance;
-- (id)editedAttributeValueForName:(id)arg1 value:(id)arg2;
-- (id)editedAttributedTextForText:(id)arg1 defaultAttributes:(id)arg2;
-- (id)fieldEditorTextAttributesStoringOriginalDefaultTextAttributes:(id)arg1;
+- (id)fieldEditorTextAttributes:(id)arg1 storingOriginalAttributes:(id)arg2;
 - (void)handleTextVibrancy;
 - (id)initWithStyleSubject:(id)arg1;
+- (id)overrideAttributesForEditing;
 - (id)parentViewForTextContentView;
 - (id)placeholderColor;
 - (void)setStyleSubject:(id)arg1;
 - (id)styleSubject;
 - (bool)textShouldUseVibrancy;
-- (id)uneditedAttributeNameForName:(id)arg1;
 
 @end

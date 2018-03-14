@@ -9,6 +9,7 @@
     _SFPBText * _bottomSubtitle;
     _SFPBText * _bottomText;
     bool  _canBeHidden;
+    _SFPBRichText * _detailText;
     struct { 
         unsigned int canBeHidden : 1; 
         unsigned int hasTopPadding : 1; 
@@ -25,6 +26,9 @@
     int  _separatorStyle;
     int  _state;
     NSArray * _stopCommands;
+    _SFPBRichText * _subtitle;
+    _SFPBImage * _thumbnail;
+    _SFPBRichText * _title;
     _SFPBImage * _topImage;
     NSString * _topImageEmoji;
     NSString * _topSecondaryText;
@@ -40,6 +44,7 @@
 @property (nonatomic) bool canBeHidden;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, retain) _SFPBRichText *detailText;
 @property (nonatomic, readonly) bool hasBackgroundColor;
 @property (nonatomic, readonly) bool hasBottomImage;
 @property (nonatomic, readonly) bool hasBottomImageEmoji;
@@ -47,12 +52,16 @@
 @property (nonatomic, readonly) bool hasBottomSubtitle;
 @property (nonatomic, readonly) bool hasBottomText;
 @property (nonatomic, readonly) bool hasCanBeHidden;
+@property (nonatomic, readonly) bool hasDetailText;
 @property (nonatomic, readonly) bool hasHasBottomPadding;
 @property (nonatomic, readonly) bool hasHasTopPadding;
 @property (nonatomic, readonly) bool hasPunchoutPickerDismissText;
 @property (nonatomic, readonly) bool hasPunchoutPickerTitle;
 @property (nonatomic, readonly) bool hasSeparatorStyle;
 @property (nonatomic, readonly) bool hasState;
+@property (nonatomic, readonly) bool hasSubtitle;
+@property (nonatomic, readonly) bool hasThumbnail;
+@property (nonatomic, readonly) bool hasTitle;
 @property (nonatomic, readonly) bool hasTopImage;
 @property (nonatomic, readonly) bool hasTopImageEmoji;
 @property (nonatomic) bool hasTopPadding;
@@ -68,7 +77,10 @@
 @property (nonatomic) int separatorStyle;
 @property (nonatomic) int state;
 @property (nonatomic, copy) NSArray *stopCommands;
+@property (nonatomic, retain) _SFPBRichText *subtitle;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) _SFPBImage *thumbnail;
+@property (nonatomic, retain) _SFPBRichText *title;
 @property (nonatomic, retain) _SFPBImage *topImage;
 @property (nonatomic, copy) NSString *topImageEmoji;
 @property (nonatomic, copy) NSString *topSecondaryText;
@@ -88,6 +100,7 @@
 - (void)clearPlayCommands;
 - (void)clearPunchoutOptions;
 - (void)clearStopCommands;
+- (id)detailText;
 - (id)dictionaryRepresentation;
 - (bool)hasBackgroundColor;
 - (bool)hasBottomImage;
@@ -96,12 +109,16 @@
 - (bool)hasBottomSubtitle;
 - (bool)hasBottomText;
 - (bool)hasCanBeHidden;
+- (bool)hasDetailText;
 - (bool)hasHasBottomPadding;
 - (bool)hasHasTopPadding;
 - (bool)hasPunchoutPickerDismissText;
 - (bool)hasPunchoutPickerTitle;
 - (bool)hasSeparatorStyle;
 - (bool)hasState;
+- (bool)hasSubtitle;
+- (bool)hasThumbnail;
+- (bool)hasTitle;
 - (bool)hasTopImage;
 - (bool)hasTopImageEmoji;
 - (bool)hasTopPadding;
@@ -130,6 +147,7 @@
 - (void)setBottomSubtitle:(id)arg1;
 - (void)setBottomText:(id)arg1;
 - (void)setCanBeHidden:(bool)arg1;
+- (void)setDetailText:(id)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
 - (void)setPlayCommands:(id)arg1;
@@ -139,6 +157,9 @@
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setState:(int)arg1;
 - (void)setStopCommands:(id)arg1;
+- (void)setSubtitle:(id)arg1;
+- (void)setThumbnail:(id)arg1;
+- (void)setTitle:(id)arg1;
 - (void)setTopImage:(id)arg1;
 - (void)setTopImageEmoji:(id)arg1;
 - (void)setTopSecondaryText:(id)arg1;
@@ -148,6 +169,9 @@
 - (id)stopCommands;
 - (id)stopCommandsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)stopCommandsCount;
+- (id)subtitle;
+- (id)thumbnail;
+- (id)title;
 - (id)topImage;
 - (id)topImageEmoji;
 - (id)topSecondaryText;

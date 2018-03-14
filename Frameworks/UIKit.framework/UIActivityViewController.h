@@ -43,6 +43,7 @@
     bool  _sourceIsManaged;
     NSString * _subject;
     long long  _totalProviderCount;
+    bool  _waitingForInitialShareServicePreferredContentSize;
     bool  _willDismissActivityViewController;
 }
 
@@ -91,6 +92,7 @@
 @property (nonatomic, copy) NSString *subject;
 @property (readonly) Class superclass;
 @property (nonatomic) long long totalProviderCount;
+@property (nonatomic) bool waitingForInitialShareServicePreferredContentSize;
 @property (nonatomic) bool willDismissActivityViewController;
 
 + (bool)_popoverPresentationUsesModernPresentation;
@@ -117,41 +119,43 @@
 - (void)_connectToRemoteViewService;
 - (id)_containedAlertController;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
-- (void)_didUpdateSafeAreaLayoutGuideFrame;
 - (double)_displayHeight;
-- (void)_embedRemoteContentViewControllerIfNeeded;
+- (void)_embedRemoteContentViewController;
 - (void)_endDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
 - (void)_endInProgressActivityExecutionForcedStrongReference;
 - (void)_executeActivity;
 - (void)_insertIntoActivitiesByUUID:(id)arg1;
 - (void)_installViewController:(id)arg1;
+- (void)_loadOrPreheatActivityViewControllerConfiguration;
+- (id)_newShareUIConfigurationForCurrentState;
+- (id)_newShareUIConfigurationWithMatchingResults:(id)arg1;
 - (id)_orderedAvailableActivitiesByPerformingMatching;
 - (void)_performActivity:(id)arg1;
 - (void)_performActivityOfType:(id)arg1 executionEnvironment:(long long)arg2;
 - (void)_performDismissWithCompletionHandler:(id /* block */)arg1;
 - (id)_placeholderActivityItemValues;
 - (id /* block */)_popoverDismissalAction;
+- (void)_preloadInitialConfigurationLocallyIfNeeded;
 - (void)_prepareActivity:(id)arg1;
 - (void)_prepareActivity:(id)arg1 completion:(id /* block */)arg2;
 - (void)_presentationControllerDismissalTransitionDidEndNotification:(id)arg1;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (bool)_queueBackgroundOperationsForActivityItems:(id)arg1 activityBeingPerformed:(id)arg2;
-- (id)_reloadActivityViewControllerConfiguration;
 - (void)_removeFromActivitiesByUUID:(id)arg1;
 - (bool)_requiresCustomPresentationController;
 - (void)_resetAfterActivity:(bool)arg1;
 - (id)_securityScopedURLsForMatching;
-- (void)_setDarkStyleOnLegacyApp;
+- (void)_sendInitialShareServiceConfigurationAndUpdatePreferredContentSize;
 - (void)_setPopoverController:(id)arg1;
 - (void)_setupLegacyAlertPresentationControllers;
+- (void)_shareServiceFinishedInitialPreferredContentSizeUpdate;
 - (bool)_shouldExecuteItemOperation:(id)arg1 forActivity:(id)arg2;
 - (bool)_shouldShowSystemActivityType:(id)arg1;
 - (id)_titleForActivity:(id)arg1;
 - (void)_updateActivityItems:(id)arg1;
 - (void)_updatePreferredContentSizes;
-- (void)_updateShareExtensionServiceWithCurrentConfiguration;
 - (void)_updateSourceIsManagedForURLs;
-- (bool)_waitForShareExtensionServiceWithTimeout:(double)arg1 requireValidShareServicePreferredContentSize:(bool)arg2 offendingMethod:(SEL)arg3 warningMessage:(id)arg4;
+- (bool)_waitForShareExtensionServiceWithTimeout:(double)arg1 requireValidShareServicePreferredContentSize:(bool)arg2;
 - (void)_willPerformInServiceActivityType:(id)arg1 activitySpecificMetadata:(id)arg2;
 - (void)actionSheetPresentationControllerDidDismissActionSheet:(id)arg1;
 - (id)activitiesByUUID;
@@ -190,7 +194,6 @@
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)newShareUIConfigurationWithMatchingResults:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (long long)originalPopoverBackgroundStyle;
 - (Class)originalPopoverBackgroundViewClass;
@@ -240,6 +243,7 @@
 - (void)setSourceIsManaged:(bool)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setTotalProviderCount:(long long)arg1;
+- (void)setWaitingForInitialShareServicePreferredContentSize:(bool)arg1;
 - (void)setWillDismissActivityViewController:(bool)arg1;
 - (void)set_popoverDismissalAction:(id /* block */)arg1;
 - (id)shareExtension;
@@ -268,6 +272,7 @@
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (id)visualStyleForAlertControllerStyle:(long long)arg1 traitCollection:(id)arg2 descriptor:(id)arg3;
+- (bool)waitingForInitialShareServicePreferredContentSize;
 - (bool)willDismissActivityViewController;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 

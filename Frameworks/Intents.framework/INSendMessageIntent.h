@@ -19,11 +19,10 @@
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (id)content;
 - (id)conversationIdentifier;
-- (id)description;
 - (id)domain;
 - (id)groupName;
 - (id)initWithRecipients:(id)arg1 content:(id)arg2 groupName:(id)arg3 serviceName:(id)arg4 sender:(id)arg5;
@@ -45,6 +44,10 @@
 - (void)setVerb:(id)arg1;
 - (id)speakableGroupName;
 - (id)verb;
+
+// Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
+
+- (void)apr_getArgsInto:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
 

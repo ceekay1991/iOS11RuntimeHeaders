@@ -32,6 +32,7 @@
 @property (nonatomic, readonly) bool isInterfaceUsable;
 @property (nonatomic, readonly) bool isInternetReachable;
 @property (nonatomic, readonly) bool isLTEWithCDRX;
+@property (nonatomic, readonly) bool isNetworkingPowerExpensiveToUse;
 @property (nonatomic, readonly) bool isPoorLinkQuality;
 @property (nonatomic, readonly) bool isRadioHot;
 @property (nonatomic, readonly) int linkQuality;
@@ -57,6 +58,7 @@
 - (bool)isInterfaceUsable;
 - (bool)isInternetReachable;
 - (bool)isLTEWithCDRX;
+- (bool)isNetworkingPowerExpensiveToUse;
 - (bool)isPoorLinkQuality;
 - (bool)isRadioHot;
 - (int)linkQuality;

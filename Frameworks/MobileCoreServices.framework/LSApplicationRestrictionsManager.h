@@ -4,7 +4,6 @@
 
 @interface LSApplicationRestrictionsManager : NSObject {
     NSSet * _blacklistedBundleIDs;
-    MCProfileConnection * _connection;
     NSNumber * _maximumRating;
     NSSet * _restrictedBundleIDs;
     NSObject<OS_dispatch_queue> * _restrictionsAccessQueue;
@@ -17,18 +16,23 @@
 @property (readonly) NSNumber *maximumRating;
 @property (getter=isOpenInRestrictionInEffect, readonly) bool openInRestrictionInEffect;
 @property (readonly) NSSet *restrictedBundleIDs;
+@property (getter=isSystemAppDeletionEnabled, readonly) bool systemAppDeletionEnabled;
 @property (getter=isWhitelistEnabled, readonly) bool whitelistEnabled;
 @property (readonly) NSSet *whitelistedBundleIDs;
 
 + (id)activeRestrictionIdentifiers;
 + (id)sharedInstance;
 
+- (bool)_LSApplyRestrictedSet:(id)arg1 forRestriction:(id)arg2;
 - (id)_LSResolveIdentifiers:(id)arg1;
+- (id)_MCProfileConnection;
+- (id)_MCRestrictionManager;
 - (id)allowedOpenInAppBundleIDsAfterApplyingFilterToAppBundleIDs:(id)arg1 originatingAppBundleID:(id)arg2 originatingAccountIsManaged:(bool)arg3;
 - (void)beginListeningForChanges;
 - (id)blacklistedBundleID;
 - (id)blacklistedBundleIDs;
 - (id)calculateSetDifference:(id)arg1 and:(id)arg2;
+- (bool)cleanRemovedSystemApplicationsList;
 - (void)clearAllValues;
 - (void)dealloc;
 - (void)handleMCEffectiveSettingsChanged;
@@ -42,6 +46,7 @@
 - (bool)isFeatureAllowed:(unsigned long long)arg1;
 - (bool)isOpenInRestrictionInEffect;
 - (bool)isRatingAllowed:(id)arg1;
+- (bool)isSystemAppDeletionEnabled;
 - (bool)isWhitelistEnabled;
 - (id)maximumRating;
 - (id)restrictedBundleIDs;

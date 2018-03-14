@@ -148,7 +148,7 @@
 - (double)_arrowOffset;
 - (bool)_attemptsToAvoidKeyboard;
 - (id)_backgroundView;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_baseContentInsets;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_baseContentInsetsWithLeftMargin:(double*)arg1 rightMargin:(double*)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_calculateContainingFrame;
 - (struct CGPoint { double x1; double x2; })_centerPointForScale:(double)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 anchor:(struct CGPoint { double x1; double x2; })arg3;
 - (bool)_centersPopoverIfSourceViewNotSet;

@@ -14,7 +14,7 @@
     int  _status;
     int  _taskType;
     _INPBTemporalEventTrigger * _temporalEventTrigger;
-    NSString * _title;
+    _INPBDataString * _title;
     PBUnknownFields * _unknownFields;
 }
 
@@ -33,7 +33,7 @@
 @property (nonatomic) int status;
 @property (nonatomic) int taskType;
 @property (nonatomic, retain) _INPBTemporalEventTrigger *temporalEventTrigger;
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) _INPBDataString *title;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (id)options;

@@ -3,6 +3,7 @@
  */
 
 @interface UIStatusBarActivityItemView : UIStatusBarItemView {
+    UIActivityIndicatorView * _accessibilityHUDIndicator;
     UIActivityIndicatorView * _activityIndicator;
     bool  _slowActivity;
     bool  _syncActivity;
@@ -10,13 +11,14 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (long long)_activityIndicatorStyle;
 - (void)_startAnimating;
 - (void)_stopAnimating;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
+- (id)accessibilityHUDRepresentation;
 - (void)setVisible:(bool)arg1;
 - (double)shadowPadding;
 - (double)updateContentsAndWidth;

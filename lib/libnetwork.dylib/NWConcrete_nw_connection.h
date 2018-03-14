@@ -39,18 +39,19 @@
     unsigned long long  start_time;
     int  state;
     int  stats_reason;
-    struct netcore_stats_tcp_report { union { struct { struct netcore_stats_tcp_statistics_report { unsigned long long x_1_3_1; unsigned long long x_1_3_2; unsigned long long x_1_3_3; unsigned long long x_1_3_4; unsigned long long x_1_3_5; unsigned long long x_1_3_6; unsigned long long x_1_3_7; unsigned long long x_1_3_8; unsigned long long x_1_3_9; unsigned long long x_1_3_10; unsigned int x_1_3_11; unsigned int x_1_3_12; unsigned int x_1_3_13; unsigned int x_1_3_14; unsigned int x_1_3_15; unsigned int x_1_3_16; unsigned int x_1_3_17; unsigned int x_1_3_18; unsigned int x_1_3_19; unsigned int x_1_3_20; unsigned int x_1_3_21; unsigned int x_1_3_22; unsigned int x_1_3_23; unsigned int x_1_3_24; unsigned int x_1_3_25; unsigned int x_1_3_26; unsigned int x_1_3_27; int x_1_3_28; int x_1_3_29; unsigned int x_1_3_30 : 1; unsigned int x_1_3_31 : 1; unsigned int x_1_3_32 : 1; unsigned int x_1_3_33 : 1; unsigned int x_1_3_34 : 1; unsigned int x_1_3_35 : 1; unsigned int x_1_3_36 : 1; unsigned int x_1_3_37 : 1; unsigned int x_1_3_38 : 1; unsigned int x_1_3_39 : 7; unsigned char x_1_3_40[2]; } x_1_2_1; } x_1_1_1; } x1; } * stats_report;
+    struct netcore_stats_tcp_report { union { struct { struct netcore_stats_tcp_statistics_report { unsigned long long x_1_3_1; unsigned long long x_1_3_2; unsigned long long x_1_3_3; unsigned long long x_1_3_4; unsigned long long x_1_3_5; unsigned long long x_1_3_6; unsigned long long x_1_3_7; unsigned long long x_1_3_8; unsigned long long x_1_3_9; unsigned long long x_1_3_10; unsigned long long x_1_3_11; unsigned long long x_1_3_12; unsigned long long x_1_3_13; unsigned long long x_1_3_14; unsigned long long x_1_3_15; unsigned long long x_1_3_16; unsigned int x_1_3_17; unsigned int x_1_3_18; unsigned int x_1_3_19; unsigned int x_1_3_20; unsigned int x_1_3_21; unsigned int x_1_3_22; unsigned int x_1_3_23; unsigned int x_1_3_24; unsigned int x_1_3_25; unsigned int x_1_3_26; unsigned int x_1_3_27; unsigned int x_1_3_28; unsigned int x_1_3_29; unsigned int x_1_3_30; unsigned int x_1_3_31; unsigned int x_1_3_32; unsigned int x_1_3_33; int x_1_3_34; int x_1_3_35; int x_1_3_36; unsigned int x_1_3_37 : 1; unsigned int x_1_3_38 : 1; unsigned int x_1_3_39 : 1; unsigned int x_1_3_40 : 1; unsigned int x_1_3_41 : 1; unsigned int x_1_3_42 : 1; } x_1_2_1; } x_1_1_1; } x1; } * stats_report;
     unsigned int  stats_reported;
     struct nw_connection_throughput_monitor_s { 
-        void *timer; 
         unsigned long long current_bytes; 
         unsigned long long current_time; 
         unsigned long long last_bytes; 
         unsigned long long last_time; 
+        void *timer; 
         unsigned int minimum; 
         unsigned char __pad[4]; 
     }  throughput_monitor;
-    struct nw_connection_timestamp_s { unsigned long long x1; unsigned long long x2; struct nw_endpoint_handler_event_s { unsigned int x_3_1_1; unsigned int x_3_1_2; } x3; long long x4; } * timestamps;
+    struct nw_connection_timestamp_s { unsigned long long x1; unsigned long long x2; struct nw_endpoint_handler_event_s { unsigned int x_3_1_1; unsigned int x_3_1_2; } x3; long long x4; unsigned char x5[0]; } * timestamps;
+    NSObject<OS_nw_endpoint_handler> * transport_endpoint_handler;
     unsigned short  used_timestamps;
     id /* block */  viability_changed_handler;
     id /* block */  write_close_handler;

@@ -26,6 +26,8 @@
 @property (copy) NSArray *valueListAttributes;
 @property (readonly, copy) NSDictionary *valueLists;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (Class)_stitchingClass;
 + (bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (void)didEndPossibleFileOperation:(id)arg1;
@@ -97,5 +99,14 @@
 - (id)valueListAttributes;
 - (id)valueLists;
 - (id)valueOfAttribute:(id)arg1 forResultAtIndex:(unsigned long long)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CloudDocs.framework/CloudDocs
+
+- (void)br_setupForMonitoringChildrenOfFolderAtURL:(id)arg1;
+- (void)br_setupForMonitoringChildrenOfFolderAtURL:(id)arg1 searchScopes:(id)arg2;
+- (bool)br_setupForMonitoringChildrenOfItemAtURL:(id)arg1;
+- (bool)br_setupForMonitoringChildrenOfItemAtURL:(id)arg1 searchScopes:(id)arg2;
+- (bool)br_setupForMonitoringItemAtURL:(id)arg1;
+- (bool)br_setupForMonitoringItemAtURL:(id)arg1 searchScopes:(id)arg2;
 
 @end

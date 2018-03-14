@@ -36,6 +36,7 @@
 - (void)_addReindexedProperty:(id)arg1 toSetForEntity:(id)arg2;
 - (long long)_countNullsInColumn:(id)arg1 forEntity:(id)arg2;
 - (long long)_countUnreferencedPrimaryKeysForEntity:(id)arg1 inForeignKeyColumnName:(id)arg2 fromTable:(id)arg3;
+- (void)_determineAncillaryModelIndexesForMigration;
 - (void)_determineAttributeTriggerToMigrateForAttributeNamed:(id)arg1 withSourceEntity:(id)arg2 andDestinationEntity:(id)arg3;
 - (void)_determineIndexesToMigrateForSourceEntity:(id)arg1 andDestinationEntity:(id)arg2;
 - (void)_determinePropertyDependenciesOnIDForEntity:(id)arg1;
@@ -46,15 +47,17 @@
 - (void)_populateEntityMigrationDescriptionsAndEntityMap;
 - (void)_populateTableMigrationDescriptions;
 - (id)adapter;
+- (bool)clearTombstoneColumnsForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)createEntityMigrationStatements;
 - (id)createStatementsForUpdatingEntityKeys;
 - (void)dealloc;
-- (void)deleteStatementsForHistory;
+- (bool)deleteStatementsForHistory;
 - (id)dstModel;
 - (id)entityMigrationDescriptionForEntity:(id)arg1;
 - (void)generatePKTableUpdateStatements;
 - (id)initWithStore:(id)arg1 destinationModel:(id)arg2 mappingModel:(id)arg3;
 - (bool)performMigration:(id*)arg1;
+- (bool)shiftTombstones;
 - (id)srcModel;
 - (id)tableMigrationDescriptionForEntity:(id)arg1;
 - (id)updateStatementsForHistoryChanges;

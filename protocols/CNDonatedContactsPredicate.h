@@ -5,6 +5,6 @@
 
 @required
 
-- (CNFuture *)contactsFromDonationStore:(CNDonationStore *)arg1;
+- (CNEither *)contactsFromDonationStore:(CNDonationStore *)arg1;
 
 @end

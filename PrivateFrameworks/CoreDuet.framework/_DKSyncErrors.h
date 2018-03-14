@@ -7,6 +7,7 @@
 + (id)couldNotSaveForSync;
 + (id)disabled;
 + (id)failedToApplyRemoteChanges;
++ (id)failedToFetchChanges;
 + (id)unavailableForCurrentUser;
 
 @end

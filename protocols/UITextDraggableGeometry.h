@@ -12,9 +12,4 @@
 - (UITextRange *)textRangeForAttachmentInTextRange:(UITextRange *)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (NSArray *)textRangesForAttachmentsInTextRange:(UITextRange *)arg1;
 
-@optional
-
-- (NSAttributedString *)combinedAttributedStringForTextRanges:(NSArray *)arg1;
-- (UITextDraggableGeometrySameViewDropOperationResult *)performSameViewDropOperation:(id <UITextDraggableGeometrySameViewDropOperation>)arg1;
-
 @end

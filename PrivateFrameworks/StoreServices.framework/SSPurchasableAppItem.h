@@ -21,13 +21,16 @@
 - (long long)iTunesVersion;
 - (id)iconTitle;
 - (id)iconURL;
+- (bool)is32BitOnly;
 - (bool)isFamilyShareable;
 - (bool)isHiddenFromSpringBoard;
 - (bool)isNewsstand;
+- (bool)isPreorder;
 - (id)longTitle;
 - (unsigned int)minimumOS;
 - (id)ovalIconURLString;
 - (id)redownloadParams;
+- (id)requiredCapabilitiesString;
 - (bool)supportsIPad;
 - (bool)supportsIPhone;
 

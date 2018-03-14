@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPlaceParentInfoViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate> {
+@interface MKPlaceParentInfoViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate> {
     bool  _accessibilityMode;
     NSTextAttachment * _attachment;
     NSLayoutConstraint * _baselineConstraint;
@@ -13,6 +13,7 @@
     UIImageView * _iconImageView;
     NSLayoutConstraint * _leadingLayoutGuideConstraint;
     MKMapItem * _parentMapItem;
+    bool  _resizableViewsDisabled;
     MKPlaceSectionRowView * _sectionRow;
     UILabel * _subtitleLabel;
     UILabel * _titleLabel;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) UIImageView *iconImageView;
 @property (nonatomic, retain) NSLayoutConstraint *leadingLayoutGuideConstraint;
 @property (nonatomic, retain) MKMapItem *parentMapItem;
+@property (nonatomic) bool resizableViewsDisabled;
 @property (nonatomic, retain) UILabel *subtitleLabel;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UILabel *titleLabel;
@@ -56,6 +58,7 @@
 - (id)leadingLayoutGuideConstraint;
 - (id)parentIdentifiers;
 - (id)parentMapItem;
+- (bool)resizableViewsDisabled;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setAccessibilityMode:(bool)arg1;
 - (void)setBaselineConstraint:(id)arg1;
@@ -66,6 +69,7 @@
 - (void)setIconImageView:(id)arg1;
 - (void)setLeadingLayoutGuideConstraint:(id)arg1;
 - (void)setParentMapItem:(id)arg1;
+- (void)setResizableViewsDisabled:(bool)arg1;
 - (void)setSubtitleLabel:(id)arg1;
 - (void)setTitleLabel:(id)arg1;
 - (void)setTopConstraint:(id)arg1;

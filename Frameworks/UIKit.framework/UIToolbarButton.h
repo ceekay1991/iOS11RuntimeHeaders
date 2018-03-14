@@ -126,11 +126,11 @@
 - (bool)_useBarHeight;
 - (bool)_useSilverLook;
 - (bool)_wantsAccessibilityButtonShapes;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
-- (void)dealloc;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 forEvent:(struct __GSEvent { }*)arg2;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;

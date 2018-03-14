@@ -13,7 +13,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) bool valid;
 
-+ (void)becameFatallyBlocked:(id)arg1;
++ (void)becameFatallyBlocked:(id)arg1 index:(unsigned long long)arg2;
 + (void)performSyncOnSilo:(id)arg1 invoker:(id /* block */)arg2;
 
 - (id)debugDescription;

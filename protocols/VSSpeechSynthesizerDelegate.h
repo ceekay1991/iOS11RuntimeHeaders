@@ -21,6 +21,7 @@
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 didStopPresynthesizedAudioRequestAtEnd:(bool)arg2 error:(NSError *)arg3;
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 willSpeakRangeOfSpeechString:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 willSpeakRangeOfSpeechString:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 forRequest:(VSSpeechRequest *)arg3;
+- (void)speechSynthesizer:(VSSpeechSynthesizer *)arg1 withRequest:(VSSpeechRequest *)arg2 didReceiveTimingInfo:(NSArray *)arg3;
 - (void)speechSynthesizerDidContinueSpeaking:(VSSpeechSynthesizer *)arg1;
 - (void)speechSynthesizerDidPauseSpeaking:(VSSpeechSynthesizer *)arg1;
 - (void)speechSynthesizerDidStartSpeaking:(VSSpeechSynthesizer *)arg1;

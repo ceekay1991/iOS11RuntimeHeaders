@@ -76,6 +76,7 @@
 - (bool)isOneWayArrow;
 - (bool)isRouteEta;
 - (bool)isSelectable;
+- (bool)isSelected;
 - (bool)isTextVisible;
 - (bool)isTrafficCamera;
 - (bool)isTrafficIncident;
@@ -86,6 +87,7 @@
 - (const struct shared_ptr<md::LabelMarker> { struct LabelMarker {} *x1; struct __shared_weak_count {} *x2; }*)labelMarkerImpl;
 - (id)mapRegion;
 - (id)parentClusterLabelMarker;
+- (unsigned char)pickedLabelBalloonBehavior;
 - (bool)positionOfInterest:(struct { double x1; double x2; }*)arg1 zoom:(float*)arg2;
 - (id)relatedSubTexts;
 - (id)relatedTexts;
@@ -94,6 +96,7 @@
 - (struct CGPoint { double x1; double x2; })screenPointToScrollRelativeToWithCanvasSize:(struct CGSize { double x1; double x2; })arg1 canvasScale:(double)arg2;
 - (int)selectionType;
 - (void)setIsDragged:(bool)arg1;
+- (void)setIsPickedIconDrawnExternally:(bool)arg1;
 - (void)setLabelPressed:(bool)arg1;
 - (id)shields;
 - (int)sortKey;

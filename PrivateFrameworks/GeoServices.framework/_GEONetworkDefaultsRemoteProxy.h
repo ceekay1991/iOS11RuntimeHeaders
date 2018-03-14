@@ -5,8 +5,9 @@
 @interface _GEONetworkDefaultsRemoteProxy : NSObject <_GEONetworkDefaultsServerProxy> {
     int  _configChangedToken;
     <_GEONetworkDefaultsServerProxyDelegate> * _delegate;
-    NSLock * _lock;
+    NSObject<OS_dispatch_queue> * _isolation;
     NSMutableArray * _updateCompletionHandlers;
+    NSObject<OS_dispatch_queue> * _xpcQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -16,6 +17,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_networkDefaultsDidChange;
 - (void)dealloc;
 - (id)delegate;
 - (id)init;

@@ -51,6 +51,7 @@
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cellWasLongPressed:(id)arg1;
 - (void)cellWasSingleTapped:(id)arg1;
+- (void)configureDragInteraction;
 - (id)constraintsPendingActivation;
 - (void)copy:(id)arg1;
 - (void)dealloc;

@@ -27,13 +27,15 @@
 
 + (id)createViewForItem:(id)arg1 withData:(id)arg2 actions:(int)arg3 foregroundStyle:(id)arg4;
 
+- (void).cxx_destruct;
 - (bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (bool)_shouldReverseLayoutDirection;
+- (void)dealloc;
 - (id)description;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
+- (id)accessibilityHUDRepresentation;
 - (double)addContentOverlap:(double)arg1;
 - (double)adjustFrameToNewSize:(double)arg1;
 - (bool)allowsUpdates;
@@ -47,7 +49,6 @@
 - (double)currentLeftOverlap;
 - (double)currentOverlap;
 - (double)currentRightOverlap;
-- (void)dealloc;
 - (void)endDisablingRasterization;
 - (void)endImageContext;
 - (double)extraLeftPadding;

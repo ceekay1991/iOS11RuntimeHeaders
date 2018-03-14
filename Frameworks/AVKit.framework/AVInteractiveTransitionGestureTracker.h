@@ -14,10 +14,11 @@
     UIPinchGestureRecognizer * _pinchGestureRecognizer;
     bool  _pinchToDismissEnabled;
     bool  _pinchToPresentEnabled;
+    double  _previousPinchScale;
     NSArray * _recognizers;
     double  _rotation;
     UIRotationGestureRecognizer * _rotationGestureRecognizer;
-    UISwipeGestureRecognizer * _swipeDownGestureRecognizer;
+    bool  _trackingUpwardPan;
 }
 
 @property (nonatomic) long long activeGestureType;
@@ -31,11 +32,12 @@
 @property (nonatomic, readonly) UIPinchGestureRecognizer *pinchGestureRecognizer;
 @property (getter=isPinchToDismissEnabled, nonatomic) bool pinchToDismissEnabled;
 @property (getter=isPinchToPresentEnabled, nonatomic) bool pinchToPresentEnabled;
+@property (nonatomic) double previousPinchScale;
 @property (nonatomic, readonly) NSArray *recognizers;
 @property (nonatomic) double rotation;
 @property (nonatomic, readonly) UIRotationGestureRecognizer *rotationGestureRecognizer;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) UISwipeGestureRecognizer *swipeDownGestureRecognizer;
+@property (getter=isTrackingUpwardPan, nonatomic) bool trackingUpwardPan;
 
 - (void).cxx_destruct;
 - (void)_beginTracking:(long long)arg1;
@@ -48,6 +50,7 @@
 - (long long)activeGestureType;
 - (void)addRecognizersToView:(id)arg1;
 - (id)delegate;
+- (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
@@ -55,9 +58,11 @@
 - (bool)isPinchToDismissEnabled;
 - (bool)isPinchToPresentEnabled;
 - (bool)isTracking;
+- (bool)isTrackingUpwardPan;
 - (struct CGPoint { double x1; double x2; })locationOfInitialPinchInWindow;
 - (id)panGestureRecognizer;
 - (id)pinchGestureRecognizer;
+- (double)previousPinchScale;
 - (id)recognizers;
 - (double)rotation;
 - (id)rotationGestureRecognizer;
@@ -66,8 +71,9 @@
 - (void)setPanToDismissEnabled:(bool)arg1;
 - (void)setPinchToDismissEnabled:(bool)arg1;
 - (void)setPinchToPresentEnabled:(bool)arg1;
+- (void)setPreviousPinchScale:(double)arg1;
 - (void)setRotation:(double)arg1;
-- (id)swipeDownGestureRecognizer;
+- (void)setTrackingUpwardPan:(bool)arg1;
 - (void)transitionDidBegin;
 
 @end

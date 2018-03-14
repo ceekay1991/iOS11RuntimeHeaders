@@ -42,7 +42,7 @@
 @property (retain) NSObject<OS_dispatch_queue> *xpcConnectionHelperQueue;
 @property (retain) NSObject<OS_dispatch_queue> *xpcConnectionQueue;
 
-+ (bool)isAppleTV;
++ (bool)allowMessageOnDevice;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;

@@ -28,6 +28,8 @@
 @property (nonatomic) double miterLimit;
 @property (nonatomic) bool usesEvenOddFillRule;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (id)_bezierPathWithArcRoundedRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 cornerRadius:(double)arg2;
 + (id)_bezierPathWithPillRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 cornerRadius:(double)arg2;
 + (id)_bezierPathWithRoundedRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 byRoundingCorners:(unsigned long long)arg2 cornerRadius:(double)arg3;
@@ -103,5 +105,23 @@
 - (void)stroke;
 - (void)strokeWithBlendMode:(int)arg1 alpha:(double)arg2;
 - (bool)usesEvenOddFillRule;
+
+// Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
+
+- (void)akAppendPath:(id)arg1;
+- (struct CGPath { }*)newCGPathForPlatformBezierPath;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
+- (void)hk_applyBlock:(id /* block */)arg1;
+- (id)hk_firstPoint;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
+- (void)hu_scaleByFactor:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SilexText.framework/SilexText
+
+- (id)TSDBezierPath;
 
 @end

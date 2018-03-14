@@ -18,10 +18,7 @@
 - (id)localizedName:(long long)arg1 locale:(id)arg2;
 - (id)name;
 - (id)nextDaylightSavingTimeTransitionAfterDate:(id)arg1;
-- (oneway void)release;
 - (id)replacementObjectForPortCoder:(id)arg1;
-- (id)retain;
-- (unsigned long long)retainCount;
 - (long long)secondsFromGMTForDate:(id)arg1;
 
 @end

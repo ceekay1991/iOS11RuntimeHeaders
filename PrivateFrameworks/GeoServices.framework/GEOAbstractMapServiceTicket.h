@@ -5,6 +5,7 @@
 @interface GEOAbstractMapServiceTicket : GEOAbstractTicket <GEOMapServiceTicket> {
     NSArray * _browseCategories;
     bool  _chainResultSet;
+    GEOResolvedItem * _clientResolvedResult;
     GEORelatedSearchSuggestion * _defaultRelatedSuggestion;
     GEODirectionIntent * _directionIntent;
     NSArray * _displayHeaderSubstitutes;
@@ -22,6 +23,7 @@
 @property (nonatomic) unsigned long long cachePolicy;
 @property (getter=isCancelled, nonatomic, readonly) bool cancelled;
 @property (getter=isChainResultSet, nonatomic, readonly) bool chainResultSet;
+@property (nonatomic, readonly) GEOResolvedItem *clientResolvedResult;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
@@ -44,6 +46,7 @@
 - (void)applyToCorrectedSearch:(id)arg1;
 - (void)applyToPlaceInfo:(id)arg1;
 - (id)browseCategories;
+- (id)clientResolvedResult;
 - (id)defaultRelatedSuggestion;
 - (id)directionIntent;
 - (id)displayHeaderSubstitutes;
@@ -56,10 +59,14 @@
 - (int)searchResultType;
 - (bool)shouldEnableRedoSearch;
 - (bool)showDymSuggestionCloseButton;
+- (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(id /* block */)arg4;
+- (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(id /* block */)arg4 queue:(id)arg5;
 - (void)submitWithHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2;
 - (void)submitWithHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2 queue:(id)arg3;
 - (void)submitWithHandler:(id /* block */)arg1 timeout:(long long)arg2 networkActivity:(id /* block */)arg3;
 - (void)submitWithHandler:(id /* block */)arg1 timeout:(long long)arg2 networkActivity:(id /* block */)arg3 queue:(id)arg4;
+- (void)submitWithRefinedHandler:(id /* block */)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(id /* block */)arg4;
+- (void)submitWithRefinedHandler:(id /* block */)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(id /* block */)arg4 queue:(id)arg5;
 - (void)submitWithRefinedHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2;
 - (void)submitWithRefinedHandler:(id /* block */)arg1 networkActivity:(id /* block */)arg2 queue:(id)arg3;
 - (void)submitWithRefinedHandler:(id /* block */)arg1 timeout:(long long)arg2 networkActivity:(id /* block */)arg3;

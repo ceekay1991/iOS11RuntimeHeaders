@@ -21,6 +21,8 @@
 @property (nonatomic, copy) NSArray *tabStops;
 @property (nonatomic) double tailIndent;
 
+// Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
+
 - (void)_mutateTabStops;
 - (void)_setLineBoundsOptions:(unsigned long long)arg1;
 - (void)addTabStop:(id)arg1;
@@ -50,5 +52,10 @@
 - (void)setTextLists:(id)arg1;
 - (void)setTighteningFactorForTruncation:(float)arg1;
 - (void)setUsesOpticalAlignment:(bool)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
+
++ (id)NTKHyphenationParagraphStyle;
++ (id)NTKHyphenationParagraphStyleWithFactor:(float)arg1;
 
 @end

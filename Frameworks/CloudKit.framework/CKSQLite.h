@@ -49,6 +49,7 @@
 - (void)begin;
 - (int)changes;
 - (void)close;
+- (id)columnNamesForTable:(id)arg1;
 - (bool)corrupt;
 - (id)creationDate;
 - (id)dateFormatter;

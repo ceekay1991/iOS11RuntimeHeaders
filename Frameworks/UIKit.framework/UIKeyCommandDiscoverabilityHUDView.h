@@ -39,6 +39,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (struct CGSize { double x1; double x2; })_bestColumnSizeWithCellsPerColumn:(unsigned long long)arg1 maxColumnSize:(struct CGSize { double x1; double x2; })arg2 columnCount:(unsigned long long)arg3 usingColumnView:(id)arg4 getFontScaleFactor:(double*)arg5;
 - (id)_columnViewForColumnIndex:(unsigned long long)arg1 reusingView:(id)arg2;
 - (id)_discoverabilityTitleForKeyCommand:(id)arg1;
@@ -51,7 +52,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)animateIn;
 - (void)animateOutWithCompletion:(id /* block */)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

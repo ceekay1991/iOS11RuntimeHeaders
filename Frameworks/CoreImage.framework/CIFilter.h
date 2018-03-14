@@ -85,4 +85,23 @@
 
 - (id)outputInputImageWithFixmeWarning;
 
+// Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
+
++ (id)_dataExtractionOverrrides;
++ (id)autoRedEyeExtractDataToDictionary:(id)arg1 dataExtractor:(id)arg2 options:(id)arg3 context:(id)arg4 colorSpace:(struct CGColorSpace { }*)arg5 error:(id*)arg6;
++ (id)extractDataToDictionary:(id)arg1 dataExtractor:(id)arg2 options:(id)arg3 context:(id)arg4 colorSpace:(struct CGColorSpace { }*)arg5 error:(id*)arg6;
++ (id)faceBalanceExtractDataToDictionary:(id)arg1 dataExtractor:(id)arg2 options:(id)arg3 context:(id)arg4 colorSpace:(struct CGColorSpace { }*)arg5 error:(id*)arg6;
++ (id)localLightExtractDataToDictionary:(id)arg1 dataExtractor:(id)arg2 options:(id)arg3 context:(id)arg4 colorSpace:(struct CGColorSpace { }*)arg5 error:(id*)arg6;
++ (id)reductionFilterExtractDataToDictionary:(id)arg1 dataExtractor:(id)arg2 options:(id)arg3 context:(id)arg4 colorSpace:(struct CGColorSpace { }*)arg5 error:(id*)arg6;
++ (id)smartColorExtractDataToDictionary:(id)arg1 dataExtractor:(id)arg2 options:(id)arg3 context:(id)arg4 colorSpace:(struct CGColorSpace { }*)arg5 error:(id*)arg6;
++ (id)smartToneExtractDataToDictionary:(id)arg1 dataExtractor:(id)arg2 options:(id)arg3 context:(id)arg4 colorSpace:(struct CGColorSpace { }*)arg5 error:(id*)arg6;
++ (id)straightenExtractDataToDictionary:(id)arg1 dataExtractor:(id)arg2 options:(id)arg3 context:(id)arg4 colorSpace:(struct CGColorSpace { }*)arg5 error:(id*)arg6;
+
+- (id)extractDataToDictionary:(id)arg1 options:(id)arg2 context:(id)arg3 colorSpace:(struct CGColorSpace { }*)arg4 error:(id*)arg5;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
++ (id)_pl_filterArrayFromProperties:(id)arg1 inputImageExtent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
++ (id)_pl_propertyArrayFromFilters:(id)arg1 inputImageExtent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
+
 @end

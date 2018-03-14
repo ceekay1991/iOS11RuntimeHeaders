@@ -27,6 +27,8 @@
 @property (getter=isSecure, nonatomic, readonly) bool secure;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
+
 + (bool)supportsSecureCoding;
 
 - (id)_initWithType:(long long)arg1 displayID:(unsigned int)arg2 connectionSeed:(unsigned int)arg3 pid:(int)arg4 external:(bool)arg5 uniqueIdentifier:(id)arg6 secure:(bool)arg7 root:(id)arg8;
@@ -56,5 +58,11 @@
 - (id)rootIdentity;
 - (long long)type;
 - (id)uniqueIdentifier;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
+
+- (id)UIScreen;
+- (id)currentConfiguration;
+- (bool)isMainRootDisplay;
 
 @end

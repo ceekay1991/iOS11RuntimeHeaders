@@ -7,9 +7,10 @@
     NSString * audioTimePitchAlgorithm;
     NSError * error;
     struct OpaqueFigSampleBufferAudioRenderer { } * figAudioRenderer;
-    bool  hasEnqueuedSamples;
-    bool  isRequestingMediaData;
-    AVMediaDataRequester * mediaDataRequester;
+    struct { 
+        struct OpaqueFigSimpleMutex {} *mutex; 
+        AVMediaDataRequester *requester; 
+    }  mediaDataRequester;
     bool  muted;
     float  rate;
     struct OpaqueCMTimebase { } * readOnlyControlTimebase;

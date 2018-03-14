@@ -3,28 +3,28 @@
  */
 
 @interface _UICollectionViewDragSourceControllerDragState : NSObject {
+    NSMutableOrderedSet * _dataSourceIndexPathsOfDraggingItems;
     NSPointerArray * _dragItemsWithRebasableIndexPaths;
-    NSMutableOrderedSet * _indexPathsOfDraggingItems;
 }
 
-@property (nonatomic, readonly) NSIndexPath *dragFromIndexPath;
+@property (nonatomic, retain) NSMutableOrderedSet *dataSourceIndexPathsOfDraggingItems;
+@property (nonatomic, readonly) NSIndexPath *dragFromDataSourceIndexPath;
 @property (nonatomic, retain) NSPointerArray *dragItemsWithRebasableIndexPaths;
-@property (nonatomic, readonly) NSArray *draggingIndexPaths;
-@property (nonatomic, retain) NSMutableOrderedSet *indexPathsOfDraggingItems;
+@property (nonatomic, readonly) NSArray *draggingDataSourceIndexPaths;
 
 - (void).cxx_destruct;
-- (void)addDraggingIndexPath:(id)arg1;
+- (void)addDraggingDataSourceIndexPath:(id)arg1;
+- (id)dataSourceIndexPathForDragItem:(id)arg1 forCollectionView:(id)arg2;
+- (id)dataSourceIndexPathsOfDraggingItems;
 - (id)description;
-- (id)dragFromIndexPath;
+- (id)dragFromDataSourceIndexPath;
 - (id)dragItemsWithRebasableIndexPaths;
-- (id)draggingIndexPaths;
-- (id)indexPathForDragItem:(id)arg1 forCollectionView:(id)arg2;
-- (id)indexPathsOfDraggingItems;
+- (id)draggingDataSourceIndexPaths;
 - (id)init;
-- (bool)isDraggingFromIndexPath:(id)arg1;
-- (void)rebaseIndexPathsWithUpdateMap:(id)arg1;
+- (bool)isDraggingFromDataSourceIndexPath:(id)arg1;
+- (void)rebaseDataSourceIndexPathsWithUpdateMap:(id)arg1;
+- (void)setDataSourceIndexPath:(id)arg1 forDragItem:(id)arg2 collectionView:(id)arg3;
+- (void)setDataSourceIndexPathsOfDraggingItems:(id)arg1;
 - (void)setDragItemsWithRebasableIndexPaths:(id)arg1;
-- (void)setIndexPath:(id)arg1 forDragItem:(id)arg2 collectionView:(id)arg3;
-- (void)setIndexPathsOfDraggingItems:(id)arg1;
 
 @end

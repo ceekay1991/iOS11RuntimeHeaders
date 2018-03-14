@@ -56,6 +56,7 @@
 - (bool)runAuthorizationDialog:(id)arg1 error:(id*)arg2;
 - (bool)runSubOperation:(id)arg1 error:(id*)arg2;
 - (bool)runTouchIDAuthorizationDialog:(id)arg1 fallbackDialog:(id)arg2 error:(id*)arg3;
+- (bool)runTouchIDAuthorizationDialog:(id)arg1 fallbackDialog:(id)arg2 metricsDictionary:(id)arg3 error:(id*)arg4;
 - (void)setAuthenticatedAccountDSID:(id)arg1;
 - (void)setAuthenticationContext:(id)arg1;
 - (void)setBagContext:(id)arg1;

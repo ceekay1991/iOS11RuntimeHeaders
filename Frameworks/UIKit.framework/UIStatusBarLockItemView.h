@@ -38,13 +38,14 @@
 
 + (double)lockSlideAnimationDuration;
 
+- (void).cxx_destruct;
 - (void)_beginAnimation;
 - (void)_endAnimation;
 - (bool)_isAnimating;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
+- (id)accessibilityHUDRepresentation;
 - (bool)alongsideViewIsBecomingVisible;
 - (void)animateUnlockForegroundView:(id)arg1 timeItemSnapshot:(id)arg2 completionBlock:(id /* block */)arg3;
 - (id /* block */)animationCompletionBlock;

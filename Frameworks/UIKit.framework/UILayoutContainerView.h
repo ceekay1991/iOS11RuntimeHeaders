@@ -22,17 +22,17 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (void)_installShadowViews;
 - (void)_setFlagsFromDelegate:(id)arg1;
 - (void)_tearDownShadowViews;
 - (void)_updateShadowViews;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)addSubview:(id)arg1;
 - (void)beginWhileDisablingSetNeedsLayout;
-- (void)dealloc;
 - (id)delegate;
 - (void)didMoveToWindow;
 - (void)encodeWithCoder:(id)arg1;

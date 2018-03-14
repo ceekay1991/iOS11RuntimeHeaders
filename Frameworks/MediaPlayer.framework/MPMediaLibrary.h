@@ -79,6 +79,8 @@
 @property (nonatomic, readonly) NSURL *protectedContentSupportStorageURL;
 @property (nonatomic) long long removalReason;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (void)_endDiscoveringMediaLibrariesIfAllowed;
 + (id)_libraryDataProviders;
 + (id)_libraryForDataProvider:(id)arg1;
@@ -161,6 +163,7 @@
 - (void)clearLocationPropertiesOfItem:(id)arg1;
 - (long long)cloudFilteringType;
 - (bool)collectionExistsContainedWithinPersistentIDs:(const unsigned long long*)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long*)arg4;
+- (bool)collectionExistsContainedWithinSyncIDs:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long*)arg3;
 - (bool)collectionExistsWithName:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long*)arg3;
 - (bool)collectionExistsWithPersistentID:(unsigned long long)arg1 groupingType:(long long)arg2;
 - (bool)collectionExistsWithStoreID:(long long)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long*)arg3;
@@ -274,5 +277,15 @@
 - (id)uniqueIdentifier;
 - (id)valueForDatabaseProperty:(id)arg1;
 - (bool)writable;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (id)MPU_entityWithContentItemIdentifierCollection:(id)arg1 options:(unsigned long long)arg2;
+- (id)_MPU_ML3QueryWithEntityClass:(Class)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)MPC_entityWithContentItemIdentifierCollection:(id)arg1 options:(unsigned long long)arg2;
+- (id)_MPC_ML3QueryWithEntityClass:(Class)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
 
 @end

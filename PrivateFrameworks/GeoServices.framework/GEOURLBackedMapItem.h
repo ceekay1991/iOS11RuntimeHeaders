@@ -25,6 +25,7 @@
 @property (nonatomic, readonly) NSArray *areasOfInterest;
 @property (getter=_associatedApp, nonatomic, readonly) GEOAssociatedApp *associatedApp;
 @property (getter=_attribution, nonatomic, readonly) GEOMapItemPlaceAttribution *attribution;
+@property (getter=_browseCategories, nonatomic, readonly) NSArray *browseCategories;
 @property (getter=_businessClaim, nonatomic, readonly) GEOPDBusinessClaim *businessClaim;
 @property (getter=_businessURL, nonatomic, readonly) NSString *businessURL;
 @property (nonatomic, readonly) struct { double x1; double x2; } centerCoordinate;
@@ -90,6 +91,7 @@
 @property (getter=_isInLinkedPlaceRelationship, nonatomic, readonly) bool inLinkedPlaceRelationship;
 @property (nonatomic, readonly) bool isEventAllDay;
 @property (getter=_isStandaloneBrand, nonatomic, readonly) bool isStandAloneBrand;
+@property (getter=_isTransitDisplayFeature, nonatomic, readonly) bool isTransitDisplayFeature;
 @property (getter=_messageLink, nonatomic, readonly) GEOMessageLink *messageLink;
 @property (getter=_muid, nonatomic, readonly) unsigned long long muid;
 @property (nonatomic, readonly) NSString *name;
@@ -98,11 +100,14 @@
 @property (getter=_openingHoursOptions, nonatomic, readonly) unsigned long long openingHoursOptions;
 @property (getter=_operatingHours, nonatomic, readonly) NSArray *operatingHours;
 @property (getter=_optsOutOfTelephoneAds, nonatomic, readonly) bool optsOutOfTelephoneAds;
+@property (getter=_parsecSectionType, nonatomic, readonly) int parsecSectionType;
 @property (getter=_photos, nonatomic, readonly) NSArray *photos;
 @property (getter=_photosAttribution, nonatomic, readonly) GEOMapItemPhotosAttribution *photosAttribution;
 @property (getter=_place, nonatomic, readonly) GEOPlace *place;
 @property (getter=_placeData, nonatomic, readonly) GEOPDPlace *placeData;
 @property (getter=_placeDataAsData, nonatomic, readonly) NSData *placeDataAsData;
+@property (getter=_placeDisplayStyle, nonatomic, readonly) int placeDisplayStyle;
+@property (getter=_placeDisplayType, nonatomic, readonly) int placeDisplayType;
 @property (getter=_placeType, nonatomic, readonly) int placeType;
 @property (getter=_poiPinpointURLString, nonatomic, readonly) NSString *poiPinpointURLString;
 @property (getter=_poiSurveyURLString, nonatomic, readonly) NSString *poiSurveyURLString;
@@ -130,7 +135,6 @@
 @property (getter=_transitInfo, nonatomic, readonly) <GEOMapItemTransitInfo> *transitInfo;
 @property (getter=isValid, nonatomic, readonly) bool valid;
 @property (getter=_vendorID, nonatomic, readonly, copy) NSString *vendorID;
-@property (getter=_venueCategoryBrowseType, nonatomic, readonly) int venueCategoryBrowseType;
 @property (getter=_venueFeatureType, nonatomic, readonly) int venueFeatureType;
 @property (getter=_venueInfo, nonatomic, readonly) <GEOMapItemVenueInfo> *venueInfo;
 @property (getter=_webURL, nonatomic, readonly, copy) NSURL *webURL;

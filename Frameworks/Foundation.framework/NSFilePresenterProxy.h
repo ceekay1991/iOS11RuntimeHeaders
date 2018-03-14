@@ -49,6 +49,7 @@
 - (void)observeDisconnectionByWriterWithPurposeID:(id)arg1;
 - (void)observeMoveByWriterWithPurposeID:(id)arg1 withPhysicalDestinationURL:(id)arg2;
 - (void)observeMoveOfSubitemAtURL:(id)arg1 toURL:(id)arg2 byWriterWithPurposeID:(id)arg3;
+- (void)observeNewProvider:(id)arg1;
 - (void)observePresenterChange:(bool)arg1 atSubitemURL:(id)arg2;
 - (void)observeReconnectionByWriterWithPurposeID:(id)arg1;
 - (void)observeSharingChangeAtSubitemPath:(id)arg1 withPhysicalURL:(id)arg2;

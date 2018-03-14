@@ -5,6 +5,7 @@
 
 @required
 
+- (void)dragSourceController:(_UICollectionViewDragSourceController *)arg1 didCancelLiftForItemsAtIndexPaths:(NSArray *)arg2;
 - (void)dragSourceController:(_UICollectionViewDragSourceController *)arg1 didCompleteAnimatingCancelForItemsAtIndexPaths:(NSArray *)arg2;
 - (void)dragSourceController:(_UICollectionViewDragSourceController *)arg1 didCompleteLiftForItemsAtIndexPaths:(NSArray *)arg2;
 - (void)dragSourceController:(_UICollectionViewDragSourceController *)arg1 didEndForItemsAtIndexPaths:(NSArray *)arg2;

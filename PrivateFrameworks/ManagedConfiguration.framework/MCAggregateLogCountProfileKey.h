@@ -10,6 +10,7 @@
 
 + (id)_type:(unsigned long long)arg1;
 + (id)all;
++ (id)carrier;
 + (id)signed;
 + (id)signedByApple;
 + (void)updateProfileCounts;

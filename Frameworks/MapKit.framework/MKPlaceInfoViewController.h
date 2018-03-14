@@ -4,6 +4,7 @@
 
 @interface MKPlaceInfoViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, MKOfflineModeViewController, UIGestureRecognizerDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate> {
     <MKPlaceActionManagerProtocol> * _actionDelegate;
+    bool  _bottomHairlineHidden;
     UILongPressGestureRecognizer * _longPressRecognizer;
     MKMapItem * _mapItem;
     bool  _offlineMode;
@@ -13,6 +14,7 @@
 }
 
 @property (nonatomic) <MKPlaceActionManagerProtocol> *actionDelegate;
+@property (nonatomic) bool bottomHairlineHidden;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasContent;
@@ -34,6 +36,7 @@
 - (void)_updateViewsAnimated:(bool)arg1;
 - (id)actionDelegate;
 - (unsigned long long)actionTypeFromRowType:(unsigned long long)arg1;
+- (bool)bottomHairlineHidden;
 - (id)contact;
 - (id)draggableContent;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -45,6 +48,7 @@
 - (id)placeItem;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setActionDelegate:(id)arg1;
+- (void)setBottomHairlineHidden:(bool)arg1;
 - (void)setMapItem:(id)arg1;
 - (void)setOfflineMode:(bool)arg1;
 - (void)setPlaceItem:(id)arg1;

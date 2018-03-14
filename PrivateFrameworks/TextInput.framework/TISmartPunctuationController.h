@@ -5,9 +5,12 @@
 @interface TISmartPunctuationController : NSObject {
     NSCharacterSet * _alphanumericCharacterSet;
     unsigned long long  _autoQuoteType;
+    NSCharacterSet * _bookTitleMarkCharacterSet;
+    NSCharacterSet * _cornerBracketCharacterSet;
     NSCharacterSet * _dashCharacterSet;
     NSCharacterSet * _decimalDigitCharacterSet;
     NSCharacterSet * _dutchApostropheFollowingSet;
+    NSCharacterSet * _emDashCharacterSet;
     NSCharacterSet * _enDashCharacterSet;
     NSCharacterSet * _germanApostrophePrecedingSet;
     bool  _leftDoubleQuotationMarkInserted;
@@ -25,7 +28,10 @@
 @property (nonatomic, retain) TISmartPunctuationOptions *smartPunctuationOptions;
 @property (nonatomic) bool smartQuotesEnabled;
 
++ (id)_chineseContextualVariantMapping;
+
 - (id)_alternatingStringForInputString:(id)arg1 isLockedInput:(bool)arg2 hasMarkedText:(bool)arg3;
+- (id)_checkInput:(id)arg1 forContextualChinesePunctuationInDocumentState:(id)arg2;
 - (id)_checkInput:(id)arg1 forContextualDashesInDocumentState:(id)arg2;
 - (id)_checkInput:(id)arg1 forContextualQuotesInDocumentState:(id)arg2;
 - (void)_initializeDashCharacterSetsIfNecessary;

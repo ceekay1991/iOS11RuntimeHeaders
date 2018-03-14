@@ -7,6 +7,8 @@
     NSObject<OS_dispatch_queue> * _replyQueue;
 }
 
+// Image: /System/Library/PrivateFrameworks/CoreRecents.framework/CoreRecents
+
 + (struct NSObject { Class x1; }*)_recentEventForGroupMembers:(id)arg1 displayName:(id)arg2 date:(id)arg3 weight:(id)arg4 metadata:(id)arg5 options:(unsigned long long)arg6;
 + (id)defaultInstance;
 + (struct NSObject { Class x1; }*)explicitGroupEventForGroupMembers:(id)arg1 displayName:(id)arg2 date:(id)arg3 metadata:(id)arg4 options:(unsigned long long)arg5;
@@ -26,6 +28,7 @@
 - (void)_recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 source:(id)arg4 userInitiated:(bool)arg5 completion:(id /* block */)arg6;
 - (id)_remoteLibraryWithErrorHandler:(id /* block */)arg1;
 - (void)_removeAllRecentContactsWithCompletion:(id /* block */)arg1;
+- (id)_removeRecentContactsMatchingQuery:(id)arg1;
 - (bool)_removeRecentContactsWithRecentIDs:(id)arg1 syncKeys:(id)arg2 recentsDomain:(id)arg3 error:(out id*)arg4;
 - (id)_searchRecentsUsingQuery:(id)arg1;
 - (void)_searchRecentsUsingQuery:(id)arg1 completion:(id /* block */)arg2;
@@ -45,5 +48,9 @@
 - (void)requestRecentsUsingPredicate:(id)arg1 inDomains:(id)arg2 comparator:(id /* block */)arg3 queue:(id)arg4 completion:(id /* block */)arg5;
 - (void)setImplicitGroupThreshold:(unsigned long long)arg1 forDomain:(id)arg2;
 - (void)start;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (void)recordContactEventsForHeaders:(id)arg1 recentsDomain:(id)arg2;
 
 @end

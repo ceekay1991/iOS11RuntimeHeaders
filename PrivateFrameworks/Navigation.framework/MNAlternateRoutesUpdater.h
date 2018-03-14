@@ -11,10 +11,11 @@
 @property (nonatomic, readonly) NSArray *alternateRoutes;
 
 - (void).cxx_destruct;
+- (id)_findTrackedAlternateRouteMatching:(id)arg1;
 - (id)alternateRouteForLocation:(id)arg1;
 - (id)alternateRoutes;
-- (void)setAlternateRoutes:(id)arg1 forMainRoute:(id)arg2;
+- (bool)setAlternateRoutes:(id)arg1 forMainRoute:(id)arg2;
 - (bool)updateForLocation:(id)arg1;
-- (bool)updateForReroute:(id)arg1;
+- (bool)updateForReroute:(id)arg1 rerouteReason:(unsigned long long)arg2;
 
 @end

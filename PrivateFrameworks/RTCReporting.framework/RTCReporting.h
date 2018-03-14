@@ -42,6 +42,7 @@
 - (bool)sendMessageWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3 error:(id*)arg4;
 - (bool)sendMessageWithDictionary:(id)arg1 error:(id*)arg2;
 - (bool)serverSupportsFileUpload;
+- (bool)setDigestKey:(id)arg1 algorithm:(int)arg2;
 - (void)setMessageLoggingBlock:(id /* block */)arg1;
 - (void)setMessageSentDelegate:(id)arg1;
 - (void)startConfigurationWithCompletionHandler:(id /* block */)arg1;

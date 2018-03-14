@@ -11,7 +11,7 @@
 - (void).cxx_destruct;
 - (id)_init;
 - (void)dealloc;
-- (void)fetchSizeForINImage:(id)arg1 reply:(id /* block */)arg2;
 - (id)init;
+- (void)loadImageDataAndSizeForImage:(id)arg1 reply:(id /* block */)arg2;
 
 @end

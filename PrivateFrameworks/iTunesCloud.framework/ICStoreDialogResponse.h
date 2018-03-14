@@ -12,6 +12,7 @@
 @property (nonatomic, readonly, copy) NSString *explanation;
 @property (getter=isInitialCheckboxValue, nonatomic, readonly) bool initialCheckboxValue;
 @property (nonatomic, readonly, copy) NSString *message;
+@property (nonatomic, readonly, copy) NSDictionary *responseDictionary;
 @property (nonatomic, readonly) long long type;
 
 - (void).cxx_destruct;
@@ -27,6 +28,7 @@
 - (bool)isBiometricAuthenticationAllowed;
 - (bool)isInitialCheckboxValue;
 - (id)message;
+- (id)responseDictionary;
 - (long long)type;
 
 @end

@@ -69,6 +69,8 @@
 @property (nonatomic, readonly) int trustLevel;
 @property (nonatomic, readonly) long long version;
 
+// Image: /System/Library/PrivateFrameworks/ManagedConfiguration.framework/ManagedConfiguration
+
 + (id)_malformedProfileError;
 + (id)badFieldTypeErrorWithField:(id)arg1;
 + (bool)checkString:(id)arg1 isOneOfStrings:(id)arg2 key:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5 errorString:(id)arg6 outError:(id*)arg7;
@@ -161,5 +163,10 @@
 - (long long)version;
 - (bool)writeStubToDirectory:(id)arg1;
 - (bool)writeStubToPath:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ManagedConfigurationUI.framework/ManagedConfigurationUI
+
+- (bool)shouldHideUnstrustedLabel;
+- (bool)shouldUseTrustedNomenclature;
 
 @end

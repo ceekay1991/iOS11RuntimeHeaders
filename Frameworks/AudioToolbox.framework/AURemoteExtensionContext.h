@@ -18,7 +18,7 @@
     NSMutableArray * _pendingChangedProperties;
     NSObject<OS_dispatch_queue> * _propertyObserverQueue;
     <AUAudioUnitHostProtocol> * _remoteHost;
-    struct AUExtRenderingServer { int (**x1)(); unsigned int x2; struct XMachPortSendRight { unsigned int x_3_1_1; } x3; int x4; struct IOThread {} *x5; bool x6; int x7; int x8; struct IPCAUSharedMemory { int (**x_9_1_1)(); bool x_9_1_2; bool x_9_1_3; unsigned long long x_9_1_4; void *x_9_1_5; unsigned int x_9_1_6; int x_9_1_7; int x_9_1_8; id x_9_1_9; struct vector<IPCAUSharedMemoryBase::Element, std::__1::allocator<IPCAUSharedMemoryBase::Element> > { struct Element {} *x_10_2_1; struct Element {} *x_10_2_2; struct __compressed_pair<IPCAUSharedMemoryBase::Element *, std::__1::allocator<IPCAUSharedMemoryBase::Element> > { struct Element {} *x_3_3_1; } x_10_2_3; } x_9_1_10; unsigned int x_9_1_11; bool x_9_1_12; unsigned int x_9_1_13; } x9; struct unique_ptr<SemaphoreIOMessenger_Receiver, std::__1::default_delete<SemaphoreIOMessenger_Receiver> > { struct __compressed_pair<SemaphoreIOMessenger_Receiver *, std::__1::default_delete<SemaphoreIOMessenger_Receiver> > { struct SemaphoreIOMessenger_Receiver {} *x_1_2_1; } x_10_1_1; } x10; union { /* Warning: Unrecognized filer type: 'U' using 'void*' */ void*x_11_1_1; void*x_11_1_2; void*x_11_1_3; in double x_11_1_4; void*x_11_1_5; const void*x_11_1_6; void x_11_1_7; void*x_11_1_8; in void*x_11_1_9; } *x11; } * _renderServer;
+    struct AUExtRenderingServer { int (**x1)(); unsigned int x2; struct XMachPortSendRight { unsigned int x_3_1_1; } x3; int x4; struct IOThread {} *x5; bool x6; unsigned int x7; int x8; int x9; struct IPCAUSharedMemory { int (**x_10_1_1)(); bool x_10_1_2; bool x_10_1_3; unsigned long long x_10_1_4; void *x_10_1_5; unsigned int x_10_1_6; int x_10_1_7; int x_10_1_8; id x_10_1_9; struct vector<IPCAUSharedMemoryBase::Element, std::__1::allocator<IPCAUSharedMemoryBase::Element> > { struct Element {} *x_10_2_1; struct Element {} *x_10_2_2; struct __compressed_pair<IPCAUSharedMemoryBase::Element *, std::__1::allocator<IPCAUSharedMemoryBase::Element> > { struct Element {} *x_3_3_1; } x_10_2_3; } x_10_1_10; unsigned int x_10_1_11; bool x_10_1_12; unsigned int x_10_1_13; } x10; struct unique_ptr<SemaphoreIOMessenger_Receiver, std::__1::default_delete<SemaphoreIOMessenger_Receiver> > { struct __compressed_pair<SemaphoreIOMessenger_Receiver *, std::__1::default_delete<SemaphoreIOMessenger_Receiver> > { struct SemaphoreIOMessenger_Receiver {} *x_1_2_1; } x_11_1_1; } x11; } * _renderServer;
     AUAudioUnitViewService * _viewService;
 }
 
@@ -57,6 +57,7 @@
 - (void)setValue:(id)arg1 forKey:(id)arg2 reply:(id /* block */)arg3;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 reply:(id /* block */)arg3;
 - (void)setViewService:(id)arg1;
+- (void)setWorkIntervalPort:(id)arg1;
 - (void)supportedViewConfigurations:(id)arg1 reply:(id /* block */)arg2;
 - (void)syncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;
 - (void)uninitialize:(id /* block */)arg1;

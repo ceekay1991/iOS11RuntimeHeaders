@@ -24,10 +24,13 @@
 @property (nonatomic) unsigned long long indexInApplicationDefinedActivities;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (id)_activityExtensionItemsForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
 + (id)_activityImageForActionRepresentationImage:(id)arg1;
 + (id)_activityImageForApplicationBundleIdentifier:(id)arg1;
 + (id)_activitySettingsImageForApplication:(id)arg1;
++ (id)_defaultFallbackActivityType;
 + (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;
 + (Class)classForPreparingExtensionItemData;
@@ -37,6 +40,7 @@
 - (id)_activityImage;
 - (id)_activitySettingsImage;
 - (bool)_activitySupportsPromiseURLs;
+- (id)_activityTypeUsingFallbackActivityTypeIfNecessary;
 - (id)_attachmentNameForActivityItem:(id)arg1;
 - (id)_beforeActivity;
 - (id)_bundleIdentifierForActivityImageCreation;
@@ -77,5 +81,14 @@
 - (void)setActivityCompletionWithItemsHandler:(id /* block */)arg1;
 - (void)setDidFinishPerformingActivityHandler:(id /* block */)arg1;
 - (void)setIndexInApplicationDefinedActivities:(unsigned long long)arg1;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
++ (id)ph_PhotosApplicationActivitiesTypePublish;
++ (id)ph_PhotosApplicationActivityTypeOrder;
+
+// Image: /System/Library/Frameworks/ReplayKit.framework/ReplayKit
+
++ (void)streamActivitiesWithCompletion:(id /* block */)arg1;
 
 @end

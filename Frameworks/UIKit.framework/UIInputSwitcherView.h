@@ -6,6 +6,7 @@
     bool  _fileReportFromSwitcher;
     bool  _messagesWriteboardFromSwitcher;
     bool  _showsSwitches;
+    UIInputSwitcherGestureState * m_gestureState;
     NSMutableArray * m_inputModes;
     NSArray * m_inputSwitcherItems;
     bool  m_isForDictation;
@@ -25,12 +26,13 @@
 - (bool)_isHandBiasSwitchVisible;
 - (id)_itemWithIdentifier:(id)arg1;
 - (void)_reloadInputSwitcherItems;
+- (void)_segmentControlValueDidChange:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void)buttonPressed:(id)arg1 withEvent:(id)arg2 location:(struct CGPoint { double x1; double x2; })arg3 isForDictation:(bool)arg4 tapAction:(id /* block */)arg5;
+- (id)buttonPressed:(id)arg1 withEvent:(id)arg2 location:(struct CGPoint { double x1; double x2; })arg3 isForDictation:(bool)arg4 tapAction:(id /* block */)arg5;
 - (void)customizeCell:(id)arg1 forItemAtIndex:(unsigned long long)arg2;
-- (void)dealloc;
 - (id)defaultInputMode;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;

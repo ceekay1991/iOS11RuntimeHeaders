@@ -44,6 +44,7 @@
 - (id)date;
 - (id)dateInterval;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (long long)direction;
 - (id)domainIdentifier;
 - (void)donateInteractionWithCompletion:(id /* block */)arg1;

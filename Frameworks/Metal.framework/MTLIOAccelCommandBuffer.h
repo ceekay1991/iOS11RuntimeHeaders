@@ -38,6 +38,8 @@
 - (id)initWithQueue:(id)arg1 retainedReferences:(bool)arg2 synchronousDebugMode:(bool)arg3;
 - (struct IOAccelResourceList { unsigned short x1[256]; struct IOAccelSegmentResourceDescriptorGroup {} *x2; unsigned long long x3; unsigned long long x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; int (*x12)(); void *x13; }*)ioAccelResourceList;
 - (void)kernelCommandCollectTimeStamp;
+- (void)popDebugGroup;
+- (void)pushDebugGroup:(id)arg1;
 - (void)setCurrentCommandEncoder:(id)arg1;
 - (void)setCurrentKernelCommandBufferPointer:(void*)arg1;
 - (void)setCurrentSegmentListPointer:(void*)arg1;

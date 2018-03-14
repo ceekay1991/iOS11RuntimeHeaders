@@ -19,10 +19,11 @@
 @property (readonly) NSDictionary *values;
 
 + (id)sharedInstance;
++ (id)sharedInstanceWithSessionDelegate:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)cachedValues;
-- (id)init;
+- (id)initWithSessionDelegate:(id)arg1;
 - (bool)isRunningTests;
 - (double)samplingPercentageCachedResponsesLoadURL;
 - (double)samplingPercentageUsersLoadURL;

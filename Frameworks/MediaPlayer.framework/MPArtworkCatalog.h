@@ -33,7 +33,7 @@
 @property (nonatomic) id requestingContext;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } scaledFittingSize;
 @property (nonatomic, retain) id token;
-@property (nonatomic, readonly) <NSCopying> *visualIdenticalityIdentifier;
+@property (nonatomic, readonly) <MPArtworkDataSourceVisualIdenticality> *visualIdenticalityIdentifier;
 
 + (id)_artworkCacheForIdentifier:(id)arg1 requestingContext:(id)arg2;
 + (id)_artworkLoadQueue;
@@ -65,6 +65,7 @@
 - (bool)isLoadingRepresentation;
 - (unsigned long long)renderHint;
 - (void)requestColorAnalysisWithAlgorithm:(long long)arg1 completionHandler:(id /* block */)arg2;
+- (void)requestExportableArtworkPropertiesWithCompletion:(id /* block */)arg1;
 - (void)requestExportableArtworkURLWithCompletion:(id /* block */)arg1;
 - (void)requestFocusRegionsWithCompletionHandler:(id /* block */)arg1;
 - (void)requestImageWithCompletionHandler:(id /* block */)arg1;

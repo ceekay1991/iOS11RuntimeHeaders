@@ -13,8 +13,6 @@
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 
 + (id)_matchDictionary;
-+ (id)knownPluginMapping;
-+ (id)knownPluginReverseMapping;
 
 - (void).cxx_destruct;
 - (id)_filterIndexExtensions:(id)arg1;

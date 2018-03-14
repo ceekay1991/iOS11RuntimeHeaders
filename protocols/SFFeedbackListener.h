@@ -22,6 +22,7 @@
 - (void)didRankSections:(SFRankingFeedback *)arg1;
 - (void)didReceiveResultsAfterTimeout:(SFResultsReceivedAfterTimeoutFeedback *)arg1;
 - (void)didStartSearch:(SFStartSearchFeedback *)arg1;
+- (void)reportFeedback:(SFFeedback *)arg1 queryId:(long long)arg2;
 - (void)resultsDidBecomeVisible:(SFVisibleResultsFeedback *)arg1;
 - (void)searchViewDidAppear:(SFSearchViewAppearFeedback *)arg1;
 - (void)searchViewDidDisappear:(SFSearchViewDisappearFeedback *)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKFetchRecordZoneChangesOperation : CKDatabaseOperation {
+@interface CKFetchRecordZoneChangesOperation : CKDatabaseOperation <MSPCloudRequest> {
     NSDictionary * _assetTransferOptionsByRecordTypeAndKey;
     bool  _fetchAllChanges;
     id /* block */  _fetchRecordZoneChangesCompletionBlock;
@@ -19,8 +19,11 @@
 }
 
 @property (nonatomic, retain) NSDictionary *assetTransferOptionsByRecordTypeAndKey;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) bool fetchAllChanges;
 @property (nonatomic, copy) id /* block */ fetchRecordZoneChangesCompletionBlock;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSDictionary *optionsByRecordZoneID;
 @property (nonatomic, retain) NSMutableDictionary *perItemErrors;
 @property (nonatomic, copy) id /* block */ recordChangedBlock;
@@ -28,9 +31,13 @@
 @property (nonatomic, copy) id /* block */ recordZoneChangeTokensUpdatedBlock;
 @property (nonatomic, copy) id /* block */ recordZoneFetchCompletionBlock;
 @property (nonatomic, copy) NSArray *recordZoneIDs;
+@property (nonatomic, readonly) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
 @property (nonatomic) bool shouldFetchAssetContents;
 @property (nonatomic, retain) NSMutableDictionary *statusByZoneID;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) NSMutableSet *zoneIDsWithPendingArchivedRecords;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 - (void).cxx_destruct;
 - (bool)CKOperationShouldRun:(id*)arg1;
@@ -72,5 +79,16 @@
 - (bool)shouldFetchAssetContents;
 - (id)statusByZoneID;
 - (id)zoneIDsWithPendingArchivedRecords;
+
+// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+
+- (void)addCloudAccessCompletionBlock:(id /* block */)arg1;
+- (unsigned long long)maximumRetries;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (id)ic_loggingValues;
+- (void)ic_removeAllCompletionBlocks;
+- (id)ic_shortLoggingDescription;
 
 @end

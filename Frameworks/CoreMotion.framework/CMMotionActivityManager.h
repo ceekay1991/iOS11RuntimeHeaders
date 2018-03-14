@@ -9,6 +9,7 @@
     NSObject<OS_dispatch_queue> * fQueue;
 }
 
++ (long long)authorizationStatus;
 + (bool)isActivityAvailable;
 
 - (void)_handleQueryResponse:(struct shared_ptr<CLConnectionMessage> { struct CLConnectionMessage {} *x1; struct __shared_weak_count {} *x2; })arg1 onQueue:(id)arg2 withHandler:(id /* block */)arg3;

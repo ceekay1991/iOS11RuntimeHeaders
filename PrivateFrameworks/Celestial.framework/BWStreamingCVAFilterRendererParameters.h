@@ -7,10 +7,8 @@
     CIFilter * _colorFilter;
     BWColorLookupCache * _colorLookupCache;
     NSData * _foregroundColorLookupTable;
-    float  _gammaExponent;
-    float  _guidedFilterEpsilon;
-    bool  _requiresAlphaMattingAdjustments;
-    bool  _requiresDepthEffectForColorFilters;
+    long long  _renderingStrategy;
+    NSData * _standbyForegroundColorLookupTable;
 }
 
 @property (nonatomic, retain) NSData *backgroundColorLookupTable;
@@ -19,34 +17,31 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSData *foregroundColorLookupTable;
-@property (nonatomic, readonly) float gammaExponent;
-@property (nonatomic, readonly) float guidedFilterEpsilon;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) bool requiresAlphaMattingAdjustments;
-@property (nonatomic, readonly) bool requiresDepthEffectForColorFilters;
+@property (nonatomic, readonly) long long renderingStrategy;
+@property (nonatomic, retain) NSData *standbyForegroundColorLookupTable;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) short type;
 
 + (void)initialize;
 
-- (void)_ensureParametersForColorFilter:(id)arg1 outputRequiresDepthEffectEnabled:(bool*)arg2 outputRequiresAlphaMattingAdjustments:(bool*)arg3 outputGuidedFilterEpsilon:(float*)arg4 outputGammaExponent:(float*)arg5;
+- (void)_ensureParametersForColorFilter:(id)arg1 outputRenderingStrategy:(long long*)arg2;
 - (id)backgroundColorLookupTable;
 - (id)colorFilter;
 - (id)colorLookupCache;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)foregroundColorLookupTable;
-- (float)gammaExponent;
-- (float)guidedFilterEpsilon;
 - (id)init;
 - (id)initWithColorFilter:(id)arg1 colorLookupCache:(id)arg2;
 - (int)prepareForRenderingWithInputVideoFormat:(id)arg1;
-- (bool)requiresAlphaMattingAdjustments;
-- (bool)requiresDepthEffectForColorFilters;
+- (long long)renderingStrategy;
 - (void)setBackgroundColorLookupTable:(id)arg1;
 - (void)setColorFilter:(id)arg1;
 - (void)setForegroundColorLookupTable:(id)arg1;
+- (void)setStandbyForegroundColorLookupTable:(id)arg1;
 - (bool)shouldInterpolateFromParameters:(id)arg1 toParameters:(id)arg2;
+- (id)standbyForegroundColorLookupTable;
 - (short)type;
 - (void)updateByInterpolatingFromParameters:(id)arg1 toParameters:(id)arg2 withFractionComplete:(float)arg3;
 

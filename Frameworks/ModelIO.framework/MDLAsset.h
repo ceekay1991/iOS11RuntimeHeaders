@@ -5,6 +5,7 @@
 @interface MDLAsset : NSObject <NSCopying, NSFastEnumeration> {
     NSURL * _URL;
     double  __timeCodesPerSecond;
+    <MDLObjectContainerComponent> * _animations;
     <MDLMeshBufferAllocator> * _bufferAllocator;
     NSMapTable * _components;
     double  _endTime;
@@ -20,9 +21,9 @@
 @property (nonatomic, readonly, retain) NSURL *URL;
 @property (nonatomic, readonly) struct MDLAABB { } _bounds;
 @property (nonatomic) double _timeCodesPerSecond;
+@property (nonatomic, retain) <MDLObjectContainerComponent> *animations;
 @property (nonatomic, readonly) struct { } boundingBox;
 @property (nonatomic, readonly, retain) <MDLMeshBufferAllocator> *bufferAllocator;
-@property (nonatomic, readonly, copy) NSArray *components;
 @property (nonatomic, readonly) unsigned long long count;
 @property (nonatomic) double endTime;
 @property (nonatomic) double frameInterval;
@@ -45,6 +46,7 @@
 - (void)_conformVertexBuffers:(id)arg1 error:(id*)arg2;
 - (double)_timeCodesPerSecond;
 - (void)addObject:(id)arg1;
+- (id)animations;
 - (struct { })boundingBox;
 - (struct { })boundingBoxAtTime:(double)arg1;
 - (id)bufferAllocator;
@@ -69,11 +71,13 @@
 - (id)masters;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
+- (id)objectAtPath:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)objects;
 - (void)removeObject:(id)arg1;
 - (void)resolveTextures;
 - (id)resolver;
+- (void)setAnimations:(id)arg1;
 - (void)setComponent:(id)arg1 forProtocol:(id)arg2;
 - (void)setEndTime:(double)arg1;
 - (void)setFrameInterval:(double)arg1;

@@ -7,7 +7,6 @@
 
 - (bool)allowsMoveOperation;
 - (bool)canLoadObjectsOfClass:(Class)arg1;
-- (bool)canLoadObjectsOfClasses:(NSArray *)arg1;
 - (bool)hasItemsConformingToTypeIdentifiers:(NSArray *)arg1;
 - (bool)isRestrictedToDraggingApplication;
 - (NSArray *)items;

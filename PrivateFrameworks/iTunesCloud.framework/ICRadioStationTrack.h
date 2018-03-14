@@ -14,6 +14,7 @@
 @property (nonatomic, readonly, copy) NSArray *fileAssets;
 @property (nonatomic, readonly) bool hasStartTime;
 @property (nonatomic, readonly, copy) ICStoreHLSAssetInfo *hlsAsset;
+@property (nonatomic, readonly) long long likeState;
 @property (nonatomic, readonly) ICRadioStationTrack *parentTrack;
 @property (nonatomic, readonly, copy) NSDictionary *serverTrackInfo;
 @property (getter=isSkippable, nonatomic, readonly) bool skippable;
@@ -33,6 +34,7 @@
 - (id)hlsAsset;
 - (id)initWithResponseDictionary:(id)arg1 expirationDate:(id)arg2;
 - (bool)isSkippable;
+- (long long)likeState;
 - (id)parentTrack;
 - (id)serverTrackInfo;
 - (double)startTime;

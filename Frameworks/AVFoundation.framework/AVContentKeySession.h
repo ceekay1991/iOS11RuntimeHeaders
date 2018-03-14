@@ -30,7 +30,7 @@
 - (int)createAndInstallCustomURLHandlerForAsset:(id)arg1 outHandler:(struct OpaqueFigCustomURLHandler {}**)arg2;
 - (id)createCryptorOptionsForIdentifier:(id)arg1 initializationData:(id)arg2 formatDescription:(struct opaqueCMFormatDescription { }*)arg3;
 - (const struct OpaqueFigCPECryptor { }*)createDecryptorIfNecessaryForIdentifier:(id)arg1 initializationData:(id)arg2 formatDescription:(struct opaqueCMFormatDescription { }*)arg3 error:(id*)arg4;
-- (id)createProtectorSessionIdentifierIfNecessary;
+- (void)createProtectorSessionIdentifierIfNecessary;
 - (void)dealloc;
 - (int)decodeKeyRequestInitializationData:(id)arg1 IntoSinfs:(id*)arg2 CodecType:(id*)arg3 MediaType:(id*)arg4 ContainerType:(id*)arg5;
 - (id)delegate;
@@ -52,7 +52,7 @@
 - (void)processContentKeyRequestWithIdentifier:(id)arg1 initializationData:(id)arg2 options:(id)arg3;
 - (void)removeContentKeyRecipient:(id)arg1;
 - (void)renewExpiringResponseDataForContentKeyRequest:(id)arg1;
-- (id)setAppIdentifier:(id)arg1;
+- (int)setAppIdentifier:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setHLSMethod:(id)arg1;

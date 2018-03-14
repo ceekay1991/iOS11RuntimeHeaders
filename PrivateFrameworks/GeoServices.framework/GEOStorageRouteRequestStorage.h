@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOStorageRouteRequestStorage : PBCodable <NSCopying> {
+@interface GEOStorageRouteRequestStorage : PBCodable <MSPRouteInformationSource, NSCopying> {
     struct { 
         unsigned int transportType : 1; 
     }  _has;
@@ -12,12 +12,18 @@
     NSMutableArray * _waypoints;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasRouteHandle;
 @property (nonatomic) bool hasTransportType;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) GEOURLRouteHandle *routeHandle;
+@property (readonly) Class superclass;
 @property (nonatomic) int transportType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSMutableArray *waypoints;
+
+// Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 + (Class)waypointsType;
 
@@ -47,5 +53,10 @@
 - (id)waypointsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)waypointsCount;
 - (void)writeTo:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+
+- (id)ifGEOStorageRouteRequestStorage;
+- (id)ifRidesharingInformationSource;
 
 @end

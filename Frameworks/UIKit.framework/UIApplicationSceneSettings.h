@@ -10,6 +10,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) long long deviceOrientation;
 @property (nonatomic, readonly) bool deviceOrientationEventsEnabled;
+@property (getter=isEffectivelyBackgrounded, nonatomic, readonly) bool effectivelyBackgrounded;
 @property (nonatomic, readonly) bool forcedStatusBarForegroundTransparent;
 @property (nonatomic, readonly, retain) NSNumber *forcedStatusBarHidden;
 @property (nonatomic, readonly, retain) NSNumber *forcedStatusBarStyle;
@@ -20,6 +21,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool underLock;
 @property (nonatomic, readonly) long long userInterfaceStyle;
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (bool)canShowAlerts;
 - (Class)canvasClass;
@@ -38,5 +41,10 @@
 - (bool)underLock;
 - (long long)userInterfaceStyle;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
+
+- (bool)fb_isUnderLock;
+- (bool)isEffectivelyBackgrounded;
 
 @end

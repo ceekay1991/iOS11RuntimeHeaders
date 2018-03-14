@@ -55,6 +55,8 @@
 @property (nonatomic) bool uploaded;
 @property (nonatomic) bool wasCached;
 
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
 + (id)_createPackageDBWithPath:(id)arg1;
 + (id)_packageDatabaseDirectoryWithBasePath:(id)arg1 state:(long long)arg2;
 + (id)_packageDatabasePathWithBasePath:(id)arg1 UUID:(id)arg2 state:(long long)arg3;
@@ -90,6 +92,7 @@
 - (void)dealloc;
 - (id)description;
 - (bool)downloaded;
+- (double)earliestUploadReceiptExpiration;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endTransaction;
 - (void)handleChangeStateAction:(long long)arg1;
@@ -156,5 +159,12 @@
 - (long long)uploadRank;
 - (bool)uploaded;
 - (bool)wasCached;
+
+// Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
+
++ (bool)anchorExistsForArchiverInfo:(id)arg1;
++ (void)destroyAnchorAndPackageAnchoredAtURL:(id)arg1;
+
+- (bool)anchorAtURL:(id)arg1 error:(id*)arg2;
 
 @end

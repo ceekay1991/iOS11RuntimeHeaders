@@ -4,11 +4,10 @@
 
 @interface MPContentItem : NSObject {
     MPMediaItemArtwork * _artwork;
-    double  _artworkHeightHint;
-    double  _artworkWidthHint;
-    void * _mrContentItem;
+    void * _mediaRemoteContentItem;
 }
 
+@property (nonatomic, readonly) void*_mediaRemoteContentItem;
 @property (nonatomic, retain) MPMediaItemArtwork *artwork;
 @property (getter=isContainer, nonatomic) bool container;
 @property (getter=isExplicitContent, nonatomic) bool explicitContent;
@@ -19,22 +18,25 @@
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSString *title;
 
++ (bool)isSuppressingChangeNotifications;
 + (void)performSuppressingChangeNotifications:(id /* block */)arg1;
++ (bool)shouldPushArtworkData;
 
 - (void).cxx_destruct;
-- (void)_applyDeferredNotification;
 - (id)_initWithMediaRemoteContentItem:(void*)arg1;
 - (void)_loadArtwork:(id)arg1 completion:(id /* block */)arg2;
 - (void*)_mediaRemoteContentItem;
-- (void)_postItemChangedNotification;
-- (void)_setArtworkSize:(double)arg1 height:(double)arg2 completion:(id /* block */)arg3;
+- (void)_postItemChangedNotificationWithDeltaBlock:(id /* block */)arg1;
 - (id)artwork;
+- (id)createExternalRepresentation;
 - (void)dealloc;
 - (id)description;
 - (id)identifier;
 - (id)init;
+- (id)initWithExternalRepresentation:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (bool)isContainer;
+- (bool)isEqual:(id)arg1;
 - (bool)isExplicitContent;
 - (bool)isPlayable;
 - (bool)isStreamingContent;

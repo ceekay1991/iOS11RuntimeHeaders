@@ -10,6 +10,7 @@
         unsigned long long depthPlane; 
         unsigned long long loadAction; 
         unsigned long long storeAction; 
+        unsigned long long storeActionOptions; 
         struct { 
             double red; 
             double green; 
@@ -31,7 +32,7 @@
 
 + (id)attachmentDescriptor;
 
-- (const struct MTLRenderPassAttachmentDescriptorPrivate { id x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; struct { double x_6_1_1; double x_6_1_2; double x_6_1_3; double x_6_1_4; } x6; double x7; unsigned int x8; id x9; unsigned long long x10; unsigned long long x11; unsigned long long x12; unsigned long long x13; unsigned long long x14; bool x15; }*)_descriptorPrivate;
+- (const struct MTLRenderPassAttachmentDescriptorPrivate { id x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; struct { double x_7_1_1; double x_7_1_2; double x_7_1_3; double x_7_1_4; } x7; double x8; unsigned int x9; id x10; unsigned long long x11; unsigned long long x12; unsigned long long x13; unsigned long long x14; unsigned long long x15; bool x16; }*)_descriptorPrivate;
 - (double)clearDepth;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -59,10 +60,12 @@
 - (void)setResolveTexture:(id)arg1;
 - (void)setSlice:(unsigned long long)arg1;
 - (void)setStoreAction:(unsigned long long)arg1;
+- (void)setStoreActionOptions:(unsigned long long)arg1;
 - (void)setTexture:(id)arg1;
 - (void)setYInvert:(bool)arg1;
 - (unsigned long long)slice;
 - (unsigned long long)storeAction;
+- (unsigned long long)storeActionOptions;
 - (id)texture;
 - (bool)yInvert;
 

@@ -21,9 +21,10 @@
 @property (nonatomic) bool shouldUseMescalSigning;
 @property (nonatomic, readonly, copy) ICStoreRequestContext *storeRequestContext;
 
++ (id)currentConnectionTypeHeader;
+
 - (void).cxx_destruct;
 - (id)JSSignConfiguration;
-- (id)_currentConnectionType;
 - (void)_getSignatureDataForRequest:(id)arg1 urlBag:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)_stringForCachePolicy:(unsigned long long)arg1;
 - (id)additionalHTTPCookies;

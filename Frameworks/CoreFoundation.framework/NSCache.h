@@ -44,4 +44,21 @@
 
 - (id)mapTableRepresentation;
 
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
+
+- (id)CALobjectForKey:(id)arg1 calculatedWithBlock:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
+- (id)objectForKeyedSubscript:(id)arg1;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
+- (void)tsp_cacheComponent:(id)arg1;
+- (id)tsp_currentComponent;
+- (unsigned char)tsp_currentOperation;
+- (void)tsp_flushComponent:(id)arg1;
+- (void)tsp_performOperation:(unsigned char)arg1 forComponent:(id)arg2 usingBlock:(id /* block */)arg3;
+
 @end

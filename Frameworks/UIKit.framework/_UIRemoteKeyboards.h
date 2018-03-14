@@ -7,6 +7,7 @@
     NSXPCConnection * _connection;
     bool  _currentKeyboard;
     _UIKeyboardChangedInformation * _currentState;
+    bool  _disablingKeyboard;
     bool  _enableMultiscreenHack;
     bool  _expectedSuppression;
     bool  _expectingInitialState;
@@ -35,6 +36,7 @@
 @property (retain) _UIKeyboardChangedInformation *currentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property bool disableBecomeFirstResponder;
 @property (nonatomic) bool enableMultiscreenHack;
 @property (readonly) bool handlingRemoteEvent;
 @property (readonly) unsigned long long hash;
@@ -77,6 +79,7 @@
 - (void)dealloc;
 - (void)didRemoveDeactivationReason:(id)arg1;
 - (void)didSuspend:(id)arg1;
+- (bool)disableBecomeFirstResponder;
 - (bool)enableMultiscreenHack;
 - (void)finishWithHostedWindow;
 - (void)forceKeyboardAway;
@@ -119,6 +122,7 @@
 - (void)setConnection:(id)arg1;
 - (void)setCurrentKeyboard:(bool)arg1;
 - (void)setCurrentState:(id)arg1;
+- (void)setDisableBecomeFirstResponder:(bool)arg1;
 - (void)setEnableMultiscreenHack:(bool)arg1;
 - (void)setIsSnapshotting:(bool)arg1;
 - (void)setPlacement:(id)arg1 quietly:(bool)arg2 animated:(bool)arg3 generateSplitNotification:(bool)arg4;

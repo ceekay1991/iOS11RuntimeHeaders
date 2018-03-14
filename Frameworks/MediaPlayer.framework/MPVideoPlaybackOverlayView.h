@@ -2,10 +2,13 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPVideoPlaybackOverlayView : UIView <MPDetailSliderDelegate, MPVideoOverlay, UIPopoverPresentationControllerDelegate> {
+@interface MPVideoPlaybackOverlayView : UIView <MPAVRoutingControllerDelegate, MPDetailSliderDelegate, MPVideoOverlay, MPVolumeControllerDelegate, UIPopoverPresentationControllerDelegate> {
+    MPKnockoutButton * _airplayButton;
+    MPAVRoutingController * _airplayController;
     bool  _allowsAudioAndSubtitles;
     bool  _allowsExitFromFullscreen;
     bool  _allowsPictureInPicture;
+    bool  _allowsWirelessPlayback;
     UIButton * _audioAndSubtitlesButton;
     MPAudioAndSubtitlesController * _audioAndSubtitlesController;
     bool  _automaticallyHandleTransportControls;
@@ -15,7 +18,9 @@
     UIView * _bottomBarItemsGuide;
     UIView * _bottomBarTopLayoutGuide;
     NSArray * _bottomItems;
+    NSLayoutConstraint * _bottomItemsBottomConstraint;
     NSArray * _bottomItemsConstraints;
+    NSLayoutConstraint * _bottomItemsLeftConstraint;
     NSLayoutConstraint * _bottomItemsRightConstraint;
     <MPVideoOverlayDelegate> * _delegate;
     UIButton * _doneButton;
@@ -42,18 +47,21 @@
     bool  _ticking;
     _UIBackdropView * _topBarBackdropView;
     NSLayoutConstraint * _topBarBottomConstraint;
+    NSLayoutConstraint * _topBarHeightConstraint;
     UIView * _topBarItemsGuide;
     UIView * _topBarLayoutGuide;
+    NSLayoutConstraint * _topBarLayoutGuideHeightConstraint;
     NSArray * _topBarTraitCollectionConstraints;
     NSArray * _topItems;
     NSArray * _topItemsConstraints;
+    NSLayoutConstraint * _topItemsTopConstraint;
     NSLayoutConstraint * _topItemsTrailingConstraint;
     MPVideoView * _videoView;
     UIViewController * _viewControllerForModalPresentationOrientation;
+    MPVolumeController * _volumeController;
     MPVolumeSlider * _volumeSlider;
     NSLayoutConstraint * _volumeSliderRightConstraint;
     NSLayoutConstraint * _volumeSliderWidthConstraint;
-    bool  allowsWirelessPlayback;
     unsigned long long  desiredParts;
     unsigned long long  disabledParts;
     bool  navigationBarHidden;
@@ -92,7 +100,10 @@
 
 - (void).cxx_destruct;
 - (void)_activeAudioRouteDidChange:(id)arg1;
+- (void)_airplayButtonTapped:(id)arg1;
 - (void)_alternateTracksAvailable:(id)arg1;
+- (void)_applicationDidEnterBackgroundNotification:(id)arg1;
+- (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_audioAndSubtitlesButtonTapped:(id)arg1;
 - (void)_buttonInteractionBegan:(id)arg1;
 - (void)_buttonInteractionCanceled:(id)arg1;
@@ -126,6 +137,7 @@
 - (void)_setOverrideType:(long long)arg1;
 - (void)_setScrubberDuration:(double)arg1;
 - (void)_setScrubberValue:(double)arg1;
+- (bool)_shouldHideStatusBar;
 - (void)_showScrubInstructions;
 - (void)_skipButtonTouchCancel:(id)arg1;
 - (void)_skipButtonTouchDown:(id)arg1;
@@ -135,9 +147,11 @@
 - (void)_tick:(id)arg1;
 - (void)_unregisterForItemNotifications:(id)arg1;
 - (void)_unregisterForPlayerNotifications:(id)arg1;
+- (void)_updateAirplayButton;
 - (void)_updateLoadingIndicator;
 - (void)_updateScaleButton;
 - (void)_updateTopBarBoundsBasedConstraints;
+- (void)_updateVolumeImage:(float)arg1;
 - (void)_updateVolumeSlider;
 - (void)_videoViewDidMoveToWindow:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
@@ -175,6 +189,7 @@
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
 - (void)removeFromSuperview;
+- (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setAllowsAudioAndSubtitles:(bool)arg1;
 - (void)setAllowsDetailScrubbing:(bool)arg1;
 - (void)setAllowsExitFromFullscreen:(bool)arg1;
@@ -213,5 +228,6 @@
 - (id)videoViewController;
 - (id)viewControllerForModalPresentationOrientation;
 - (unsigned long long)visibleParts;
+- (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 
 @end

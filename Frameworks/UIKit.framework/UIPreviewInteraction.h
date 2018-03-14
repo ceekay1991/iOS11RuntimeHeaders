@@ -28,6 +28,8 @@
         unsigned int interactionWasCancelled : 1; 
         unsigned int previousProgressWasNegativeOrZero : 1; 
         unsigned int currentState : 3; 
+        unsigned int nextUpdateShouldTransitionToPreview : 1; 
+        unsigned int nextPreviewShouldPreventHapticFeedback : 1; 
     }  _previewInteractionFlags;
     struct CGPoint { 
         double x; 
@@ -37,6 +39,7 @@
     <_UIPreviewInteractionTouchForceProviding> * _touchForceProvider;
     UIView * _view;
     _UIPreviewInteractionViewControllerHelper * _viewControllerHelper;
+    id  _viewControllerPresentationObserver;
 }
 
 @property (nonatomic) <UIPreviewInteractionDelegate> *delegate;
@@ -51,7 +54,9 @@
 - (void)_endInteractionIfNeeded;
 - (void)_endInteractiveStateTransitions;
 - (void)_endUsingFeedbackIfNeeded;
+- (void)_endViewControllerPresentationObserving;
 - (void)_prepareForInteractionIfNeeded;
+- (void)_prepareForViewControllerPresentationObserving;
 - (void)_prepareHighlighterIfNeeded;
 - (void)_prepareUsingFeedback;
 - (void)_prepareUsingFeedbackIfNeeded;
@@ -64,6 +69,7 @@
 - (void)_updateFailureRequirementGestureRecognizersIfNeeded;
 - (void)_updateFeedbackTowardNextState:(long long)arg1 progress:(double)arg2;
 - (void)_updateForContinuousEvaluation:(id)arg1;
+- (void)_updateForCurrentTouchForceProvider;
 - (void)_updateHighlighter:(double)arg1;
 - (void)_updateInteractionStateRecognizerForTouchForce:(double)arg1 atTimestamp:(double)arg2 withCentroidAtLocation:(struct CGPoint { double x1; double x2; })arg3;
 - (void)cancelInteraction;

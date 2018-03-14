@@ -26,6 +26,7 @@
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (bool)isSignatureValid:(id)arg1;
+- (bool)postAWDEvent:(id)arg1 reply:(id /* block */)arg2;
 - (id)queue;
 - (void)setDelegate:(id)arg1;
 - (void)setQueue:(id)arg1;

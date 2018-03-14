@@ -29,9 +29,9 @@
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)customDictionaryRepresentation;
 - (void)dealloc;
 - (id)description;
-- (id)detailedDescription;
 - (id)dictionaryRepresentation;
 - (bool)hasIdentifier;
 - (bool)hasKey;

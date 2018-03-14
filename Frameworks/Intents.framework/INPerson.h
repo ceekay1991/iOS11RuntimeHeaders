@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INPerson : NSObject <INCacheableContainer, INPersonExport, INSpeakable, NSCopying, NSSecureCoding> {
+@interface INPerson : NSObject <INCacheableContainer, INPersonExport, INSpeakable, NSCopying, NSMutableCopying, NSSecureCoding> {
     NSArray * _aliases;
     NSArray * _alternatives;
     NSString * _contactIdentifier;
@@ -51,6 +51,8 @@
 @property (nonatomic, readonly, copy) NSString *userURIString;
 @property (nonatomic, readonly) NSString *vocabularyIdentifier;
 
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
 + (id)expectedCNContactKeys;
 + (bool)supportsSecureCoding;
 
@@ -59,17 +61,19 @@
 - (id)_dictionaryRepresentation;
 - (id)_displayName;
 - (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(bool)arg11 alternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13;
+- (id)_intents_cacheableObjects;
+- (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)_sourceAppBundleIdentifier;
 - (id)_userInput;
 - (id)aliases;
 - (id)alternativeSiriMatches;
 - (id)alternativeSpeakableMatches;
 - (id)alternatives;
-- (id)cacheableObjects;
 - (id)contactIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)customIdentifier;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)firstName;
@@ -88,6 +92,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isMe;
 - (id)lastName;
+- (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)nameComponents;
 - (id)personHandle;
 - (id)pronunciationHint;
@@ -105,10 +110,15 @@
 - (void)setSuggestionType:(long long)arg1;
 - (id)siriMatches;
 - (id)spokenPhrase;
+- (id)spokenPhrases;
 - (long long)suggestionType;
 - (id)userIdentifier;
 - (id)userName;
 - (id)userURIString;
 - (id)vocabularyIdentifier;
+
+// Image: /System/Library/PrivateFrameworks/IMAssistantCore.framework/IMAssistantCore
+
+- (id)contactsSearchPredicate;
 
 @end

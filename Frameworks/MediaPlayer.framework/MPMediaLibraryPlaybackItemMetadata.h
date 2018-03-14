@@ -4,7 +4,9 @@
 
 @interface MPMediaLibraryPlaybackItemMetadata : MPMediaPlaybackItemMetadata {
     NSObject<OS_dispatch_queue> * _accessQueue;
+    bool  _hasEvaluatedOfflineHLS;
     bool  _hasValidMediaItemValuesForProperties;
+    bool  _isOfflineHLS;
     MPMediaItem * _mediaItem;
     NSDictionary * _mediaItemValuesForProperties;
     NSDictionary * _playbackKeys;
@@ -24,6 +26,7 @@
 - (id)_mediaItemValuesForProperties;
 - (void)_mediaLibraryDidChangeNotification:(id)arg1;
 - (id)_onqueue_mediaItemValuesForProperties;
+- (void)_persistURI:(id)arg1 persistentContentKey:(id)arg2;
 - (id)_writeQueue;
 - (id)albumArtistName;
 - (long long)albumStoreAdamID;
@@ -45,17 +48,20 @@
 - (long long)endpointType;
 - (double)expectedDuration;
 - (unsigned long long)hash;
+- (id)hlsOfflinePlaybackKeys;
 - (id)iTunesStoreContentDSID;
 - (id)iTunesStoreContentID;
 - (id)init;
 - (id)initWithMediaItem:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isExplicitTrack;
+- (bool)isOfflineHLS;
 - (bool)isSubscriptionRequired;
 - (id)localNetworkContentURL;
 - (id)mediaItem;
 - (long long)mediaLibraryPersistentID;
 - (id)modelGenericObject;
+- (bool)prefersStoreContentInfo;
 - (id)protectedContentSupportStorageURL;
 - (void)setCachedLocalPlaybackAssetFilePath:(id)arg1 protectionType:(unsigned long long)arg2 assetQuality:(unsigned long long)arg3 withCompletionHandler:(id /* block */)arg4;
 - (void)setMediaItem:(id)arg1;

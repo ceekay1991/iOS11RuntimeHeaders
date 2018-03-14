@@ -15,6 +15,8 @@
 @property (retain) NSString *string;
 @property (readonly, copy) NSArray *tagSchemes;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)availableTagSchemesForLanguage:(id)arg1;
 + (id)availableTagSchemesForUnit:(long long)arg1 language:(id)arg2;
 + (id)dominantLanguageForString:(id)arg1;
@@ -59,5 +61,9 @@
 - (id)tagsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 scheme:(id)arg2 options:(unsigned long long)arg3 tokenRanges:(id*)arg4;
 - (id)tagsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 unit:(long long)arg2 scheme:(id)arg3 options:(unsigned long long)arg4 tokenRanges:(id*)arg5;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })tokenRangeAtIndex:(unsigned long long)arg1 unit:(long long)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ResponseKit.framework/ResponseKit
+
+- (id)languageOfRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 withAdditionalContext:(id)arg2 withPreferredLanguages:(id)arg3;
 
 @end

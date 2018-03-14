@@ -45,6 +45,7 @@
 - (void)_addFacebookAccountType;
 - (void)_addFacebookAudienceAccessKey;
 - (void)_addFacebookAudienceAccessKeyToFacebookAccountType;
+- (void)_addFacebookLegacyAccountTypes;
 - (void)_addFindMyiPhoneAccountType;
 - (void)_addFlickrAccountType;
 - (void)_addGameCenterAccountType;
@@ -65,6 +66,7 @@
 - (void)_addMadridAccountType;
 - (void)_addMissingAccountTypes;
 - (void)_addNotesDataclassToAASupportedDataclasses;
+- (void)_addObsoleteAttributeToAccountTypes;
 - (void)_addOnMyDeviceAccountType;
 - (void)_addPOPAccountType;
 - (void)_addPasswordCredentialTypeToGmailAccountType;
@@ -89,6 +91,7 @@
 - (void)_addYoukuAccountType;
 - (void)_addiTunesStoreAccountType;
 - (void)_allowMultipleAppleIDAuthenticationAccounts;
+- (void)_changeFacebookAccountAccountType;
 - (void)_configureSMTPAccountType;
 - (void)_createLiverpoolDataclasses;
 - (id)_dataclassWithName:(id)arg1;
@@ -106,6 +109,7 @@
 - (void)_removeFacebookAppVersionAccessKey;
 - (void)_removeFacebookPermissionGroupAccessKey;
 - (void)_removeLiverpoolTypes;
+- (void)_removeMessagesFromAOLSupportedDataclasses;
 - (void)_removeMessagesFromGoogleSupportedDataclasses;
 - (void)_removeMessengerFromYahooSupportedDataclasses;
 - (id)_resultsForEntityNamed:(id)arg1;

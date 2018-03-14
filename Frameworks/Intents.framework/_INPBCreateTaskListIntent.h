@@ -6,7 +6,7 @@
     _INPBDataString * _groupName;
     _INPBIntentMetadata * _intentMetadata;
     NSMutableArray * _taskTitles;
-    NSString * _title;
+    _INPBDataString * _title;
     PBUnknownFields * _unknownFields;
 }
 
@@ -16,7 +16,7 @@
 @property (nonatomic, readonly) bool hasTitle;
 @property (nonatomic, retain) _INPBIntentMetadata *intentMetadata;
 @property (nonatomic, retain) NSMutableArray *taskTitles;
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) _INPBDataString *title;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (id)options;

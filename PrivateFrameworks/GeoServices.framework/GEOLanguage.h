@@ -5,10 +5,12 @@
 @interface GEOLanguage : PBCodable <NSCopying> {
     unsigned int  _identifier;
     NSMutableArray * _languages;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) unsigned int identifier;
 @property (nonatomic, retain) NSMutableArray *languages;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)languageType;
 
@@ -29,6 +31,7 @@
 - (bool)readFrom:(id)arg1;
 - (void)setIdentifier:(unsigned int)arg1;
 - (void)setLanguages:(id)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

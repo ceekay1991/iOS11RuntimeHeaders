@@ -3,6 +3,7 @@
  */
 
 @interface _UITableViewDropPlaceholderContextImpl : NSObject <_UITableViewPlaceholderContext> {
+    <UIDragAnimating> * _animator;
     id /* block */  _cellUpdateHandler;
     <_UITableViewPlaceholderContextDelegate> * _delegate;
     UIDragItem * _dragItem;
@@ -11,6 +12,7 @@
     NSUUID * _shadowUpdateIdentifier;
 }
 
+@property (getter=_animator, setter=_setAnimator:, nonatomic, retain) <UIDragAnimating> *animator;
 @property (nonatomic, copy) id /* block */ cellUpdateHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <_UITableViewPlaceholderContextDelegate> *delegate;
@@ -23,8 +25,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_animator;
+- (void)_setAnimator:(id)arg1;
 - (void)_setShadowUpdateIdentifier:(id)arg1;
 - (id)_shadowUpdateIdentifier;
+- (void)addAnimations:(id /* block */)arg1;
+- (void)addCompletion:(id /* block */)arg1;
 - (id /* block */)cellUpdateHandler;
 - (bool)commitInsertionWithDataSourceUpdates:(id /* block */)arg1;
 - (id)delegate;

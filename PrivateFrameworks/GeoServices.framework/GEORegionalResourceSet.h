@@ -7,11 +7,13 @@
     unsigned long long  _regionsCount;
     unsigned long long  _regionsSpace;
     NSMutableArray * _resources;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, readonly) struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*regions;
 @property (nonatomic, readonly) unsigned long long regionsCount;
 @property (nonatomic, retain) NSMutableArray *resources;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)resourceType;
 
@@ -37,6 +39,7 @@
 - (unsigned long long)resourcesCount;
 - (void)setRegions:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*)arg1 count:(unsigned long long)arg2;
 - (void)setResources:(id)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

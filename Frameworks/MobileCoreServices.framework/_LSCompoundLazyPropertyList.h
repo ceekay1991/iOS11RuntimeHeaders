@@ -9,8 +9,8 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_getPropertyList:(id*)arg1;
 - (bool)_getValue:(id*)arg1 forPropertyListKey:(id)arg2;
-- (id)_loadPropertyListPeeking:(bool)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLazyPropertyLists:(id)arg1;

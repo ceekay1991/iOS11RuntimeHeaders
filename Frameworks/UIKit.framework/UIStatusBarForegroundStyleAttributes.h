@@ -18,8 +18,7 @@
 @property (nonatomic, readonly, retain) UIColor *tintColor;
 
 - (void).cxx_destruct;
-- (id)_batteryColorForCapacity:(int)arg1 lowCapacity:(int)arg2 style:(unsigned long long)arg3;
-- (id)_bluetoothBatteryColorForNormalizedCapacity:(double)arg1;
+- (id)_batteryColorForCapacity:(int)arg1 lowCapacity:(int)arg2 style:(unsigned long long)arg3 usingTintColor:(bool)arg4;
 - (void)_cacheImage:(id)arg1 named:(id)arg2;
 - (void)_cacheQueue_cacheImage:(id)arg1 named:(id)arg2 inTempGroup:(id)arg3 groupFullName:(id)arg4 tintColor:(id)arg5;
 - (id)_cacheQueue_cachedImageNamed:(id)arg1 inTempGroup:(id)arg2 groupFullName:(id)arg3;
@@ -27,9 +26,12 @@
 - (void)_drawText:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 withFont:(id)arg3 lineBreakMode:(long long)arg4 letterSpacing:(double)arg5 textAlignment:(long long)arg6;
 - (double)_roundDimension:(double)arg1;
 - (bool)_shouldUseBoldFontForStyle:(long long)arg1;
+- (id)accessibilityHUDImageNamed:(id)arg1;
 - (long long)activityIndicatorStyleWithSyncActivity:(bool)arg1;
 - (double)baselineOffsetForStyle:(long long)arg1;
 - (double)batteryAccessoryMargin;
+- (id)batteryColorForCapacity:(int)arg1 style:(unsigned long long)arg2 usingTintColor:(bool)arg3;
+- (id)bluetoothBatteryColorForCapacity:(double)arg1 usingTintColor:(bool)arg2;
 - (double)bluetoothBatteryExtraPadding;
 - (id)bluetoothBatteryImageNameWithCapacity:(double)arg1;
 - (void)cacheImage:(id)arg1 named:(id)arg2 inTempGroup:(id)arg3;
@@ -38,6 +40,7 @@
 - (bool)canShowBreadcrumbs;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)drawBatteryInsidesWithSize:(struct CGSize { double x1; double x2; })arg1 capacity:(int)arg2 style:(unsigned long long)arg3;
+- (void)drawBatteryInsidesWithSize:(struct CGSize { double x1; double x2; })arg1 capacity:(int)arg2 style:(unsigned long long)arg3 usingTintColor:(bool)arg4;
 - (void)drawBluetoothBatteryInsidesWithSize:(struct CGSize { double x1; double x2; })arg1 capacity:(double)arg2;
 - (void)drawText:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3 letterSpacing:(double)arg4 textAlignment:(long long)arg5 style:(long long)arg6 textSize:(struct CGSize { double x1; double x2; })arg7 textHeight:(double)arg8;
 - (void)drawTextInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 withColor:(id)arg2 withBlock:(id /* block */)arg3;

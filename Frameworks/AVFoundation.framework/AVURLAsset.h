@@ -9,9 +9,12 @@
 @property (nonatomic, readonly, copy) NSURL *URL;
 @property (nonatomic, readonly) NSString *cacheKey;
 @property (nonatomic, readonly) bool mayRequireContentKeysForMediaDataProcessing;
+@property (nonatomic, readonly) double rc_durationInSeconds;
 @property (nonatomic, readonly) AVAssetResourceLoader *resourceLoader;
 @property (nonatomic, readonly) bool shouldMatchDataInCacheByURLPathComponentOnly;
 @property (nonatomic, readonly) bool shouldMatchDataInCacheByURLWithoutQueryComponent;
+
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
 
 + (id)URLAssetWithURL:(id)arg1 options:(id)arg2;
 + (id)_UTTypes;
@@ -41,7 +44,7 @@
 - (void)_addFigAssetNotifications;
 - (id)_assetInspector;
 - (id)_assetInspectorLoader;
-- (void)_attachToContentKeySession:(id)arg1;
+- (int)_attachToContentKeySession:(id)arg1;
 - (bool)_attachedToExternalContentKeySession;
 - (Class)_classForAssetTracks;
 - (Class)_classForFigAssetInspectorLoader;
@@ -85,5 +88,22 @@
 - (bool)shouldMatchDataInCacheByURLPathComponentOnly;
 - (bool)shouldMatchDataInCacheByURLWithoutQueryComponent;
 - (id)tracks;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (void)mpc_addDownloadCompletionHandler:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
++ (id)assetWithIdentifierURL:(id)arg1;
++ (id)emptyAsset;
++ (void)mediaserverdCrashed;
++ (id)newAssetWithIdentifierURL:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
+
++ (id)rc_preciseTimingAssetWithURL:(id)arg1;
+
+- (double)rc_durationInSeconds;
 
 @end

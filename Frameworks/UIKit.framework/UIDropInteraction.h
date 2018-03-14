@@ -30,14 +30,13 @@
 @property (getter=_viewDelegate, nonatomic, readonly) <_UIViewDraggingDestinationDelegate> *viewDelegate;
 @property (getter=_wantsDefaultVisualBehavior, setter=_setWantsDefaultVisualBehavior:, nonatomic) bool wantsDefaultVisualBehavior;
 
-+ (id)destinationInteractionWithDelegate:(id)arg1;
-
 - (void).cxx_destruct;
 - (bool)_allowsSimultaneousDragWithEvent:(id)arg1;
 - (bool)_canHandleDragEvent:(id)arg1;
 - (void)_cleanupItemsInSessionAfterDrop:(id)arg1;
 - (void)_dragDestinationGestureStateChanged:(id)arg1;
 - (void)_dragDestinationViewDelegateForward:(id)arg1 delegate:(id)arg2;
+- (void)_draggingItem:(id)arg1 willAnimateSetDownWithAnimator:(id)arg2;
 - (id)_dropItemForDroppingDraggingItem:(id)arg1;
 - (void)_dropSessionEntered:(id)arg1 withSessionDestination:(id)arg2;
 - (id)_dynamicGestureRecognizersForEvent:(id)arg1;
@@ -51,22 +50,22 @@
 - (void)_sendSessionDidEnd:(id)arg1;
 - (unsigned long long)_setLastDragOperation:(unsigned long long)arg1 forbidden:(bool)arg2 precise:(bool)arg3 prefersFullSizePreview:(bool)arg4 onSession:(id)arg5;
 - (void)_setWantsDefaultVisualBehavior:(bool)arg1;
-- (unsigned long long)_validateDragOperation:(unsigned long long)arg1 forSelector:(SEL)arg2 onSession:(id)arg3;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_targetFrameOfDraggingItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (unsigned long long)_validateDragOperation:(unsigned long long)arg1 forSelector:(SEL)arg2 delegate:(id)arg3 dropSession:(id)arg4 onSession:(id)arg5 forbidden:(bool*)arg6;
 - (id)_viewDelegate;
 - (bool)_wantsDefaultVisualBehavior;
 - (bool)allowsSimultaneousDropSessions;
 - (id)context;
 - (id)delegate;
 - (void)didMoveToView:(id)arg1;
-- (void)draggingItem:(id)arg1 willAnimateSetDownWithAnimator:(id)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (id)interactionEffect;
 - (bool)isActive;
 - (void)setAllowsSimultaneousDropSessions:(bool)arg1;
 - (void)setContext:(id)arg1;
+- (void)setDelegate:(id)arg1;
 - (void)setInteractionEffect:(id)arg1;
 - (void)setView:(id)arg1;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })targetFrameOfDraggingItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (id)view;
 - (void)willMoveToView:(id)arg1;
 

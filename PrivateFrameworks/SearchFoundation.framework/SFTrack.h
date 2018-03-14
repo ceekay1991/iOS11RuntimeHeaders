@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFTrack : NSObject <NSSecureCoding, SFTrack> {
+@interface SFTrack : NSObject <NSCopying, NSSecureCoding, SFTrack> {
     NSString * _duration;
     struct { 
         unsigned int highlighted : 1; 
@@ -30,6 +30,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (id)duration;
 - (void)encodeWithCoder:(id)arg1;

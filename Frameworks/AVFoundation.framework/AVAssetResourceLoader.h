@@ -28,6 +28,7 @@
 - (struct OpaqueFigCustomURLHandler { }*)_contentKeySessionCustomURLHandler;
 - (struct OpaqueFigCustomURLHandler { }*)_customURLHandler;
 - (struct OpaqueFigCustomURLLoader { }*)_customURLLoader;
+- (id)_getDelegateOnStateQueue;
 - (void)_handleRequest:(struct __CFDictionary { }*)arg1 requestID:(unsigned long long)arg2 willHandleRequest:(bool*)arg3;
 - (void)_issueLoadingRequestWithKey:(id)arg1 loadingRequest:(id)arg2 isRenewalRequest:(bool)arg3 fallbackHandler:(id /* block */)arg4;
 - (void)_issueLoadingRequestWithKey:(id)arg1 requestDictionary:(id)arg2 fallbackHandler:(id /* block */)arg3;
@@ -40,6 +41,7 @@
 - (void)_poseAuthenticationChallengeWithRequestInfo:(struct __CFDictionary { }*)arg1 requestID:(unsigned long long)arg2 challenge:(id)arg3;
 - (void)_sendAuthResponseForChallenge:(id)arg1 disposition:(long long)arg2 credential:(id)arg3 error:(id)arg4;
 - (void)_setContentKeySessionCustomURLHandler:(struct OpaqueFigCustomURLHandler { }*)arg1;
+- (void)_setDelegateOnStateQueue:(id)arg1;
 - (id)asset;
 - (void)cacheContentInformation:(id)arg1 forURL:(id)arg2;
 - (id)cachedContentInformationForURL:(id)arg1;
@@ -57,7 +59,6 @@
 - (bool)preloadsEligibleContentKeys;
 - (void)rejectProtectionSpaceAndContinueWithChallenge:(id)arg1;
 - (void)setCustomURLBridge:(id)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setPreloadsEligibleContentKeys:(bool)arg1;
 - (void)setURLSession:(id)arg1;

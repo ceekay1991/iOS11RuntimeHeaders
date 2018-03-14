@@ -3,18 +3,23 @@
  */
 
 @interface BWStreamingCVAFilterRenderer : NSObject <BWFilterRenderer, CVADisparityPostprocessingCompletionDelegate, CVAMattingCompletionDelegate, CVAPortraitCompletionDelegate> {
-    BWRamp * _apertureRamp;
+    BWStreamingCVAFilterRendererAnimator * _animator;
     BWFigVideoCaptureDevice * _captureDevice;
     NSMutableDictionary * _faceVisibilityByFaceID;
     struct __CVBuffer { } * _mattingBuffer;
     <CVAPortraitVideoPipeline> * _portraitVideoPipeline;
     BWPixelBufferPool * _postprocessedDisparityBufferPool;
+    NSMutableArray * _postprocessedFaces;
     struct { 
         bool depthFilterEnabled; 
         struct __CVBuffer {} *mostRecentPostprocessedDisparityBuffer; 
-        float mostRecentDeltaShift; 
-        float mostRecentFocusShift; 
+        float mostRecentFocusDisparity; 
+        float mostRecentDeltaDisparity; 
+        float mostRecentPortraitStability; 
         int numberOfFramesSinceLastStableFocus; 
+        bool mostRecentStructuredLightOcclusion; 
+        NSArray *mostRecentDetectedFaces; 
+        NSArray *mostRecentFilteredFaces; 
     }  _sharedContext;
     NSObject<OS_dispatch_queue> * _sharedContextQueue;
 }

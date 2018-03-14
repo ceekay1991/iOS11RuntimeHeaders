@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKAcceptSharesOperationInfo : CKOperationInfo <NSSecureCoding> {
+@interface CKAcceptSharesOperationInfo : CKDatabaseOperationInfo <NSSecureCoding> {
     NSArray * _shareMetadatasToAccept;
 }
 
@@ -11,6 +11,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (long long)databaseScope;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setShareMetadatasToAccept:(id)arg1;

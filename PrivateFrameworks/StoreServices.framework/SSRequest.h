@@ -6,7 +6,9 @@
     unsigned int  _assertionID;
     NSObject<OS_dispatch_source> * _backgroundTaskExpirationTimer;
     long long  _backgroundTaskIdentifier;
+    long long  _callState;
     bool  _cancelAfterTaskExpiration;
+    id /* block */  _completionBlock;
     <SSRequestDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     SSXPCConnection * _requestConnection;
@@ -22,6 +24,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic) bool usesTaskCompletionAssertions;
 
++ (bool)_allowMultipleCallbacks;
+
+- (void).cxx_destruct;
 - (void)__beginBackgroundTask;
 - (void)__endBackgroundTask;
 - (void)_beginBackgroundTask;

@@ -23,7 +23,7 @@
 @property (copy) NSString *label;
 @property (readonly) struct MTLLibraryData { int (**x1)(); int x2; id x3; }*libraryData;
 @property (copy) NSString *overrideTriple;
-@property /* Warning: unhandled struct encoding: '{MTLPipelineCollection={unordered_map<_MTLLibrary *' */ struct *pipelineCollection; /* unknown property attribute:  std::__1::allocator<MTLComputePipelineDescriptor *> >=^@}}@} */
+@property /* Warning: unhandled struct encoding: '{MTLPipelineCollection={unordered_map<_MTLLibrary *' */ struct *pipelineCollection; /* unknown property attribute:  std::__1::allocator<MTLRenderPipelineDescriptor *> >=^@}}@} */
 @property (readonly) Class superclass;
 
 - (void)dealloc;

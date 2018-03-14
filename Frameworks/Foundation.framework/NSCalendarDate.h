@@ -10,6 +10,8 @@
     unsigned long long  refCount;
 }
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 + (id)calendarDate;
 + (id)dateWithNaturalLanguageString:(id)arg1 date:(id)arg2 locale:(id)arg3;
@@ -56,5 +58,21 @@
 - (id)timeZoneDetail;
 - (long long)yearOfCommonEra;
 - (void)years:(long long*)arg1 months:(long long*)arg2 days:(long long*)arg3 hours:(long long*)arg4 minutes:(long long*)arg5 seconds:(long long*)arg6 sinceDate:(id)arg7;
+
+// Image: /System/Library/PrivateFrameworks/CalendarDatabase.framework/CalendarDatabase
+
+- (id)ekmsuidGMTDateToDateInTimeZone:(id)arg1;
+- (id)ekmsuidStringForYearMonthDay;
+
+// Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DAEAS.framework/DAEAS
+
++ (id)combinedDateWithYMDFrom:(id)arg1 HMSFrom:(id)arg2 componentDatesTimezone:(id)arg3;
+
+- (void)getGregorianDate:(struct { int x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; double x6; }*)arg1;
+- (id)gmtDateToDateInTimeZone:(id)arg1;
+- (id)gmtMidnight;
+- (bool)isGMTMidnight;
+- (id)nearestMidnight;
+- (id)tzDateToDateInGMT:(id)arg1;
 
 @end

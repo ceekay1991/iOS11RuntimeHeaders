@@ -76,4 +76,47 @@
 - (long long)_contentVersion;
 - (long long)_formatVersion;
 
+// Image: /System/Library/PrivateFrameworks/CoreSpeech.framework/CoreSpeech
+
+- (id)_compatibilityVersion;
+- (id)_footprint;
+- (id)_version;
+- (id)getCSAssetOfType:(unsigned long long)arg1;
+- (bool)isDownloading;
+- (bool)isInstalled;
+- (bool)isLatestCompareTo:(id)arg1;
+- (bool)isPremium;
+- (id)path;
+
+// Image: /System/Library/PrivateFrameworks/DictionaryUI.framework/DictionaryUI
+
+- (long long)_contentVersion;
+- (long long)_formatVersion;
+
+// Image: /System/Library/PrivateFrameworks/SoftwareUpdateServices.framework/SoftwareUpdateServices
+
+- (void)cancelDownloadIfNecessary;
+- (void)cleanupAsset;
+- (bool)isDownloading;
+- (bool)isDownloadingOrInstalled;
+- (bool)isEmergencyUpdate;
+- (bool)isInstalled;
+
+// Image: /System/Library/PrivateFrameworks/TextInputCore.framework/TextInputCore
+
+- (id)laterAsset:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/VoiceTrigger.framework/VoiceTrigger
+
+- (id)compatibilityVersion;
+- (id)description;
+- (id)footprint;
+- (bool)isDownloading;
+- (bool)isInstalled;
+- (bool)isLatestCompareTo:(id)arg1;
+- (bool)isPremium;
+- (id)languages;
+- (id)path;
+- (id)version;
+
 @end

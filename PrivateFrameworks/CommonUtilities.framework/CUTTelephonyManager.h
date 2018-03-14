@@ -12,6 +12,7 @@
 
 @property (nonatomic) struct __CTServerConnection { }*_serverConnection;
 @property (nonatomic) void*_suspendDormancyAssertion;
+@property (nonatomic, readonly) bool disableFastDormancy;
 @property (nonatomic, retain) NSMutableSet *disableFastDormancyTokens;
 @property (nonatomic, retain) NSRecursiveLock *lock;
 @property (nonatomic) bool registered;

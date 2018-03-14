@@ -7,6 +7,7 @@
     MKPlaceActionManager * _actionManager;
     bool  _allowRowSelection;
     bool  _haveTwoColumns;
+    bool  _showTopButtonSeparator;
     bool  _showTopSeparator;
     bool  _useMarginLayout;
     bool  _useSmallFonts;
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool haveTwoColumns;
+@property (nonatomic) bool showTopButtonSeparator;
 @property (nonatomic) bool showTopSeparator;
 @property (readonly) Class superclass;
 @property (nonatomic) bool useMarginLayout;
@@ -41,10 +43,12 @@
 - (void)setActionManager:(id)arg1;
 - (void)setAllowRowSelection:(bool)arg1;
 - (void)setHaveTwoColumns:(bool)arg1;
+- (void)setShowTopButtonSeparator:(bool)arg1;
 - (void)setShowTopSeparator:(bool)arg1;
 - (void)setUseMarginLayout:(bool)arg1;
 - (void)setUseSmallFonts:(bool)arg1;
 - (void)setViewArray:(id)arg1;
+- (bool)showTopButtonSeparator;
 - (bool)showTopSeparator;
 - (bool)useMarginLayout;
 - (bool)useSmallFonts;

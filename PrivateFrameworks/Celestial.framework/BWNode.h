@@ -5,7 +5,6 @@
 @interface BWNode : NSObject {
     long long  _configurationID;
     BWGraph * _graph;
-    bool  _haveWarnedAboutUnimplementedDroppedSampleHandler;
     BWNodeInput * _input;
     NSMutableArray * _inputs;
     NSString * _name;
@@ -48,6 +47,7 @@
 - (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
 - (void)handleIrisReferenceMovieRequest:(id)arg1 forInput:(id)arg2;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
+- (void)handleStillImagePrewarmWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 resolvedPhotoManifest:(id)arg3 forInput:(id)arg4;
 - (void)handleStillImageReferenceFrameBracketedCaptureSequenceNumber:(int)arg1 forInput:(id)arg2;
 - (bool)hasNonLiveConfigurationChanges;
 - (id)init;

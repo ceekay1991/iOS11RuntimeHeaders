@@ -11,6 +11,8 @@
     long long  _personalizationStyle;
     NSString * _platform;
     unsigned long long  _reason;
+    double  _retryDelay;
+    bool  _shouldIgnoreCache;
     NSNumber * _timeoutInterval;
     ICUserIdentity * _userIdentity;
     ICUserIdentityStore * _userIdentityStore;
@@ -27,6 +29,8 @@
 @property (nonatomic) unsigned long long reason;
 @property (nonatomic, copy) NSString *requestingBundleIdentifier;
 @property (nonatomic, copy) NSString *requestingBundleVersion;
+@property (nonatomic) double retryDelay;
+@property (nonatomic) bool shouldIgnoreCache;
 @property (nonatomic, readonly, copy) ICStorePlatformRequest *storePlatformRequest;
 @property (nonatomic, copy) NSNumber *timeoutInterval;
 @property (nonatomic, copy) ICUserIdentity *userIdentity;
@@ -39,6 +43,7 @@
 - (id)clientIdentifier;
 - (id)clientInfo;
 - (id)delegatedUserIdentity;
+- (id)init;
 - (bool)isPersonalized;
 - (id)itemIdentifiers;
 - (long long)personalizationStyle;
@@ -46,6 +51,7 @@
 - (unsigned long long)reason;
 - (id)requestingBundleIdentifier;
 - (id)requestingBundleVersion;
+- (double)retryDelay;
 - (void)setAllowLocalEquivalencies:(bool)arg1;
 - (void)setClientIdentifier:(id)arg1;
 - (void)setClientInfo:(id)arg1;
@@ -56,9 +62,12 @@
 - (void)setReason:(unsigned long long)arg1;
 - (void)setRequestingBundleIdentifier:(id)arg1;
 - (void)setRequestingBundleVersion:(id)arg1;
+- (void)setRetryDelay:(double)arg1;
+- (void)setShouldIgnoreCache:(bool)arg1;
 - (void)setTimeoutInterval:(id)arg1;
 - (void)setUserIdentity:(id)arg1;
 - (void)setUserIdentityStore:(id)arg1;
+- (bool)shouldIgnoreCache;
 - (id)storePlatformRequest;
 - (id)timeoutInterval;
 - (id)userIdentity;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFAppLinkCardSection : SFTitleCardSection <NSSecureCoding, SFAppLinkCardSection> {
+@interface SFAppLinkCardSection : SFTitleCardSection <NSCopying, NSSecureCoding, SFAppLinkCardSection> {
     NSArray * _appLinks;
     SFColor * _backgroundColor;
     bool  _canBeHidden;
@@ -35,12 +35,14 @@
 @property (nonatomic) bool hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool hideDivider;
+@property (nonatomic) bool isCentered;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SFCard *nextCard;
 @property (nonatomic, copy) NSArray *parameterKeyPaths;
 @property (nonatomic, copy) NSArray *punchoutOptions;
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
+@property (nonatomic, copy) NSString *resultIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (nonatomic, copy) NSString *subtitle;
 @property (readonly) Class superclass;
@@ -53,6 +55,7 @@
 - (id)appLinks;
 - (id)backgroundColor;
 - (bool)canBeHidden;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasBottomPadding;

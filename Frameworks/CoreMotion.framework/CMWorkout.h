@@ -10,6 +10,8 @@
 @property (nonatomic, readonly) NSUUID *sessionId;
 @property (nonatomic, readonly) long long type;
 
++ (int)CLMotionActivityTypeFromCMWorkoutType:(long long)arg1;
++ (long long)CMWorkoutTypeFromCLMotionActivityType:(int)arg1;
 + (bool)isAvailable;
 + (long long)natalieDataSessionFromWorkoutType:(long long)arg1;
 + (bool)supportsSecureCoding;

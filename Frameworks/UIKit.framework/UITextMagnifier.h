@@ -27,6 +27,7 @@
 @property (nonatomic) struct CGPoint { double x1; double x2; } animationPoint;
 @property (nonatomic, readonly) bool isHorizontal;
 @property (nonatomic) struct CGPoint { double x1; double x2; } magnificationPoint;
+@property (nonatomic, readonly) double offsetFromMagnificationPoint;
 @property (nonatomic, retain) UIView *target;
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } terminalPoint;
 @property (nonatomic, readonly) bool terminalPointPlacedCarefully;
@@ -36,9 +37,10 @@
 
 + (id)getLoupeBackgroundColor:(id)arg1;
 
+- (void).cxx_destruct;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)animateToAutoscrollRenderer;
 - (void)animateToMagnifierRenderer;
 - (struct CGPoint { double x1; double x2; })animationPoint;
@@ -48,6 +50,7 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isHorizontal;
 - (struct CGPoint { double x1; double x2; })magnificationPoint;
+- (double)offsetFromMagnificationPoint;
 - (void)postAutoscrollPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)remove;
 - (void)setAnimationPoint:(struct CGPoint { double x1; double x2; })arg1;

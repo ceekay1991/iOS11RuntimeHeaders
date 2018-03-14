@@ -10,7 +10,7 @@
     long long  _status;
     long long  _taskType;
     INTemporalEventTrigger * _temporalEventTrigger;
-    NSString * _title;
+    INSpeakableString * _title;
 }
 
 @property (readonly, copy) NSDateComponents *createdDateComponents;
@@ -20,7 +20,7 @@
 @property (readonly) long long status;
 @property (readonly) long long taskType;
 @property (readonly, copy) INTemporalEventTrigger *temporalEventTrigger;
-@property (readonly, copy) NSString *title;
+@property (readonly, copy) INSpeakableString *title;
 
 + (bool)supportsSecureCoding;
 
@@ -29,6 +29,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)createdDateComponents;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)identifier;

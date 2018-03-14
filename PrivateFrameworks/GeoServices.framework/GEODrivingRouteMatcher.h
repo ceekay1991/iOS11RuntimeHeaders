@@ -3,8 +3,6 @@
  */
 
 @interface GEODrivingRouteMatcher : GEORouteMatcher {
-    bool  _fixHorizontalAccuracyCheck;
-    bool  _fixLowSpeedCourseSwing;
     GEORouteRoadMatcher * _routeRoadMatcher;
     bool  _supportsSnapping;
 }

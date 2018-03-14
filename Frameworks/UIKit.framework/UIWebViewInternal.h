@@ -15,6 +15,7 @@
     unsigned int  isLoading;
     UIWebPDFViewHandler * pdfHandler;
     NSURLRequest * request;
+    unsigned int  safeAreaShouldAffectObscuredInsets;
     unsigned int  scalesPageToFit;
     UIScrollView * scroller;
     unsigned int  webSelectionEnabled;

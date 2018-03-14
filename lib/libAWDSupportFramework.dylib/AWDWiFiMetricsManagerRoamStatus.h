@@ -20,14 +20,14 @@
     unsigned int  _latency;
     unsigned int  _originChannel;
     NSData * _originOui;
-    unsigned int  _originRssi;
+    int  _originRssi;
     unsigned int  _profileType;
     unsigned int  _reason;
     unsigned int  _securityType;
     unsigned int  _status;
     unsigned int  _targetChannel;
     NSData * _targetOui;
-    unsigned int  _targetRssi;
+    int  _targetRssi;
     unsigned long long  _timestamp;
 }
 
@@ -48,14 +48,14 @@
 @property (nonatomic) unsigned int latency;
 @property (nonatomic) unsigned int originChannel;
 @property (nonatomic, retain) NSData *originOui;
-@property (nonatomic) unsigned int originRssi;
+@property (nonatomic) int originRssi;
 @property (nonatomic) unsigned int profileType;
 @property (nonatomic) unsigned int reason;
 @property (nonatomic) unsigned int securityType;
 @property (nonatomic) unsigned int status;
 @property (nonatomic) unsigned int targetChannel;
 @property (nonatomic, retain) NSData *targetOui;
-@property (nonatomic) unsigned int targetRssi;
+@property (nonatomic) int targetRssi;
 @property (nonatomic) unsigned long long timestamp;
 
 - (void)copyTo:(id)arg1;
@@ -83,7 +83,7 @@
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)originChannel;
 - (id)originOui;
-- (unsigned int)originRssi;
+- (int)originRssi;
 - (unsigned int)profileType;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)reason;
@@ -103,19 +103,19 @@
 - (void)setLatency:(unsigned int)arg1;
 - (void)setOriginChannel:(unsigned int)arg1;
 - (void)setOriginOui:(id)arg1;
-- (void)setOriginRssi:(unsigned int)arg1;
+- (void)setOriginRssi:(int)arg1;
 - (void)setProfileType:(unsigned int)arg1;
 - (void)setReason:(unsigned int)arg1;
 - (void)setSecurityType:(unsigned int)arg1;
 - (void)setStatus:(unsigned int)arg1;
 - (void)setTargetChannel:(unsigned int)arg1;
 - (void)setTargetOui:(id)arg1;
-- (void)setTargetRssi:(unsigned int)arg1;
+- (void)setTargetRssi:(int)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (unsigned int)status;
 - (unsigned int)targetChannel;
 - (id)targetOui;
-- (unsigned int)targetRssi;
+- (int)targetRssi;
 - (unsigned long long)timestamp;
 - (void)writeTo:(id)arg1;
 

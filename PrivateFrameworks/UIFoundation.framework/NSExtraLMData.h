@@ -119,6 +119,7 @@
     struct __CFDictionary { } * _textContainerGlyphIndexes;
     struct __CFDictionary { } * _textContainerIndexes;
     long long  _typesetterBehavior;
+    NSMutableSet * _viewProviders;
 }
 
 @end

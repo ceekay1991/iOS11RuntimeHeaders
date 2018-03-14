@@ -2,15 +2,8 @@
    Image: /System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
  */
 
-@interface _LSLazyPropertyList : NSObject <NSCopying, NSSecureCoding> {
-    NSMutableDictionary * _individuallyLoadedValues;
-    bool  _peeking;
-    NSDictionary * _plist;
-    NSObject<OS_dispatch_queue> * _queue;
-}
+@interface _LSLazyPropertyList : NSObject <NSCopying, NSSecureCoding>
 
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *_queue;
-@property (getter=isPeeking) bool peeking;
 @property (readonly) NSDictionary *propertyList;
 
 + (id)lazyPropertyListWithContext:(struct LSContext { struct LSDatabase {} *x1; }*)arg1 unit:(unsigned int)arg2;
@@ -19,22 +12,16 @@
 + (id)lazyPropertyListWithPropertyListData:(id)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
 - (id)_filterValueFromPropertyList:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
+- (bool)_getPropertyList:(id*)arg1;
 - (bool)_getValue:(id*)arg1 forPropertyListKey:(id)arg2;
-- (id)_initWithPropertyList:(id)arg1;
-- (id)_loadPropertyListPeeking:(bool)arg1;
-- (id)_loadPropertyListPeeking:(bool)arg1 forKey:(id)arg2 block:(id /* block */)arg3;
-- (id)_queue;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (bool)isPeeking;
 - (id)objectForPropertyListKey:(id)arg1 ofClass:(Class)arg2;
 - (id)objectForPropertyListKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
 - (id)objectsForPropertyListKeys:(id)arg1;
 - (id)propertyList;
-- (void)setPeeking:(bool)arg1;
 
 @end

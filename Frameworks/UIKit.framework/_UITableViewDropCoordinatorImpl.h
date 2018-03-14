@@ -28,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)_destinationIndexPath;
-- (void)_dropItem:(id)arg1 toCell:(id)arg2;
+- (void)_dropItem:(id)arg1 toCell:(id)arg2 withPreviewParameters:(id)arg3;
 - (id)_dropItem:(id)arg1 toPlaceholderInsertedAtIndexPath:(id)arg2 withReuseIdentifier:(id)arg3 rowHeight:(double)arg4 cellUpdateHandler:(id /* block */)arg5;
 - (void)_dropItem:(id)arg1 toRowAtIndexPath:(id)arg2;
 - (void)_dropItem:(id)arg1 toTarget:(id)arg2;
@@ -42,10 +42,11 @@
 - (id)_translatedDestinationIndexPath;
 - (id)delegate;
 - (id)destinationIndexPath;
-- (void)dropItem:(id)arg1 intoRowAtIndexPath:(id)arg2 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
+- (id)dropItem:(id)arg1 intoRowAtIndexPath:(id)arg2 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
+- (id)dropItem:(id)arg1 toPlaceholder:(id)arg2;
 - (id)dropItem:(id)arg1 toPlaceholderInsertedAtIndexPath:(id)arg2 withReuseIdentifier:(id)arg3 rowHeight:(double)arg4 cellUpdateHandler:(id /* block */)arg5;
-- (void)dropItem:(id)arg1 toRowAtIndexPath:(id)arg2;
-- (void)dropItem:(id)arg1 toTarget:(id)arg2;
+- (id)dropItem:(id)arg1 toRowAtIndexPath:(id)arg2;
+- (id)dropItem:(id)arg1 toTarget:(id)arg2;
 - (id)initWithDelegate:(id)arg1 destinationIndexPath:(id)arg2 dropProposal:(id)arg3 session:(id)arg4;
 - (id)items;
 - (id)proposal;

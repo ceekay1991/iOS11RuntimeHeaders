@@ -25,16 +25,16 @@
 
 + (double)defaultDurationForTransition:(long long)arg1;
 
+- (void).cxx_destruct;
 - (void)_cleanupTransition;
 - (void)_cleanupTransitionFromPopover;
 - (bool)_isTransitioningFromView:(id)arg1;
 - (void)_navigationTransitionDidStop;
 - (void)_notifyDelegateTransitionDidStopWithContext:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
-- (void)dealloc;
 - (id)delegate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fromView;

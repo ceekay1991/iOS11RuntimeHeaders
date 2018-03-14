@@ -7,6 +7,8 @@
     NSMutableDictionary * _startTimes;
 }
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -17,5 +19,9 @@
 - (id)endTimes;
 - (id)initWithCoder:(id)arg1;
 - (id)startTimes;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)playbackContext;
 
 @end

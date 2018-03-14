@@ -21,6 +21,8 @@
 @property (nonatomic) double value;
 @property (nonatomic) double velocity;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (id)_dynamicValueAnimationMatchingCASpringAnimationWithMass:(double)arg1 stiffness:(double)arg2 damping:(float)arg3 velocity:(float)arg4 fromValue:(double)arg5 toValue:(double)arg6;
 
 - (bool)_animateForInterval:(double)arg1;
@@ -48,5 +50,9 @@
 - (void)setVelocity:(double)arg1;
 - (double)value;
 - (double)velocity;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
++ (id)pu_dynamicValueAnimationWithInitialValue:(double)arg1 initialVelocity:(double)arg2 targetValue:(double)arg3 stiffness:(double)arg4 dampingFactor:(double)arg5 epsilon:(double)arg6;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFSearchSuggestion : NSObject <NSSecureCoding, SFSearchSuggestion> {
+@interface SFSearchSuggestion : NSObject <NSCopying, NSSecureCoding, SFSearchSuggestion> {
     NSString * _bundleIdentifier;
     NSArray * _duplicateSuggestions;
     NSString * _fbr;
@@ -32,15 +32,19 @@
 @property (nonatomic) bool previouslyEngaged;
 @property (nonatomic, copy) NSString *query;
 @property (nonatomic) double score;
+@property (nonatomic, readonly) NSArray *searchEntities;
 @property (nonatomic, copy) NSString *suggestion;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *topicIdentifier;
 @property (nonatomic) int type;
 
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)bundleIdentifier;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (id)duplicateSuggestions;
 - (void)encodeWithCoder:(id)arg1;
@@ -70,5 +74,14 @@
 - (id)suggestion;
 - (id)topicIdentifier;
 - (int)type;
+
+// Image: /System/Library/PrivateFrameworks/CoreParsec.framework/CoreParsec
+
+- (id)initWithIdentifier:(id)arg1 suggestion:(id)arg2 query:(id)arg3 score:(double)arg4 fbr:(id)arg5;
+- (id)initWithSuggestion:(id)arg1 query:(id)arg2 score:(double)arg3 fbr:(id)arg4;
+
+// Image: /System/Library/PrivateFrameworks/Spotlight.framework/Spotlight
+
+- (id)searchEntities;
 
 @end

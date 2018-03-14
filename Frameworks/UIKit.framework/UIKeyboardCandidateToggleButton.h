@@ -14,11 +14,11 @@
 
 + (id)arrowImageName;
 
+- (void).cxx_destruct;
 - (void)_setRenderConfig:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)arrowColorForState:(unsigned long long)arg1;
 - (id)arrowDirection;
 - (void)dimKeys:(id)arg1;

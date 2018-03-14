@@ -17,6 +17,7 @@
     unsigned long long  _regionsCount;
     unsigned long long  _regionsSpace;
     int  _resourceType;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSData *checksum;
@@ -32,6 +33,7 @@
 @property (nonatomic, readonly) struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*regions;
 @property (nonatomic, readonly) unsigned long long regionsCount;
 @property (nonatomic) int resourceType;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)filterType;
 
@@ -80,6 +82,7 @@
 - (void)setPreferWiFiAllowedStaleThreshold:(unsigned int)arg1;
 - (void)setRegions:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*)arg1 count:(unsigned long long)arg2;
 - (void)setResourceType:(int)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

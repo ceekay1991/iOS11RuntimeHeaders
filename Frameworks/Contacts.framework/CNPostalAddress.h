@@ -78,4 +78,20 @@
 - (id)addressDictionary;
 - (id)keyboardSettingsForAddressPart:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
++ (id)_ABKeyFromCNKey:(id)arg1;
++ (id)_CNKeyFromABKey:(id)arg1;
++ (id)backwardsCompatiblePostalAddressDictionary:(id)arg1;
+
+- (id)_countryCodeForCountryName:(id)arg1;
+- (id)backwardsCompatibleDictionaryRepresentation;
+- (id)redactedPostalAddress;
+- (id)redactedStreetAddress;
+- (id)suggestedCountryCode;
+
+// Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
+
++ (id)siriintents_postalAddressFromAddressBookDictionaryAddress:(id)arg1;
+
 @end

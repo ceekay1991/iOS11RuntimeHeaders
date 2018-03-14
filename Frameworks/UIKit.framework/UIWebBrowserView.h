@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIWebBrowserView : UIWebDocumentView <UIWebFormAccessoryDelegate, UIWebTouchEventsGestureRecognizerDelegate, _UIWebRotationDelegate> {
+@interface UIWebBrowserView : UIWebDocumentView <UIWebFormAccessoryDelegate, UIWebTouchEventsGestureRecognizerDelegate, WBUFormAutoFillWebView, _UIWebRotationDelegate> {
     UIWebFormAccessory * _accessory;
     unsigned int  _accessoryEnabled;
     NSHashTable * _activeHighlighters;
@@ -79,11 +79,18 @@
 @property (nonatomic) bool alwaysDispatchesScrollEvents;
 @property (nonatomic) unsigned int audioSessionCategoryOverride;
 @property (nonatomic) <UIWebAutoFillDelegate> *autoFillDelegate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasEditedTextField;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) bool inputViewObeysDOMFocus;
 @property (nonatomic, readonly) bool isDispatchingTouchEvents;
 @property (nonatomic) bool mediaPlaybackRequiresUserAction;
 @property (nonatomic) NSString *networkInterfaceName;
+@property (readonly) Class superclass;
+@property (setter=webui_setLastGeneratedPasswordForCurrentBackForwardItem:, nonatomic, copy) NSString *webui_lastGeneratedPasswordForCurrentBackForwardItem;
+@property (nonatomic, readonly) UIViewController *webui_presentingViewController;
+@property (nonatomic, readonly) bool webui_privateBrowsingEnabled;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
@@ -144,7 +151,9 @@
 - (void)_scrollCaretToVisible:(id)arg1;
 - (void)_setInputViewBoundsForAutomaticKeyboardInfo:(id)arg1 adjustScrollView:(bool)arg2;
 - (void)_setSelectedDOMRangeAndUpdateUI:(id)arg1;
+- (void)_setUnobscuredSafeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (bool)_shouldDeferEvents;
+- (bool)_shouldRestorationInputViewsOnlyWhenKeepingFirstResponder;
 - (void)_startAssistingKeyboard;
 - (void)_startAssistingNode:(id)arg1;
 - (void)_startDeferringEvents;
@@ -168,6 +177,7 @@
 - (void)_zoomToRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 ensuringVisibilityOfRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 withScale:(double)arg3 forceScroll:(bool)arg4;
 - (void)_zoomToRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 ensuringVisibilityOfRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 withScale:(double)arg3 forceScroll:(bool)arg4 formAssistantFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 animationDuration:(double)arg6;
 - (void)_zoomToRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 withScale:(double)arg2;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -192,7 +202,6 @@
 - (bool)considerHeightOfRectOfInterestForRotation;
 - (struct CGSize { double x1; double x2; })contentSizeForScrollView:(id)arg1;
 - (void)copy:(id)arg1;
-- (void)dealloc;
 - (void)formDelegateTextDidChange;
 - (id)formElement;
 - (bool)hasEditedTextField;
@@ -255,5 +264,19 @@
 - (void)webView:(id)arg1 willRemoveScrollingLayer:(id)arg2 withContentsLayer:(id)arg3 forNode:(id)arg4;
 - (void)webViewDidCommitCompositingLayerChanges:(id)arg1;
 - (void)webViewDidPreventDefaultForEvent:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/WebUI.framework/WebUI
+
+- (id)_frameToFormMetadataForLastPasswordGenerationOrSubmitEvent;
+- (void)enumerateUnsubmittedFormsUsingBlock:(id /* block */)arg1;
+- (id)webui_formMetadataAndFrame:(id*)arg1 forLastPasswordGenerationOrSubmitEventInFrame:(id)arg2;
+- (id)webui_formMetadataForLastPasswordGenerationOrSubmitEventInFrame:(id)arg1;
+- (id)webui_lastGeneratedPasswordForCurrentBackForwardItem;
+- (id)webui_presentingViewController;
+- (id /* block */)webui_preventNavigationDuringAutoFillPrompt;
+- (bool)webui_privateBrowsingEnabled;
+- (void)webui_removeFormMetadataForLastPasswordGenerationOrSubmitEventInFrame:(id)arg1;
+- (void)webui_setFormMetadata:(id)arg1 forLastPasswordGenerationOrSubmitEventInFrame:(id)arg2;
+- (void)webui_setLastGeneratedPasswordForCurrentBackForwardItem:(id)arg1;
 
 @end

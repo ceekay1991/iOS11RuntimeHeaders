@@ -19,11 +19,11 @@
 + (id)renderedLikenessesForProviders:(id)arg1 scope:(id)arg2;
 
 - (void).cxx_destruct;
-- (id)cachedLoadingPlaceholderForContactCount:(unsigned long long)arg1 scope:(id)arg2;
 - (id)initWithLikenessResolver:(id)arg1 schedulerProvider:(id)arg2;
 - (id)likenessProvidersForContacts:(id)arg1;
 - (id)likenessResolver;
 - (id)loadingPlaceholderForContactCount:(unsigned long long)arg1 scope:(id)arg2;
+- (id)preRenderedLoadingPlaceholderForContactCount:(unsigned long long)arg1 scope:(id)arg2;
 - (id)renderedBasicMonogramFromString:(id)arg1 scope:(id)arg2;
 - (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2;
 - (id)renderedLikenessesForLikenessProviders:(id)arg1 scope:(id)arg2;

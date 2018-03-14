@@ -52,11 +52,14 @@
 @property (nonatomic, copy) NSDateComponents *releaseDateComponents;
 @property (nonatomic, retain) MPModelSong *representativeSong;
 @property (nonatomic, copy) NSString *shortEditorNotes;
+@property (nonatomic, readonly) bool shouldShowFullAlbum;
 @property (nonatomic, copy) id /* block */ songPopularityBlock;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic) long long trackCount;
 @property (nonatomic) float volumeNormalization;
 @property (nonatomic) long long year;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (id)__MPModelPropertyAlbumArtwork__PROPERTY;
 + (id)__MPModelPropertyAlbumCopyrightText__PROPERTY;
@@ -187,5 +190,15 @@
 - (long long)trackCount;
 - (float)volumeNormalization;
 - (long long)year;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)_radioStationMatchMetadata;
+- (id)mpc_protoContainerRepresentation;
+- (id)mpc_radioContentReference;
+
+// Image: /System/Library/PrivateFrameworks/NanoMusicSync.framework/NanoMusicSync
+
+- (bool)shouldShowFullAlbum;
 
 @end

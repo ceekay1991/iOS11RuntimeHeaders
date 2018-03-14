@@ -15,12 +15,13 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (struct CGSize { double x1; double x2; })_buttonSize;
 - (bool)_shouldLayoutImageOnRight;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
+- (id)accessibilityHUDRepresentation;
 - (double)addContentOverlap:(double)arg1;
 - (id)button;
 - (int)currentLabelCompressionLevel;

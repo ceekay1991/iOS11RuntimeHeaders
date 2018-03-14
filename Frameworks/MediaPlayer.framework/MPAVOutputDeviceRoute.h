@@ -3,19 +3,42 @@
  */
 
 @interface MPAVOutputDeviceRoute : MPAVRoute {
-    void * _outputDevice;
+    void * _logicalLeaderOutputDevice;
+    NSArray * _outputDevices;
 }
 
-@property (nonatomic, readonly) void*outputDevice;
+@property (getter=isGroupLeader, nonatomic, readonly) bool groupLeader;
+@property (nonatomic, readonly) void*logicalLeaderOutputDevice;
+@property (nonatomic, readonly) NSArray *outputDevices;
 
-- (void)dealloc;
++ (id)localOutputDeviceLocalizedName;
++ (void*)logicalLeaderFromOutputDevices:(id)arg1;
++ (long long)pickableRouteTypeForOutputDevice:(void*)arg1;
+
+- (void).cxx_destruct;
+- (bool)canAccessRemoteAssets;
 - (id)description;
-- (id)initWithOutputDevice:(void*)arg1;
+- (id)groupUID;
+- (id)initWithOutputDevices:(id)arg1;
 - (bool)isAppleTVRoute;
+- (bool)isCarplayRoute;
 - (bool)isDeviceRoute;
-- (void*)outputDevice;
+- (bool)isDeviceSpeakerRoute;
+- (bool)isGroupLeader;
+- (bool)isHomePodRoute;
+- (bool)isPickedOnPairedDevice;
+- (bool)isStereoPair;
+- (bool)isVolumeControlAvailable;
+- (void*)logicalLeaderOutputDevice;
+- (id)outputDevices;
+- (long long)pickableRouteType;
+- (id)playingPairedDeviceName;
+- (id)productIdentifier;
+- (bool)requiresPassword;
+- (id)routeName;
 - (long long)routeSubtype;
 - (long long)routeType;
 - (id)routeUID;
+- (bool)supportsWirelessDisplay;
 
 @end

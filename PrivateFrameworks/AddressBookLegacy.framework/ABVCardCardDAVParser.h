@@ -30,7 +30,7 @@
 - (id)genericLabel;
 - (bool)importToGroup:(void*)arg1 removeExistingProperties:(bool)arg2;
 - (bool)importToPerson:(void*)arg1 removeExistingProperties:(bool)arg2;
-- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 watchdogTimer:(id)arg2;
 - (id)lastCropRectChecksum;
 - (int)lastCropRectHeight;
 - (int)lastCropRectWidth;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFSearchResult : NSObject <NSCopying, NSSecureCoding, SFJSONSerializable, SFSearchResult> {
+@interface SFSearchResult : NSObject <NSCopying, NSSecureCoding, SFJSONSerializable, SFSearchResult, SearchUIAuxilliaryFieldProtocol, WBSCompletionListItem> {
     SFActionItem * _action;
     NSString * _applicationBundleIdentifier;
     NSString * _auxiliaryBottomText;
@@ -15,18 +15,24 @@
     NSString * _completion;
     SFImage * _completionImage;
     NSString * _contactIdentifier;
+    NSString * _contentType;
+    NSArray * _contentTypeTree;
     NSString * _correctedQuery;
     SFCustom * _customProperties;
+    long long  _dataOwnerType;
     NSArray * _descriptions;
     NSNumber * _engagementScore;
     NSString * _fbr;
     NSDictionary * _featureScaling;
+    NSString * _fileProviderDomainIdentifier;
+    NSString * _fileProviderIdentifier;
     NSString * _footnote;
     SFImage * _icon;
     NSString * _identifier;
     SFCard * _inlineCard;
     NSString * _intendedQuery;
     bool  _isCentered;
+    bool  _isFuzzyMatch;
     bool  _isLocalApplicationResult;
     bool  _isQuickGlance;
     bool  _isSecondaryTitleDetached;
@@ -82,27 +88,39 @@
     NSString * _userInput;
 }
 
+@property (readonly) SFActionItem *action;
 @property (nonatomic, retain) SFActionItem *action;
 @property (nonatomic, copy) NSString *applicationBundleIdentifier;
+@property (readonly) NSString *auxiliaryBottomText;
 @property (nonatomic, copy) NSString *auxiliaryBottomText;
+@property (readonly) int auxiliaryBottomTextColor;
 @property (nonatomic) int auxiliaryBottomTextColor;
+@property (readonly) NSString *auxiliaryMiddleText;
 @property (nonatomic, copy) NSString *auxiliaryMiddleText;
+@property (readonly) NSString *auxiliaryTopText;
 @property (nonatomic, copy) NSString *auxiliaryTopText;
 @property (nonatomic, copy) NSString *calendarIdentifier;
+@property (readonly) SFCard *card;
 @property (nonatomic, retain) SFCard *card;
 @property (nonatomic, copy) NSString *completedQuery;
 @property (nonatomic, copy) NSString *completion;
 @property (nonatomic, retain) SFImage *completionImage;
 @property (nonatomic, copy) NSString *contactIdentifier;
+@property (nonatomic, copy) NSString *contentType;
+@property (nonatomic, copy) NSArray *contentTypeTree;
 @property (nonatomic, copy) NSString *correctedQuery;
 @property (nonatomic, retain) SFCustom *customProperties;
+@property (nonatomic) long long dataOwnerType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSArray *descriptions;
 @property (nonatomic, readonly) NSDictionary *dictionaryRepresentation;
+@property (nonatomic, readonly) unsigned long long engagementDestination;
 @property (nonatomic, retain) NSNumber *engagementScore;
 @property (nonatomic, copy) NSString *fbr;
 @property (nonatomic, copy) NSDictionary *featureScaling;
+@property (nonatomic, copy) NSString *fileProviderDomainIdentifier;
+@property (nonatomic, copy) NSString *fileProviderIdentifier;
 @property (nonatomic, copy) NSString *footnote;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) SFImage *icon;
@@ -110,6 +128,7 @@
 @property (nonatomic, retain) SFCard *inlineCard;
 @property (nonatomic, copy) NSString *intendedQuery;
 @property (nonatomic) bool isCentered;
+@property (nonatomic) bool isFuzzyMatch;
 @property (nonatomic) bool isLocalApplicationResult;
 @property (nonatomic) bool isQuickGlance;
 @property (nonatomic) bool isSecondaryTitleDetached;
@@ -118,6 +137,7 @@
 @property (nonatomic, copy) NSArray *itemProviderDataTypes;
 @property (nonatomic, copy) NSArray *itemProviderFileTypes;
 @property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic, readonly) NSString *lastSearchQuery;
 @property (nonatomic, copy) NSDictionary *localFeatures;
 @property (nonatomic, retain) NSData *mapsData;
 @property (nonatomic, retain) SFImage *mapsMoreIcon;
@@ -131,6 +151,7 @@
 @property (nonatomic, retain) SFPunchout *moreResultsPunchout;
 @property (nonatomic, copy) NSString *nearbyBusinessesString;
 @property (nonatomic) unsigned long long origRank;
+@property (nonatomic, readonly) NSString *parsecDomainIdentifier;
 @property (nonatomic) double personalizationScore;
 @property (nonatomic) int placement;
 @property (nonatomic) bool preventThumbnailImageScaling;
@@ -144,6 +165,7 @@
 @property (nonatomic, copy) NSString *resultBundleId;
 @property (nonatomic, copy) NSString *resultTemplate;
 @property (nonatomic, copy) NSString *resultType;
+@property (nonatomic, readonly) NSString *safari_loggingDescription;
 @property (nonatomic, copy) NSString *secondaryTitle;
 @property (nonatomic, retain) SFImage *secondaryTitleImage;
 @property (nonatomic, copy) NSString *sectionBundleIdentifier;
@@ -151,11 +173,15 @@
 @property (nonatomic, copy) NSString *sectionHeaderMore;
 @property (nonatomic, copy) NSURL *sectionHeaderMoreURL;
 @property (nonatomic) double serverScore;
+@property (nonatomic, readonly) SFSearchResult *sfSearchResultValue;
+@property (nonatomic, retain) WBSQuerySuggestion *siriSuggestion;
 @property (nonatomic, copy) NSString *sourceName;
 @property (nonatomic, copy) NSString *srf;
 @property (nonatomic, copy) NSString *storeIdentifier;
 @property (readonly) Class superclass;
+@property (readonly) SFImage *thumbnail;
 @property (nonatomic, retain) SFImage *thumbnail;
+@property (readonly) SFRichText *title;
 @property (nonatomic, retain) SFText *title;
 @property (nonatomic, copy) NSString *titleNote;
 @property (nonatomic, retain) NSNumber *titleNoteSize;
@@ -165,6 +191,8 @@
 @property (nonatomic, retain) NSURL *url;
 @property (nonatomic, copy) NSString *userActivityRequiredString;
 @property (nonatomic, copy) NSString *userInput;
+
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
 
 + (bool)supportsSecureCoding;
 
@@ -181,15 +209,20 @@
 - (id)completion;
 - (id)completionImage;
 - (id)contactIdentifier;
+- (id)contentType;
+- (id)contentTypeTree;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)correctedQuery;
 - (id)customProperties;
+- (long long)dataOwnerType;
 - (id)descriptions;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)engagementScore;
 - (id)fbr;
 - (id)featureScaling;
+- (id)fileProviderDomainIdentifier;
+- (id)fileProviderIdentifier;
 - (id)footnote;
 - (id)icon;
 - (id)identifier;
@@ -197,6 +230,7 @@
 - (id)inlineCard;
 - (id)intendedQuery;
 - (bool)isCentered;
+- (bool)isFuzzyMatch;
 - (bool)isLocalApplicationResult;
 - (bool)isQuickGlance;
 - (bool)isSecondaryTitleDetached;
@@ -250,18 +284,24 @@
 - (void)setCompletion:(id)arg1;
 - (void)setCompletionImage:(id)arg1;
 - (void)setContactIdentifier:(id)arg1;
+- (void)setContentType:(id)arg1;
+- (void)setContentTypeTree:(id)arg1;
 - (void)setCorrectedQuery:(id)arg1;
 - (void)setCustomProperties:(id)arg1;
+- (void)setDataOwnerType:(long long)arg1;
 - (void)setDescriptions:(id)arg1;
 - (void)setEngagementScore:(id)arg1;
 - (void)setFbr:(id)arg1;
 - (void)setFeatureScaling:(id)arg1;
+- (void)setFileProviderDomainIdentifier:(id)arg1;
+- (void)setFileProviderIdentifier:(id)arg1;
 - (void)setFootnote:(id)arg1;
 - (void)setIcon:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setInlineCard:(id)arg1;
 - (void)setIntendedQuery:(id)arg1;
 - (void)setIsCentered:(bool)arg1;
+- (void)setIsFuzzyMatch:(bool)arg1;
 - (void)setIsLocalApplicationResult:(bool)arg1;
 - (void)setIsQuickGlance:(bool)arg1;
 - (void)setIsSecondaryTitleDetached:(bool)arg1;
@@ -328,5 +368,29 @@
 - (id)url;
 - (id)userActivityRequiredString;
 - (id)userInput;
+
+// Image: /System/Library/PrivateFrameworks/NewsToday.framework/NewsToday
+
+- (id)nt_cacheExpirationDateWithFetchDate:(id)arg1;
+- (id)nt_publishDate;
+
+// Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
+
++ (id)safari_sfSearchResultWithUniqueIdentifier;
+
+- (unsigned long long)engagementDestination;
+- (id)parsecDomainIdentifier;
+- (id)safari_loggingDescription;
+- (id)sfSearchResultValue;
+
+// Image: /System/Library/PrivateFrameworks/Search.framework/Search
+
+- (bool)collectAnonymousFeatures;
+- (id)objectForFeedback;
+- (void)setPropertiesOnResultCopy:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Spotlight.framework/Spotlight
+
+- (id)replacementObjectForCoder:(id)arg1;
 
 @end

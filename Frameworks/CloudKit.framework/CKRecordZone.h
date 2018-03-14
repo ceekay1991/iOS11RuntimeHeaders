@@ -18,6 +18,8 @@
     NSString * _protectionEtag;
     bool  _serializeProtectionData;
     CKRecordZoneID * _zoneID;
+    bool  _zoneKeyRollAllowed;
+    NSDate * _zonePCSModificationDate;
     NSData * _zoneishKeyID;
     NSData * _zoneishProtectionData;
 }
@@ -38,8 +40,14 @@
 @property (nonatomic, retain) NSString *protectionEtag;
 @property (nonatomic) bool serializeProtectionData;
 @property (nonatomic, retain) CKRecordZoneID *zoneID;
+@property (nonatomic) bool zoneKeyRollAllowed;
+@property (nonatomic) struct _OpaquePCSShareProtection { }*zonePCS;
+@property (nonatomic, retain) NSDate *zonePCSModificationDate;
 @property (nonatomic, retain) NSData *zoneishKeyID;
+@property (nonatomic) struct _OpaquePCSShareProtection { }*zoneishPCS;
 @property (nonatomic, retain) NSData *zoneishProtectionData;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 + (id)defaultRecordZone;
 + (bool)supportsSecureCoding;
@@ -85,10 +93,22 @@
 - (void)setProtectionEtag:(id)arg1;
 - (void)setSerializeProtectionData:(bool)arg1;
 - (void)setZoneID:(id)arg1;
+- (void)setZoneKeyRollAllowed:(bool)arg1;
+- (void)setZonePCSModificationDate:(id)arg1;
 - (void)setZoneishKeyID:(id)arg1;
 - (void)setZoneishProtectionData:(id)arg1;
 - (id)zoneID;
+- (bool)zoneKeyRollAllowed;
+- (id)zonePCSModificationDate;
 - (id)zoneishKeyID;
 - (id)zoneishProtectionData;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (void)fillOutPCSMetadataInfo;
+- (void)setZonePCS:(struct _OpaquePCSShareProtection { }*)arg1;
+- (void)setZoneishPCS:(struct _OpaquePCSShareProtection { }*)arg1;
+- (struct _OpaquePCSShareProtection { }*)zonePCS;
+- (struct _OpaquePCSShareProtection { }*)zoneishPCS;
 
 @end

@@ -7,12 +7,14 @@
 
 - (bool)allowsEditingTextAttributes;
 - (void)becomeDropResponder;
-- (UIView *)dropTargetContainerView;
-- (void)resignDropResponder;
+- (void)droppingFinished;
+- (void)droppingStarted;
+- (void)resignDropResponderWithDropPerformed:(bool)arg1;
 
 @optional
 
 - (struct CGPoint { double x1; double x2; })contentOffsetForSameViewDrops;
+- (void)sanitizeAttributedText:(NSMutableAttributedString *)arg1;
 - (void)setContentOffsetForSameViewDrops:(struct CGPoint { double x1; double x2; })arg1;
 
 @end

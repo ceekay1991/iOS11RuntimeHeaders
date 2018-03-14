@@ -4,6 +4,8 @@
 
 @interface NSUnitLength : NSDimension <NSSecureCoding>
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)astronomicalUnits;
 + (id)baseUnit;
@@ -28,5 +30,10 @@
 + (id)picometers;
 + (id)scandinavianMiles;
 + (id)yards;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
+- (id)hk_equivalentBaseUnit;
+- (id)hk_equivalentUnitWithConstant:(double)arg1 coefficient:(double)arg2;
 
 @end

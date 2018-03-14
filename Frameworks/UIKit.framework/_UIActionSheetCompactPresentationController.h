@@ -34,7 +34,7 @@
 
 - (void).cxx_destruct;
 - (void)_applyVisualAffordancesToViews;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_baseContentInsets;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_baseContentInsetsWithLeftMargin:(double*)arg1 rightMargin:(double*)arg2;
 - (struct { bool x1; double x2; struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_3_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_3_1_2; } x3; struct CGSize { double x_4_1_1; double x_4_1_2; } x4; struct UIEdgeInsets { double x_5_1_1; double x_5_1_2; double x_5_1_3; double x_5_1_4; } x5; double x6; bool x7; bool x8; struct CGSize { double x_9_1_1; double x_9_1_2; } x9; })_currentLayoutGeometry;
 - (void)_dismiss;
 - (void)_handleDismiss:(id)arg1;
@@ -42,6 +42,7 @@
 - (void)_layoutViews;
 - (struct CGSize { double x1; double x2; })_minimumSizeForDismissButton;
 - (double)_resizeAnimationDuration;
+- (bool)_shouldDisableAvoidsKeyboard;
 - (bool)_shouldOccludeDuringPresentation;
 - (bool)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (void)_subscribeToKeyboardNotifications;

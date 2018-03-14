@@ -10,6 +10,7 @@
 - (bool)isInterfaceHistoricallyUsable;
 - (bool)isInterfaceUsable;
 - (bool)isInternetReachable;
+- (bool)isNetworkingPowerExpensiveToUse;
 - (bool)isPoorLinkQuality;
 - (bool)isRadioHot;
 - (int)linkQuality;

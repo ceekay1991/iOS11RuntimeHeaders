@@ -34,6 +34,8 @@
 - (bool)getCCTRange:(struct { float x1; float x2; float x3; }*)arg1;
 - (bool)getDefaultCCTRange:(struct { float x1; float x2; float x3; }*)arg1;
 - (bool)getStrength:(float*)arg1;
+- (bool)getWarningCCT:(float*)arg1;
+- (bool)getWarningStrength:(float*)arg1;
 - (id)init;
 - (id)initWithClientObj:(id)arg1;
 - (bool)parseStatusDictionary:(id)arg1 intoStruct:(struct { bool x1; bool x2; bool x3; int x4; struct { struct { int x_1_2_1; int x_1_2_2; } x_5_1_1; struct { int x_2_2_1; int x_2_2_2; } x_5_1_2; } x5; unsigned long long x6; }*)arg2;

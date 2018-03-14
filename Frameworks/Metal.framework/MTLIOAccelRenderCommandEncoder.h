@@ -12,9 +12,11 @@
 - (id)initWithCommandBuffer:(id)arg1 descriptor:(id)arg2;
 - (bool)isMemorylessRender;
 - (void)setColorStoreAction:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setColorStoreActionOptions:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setDepthCleared;
 - (void)setDepthClipModeSPI:(unsigned long long)arg1;
 - (void)setDepthStoreAction:(unsigned long long)arg1;
+- (void)setDepthStoreActionOptions:(unsigned long long)arg1;
 - (void)setEmulationFragmentBuffers:(const id*)arg1 offsets:(const unsigned long long*)arg2 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
 - (void)setEmulationFragmentSamplerStates:(const id*)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setEmulationFragmentTextures:(const id*)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
@@ -23,6 +25,7 @@
 - (void)setEmulationVertexTextures:(const id*)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setStencilCleared;
 - (void)setStencilStoreAction:(unsigned long long)arg1;
+- (void)setStencilStoreActionOptions:(unsigned long long)arg1;
 - (void)textureBarrier;
 - (void)updateFence:(id)arg1 afterStages:(unsigned long long)arg2;
 - (void)useHeap:(id)arg1;

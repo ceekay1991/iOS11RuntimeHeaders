@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UIPreviewInteractionGestureRecognizer : UIGestureRecognizer
+@interface _UIPreviewInteractionGestureRecognizer : UILongPressGestureRecognizer
 
 - (void)cancel;
 - (void)recognize;

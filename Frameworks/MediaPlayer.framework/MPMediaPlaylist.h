@@ -14,6 +14,8 @@
 @property (nonatomic, readonly) unsigned long long playlistAttributes;
 @property (nonatomic, readonly) NSArray *seedItems;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (void)_createFilterableDictionary;
 + (bool)_isValidPlaylistProperty:(id)arg1;
 + (bool)canFilterByProperty:(id)arg1;
@@ -49,5 +51,14 @@
 - (void)setUserSelectedArtworkImage:(id)arg1;
 - (id)tiledArtworkCatalogWithRows:(unsigned long long)arg1 columns:(unsigned long long)arg2;
 - (id)valueForProperty:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
++ (id)customPropertyHandlersCollection;
++ (void)registerSupportedCustomPropertiesWithHandlersCollection:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (id)MPU_contentItemIdentifierCollection;
 
 @end

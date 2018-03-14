@@ -22,6 +22,7 @@
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)containersMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)defaultContainerIdentifier;
+- (void)didFetchContacts:(id)arg1 forPredicate:(id)arg2 fromStore:(id)arg3 unifiedFetch:(bool)arg4;
 - (bool)enumerateContactsAndMatchInfoWithFetchRequest:(id)arg1 error:(id*)arg2 usingBlock:(id /* block */)arg3;
 - (bool)enumerateNonUnifiedContactsWithFetchRequest:(id)arg1 error:(id*)arg2 usingBlock:(id /* block */)arg3;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(id /* block */)arg2 completion:(id /* block */)arg3;
@@ -30,8 +31,9 @@
 - (id)groupsMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)iOSMapper;
 - (id)initWithContactStores:(id)arg1;
+- (id)mainContactStore;
 - (id)mainStore;
-- (id)meContactIdentifierWithError:(id*)arg1;
+- (id)meContactIdentifiers:(id*)arg1;
 - (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id*)arg3;
 - (id)originForSuggestion:(id)arg1 error:(id*)arg2;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id*)arg2;

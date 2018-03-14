@@ -32,6 +32,7 @@
     bool  m_autocorrectionPreference;
     NSMutableDictionary * m_autofillGroup;
     bool  m_autoshift;
+    bool  m_cachedNeedAutofill;
     bool  m_canUpdateIdleTimer;
     <UIKeyboardCandidateList> * m_candidateList;
     TIKeyboardCandidateResultSet * m_candidateResultSet;
@@ -56,12 +57,14 @@
     bool  m_delegateAdoptsWKInteraction;
     bool  m_delegateAdoptsWebTextInputPrivate;
     bool  m_delegateIsSMSTextView;
+    bool  m_delegateNeedsAutofill;
     bool  m_delegateRequiresKeyEvents;
     UIDelayedAction * m_detachHardwareKeyboardAction;
     bool  m_didAutomaticallyInsertSpace;
     bool  m_didAutomaticallyInsertSpaceBeforeChangingInputMode;
     bool  m_didSyncDocumentStateToInputDelegate;
     UIDelayedAction * m_disablePredictionViewTimer;
+    bool  m_disableSmartInsertDelete;
     bool  m_disableSyncTextChanged;
     bool  m_doubleSpacePeriodPreference;
     bool  m_doubleSpacePeriodWasAppliedInCurrentContext;
@@ -72,6 +75,7 @@
     UIPhysicalKeyboardEvent * m_hardwareRepeatEvent;
     UIKeyboardScheduledTask * m_hardwareRepeatTask;
     bool  m_hasInputOnAcceptCandidate;
+    bool  m_hasOutstandingObserverCallbackTask;
     bool  m_inDealloc;
     bool  m_initializationDone;
     TIKeyboardInputManagerState * m_inputManagerState;
@@ -141,7 +145,6 @@
     unsigned long long  m_textInputChangingCount;
     bool  m_textInputChangingDirection;
     bool  m_textInputChangingText;
-    bool  m_textInputTraitsNeedAutofill;
     TIKeyboardTouchEvent * m_touchEventWaitingForKeyInputEvent;
     UITextInputTraits * m_traits;
     UITextInputTraits * m_traitsForPreviousDelegate;
@@ -170,6 +173,7 @@
 @property (nonatomic, retain) UIResponder<UIKeyInput> *delegate;
 @property (nonatomic, readonly) UIResponder *delegateAsResponder;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) bool disableSmartInsertDelete;
 @property (nonatomic, copy) id /* block */ externalTask;
 @property (nonatomic, retain) _UIKeyboardFeedbackGenerator *feedbackGenerator;
 @property (nonatomic) bool forceEnablePredictionView;
@@ -215,6 +219,7 @@
 + (void)_clearHardwareKeyboardMinimizationPreference;
 + (id)activeInstance;
 + (double)additionalInstanceHeight;
++ (double)additionalInstanceHeightForInterfaceOrientation:(long long)arg1;
 + (double)additionalInstanceHeightForInterfaceOrientation:(long long)arg1 hasInputView:(bool)arg2;
 + (void)applicationDidBecomeActive:(id)arg1;
 + (void)applicationDidEnterBackground:(id)arg1;
@@ -242,6 +247,7 @@
 + (struct CGPoint { double x1; double x2; })normalizedPersistentOffsetIgnoringState;
 + (struct CGPoint { double x1; double x2; })persistentOffset;
 + (double)persistentSplitProgress;
++ (void)purgeImageCache;
 + (void)refreshRivenStateWithTraits:(id)arg1 isKeyboard:(bool)arg2;
 + (void)releaseSharedInstance;
 + (bool)rivenInstalled;
@@ -255,7 +261,9 @@
 + (id)sharedInstance;
 + (bool)shouldMergeAssistantBarWithKeyboardLayout;
 + (bool)showsGlobeAndDictationKeysExternallyForInterfaceOrientation:(long long)arg1;
++ (bool)showsGlobeAndDictationKeysExternallyForInterfaceOrientation:(long long)arg1 inputMode:(id)arg2;
 + (struct CGSize { double x1; double x2; })sizeForInterfaceOrientation:(long long)arg1;
++ (struct CGSize { double x1; double x2; })sizeForInterfaceOrientation:(long long)arg1 ignoreInputView:(bool)arg2;
 + (double)splitProgress;
 + (bool)supportsSplit;
 + (void)suppressSetPersistentOffset:(bool)arg1;
@@ -264,6 +272,8 @@
 + (id)uniqueNumberPadInputModesFromInputModes:(id)arg1 forKeyboardType:(long long)arg2;
 
 - (bool)_activeCandidateViewNeedsBackdrop;
+- (id)_autofillContext;
+- (id)_autofillContextForInputDelegate:(id)arg1;
 - (void)_clearAutofillGroup;
 - (int)_clipCornersOfView:(id)arg1;
 - (void)_completePerformInputViewControllerOutput:(id)arg1 executionContext:(id)arg2;
@@ -299,6 +309,7 @@
 - (void)_setShiftLockedEnabled:(bool)arg1;
 - (bool)_shouldMinimizeForHardwareKeyboard;
 - (bool)_shouldRequestInputManagerSyncForKeyboardOutputCallbacks:(id)arg1;
+- (void)_tagTouchForTypingMenu:(unsigned int)arg1;
 - (void)_touchIDDismissed;
 - (void)_touchIDPresented;
 - (void)_updateExternalDeviceInputSettingForWindow:(id)arg1;
@@ -306,6 +317,7 @@
 - (void)_updateKeyboardConfigurations;
 - (void)_updateSoundPreheatingForWindow:(id)arg1;
 - (void)_wheelChangedWithEvent:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -451,12 +463,12 @@
 - (bool)currentKeyboardTraitsAllowCandidateBar;
 - (bool)cursorIsAtEndOfMarkedText;
 - (void)deactivateLayout;
-- (void)dealloc;
 - (void)defaultsDidChange;
 - (id)deferredDidSetDelegateAction;
 - (id)delayedCandidateRequest;
 - (void)delayedInit;
 - (id)delegate;
+- (bool)delegateAlreadyInAutofillGroup;
 - (id)delegateAsResponder;
 - (bool)delegateIsSMSTextView;
 - (bool)delegateSuggestionsForCurrentInput;
@@ -480,6 +492,7 @@
 - (void)didSetDelegate;
 - (bool)disableInputBars;
 - (void)disablePredictionViewIfNeeded;
+- (bool)disableSmartInsertDelete;
 - (void)dismissKeyboard;
 - (bool)displaysCandidates;
 - (long long)doTraits:(id)arg1 matchTextContentType:(id)arg2;
@@ -567,6 +580,7 @@
 - (void)inputManagerDidGenerateAutocorrections:(id)arg1 executionContext:(id)arg2;
 - (void)inputManagerDidGenerateCandidatesForRequest:(id)arg1 resultSet:(id)arg2;
 - (id)inputManagerState;
+- (bool)inputModeHasHardwareLayout:(id)arg1;
 - (id)inputModeLastUsedPreference;
 - (id)inputModePreference;
 - (id)inputOverlayContainer;
@@ -575,6 +589,7 @@
 - (void)insertText:(id)arg1;
 - (void)insertTextAfterSelection:(id)arg1;
 - (void)insertTextSuggestion:(id)arg1;
+- (id)internationalKeyDisplayStringOnEmojiKeyboard;
 - (bool)isAutoDeleteActive;
 - (bool)isAutoFillMode;
 - (bool)isAutoShifted;
@@ -597,6 +612,7 @@
 - (bool)keyboardDrawsOpaque;
 - (bool)keyboardIsKeyPad;
 - (bool)keyboardsExpandedPreference;
+- (double)lastTouchDownTimestamp;
 - (id)layoutForKeyHitTest;
 - (void)layoutHasChanged;
 - (id)layoutState;
@@ -714,6 +730,7 @@
 - (void)setDelayedCandidateRequest:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDelegate:(id)arg1 force:(bool)arg2;
+- (void)setDisableSmartInsertDelete:(bool)arg1;
 - (void)setDocumentStateForAutocorrection:(id)arg1;
 - (void)setExternalTask:(id /* block */)arg1;
 - (void)setFeedbackGenerator:(id)arg1;
@@ -791,10 +808,13 @@
 - (bool)shouldRapidDeleteWithDelegate;
 - (bool)shouldShowCandidateBar;
 - (bool)shouldShowCandidateBarIfReceivedCandidatesInCurrentInputMode:(bool)arg1;
+- (bool)shouldShowDictationKey;
+- (bool)shouldShowInternationalKey;
 - (bool)shouldSkipCandidateSelection;
 - (bool)shouldSwitchFromInputManagerMode:(id)arg1 toInputMode:(id)arg2;
 - (bool)shouldSwitchInputMode:(id)arg1;
 - (bool)shouldUseCarPlayModes;
+- (bool)shouldUsePinyinStyleRowNavigation;
 - (void)showInformationalAlertIfNeededForReason:(int)arg1;
 - (bool)showInputModeIndicator;
 - (void)showInternationalKeyInfoAlertIfNeeded;
@@ -870,6 +890,7 @@
 - (void)updateDoubleSpacePeriodStateForString:(id)arg1;
 - (void)updateForChangedSelection;
 - (void)updateForChangedSelectionWithExecutionContext:(id)arg1;
+- (void)updateForHandBiasChange;
 - (void)updateFromTextInputTraits;
 - (void)updateHardwareKeyboardLayout;
 - (void)updateInputManagerAutocapitalizationType;
@@ -880,7 +901,7 @@
 - (id)updateKeyBehaviors:(id)arg1 withBehaviors:(id)arg2 forState:(id)arg3;
 - (void)updateKeyboardConfigurations;
 - (void)updateKeyboardEventsLagging:(id)arg1;
-- (void)updateKeyboardOutput:(id)arg1 withInputForSmartPunctuation:(id)arg2;
+- (void)updateKeyboardOutput:(id)arg1 withInputForSmartPunctuation:(id)arg2 keyboardConfiguration:(id)arg3;
 - (void)updateKeyboardStateForDeletion;
 - (void)updateKeyboardStateForInsertion:(id)arg1;
 - (void)updateLayout;

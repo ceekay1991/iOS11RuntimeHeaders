@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKRecord : NSObject <CKRecordKeyValueSetting, NSCopying, NSSecureCoding> {
+@interface CKRecord : NSObject <CKRecordKeyValueSetting, ICHasDatabaseScope, NSCopying, NSSecureCoding, PQLBindable, PQLValuable> {
     NSString * _baseToken;
     NSData * _chainParentPublicKeyID;
     CKEncryptedData * _chainPrivateKey;
@@ -52,6 +52,7 @@
 @property (nonatomic, readonly) unsigned long long assetCount;
 @property (nonatomic, readonly) unsigned long long assetDiskSize;
 @property (nonatomic, retain) NSString *baseToken;
+@property (nonatomic, readonly) NSData *brc_containerMetadataPropertiesData;
 @property (nonatomic, retain) NSData *chainParentPublicKeyID;
 @property (nonatomic, retain) CKEncryptedData *chainPrivateKey;
 @property (nonatomic, retain) NSData *chainProtectionInfo;
@@ -62,6 +63,7 @@
 @property (nonatomic, readonly) bool containsPackageValues;
 @property (nonatomic, copy) NSDate *creationDate;
 @property (nonatomic, copy) CKRecordID *creatorUserRecordID;
+@property (nonatomic, retain) NSData *data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSData *encryptedFullTokenData;
@@ -69,8 +71,15 @@
 @property (nonatomic, retain) CKEncryptedRecordValueStore *encryptedValueStore;
 @property (nonatomic, readonly) <CKRecordKeyValueSetting> *encryptedValuesByKey;
 @property (nonatomic, retain) NSString *etag;
+@property (nonatomic, retain) NSData *fc_secureSentinel_encryptionKey;
+@property (nonatomic) unsigned long long fc_secureSentinel_version;
+@property (nonatomic, retain) NSData *fc_sentinel_encryptionKey;
+@property (nonatomic) bool fc_sentinel_finishedDeletion;
+@property (nonatomic) bool fc_sentinel_finishedMigration;
+@property (nonatomic) unsigned long long fc_sentinel_version;
 @property (nonatomic, readonly) NSString *fullToken;
 @property (nonatomic, readonly) bool hasEncryptedData;
+@property (nonatomic) bool hasLargeDataAsset;
 @property (nonatomic, readonly) bool hasModifiedEncryptedData;
 @property (nonatomic, readonly) bool hasModifiedPropertiesRequiringEncryption;
 @property (nonatomic, readonly) bool hasPropertiesRequiringDecryption;
@@ -79,6 +88,7 @@
 @property (nonatomic) bool hasUpdatedShare;
 @property (readonly) unsigned long long hash;
 @property (getter=isKnownToServer, nonatomic) bool knownToServer;
+@property (nonatomic, retain) CKAsset *largeDataAsset;
 @property (nonatomic, copy) CKRecordID *lastModifiedUserRecordID;
 @property (nonatomic, copy) NSDate *modificationDate;
 @property (nonatomic, copy) NSString *modifiedByDevice;
@@ -100,6 +110,7 @@
 @property (nonatomic, retain) NSString *protectionEtag;
 @property (nonatomic, readonly, copy) NSString *recordChangeTag;
 @property (nonatomic, copy) CKRecordID *recordID;
+@property (nonatomic) struct _OpaquePCSShareProtection { }*recordPCS;
 @property (nonatomic, copy) NSString *recordType;
 @property (nonatomic, retain) NSString *routingKey;
 @property (nonatomic) bool serializeProtectionData;
@@ -116,11 +127,14 @@
 @property (nonatomic, retain) CKRecordValueStore *valueStore;
 @property (nonatomic, readonly) NSDictionary *values;
 @property (nonatomic, readonly) <CKRecordKeyValueSetting> *valuesByKey;
+@property (nonatomic, retain) NSNumber *version;
 @property (nonatomic) bool wantsChainPCS;
 @property (nonatomic) bool wantsPublicSharingKey;
 @property (nonatomic) bool wasCached;
 @property (nonatomic, retain) NSString *zoneProtectionEtag;
 @property (nonatomic, retain) NSData *zoneishKeyID;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 + (bool)accessInstanceVariablesDirectly;
 + (id)decryptFullToken:(id)arg1 shortSharingTokenData:(id)arg2;
@@ -141,6 +155,7 @@
 - (unsigned long long)_sizeOfRecordValue:(id)arg1 forKey:(id)arg2;
 - (void)_validateRecordName:(id)arg1;
 - (void)_validateRecordType:(id)arg1;
+- (bool)_valueIsUsingCKEncryptedData:(id)arg1;
 - (id)allKeys;
 - (id)allTokens;
 - (unsigned long long)assetCount;
@@ -285,5 +300,158 @@
 - (bool)wasCached;
 - (id)zoneProtectionEtag;
 - (id)zoneishKeyID;
+
+// Image: /System/Library/PrivateFrameworks/Accessibility.framework/Frameworks/AXHearingSupport.framework/AXHearingSupport
+
+- (id)data;
+- (bool)hasLargeDataAsset;
+- (id)largeDataAsset;
+- (void)setData:(id)arg1;
+- (void)setHasLargeDataAsset:(bool)arg1;
+- (void)setLargeDataAsset:(id)arg1;
+- (void)setVersion:(id)arg1;
+- (id)version;
+
+// Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
+
++ (id)brc_containerMetadataRecordWithContainer:(id)arg1;
++ (id)brc_containerMetadataZoneID;
++ (id)brc_fakeRecordWithErrorMarkerFor20716676;
++ (id)brc_zoneHealthZoneID;
++ (id)desiredKeysWithMask:(unsigned short)arg1;
++ (id)newFromSqliteValue:(struct sqlite3_value { }*)arg1;
++ (id)rootAppLibraryRecordForAppLibraryID:(id)arg1 zoneID:(id)arg2;
++ (id)rootDirectoryRecordForZoneID:(id)arg1;
+
+- (void)_deserializeRootSharingOptions:(unsigned long long*)arg1;
+- (bool)_deserializeValue:(id*)arg1 forKey:(id)arg2 encrypted:(bool)arg3 expectClass:(Class)arg4 allowNil:(bool)arg5 errorDescription:(id*)arg6;
+- (id)brc_containerMetadataIconNames;
+- (id)brc_containerMetadataIconPaths;
+- (id)brc_containerMetadataPropertiesData;
+- (bool)brc_currentUserOwnsLastEditorDevice;
+- (id)brc_documentName;
+- (bool)brc_isInterestingRecordForSyncDown;
+- (bool)brc_isfakeRecordWithErrorMarkerFor20716676;
+- (id)brc_lastEditorDeviceName;
+- (id)brc_oplockMergeEtag;
+- (bool)brc_safeToGetURL;
+- (id)brc_sharedDocumentDisplayName;
+- (id)brc_sharedDocumentExtension;
+- (id)brc_updateDroppedReason;
+- (void)brc_updateWithLogicalName:(id)arg1 isFolder:(bool)arg2;
+- (bool)deserializeAliasInfo:(id*)arg1 serverZone:(id)arg2 error:(id*)arg3;
+- (bool)deserializeFilename:(id*)arg1 basename:(id*)arg2 bounceno:(id*)arg3 extension:(id*)arg4 userInfo:(id)arg5 error:(id*)arg6;
+- (void)deserializeFolderSharingOptions:(unsigned long long*)arg1;
+- (bool)deserializeStatInfo:(id*)arg1 itemID:(id)arg2 session:(id)arg3 error:(id*)arg4;
+- (bool)deserializeSymlinkTarget:(id*)arg1 error:(id*)arg2;
+- (bool)deserializeVersion:(id*)arg1 fakeStatInfo:(id*)arg2 clientZone:(id)arg3 error:(id*)arg4;
+- (bool)deserializeiWorkSharingOptions:(unsigned long long*)arg1 error:(id*)arg2;
+- (bool)isFolderShare;
+- (void)sanitizeShortTokenFields;
+- (void)serializeFilename:(id)arg1 forCreation:(bool)arg2;
+- (void)serializeFilename:(id)arg1 forCreation:(bool)arg2 setExtension:(bool)arg3;
+- (void)serializeFilename:(id)arg1 forCreation:(bool)arg2 setExtension:(bool)arg3 inSharedAlias:(bool)arg4;
+- (void)serializeFinderTags:(id)arg1 forCreation:(bool)arg2;
+- (void)serializeStatInfo:(id)arg1 diffs:(unsigned long long)arg2 stageID:(id)arg3 deadInServerTruth:(bool)arg4 pcsChaining:(bool)arg5;
+- (void)serializeSystemFields:(id)arg1;
+- (void)serializeVersion:(id)arg1 diffs:(unsigned long long)arg2 deadInServerTruth:(bool)arg3;
+- (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;
+- (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (void)fillOutPCSMetadataInfo;
+- (struct _OpaquePCSShareProtection { }*)recordPCS;
+- (void)setRecordPCS:(struct _OpaquePCSShareProtection { }*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/IMDaemonCore.framework/IMDaemonCore
+
+- (id)_arrayForKey:(id)arg1;
+- (id)_assetForKey:(id)arg1;
+- (id)_dataForKey:(id)arg1;
+- (id)_dateForKey:(id)arg1;
+- (id)_numberForKey:(id)arg1;
+- (void)_setCKRecordArray:(id)arg1 forKey:(id)arg2;
+- (void)_setCKRecordAsset:(id)arg1 forKey:(id)arg2;
+- (void)_setCKRecordData:(id)arg1 forKey:(id)arg2;
+- (void)_setCKRecordDate:(id)arg1 forKey:(id)arg2;
+- (void)_setCKRecordNumber:(id)arg1 forKey:(id)arg2;
+- (void)_setCKRecordString:(id)arg1 forKey:(id)arg2;
+- (void)_setUnencryptedCKRecordNumber:(id)arg1 forKey:(id)arg2;
+- (void)_setValue:(id)arg1 forKey:(id)arg2;
+- (id)_stringForKey:(id)arg1;
+- (id)_valueForKey:(id)arg1;
+- (id)copyEncodedSystemFields;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
++ (id)fc_recordWithEncodedSystemFields:(id)arg1;
++ (id)secureSentinelRecordWithEncryptionKey:(id)arg1;
+
+- (id)fc_encodeSystemFields;
+- (bool)fc_isDifferentFromRecord:(id)arg1 forKey:(id)arg2;
+- (id)fc_secureSentinel_encryptionKey;
+- (unsigned long long)fc_secureSentinel_version;
+- (id)fc_sentinel_encryptionKey;
+- (bool)fc_sentinel_finishedDeletion;
+- (bool)fc_sentinel_finishedMigration;
+- (unsigned long long)fc_sentinel_version;
+- (void)fc_setRecordName:(id)arg1;
+- (void)fc_setZoneName:(id)arg1;
+- (void)setFc_secureSentinel_encryptionKey:(id)arg1;
+- (void)setFc_secureSentinel_version:(unsigned long long)arg1;
+- (void)setFc_sentinel_encryptionKey:(id)arg1;
+- (void)setFc_sentinel_finishedDeletion:(bool)arg1;
+- (void)setFc_sentinel_finishedMigration:(bool)arg1;
+- (void)setFc_sentinel_version:(unsigned long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (long long)databaseScope;
+- (bool)ic_isOwnedByCurrentUser;
+- (id)ic_loggingDescription;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
+- (id)description;
+- (bool)pk_boolForKey:(id)arg1;
+- (id)pk_dateForKey:(id)arg1;
+- (id)pk_decimalNumberForKey:(id)arg1;
+- (id)pk_description;
+- (id)pk_dictionaryForKey:(id)arg1;
+- (bool)pk_encryptedBoolForKey:(id)arg1;
+- (id)pk_encryptedDateForKey:(id)arg1;
+- (id)pk_encryptedDecimalNumberForKey:(id)arg1;
+- (id)pk_encryptedDictionaryForKey:(id)arg1;
+- (int)pk_encryptedIntForKey:(id)arg1;
+- (long long)pk_encryptedIntegerForKey:(id)arg1;
+- (id)pk_encryptedLocationForKey:(id)arg1;
+- (id)pk_encryptedNumberForKey:(id)arg1;
+- (id)pk_encryptedObjectForKey:(id)arg1 ofClass:(Class)arg2;
+- (id)pk_encryptedStringForKey:(id)arg1;
+- (id)pk_encryptedUUIDForKey:(id)arg1;
+- (unsigned long long)pk_encryptedUint64ForKey:(id)arg1;
+- (unsigned long long)pk_encryptedUnsignedIntegerForKey:(id)arg1;
+- (id)pk_encryptedUrlForKey:(id)arg1;
+- (int)pk_intForKey:(id)arg1;
+- (long long)pk_integerForKey:(id)arg1;
+- (id)pk_locationForKey:(id)arg1;
+- (id)pk_numberForKey:(id)arg1;
+- (id)pk_objectForKey:(id)arg1 ofClass:(Class)arg2;
+- (id)pk_stringForKey:(id)arg1;
+- (unsigned long long)pk_uint64ForKey:(id)arg1;
+- (unsigned long long)pk_unsignedIntegerForKey:(id)arg1;
+- (id)pk_urlForKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
+
+- (id)safari_arrayForKey:(id)arg1;
+- (bool)safari_boolForKey:(id)arg1;
+- (id)safari_dataForKey:(id)arg1;
+- (id)safari_dateForKey:(id)arg1;
+- (id)safari_encryptedDataForKey:(id)arg1;
+- (id)safari_numberForKey:(id)arg1;
+- (id)safari_referenceForKey:(id)arg1;
+- (id)safari_stringForKey:(id)arg1;
 
 @end

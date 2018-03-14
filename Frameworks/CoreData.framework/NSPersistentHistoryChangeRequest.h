@@ -4,7 +4,11 @@
 
 @interface NSPersistentHistoryChangeRequest : NSPersistentStoreRequest {
     NSDate * _date;
-    bool  _delete;
+    struct __persistentHistoryChangeRequestDescriptionFlags { 
+        unsigned int _useQueryGenerationToken : 1; 
+        unsigned int _deleteHistoryRequest : 1; 
+        unsigned int _reservedPersistentHistoryChangeRequestDescription : 30; 
+    }  _persistentHistoryChangeRequestDescriptionFlags;
     long long  _resultType;
     NSPersistentHistoryToken * _token;
     NSArray * _transactionIDs;
@@ -14,6 +18,7 @@
 @property long long resultType;
 @property (readonly) NSPersistentHistoryToken *token;
 
++ (id)decodeFromXPCArchive:(id)arg1 withContext:(id)arg2;
 + (id)deleteHistoryBeforeDate:(id)arg1;
 + (id)deleteHistoryBeforeToken:(id)arg1;
 + (id)deleteHistoryBeforeTransaction:(id)arg1;
@@ -21,8 +26,10 @@
 + (id)fetchHistoryAfterToken:(id)arg1;
 + (id)fetchHistoryAfterTransaction:(id)arg1;
 
+- (id)date;
 - (void)dealloc;
 - (id)description;
+- (id)encodeForXPC;
 - (id)entityNameToFetch;
 - (unsigned long long)fetchLimit;
 - (unsigned long long)fetchOffset;
@@ -42,8 +49,10 @@
 - (long long)resultType;
 - (bool)returnsDistinctResults;
 - (void)setResultType:(long long)arg1;
+- (void)setUseQueryGenerationToken:(bool)arg1;
 - (id)sortDescriptors;
 - (id)token;
 - (id)transactionNumber;
+- (bool)useQueryGenerationToken;
 
 @end

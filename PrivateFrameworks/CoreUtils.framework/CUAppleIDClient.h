@@ -13,6 +13,7 @@
     NSString * _mySecretKeyType;
     NSData * _myValidationData;
     NSString * _peerAppleID;
+    NSArray * _peerAppleIDs;
     struct __SecCertificate { } * _peerCertificate;
     NSData * _peerCertificateData;
     struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; } * _peerPublicKey;
@@ -29,6 +30,7 @@
 @property (nonatomic, copy) NSData *mySecretKeyData;
 @property (nonatomic, copy) NSString *mySecretKeyType;
 @property (nonatomic, copy) NSString *peerAppleID;
+@property (nonatomic, copy) NSArray *peerAppleIDs;
 @property (nonatomic, copy) NSData *peerCertificateData;
 @property (nonatomic, copy) NSData *peerValidationData;
 
@@ -48,6 +50,7 @@
 - (id)mySecretKeyData;
 - (id)mySecretKeyType;
 - (id)peerAppleID;
+- (id)peerAppleIDs;
 - (id)peerCertificateData;
 - (id)peerValidationData;
 - (void)setMyAppleID:(id)arg1;
@@ -56,6 +59,7 @@
 - (void)setMySecretKeyData:(id)arg1;
 - (void)setMySecretKeyType:(id)arg1;
 - (void)setPeerAppleID:(id)arg1;
+- (void)setPeerAppleIDs:(id)arg1;
 - (void)setPeerCertificateData:(id)arg1;
 - (void)setPeerValidationData:(id)arg1;
 - (id)signBytes:(const void*)arg1 length:(unsigned long long)arg2 error:(id*)arg3;

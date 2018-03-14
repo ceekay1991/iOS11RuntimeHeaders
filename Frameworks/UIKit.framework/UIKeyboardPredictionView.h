@@ -4,7 +4,7 @@
 
 @interface UIKeyboardPredictionView : UIView {
     UITouch * _activeTouch;
-    UITextSuggestion * _currentFirstTextSuggestion;
+    TIKeyboardCandidate * _currentFirstTextSuggestion;
     NSDate * _lastTextSuggestionUpdateDate;
     long long  _lastTextSuggestionUpdateOrientation;
     NSDate * _lastUpdateDate;
@@ -22,7 +22,6 @@
     bool  m_currentInputModeEnablePrediction;
     bool  m_delayActive;
     bool  m_dragging;
-    NSMutableArray * m_emojiCells;
     UIKeyboardPredictionBarGrabber * m_grabber;
     bool  m_hasLongCandidates;
     struct CGPoint { 
@@ -30,12 +29,14 @@
         double y; 
     }  m_initLocation;
     bool  m_isMinimized;
+    bool  m_isSafariAutofill;
     UIKeyboardPredictionCell * m_lastCell;
     bool  m_lightKeyboard;
     UIView * m_message;
     UIKBKeyView * m_messageKeyView;
     UILabel * m_messageLabel;
     double  m_messageShownTime;
+    LAContext * m_myContext;
     unsigned long long  m_numberOfVisibleCells;
     NSMutableArray * m_oneTextCells;
     NSString * m_openQuote;
@@ -45,14 +46,17 @@
     NSMutableArray * m_safariCredentialThreeExtraTextCells;
     NSMutableArray * m_safariCredentialTwoExtraTextCells;
     NSMutableArray * m_safariCredentialZeroExtraTextCells;
-    NSMutableArray * m_textAndEmojiCells;
+    NSMutableArray * m_textAndThreeEmojiCells;
+    NSMutableArray * m_textAndTwoEmojiCells;
+    NSMutableArray * m_threeEmojiCells;
     NSMutableArray * m_threeTextCells;
+    NSMutableArray * m_twoEmojiCells;
     NSMutableArray * m_twoTextCells;
     double  m_width;
 }
 
 @property (nonatomic, retain) UITouch *activeTouch;
-@property (nonatomic, retain) UITextSuggestion *currentFirstTextSuggestion;
+@property (nonatomic, retain) TIKeyboardCandidate *currentFirstTextSuggestion;
 @property (nonatomic, retain) NSDate *lastTextSuggestionUpdateDate;
 @property (nonatomic) long long lastTextSuggestionUpdateOrientation;
 @property (nonatomic, retain) NSDate *lastUpdateDate;
@@ -78,6 +82,7 @@
 
 - (void)_commitPrediction:(id)arg1;
 - (void)_setPredictions:(id)arg1 autocorrection:(id)arg2 emojiList:(id)arg3;
+- (void)dealloc;
 - (id)description;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
@@ -93,7 +98,6 @@
 - (id)createCells:(unsigned long long)arg1;
 - (id)currentFirstTextSuggestion;
 - (void)deactivateCandidate;
-- (void)dealloc;
 - (void)delayActivateCellForPrediction:(id)arg1;
 - (void)dimKeys:(id)arg1;
 - (bool)enabled;
@@ -126,6 +130,7 @@
 - (void)setLastTextSuggestionUpdateDate:(id)arg1;
 - (void)setLastTextSuggestionUpdateOrientation:(long long)arg1;
 - (void)setLastUpdateDate:(id)arg1;
+- (bool)setOriginalUserInput:(id)arg1 asTypedText:(id)arg2;
 - (void)setPredictionViewState:(int)arg1 animate:(bool)arg2;
 - (void)setPredictionViewState:(int)arg1 animate:(bool)arg2 notify:(bool)arg3;
 - (void)setPredictions:(id)arg1 autocorrection:(id)arg2 emojiList:(id)arg3;
@@ -136,7 +141,6 @@
 - (void)setState:(int)arg1;
 - (void)setTouchedCellState:(int)arg1;
 - (void)setUpdateTimer:(id)arg1;
-- (bool)shouldAuthCommitPrediction;
 - (bool)show;
 - (void)showMessageWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (int)state;

@@ -48,6 +48,8 @@
 @property (nonatomic, retain) MPModelStoreAsset *storeAsset;
 @property (nonatomic, copy) NSString *title;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)__MPModelPropertyTVEpisodeArtwork__PROPERTY;
 + (id)__MPModelPropertyTVEpisodeDescriptionText__PROPERTY;
 + (id)__MPModelPropertyTVEpisodeDuration__PROPERTY;
@@ -153,5 +155,14 @@
 - (id)show;
 - (id)storeAsset;
 - (id)title;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mqf_requiredPlaybackProperties;
+
+- (id)mpc_protoItemRepresentation;
+- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
+- (id)mqf_newPlaybackItemMetadata;
+- (id)mqf_playbackItemMetadataModelObject;
 
 @end

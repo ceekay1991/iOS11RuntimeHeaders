@@ -3,6 +3,8 @@
  */
 
 @interface CAPresentationModifier : NSObject {
+    unsigned int  _f;
+    id  _group;
     void * _impl;
     id  _keyPath;
     int  _l;
@@ -11,6 +13,7 @@
 
 @property (readonly) bool additive;
 @property (getter=isEnabled) bool enabled;
+@property (readonly) CAPresentationModifierGroup *group;
 @property (readonly, copy) NSString *keyPath;
 @property (retain) id value;
 
@@ -18,12 +21,15 @@
 - (bool)additive;
 - (void)dealloc;
 - (id)debugDescription;
+- (id)group;
 - (id)init;
 - (id)initWithKeyPath:(id)arg1 initialValue:(id)arg2 additive:(bool)arg3;
+- (id)initWithKeyPath:(id)arg1 initialValue:(id)arg2 additive:(bool)arg3 group:(id)arg4;
 - (bool)isEnabled;
 - (id)keyPath;
 - (void)setEnabled:(bool)arg1;
 - (void)setValue:(id)arg1;
 - (id)value;
+- (void)write;
 
 @end

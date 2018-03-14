@@ -61,6 +61,7 @@
         double width; 
         double height; 
     }  _largestActionDimension;
+    long long  _layoutRequiresPositionUpdateCount;
     struct CGSize { 
         double width; 
         double height; 
@@ -70,7 +71,7 @@
     NSLayoutConstraint * _mainActionButtonSequenceViewWidthConstraint;
     _UIAlertControllerInterfaceActionGroupView * _mainInterfaceActionsGroupView;
     UILabel * _messageLabel;
-    NSLayoutConstraint * _messageLabelTopAlignmentConstraint;
+    _UIFlexibleConstantConstraintSet * _messageLabelTopAlignmentConstraints;
     bool  _needsActionsChangedHandling;
     NSArray * _noDimmingViewConstraints;
     bool  _presentationContextPrefersCancelActionShown;
@@ -79,14 +80,14 @@
     bool  _springLoaded;
     UIView * _textFieldViewControllerContainerView;
     NSLayoutConstraint * _textFieldViewControllerContainerViewHeightConstraint;
-    NSLayoutConstraint * _textFieldViewControllerContainerViewTopAlignmentConstraint;
+    _UIFlexibleConstantConstraintSet * _textFieldViewControllerContainerViewTopAlignmentConstraints;
     NSLayoutConstraint * _textFieldViewControllerContainerViewWidthConstraint;
     NSLayoutConstraint * _textFieldViewControllerViewBottomConstraint;
     NSLayoutConstraint * _textFieldViewControllerViewLeftConstraint;
     NSLayoutConstraint * _textFieldViewControllerViewRightConstraint;
     NSLayoutConstraint * _textFieldViewControllerViewTopConstraint;
     UILabel * _titleLabel;
-    NSLayoutConstraint * _titleLabelTopAlignmentConstraint;
+    _UIFlexibleConstantConstraintSet * _titleLabelTopAlignmentConstraints;
     UIAlertControllerVisualStyle * _visualStyle;
     NSLayoutConstraint * _widthConstraint;
 }
@@ -132,25 +133,30 @@
 @property (retain) NSLayoutConstraint *mainActionButtonSequenceViewHeightConstraint;
 @property (retain) NSLayoutConstraint *mainActionButtonSequenceViewHorizontalAlignmentConstraint;
 @property (retain) NSLayoutConstraint *mainActionButtonSequenceViewWidthConstraint;
-@property (retain) NSLayoutConstraint *messageLabelTopAlignmentConstraint;
+@property (retain) _UIFlexibleConstantConstraintSet *messageLabelTopAlignmentConstraints;
 @property (nonatomic) bool presentationContextPrefersCancelActionShown;
 @property bool shouldHaveBackdropView;
 @property (getter=isSpringLoaded, nonatomic) bool springLoaded;
 @property (readonly) Class superclass;
 @property (retain) NSLayoutConstraint *textFieldViewControllerContainerViewHeightConstraint;
-@property (retain) NSLayoutConstraint *textFieldViewControllerContainerViewTopAlignmentConstraint;
+@property (retain) _UIFlexibleConstantConstraintSet *textFieldViewControllerContainerViewTopAlignmentConstraints;
 @property (retain) NSLayoutConstraint *textFieldViewControllerContainerViewWidthConstraint;
 @property (retain) NSLayoutConstraint *textFieldViewControllerViewBottomConstraint;
 @property (retain) NSLayoutConstraint *textFieldViewControllerViewLeftConstraint;
 @property (retain) NSLayoutConstraint *textFieldViewControllerViewRightConstraint;
 @property (retain) NSLayoutConstraint *textFieldViewControllerViewTopConstraint;
-@property (retain) NSLayoutConstraint *titleLabelTopAlignmentConstraint;
+@property (retain) _UIFlexibleConstantConstraintSet *titleLabelTopAlignmentConstraints;
 @property (retain) NSLayoutConstraint *widthConstraint;
 
 + (bool)_retroactivelyRequiresConstraintBasedLayout;
 + (void)initialize;
 
 - (void).cxx_destruct;
+- (void)_UIAppearance_setAlignsToKeyboard:(bool)arg1;
+- (void)_UIAppearance_setHasDimmingView:(bool)arg1;
+- (void)_UIAppearance_setInPopover:(bool)arg1;
+- (void)_UIAppearance_setPresentationContextPrefersCancelActionShown:(bool)arg1;
+- (void)_UIAppearance_setShouldHaveBackdropView:(bool)arg1;
 - (id)__cancelActionView;
 - (void)_accessibilityColorsChanged;
 - (void)_actionLayoutDirectionChanged;
@@ -160,6 +166,7 @@
 - (void)_addContentViewControllerToViewHierarchy;
 - (void)_applyContentViewControllerContainerViewConstraints;
 - (void)_applyDetailMessageConstraints;
+- (void)_applyISEngineLayoutValuesToBoundsOnly:(bool)arg1;
 - (void)_applyKeyboardAlignmentViewsConstraints;
 - (void)_applyMessageConstraints;
 - (void)_applyTextFieldViewControllerContainerViewConstraints;
@@ -198,7 +205,9 @@
 - (struct CGSize { double x1; double x2; })_itemSizeForHorizontalLayout:(bool)arg1;
 - (struct CGSize { double x1; double x2; })_itemSizeForHorizontalLayout:(bool)arg1 visualStyleRequiresActionRepresentationToFitItemSize:(bool*)arg2;
 - (double)_labelHorizontalInsets;
+- (void)_layoutAndPositionInParentIfNeeded;
 - (struct CGSize { double x1; double x2; })_layoutSize;
+- (id)_layoutWidthDeterminationViewToSizeAgainst;
 - (double)_layoutWidthForHorizontalLayout:(bool)arg1;
 - (struct CGSize { double x1; double x2; })_mainActionButtonSequenceViewSizeForHorizontalLayout:(bool)arg1 itemSize:(struct CGSize { double x1; double x2; })arg2;
 - (double)_marginBetweenContentAndDiscreteCancelAction;
@@ -317,9 +326,10 @@
 - (id)mainActionButtonSequenceViewHorizontalAlignmentConstraint;
 - (id)mainActionButtonSequenceViewWidthConstraint;
 - (id)message;
-- (id)messageLabelTopAlignmentConstraint;
+- (id)messageLabelTopAlignmentConstraints;
 - (id)preferredFocusedView;
 - (bool)presentationContextPrefersCancelActionShown;
+- (void)safeAreaInsetsDidChange;
 - (void)setActionGroupEqualsContentViewWidthConstraint:(id)arg1;
 - (void)setActionViewMetrics:(id)arg1;
 - (void)setAlertController:(id)arg1;
@@ -353,25 +363,25 @@
 - (void)setMainActionButtonSequenceViewHeightConstraint:(id)arg1;
 - (void)setMainActionButtonSequenceViewHorizontalAlignmentConstraint:(id)arg1;
 - (void)setMainActionButtonSequenceViewWidthConstraint:(id)arg1;
-- (void)setMessageLabelTopAlignmentConstraint:(id)arg1;
+- (void)setMessageLabelTopAlignmentConstraints:(id)arg1;
 - (void)setPresentationContextPrefersCancelActionShown:(bool)arg1;
 - (void)setShouldHaveBackdropView:(bool)arg1;
 - (void)setSpringLoaded:(bool)arg1;
 - (void)setTextFieldViewControllerContainerViewHeightConstraint:(id)arg1;
-- (void)setTextFieldViewControllerContainerViewTopAlignmentConstraint:(id)arg1;
+- (void)setTextFieldViewControllerContainerViewTopAlignmentConstraints:(id)arg1;
 - (void)setTextFieldViewControllerContainerViewWidthConstraint:(id)arg1;
 - (void)setTextFieldViewControllerViewBottomConstraint:(id)arg1;
 - (void)setTextFieldViewControllerViewLeftConstraint:(id)arg1;
 - (void)setTextFieldViewControllerViewRightConstraint:(id)arg1;
 - (void)setTextFieldViewControllerViewTopConstraint:(id)arg1;
 - (void)setTintAdjustmentMode:(long long)arg1;
-- (void)setTitleLabelTopAlignmentConstraint:(id)arg1;
+- (void)setTitleLabelTopAlignmentConstraints:(id)arg1;
 - (void)setWidthConstraint:(id)arg1;
 - (bool)shouldHaveBackdropView;
 - (bool)shouldUpdateFocusInContext:(id)arg1;
 - (bool)showsCancelAction;
 - (id)textFieldViewControllerContainerViewHeightConstraint;
-- (id)textFieldViewControllerContainerViewTopAlignmentConstraint;
+- (id)textFieldViewControllerContainerViewTopAlignmentConstraints;
 - (id)textFieldViewControllerContainerViewWidthConstraint;
 - (id)textFieldViewControllerViewBottomConstraint;
 - (id)textFieldViewControllerViewLeftConstraint;
@@ -380,7 +390,7 @@
 - (id)textFields;
 - (long long)tintAdjustmentMode;
 - (id)title;
-- (id)titleLabelTopAlignmentConstraint;
+- (id)titleLabelTopAlignmentConstraints;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

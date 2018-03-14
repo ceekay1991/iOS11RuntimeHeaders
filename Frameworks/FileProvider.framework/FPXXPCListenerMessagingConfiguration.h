@@ -3,11 +3,11 @@
  */
 
 @interface FPXXPCListenerMessagingConfiguration : FPXXPCListenerConfiguration {
-    NSFileProviderMessageInterface * _messageInterface;
+    FPFileProviderService * _service;
 }
 
 - (void).cxx_destruct;
-- (id)initWithMessageInterface:(id)arg1 context:(id)arg2;
+- (id)initWithService:(id)arg1 context:(id)arg2;
 - (bool)setupDelegate:(id)arg1 error:(id*)arg2;
 
 @end

@@ -4,6 +4,7 @@
 
 @interface CMSensorRecorder : NSObject
 
++ (long long)authorizationStatus;
 + (bool)isAccelerometerRecordingAvailable;
 + (bool)isAuthorizedForRecording;
 + (bool)isGyroRecordingAvailable;

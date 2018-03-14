@@ -71,6 +71,7 @@
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 - (void).cxx_destruct;
+- (bool)_MapsCarPlay_isEqual:(id)arg1;
 - (bool)_belongsToTransferGroup;
 - (id)closestLogicalBoardOrAlightStep;
 - (id)composedRoute;

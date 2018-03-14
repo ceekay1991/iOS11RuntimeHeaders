@@ -25,7 +25,6 @@
 + (id)_currentFullScreenAlertPresenters;
 + (void)_removePresenter:(id)arg1;
 + (bool)_shouldPresentActionSheetsFullscreen;
-+ (id)_topmostAlertWindow;
 
 - (void).cxx_destruct;
 - (void)_createWindowIfNecessary;

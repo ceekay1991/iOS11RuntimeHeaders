@@ -14,9 +14,12 @@
 @property (nonatomic) bool expanded;
 @property (nonatomic, copy) NSString *symbol;
 
-// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (void).cxx_destruct;
+
+// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+
 - (id)color;
 - (bool)expanded;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

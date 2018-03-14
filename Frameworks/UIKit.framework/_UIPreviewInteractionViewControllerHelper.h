@@ -3,6 +3,7 @@
  */
 
 @interface _UIPreviewInteractionViewControllerHelper : NSObject <UIPreviewPresentationControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate> {
+    <UIViewControllerContextTransitioning> * _currentTransitionContext;
     id /* block */  _dismissalCompletion;
     _UIPreviewInteractionHighlighter * _highlighter;
     id /* block */  _presentationCompletion;
@@ -22,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)_finalizeAfterViewControllerPresentation;
+- (void)_performDismissalCompletionIfNeeded;
 - (void)_performPresentViewControllerFromViewController:(id)arg1;
 - (void)animateTransition:(id)arg1;
 - (id)animationControllerForDismissedController:(id)arg1;

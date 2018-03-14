@@ -42,6 +42,7 @@
 - (id)comparisonDestinationStartTime;
 - (void)dealloc;
 - (void)destinationUpdater:(id)arg1 didUpdateDestination:(id)arg2;
+- (void)destinationUpdaterDidArrive:(id)arg1;
 - (id)init;
 - (id)initWithTraceName:(id)arg1 isTraceRecording:(bool)arg2;
 - (bool)isMapsActive;

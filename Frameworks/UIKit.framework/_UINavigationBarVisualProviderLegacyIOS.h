@@ -56,6 +56,7 @@
 - (void)_setUpContentFocusContainerGuide;
 - (void)_setViewsAnimated:(bool)arg1 forTopNavigationItem:(id)arg2 backNavigationItem:(id)arg3 previousTopItem:(id)arg4;
 - (void)_shim_30244716;
+- (bool)_shim_34415965;
 - (id)_shim_backIndicatorView;
 - (id)_shim_backdropGroupName;
 - (long long)_shim_backdropStyle;
@@ -119,6 +120,7 @@
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setupTopNavigationItem;
 - (bool)shouldGestureHandler:(id)arg1 recognizedPopAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (bool)shouldUseHeightRangeFittingWidth;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (long long)statusBarStyle;
 - (void)teardown;

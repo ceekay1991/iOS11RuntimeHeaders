@@ -18,10 +18,11 @@
 + (id)activeInstance;
 + (id)sharedInstance;
 
+- (void)dealloc;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (void)actionForItem:(id)arg1;
-- (void)dealloc;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didFinishSplitTransition;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;

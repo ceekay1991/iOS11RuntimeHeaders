@@ -11,7 +11,7 @@
     <CNSpotlightIndexingLogger> * _logger;
 }
 
-@property (nonatomic) unsigned long long batchSize;
+@property (nonatomic, readonly) unsigned long long batchSize;
 @property (nonatomic, retain) CNIndexClientState *clientState;
 @property (nonatomic, retain) CNContactStore *contactStore;
 @property (nonatomic, retain) <CNCSSearchableIndex> *index;
@@ -39,7 +39,9 @@
 - (bool)endIndexBatchWithClientState;
 - (void)fetchAndCheckLastClientState;
 - (id)fetchChangeHistory;
+- (id)fetchChangeHistoryWithError:(id*)arg1;
 - (bool)fetchLastClientState;
+- (id)fetchSearchableItemsIndexedByContactIdentifierWithError:(id*)arg1;
 - (bool)fullSyncContacts;
 - (id)index;
 - (bool)indexSearchableItems:(id)arg1;
@@ -53,10 +55,10 @@
 - (void)reindexAllSearchableItems;
 - (void)reindexSearchableItemsWithIdentifiers:(id)arg1;
 - (id)searchableItemsForContactIdentifiers:(id)arg1;
-- (void)setBatchSize:(unsigned long long)arg1;
 - (void)setClientState:(id)arg1;
 - (void)setContactStore:(id)arg1;
 - (void)setIndex:(id)arg1;
 - (void)setIsFullSyncNeeded:(bool)arg1;
+- (id)verifyIndexLoggingSummary:(bool)arg1 error:(id*)arg2;
 
 @end

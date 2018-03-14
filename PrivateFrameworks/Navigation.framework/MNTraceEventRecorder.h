@@ -10,6 +10,8 @@
     bool  _isShowingSecondarySign;
     NSString * _lastAnnouncement;
     NSArray * _lastInstructions;
+    NSUUID * _lastPrimarySignID;
+    NSUUID * _lastSecondarySignID;
     MNLocation * _lastTrackedLocation;
     unsigned long long  _lastTrackedStepIndex;
     unsigned long long  _numPendingAnnouncements;
@@ -33,7 +35,12 @@
 - (void)navigationSession:(id)arg1 didUpdateMatchedLocation:(id)arg2;
 - (void)navigationSession:(id)arg1 displayPrimaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(bool)arg8;
 - (void)navigationSession:(id)arg1 displaySecondaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6;
+- (void)navigationSession:(id)arg1 hideLaneDirectionsForId:(id)arg2;
+- (void)navigationSession:(id)arg1 showLaneDirections:(id)arg2;
+- (void)navigationSession:(id)arg1 updateSignsWithInfo:(id)arg2;
+- (void)navigationSessionBeginGuidanceUpdate:(id)arg1;
 - (void)navigationSessionDidStart:(id)arg1;
+- (void)navigationSessionEndGuidanceUpdate:(id)arg1;
 - (void)navigationSessionHideSecondaryStep:(id)arg1;
 - (void)navigationSessionWillReroute:(id)arg1;
 - (double)timeSinceStartOfRoute;

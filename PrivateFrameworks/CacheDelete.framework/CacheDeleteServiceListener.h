@@ -57,6 +57,7 @@
 - (void)setPeriodic:(id /* block */)arg1;
 - (void)setPurge:(id /* block */)arg1;
 - (void)setPurgeable:(id /* block */)arg1;
+- (void)setPurgeable:(id /* block */)arg1 purge:(id /* block */)arg2 cancel:(id /* block */)arg3 periodic:(id /* block */)arg4 notify:(id /* block */)arg5 callback:(id /* block */)arg6 entitlements:(id)arg7;
 - (void)setQueue:(id)arg1;
 
 @end

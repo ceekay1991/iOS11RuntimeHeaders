@@ -21,8 +21,10 @@
 - (id)_CIPhotoEffectDepthBlend;
 - (int)_defaultVersion;
 - (int)_maxVersion;
+- (id)applyCubeWithName:(id)arg1 toImage:(id)arg2;
 - (id)backgroundCubeName;
 - (id)backgroundCubePath;
+- (id)cubeColorSpaceName;
 - (id)cubeName;
 - (id)cubePath;
 - (id)init;

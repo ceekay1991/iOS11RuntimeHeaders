@@ -80,6 +80,7 @@
 - (id)pathForConcaveCornerWithGeometry:(id)arg1;
 - (id)pathForFlickGeometry:(id)arg1;
 - (id)pathForFlickPopupGeometries:(id)arg1;
+- (id)pathForFlickWidth:(double)arg1 height:(double)arg2 handleLength:(double)arg3 keyMiddle:(struct CGPoint { double x1; double x2; })arg4 angle:(double)arg5;
 - (id)pathForRenderGeometry:(id)arg1;
 - (id)pathForSplitGeometry:(id)arg1;
 - (void)renderBackgroundTraits:(id)arg1;

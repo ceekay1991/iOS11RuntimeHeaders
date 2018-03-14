@@ -2,11 +2,9 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIStatusBarNewUIDoubleHeightStyleAttributes : UIStatusBarNewUIStyleAttributes
+@interface UIStatusBarNewUIDoubleHeightStyleAttributes : UIStatusBarNewUIActionableStyleAttributes
 
 - (double)heightForMetrics:(long long)arg1;
-- (id)initWithRequest:(id)arg1 backgroundColor:(id)arg2 foregroundColor:(id)arg3 hasBusyBackground:(bool)arg4;
 - (bool)isDoubleHeight;
-- (bool)shouldProduceReturnEvent;
 
 @end

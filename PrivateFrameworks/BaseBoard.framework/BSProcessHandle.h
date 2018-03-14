@@ -39,9 +39,8 @@
 + (id)processHandleForXPCConnection:(id)arg1;
 + (bool)supportsSecureCoding;
 
-- (bool)_currentProcess;
 - (id)_initWithPID:(int)arg1 bundleID:(id)arg2;
-- (bool)_isRunning;
+- (bool)_isRunningWithCertainty:(out bool*)arg1;
 - (id)auditToken;
 - (id)bundleIdentifier;
 - (id)bundlePath;

@@ -3,25 +3,41 @@
  */
 
 @interface ICStoreURLRequestBuilderProperties : NSObject {
+    NSNumber * _DSID;
     ICURLBag * _URLBag;
-    ICUserIdentityProperties * _delegatedIdentityProperties;
-    ICUserIdentityProperties * _iCloudIdentityProperties;
-    ICUserIdentityProperties * _identityProperties;
+    ICDelegateToken * _delegateToken;
+    NSNumber * _delegatedDSID;
+    NSString * _delegatedStorefrontIdentifier;
+    ICURLBag * _delegatedURLBag;
+    NSString * _iCloudPersonID;
+    NSString * _storefrontIdentifier;
 }
 
+@property (nonatomic, copy) NSNumber *DSID;
 @property (nonatomic, retain) ICURLBag *URLBag;
-@property (nonatomic, copy) ICUserIdentityProperties *delegatedIdentityProperties;
-@property (nonatomic, copy) ICUserIdentityProperties *iCloudIdentityProperties;
-@property (nonatomic, copy) ICUserIdentityProperties *identityProperties;
+@property (nonatomic, copy) ICDelegateToken *delegateToken;
+@property (nonatomic, copy) NSNumber *delegatedDSID;
+@property (nonatomic, copy) NSString *delegatedStorefrontIdentifier;
+@property (nonatomic, retain) ICURLBag *delegatedURLBag;
+@property (nonatomic, copy) NSString *iCloudPersonID;
+@property (nonatomic, copy) NSString *storefrontIdentifier;
 
 - (void).cxx_destruct;
+- (id)DSID;
 - (id)URLBag;
-- (id)delegatedIdentityProperties;
-- (id)iCloudIdentityProperties;
-- (id)identityProperties;
-- (void)setDelegatedIdentityProperties:(id)arg1;
-- (void)setICloudIdentityProperties:(id)arg1;
-- (void)setIdentityProperties:(id)arg1;
+- (id)delegateToken;
+- (id)delegatedDSID;
+- (id)delegatedStorefrontIdentifier;
+- (id)delegatedURLBag;
+- (id)iCloudPersonID;
+- (void)setDSID:(id)arg1;
+- (void)setDelegateToken:(id)arg1;
+- (void)setDelegatedDSID:(id)arg1;
+- (void)setDelegatedStorefrontIdentifier:(id)arg1;
+- (void)setDelegatedURLBag:(id)arg1;
+- (void)setICloudPersonID:(id)arg1;
+- (void)setStorefrontIdentifier:(id)arg1;
 - (void)setURLBag:(id)arg1;
+- (id)storefrontIdentifier;
 
 @end

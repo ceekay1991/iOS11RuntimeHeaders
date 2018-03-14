@@ -10,6 +10,7 @@
 
 @property (nonatomic, copy) NSDate *lastCheckInAttemptDate;
 @property (nonatomic, copy) NSDate *lastCheckInSuccessDate;
+@property (nonatomic) unsigned long long lastKnownIDMSEnvironment;
 @property (nonatomic) long long shouldAddHSA2CreateHeader;
 @property (nonatomic) long long shouldAllowExperimentalMode;
 @property (nonatomic) long long shouldAllowPhoneNumberAccounts;
@@ -26,9 +27,11 @@
 - (id)init;
 - (id)lastCheckInAttemptDate;
 - (id)lastCheckInSuccessDate;
+- (unsigned long long)lastKnownIDMSEnvironment;
 - (void)setConfigurationValue:(id)arg1 forKey:(id)arg2;
 - (void)setLastCheckInAttemptDate:(id)arg1;
 - (void)setLastCheckInSuccessDate:(id)arg1;
+- (void)setLastKnownIDMSEnvironment:(unsigned long long)arg1;
 - (void)setShouldAddHSA2CreateHeader:(long long)arg1;
 - (void)setShouldAllowExperimentalMode:(long long)arg1;
 - (void)setShouldAllowPhoneNumberAccounts:(long long)arg1;

@@ -134,6 +134,8 @@
         unsigned int separatorInsetIsRelativeToCellEdges : 1; 
         unsigned int highlightingInteractively : 1; 
         unsigned int shouldHighlightAfterInteraction : 1; 
+        unsigned int userInteractionEnabledBeforeDragging : 2; 
+        unsigned int insetsContentViewsToSafeArea : 1; 
     }  _tableCellFlags;
     <UITable_UITableViewCellDelegate> * _tableView;
     id  _target;
@@ -163,6 +165,7 @@
 @property (nonatomic) long long focusStyle;
 @property (readonly) unsigned long long hash;
 @property (getter=isHighlighted, nonatomic) bool highlighted;
+@property (setter=hu_setForcedSeparatorStyle:, nonatomic, copy) NSNumber *hu_forcedSeparatorStyle;
 @property (nonatomic, readonly) UIImageView *imageView;
 @property (nonatomic) long long indentationLevel;
 @property (nonatomic) double indentationWidth;
@@ -188,7 +191,7 @@
 + (void)_initializeForIdiom:(long long)arg1;
 + (void)initialize;
 
-- (void)_UIAppearance_setSeparatorDrawsInVibrantLightModeUIAppearance:(id)arg1;
+- (void).cxx_destruct;
 - (SEL)_accessoryAction;
 - (id)_accessoryTintColor;
 - (id)_accessoryView:(bool)arg1;
@@ -244,11 +247,13 @@
 - (bool)_drawsSeparatorAtTopOfSection;
 - (bool)_drawsTopSeparatorDuringReordering;
 - (bool)_drawsTopShadow;
+- (id)_dropAnimationContainerView;
 - (id)_editControlFocusGuide;
 - (id)_editableTextField;
 - (id)_editableTextField:(bool)arg1;
 - (id)_editingAccessoryView:(bool)arg1;
 - (double)_editingButtonOffset;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_effectiveSafeAreaInsets;
 - (id)_encodableSubviews;
 - (void)_endSwiping:(bool)arg1;
 - (void)_ensureFocusedFloatingContentView;
@@ -258,7 +263,7 @@
 - (void)_forSpringBoardSetDefaultSelectedBackgroundView:(id)arg1;
 - (bool)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
 - (bool)_gestureRecognizerShouldBegin:(id)arg1;
-- (void)_grabberBeganReorder:(id)arg1 touch:(id)arg2;
+- (bool)_grabberBeganReorder:(id)arg1 touch:(id)arg2;
 - (void)_grabberDragged:(id)arg1 yDelta:(float)arg2;
 - (void)_grabberDragged:(id)arg1 yDelta:(float)arg2 touch:(id)arg3;
 - (void)_grabberReleased:(id)arg1;
@@ -270,10 +275,11 @@
 - (struct CGSize { double x1; double x2; })_imageInsetSize;
 - (id)_imageView;
 - (id)_imageView:(bool)arg1;
-- (double)_imageViewTrailingX;
+- (double)_imageViewExtentFromCellLeadingEdge;
 - (double)_indexBarExtentFromEdge;
 - (id)_indexPath;
 - (bool)_insetsBackground;
+- (bool)_insetsContentViewsToSafeArea;
 - (bool)_isAnimating;
 - (bool)_isCarPlayCell;
 - (bool)_isCurrentlyConsideredHighlighted;
@@ -323,6 +329,7 @@
 - (void)_resetEditControlRotation;
 - (void)_resetSelectionTimer;
 - (double)_rightMarginWidth;
+- (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_saveOpaqueViewState:(id)arg1;
 - (double)_sectionBorderWidth;
 - (id)_selectedBackgroundView:(bool)arg1;
@@ -355,6 +362,7 @@
 - (void)_setDrawsTopSeparator:(bool)arg1;
 - (void)_setDrawsTopSeparatorDuringReordering:(bool)arg1;
 - (void)_setDrawsTopShadow:(bool)arg1;
+- (void)_setDropAnimationContainerView:(id)arg1;
 - (void)_setEditControlFocusGuide:(id)arg1;
 - (void)_setEditing:(bool)arg1 animated:(bool)arg2 cellOrAncestorViewForAnimatedLayout:(id)arg3;
 - (void)_setEditingStyle:(long long)arg1;
@@ -364,6 +372,7 @@
 - (void)_setHiddenForReuse:(bool)arg1;
 - (void)_setIndexBarExtentFromEdge:(double)arg1;
 - (void)_setIndexPath:(id)arg1;
+- (void)_setInsetsContentViewsToSafeArea:(bool)arg1;
 - (void)_setIsCarPlayCell:(bool)arg1;
 - (void)_setIsCarPlayCell:(bool)arg1 forceUpdateDefaults:(bool)arg2;
 - (void)_setLayoutEngineSuspended:(bool)arg1;
@@ -447,16 +456,20 @@
 - (void)_updateSeparatorContent:(bool)arg1;
 - (void)_updateSwipeWithDistancePulled:(double)arg1;
 - (void)_updateTopShadowView:(bool)arg1;
+- (void)_updateUserInteractionEnabledForNewDragState:(unsigned long long)arg1;
 - (void)_updateViewsForDeleteButton;
 - (bool)_usesRoundedGroups;
 - (void)_willBeDeleted;
 - (void)_willTransitionToState:(unsigned long long)arg1;
-- (void)setBackgroundColor:(id)arg1;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
+- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
-- (void)_UIAppearance_setBackgroundColor:(id)arg1;
 - (SEL)accessoryAction;
 - (id)accessoryActionPreviewingSegueTemplateStorage;
 - (id)accessoryActionSegueTemplate;
@@ -478,9 +491,6 @@
 - (void)copy:(id)arg1;
 - (unsigned long long)currentStateMask;
 - (void)cut:(id)arg1;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (void)deleteConfirmationControlWasCancelled:(id)arg1;
 - (void)deleteConfirmationControlWasClicked:(id)arg1;
 - (id)detailTextLabel;
@@ -537,7 +547,6 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })reorderRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (SEL)returnAction;
 - (id)reuseIdentifier;
-- (void)safeAreaInsetsDidChange;
 - (id)sectionBorderColor;
 - (int)sectionLocation;
 - (id)selectedBackgroundView;
@@ -558,8 +567,10 @@
 - (void)setAccessoryActionSegueTemplate:(id)arg1;
 - (void)setAccessoryType:(long long)arg1;
 - (void)setAccessoryView:(id)arg1;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setBackgroundView:(id)arg1;
 - (void)setBottomShadowColor:(id)arg1;
+- (void)setCenter:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setClipsContents:(bool)arg1;
 - (void)setDrawingEnabled:(bool)arg1;
 - (void)setEditAction:(SEL)arg1;
@@ -650,5 +661,45 @@
 - (void)_cnui_applyCommonContactStyle:(id)arg1;
 - (void)_cnui_applyContactStyle;
 - (void)_cnui_applySelectedBackgroundViewStyle:(id)arg1;
+
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
+- (void)sf_setUsesVibrantSelection:(bool)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
+
+- (double)effectiveSeparatorHeight;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
++ (id)_hu_emptyCheckmarkPlaceholderImage;
+
+- (void)hu_configureCheckmarkForImageView:(id)arg1 checked:(bool)arg2;
+- (id)hu_forcedSeparatorStyle;
+- (void)hu_setForcedSeparatorStyle:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ManagedConfigurationUI.framework/ManagedConfigurationUI
+
+- (void)setMCUIApplication:(id)arg1 showMISAppApproval:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/MobileTimerUI.framework/MobileTimerUI
+
+- (void)setSelectedBackgroundColor:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NetAppsUtilitiesUI.framework/NetAppsUtilitiesUI
+
++ (double)naui_estimatedTableRowHeight;
++ (id)naui_prototypeCell;
++ (bool)naui_supportsAutoLayout;
++ (double)naui_tableRowHeight;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
+
+// Image: /System/Library/PrivateFrameworks/UIAccessibility.framework/UIAccessibility
+
+- (id)accessibilityTableViewCellText;
 
 @end

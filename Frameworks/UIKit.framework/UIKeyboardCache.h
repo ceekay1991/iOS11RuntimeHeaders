@@ -27,6 +27,7 @@
 - (id)idleAction;
 - (void)incrementExpectedRender:(id)arg1;
 - (id)init;
+- (void)purge;
 - (void)setIdleAction:(id)arg1;
 - (id)uniqueLayoutsFromInputModes:(id)arg1;
 - (void)updateCacheForInputModes:(id)arg1;

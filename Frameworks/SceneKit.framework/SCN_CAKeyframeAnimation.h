@@ -9,6 +9,7 @@
 
 - (void)_clearC3DCache;
 - (void)_convertToCA;
+- (bool)additive;
 - (id)animationEvents;
 - (bool)autoreverses;
 - (id)biasValues;
@@ -16,6 +17,7 @@
 - (bool)commitsOnCompletion;
 - (id)continuityValues;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (bool)cumulative;
 - (void)dealloc;
 - (id)description;
 - (double)duration;

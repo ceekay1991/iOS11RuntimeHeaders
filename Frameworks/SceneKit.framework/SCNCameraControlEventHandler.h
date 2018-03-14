@@ -20,6 +20,7 @@
     }  _cameraTarget;
     void _clickOrigin;
     unsigned int  _didEverFocusNode;
+    unsigned int  _enabled;
     SCNNode * _freeViewCameraNode;
     double  _friction;
     unsigned int  _gimbalLockMode;
@@ -119,6 +120,7 @@
 - (bool)computeBoundingSphereOmittingFloorsForNode:(struct __C3DNode { }*)arg1 sphere:(struct C3DSphere { }*)arg2;
 - (void)dealloc;
 - (bool)enableInertia;
+- (bool)enabled;
 - (void)endDraggingWithVelocity:(struct CGPoint { double x1; double x2; })arg1;
 - (void)focusNode:(id)arg1;
 - (id)freeCamera;
@@ -143,6 +145,7 @@
 - (void)setCameraTarget:(struct SCNVector3 { float x1; float x2; float x3; })arg1;
 - (void)setEnableFreeCamera:(bool)arg1;
 - (void)setEnableInertia:(bool)arg1;
+- (void)setEnabled:(bool)arg1;
 - (void)setFriction:(double)arg1;
 - (void)setGimbalLockMode:(bool)arg1;
 - (void)setGimbalLockVector:(struct SCNVector3 { float x1; float x2; float x3; })arg1;

@@ -12,6 +12,7 @@
 - (void).cxx_destruct;
 - (void)_endpointsDidChange:(id)arg1;
 - (void)dealloc;
+- (bool)devicePresenceDetected;
 - (long long)discoveryMode;
 - (void)getRoutesForCategory:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)init;

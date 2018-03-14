@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKTransitLineItemViewController : MKStackingViewController <MKETAProviderDelegate, MKNearestStationViewControllerDelegate, MKPlaceCardActionControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKPlaceHeaderButtonsViewControllerDelegate, MKStackingViewControllerDelegate, MKTransitLineIncidentsViewControllerDelegate, _MKInfoCardAnaylticsDelegate, _MKInfoCardController> {
+@interface MKTransitLineItemViewController : MKStackingViewController <MKETAProviderDelegate, MKNearestStationViewControllerDelegate, MKPlaceCardActionControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKPlaceHeaderButtonsViewControllerDelegate, MKStackingViewControllerDelegate, MKTransitLineIncidentsViewControllerDelegate, _MKInfoCardAnalyticsDelegate, _MKInfoCardController> {
     MKPlaceActionManager * _actionManager;
     MKPlaceCardActionsViewController * _actionsViewController;
     MKPlaceCardActionItem * _addToFavoritesItem;
@@ -28,7 +28,7 @@
 
 @property (nonatomic, retain) MKPlaceCardActionItem *addToFavoritesItem;
 @property (nonatomic, retain) GEOAutomobileOptions *automobileOptions;
-@property (nonatomic) double currentHeaderMinimalModeInterpolationFactor;
+@property (nonatomic) double contentAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MKTransitLineItemViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -48,7 +48,7 @@
 - (void)_updateViewControllers;
 - (id)addToFavoritesItem;
 - (id)automobileOptions;
-- (double)currentHeaderMinimalModeInterpolationFactor;
+- (double)contentAlpha;
 - (id)delegate;
 - (id)favorited;
 - (void)hideTitle:(bool)arg1;
@@ -75,7 +75,7 @@
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
 - (void)setAddToFavoritesItem:(id)arg1;
 - (void)setAutomobileOptions:(id)arg1;
-- (void)setCurrentHeaderMinimalModeInterpolationFactor:(double)arg1;
+- (void)setContentAlpha:(double)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFavorited:(id)arg1;
 - (void)setLoading:(bool)arg1;

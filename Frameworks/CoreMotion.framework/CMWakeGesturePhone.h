@@ -49,6 +49,7 @@
 - (void)onPowerStateUpdated:(const struct Sample { unsigned int x1; }*)arg1;
 - (void)onWakeUpdated:(const struct Sample { double x1; struct CLGestureReport {} *x2; }*)arg1;
 - (void)playAlert;
+- (void)reenableDetectedStateRecognition;
 - (bool)simulateGestureWithDelay:(double)arg1 Duration:(double)arg2;
 - (void)startWakeGestureUpdates;
 - (void)stopWakeGestureUpdates;

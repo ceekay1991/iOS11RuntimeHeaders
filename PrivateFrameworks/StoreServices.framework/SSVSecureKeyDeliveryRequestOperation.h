@@ -10,6 +10,7 @@
     bool  _iTunesStoreRequest;
     NSURL * _keyServerURL;
     long long  _leaseAction;
+    bool  _offline;
     NSData * _persistentContentKeyContext;
     double  _playbackStartTime;
     NSNumber * _rentalId;
@@ -26,6 +27,7 @@
 @property (nonatomic, readonly) double expirationTime;
 @property (retain) NSURL *keyServerURL;
 @property (nonatomic) long long leaseAction;
+@property bool offline;
 @property (nonatomic, readonly, copy) NSData *persistentContentKeyContext;
 @property (nonatomic, readonly) double playbackStartTime;
 @property (copy) NSNumber *rentalId;
@@ -52,6 +54,7 @@
 - (id)keyServerURL;
 - (long long)leaseAction;
 - (void)main;
+- (bool)offline;
 - (id)persistentContentKeyContext;
 - (double)playbackStartTime;
 - (id)rentalId;
@@ -63,6 +66,7 @@
 - (void)setITunesStoreRequest:(bool)arg1;
 - (void)setKeyServerURL:(id)arg1;
 - (void)setLeaseAction:(long long)arg1;
+- (void)setOffline:(bool)arg1;
 - (void)setPersistentContentKeyContext:(id)arg1;
 - (void)setRentalId:(id)arg1;
 - (void)setResourceLoadingRequest:(id)arg1;

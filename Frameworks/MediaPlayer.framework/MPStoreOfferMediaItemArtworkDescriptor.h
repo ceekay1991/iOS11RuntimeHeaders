@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPStoreOfferMediaItemArtworkDescriptor : NSObject <NSCopying> {
+@interface MPStoreOfferMediaItemArtworkDescriptor : NSObject <MPArtworkDataSourceVisualIdenticality> {
     NSString * _cacheID;
     NSArray * _containerArtworkSizes;
     NSDictionary * _containerArtworkURLs;
@@ -15,6 +15,10 @@
 }
 
 @property (nonatomic, readonly) NSString *cacheID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_availableSizesForArtworkURLs:(id)arg1;
@@ -27,5 +31,6 @@
 - (unsigned long long)hash;
 - (id)initWithItemPersistentID:(long long)arg1 screenshotDictionaries:(id)arg2 itemArtworkDictionaries:(id)arg3 containerArtworkDictionaries:(id)arg4;
 - (bool)isEqual:(id)arg1;
+- (id)stringRepresentation;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreMotion.framework/CoreMotion
  */
 
-@interface CMPedometerData : NSObject <NSCopying, NSSecureCoding> {
+@interface CMPedometerData : NSObject <HDSensorDatum, NSCopying, NSSecureCoding> {
     NSNumber * fActiveTime;
     NSNumber * fCurrentCadence;
     NSNumber * fCurrentPace;
@@ -23,16 +23,22 @@
 @property (nonatomic, readonly) NSNumber *averageActivePace;
 @property (nonatomic, readonly) NSNumber *currentCadence;
 @property (nonatomic, readonly) NSNumber *currentPace;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSNumber *distance;
 @property (nonatomic, readonly) NSDate *endDate;
 @property (nonatomic, readonly) NSNumber *floorsAscended;
 @property (nonatomic, readonly) NSNumber *floorsDescended;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSNumber *numberOfPushes;
 @property (nonatomic, readonly) NSNumber *numberOfSteps;
 @property (nonatomic, readonly) long long recordId;
 @property (nonatomic, readonly) NSUUID *sourceId;
 @property (nonatomic, readonly) NSDate *startDate;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) NSNumber *workoutType;
+
+// Image: /System/Library/Frameworks/CoreMotion.framework/CoreMotion
 
 + (id)maxPedometerEntries;
 + (bool)supportsSecureCoding;
@@ -59,5 +65,10 @@
 - (id)sourceId;
 - (id)startDate;
 - (id)workoutType;
+
+// Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
+
+- (id)date;
+- (long long)recordID;
 
 @end

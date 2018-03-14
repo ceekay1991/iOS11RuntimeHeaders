@@ -28,6 +28,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (double)_neededSizeWithCallTimer;
 - (double)_neededSizeWithoutCallTimer;
 - (unsigned long long)_numberOfEnabledItems;
@@ -36,7 +37,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)allowsUserInteraction;
 - (bool)animatesDataChange;
 - (id)currentActiveBundleIdentifier;

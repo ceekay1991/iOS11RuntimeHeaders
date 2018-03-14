@@ -3,17 +3,15 @@
  */
 
 @interface _LSIconCacheClient : _LSIconCache {
-    NSXPCConnection * _connection;
     unsigned long long  _sandboxExtensionHandle;
 }
 
-@property (readonly) NSXPCConnection *connection;
 @property unsigned long long sandboxExtensionHandle;
 
-- (void).cxx_destruct;
++ (id)sharedInstance;
+
 - (void)_fetchCacheURLAndSalt;
 - (id)connection;
-- (void)dealloc;
 - (id)getAlternateIconNameForIdentifier:(id)arg1;
 - (id)iconBitmapDataWithResourceDirectoryURL:(id)arg1 boundContainerURL:(id)arg2 dataContainerURL:(id)arg3 bundleIdentifier:(id)arg4 iconsDictionary:(id)arg5 cacheKey:(id)arg6 variant:(int)arg7 options:(int)arg8;
 - (id)init;

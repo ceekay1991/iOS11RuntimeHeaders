@@ -63,11 +63,12 @@
 - (bool)getContentModificationDate:(double*)arg1 error:(id*)arg2;
 - (bool)getCreationDate:(double*)arg1 error:(id*)arg2;
 - (bool)getDate:(double*)arg1 forKey:(id)arg2 error:(id*)arg3;
-- (bool)getDevice:(int*)arg1 inode:(unsigned long long*)arg2 error:(id*)arg3;
+- (bool)getDeviceNumber:(int*)arg1 error:(id*)arg2;
 - (bool)getFileIdentifier:(unsigned long long*)arg1 error:(id*)arg2;
 - (bool)getFileSystemRepresentation:(BOOL)arg1 error:(id*)arg2;
 - (bool)getFinderInfo:(union { unsigned char x1[32]; struct { struct FileInfo { unsigned int x_1_2_1; unsigned int x_1_2_2; unsigned short x_1_2_3; struct Point { short x_4_3_1; short x_4_3_2; } x_1_2_4; unsigned short x_1_2_5; } x_2_1_1; unsigned char x_2_1_2[16]; } x2; struct { struct FolderInfo { struct Rect { short x_1_3_1; short x_1_3_2; short x_1_3_3; short x_1_3_4; } x_1_2_1; unsigned short x_1_2_2; struct Point { short x_3_3_1; short x_3_3_2; } x_1_2_3; unsigned short x_1_2_4; } x_3_1_1; unsigned char x_3_1_2[16]; } x3; }*)arg1 error:(id*)arg2;
 - (bool)getHFSType:(unsigned int*)arg1 creator:(unsigned int*)arg2 error:(id*)arg3;
+- (bool)getInodeNumber:(unsigned long long*)arg1 error:(id*)arg2;
 - (bool)getIsDirectory_NoIO:(bool*)arg1;
 - (bool)getLength:(unsigned long long*)arg1 error:(id*)arg2;
 - (bool)getOwnerUID:(unsigned int*)arg1 GID:(unsigned int*)arg2 error:(id*)arg3;

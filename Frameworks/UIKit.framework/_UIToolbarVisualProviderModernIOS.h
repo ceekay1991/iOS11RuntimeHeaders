@@ -28,6 +28,7 @@
 - (void)_setBackdropViewLayerGroupName:(id)arg1;
 - (void)_setViewOwnersAndUpdateContentViewForItems:(id)arg1 withOldItems:(id)arg2 animated:(bool)arg3;
 - (void)_updateContentView;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })backgroundFrame;
 - (id)currentBackgroundView;
 - (struct CGSize { double x1; double x2; })defaultSizeForOrientation:(long long)arg1;
 - (void)positionToolbarButtonsAndResetFontScaleAdjustment:(bool)arg1;

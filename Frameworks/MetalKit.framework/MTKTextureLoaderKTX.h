@@ -12,6 +12,7 @@
             struct MTLNormalPixelFormatInfo { 
                 unsigned long long pixelBytes; 
                 unsigned char componentCount; 
+                unsigned char alignment; 
                 unsigned long long pixelBytesRender; 
                 unsigned long long pixelBytesRenderMSAA; 
             } normal; 

@@ -3,6 +3,7 @@
  */
 
 @interface BWMotionDataPreserver : NSObject {
+    NSString * _currentISPHallPortType;
     NSString * _name;
     NSMutableData * _preservedISPHallData;
     NSMutableData * _preservedISPMotionData;

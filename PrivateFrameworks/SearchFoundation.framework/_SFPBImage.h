@@ -65,6 +65,8 @@
 @property (nonatomic) int type;
 @property (nonatomic, retain) _SFPBURLImage *urlImage;
 
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
+
 - (void).cxx_destruct;
 - (id)appIconImage;
 - (id)contactImage;
@@ -124,5 +126,9 @@
 - (int)type;
 - (id)urlImage;
 - (void)writeTo:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Cards.framework/Cards
+
++ (id)imageWithData:(id)arg1;
 
 @end

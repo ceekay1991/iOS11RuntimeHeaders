@@ -15,6 +15,7 @@
 @property (nonatomic) unsigned long long inputPrimitiveTopology;
 @property (nonatomic, copy) NSString *label;
 @property (nonatomic) unsigned long long maxTessellationFactor;
+@property (nonatomic) unsigned long long rasterSampleCount;
 @property (getter=isRasterizationEnabled, nonatomic) bool rasterizationEnabled;
 @property (nonatomic) unsigned long long sampleCount;
 @property (nonatomic) unsigned long long stencilAttachmentPixelFormat;

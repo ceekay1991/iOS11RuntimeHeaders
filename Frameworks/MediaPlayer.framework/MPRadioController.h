@@ -4,7 +4,6 @@
 
 @interface MPRadioController : NSObject <MPClientRadioController> {
     NSObject<OS_dispatch_queue> * _accessQueue;
-    BKSApplicationStateMonitor * _applicationStateMonitor;
     NSXPCConnection * _connection;
     bool  _hasLaunchedService;
     bool  _isRadioAvailable;

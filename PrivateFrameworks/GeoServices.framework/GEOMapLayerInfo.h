@@ -12,6 +12,7 @@
     }  _has;
     NSString * _patchURL;
     unsigned int  _timeToLiveSeconds;
+    PBUnknownFields * _unknownFields;
     unsigned int  _version;
 }
 
@@ -24,6 +25,7 @@
 @property (nonatomic) bool hasVersion;
 @property (nonatomic, retain) NSString *patchURL;
 @property (nonatomic) unsigned int timeToLiveSeconds;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned int version;
 
 - (void).cxx_destruct;
@@ -52,6 +54,7 @@
 - (void)setTimeToLiveSeconds:(unsigned int)arg1;
 - (void)setVersion:(unsigned int)arg1;
 - (unsigned int)timeToLiveSeconds;
+- (id)unknownFields;
 - (unsigned int)version;
 - (void)writeTo:(id)arg1;
 

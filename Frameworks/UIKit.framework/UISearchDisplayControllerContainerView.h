@@ -19,11 +19,11 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)adjustTopAttributeConstantByDelta:(double)arg1;
 - (id)behindView;
 - (id)bottomView;

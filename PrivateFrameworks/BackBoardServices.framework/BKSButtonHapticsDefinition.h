@@ -8,7 +8,6 @@
 }
 
 @property (getter=_BSSettings, nonatomic, readonly, retain) BSSettings *BSSettings;
-@property (nonatomic) long long clickForceThreshold;
 @property (nonatomic) long long clickHapticAssetType;
 @property (getter=isLongPressEnabled, nonatomic, readonly) long long longPressEnabled;
 @property (nonatomic) double maximumLongPressTimeInterval;
@@ -24,7 +23,6 @@
 
 - (id)_BSSettings;
 - (id)_initWithBSSettings:(id)arg1;
-- (long long)clickForceThreshold;
 - (long long)clickHapticAssetType;
 - (void)dealloc;
 - (id)description;
@@ -39,7 +37,6 @@
 - (double)minimumLongPressTimeInterval;
 - (double)minimumMultiplePressTimeInterval;
 - (bool)representsHomeButton;
-- (void)setClickForceThreshold:(long long)arg1;
 - (void)setClickHapticAssetType:(long long)arg1;
 - (void)setMaximumLongPressTimeInterval:(double)arg1;
 - (void)setMaximumMultiplePressTimeInterval:(double)arg1;

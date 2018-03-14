@@ -4,13 +4,13 @@
 
 @interface BKSAnimationFenceObserver : NSObject {
     unsigned int  _encodeCount;
-    NSMapTable * _fenceNameToDeathWatcherMap;
+    NSMapTable * _fenceNameToDeathSentinelMap;
     NSMapTable * _fenceNameToHandleNamesMap;
     NSMapTable * _handleNameToFenceNameMap;
     NSMapTable * _handleNameToTraceMap;
     unsigned int  _lastHandleName;
     NSObject<OS_dispatch_queue> * _queue;
-    NSHashTable * _validDeathWatchersTable;
+    NSHashTable * _validDeathSentinelsTable;
 }
 
 + (unsigned int)countFromEncodeIdentifier:(unsigned long long)arg1;

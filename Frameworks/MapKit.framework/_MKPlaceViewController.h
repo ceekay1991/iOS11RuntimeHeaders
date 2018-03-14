@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface _MKPlaceViewController : MKLayoutCardViewController <CNContactPickerDelegate, CNContactViewControllerDelegate, CNContactViewControllerPrivateDelegate, GEOLogContextDelegate, MKActivityViewControllerDelegate, MKETAProviderDelegate, MKETAProviderObserver, MKOfficialAppViewControllerDelegate, MKPlaceCardActionControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKPlaceCardPhotosControllerDelegate, MKPlaceCardReviewsControllerDelegate, MKPlaceDealsViewControllerDelegate, MKPlaceHeaderButtonsViewControllerDelegate, MKPlaceParentInfoViewControllerDelegate, MKPlaceVenueBrowseViewControllerDelegate, MKStackingViewControllerDelegate, MKTransitAttributionViewControllerDelegate, MKTransitDepaturesViewControllerDelegate, RadiosPreferencesDelegate, _MKInfoCardAnaylticsDelegate, _MKInfoCardController> {
+@interface _MKPlaceViewController : MKLayoutCardViewController <CNContactPickerDelegate, CNContactViewControllerDelegate, CNContactViewControllerPrivateDelegate, GEOLogContextDelegate, MKActivityViewControllerDelegate, MKETAProviderDelegate, MKETAProviderObserver, MKOfficialAppViewControllerDelegate, MKPlaceCardActionControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKPlaceCardPhotosControllerDelegate, MKPlaceCardReviewsControllerDelegate, MKPlaceDealsViewControllerDelegate, MKPlaceHeaderButtonsViewControllerDelegate, MKPlaceParentInfoViewControllerDelegate, MKPlaceVenueBrowseViewControllerDelegate, MKStackingViewControllerDelegate, MKTransitAttributionViewControllerDelegate, MKTransitDepaturesViewControllerDelegate, RadiosPreferencesDelegate, _MKInfoCardAnalyticsDelegate, _MKInfoCardController> {
     MKPlaceActionManager * _actionManager;
     NSMapTable * _additionalViewControllers;
     bool  _attemptedToCreateAddressBook;
@@ -61,7 +61,7 @@
 @property (nonatomic, readonly) bool canUseMessageId;
 @property (nonatomic, readonly) CNContact *contact;
 @property (nonatomic) CNContactNavigationController<CNContactViewControllerPrivateDelegate> *contactsNavigationController;
-@property (nonatomic) double currentHeaderMinimalModeInterpolationFactor;
+@property (nonatomic) double contentAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool disableReportAProblem;
@@ -115,6 +115,7 @@
 - (struct UIViewController { Class x1; }*)_createViewControllerForModule:(id)arg1;
 - (void)_createViewControllers:(id)arg1;
 - (void)_createViewControllersForBrand:(id)arg1;
+- (void)_createViewControllersForShortPlacecard:(id)arg1;
 - (void)_didResolveAttribution:(id)arg1;
 - (void)_dismissModalViewController;
 - (bool)_hasContactAccess;
@@ -122,7 +123,7 @@
 - (id)_mapTableKeyForSectionPosition:(long long)arg1;
 - (void)_performWhenViewHasAppeared:(id /* block */)arg1;
 - (id)_refetchedContactForCCTV:(id)arg1 error:(id*)arg2;
-- (bool)_removeMapsDataFromContact:(id)arg1;
+- (id)_removeMapsDataFromContact:(id)arg1;
 - (long long)_sectionPositionForMapTableKey:(id)arg1;
 - (void)_setDeal:(id)arg1 forYelpId:(id)arg2;
 - (void)_setDefaultViewControllers:(id)arg1;
@@ -132,6 +133,7 @@
 - (bool)_showReportAProblem;
 - (void)_showShareSheet:(id)arg1;
 - (void)_showShareSheetNoDeviceLockCheck:(id)arg1;
+- (void)_updateViewControllerStatesForOffline;
 - (void)_updateViewControllers;
 - (void)addAdditionalViewController:(id)arg1 atPosition:(long long)arg2;
 - (id)additionalViewControllersAtPosition:(long long)arg1;
@@ -147,10 +149,10 @@
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)contactViewController:(id)arg1 didDeleteContact:(id)arg2;
 - (id)contactsNavigationController;
+- (double)contentAlpha;
 - (id)createFooterActions;
 - (id)createMessageViewController;
 - (id)createRowActions;
-- (double)currentHeaderMinimalModeInterpolationFactor;
 - (int)currentMapViewTargetForAnalytics;
 - (int)currentUITargetForAnalytics;
 - (void)dealloc;
@@ -244,7 +246,7 @@
 - (void)setAllowTransitLineSelection:(bool)arg1;
 - (void)setAutomobileOptions:(id)arg1;
 - (void)setContactsNavigationController:(id)arg1;
-- (void)setCurrentHeaderMinimalModeInterpolationFactor:(double)arg1;
+- (void)setContentAlpha:(double)arg1;
 - (void)setDisableReportAProblem:(bool)arg1;
 - (void)setDistanceMonitor:(id)arg1;
 - (void)setHasCheckedDistanceAvailability:(bool)arg1;
@@ -294,11 +296,11 @@
 - (bool)showShareActionsButton;
 - (bool)showSimulateLocation;
 - (bool)showTitleBar;
-- (void)stackingViewController:(id)arg1 didLayoutViewControllers:(id)arg2 remaningViewControllers:(id)arg3;
 - (double)stackingViewController:(id)arg1 heightForSeparatorBetweenUpperViewController:(id)arg2 andLowerViewController:(id)arg3;
 - (double)stackingViewController:(id)arg1 minimumVisibleSurfacePercentForAnalyticsSelection:(id)arg2;
 - (id)stackingViewController:(id)arg1 scrollViewForViewController:(id)arg2;
 - (bool)stackingViewController:(id)arg1 showsTitleForViewController:(id)arg2;
+- (void)stackingViewControllerDidLayoutViewControllers:(id)arg1;
 - (id)transitAttributionVC;
 - (void)transitDeparturesViewController:(id)arg1 didSelectConnectionInformation:(id)arg2;
 - (void)transitDeparturesViewController:(id)arg1 didSelectTransitLine:(id)arg2 fromCell:(id)arg3;
@@ -313,6 +315,7 @@
 - (void)viewDidAppear:(bool)arg1;
 - (id)viewDidAppearBlocks;
 - (void)viewDidDisappear:(bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;

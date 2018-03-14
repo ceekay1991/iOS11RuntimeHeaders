@@ -10,12 +10,12 @@
     unsigned long long * _logSection;
     bool  _multiProviders;
     NSString * _providerIdentifier;
-    FPOperationStitcher * _stitcher;
+    FPStitchingSession * _stitcher;
 }
 
 @property (nonatomic, copy) id /* block */ actionCompletionBlock;
 @property (nonatomic, copy) FPItemManager *itemManager;
-@property (nonatomic, copy) FPOperationStitcher *stitcher;
+@property (nonatomic, copy) FPStitchingSession *stitcher;
 
 - (void).cxx_destruct;
 - (void)_dispatchToSubOperations;

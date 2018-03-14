@@ -74,6 +74,7 @@
             } __first_; 
         } __r_; 
     }  _currentStyleName;
+    double  _depthNear;
     double  _desiredZoomScale;
     VKDetachedNavGestureCameraBehavior * _detachedGestureBehavior;
     struct Spring<double, 1, md::SpringType::Linear> { 
@@ -155,6 +156,10 @@
         } _roll; 
     }  _lastCalculatedCameraFrame;
     unsigned long long  _lastTargetStyleIdentifier;
+    struct { 
+        double latitude; 
+        double longitude; 
+    }  _locationCoordinate;
     unsigned char  _maneuversToFrame;
     double  _maxCameraHeight;
     struct Unit<RadianUnitDescription, double> { 
@@ -209,6 +214,10 @@
         float _e[2]; 
     }  _puckScreenPosition;
     bool  _rotating;
+    struct PolylineCoordinate { 
+        unsigned int index; 
+        float offset; 
+    }  _routeCoordinate;
     struct Coordinate3D<Radians, double> { 
         struct Unit<RadianUnitDescription, double> { 
             double _value; 
@@ -220,7 +229,6 @@
             double _value; 
         } altitude; 
     }  _routeFocusCoordinate;
-    GEORouteMatch * _routeMatch;
     VKSceneConfiguration * _sceneConfiguration;
     VKScreenCanvas<VKInteractiveMap><VKMapDataAccess> * _screenCanvas;
     struct Spring<double, 2, md::SpringType::Linear> { 
@@ -236,6 +244,7 @@
         double _kSpring; 
         double _kDamper; 
     }  _screenPositionSpring;
+    bool  _sentZoomNotification;
     VKTimedAnimation * _snapHeadingAnimation;
     VKTimedAnimation * _snapPitchAnimation;
     unsigned char  _styleManeuversToFrame;
@@ -314,8 +323,7 @@
 - (void)_snapPitch;
 - (void)_updateDebugOverlay;
 - (void)_updateDebugText;
-- (void)_updateObserverOnZoom:(bool)arg1 couldZoomIn:(bool)arg2 couldZoomOut:(bool)arg3;
-- (void)_updateRouteMatch;
+- (void)_updateObserverCouldZoomIn:(bool)arg1 couldZoomOut:(bool)arg2;
 - (void)_updateSceneStyles:(bool)arg1;
 - (bool)_updateSprings:(double)arg1;
 - (void)_updateStyles;
@@ -343,7 +351,7 @@
 - (void)edgeInsetsWillBeginAnimating;
 - (double)heading;
 - (id)init;
-- (id)initWithTaskContext:(struct shared_ptr<md::TaskContext> { struct TaskContext {} *x1; struct __shared_weak_count {} *x2; })arg1;
+- (id)initWithTaskContext:(struct shared_ptr<md::TaskContext> { struct TaskContext {} *x1; struct __shared_weak_count {} *x2; })arg1 device:(struct Device { int x1; struct shared_ptr<ggl::Device> { struct Device {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; struct unique_ptr<md::SharedDeviceResources, std::__1::default_delete<md::SharedDeviceResources> > { struct __compressed_pair<md::SharedDeviceResources *, std::__1::default_delete<md::SharedDeviceResources> > { struct SharedDeviceResources {} *x_1_2_1; } x_3_1_1; } x3; }*)arg2;
 - (bool)isGesturing;
 - (bool)isPitchEnabled;
 - (bool)isRotateEnabled;
@@ -355,6 +363,7 @@
 - (double)minZoomHeight;
 - (double)minZoomScale;
 - (double)minimumZoomLevel;
+- (void)navContextCameraHeadingOverrideDidChange:(id)arg1;
 - (void)navContextStateDidChange:(id)arg1;
 - (double)pitch;
 - (void)puckAnimator:(id)arg1 runAnimation:(id)arg2;

@@ -35,6 +35,7 @@
     int  _maxManeuverTypeSupported;
     int  _maxRouteIncidentSupported;
     unsigned int  _maxTrafficSpeedSupported;
+    GEOLocalTime * _requestTime;
     bool  _routeOptionsSupported;
     bool  _snapToClosestStopSupported;
     bool  _supportsGuidanceEvents;
@@ -69,6 +70,7 @@
 @property (nonatomic) bool hasMaxManeuverTypeSupported;
 @property (nonatomic) bool hasMaxRouteIncidentSupported;
 @property (nonatomic) bool hasMaxTrafficSpeedSupported;
+@property (nonatomic, readonly) bool hasRequestTime;
 @property (nonatomic) bool hasRouteOptionsSupported;
 @property (nonatomic) bool hasSnapToClosestStopSupported;
 @property (nonatomic) bool hasSupportsGuidanceEvents;
@@ -83,6 +85,7 @@
 @property (nonatomic) int maxManeuverTypeSupported;
 @property (nonatomic) int maxRouteIncidentSupported;
 @property (nonatomic) unsigned int maxTrafficSpeedSupported;
+@property (nonatomic, retain) GEOLocalTime *requestTime;
 @property (nonatomic) bool routeOptionsSupported;
 @property (nonatomic) bool snapToClosestStopSupported;
 @property (nonatomic) bool supportsGuidanceEvents;
@@ -129,6 +132,7 @@
 - (bool)hasMaxManeuverTypeSupported;
 - (bool)hasMaxRouteIncidentSupported;
 - (bool)hasMaxTrafficSpeedSupported;
+- (bool)hasRequestTime;
 - (bool)hasRouteOptionsSupported;
 - (bool)hasSnapToClosestStopSupported;
 - (bool)hasSupportsGuidanceEvents;
@@ -148,6 +152,7 @@
 - (unsigned int)maxTrafficSpeedSupported;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
+- (id)requestTime;
 - (bool)routeOptionsSupported;
 - (void)setAbAssignInfo:(id)arg1;
 - (void)setAppMajorVersion:(id)arg1;
@@ -179,6 +184,7 @@
 - (void)setMaxManeuverTypeSupported:(int)arg1;
 - (void)setMaxRouteIncidentSupported:(int)arg1;
 - (void)setMaxTrafficSpeedSupported:(unsigned int)arg1;
+- (void)setRequestTime:(id)arg1;
 - (void)setRouteOptionsSupported:(bool)arg1;
 - (void)setSnapToClosestStopSupported:(bool)arg1;
 - (void)setSupportsGuidanceEvents:(bool)arg1;

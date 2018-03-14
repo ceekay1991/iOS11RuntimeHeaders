@@ -12,5 +12,6 @@
 - (void)setupLayoutSegments;
 - (double)spaceKeyFontSize;
 - (struct CGPoint { double x1; double x2; })spaceKeyTextOffset;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })symbolFrameInsets;
 
 @end

@@ -21,6 +21,7 @@
 + (id)exportedInterface;
 + (id)instantiateViewControllerWithInputItems:(id)arg1 connectionHandler:(id /* block */)arg2;
 + (id)serviceViewControllerInterface;
++ (bool)shouldPropagateAppearanceCustomizations;
 
 - (void).cxx_destruct;
 - (void)_cancelPendingExtensionRequests;

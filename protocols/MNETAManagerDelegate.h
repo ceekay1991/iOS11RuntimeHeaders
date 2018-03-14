@@ -12,7 +12,6 @@
 - (void)etaManager:(MNETAManager *)arg1 updatedTrafficForETARoute:(GEOETARoute *)arg2 from:(unsigned int)arg3 to:(unsigned int)arg4;
 - (void)etaManager:(MNETAManager *)arg1 willSendETARequest:(GEOETATrafficUpdateRequest *)arg2;
 - (void)etaManagerUpdatedETATime:(MNETAManager *)arg1;
-- (void)etaManagerUpdatedTrafficIncidents:(MNETAManager *)arg1;
 
 @optional
 

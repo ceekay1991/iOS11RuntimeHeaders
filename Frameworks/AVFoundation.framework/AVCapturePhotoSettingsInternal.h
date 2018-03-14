@@ -8,6 +8,7 @@
     NSArray * adjustedPhotoFilters;
     bool  autoDualCameraFusionEnabled;
     bool  autoStillImageStabilizationEnabled;
+    bool  burstQualityCaptureEnabled;
     bool  cameraCalibrationDataDeliveryEnabled;
     bool  depthDataDeliveryEnabled;
     bool  depthDataFiltered;

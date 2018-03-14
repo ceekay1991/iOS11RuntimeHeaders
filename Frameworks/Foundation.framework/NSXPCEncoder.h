@@ -13,6 +13,7 @@
         unsigned long long dataSize; 
         char *data; 
         bool isVM; 
+        bool isStack; 
     }  _encoder;
     bool  _finished;
     unsigned long long  _genericIndex;
@@ -24,8 +25,6 @@
 @property NSXPCConnection *_connection;
 @property <NSXPCEncoderDelegate> *delegate;
 
-+ (id)_dataWithXPCObject:(id)arg1;
-
 - (void)_checkObject:(id)arg1;
 - (id)_connection;
 - (void)_encodeArrayOfObjects:(id)arg1 forKey:(id)arg2;
@@ -33,6 +32,7 @@
 - (void)_encodeInvocation:(id)arg1 isReply:(bool)arg2 into:(id)arg3;
 - (void)_encodeInvocationObjectArgumentsOnly:(id*)arg1 count:(unsigned long long)arg2 typeString:(const char *)arg3 selector:(SEL)arg4 isReply:(bool)arg5 into:(id)arg6;
 - (void)_encodeObject:(id)arg1;
+- (void)_encodeUnkeyedObject:(id)arg1;
 - (id)_newRootXPCObject;
 - (id)_replaceObject:(id)arg1;
 - (void)_startTopLevelDictionary;
@@ -56,6 +56,7 @@
 - (void)encodeValueOfObjCType:(const char *)arg1 at:(const void*)arg2;
 - (void)encodeXPCObject:(id)arg1 forKey:(id)arg2;
 - (id)init;
+- (id)initWithStackSpace:(char *)arg1 size:(unsigned long long)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)set_connection:(id)arg1;
 

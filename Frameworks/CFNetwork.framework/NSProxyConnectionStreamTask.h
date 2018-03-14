@@ -28,7 +28,7 @@
 - (void)cancel;
 - (bool)dataAvailableForReading;
 - (void)dealloc;
-- (id)initWithHost:(id)arg1 port:(unsigned short)arg2 queue:(id)arg3;
+- (id)initWithHost:(id)arg1 port:(unsigned short)arg2 queue:(id)arg3 configuration:(id)arg4;
 - (id)inputStream;
 - (id)outputStream;
 - (void)read:(unsigned long long)arg1 handler:(id /* block */)arg2;

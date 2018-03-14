@@ -5,6 +5,7 @@
 @interface GEODownloadMetadata : PBCodable <NSCopying> {
     NSString * _etag;
     double  _timestamp;
+    PBUnknownFields * _unknownFields;
     NSString * _url;
 }
 
@@ -12,6 +13,7 @@
 @property (nonatomic, readonly) bool hasEtag;
 @property (nonatomic, readonly) bool hasUrl;
 @property (nonatomic) double timestamp;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSString *url;
 
 - (void).cxx_destruct;
@@ -30,6 +32,7 @@
 - (void)setTimestamp:(double)arg1;
 - (void)setUrl:(id)arg1;
 - (double)timestamp;
+- (id)unknownFields;
 - (id)url;
 - (void)writeTo:(id)arg1;
 

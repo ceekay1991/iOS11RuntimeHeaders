@@ -17,7 +17,9 @@
 + (id)predicateForEventsWithEndInDateRangeFrom:(id)arg1 to:(id)arg2;
 + (id)predicateForEventsWithIdentifierValue:(id)arg1;
 + (id)predicateForEventsWithIntegerValue:(long long)arg1;
++ (id)predicateForEventsWithNoSource;
 + (id)predicateForEventsWithQuantityValue:(id)arg1;
++ (id)predicateForEventsWithSourceDeviceIDs:(id)arg1;
 + (id)predicateForEventsWithSourceID:(id)arg1;
 + (id)predicateForEventsWithSourceID:(id)arg1 bundleID:(id)arg2;
 + (id)predicateForEventsWithSourceID:(id)arg1 bundleID:(id)arg2 groupIDs:(id)arg3;

@@ -33,6 +33,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (bool)_canDrawContent;
 - (bool)_didSelectEntry:(id)arg1 atIndex:(long long)arg2;
 - (bool)_selectEntry:(id)arg1 atIndex:(long long)arg2;
@@ -43,7 +44,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)backgroundColor;
 - (bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (double)cachedDisplayHighlightedIndex;

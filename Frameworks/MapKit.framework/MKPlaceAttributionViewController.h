@@ -3,7 +3,7 @@
  */
 
 @interface MKPlaceAttributionViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, MKPlaceAttributionCellDelegate, MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate> {
-    <_MKInfoCardAnaylticsDelegate> * _analyticsDelegate;
+    <_MKInfoCardAnalyticsDelegate> * _analyticsDelegate;
     _MKMapItemAttribution * _attribution;
     MKPlaceAttributionCell * _attributionCell;
     NSAttributedString * _attributionString;
@@ -12,7 +12,7 @@
     NSArray * _urlStrings;
 }
 
-@property (nonatomic) <_MKInfoCardAnaylticsDelegate> *analyticsDelegate;
+@property (nonatomic) <_MKInfoCardAnalyticsDelegate> *analyticsDelegate;
 @property (nonatomic, retain) _MKMapItemAttribution *attribution;
 @property (retain) MKPlaceAttributionCell *attributionCell;
 @property (nonatomic, copy) NSAttributedString *attributionString;
@@ -29,7 +29,6 @@
 - (id)attribution;
 - (id)attributionCell;
 - (id)attributionString;
-- (double)extraHeightToReserveInLayout;
 - (id)infoAttributionString;
 - (void)infoCardThemeChanged:(id)arg1;
 - (void)loadView;
@@ -43,6 +42,8 @@
 - (void)setMapItem:(id)arg1;
 - (void)setResizableViewsDisabled:(bool)arg1;
 - (void)setUrlStrings:(id)arg1;
+- (void)updateLogo;
 - (id)urlStrings;
+- (void)viewDidLoad;
 
 @end

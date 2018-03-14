@@ -8,13 +8,11 @@
     NSMutableSet * _cellAutoAssociationTokens;
     struct __CTServerConnection { } * _ctServerConnection;
     bool  _dataContextActive;
-    NSMutableSet * _disableFastDormancyTokens;
     NSRecursiveLock * _lock;
     RadiosPreferences * _radiosPreferences;
     bool  _registered;
     void * _serverConnection;
     bool  _shouldBringUpDataContext;
-    void * _suspendDormancyAssertion;
     NSMutableSet * _wiFiAutoAssociationTokens;
 }
 
@@ -23,14 +21,12 @@
 @property (nonatomic) struct __CTServerConnection { }*_ctServerConnection;
 @property (nonatomic, retain) RadiosPreferences *_radiosPreferences;
 @property (nonatomic) void*_serverConnection;
-@property (nonatomic) void*_suspendDormancyAssertion;
 @property (nonatomic, readonly) bool autoAssociateCellular;
 @property (nonatomic, readonly) bool autoAssociateWiFi;
 @property (nonatomic, retain) NSMutableSet *cellularAutoAssociationTokens;
 @property (nonatomic, readonly) bool dataConnectionExists;
 @property (nonatomic) bool dataContextActive;
 @property (nonatomic, readonly) bool disableFastDormancy;
-@property (nonatomic, retain) NSMutableSet *disableFastDormancyTokens;
 @property (nonatomic, readonly) bool has2GDataConnection;
 @property (nonatomic, readonly) bool hasLTEDataConnection;
 @property (nonatomic, readonly) bool inValidSIMState;
@@ -55,9 +51,7 @@
 @property (nonatomic, readonly) bool willTryToAutoAssociateWiFiNetwork;
 @property (nonatomic, readonly) bool willTryToSearchForWiFiNetwork;
 
-- (void)__adjustFastDormancyTokens;
 - (void)_adjustCellularAutoAssociation;
-- (void)_adjustFastDormancyTokens;
 - (int)_applySkipCount;
 - (void*)_cellAssertion;
 - (void)_createCTServerConnection;
@@ -69,8 +63,6 @@
 - (id)_radiosPreferences;
 - (void)_releaseCTServerConnection;
 - (void*)_serverConnection;
-- (void)_setFastDormancySuspended:(bool)arg1;
-- (void*)_suspendDormancyAssertion;
 - (void)addCellularAutoAssociationClientToken:(id)arg1;
 - (void)addFastDormancyDisableToken:(id)arg1;
 - (void)addWiFiAutoAssociationClientToken:(id)arg1;
@@ -83,7 +75,6 @@
 - (bool)dataContextActive;
 - (void)dealloc;
 - (bool)disableFastDormancy;
-- (id)disableFastDormancyTokens;
 - (bool)has2GDataConnection;
 - (bool)hasLTEDataConnection;
 - (bool)inValidSIMState;
@@ -107,7 +98,6 @@
 - (void)setCellularAutoAssociationTokens:(id)arg1;
 - (void)setDataConnectionActive:(bool)arg1;
 - (void)setDataContextActive:(bool)arg1;
-- (void)setDisableFastDormancyTokens:(id)arg1;
 - (void)setLock:(id)arg1;
 - (void)setRegistered:(bool)arg1;
 - (void)setShouldBringUpDataContext:(bool)arg1;
@@ -117,7 +107,6 @@
 - (void)set_ctServerConnection:(struct __CTServerConnection { }*)arg1;
 - (void)set_radiosPreferences:(id)arg1;
 - (void)set_serverConnection:(void*)arg1;
-- (void)set_suspendDormancyAssertion:(void*)arg1;
 - (bool)shouldBringUpDataContext;
 - (void)showNetworkOptions;
 - (void)showSIMUnlock;

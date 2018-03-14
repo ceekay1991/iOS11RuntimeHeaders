@@ -22,6 +22,6 @@
 - (void)unregisterBundleUnit:(void *)arg1 options:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 9: unsigned int, unsigned int, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (void)unregisterExtensionPoint:(void *)arg1 withVersion:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 9: NSString *, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (void)updateContainerUnit:(void *)arg1 completionHandler:(void *)arg2; // needs 2 arg types, found 8: unsigned int, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSData *, NSError *, void*
-- (void)updateRecordForApp:(void *)arg1 withSINF:(void *)arg2 iTunesMetadata:(void *)arg3 completionHandler:(void *)arg4; // needs 4 arg types, found 10: NSString *, NSDictionary *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
+- (void)updateRecordForApp:(void *)arg1 withSINF:(void *)arg2 iTunesMetadata:(void *)arg3 placeholderMetadata:(void *)arg4 sendNotification:(void *)arg5 completionHandler:(void *)arg6; // needs 6 arg types, found 12: NSString *, NSDictionary *, NSDictionary *, NSDictionary *, int, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 
 @end

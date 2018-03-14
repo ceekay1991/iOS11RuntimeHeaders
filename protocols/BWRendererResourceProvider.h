@@ -7,7 +7,7 @@
 
 - (BWColorLookupCache *)provideColorLookupCache;
 - (BWCoreImageFilterRenderer *)provideCoreImageFilterRenderer;
-- (BWStillImageFgBgColorCubeRenderer *)provideMetalFilterRenderer;
+- (BWMetalColorCubeRenderer *)provideMetalFilterRenderer;
 - (BWStillImageMetalBlurMapRenderer *)provideStillImageMetalBlurMapRenderer;
 - (BWStillImageMetalSDOFRenderer *)provideStillImageMetalSDOFRenderer;
 - (BWStreamingCVAFilterRenderer *)provideStreamingCVAFilterRenderer;

@@ -36,7 +36,6 @@
     unsigned int  _totalChangeCount;
     id /* block */  _unsatisfiabilityHandler;
     unsigned long long  _variableChangeCount;
-    NSISVariableChangeTracker * _variableChangeTracker;
     NSObject<NSObservable> * _variableChangeTransactionSignal;
     int  _variableDelegateCallsDisabledCount;
     NSMapTable * _variableObservables;
@@ -73,10 +72,8 @@
 - (void)_dirtyListRemoveObservable:(id)arg1;
 - (bool)_disambiguateFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1 forAmbiguousItem:(id)arg2 withOldFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
 - (void)_flushPendingRemovals;
-- (void)_noteValueOfVariable:(id)arg1 changedFrom:(double)arg2;
 - (bool)_optimizeIfNotDisabled;
 - (unsigned long long)_optimizeWithoutRebuilding;
-- (void)_sendSolutionDidChange;
 - (bool)_variableIsAbsentExceptForObjectiveRow:(id)arg1;
 - (void)addExpression:(id)arg1 priority:(double)arg2 times:(double)arg3 toObjectiveRowWithHead:(id)arg4 body:(id)arg5;
 - (void)addExpression:(id)arg1 times:(double)arg2 toRowWithHead:(id)arg3 body:(id)arg4;
@@ -89,7 +86,6 @@
 - (id)candidateRedundantConstraints;
 - (void)changeVariableToBeOptimized:(id)arg1 fromPriority:(double)arg2 toPriority:(double)arg3;
 - (id)chooseHeadForRowBody:(id)arg1 outNewToEngine:(bool*)arg2;
-- (id)chooseOutgoingRowHeadForIncomingRowHead:(id)arg1 resolveTiesRandomly:(bool)arg2;
 - (void)constraintDidChangeSuchThatMarker:(id)arg1 shouldBeReplacedByMarkerPlusDelta:(double)arg2;
 - (id)constraints;
 - (id)constraintsAffectingValueOfVariable:(id)arg1;
@@ -112,6 +108,7 @@
 - (bool)hasObservableForVariable:(id)arg1;
 - (bool)hasValue:(double*)arg1 forExpression:(id)arg2;
 - (bool)hasValue:(double*)arg1 forVariable:(id)arg2;
+- (bool)hasValueForPossiblyDeallocatedVariable:(id)arg1;
 - (id)headForObjectiveRow;
 - (bool)incoming:(id*)arg1 andOutgoing:(id*)arg2 rowHeadsThatMakeValueAmbiguousForVariable:(id)arg3;
 - (id)init;
@@ -120,7 +117,6 @@
 - (bool)isTrackingVariableChanges;
 - (id)markerForBrokenConstraintWithNegativeErrorVar:(id)arg1;
 - (id)markerForBrokenConstraintWithPositiveErrorVar:(id)arg1;
-- (unsigned long long)minimizeConstantInObjectiveRowWithHead:(id)arg1;
 - (id)negativeErrorVarForBrokenConstraintWithMarker:(id)arg1;
 - (id)nsis_descriptionOfVariable:(id)arg1;
 - (bool)nsis_shouldIntegralizeVariable:(id)arg1;
@@ -134,7 +130,6 @@
 - (void)performPendingChangeNotifications;
 - (void)performPendingChangeNotificationsForItem:(id)arg1;
 - (unsigned long long)pivotCount;
-- (void)pivotToMakeBodyVar:(id)arg1 newHeadOfRowWithHead:(id)arg2 andDropRow:(bool)arg3;
 - (id)positiveErrorVarForBrokenConstraintWithMarker:(id)arg1;
 - (void)rawRemoveRowWithHead:(id)arg1;
 - (void)rawSetRowWithHead:(id)arg1 body:(id)arg2;
@@ -143,21 +138,12 @@
 - (void)removeBodyVarFromAllRows:(id)arg1;
 - (void)removeConstraintWithMarker:(id)arg1;
 - (void)removeObservableForVariable:(id)arg1;
-- (void)removeRowWithHead:(id)arg1;
 - (void)removeVariableToBeOptimized:(id)arg1 priority:(double)arg2;
 - (void)replaceMarker:(id)arg1 withMarkerPlusCoefficient:(double)arg2 timesVariable:(id)arg3;
 - (unsigned long long)replayCommandsData:(id)arg1 verifyingIntegrity:(bool)arg2;
 - (bool)revertsAfterUnsatisfiabilityHandler;
-- (id)rowBodyForHead:(id)arg1;
-- (id)rowBodyForNonObjectiveHead:(id)arg1;
-- (id)rowBodyForObjectiveHead:(id)arg1;
-- (void)rowCrossIndexNoteBodyVariable:(id)arg1 wasAddedToRowWithHead:(id)arg2;
-- (void)rowCrossIndexNoteBodyVariable:(id)arg1 wasRemovedFromRowWithHead:(id)arg2;
-- (void)rowCrossIndexNoteDroppedBodyVar:(id)arg1;
-- (id)rowHeadsForRowsContainingBodyVar:(id)arg1;
 - (id)rows;
 - (id)rowsCrossIndex;
-- (void)sendChangeNotificationForVariable:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEngineScalingCoefficients:(struct CGSize { double x1; double x2; })arg1;
 - (void)setHeadForObjectiveRow:(id)arg1;
@@ -166,14 +152,12 @@
 - (void)setNegativeErrorVar:(id)arg1 forBrokenConstraintWithMarker:(id)arg2;
 - (void)setPositiveErrorVar:(id)arg1 forBrokenConstraintWithMarker:(id)arg2;
 - (void)setRevertsAfterUnsatisfiabilityHandler:(bool)arg1;
-- (void)setRowWithHead:(id)arg1 body:(id)arg2;
 - (void)setRows:(id)arg1;
 - (void)setRowsCrossIndex:(id)arg1;
 - (void)setShouldIntegralize:(bool)arg1;
 - (void)setVariablesWithIntegralizationViolations:(id)arg1;
 - (void)setVariablesWithValueRestrictionViolations:(id)arg1;
 - (bool)shouldIntegralize;
-- (void)substituteOutAllOccurencesOfBodyVar:(id)arg1 withExpression:(id)arg2;
 - (bool)tryAddingDirectly:(id)arg1;
 - (bool)tryToAddConstraintWithMarker:(id)arg1 expression:(id)arg2 integralizationAdjustment:(double)arg3 mutuallyExclusiveConstraints:(id*)arg4;
 - (bool)tryToChangeConstraintSuchThatMarker:(id)arg1 isReplacedByMarkerPlusDelta:(double)arg2 undoHandler:(id /* block */)arg3;

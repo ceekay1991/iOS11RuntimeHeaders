@@ -5,7 +5,6 @@
 @interface GEOLogMsgState : PBCodable <NSCopying> {
     GEOLogMsgStateApplicationIdentifier * _applicationIdentifier;
     GEOLogMsgStateCarPlay * _carPlay;
-    GEOLogMsgStateCohortsSession * _cohortsSession;
     GEOLogMsgStateDeviceBase * _deviceBase;
     GEOLogMsgStateDeviceConnection * _deviceConnection;
     GEOLogMsgStateDeviceIdentifier * _deviceIdentifier;
@@ -40,7 +39,6 @@
 
 @property (nonatomic, retain) GEOLogMsgStateApplicationIdentifier *applicationIdentifier;
 @property (nonatomic, retain) GEOLogMsgStateCarPlay *carPlay;
-@property (nonatomic, retain) GEOLogMsgStateCohortsSession *cohortsSession;
 @property (nonatomic, retain) GEOLogMsgStateDeviceBase *deviceBase;
 @property (nonatomic, retain) GEOLogMsgStateDeviceConnection *deviceConnection;
 @property (nonatomic, retain) GEOLogMsgStateDeviceIdentifier *deviceIdentifier;
@@ -50,7 +48,6 @@
 @property (nonatomic, retain) GEOLogMsgStateFlyover *flyover;
 @property (nonatomic, readonly) bool hasApplicationIdentifier;
 @property (nonatomic, readonly) bool hasCarPlay;
-@property (nonatomic, readonly) bool hasCohortsSession;
 @property (nonatomic, readonly) bool hasDeviceBase;
 @property (nonatomic, readonly) bool hasDeviceConnection;
 @property (nonatomic, readonly) bool hasDeviceIdentifier;
@@ -103,7 +100,6 @@
 - (int)StringAsStateType:(id)arg1;
 - (id)applicationIdentifier;
 - (id)carPlay;
-- (id)cohortsSession;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -117,7 +113,6 @@
 - (id)flyover;
 - (bool)hasApplicationIdentifier;
 - (bool)hasCarPlay;
-- (bool)hasCohortsSession;
 - (bool)hasDeviceBase;
 - (bool)hasDeviceConnection;
 - (bool)hasDeviceIdentifier;
@@ -165,7 +160,6 @@
 - (id)route;
 - (void)setApplicationIdentifier:(id)arg1;
 - (void)setCarPlay:(id)arg1;
-- (void)setCohortsSession:(id)arg1;
 - (void)setDeviceBase:(id)arg1;
 - (void)setDeviceConnection:(id)arg1;
 - (void)setDeviceIdentifier:(id)arg1;

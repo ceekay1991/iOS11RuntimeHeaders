@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UIFallbackPresentationViewController : UIViewController {
+@interface _UIFallbackPresentationViewController : UIApplicationRotationFollowingController {
     bool  _hasDismissCompletionHandler;
     bool  _hasPreservedKeyboardInputViews;
     id /* block */  _presentationPreparationBlock;
@@ -29,9 +29,6 @@
 - (void)setHasPreservedKeyboardInputViews:(bool)arg1;
 - (void)setPresentationPreparationBlock:(id /* block */)arg1;
 - (void)setRotationDecider:(id)arg1;
-- (bool)shouldAutorotate;
-- (bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
-- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;
 
 @end

@@ -5,6 +5,7 @@
 @interface SSMetricsLoadURLEvent : SSMetricsMutableEvent
 
 @property (nonatomic, retain) NSString *DNSServers;
+@property (nonatomic, retain) NSString *TIDState;
 @property (nonatomic, retain) NSString *clientCorrelationKey;
 @property (nonatomic, retain) NSString *clientError;
 @property (nonatomic) double connectionEndTime;
@@ -19,13 +20,17 @@
 @property (nonatomic) double domainLookupStartTime;
 @property (nonatomic, retain) NSString *edgeNodeCacheStatus;
 @property (nonatomic) double fetchStartTime;
+@property (nonatomic, retain) NSArray *networkQualityReports;
+@property (nonatomic, retain) NSString *originalApp;
 @property (nonatomic) unsigned long long redirectCount;
 @property (nonatomic) double redirectEndTime;
 @property (nonatomic) double redirectStartTime;
+@property (nonatomic) unsigned long long requestMessageSize;
 @property (nonatomic) double requestStartTime;
 @property (nonatomic, retain) NSString *requestURL;
 @property (nonatomic, retain) NSString *resolvedIPAddress;
 @property (nonatomic) double responseEndTime;
+@property (nonatomic) unsigned long long responseMessageSize;
 @property (nonatomic) double responseStartTime;
 @property (nonatomic) double secureConnectionStartTime;
 @property (nonatomic) long long statusCode;
@@ -38,10 +43,14 @@
 + (void)_setTimingMetricsWindowStartTime:(id)arg1;
 + (id)_timingMetricsWindowStartTime;
 + (bool)shouldCollectTimingData;
++ (bool)shouldCollectTimingDataWithSessionDelegate:(id)arg1;
++ (bool)shouldCollectTimingDataWithSessionDuration:(double)arg1 samplingPercentage:(double)arg2;
 + (bool)shouldLogTimingMetrics;
 + (bool)shouldReportCachedEvent;
++ (bool)shouldReportCachedEventWithSamplingPercentage:(double)arg1;
 
 - (id)DNSServers;
+- (id)TIDState;
 - (id)clientCorrelationKey;
 - (id)clientError;
 - (double)connectionEndTime;
@@ -58,13 +67,17 @@
 - (id)edgeNodeCacheStatus;
 - (double)fetchStartTime;
 - (id)init;
+- (id)networkQualityReports;
+- (id)originalApp;
 - (unsigned long long)redirectCount;
 - (double)redirectEndTime;
 - (double)redirectStartTime;
+- (unsigned long long)requestMessageSize;
 - (double)requestStartTime;
 - (id)requestURL;
 - (id)resolvedIPAddress;
 - (double)responseEndTime;
+- (unsigned long long)responseMessageSize;
 - (double)responseStartTime;
 - (double)secureConnectionStartTime;
 - (void)setClientCorrelationKey:(id)arg1;
@@ -82,16 +95,21 @@
 - (void)setDomainLookupStartTime:(double)arg1;
 - (void)setEdgeNodeCacheStatus:(id)arg1;
 - (void)setFetchStartTime:(double)arg1;
+- (void)setNetworkQualityReports:(id)arg1;
+- (void)setOriginalApp:(id)arg1;
 - (void)setRedirectCount:(unsigned long long)arg1;
 - (void)setRedirectEndTime:(double)arg1;
 - (void)setRedirectStartTime:(double)arg1;
+- (void)setRequestMessageSize:(unsigned long long)arg1;
 - (void)setRequestStartTime:(double)arg1;
 - (void)setRequestURL:(id)arg1;
 - (void)setResolvedIPAddress:(id)arg1;
 - (void)setResponseEndTime:(double)arg1;
+- (void)setResponseMessageSize:(unsigned long long)arg1;
 - (void)setResponseStartTime:(double)arg1;
 - (void)setSecureConnectionStartTime:(double)arg1;
 - (void)setStatusCode:(long long)arg1;
+- (void)setTIDState:(id)arg1;
 - (void)setXPSamplingForced:(bool)arg1;
 - (void)setXPSamplingPercentageCachedResponses:(double)arg1;
 - (void)setXPSamplingPercentageUsers:(double)arg1;

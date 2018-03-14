@@ -16,6 +16,8 @@
 @property (nonatomic, readonly) double radius;
 @property (nonatomic) int referenceFrame;
 
+// Image: /System/Library/Frameworks/CoreLocation.framework/CoreLocation
+
 + (bool)supportsSecureCoding;
 
 - (void)_encodeWithCoder:(id)arg1;
@@ -45,5 +47,9 @@
 - (void)setNotifyOnExit:(bool)arg1;
 - (void)setOnBehalfOfBundleId:(id)arg1;
 - (void)setReferenceFrame:(int)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
+
++ (id)regionWithLocations:(id)arg1 andIdentifier:(id)arg2;
 
 @end

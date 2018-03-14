@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
  */
 
-@interface SSPurchaseResponse : NSObject <SSXPCCoding> {
+@interface SSPurchaseResponse : NSObject <NSCoding, SSXPCCoding> {
     bool  _cancelsPurchaseBatch;
     NSArray * _downloadIdentifiers;
     NSError * _error;
@@ -34,7 +34,9 @@
 - (id)downloadIdentifiers;
 - (id)downloadMetadataForItemIdentifier:(long long)arg1;
 - (id)downloadsMetadata;
+- (void)encodeWithCoder:(id)arg1;
 - (id)error;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
 - (id)purchase;
 - (double)requestStartTime;

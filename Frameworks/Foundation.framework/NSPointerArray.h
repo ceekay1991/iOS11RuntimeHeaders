@@ -44,4 +44,19 @@
 - (id)dbg_objectAtIndex:(unsigned long long)arg1;
 - (void)dbg_replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
+- (void)tsu_enumerateNonNullPointersUsingBlock:(id /* block */)arg1;
+- (void)tsu_insertRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotoEditSupport.framework/PhotoEditSupport
+
+- (id)bl_firstObject;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
+- (void)tsu_enumerateNonNullPointersUsingBlock:(id /* block */)arg1;
+- (unsigned long long)tsu_indexOfPointer:(void*)arg1;
+- (void)tsu_insertRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+
 @end

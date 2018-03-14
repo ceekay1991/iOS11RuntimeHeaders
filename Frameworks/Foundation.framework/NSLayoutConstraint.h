@@ -183,6 +183,14 @@
 + (id)avkit_constraintsFromLeadingAndTrailingEdgesOfItem:(id)arg1 toEdgesOfItem:(id)arg2;
 + (id)avkit_constraintsFromTopAndBottomEdgesOfItem:(id)arg1 toEdgesOfItem:(id)arg2;
 
+// Image: /System/Library/Frameworks/QuickLook.framework/QuickLook
+
+- (id)ql_activatedConstraint;
+
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
++ (void)_sf_setConstraints:(id)arg1 active:(bool)arg2;
+
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (bool)_UIWantsMarginAttributeSupport;
@@ -203,8 +211,101 @@
 - (bool)defaultResolvedValue:(double*)arg1 forSymbolicConstant:(id)arg2 error:(id*)arg3;
 - (id)spacingMultiplier;
 
+// Image: /System/Library/PrivateFrameworks/Accessibility.framework/Frameworks/AccessibilityUIUtilities.framework/AccessibilityUIUtilities
+
++ (id)ax_constraintsToMakeView:(id)arg1 sameDimensionsAsView:(id)arg2;
+
+- (id)ax_copyWithPriority:(float)arg1;
+- (void)ax_removeFromContainer;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
+
++ (id)_gkBaselineConstraintsForViewsFontsLeadings:(id)arg1 superview:(id)arg2 options:(long long)arg3;
++ (id)_gkConstraintForView:(id)arg1 baselineAlignedUnderView:(id)arg2 offsetBy:(double)arg3;
++ (id)_gkConstraintForView:(id)arg1 centeredXInView:(id)arg2;
++ (id)_gkConstraintForView:(id)arg1 centeredYInView:(id)arg2;
++ (id)_gkConstraintForView:(id)arg1 equalsAttribute:(long long)arg2 ofView:(id)arg3;
++ (id)_gkConstraintForView:(id)arg1 withConstantHeight:(double)arg2;
++ (id)_gkConstraintForView:(id)arg1 withConstantWidth:(double)arg2;
++ (id)_gkConstraintForView:(id)arg1 withHeightDerivedFromView:(id)arg2 insetBy:(double)arg3;
++ (id)_gkConstraintForView:(id)arg1 withWidthDerivedFromView:(id)arg2 insetBy:(double)arg3;
++ (id)_gkConstraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 toItem:(id)arg4 attribute:(long long)arg5 multiplier:(double)arg6 leading:(double)arg7 fontTextStyle:(id)arg8;
++ (id)_gkConstraintsForView:(id)arg1 centeredXInView:(id)arg2 enforceMargin:(double)arg3;
++ (id)_gkConstraintsForView:(id)arg1 withinView:(id)arg2 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg3;
++ (id)_gkConstraintsForViews:(id)arg1 alignedByAttribute:(long long)arg2;
++ (id)_gkConstraintsForViews:(id)arg1 contiguouslyLaidOutVertically:(bool)arg2 overlap:(double)arg3 withinView:(id)arg4 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg5;
++ (id)_gkConstraintsForViews:(id)arg1 contiguouslyLaidOutVertically:(bool)arg2 overlap:(double)arg3 withinView:(id)arg4 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg5 applyOrthogonalConstraints:(bool)arg6;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
++ (id)hu_constraintsSizingAnchorProvider:(id)arg1 toAnchorProvider:(id)arg2;
+
+- (id)hu_constraintWithPriority:(float)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
++ (id)constraintsByAttachingView:(id)arg1 toView:(id)arg2 alongEdges:(unsigned long long)arg3 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg4;
++ (id)constraintsByAttachingView:(id)arg1 toView:(id)arg2 inCorner:(unsigned long long)arg3 offset:(struct UIOffset { double x1; double x2; })arg4;
++ (id)constraintsByCenteringAndContainingView:(id)arg1 inView:(id)arg2 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg3;
++ (id)constraintsByCenteringView:(id)arg1 withView:(id)arg2 alongAxes:(unsigned long long)arg3 offset:(struct UIOffset { double x1; double x2; })arg4;
++ (id)constraintsBySizingView:(id)arg1 toSize:(struct CGSize { double x1; double x2; })arg2;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
+- (id)updateConstraintForAspectMultiplier:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NanoMediaBridgeUI.framework/NanoMediaBridgeUI
+
+- (id)updateAndActivateWithMultiplier:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NetAppsUtilitiesUI.framework/NetAppsUtilitiesUI
+
++ (bool)naui_areConstraints:(id)arg1 equalToConstraints:(id)arg2;
++ (id)naui_constraintsByAttachingView:(id)arg1 toView:(id)arg2 alongEdges:(unsigned long long)arg3 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg4;
++ (id)naui_constraintsByAttachingView:(id)arg1 toView:(id)arg2 alongEdges:(unsigned long long)arg3 relatedBy:(long long)arg4 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg5;
++ (id)naui_constraintsByCenteringView:(id)arg1 withView:(id)arg2 alongAxes:(unsigned long long)arg3 offset:(struct UIOffset { double x1; double x2; })arg4;
++ (id)naui_constraintsBySizingView:(id)arg1 toSize:(struct CGSize { double x1; double x2; })arg2;
++ (id)naui_constraintsWithVisualFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 views:(id)arg4 label:(id)arg5;
++ (id)naui_viewsInConstraints:(id)arg1;
+
+- (id)naui_debugIdentifierWithBaseLabel:(id)arg1;
+- (bool)naui_isEqualToConstraint:(id)arg1;
+- (void)naui_setIdentifierWithLabel:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
++ (id)constraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 toItem:(id)arg4 attribute:(long long)arg5 multiplier:(double)arg6 constant:(double)arg7 priority:(float)arg8;
++ (id)ic_widthLayoutConstraintsForView:(struct UIView { Class x1; }*)arg1 minValue:(double)arg2;
++ (id)ic_widthLayoutConstraintsForView:(struct UIView { Class x1; }*)arg1 minValue:(double)arg2 maxValue:(double)arg3;
+
 // Image: /System/Library/PrivateFrameworks/Pegasus.framework/Pegasus
 
 + (id)PG_constraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 toItem:(id)arg4 attribute:(long long)arg5 multiplier:(double)arg6 constant:(double)arg7 priority:(float)arg8;
+
+// Image: /System/Library/PrivateFrameworks/PrototypeTools.framework/PrototypeTools
+
++ (id)constraintWithItem:(id)arg1 height:(double)arg2;
+
+// Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
+
++ (id)constraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 toItem:(id)arg4 attribute:(long long)arg5 multiplier:(double)arg6 constant:(double)arg7 priority:(float)arg8;
+
+// Image: /System/Library/PrivateFrameworks/ToneKit.framework/ToneKit
+
+- (void)tk_removeFromContainer;
+
+// Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
+
++ (bool)rc_areConstraints:(id)arg1 equalToConstraints:(id)arg2;
++ (id)rc_constraintsByAttachingView:(id)arg1 toView:(id)arg2 alongEdges:(unsigned long long)arg3 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg4;
++ (id)rc_constraintsByAttachingView:(id)arg1 toView:(id)arg2 alongEdges:(unsigned long long)arg3 relatedBy:(long long)arg4 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg5;
++ (id)rc_constraintsByCenteringView:(id)arg1 withView:(id)arg2 alongAxes:(unsigned long long)arg3 offset:(struct UIOffset { double x1; double x2; })arg4;
++ (id)rc_constraintsBySizingView:(id)arg1 toSize:(struct CGSize { double x1; double x2; })arg2;
++ (id)rc_constraintsWithVisualFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 views:(id)arg4 label:(id)arg5;
++ (id)rc_viewsInConstraints:(id)arg1;
+
+- (id)rc_debugIdentifierWithBaseLabel:(id)arg1;
+- (bool)rc_isEqualToConstraint:(id)arg1;
+- (void)rc_setIdentifierWithLabel:(id)arg1;
 
 @end

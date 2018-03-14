@@ -29,7 +29,7 @@
 - (void)_browsableContentEndpointChanged:(id)arg1;
 - (void)_contentItemChangedNotification:(id)arg1;
 - (bool)_contentItemWasSentToMediaRemote:(id)arg1;
-- (void)_enqueueArtworkUpdate:(id)arg1 width:(double)arg2 height:(double)arg3 withCompletion:(id /* block */)arg4;
+- (void)_enqueueArtworkUpdate:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2 withCompletion:(id /* block */)arg3;
 - (void)_enqueueArtworkUpdate:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)_handlePlaybackInitializationCompletedWithContext:(id)arg1 error:(id)arg2;
 - (id)_init;

@@ -117,6 +117,8 @@
 @property (nonatomic) double zoom;
 @property (nonatomic) bool zoomsBack;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (id)darkeningTintColor;
 + (id)settingsForPrivateStyle:(long long)arg1;
 + (id)settingsForPrivateStyle:(long long)arg1 graphicsQuality:(long long)arg2;
@@ -252,5 +254,16 @@
 - (unsigned long long)version;
 - (double)zoom;
 - (bool)zoomsBack;
+
+// Image: /System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit
+
++ (id)_materialBackdropViewSettingsWithMaterialSettings:(id)arg1 gammaOnly:(bool)arg2 captureOnly:(bool)arg3;
++ (id)materialBackdropViewSettingsWithMaterialSettings:(id)arg1;
++ (id)materialBackdropViewSettingsWithMaterialSettings:(id)arg1 captureOnly:(bool)arg2;
++ (id)materialBackdropViewSettingsWithMaterialSettings:(id)arg1 gammaOnly:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
++ (id)pkui_createTransparentSettingsFromSettings:(id)arg1;
 
 @end

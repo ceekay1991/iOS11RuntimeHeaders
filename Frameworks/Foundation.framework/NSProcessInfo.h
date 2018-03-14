@@ -23,6 +23,7 @@
 @property (readonly) int processIdentifier;
 @property (copy) NSString *processName;
 @property (readonly) unsigned long long processorCount;
+@property (nonatomic, readonly) bool safari_systemSupportsCloudKitBookmarks;
 @property (readonly) double systemUptime;
 @property (readonly, copy) NSString *userName;
 
@@ -74,6 +75,10 @@
 - (id)userHomeDirectory;
 - (id)userName;
 
+// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsFoundation.framework/DVTInstrumentsFoundation
+
++ (bool)isAppleInternal;
+
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
 - (void)_disableAutomaticTerminationWithoutSettingRelaunchable:(id)arg1;
@@ -83,8 +88,16 @@
 
 - (id)bs_jobLabel;
 
+// Image: /System/Library/PrivateFrameworks/MIME.framework/MIME
+
+- (id)mf_thermalStateObservable;
+
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
 - (bool)_navigation_isNavd;
+
+// Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
+
+- (bool)safari_systemSupportsCloudKitBookmarks;
 
 @end

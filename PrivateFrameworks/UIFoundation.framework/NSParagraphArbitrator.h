@@ -11,6 +11,10 @@
         unsigned long long location; 
         unsigned long long length; 
     }  _paragraphRange;
+    struct _NSRange { 
+        unsigned long long location; 
+        unsigned long long length; 
+    }  _previousLineRange;
     long long  _typesetterBehavior;
     id /* block */  _validateLineBreakContext;
 }
@@ -20,6 +24,7 @@
 @property unsigned long long lineBreakStrategy;
 @property (copy) id /* block */ lineWidth;
 @property struct _NSRange { unsigned long long x1; unsigned long long x2; } paragraphRange;
+@property struct _NSRange { unsigned long long x1; unsigned long long x2; } previousLineRange;
 @property long long typesetterBehavior;
 @property (copy) id /* block */ validateLineBreakContext;
 
@@ -35,12 +40,14 @@
 - (unsigned long long)lineBreakStrategy;
 - (id /* block */)lineWidth;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })paragraphRange;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })previousLineRange;
 - (void)reset;
 - (void)setAttributedString:(id)arg1;
 - (void)setHyphenationFactor:(double)arg1;
 - (void)setLineBreakStrategy:(unsigned long long)arg1;
 - (void)setLineWidth:(id /* block */)arg1;
 - (void)setParagraphRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setPreviousLineRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setTypesetterBehavior:(long long)arg1;
 - (void)setValidateLineBreakContext:(id /* block */)arg1;
 - (long long)typesetterBehavior;

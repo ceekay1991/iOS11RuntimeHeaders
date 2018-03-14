@@ -2,10 +2,14 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIScreen : NSObject <DebugHierarchyObject, UICoordinateSpace, UITraitEnvironment, _UIFocusEnvironmentInternal, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer, _UITraitEnvironmentInternal> {
+@interface UIScreen : NSObject <DebugHierarchyObject, UICoordinateSpace, UITraitEnvironment, _CRKImageLoaderDelegate, _UIFocusEnvironmentInternal, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer, _UITraitEnvironmentInternal> {
+    bool  __UIIBAlwaysProvidePeripheryInsets;
+    FBSDisplayConfiguration * __displayConfiguration;
     UIWindow<UIFocusEnvironment> * __focusedWindow;
     NSArray * _availableDisplayModes;
+    _UIScreenBoundingPathUtilities * _boundingPathUtilities;
     NSDictionary * _capabilities;
+    bool  _captured;
     struct { 
         unsigned int isKnown : 1; 
         unsigned int isSupported : 1; 
@@ -13,7 +17,6 @@
     }  _carPlayHumanPresenceStatus;
     UITraitCollection * _contentSizeCategoryTraits;
     UITraitCollection * _defaultTraitCollection;
-    FBSDisplayConfiguration * _displayConfiguration;
     _UIDragManager * _dragManager;
     _UIScreenFixedCoordinateSpace * _fixedCoordinateSpace;
     _UIFocusMovementPerformer * _focusMovementPerformer;
@@ -64,7 +67,10 @@
     bool  _wantsSoftwareDimming;
 }
 
+@property (setter=_setUIIBAlwaysProvidePeripheryInsets:, nonatomic) bool _UIIBAlwaysProvidePeripheryInsets;
 @property (setter=_setFocusedWindow:, nonatomic) UIWindow<UIFocusEnvironment> *_focusedWindow;
+@property (readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } _gkBounds;
+@property (readonly) double _gkScale;
 @property (setter=_setLastNotifiedBacklightLevel:, nonatomic) float _lastNotifiedBacklightLevel;
 @property (getter=_isPerformingSystemSnapshot, setter=_setPerformingSystemSnapshot:, nonatomic) bool _performingSystemSnapshot;
 @property (nonatomic, readonly) UIWindow *_preferredFocusedWindow;
@@ -72,8 +78,10 @@
 @property (setter=_setSoftwareDimmingWindow:, nonatomic, retain) UISoftwareDimmingWindow *_softwareDimmingWindow;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } applicationFrame;
 @property (nonatomic, readonly, copy) NSArray *availableModes;
+@property (getter=_boundingPathUtilities, setter=_setBoundingPathUtilities:, nonatomic, retain) _UIScreenBoundingPathUtilities *boundingPathUtilities;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } bounds;
 @property (nonatomic) double brightness;
+@property (getter=isCaptured, setter=_setCaptured:, nonatomic) bool captured;
 @property (readonly) <UICoordinateSpace> *coordinateSpace;
 @property (nonatomic, retain) UIScreenMode *currentMode;
 @property (readonly, copy) NSString *debugDescription;
@@ -92,6 +100,7 @@
 @property (nonatomic, readonly) UIView *focusedView;
 @property (readonly) unsigned long long hash;
 @property (getter=_interactiveHighlightEnvironment, nonatomic, readonly) _UIInteractiveHighlightEnvironment *interactiveHighlightEnvironment;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } is_scaledSize;
 @property (getter=_lastNotifiedTraitCollection, setter=_setLastNotifiedTraitCollection:, nonatomic, retain) UITraitCollection *lastNotifiedTraitCollection;
 @property (getter=_linearFocusMovementSequences, nonatomic, readonly, copy) NSArray *linearFocusMovementSequences;
 @property (readonly) long long maximumFramesPerSecond;
@@ -107,9 +116,12 @@
 @property (nonatomic, readonly) UIView *preferredFocusedView;
 @property (nonatomic, readonly) UIScreenMode *preferredMode;
 @property (nonatomic, readonly) double scale;
+@property (readonly) unsigned long long screenSizeCategory;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool supportsFocus;
+@property (nonatomic, readonly) bool supportsScreenshotEditViewController;
 @property (nonatomic, readonly) UITraitCollection *traitCollection;
+@property (getter=isUserInterfaceIdiomPad, nonatomic, readonly) bool userInterfaceIdiomPad;
 @property (nonatomic) bool wantsSoftwareDimming;
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
@@ -144,6 +156,7 @@
 + (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })transformToRotateScreen:(double)arg1;
 
 - (void).cxx_destruct;
+- (bool)_UIIBAlwaysProvidePeripheryInsets;
 - (void)_accessibilityForceTouchEnabledChanged:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_applicationFrame;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_applicationFrameForInterfaceOrientation:(long long)arg1;
@@ -153,6 +166,7 @@
 - (bool)_areListsLimited;
 - (bool)_areMusicListsLimited;
 - (void)_beginObservingBacklightLevelNotifications;
+- (id)_boundingPathUtilities;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_boundsForInterfaceOrientation:(long long)arg1;
 - (id)_capabilities;
 - (id)_capabilityForKey:(id)arg1;
@@ -165,7 +179,10 @@
 - (id)_defaultTraitCollectionForInterfaceOrientation:(long long)arg1 inBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_disconnectScreen;
 - (id)_display;
+- (double)_displayCornerRadius;
 - (id)_displayID;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_displayPeripheryInsets;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_displayPeripheryInsetsRestrictedToScene;
 - (id)_dragManager;
 - (long long)_effectiveUserInterfaceStyle;
 - (void)_endObservingBacklightLevelNotifications;
@@ -217,6 +234,7 @@
 - (id)_overrideTraitCollection;
 - (bool)_overscanAdjustmentNeedsUpdate;
 - (id)_parentFocusEnvironment;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_peripheryInsets;
 - (double)_pointsPerInch;
 - (void)_postBrightnessDidChangeNotificationIfAppropriate;
 - (id)_preferredFocusRegionCoordinateSpace;
@@ -230,7 +248,9 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_sceneSafeAreaInsets;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (unsigned int)_seed;
+- (void)_setBoundingPathUtilities:(id)arg1;
 - (void)_setCapability:(id)arg1 forKey:(id)arg2;
+- (void)_setCaptured:(bool)arg1;
 - (void)_setCarPlayHumanPresenceInRange:(bool)arg1;
 - (void)_setDefaultTraitCollection:(id)arg1;
 - (void)_setDefaultTraitCollection:(id)arg1 notify:(bool)arg2;
@@ -244,6 +264,7 @@
 - (void)_setPerformingSystemSnapshot:(bool)arg1;
 - (void)_setScale:(double)arg1;
 - (void)_setSoftwareDimmingWindow:(id)arg1;
+- (void)_setUIIBAlwaysProvidePeripheryInsets:(bool)arg1;
 - (void)_setUserInterfaceIdiom:(long long)arg1;
 - (id)_snapshotExcludingWindows:(id)arg1 withRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (id)_softwareDimmingWindow;
@@ -289,10 +310,12 @@
 - (id)focusedView;
 - (long long)gamut;
 - (id)initWithDisplayConfiguration:(id)arg1;
+- (bool)isCaptured;
 - (long long)maximumFramesPerSecond;
 - (id)mirroredScreen;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })nativeBounds;
 - (double)nativeScale;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (long long)overscanCompensation;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })overscanCompensationInsets;
 - (id)preferredFocusEnvironments;
@@ -321,10 +344,77 @@
 
 // Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
 
+- (double)__dbg_traitCollectionDisplayCornerRadius;
 - (id)debugHierarchyPropertyDescriptions;
+
+// Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
+
++ (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })cn_mainScreenPeripheryInsets;
 
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (id)_mapkit_display;
+
+// Image: /System/Library/PrivateFrameworks/CardKit.framework/CardKit
+
+- (id)traitCollectionForImageLoader:(id)arg1 image:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
+- (bool)__ck_isFullscreen;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
+
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_gkBounds;
+- (double)_gkScale;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
++ (bool)hk_currentDeviceHas4InchScreen;
++ (bool)hk_currentDeviceHas4Point7InchScreen;
+
+// Image: /System/Library/PrivateFrameworks/PhotosEditUI.framework/PhotosEditUI
+
+- (struct CGSize { double x1; double x2; })pu_workImageSize;
+
+// Image: /System/Library/PrivateFrameworks/PhotosPlayer.framework/PhotosPlayer
+
+- (struct CGSize { double x1; double x2; })is_scaledSize;
+
+// Image: /System/Library/PrivateFrameworks/ScreenshotServices.framework/ScreenshotServices
+
+- (bool)supportsScreenshotEditViewController;
+
+// Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
+
+- (bool)isUserInterfaceIdiomPad;
+- (unsigned long long)screenSizeCategory;
+
+// Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
+
++ (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })nc_counterTransformForActiveInterfaceOrientation;
++ (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })nc_transformForInterfaceOrientation:(long long)arg1;
++ (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })nc_transformForScreenOriginRotation:(double)arg1;
+
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })nc_bounds;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (bool)tsk_appCanUseSidebar;
++ (bool)tsk_appIsInDarkMode;
++ (bool)tsk_appIsInSplitViewMode;
++ (bool)tsk_deviceCanUseSidebar;
++ (double)tsk_expectedScreenScale;
++ (bool)tsk_pad1366H;
++ (bool)tsk_phoneUI568H;
++ (bool)tsk_phoneUI568HOrSmaller;
++ (bool)tsk_phoneUI667H;
++ (bool)tsk_phoneUI667HOrSmaller;
++ (bool)tsk_phoneUI736H;
++ (bool)tsk_phoneUI812H;
++ (void)tsk_resetScreenScaleCache;
++ (double)tsk_screenScale;
++ (void)tsk_setAppIsInDarkMode:(bool)arg1;
++ (bool)tsk_statusBarIsLandscape;
 
 @end

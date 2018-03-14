@@ -10,7 +10,7 @@
 - (void)_animateDeletionOfRowAtIndexPath:(NSIndexPath *)arg1;
 - (void)_animateDeletionOfRowWithCell:(UITableViewCell *)arg1;
 - (void)_animateSwipeCancelation;
-- (void)_beginReorderingForCell:(UITableViewCell *)arg1 touch:(UITouch *)arg2;
+- (bool)_beginReorderingForCell:(UITableViewCell *)arg1 touch:(UITouch *)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_calloutTargetRectForCell:(UITableViewCell *)arg1;
 - (bool)_canFocusCell:(UITableViewCell *)arg1;
 - (bool)_canPerformAction:(SEL)arg1 forCell:(UITableViewCell *)arg2 sender:(id)arg3;
@@ -28,6 +28,7 @@
 - (void)_endSwipeToDeleteRowDidDelete:(bool)arg1;
 - (void)_finishedRemovingRemovalButtonForTableCell:(UITableViewCell *)arg1;
 - (void)_highlightCell:(UITableViewCell *)arg1 animated:(bool)arg2 scrollPosition:(long long)arg3 highlight:(bool)arg4;
+- (void)_highlightDidEndForCell:(UITableViewCell *)arg1 withInteraction:(id <UIInteraction>)arg2;
 - (void)_installSwipeToDeleteGobbler;
 - (bool)_isCellReorderable:(UITableViewCell *)arg1;
 - (bool)_isEditingForSwipeDeletion;
@@ -35,6 +36,7 @@
 - (bool)_isReorderControlActiveForCell:(UITableViewCell *)arg1;
 - (void)_performAction:(SEL)arg1 forCell:(UITableViewCell *)arg2 sender:(id)arg3;
 - (long long)_popoverControllerStyle;
+- (void)_prepareHighlightForCell:(UITableViewCell *)arg1 withInteraction:(id <UIInteraction>)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_rawSeparatorInset;
 - (void)_removeWasCanceledForCell:(UITableViewCell *)arg1;
 - (UIView *)_reorderingCell;

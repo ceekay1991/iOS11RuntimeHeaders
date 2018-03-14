@@ -13,12 +13,29 @@
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
++ (id)airportStyleAttributes;
++ (id)calendarEventStyleAttributes;
++ (id)carRentalStyleAttributes;
++ (id)evChargerStyleAttributes;
++ (id)frequentLocationStyleAttributes;
++ (id)gasStationStyleAttributes;
++ (id)homeStyleAttributes;
++ (id)hotelStyleAttributes;
++ (id)inviteStyleAttributes;
++ (id)parkedCarStyleAttributes;
++ (id)restaurantStyleAttributes;
++ (id)searchResultStyleAttributes;
++ (id)styleAttributesForPlace:(id)arg1;
 + (bool)supportsSecureCoding;
++ (id)ticketedEventStyleAttributes;
++ (id)workStyleAttributes;
 
 - (void).cxx_destruct;
+- (id)copyWithAirportStyleAttributes;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)dictionaryRepresentation;
 - (int)drivingSide;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)featureType;
@@ -37,9 +54,13 @@
 - (bool)isDrivable;
 - (bool)isEqual:(id)arg1;
 - (bool)isFreeway;
+- (bool)isLabelPOI;
+- (bool)isLandmarkPOI;
 - (bool)isRailway;
 - (bool)isRamp;
+- (bool)isSearchResult;
 - (bool)isSuperset:(id)arg1;
+- (bool)isTransit;
 - (bool)isTunnel;
 - (bool)isWalkable;
 - (unsigned int)lineType;

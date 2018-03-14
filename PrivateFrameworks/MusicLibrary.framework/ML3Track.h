@@ -20,6 +20,7 @@
 + (bool)clearLocationFromLibrary:(id)arg1 persistentIDs:(id)arg2 disableKeepLocal:(bool)arg3;
 + (bool)clearLocationFromLibrary:(id)arg1 persistentIDs:(id)arg2 disableKeepLocal:(bool)arg3 usingConnection:(id)arg4;
 + (bool)clearLocationFromLibrary:(id)arg1 persistentIDs:(id)arg2 usingConnection:(id)arg3;
++ (bool)clearPlaybackKeysFromLibrary:(id)arg1 persistentIDs:(id)arg2;
 + (id)collectionClassesToUpdateBeforeDelete;
 + (id)composersDefaultOrderingTerms;
 + (id)containerQueryWithContainer:(id)arg1;

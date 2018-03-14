@@ -6,6 +6,7 @@
 @required
 
 - (_UIButtonBarLayoutMetrics *)_upcastIfReadOnly;
+- (bool)allowsViewWrappers;
 - (bool)createsPopoverLayoutGuides;
 - (NSLayoutDimension *)flexibleSpaceGuide;
 - (NSLayoutDimension *)groupSizeGuide;

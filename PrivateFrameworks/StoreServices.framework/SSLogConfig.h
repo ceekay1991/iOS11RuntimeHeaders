@@ -29,6 +29,8 @@
 @property (nonatomic, copy) NSString *subsystem;
 @property (nonatomic) bool writeToDisk;
 
++ (id)_createLogConfigWithBaseConfig:(id)arg1 subystem:(id)arg2 category:(id)arg3;
++ (id)_createLogConfigWithSubsystem:(id)arg1 category:(id)arg2;
 + (bool)_debugLogsEnabled:(id)arg1;
 + (bool)_deviceIsRunningInternalBuild;
 + (bool)_deviceIsRunningInternalOrSeedBuild;
@@ -37,7 +39,11 @@
 + (id)_logFilenameForSubsystem:(id)arg1 category:(id)arg2;
 + (id)sharedAccountsAuthenticationConfig;
 + (id)sharedAccountsConfig;
++ (id)sharedAccountsCookiesConfig;
++ (id)sharedAccountsLogoutConfig;
 + (id)sharedAccountsMigrationConfig;
++ (id)sharedAccountsMigrationConfigOversize;
++ (id)sharedAccountsStorefrontConfig;
 + (id)sharedBagCacheConfig;
 + (id)sharedBagConfig;
 + (id)sharedConfig;
@@ -45,6 +51,7 @@
 + (id)sharedDaemonConfigOversize;
 + (id)sharedFairPlayAnisetteConfig;
 + (id)sharedFeatureEnablerMigrationConfig;
++ (id)sharedFollowUpConfig;
 + (id)sharedStoreServicesConfig;
 + (id)sharedStoreServicesConfigOversize;
 + (id)sharedWriteToDiskConfig;

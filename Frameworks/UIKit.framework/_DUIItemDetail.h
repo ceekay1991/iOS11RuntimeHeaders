@@ -8,7 +8,6 @@
         double y; 
     }  _anchorPoint;
     NSArray * _lastKnownImageComponents;
-    _DUIPreview * _preview;
     bool  _rotatable;
     double  _rotationAngle;
     bool  _scalable;
@@ -17,7 +16,6 @@
 
 @property (nonatomic) struct CGPoint { double x1; double x2; } anchorPoint;
 @property (nonatomic, retain) NSArray *lastKnownImageComponents;
-@property (nonatomic, retain) _DUIPreview *preview;
 @property (nonatomic) bool rotatable;
 @property (nonatomic) double rotationAngle;
 @property (nonatomic) bool scalable;
@@ -32,14 +30,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)lastKnownImageComponents;
-- (id)preview;
 - (bool)rotatable;
 - (double)rotationAngle;
 - (bool)scalable;
 - (double)scale;
 - (void)setAnchorPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setLastKnownImageComponents:(id)arg1;
-- (void)setPreview:(id)arg1;
 - (void)setRotatable:(bool)arg1;
 - (void)setRotationAngle:(double)arg1;
 - (void)setScalable:(bool)arg1;

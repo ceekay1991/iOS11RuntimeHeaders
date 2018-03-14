@@ -4,6 +4,8 @@
 
 @interface _DKSystemEventStreams : NSObject
 
+// Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
+
 + (id)appActivityStream;
 + (id)appBulletinStream;
 + (id)appInFocusStream;
@@ -35,6 +37,7 @@
 + (id)internalQueryDataCollectionStream;
 + (id)isSleepEventStream;
 + (id)isWeekendEventStream;
++ (id)keybagIsLockedStream;
 + (id)locationVisitStream;
 + (id)microLocationVisitStream;
 + (id)motionStream;
@@ -52,5 +55,9 @@
 + (id)userNextSleepPeriodStream;
 + (id)watchActiveStream;
 + (id)watchNearbyStream;
+
+// Image: /System/Library/PrivateFrameworks/DuetExpertCenter.framework/DuetExpertCenter
+
++ (id)expertFeedbackStream;
 
 @end

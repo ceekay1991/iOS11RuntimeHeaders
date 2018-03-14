@@ -6,10 +6,10 @@
     unsigned long long  _access;
     bool  _active;
     unsigned long long  _arrayLength;
-    MTLType * _dataTypeDescription;
     unsigned long long  _index;
     NSString * _name;
     unsigned long long  _type;
+    MTLType * _typeInfo;
 }
 
 @property (readonly) unsigned long long bufferALUType;
@@ -21,6 +21,7 @@
 - (unsigned long long)bufferDataSize;
 - (unsigned long long)bufferDataType;
 - (id)bufferIndirectArgumentType;
+- (id)bufferPointerType;
 - (id)bufferStructType;
 - (id)dataTypeDescription;
 - (void)dealloc;

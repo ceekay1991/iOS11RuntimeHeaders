@@ -17,6 +17,7 @@
     NSNumber * _familyID;
     NSString * _genre;
     NSNumber * _genreID;
+    NSNumber * _installFailureReason;
     unsigned long long  _installType;
     NSNumber * _itemID;
     NSString * _itemName;
@@ -48,6 +49,7 @@
 @property (nonatomic, readonly) NSArray *activityTypes;
 @property (getter=isAdHocCodeSigned, nonatomic, readonly) bool adHocCodeSigned;
 @property (nonatomic, readonly) _LSApplicationState *appState;
+@property (getter=isAppStoreVendable, nonatomic, readonly) bool appStoreVendable;
 @property (nonatomic, readonly) NSArray *appTags;
 @property (getter=isAppUpdate, nonatomic, readonly) bool appUpdate;
 @property (nonatomic, readonly) NSString *applicationDSID;
@@ -62,6 +64,7 @@
 @property (readonly) NSString *complicationPrincipalClass;
 @property (nonatomic, readonly) NSArray *counterpartIdentifiers;
 @property (getter=isDeletable, nonatomic, readonly) bool deletable;
+@property (getter=isDeviceBasedVPP, nonatomic, readonly) bool deviceBasedVPP;
 @property (nonatomic, readonly) NSArray *deviceFamily;
 @property (nonatomic, readonly) NSUUID *deviceIdentifierForAdvertising;
 @property (nonatomic, readonly) NSUUID *deviceIdentifierForVendor;
@@ -85,6 +88,7 @@
 @property (nonatomic, readonly) bool hasSettingsBundle;
 @property (nonatomic, readonly) bool iconIsPrerendered;
 @property (nonatomic, readonly) bool iconUsesAssetCatalog;
+@property (nonatomic, readonly) NSNumber *installFailureReason;
 @property (nonatomic, readonly) NSProgress *installProgress;
 @property (nonatomic, readonly) unsigned long long installType;
 @property (getter=isInstalled, nonatomic, readonly) bool installed;
@@ -181,6 +185,7 @@
 - (bool)gameCenterEverEnabled;
 - (id)genre;
 - (id)genreID;
+- (id)getBundleMetadata;
 - (bool)hasComplication;
 - (bool)hasCustomNotification;
 - (bool)hasGlance;
@@ -193,13 +198,16 @@
 - (bool)iconIsPrerendered;
 - (bool)iconUsesAssetCatalog;
 - (id)initWithCoder:(id)arg1;
+- (id)installFailureReason;
 - (id)installProgress;
 - (id)installProgressSync;
 - (unsigned long long)installType;
 - (bool)isAdHocCodeSigned;
+- (bool)isAppStoreVendable;
 - (bool)isAppUpdate;
 - (bool)isBetaApp;
 - (bool)isDeletable;
+- (bool)isDeviceBasedVPP;
 - (bool)isGameCenterEnabled;
 - (bool)isInstalled;
 - (bool)isLaunchProhibited;
@@ -268,5 +276,42 @@
 
 - (id)un_applicationBundleIdentifier;
 - (id)un_applicationBundleURL;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
+- (id)__ck_messagesPluginKitProxy;
+
+// Image: /System/Library/PrivateFrameworks/ManagedConfiguration.framework/MDM.framework/MDM
+
+- (bool)isMISAuthorized;
+
+// Image: /System/Library/PrivateFrameworks/ManagedConfigurationUI.framework/ManagedConfigurationUI
+
+- (id)appIconForTableCell;
+- (bool)hasAppVPN;
+- (bool)hasManagedRestrictions;
+- (bool)isBlacklisted;
+- (bool)isExcludedFromBackup;
+- (bool)isExcludedFromCloudSync;
+- (bool)isUnableToExportToUnmanaged;
+- (bool)isUnableToImportFromUnmanaged;
+- (bool)isUnableToUseCellData;
+- (bool)isUnableToUseRoamingCellData;
+- (bool)isUninstalledOnMDMRemoval;
+
+// Image: /System/Library/PrivateFrameworks/UserNotificationsServer.framework/UserNotificationsServer
+
++ (id)uns_bundleForBundleIdentifier:(id)arg1;
+
+- (bool)_uns_isReallyInstalled;
+- (id)uns_bundle;
+- (bool)uns_isSystemApplication;
+- (id)uns_path;
+- (bool)uns_requiresLocalNotifications;
+- (bool)uns_sdkVersionOnOrLaterThan:(id)arg1;
+- (bool)uns_shouldUseDefaultDataProvider;
+- (id)uns_universalApplicationIdentifier;
+- (bool)uns_usesCloudKit;
+- (bool)uns_usesLocalNotifications;
 
 @end

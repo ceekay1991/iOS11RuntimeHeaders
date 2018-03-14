@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UISplitViewController : UIViewController <DebugHierarchyObject> {
+@interface UISplitViewController : UIViewController <DebugHierarchyObject, GKContentRefresh, GKURLHandling> {
     <UISplitViewControllerImpl> * _impl;
 }
 
@@ -84,6 +84,7 @@
 - (void)_super_viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (void)_super_willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_updateChildContentMargins;
+- (void)_updateDisplayModeButtonItem;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (bool)_usesPanelImpl;
 - (void)_willBeginSnapshotSession;
@@ -164,5 +165,13 @@
 // Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
 
 - (id)debugHierarchyPropertyDescriptions;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
+
+- (void)_gkForceNextContentUpdate;
+- (void)_gkHandleURLPathComponents:(id)arg1 query:(id)arg2;
+- (void)_gkResetContents;
+- (void)_gkSetContentsNeedUpdateWithHandler:(id /* block */)arg1;
+- (void)_gkUpdateContentsWithCompletionHandlerAndError:(id /* block */)arg1;
 
 @end

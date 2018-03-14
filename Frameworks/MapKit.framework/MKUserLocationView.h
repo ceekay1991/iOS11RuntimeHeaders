@@ -3,6 +3,7 @@
  */
 
 @interface MKUserLocationView : MKAnnotationView <VKPuckAnimatorTarget> {
+    CALayer * _accuracyContainerLayer;
     CALayer * _accuracyLayer;
     bool  _allowsAccuracyRing;
     bool  _allowsHeadingIndicator;
@@ -18,6 +19,7 @@
     double  _maxRadiusToShowAccuracyRing;
     VKNavigationPuck * _navigationPuckMarker;
     double  _presentationCourse;
+    CALayer * _puckLayer;
     CALayer * _pulseLayer;
     bool  _shouldDisplayHeading;
     bool  _shouldDisplayInaccurateHeading;
@@ -26,6 +28,7 @@
     long long  _zoomDirection;
 }
 
+@property (nonatomic) double accuracyRingAlpha;
 @property (nonatomic) bool allowsAccuracyRing;
 @property (nonatomic) bool allowsHeadingIndicator;
 @property (nonatomic) bool allowsPulse;
@@ -42,6 +45,7 @@
 @property (nonatomic) double maxRadiusToShowAccuracyRing;
 @property (nonatomic) float opacity;
 @property (nonatomic) double presentationCourse;
+@property (nonatomic) double puckAlpha;
 @property (nonatomic) bool shouldDisplayHeading;
 @property (nonatomic) bool shouldDisplayInaccurateHeading;
 @property (getter=isStale, setter=setStale:, nonatomic) bool stale;
@@ -86,6 +90,7 @@
 - (void)_updateShowHeadingLayer:(bool)arg1 animatedIfPossible:(bool)arg2;
 - (void)_updateShowHeadingLayerAnimatedIfPossible:(bool)arg1;
 - (id)_vkNavigationPuckMarker;
+- (double)accuracyRingAlpha;
 - (bool)allowsAccuracyRing;
 - (bool)allowsHeadingIndicator;
 - (bool)allowsPulse;
@@ -105,6 +110,8 @@
 - (double)maxRadiusToShowAccuracyRing;
 - (float)opacity;
 - (double)presentationCourse;
+- (double)puckAlpha;
+- (void)setAccuracyRingAlpha:(double)arg1;
 - (void)setAllowsAccuracyRing:(bool)arg1;
 - (void)setAllowsHeadingIndicator:(bool)arg1;
 - (void)setAllowsPulse:(bool)arg1;
@@ -119,6 +126,8 @@
 - (void)setOpacity:(float)arg1;
 - (void)setPresentationCoordinate:(struct { double x1; double x2; })arg1;
 - (void)setPresentationCourse:(double)arg1;
+- (void)setPuckAlpha:(double)arg1;
+- (void)setPuckScale:(double)arg1;
 - (void)setSelected:(bool)arg1 animated:(bool)arg2;
 - (void)setShouldDisplayHeading:(bool)arg1;
 - (void)setShouldDisplayInaccurateHeading:(bool)arg1;

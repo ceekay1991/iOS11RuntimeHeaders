@@ -23,6 +23,7 @@
             double height; 
         } size; 
     }  _endingNewTitleViewFrame;
+    double  _titleTransitionAdjustment;
     struct CGSize { 
         double width; 
         double height; 
@@ -41,5 +42,6 @@
 - (void)complete;
 - (void)prepare;
 - (int)transition;
+- (id)viewUsingEaseInCurve;
 
 @end

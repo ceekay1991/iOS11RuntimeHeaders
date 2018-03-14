@@ -21,8 +21,12 @@
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;
     bool  _managed;
+    bool  _managedUsesContainer;
     bool  _neverCache;
     struct __CFSet { } * _observingConnections;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _observingConnectionsLock;
     const char * _pathToTemporaryFileToWriteTo;
     NSObject<OS_xpc_object> * _pendingChangesQueue;
     unsigned long long  _pendingChangesSize;
@@ -33,10 +37,12 @@
     bool  _watchingParentDirectory;
 }
 
++ (void)removeObservationConnectionsForIdentifier:(unsigned long long)arg1;
+
 - (void)_writeToDisk:(bool)arg1;
 - (id)acceptMessage:(id)arg1;
 - (void)addOwner:(id)arg1;
-- (void)asyncNotifyObserversOfChanges;
+- (void)asyncNotifyObserversOfWriteFromConnection:(id)arg1;
 - (void)asyncWriteToDisk;
 - (void)attachSizeWarningsToReply:(id)arg1 forByteCount:(unsigned long long)arg2;
 - (void)beginHandlingRequest;
@@ -75,15 +81,17 @@
 - (void)lockedSync:(id /* block */)arg1;
 - (bool)managed;
 - (void)markNeedsToReloadFromDiskDueToFailedWrite;
+- (void)observingConnectionsLockedSync:(id /* block */)arg1;
 - (int)owner;
 - (void)removeOwner;
 - (void)respondToFileWrittenToBehindOurBack;
 - (void)setDirty:(bool)arg1;
+- (void)setManagedPreferencesUseContainer:(bool)arg1;
 - (void)setObserved:(bool)arg1 bySenderOfMessage:(id)arg2;
 - (void)setPlist:(id)arg1;
 - (short)shmemIndex;
 - (bool)shouldBePurgable;
-- (void)stopNotifyingObserver:(long long)arg1;
+- (void)stopNotifyingObserver:(id)arg1;
 - (void)syncWriteToDisk;
 - (void)syncWriteToDiskAndFlushCache;
 - (void)transitionToMultiOwner;

@@ -22,9 +22,11 @@
     }  _loadItems;
     NSObject<OS_dispatch_queue> * _loadQ;
     int  _memoryHits;
+    NSObject<OS_dispatch_source> * _memoryNotificationEventSource;
     bool  _networkActive;
     int  _networkHits;
     NSMutableSet * _openers;
+    NSObject<OS_dispatch_queue> * _openersIsolation;
     GEOTileServerProxy * _proxy;
     struct deque<ErrorInfo, std::__1::allocator<ErrorInfo> > { 
         struct __split_buffer<ErrorInfo *, std::__1::allocator<ErrorInfo *> > { 
@@ -47,6 +49,7 @@
         double y; 
     }  _sortPoint;
     NSMutableArray * _tileDecoders;
+    NSObject<OS_dispatch_queue> * _tileDecodersIsolation;
     struct unique_ptr<geo::DispatchTimer, std::__1::default_delete<geo::DispatchTimer> > { 
         struct __compressed_pair<geo::DispatchTimer *, std::__1::default_delete<geo::DispatchTimer> > { 
             struct DispatchTimer {} *__first_; 
@@ -62,7 +65,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_activeTileGroupChanged:(id)arg1;
 - (void)_cancel:(struct __list_iterator<LoadItem, void *> { struct __list_node_base<LoadItem, void *> {} *x1; }*)arg1 err:(id)arg2;
 - (bool)_cancelIfNeeded:(struct __list_iterator<LoadItem, void *> { struct __list_node_base<LoadItem, void *> {} *x1; }*)arg1;
 - (id)_findInCache:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
@@ -70,8 +72,10 @@
 - (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg2 info:(id)arg3;
 - (void)_loadedTileForLocalKey:(struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; })arg1 preliminary:(bool)arg2 quickly:(bool)arg3 tileDecoder:(id)arg4 data:(id)arg5 disburseTile:(id /* block */)arg6;
 - (void)_localeChanged:(id)arg1;
+- (void)_receivedMemoryWarningNotification;
 - (void)_removeUsageDataForKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (void)_requestOnlineTiles;
+- (id)_tileDecoderForTileKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1 quickly:(bool*)arg2;
 - (void)_tileEditionChanged:(id)arg1;
 - (void)_timerFired;
 - (void)_updateNetworkActive;

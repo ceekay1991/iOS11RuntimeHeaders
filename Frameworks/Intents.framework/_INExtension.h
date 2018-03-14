@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface _INExtension : NSObject <INApplicationContextProviding, INIntentHandlerProviding, NSExtensionRequestHandling>
+@interface _INExtension : NSObject <INApplicationContextProviding, INIntentHandlerProvidingPrivate, NSExtensionRequestHandling>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -46,6 +46,7 @@
 - (bool)_menuTapShouldExitVariants;
 - (void)_moveWithEvent:(id)arg1;
 - (void)_wheelChangedWithEvent:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -60,7 +61,6 @@
 - (id)currentKey;
 - (unsigned long long)cursorLocation;
 - (void)deactivateKey:(id)arg1;
-- (void)dealloc;
 - (long long)defaultSelectedVariantIndexForKey:(id)arg1 withActions:(unsigned long long)arg2;
 - (bool)diacriticForwardCompose;
 - (void)didSelectRecentInputString:(id)arg1;
@@ -110,7 +110,6 @@
 - (bool)shouldMergeKey:(id)arg1;
 - (bool)shouldPreventInputManagerHitTestingForKey:(id)arg1;
 - (bool)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
-- (bool)shouldShowDictationKey;
 - (bool)shouldToggleKeyplaneWithName:(id)arg1;
 - (bool)shouldUseDefaultShiftStateFromLayout;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;

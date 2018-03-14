@@ -5,11 +5,11 @@
 
 @required
 
-- (bool)_hasMUID;
+- (bool)_hasBusinessID;
 - (bool)_hasVenueID;
+- (unsigned long long)businessID;
 - (NSArray *)componentIdentifiers;
-- (unsigned long long)muid;
-- (GEOPDVenueIdentifier *)placeDataVenueIdentifierForBuilding:(id <GEOVenueComponentIdentifier>)arg1;
+- (GEOPDVenueIdentifier *)placeDataVenueIdentifier;
 - (GEOPDVenueIdentifier *)placeDataVenueIdentifierForVenue;
 - (unsigned long long)venueID;
 

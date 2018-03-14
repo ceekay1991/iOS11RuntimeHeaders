@@ -24,13 +24,13 @@
 - (void)_setBaseRenderConfig:(id)arg1;
 - (void)_setRenderConfig:(id)arg1;
 - (void)_setRenderConfig:(id)arg1 updateKeyboard:(bool)arg2;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (void)beginExplicitLayout;
 - (id)cornerViewLeft;
 - (id)cornerViewRight;
-- (void)dealloc;
 - (void)didAddSubview:(id)arg1;
 - (void)endExplicitLayout;
 - (bool)explicitLayout;

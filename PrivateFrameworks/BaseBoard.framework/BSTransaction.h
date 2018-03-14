@@ -71,6 +71,7 @@
 - (id)_childRelationshipForTransaction:(id)arg1;
 - (void)_childTransactionDidComplete:(id)arg1;
 - (void)_childTransactionDidFinishWork:(id)arg1;
+- (id)_childTransactionsWithSchedulingPolicy:(unsigned long long)arg1;
 - (id)_createErrorWithCode:(long long)arg1 reason:(id)arg2 description:(id)arg3 precipitatingError:(id)arg4;
 - (id)_customizedDescriptionProperties;
 - (id)_debugLogCategories;
@@ -85,13 +86,7 @@
 - (void)_didInterruptWithReason:(id)arg1;
 - (void)_didRemoveChildTransaction:(id)arg1;
 - (void)_didSatisfyMilestone:(id)arg1;
-- (void)_enumerateChildTransactionRelationshipsWithBlock:(id /* block */)arg1;
-- (void)_enumerateChildTransactionsWithBlock:(id /* block */)arg1;
-- (void)_enumerateChildTransactionsWithSchedulingPolicy:(unsigned long long)arg1 block:(id /* block */)arg2;
 - (void)_enumerateObserversWithBlock:(id /* block */)arg1;
-- (void)_enumerateParentTransactionRelationshipsWithBlock:(id /* block */)arg1;
-- (void)_enumerateParentTransactionsWithBlock:(id /* block */)arg1;
-- (void)_enumerateParentTransactionsWithSchedulingPolicy:(unsigned long long)arg1 block:(id /* block */)arg2;
 - (void)_evaluateCompletion;
 - (bool)_evaluateParentTransactionsWithSchedulingPolicy:(unsigned long long)arg1 evaluator:(id /* block */)arg2;
 - (void)_failForTimeoutWithDescription:(id)arg1;
@@ -118,6 +113,8 @@
 - (void)_notifyObserversOfCompletion;
 - (void)_notifyObserversOfFinishedWork;
 - (id)_parentRelationshipForTransaction:(id)arg1;
+- (id)_parentTransactions;
+- (id)_parentTransactionsWithSchedulingPolicy:(unsigned long long)arg1;
 - (void)_populateGraphIntoNodes:(id)arg1 edges:(id)arg2;
 - (void)_preventTransactionCompletionForReason:(id)arg1 ignoringAuditHistory:(bool)arg2 andExecuteBlock:(id /* block */)arg3;
 - (void)_removeChildTransactionRelationship:(id)arg1;
@@ -134,6 +131,8 @@
 - (id)_stringForInterruptReason:(id)arg1;
 - (id)_stringForMilestones:(id)arg1;
 - (void)_terminateNow;
+- (void)_unsafe_enumerateChildTransactionsWithBlock:(id /* block */)arg1;
+- (void)_unsafe_enumerateParentTransactionsWithBlock:(id /* block */)arg1;
 - (void)_willAddChildTransaction:(id)arg1;
 - (void)_willBegin;
 - (void)_willComplete;

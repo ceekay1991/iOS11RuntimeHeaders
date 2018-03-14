@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
  */
 
-@interface SSDownloadPolicy : NSObject <NSCoding, NSCopying, SSXPCCoding> {
+@interface SSDownloadPolicy : NSObject <NSCoding, NSCopying, NSSecureCoding, SSXPCCoding> {
     long long  _bagType;
     NSString * _downloadKind;
     NSMutableArray * _policyRules;
@@ -15,6 +15,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *policyRules;
 @property (readonly) Class superclass;
+
++ (bool)supportsSecureCoding;
 
 - (long long)URLBagType;
 - (id)_policyRuleForSizeLimit:(long long)arg1;

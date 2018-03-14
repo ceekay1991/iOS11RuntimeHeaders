@@ -7,6 +7,8 @@
     PBUnknownFields * _unknownFields;
 }
 
+@property (nonatomic, readonly) NSArray *queryItems;
+@property (nonatomic, readonly) NSDictionary *queryParameters;
 @property (nonatomic, retain) NSMutableArray *transitMarkets;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
@@ -24,8 +26,8 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)queryItems;
 - (id)queryParameters;
-- (id)queryString;
 - (bool)readFrom:(id)arg1;
 - (void)reload;
 - (void)setTransitMarkets:(id)arg1;

@@ -35,7 +35,7 @@
             double height; 
         } size; 
     }  _currentDragCaretRect;
-    long long  _currentDragContentType;
+    unsigned long long  _currentDragSourceAction;
     unsigned long long  _dataDetectorTypes;
     struct _UIWebViewportConfiguration { 
         struct CGSize { 
@@ -47,6 +47,7 @@
         float maximumScale; 
         bool allowsUserScaling; 
         bool allowsShrinkToFit; 
+        bool avoidsUnsafeArea; 
     }  _defaultViewportConfigurations;
     _UITextServiceSession * _definitionSession;
     id  _delegate;
@@ -245,7 +246,7 @@
 @property (nonatomic, readonly) UITextPosition *beginningOfDocument;
 @property (nonatomic) bool contentsIsSingleValue;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } currentDragCaretRect;
-@property (nonatomic) long long currentDragContentType;
+@property (nonatomic) unsigned long long currentDragSourceAction;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) bool deferBecomingResponder;
 @property (readonly, copy) NSString *description;
@@ -284,6 +285,7 @@
 @property (nonatomic) long long keyboardType;
 @property (nonatomic) struct CGPoint { double x1; double x2; } lastGlobalPosition;
 @property (nonatomic) bool learnsCorrections;
+@property (nonatomic) bool loadKeyboardsForSiriLanguage;
 @property (nonatomic, readonly) UITextRange *markedTextRange;
 @property (nonatomic, copy) NSDictionary *markedTextStyle;
 @property (nonatomic) bool mediaPlaybackAllowsAirPlay;
@@ -374,7 +376,10 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_documentViewVisibleRect;
 - (id)_doubleTapGestureRecognizer;
 - (void)_doubleTapRecognized:(id)arg1;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint { double x1; double x2; })arg3;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_drawPDFPagesForPage:(unsigned long long)arg1 withPaginationInfo:(id)arg2;
+- (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_editableSelectionLayoutChangedByScrolling:(bool)arg1;
 - (void)_endPrintMode;
 - (void)_finishedUsingDictationPlaceholder;
@@ -387,6 +392,7 @@
 - (void)_handleTwoFingerDoubleTapAtLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_highlightLongPressRecognized:(id)arg1;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
+- (bool)_insertFragmentWithoutPreservingStyle:(id)arg1 atDestination:(id)arg2 smartReplace:(bool)arg3 collapseToEnd:(bool)arg4;
 - (void)_inspectorDidStartSearchingForNode:(id)arg1;
 - (void)_inspectorDidStopSearchingForNode:(id)arg1;
 - (bool)_interactionShouldBeginFromPreviewItemController:(id)arg1 forPosition:(struct CGPoint { double x1; double x2; })arg2;
@@ -485,6 +491,8 @@
 - (void)_updateWebKitExposedScrollViewRect;
 - (void)_webthread_webView:(id)arg1 attachRootLayer:(id)arg2;
 - (double)_zoomedDocumentScale;
+- (void)dealloc;
+- (void)webThreadWebViewDidLayout:(id)arg1 byScrolling:(bool)arg2;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -557,14 +565,14 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 fromFrame:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 toFrame:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertRectFromSelectedFrameCoordinates:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertRectWithDocumentScale:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)copy:(id)arg1;
 - (struct CGImage { }*)createSnapshotWithRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (double)currentDocumentScale;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })currentDragCaretRect;
-- (long long)currentDragContentType;
+- (unsigned long long)currentDragSourceAction;
 - (void)cut:(id)arg1;
 - (unsigned long long)dataDetectorTypes;
-- (void)dealloc;
 - (void)decreaseSize:(id)arg1;
 - (id)deepestNodeAtViewportLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (void)deferInteraction;
@@ -596,7 +604,8 @@
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
-- (struct UIWebDraggableContentInfo { long long x1; struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_2_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_2_1_2; } x2; id x3; })draggableContentInfoAtPosition:(struct CGPoint { double x1; double x2; })arg1;
+- (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
+- (bool)dragInteractionEnabled;
 - (id)draggedLinkTitle;
 - (id)draggedLinkURL;
 - (void)drawPage:(unsigned long long)arg1 withPaginationInfo:(id)arg2;
@@ -717,6 +726,7 @@
 - (void)paste:(id)arg1;
 - (void)performClick:(id)arg1;
 - (void)performInteractionSelector:(SEL)arg1 afterDelay:(double)arg2;
+- (bool)performTwoStepDrop:(id)arg1 atDestination:(id)arg2 isMove:(bool)arg3;
 - (bool)performsTwoStepPaste:(id)arg1;
 - (bool)playsNicelyWithGestures;
 - (id)positionAtStartOrEndOfWord:(id)arg1;
@@ -762,7 +772,6 @@
 - (bool)selectionAtDocumentStart;
 - (bool)selectionAtWordStart;
 - (long long)selectionBaseWritingDirection;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })selectionBoundingRectIfSelectionContainsPosition:(struct CGPoint { double x1; double x2; })arg1;
 - (void)selectionChanged;
 - (void)selectionChanged:(id)arg1;
 - (long long)selectionGranularity;
@@ -785,6 +794,7 @@
 - (void)setAlwaysConstrainsScale:(bool)arg1;
 - (void)setAutoresizes:(bool)arg1;
 - (void)setAutoscrollContentOffset:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setAvoidsUnsafeArea:(bool)arg1 forDocumentTypes:(int)arg2;
 - (void)setBaseWritingDirection:(long long)arg1;
 - (void)setBaseWritingDirection:(long long)arg1 forRange:(id)arg2;
 - (void)setBecomesEditableWithGestures:(bool)arg1;
@@ -793,12 +803,13 @@
 - (void)setCaretInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setContinuousSpellCheckingEnabled:(bool)arg1;
 - (void)setCurrentDragCaretRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (void)setCurrentDragContentType:(long long)arg1;
+- (void)setCurrentDragSourceAction:(unsigned long long)arg1;
 - (void)setDataDetectorTypes:(unsigned long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDetectsPhoneNumbers:(bool)arg1;
 - (void)setDoubleTapEnabled:(bool)arg1;
 - (void)setDragInteraction:(id)arg1;
+- (void)setDragInteractionEnabled:(bool)arg1;
 - (void)setDraggedLinkTitle:(id)arg1;
 - (void)setDraggedLinkURL:(id)arg1;
 - (void)setDrawsBackground:(bool)arg1;
@@ -906,6 +917,7 @@
 - (bool)updatesScrollView;
 - (void)useSelectionAssistantWithMode:(int)arg1;
 - (void)validateInteractionWithLocation:(struct CGPoint { double x1; double x2; })arg1;
+- (void)viewportHandler:(id)arg1 didChangeAvoidsUnsafeArea:(bool)arg2;
 - (void)viewportHandler:(id)arg1 didChangeViewportSize:(struct CGSize { double x1; double x2; })arg2;
 - (void)viewportHandlerDidChangeScales:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleBounds;
@@ -915,7 +927,6 @@
 - (bool)wantsMinimalUI;
 - (id)webDraggingDelegate;
 - (id)webSelectionAssistant;
-- (void)webThreadWebViewDidLayout:(id)arg1 byScrolling:(bool)arg2;
 - (id)webView;
 - (void)webView:(id)arg1 didChangeLocationWithinPageForFrame:(id)arg2;
 - (void)webView:(id)arg1 didCommitLoadForFrame:(id)arg2;
@@ -955,5 +966,12 @@
 - (int)wordOffsetInRange:(id)arg1;
 - (void)writeDataToPasteboard:(id)arg1;
 - (double)zoomedDocumentScale;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (id)_mf_URLsForAttachmentsInRange:(id)arg1 passingTest:(id /* block */)arg2;
+- (id)mf_DOMNodeForAttachment:(id)arg1;
+- (id)mf_URLsForAttachmentsBorderingRange:(id)arg1;
+- (id)mf_URLsForAttachmentsInRange:(id)arg1;
 
 @end

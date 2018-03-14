@@ -50,6 +50,7 @@
 - (id)initWithStorageLocation:(id)arg1;
 - (void)removeAllCookies;
 - (void)removeCookiesWithProperties:(id)arg1;
+- (void)removeCookiesWithUserIdentifier:(id)arg1;
 - (void)setCookies:(id)arg1 forUserIdentifier:(id)arg2;
 - (void)setCookiesForHTTPResponse:(id)arg1 userIdentifier:(id)arg2;
 - (void)setCookiesFromCookieStorage:(id)arg1;

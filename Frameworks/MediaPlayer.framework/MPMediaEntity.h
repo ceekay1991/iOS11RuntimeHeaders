@@ -2,10 +2,14 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPMediaEntity : NSObject <NSCopying, NSSecureCoding> {
+@interface MPMediaEntity : NSObject <MusicEntityValueProviding, NSCopying, NSSecureCoding> {
     MIPMultiverseIdentifier * _multiverseIdentifier;
 }
 
+@property (nonatomic, readonly) MPUContentItemIdentifierCollection *MPU_contentItemIdentifierCollection;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isDownloadable;
 @property (nonatomic, readonly) bool isDownloadableStoreOffer;
 @property (nonatomic, readonly) bool isPurchasableStoreOffer;
@@ -14,6 +18,9 @@
 @property (nonatomic, readonly) unsigned long long persistentID;
 @property (nonatomic, readonly) long long preferredStoreOfferVariant;
 @property (nonatomic, readonly) MPMediaItem *representativeItem;
+@property (readonly) Class superclass;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (bool)canFilterByProperty:(id)arg1;
 + (bool)supportsSecureCoding;
@@ -43,5 +50,21 @@
 - (id)representativeItem;
 - (id)valueForProperty:(id)arg1;
 - (id)valuesForProperties:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
++ (id)customPropertyHandlersCollection;
++ (void)registerSupportedCustomPropertiesWithHandlersCollection:(id)arg1;
++ (bool)supportsConcurrentLoadingOfEntityProperties;
+
+- (id)_valuesForRegularEntityProperties:(id)arg1;
+- (id)entityUniqueIdentifier;
+- (id)imageURLForEntityArtworkProperty:(id)arg1 fittingSize:(struct CGSize { double x1; double x2; })arg2 destinationScale:(double)arg3;
+- (id)valueForEntityProperty:(id)arg1;
+- (id)valuesForEntityProperties:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (id)MPU_contentItemIdentifierCollection;
 
 @end

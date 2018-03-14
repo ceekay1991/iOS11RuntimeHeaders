@@ -33,6 +33,8 @@
 @property (nonatomic) double rateOfMinimumMovementDecay;
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } startPoint;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (bool)_shouldDefaultToTouches;
 
 - (void).cxx_destruct;
@@ -69,5 +71,9 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+
+- (id)_automationName;
 
 @end

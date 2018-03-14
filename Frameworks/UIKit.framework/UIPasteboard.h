@@ -25,6 +25,8 @@
 @property (nonatomic, copy) NSString *string;
 @property (nonatomic, copy) NSArray *strings;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (id)_pasteboardWithName:(id)arg1 create:(bool)arg2;
 + (id)_pasteboardWithUniqueName;
 + (id)generalPasteboard;
@@ -84,5 +86,50 @@
 - (id)strings;
 - (id)valueForPasteboardType:(id)arg1;
 - (id)valuesForPasteboardType:(id)arg1 inItemSet:(id)arg2;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (void)mf_addPasteboardRepresentationsForAttachments:(id)arg1;
+- (id)mf_getAttachmentsPasteboardRepresentations;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
++ (id)pu_newPasteboardRepresentationForAsset:(id)arg1 data:(id)arg2 utiType:(id)arg3;
+
+- (id)pu_assets;
+- (bool)pu_containsAssets;
+- (void)pu_setAssetRepresentation:(id)arg1;
+- (void)pu_setAssetRepresentations:(id)arg1;
+
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
+- (id)safari_bestStringForPastingIntoURLField;
+- (id)safari_pasteAndNavigateButtonTitle;
+
+// Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
+
+- (void)akClearContents;
+- (id)akPasteboardAnnotations;
+- (bool)akPasteboardContainsAnnotations;
+- (void)akPasteboardSetAnnotations:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
++ (id)__ck_pasteboardTypeListRTFD;
+
+- (bool)__ck_canCreateComposition;
+- (id)__ck_composition;
+- (id)__ck_mediaObjectManager;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (id)pl_assetsInPhotoLibrary:(id)arg1;
+- (bool)pl_containsAssets;
+- (void)pl_setAsset:(id)arg1;
+- (void)pl_setAssets:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
+
+- (id)objectsForPasteboardType:(id)arg1;
 
 @end

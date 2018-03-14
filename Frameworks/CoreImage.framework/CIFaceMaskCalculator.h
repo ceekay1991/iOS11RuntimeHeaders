@@ -21,6 +21,7 @@
     CIVector * inputFacesRightEyeY;
     CIImage * inputImage;
     NSNumber * inputMaxBlur;
+    NSDictionary * inputTuningParameters;
 }
 
 @property (nonatomic, copy) NSNumber *inputFacesCapMultip;
@@ -41,6 +42,7 @@
 @property (nonatomic, retain) CIVector *inputFacesRightEyeY;
 @property (retain) CIImage *inputImage;
 @property (nonatomic, copy) NSNumber *inputMaxBlur;
+@property (nonatomic, retain) NSDictionary *inputTuningParameters;
 
 - (id)_kernel;
 - (id)inputFacesCapMultip;
@@ -61,6 +63,7 @@
 - (id)inputFacesRightEyeY;
 - (id)inputImage;
 - (id)inputMaxBlur;
+- (id)inputTuningParameters;
 - (id)outputImage;
 - (void)setInputFacesCapMultip:(id)arg1;
 - (void)setInputFacesCenterX:(id)arg1;
@@ -80,5 +83,6 @@
 - (void)setInputFacesRightEyeY:(id)arg1;
 - (void)setInputImage:(id)arg1;
 - (void)setInputMaxBlur:(id)arg1;
+- (void)setInputTuningParameters:(id)arg1;
 
 @end

@@ -18,6 +18,7 @@
         unsigned int hasTransitioningSizeAndOrientation : 1; 
         unsigned int hasPendingPreferredDisplayModeChange : 1; 
         unsigned int firstResponderChangedFromPostTransitionResponder : 1; 
+        unsigned int firstResponderChangedFromPostTransitionResponderToNil : 1; 
     }  _flags;
     bool  _lastNotifiedIsCollapsed;
     long long  _lastNotifiedMode;
@@ -220,6 +221,7 @@
 - (id)trailingViewController;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)unloadViewForced:(bool)arg1;
+- (void)updateDisplayModeButtonItem;
 - (void)updateViewConstraints;
 - (id)viewControllers;
 - (void)viewDidAppear:(bool)arg1;

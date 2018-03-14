@@ -4,9 +4,9 @@
 
 @interface MTLArrayType : MTLType
 
+@property (readonly) unsigned long long argumentIndexStride;
 @property (readonly) unsigned long long arrayLength;
 @property (readonly) unsigned long long elementType;
-@property (readonly) MTLType *elementTypeDescription;
 @property (readonly) unsigned long long stride;
 
 + (id)alloc;
@@ -14,6 +14,8 @@
 
 - (id)elementArrayType;
 - (id)elementIndirectArgumentType;
+- (id)elementPointerType;
 - (id)elementStructType;
+- (id)elementTextureReferenceType;
 
 @end

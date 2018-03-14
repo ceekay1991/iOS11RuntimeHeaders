@@ -57,6 +57,7 @@
 + (bool)respondsToProxGesture;
 + (bool)shouldMinimizeForHardwareKeyboard;
 + (struct CGSize { double x1; double x2; })sizeForInterfaceOrientation:(long long)arg1;
++ (struct CGSize { double x1; double x2; })sizeForInterfaceOrientation:(long long)arg1 ignoreInputView:(bool)arg2;
 + (bool)splitKeyboardEnabled;
 
 - (void)_acceptCurrentCandidate;
@@ -92,6 +93,7 @@
 - (id)_typeCharacter:(id)arg1 withError:(struct CGPoint { double x1; double x2; })arg2 shouldTypeVariants:(bool)arg3 baseKeyForVariants:(bool)arg4;
 - (bool)_useRecentsAlert;
 - (void)_wheelChangedWithEvent:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -108,7 +110,6 @@
 - (void)clearSnapshot;
 - (unsigned long long)cursorLocation;
 - (void)deactivate;
-- (void)dealloc;
 - (id)defaultTextInputTraits;
 - (id)delegate;
 - (void)didFocusGuideWithHeading:(unsigned long long)arg1;

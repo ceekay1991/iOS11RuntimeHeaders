@@ -29,6 +29,7 @@
     UIViewPropertyAnimator * _outerAnimator;
     NSString * _pacingAnimationKey;
     bool  _pausedAsSpring;
+    bool  _pausedOnCompletion;
     bool  _pausesOnCompletion;
     bool  _reversed;
     bool  _running;
@@ -64,6 +65,7 @@
 @property (getter=isManualHitTestingEnabled, nonatomic) bool manualHitTestingEnabled;
 @property (getter=_options, setter=_setOptions:, nonatomic) unsigned long long options;
 @property (nonatomic) double pacedFractionComplete;
+@property (getter=_isPausedOnCompletion, setter=_setPausedOnCompletion:, nonatomic) bool pausedOnCompletion;
 @property (nonatomic) bool pausesOnCompletion;
 @property (getter=isReversed, nonatomic) bool reversed;
 @property (getter=isRunning, nonatomic, readonly) bool running;
@@ -140,6 +142,7 @@
 - (long long)_finishingPosition;
 - (bool)_generatePointValueSpringAnimationsForKeyPath:(id)arg1;
 - (bool)_isActive;
+- (bool)_isPausedOnCompletion;
 - (bool)_isStarting;
 - (id)_newAnimationUpdateForProperty:(id)arg1 implicit:(bool)arg2 additive:(bool)arg3;
 - (void)_notePropertyAnimationUpdate:(id)arg1 forView:(id)arg2;
@@ -168,6 +171,7 @@
 - (void)_setOptions:(unsigned long long)arg1;
 - (void)_setOriginalFromValue:(id)arg1 forKey:(id)arg2 inLayer:(id)arg3;
 - (void)_setOriginalToValue:(id)arg1 forKey:(id)arg2 inLayer:(id)arg3;
+- (void)_setPausedOnCompletion:(bool)arg1;
 - (void)_setPausesOnCompletion:(bool)arg1;
 - (void)_setStarting:(bool)arg1;
 - (void)_setTimingParameters:(id)arg1;

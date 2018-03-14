@@ -27,6 +27,7 @@
 + (bool)isDictationAvailable;
 
 - (void).cxx_destruct;
+- (id)_createConnectionOptions;
 - (id)_dictationOptions:(id)arg1;
 - (id)_initializeWithOptions:(id)arg1;
 - (id)_speechOptions:(id)arg1;
@@ -60,6 +61,7 @@
 - (void)setSuppressStopAlert:(bool)arg1;
 - (void)setTokenFilter:(id)arg1;
 - (void)start;
+- (void)startForFileAtURL:(id)arg1 forLanguage:(id)arg2;
 - (void)stopSpeech;
 - (void)stopSpeechWithoutAlert;
 - (id)tokenFilter;

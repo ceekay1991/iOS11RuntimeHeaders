@@ -60,6 +60,8 @@
 - (id)newURLRequest;
 - (void)setCachedData:(id)arg1;
 - (double)timeoutInterval;
+- (id)updatedRequestWithNewBodyData:(id)arg1;
+- (id)updatedRequestWithNewProtobufRequest:(id)arg1;
 - (id)xpcRequest;
 
 @end

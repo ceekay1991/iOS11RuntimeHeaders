@@ -23,7 +23,7 @@
 @property (nonatomic, copy) NSString *title;
 
 + (id)itemForActionItem:(id)arg1 isGrouped:(bool)arg2;
-+ (id)localizedLabelForActionItem:(id)arg1;
++ (id)localizedLabelForActionItem:(id)arg1 usingPropertyLabel:(bool)arg2;
 + (id)navigationListItemsForUserActionListModel:(id)arg1;
 
 - (void).cxx_destruct;

@@ -3,6 +3,7 @@
  */
 
 @interface FigHTTPRequestSessionDataDelegate : NSObject <NSURLSessionDataDelegate> {
+    unsigned char  _doesIgnoreDidReceiveResponseDisposition;
     NSMutableDictionary * _taskToFigHTTPRequest;
     struct OpaqueFigReentrantMutex { } * _taskToFigHTTPRequestMutex;
 }
@@ -23,5 +24,6 @@
 - (void)_registerFigHTTPRequest:(struct OpaqueFigHTTPRequest { }*)arg1 forDataTask:(id)arg2;
 - (void)dealloc;
 - (id)init;
+- (id)initWithResponseDispositionOption:(bool)arg1;
 
 @end

@@ -3,6 +3,10 @@
  */
 
 @interface UITextMagnifierRanged : UITextMagnifier {
+    struct CGPoint { 
+        double x; 
+        double y; 
+    }  _delayedAnimationPoint;
     long long  _delayedAnimationType;
     bool  _isAnimating;
     bool  _isHorizontal;
@@ -14,6 +18,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
++ (id)activeRangedMagnifier;
 + (id)sharedRangedMagnifier;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib

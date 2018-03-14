@@ -27,6 +27,7 @@
         } size; 
     }  _indexFrame;
     NSMutableArray * _insertIndexPaths;
+    bool  _insetsContentViewsToSafeArea;
     UIColor * _multiselectCheckmarkColor;
     bool  _overlapsSectionHeaderViews;
     UITableViewRowData * _rowData;
@@ -67,11 +68,12 @@
 @property (nonatomic, readonly) bool canBeEdited;
 @property (nonatomic) bool cellLayoutMarginsFollowReadableWidth;
 @property (getter=_constants, nonatomic, retain) <UITableConstants> *constants;
-@property (getter=_dataSource, nonatomic, readonly) <UICollectionViewDataSourceTableLayout> *dataSource;
+@property (getter=_dataSourceActual, nonatomic, readonly) <UICollectionViewDataSourceTableLayout> *dataSourceActual;
 @property (readonly, copy) NSString *debugDescription;
 @property (getter=_defaultSectionFooterHeight, nonatomic, readonly) double defaultSectionFooterHeight;
 @property (getter=_defaultSectionHeaderHeight, nonatomic, readonly) double defaultSectionHeaderHeight;
-@property (getter=_delegate, nonatomic, readonly) <UICollectionViewDelegateTableLayout> *delegate;
+@property (getter=_delegateActual, nonatomic, readonly) <UICollectionViewDelegateTableLayout> *delegateActual;
+@property (getter=_delegateProxy, nonatomic, readonly) <UICollectionViewDelegateTableLayout> *delegateProxy;
 @property (nonatomic, retain) NSMutableArray *deleteIndexPaths;
 @property (nonatomic, retain) UISwipeActionDeleteScanlineView *deleteScanLineView;
 @property (nonatomic, retain) NSIndexPath *deletedIndexPath;
@@ -92,6 +94,7 @@
 @property (getter=_indexBarExtentFromEdge, nonatomic, readonly) double indexBarExtentFromEdge;
 @property (getter=_indexFrame, nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } indexFrame;
 @property (nonatomic, retain) NSMutableArray *insertIndexPaths;
+@property (nonatomic) bool insetsContentViewsToSafeArea;
 @property (getter=_isTableHeaderAutohiding, nonatomic, readonly) bool isTableHeaderAutohiding;
 @property (nonatomic, readonly) UIColor *multiselectCheckmarkColor;
 @property (getter=_numberOfSections, nonatomic, readonly) long long numberOfSections;
@@ -145,13 +148,15 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_contentInset;
 - (struct CGPoint { double x1; double x2; })_contentOffsetFromProposedContentOffset:(struct CGPoint { double x1; double x2; })arg1 forScrollingToItemAtIndexPath:(id)arg2 atScrollPosition:(unsigned long long)arg3;
 - (void)_darkenedColorsChanged:(id)arg1;
-- (id)_dataSource;
+- (id)_dataSourceActual;
 - (double)_dataSourceHeightForFooterInSection:(long long)arg1;
 - (double)_dataSourceHeightForHeaderInSection:(long long)arg1;
 - (double)_dataSourceHeightForRowAtIndexPath:(id)arg1;
+- (double)_defaultCellHeight;
 - (double)_defaultSectionFooterHeight;
 - (double)_defaultSectionHeaderHeight;
-- (id)_delegate;
+- (id)_delegateActual;
+- (id)_delegateProxy;
 - (id)_detailTextForHeaderInSection:(long long)arg1;
 - (long long)_editingStyleForRowAtIndexPath:(id)arg1;
 - (double)_estimatedHeightForFooterInSection:(long long)arg1;
@@ -199,8 +204,9 @@
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_sectionRangeForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_separatorColorChanged;
 - (bool)_separatorInsetIsRelativeToCellEdges;
+- (void)_setCollectionView:(id)arg1;
 - (void)_setFloatingElementKinds:(id)arg1;
-- (void)_setHeight:(double)arg1 forRowAtIndexPath:(id)arg2;
+- (void)_setHeight:(double)arg1 forRowAtIndexPath:(id)arg2 usingPresentationValues:(bool)arg3;
 - (void)_setSectionContentInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setSwipeActionController:(id)arg1;
 - (bool)_shouldApplyReadableWidthInsets;
@@ -252,6 +258,7 @@
 - (id)gestureRecognizerViewForSwipeActionController:(id)arg1;
 - (id)init;
 - (id)insertIndexPaths;
+- (bool)insetsContentViewsToSafeArea;
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (id)invalidationContextForBoundsChange:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)invalidationContextForInteractivelyMovingItems:(id)arg1 withTargetPosition:(struct CGPoint { double x1; double x2; })arg2 previousIndexPaths:(id)arg3 previousPosition:(struct CGPoint { double x1; double x2; })arg4;
@@ -286,6 +293,7 @@
 - (void)setDeletedIndexPath:(id)arg1;
 - (void)setEditing:(bool)arg1;
 - (void)setInsertIndexPaths:(id)arg1;
+- (void)setInsetsContentViewsToSafeArea:(bool)arg1;
 - (void)setRowData:(id)arg1;
 - (void)setRowHeight:(double)arg1;
 - (void)setSectionFooterHeight:(double)arg1;

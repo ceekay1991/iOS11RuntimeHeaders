@@ -99,6 +99,7 @@
 
 - (void).cxx_destruct;
 - (id)_animatorForContainmentTransition;
+- (struct CGPoint { double x1; double x2; })_applyLayoutAdjustmentsForManagedViewWithPosition:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_beginBreathing;
 - (bool)_canCommitPresentation;
 - (bool)_canDismissPresentation;

@@ -10,6 +10,7 @@
     MPMediaPlaylist * _geniusMixPlaylist;
     bool  _hasAudioBackgroundMode;
     MPMediaQuery * _query;
+    MPMusicPlayerQueueDescriptor * _queueDescriptor;
     MPRadioStation * _radioStation;
     long long  _repeatMode;
     bool  _seeking;
@@ -18,7 +19,6 @@
     NSDictionary * _startTimeModifications;
     NSArray * _storeIDs;
     bool  _useApplicationSpecificQueue;
-    bool  _videoPlaybackEnabled;
 }
 
 @property (nonatomic, copy) NSDictionary *assetStoreFrontOverrides;
@@ -28,6 +28,7 @@
 @property (nonatomic, retain) MPMediaPlaylist *geniusMixPlaylist;
 @property (nonatomic) bool hasAudioBackgroundMode;
 @property (nonatomic, retain) MPMediaQuery *query;
+@property (nonatomic, retain) MPMusicPlayerQueueDescriptor *queueDescriptor;
 @property (nonatomic, retain) MPRadioStation *radioStation;
 @property (nonatomic) long long repeatMode;
 @property (nonatomic) bool seeking;
@@ -36,7 +37,6 @@
 @property (nonatomic, copy) NSDictionary *startTimeModifications;
 @property (nonatomic, copy) NSArray *storeIDs;
 @property (nonatomic) bool useApplicationSpecificQueue;
-@property (nonatomic) bool videoPlaybackEnabled;
 
 - (void).cxx_destruct;
 - (id)assetStoreFrontOverrides;
@@ -46,6 +46,7 @@
 - (id)geniusMixPlaylist;
 - (bool)hasAudioBackgroundMode;
 - (id)query;
+- (id)queueDescriptor;
 - (id)radioStation;
 - (long long)repeatMode;
 - (bool)seeking;
@@ -56,6 +57,7 @@
 - (void)setGeniusMixPlaylist:(id)arg1;
 - (void)setHasAudioBackgroundMode:(bool)arg1;
 - (void)setQuery:(id)arg1;
+- (void)setQueueDescriptor:(id)arg1;
 - (void)setRadioStation:(id)arg1;
 - (void)setRepeatMode:(long long)arg1;
 - (void)setSeeking:(bool)arg1;
@@ -64,12 +66,10 @@
 - (void)setStartTimeModifications:(id)arg1;
 - (void)setStoreIDs:(id)arg1;
 - (void)setUseApplicationSpecificQueue:(bool)arg1;
-- (void)setVideoPlaybackEnabled:(bool)arg1;
 - (long long)shuffleMode;
 - (id)startItemID;
 - (id)startTimeModifications;
 - (id)storeIDs;
 - (bool)useApplicationSpecificQueue;
-- (bool)videoPlaybackEnabled;
 
 @end

@@ -3,15 +3,19 @@
  */
 
 @interface _UINavigationBarVisualProviderModernIOS : _UINavigationBarVisualProvider <_UIBasicAnimationFactory, _UINavigationBarContentViewDelegate, _UINavigationControllerRefreshControlHostDelegate, _UINavigationItemChangeObserver> {
+    bool  _backgroundTransparentWhenNotCollapsed;
     _UIBarBackground * _backgroundView;
     UIView * _canvasView;
     _UINavigationBarContentView * _contentView;
     bool  _hasIdiom;
     _UINavigationBarLargeTitleView * _largeTitleView;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _previousBarSize;
     _UINavigationBarModernPromptView * _promptView;
     _UINavigationControllerRefreshControlHost * _refreshControlHost;
     _UINavigationBarTransitionContext * _transitionContext;
-    bool  _useInlineBackgroundHeightWhenLarge;
     UILabel * _weeTitleLabel;
 }
 
@@ -38,8 +42,10 @@
 - (void)_layoutInBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 wantsExtendedContentView:(bool)arg2;
 - (void)_performAnimationWithTransitionCompletion:(id /* block */)arg1 transition:(int)arg2;
 - (id)_resolveLargeTitleAttributes;
+- (void)_setupTopNavigationItemAnimated:(bool)arg1;
 - (void)_setupTransitionContextForTransition:(int)arg1;
 - (id)_shim_backdropGroupName;
+- (double)_shim_backgroundAlpha;
 - (id)_shim_compatibilityBackgroundView;
 - (bool)_shim_disableBlurTinting;
 - (void)_shim_setBackdropGroupName:(id)arg1;
@@ -50,6 +56,7 @@
 - (bool)_shouldAnimateAdditivelyForView:(id)arg1 withKeyPath:(id)arg2;
 - (bool)_stackWantsExtendedContentViewForItem:(id)arg1;
 - (bool)_stackWantsLargeTitleDisplayedForItem:(id)arg1;
+- (bool)_stackWantsSearchDisplayedForItem:(id)arg1;
 - (id)_timingFunctionForAnimationInView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_updateAugmentedTitleDataSources;
 - (void)_updateBackground;
@@ -65,6 +72,7 @@
 - (void)_updateTitleViewWithLargeTitle:(bool)arg1;
 - (void)_updateWithCompletion:(id /* block */)arg1;
 - (bool)allowLargeTitleView;
+- (void)animateForSearchPresentation:(bool)arg1;
 - (void)changeAppearance;
 - (void)changeLayout;
 - (long long)currentContentSize;
@@ -86,6 +94,7 @@
 - (void)prepare;
 - (void)provideViewsForContents:(id)arg1 topItem:(id)arg2 backItem:(id)arg3;
 - (void)pushAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)recordBarSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)refreshControlHost;
 - (void)safeAreaInsetsDidChange;
 - (void)setRefreshControlHost:(id)arg1;

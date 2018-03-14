@@ -38,6 +38,7 @@
 
 - (void).cxx_destruct;
 - (void)_clearAnimationsWithDuration:(double)arg1 curve:(long long)arg2 reverse:(bool)arg3;
+- (void)_finishTrackingAnimations;
 - (void)_getInteractive;
 - (void)_getPopDurationAndTransitionAlwaysCrossfade:(bool)arg1;
 - (void)_getPushDurationAndTransitionAlwaysCrossfade:(bool)arg1;

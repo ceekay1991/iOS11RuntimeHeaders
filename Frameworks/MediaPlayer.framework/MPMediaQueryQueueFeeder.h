@@ -34,6 +34,8 @@
 @property (nonatomic, readonly, copy) NSDictionary *rtcReportingSessionAdditionalUserInfo;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)_itemsForQuery:(id)arg1 shuffleType:(long long)arg2;
 + (id)audioSessionModeForMediaType:(unsigned long long)arg1;
 + (Class)playbackItemMetadataClass;
@@ -42,7 +44,6 @@
 - (void).cxx_destruct;
 - (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;
 - (void)_commonInit;
-- (void)_configureStoreAVItem:(id)arg1;
 - (id)_currentEmptyQueueError;
 - (void)_handleMediaLibraryDidChange;
 - (id)_identifierAtIndex:(unsigned long long)arg1;
@@ -88,5 +89,17 @@
 - (void)shuffleItemsWithAnchor:(unsigned long long*)arg1;
 - (bool)supportsAddToQueue;
 - (unsigned long long)unshuffledIndexOfAVItem:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
+- (id)_musicEntityValueProviding_representativeCollection;
+- (id)entityUniqueIdentifier;
+- (id)imageURLForEntityArtworkProperty:(id)arg1 fittingSize:(struct CGSize { double x1; double x2; })arg2 destinationScale:(double)arg3;
+- (id)valueForEntityProperty:(id)arg1;
+- (id)valuesForEntityProperties:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (id)MPU_contentItemIdentifierCollection;
 
 @end

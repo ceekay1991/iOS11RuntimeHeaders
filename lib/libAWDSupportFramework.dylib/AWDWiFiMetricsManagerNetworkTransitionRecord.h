@@ -11,9 +11,11 @@
     }  _channelScanCounts;
     unsigned long long  _endedTimestamp;
     unsigned int  _errors;
+    unsigned long long  _gotIPTimestamp;
     struct { 
         unsigned int beganTimestamp : 1; 
         unsigned int endedTimestamp : 1; 
+        unsigned int gotIPTimestamp : 1; 
         unsigned int timestamp : 1; 
         unsigned int errors : 1; 
         unsigned int state : 1; 
@@ -29,9 +31,11 @@
 @property (nonatomic, readonly) unsigned long long channelScanCountsCount;
 @property (nonatomic) unsigned long long endedTimestamp;
 @property (nonatomic) unsigned int errors;
+@property (nonatomic) unsigned long long gotIPTimestamp;
 @property (nonatomic) bool hasBeganTimestamp;
 @property (nonatomic) bool hasEndedTimestamp;
 @property (nonatomic) bool hasErrors;
+@property (nonatomic) bool hasGotIPTimestamp;
 @property (nonatomic) bool hasState;
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic) bool hasTrigger;
@@ -52,9 +56,11 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)endedTimestamp;
 - (unsigned int)errors;
+- (unsigned long long)gotIPTimestamp;
 - (bool)hasBeganTimestamp;
 - (bool)hasEndedTimestamp;
 - (bool)hasErrors;
+- (bool)hasGotIPTimestamp;
 - (bool)hasState;
 - (bool)hasTimestamp;
 - (bool)hasTrigger;
@@ -66,9 +72,11 @@
 - (void)setChannelScanCounts:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setEndedTimestamp:(unsigned long long)arg1;
 - (void)setErrors:(unsigned int)arg1;
+- (void)setGotIPTimestamp:(unsigned long long)arg1;
 - (void)setHasBeganTimestamp:(bool)arg1;
 - (void)setHasEndedTimestamp:(bool)arg1;
 - (void)setHasErrors:(bool)arg1;
+- (void)setHasGotIPTimestamp:(bool)arg1;
 - (void)setHasState:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setHasTrigger:(bool)arg1;

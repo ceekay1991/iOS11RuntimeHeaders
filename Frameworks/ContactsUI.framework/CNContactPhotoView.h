@@ -69,7 +69,6 @@
 - (id)attributionImageView;
 - (void)avatarTapped:(id)arg1;
 - (id)avatarView;
-- (void)avatarView:(id)arg1 willShowActions:(id)arg2;
 - (bool)canBecomeFirstResponder;
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)contact;
@@ -143,5 +142,6 @@
 - (void)updatePhoto;
 - (void)updatePhotoAndNotifyDelegate:(bool)arg1;
 - (id)variableConstraints;
+- (void)willBeginPreviewInteractionForAvatarView:(id)arg1;
 
 @end

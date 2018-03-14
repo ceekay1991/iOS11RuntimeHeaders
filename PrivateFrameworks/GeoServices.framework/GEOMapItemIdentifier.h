@@ -8,7 +8,6 @@
 
 @property (getter=hasCoordinate, nonatomic, readonly) bool hasCoordinate;
 @property (nonatomic, readonly) unsigned long long muid;
-@property (nonatomic, readonly) int placeType;
 @property (nonatomic, readonly) int resultProviderID;
 
 + (bool)supportsSecureCoding;
@@ -18,6 +17,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
+- (void)encodeWithXPCCoder:(id)arg1;
 - (bool)hasCoordinate;
 - (unsigned long long)hash;
 - (id)init;
@@ -28,11 +28,11 @@
 - (id)initWithMapItem:(id)arg1;
 - (id)initWithMapsIdentifier:(id)arg1;
 - (id)initWithPlace:(id)arg1;
+- (id)initWithXPCCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToGEOMapItemIdentifier:(id)arg1;
 - (id)mapsIdentifier;
 - (unsigned long long)muid;
-- (int)placeType;
 - (int)resultProviderID;
 
 @end

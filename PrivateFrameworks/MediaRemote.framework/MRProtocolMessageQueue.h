@@ -3,10 +3,11 @@
  */
 
 @interface MRProtocolMessageQueue : NSObject {
-    <MRProtocolMessageQueueDataSource> * _datasource;
-    <MRProtocolMessageQueueDelegate> * _delegate;
+    MRWeakRef * _datasource;
+    MRWeakRef * _delegate;
     MRPendingMessageQueue * _pendingMessageQueue;
     NSMutableDictionary * _pendingReplyQueue;
+    NSObject<OS_dispatch_queue> * _serialQueue;
 }
 
 @property (nonatomic) <MRProtocolMessageQueueDataSource> *datasource;

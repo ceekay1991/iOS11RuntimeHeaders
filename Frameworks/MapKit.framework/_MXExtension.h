@@ -19,14 +19,16 @@
 @property (nonatomic) _MXExtensionProvider *provider;
 @property (nonatomic, readonly) unsigned long long type;
 
++ (void)setShouldDeserializeCacheItems:(bool)arg1;
++ (bool)shouldDeserializeCacheItems;
+
 - (void).cxx_destruct;
 - (id)_containingAppIdentifer;
-- (void)_extensionContextHost:(id)arg1 wantsToCacheObject:(id)arg2;
 - (id)_iconForTableUI;
 - (id)_iconWithFormat:(int)arg1;
 - (bool)_isIntentExtension;
 - (bool)_isMapsExtension;
-- (id)_loadImage:(id)arg1;
+- (void)_loadCacheItems:(id)arg1;
 - (bool)_setEnabled:(bool)arg1 error:(id*)arg2;
 - (id)attributes;
 - (bool)canSupportIntent:(id)arg1;
@@ -37,10 +39,7 @@
 - (id)description;
 - (id)displayName;
 - (id)extension;
-- (void)extensionContextHost:(id)arg1 wantsToCacheImage:(id)arg2;
-- (void)extensionContextHost:(id)arg1 wantsToCacheObject:(id)arg2;
 - (id)extensionPointIdentifier;
-- (void)handleIntent:(id)arg1 expectResponseClass:(Class)arg2 completion:(id /* block */)arg3;
 - (id)handleIntent:(id)arg1 expectResponseClass:(Class)arg2 withCompletion:(id /* block */)arg3;
 - (id)handleRequest:(id)arg1 requestDispatcher:(id)arg2 completion:(id /* block */)arg3;
 - (id)identifier;

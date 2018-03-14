@@ -8,6 +8,7 @@
 - (NSDictionary *)cacheInfo;
 - (unsigned long long)countOfGrowthActions;
 - (double)currentKeepAliveInterval;
+- (int)growthStage;
 - (id)initWithCacheInfo:(NSDictionary *)arg1 loggingIdentifier:(NSString *)arg2 algorithmName:(NSString *)arg3;
 - (bool)isServerOriginatedKeepAlive;
 - (double)lastSuccessfulKeepAliveInterval;

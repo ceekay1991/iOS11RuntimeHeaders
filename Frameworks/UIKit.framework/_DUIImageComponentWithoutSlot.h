@@ -13,10 +13,12 @@
             double height; 
         } size; 
     }  _frame;
+    bool  _ignoresAccessibilityFilters;
     NSString * _key;
 }
 
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
+@property (nonatomic) bool ignoresAccessibilityFilters;
 @property (nonatomic, retain) NSString *key;
 
 + (bool)supportsSecureCoding;
@@ -26,10 +28,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frame;
 - (unsigned long long)hash;
+- (bool)ignoresAccessibilityFilters;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)key;
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setIgnoresAccessibilityFilters:(bool)arg1;
 - (void)setKey:(id)arg1;
 
 @end

@@ -10,7 +10,7 @@
 @property (nonatomic, readonly) NSSQLiteStatement *changeRequestStatement;
 @property (nonatomic, readonly) NSPersistentHistoryChangeRequest *request;
 
-- (id)_changeFromResult:(id)arg1 withTransaction:(id)arg2;
+- (id)_changeFromResult:(id)arg1 withTransaction:(id)arg2 andTombstoneCache:(id)arg3;
 - (void)_createChangeRequestStatement;
 - (id)_processResult:(id)arg1;
 - (id)_transactionFromResult:(id)arg1 withChanges:(id)arg2;

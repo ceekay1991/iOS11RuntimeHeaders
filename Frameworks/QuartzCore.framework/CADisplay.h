@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) NSString *deviceName;
 @property (readonly) unsigned int displayId;
 @property (getter=isExternal, readonly) bool external;
+@property (readonly) CADisplayAttributes *externalDisplayAttributes;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
 @property (readonly) double heartbeatRate;
 @property (readonly) long long minimumFrameDuration;
@@ -53,6 +54,7 @@
 - (id)description;
 - (id)deviceName;
 - (unsigned int)displayId;
+- (id)externalDisplayAttributes;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frame;
 - (double)heartbeatRate;
 - (bool)isCloned;

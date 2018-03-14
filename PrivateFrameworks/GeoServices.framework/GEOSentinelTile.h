@@ -5,10 +5,12 @@
 @interface GEOSentinelTile : PBCodable <NSCopying> {
     NSString * _resourceName;
     int  _type;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSString *resourceName;
 @property (nonatomic) int type;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
@@ -25,6 +27,7 @@
 - (void)setType:(int)arg1;
 - (int)type;
 - (id)typeAsString:(int)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

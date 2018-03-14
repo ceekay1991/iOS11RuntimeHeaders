@@ -32,6 +32,8 @@
 - (id)delegate;
 - (void)enablePrivateModeForPeripheral:(id)arg1 forDuration:(unsigned short)arg2;
 - (void)forEachPeripheral:(id /* block */)arg1;
+- (void)handleAdvertisingAddressChanged:(id)arg1;
+- (void)handleApplicationActivityEvent:(id)arg1;
 - (void)handleConnectionParametersUpdated:(id)arg1;
 - (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)handlePeripheralConnectionCompleted:(id)arg1;

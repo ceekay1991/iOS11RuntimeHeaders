@@ -5,16 +5,16 @@
 @interface _INPBNote : PBCodable <NSCopying> {
     NSMutableArray * _contents;
     _INPBDateTime * _createdDateTime;
-    NSString * _groupName;
+    _INPBDataString * _groupName;
     NSString * _identifier;
     _INPBDateTime * _modifiedDateTime;
-    NSString * _title;
+    _INPBDataString * _title;
     PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSMutableArray *contents;
 @property (nonatomic, retain) _INPBDateTime *createdDateTime;
-@property (nonatomic, retain) NSString *groupName;
+@property (nonatomic, retain) _INPBDataString *groupName;
 @property (nonatomic, readonly) bool hasCreatedDateTime;
 @property (nonatomic, readonly) bool hasGroupName;
 @property (nonatomic, readonly) bool hasIdentifier;
@@ -22,7 +22,7 @@
 @property (nonatomic, readonly) bool hasTitle;
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, retain) _INPBDateTime *modifiedDateTime;
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) _INPBDataString *title;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)contentType;

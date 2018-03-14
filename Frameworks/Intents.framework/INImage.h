@@ -26,19 +26,24 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
 + (void)buildFromCachePayload:(id)arg1 identifier:(id)arg2 completion:(id /* block */)arg3;
 + (id)imageNamed:(id)arg1;
 + (id)imageWithImageData:(id)arg1;
 + (id)imageWithURL:(id)arg1;
-+ (id)imageWithURL:(id)arg1 desiredWidth:(double)arg2 height:(double)arg3;
++ (id)imageWithURL:(id)arg1 width:(double)arg2 height:(double)arg3;
++ (void)initialize;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_bundlePath;
+- (id)_description;
+- (id)_descriptionAtIndent:(unsigned long long)arg1;
+- (id)_dictionaryRepresentation;
 - (id)_identifier;
 - (id)_imageData;
 - (struct { double x1; double x2; })_imageSize;
-- (id)_init;
 - (id)_initWithData:(id)arg1;
 - (id)_initWithIdentifier:(id)arg1;
 - (id)_name;
@@ -52,7 +57,17 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateCachePayloadWithCompletion:(id /* block */)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (bool)isEqual:(id)arg1;
+
+// Image: /System/Library/Frameworks/IntentsUI.framework/IntentsUI
+
++ (struct CGSize { double x1; double x2; })imageSizeForIntentResponse:(id)arg1;
++ (id)imageWithCGImage:(struct CGImage { }*)arg1;
++ (id)imageWithUIImage:(id)arg1;
+
+- (void)fetchUIImageWithCompletion:(id /* block */)arg1;
 
 @end

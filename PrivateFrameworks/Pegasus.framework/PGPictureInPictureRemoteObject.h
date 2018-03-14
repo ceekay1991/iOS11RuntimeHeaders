@@ -35,6 +35,7 @@
 @property (nonatomic) <PGPictureInPictureRemoteObjectDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isStartingStoppingOrCancellingPictureInPicture;
 @property (nonatomic, readonly) PGPictureInPictureApplication *pictureInPictureApplication;
 @property (getter=isPictureInPicturePossible, nonatomic) bool pictureInPicturePossible;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
@@ -55,6 +56,7 @@
 - (oneway void)initializePictureInPictureWithControlsStyle:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)invalidate;
 - (bool)isPictureInPicturePossible;
+- (bool)isStartingStoppingOrCancellingPictureInPicture;
 - (id)pictureInPictureApplication;
 - (void)pictureInPictureInterruptionBegan;
 - (void)pictureInPictureInterruptionEnded;

@@ -44,7 +44,7 @@
 - (id)initWithView:(id)arg1;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)lookup:(id)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 fromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
-- (void)loupeGestureWithState:(long long)arg1 atGesturePoint:(id /* block */)arg2 shouldCancel:(bool*)arg3;
+- (Class)loupeClusterClass;
 - (bool)overrideGestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (bool)overrideGestureRecognizerShouldBegin:(id)arg1;
 - (void)rangeSelectionCanceled;
@@ -68,6 +68,7 @@
 - (Class)selectionClusterClass;
 - (void)setCaretBeforeTap:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setWordBeforeTap:(id)arg1;
+- (bool)shouldEnqueueObserverUpdates;
 - (bool)shouldTryReplacementsForText:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)showDictionaryFor:(id)arg1 fromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)showReplacementsForText:(id)arg1 withOptions:(unsigned long long)arg2;

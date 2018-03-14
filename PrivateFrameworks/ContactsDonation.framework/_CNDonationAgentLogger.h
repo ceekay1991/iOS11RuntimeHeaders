@@ -21,17 +21,25 @@
 - (void)agentWillStart;
 - (void)agentWillStop;
 - (void)beginRestorePersistedState;
-- (void)couldNotRejectUnknownCollectionIdentifier:(id)arg1;
+- (void)contactsChangedNotificationEmailAddressesChanged:(bool)arg1;
+- (void)contactsChangedNotificationFoundName:(bool)arg1 nameChanged:(bool)arg2;
+- (void)couldNotRejectClusterIdentifier:(id)arg1 error:(id)arg2;
+- (void)couldNotRejectDonationIdentifier:(id)arg1 error:(id)arg2;
+- (void)couldNotRejectUnknownClusterIdentifier:(id)arg1;
 - (void)couldNotRejectUnknownDonationIdentifier:(id)arg1;
+- (void)couldNotRenewBecauseDonorError:(id)arg1;
+- (void)couldNotRenewBecauseLoadingError:(id)arg1;
+- (void)couldNotRenewBecauseNotADonorExtension:(id)arg1;
 - (void)denyingRequestFromProcess:(int)arg1;
 - (void)didDiscoverExtension:(id)arg1;
 - (void)didDiscoverExtensions;
 - (void)didDiscoverUnexpectedExtensionType:(id)arg1;
 - (void)didFailToDiscoverExtensions:(id)arg1;
 - (void)didListRejections;
-- (void)didRejectCollectionIdentifier:(id)arg1;
+- (void)didRejectClusterIdentifier:(id)arg1;
 - (void)didRejectDonationIdentifier:(id)arg1;
 - (void)didRemoveAllRejections;
+- (void)didRenewValue:(id)arg1 untilDate:(id)arg2;
 - (void)donationServiceDidStart;
 - (void)donationServiceWillStart;
 - (void)donationServiceWillStop;
@@ -50,9 +58,10 @@
 - (void)willDiscoverExtensions;
 - (void)willListRejections;
 - (void)willLoadExtensionVersions;
-- (void)willRejectCollectionIdentifier:(id)arg1;
+- (void)willRejectClusterIdentifier:(id)arg1;
 - (void)willRejectDonationIdentifier:(id)arg1;
 - (void)willRemoveAllRejections;
+- (void)willRenewValues:(id)arg1 withDonor:(id)arg2;
 - (void)willSaveExtensionVersions;
 
 @end

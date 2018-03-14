@@ -26,8 +26,6 @@
 - (id /* block */)handler;
 - (id)init;
 - (id)initWithPeriod:(long long)arg1 interval:(double)arg2 schedulerJobName:(id)arg3 queue:(id)arg4 handler:(id /* block */)arg5;
-- (id)initWithPeriod:(long long)arg1 schedulerJobName:(id)arg2 handler:(id /* block */)arg3;
-- (id)initWithPeriod:(long long)arg1 schedulerJobName:(id)arg2 queue:(id)arg3 handler:(id /* block */)arg4;
 - (double)interval;
 - (id)jobName;
 - (long long)period;

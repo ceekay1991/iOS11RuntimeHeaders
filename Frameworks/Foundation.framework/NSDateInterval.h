@@ -8,6 +8,8 @@
 @property (readonly, copy) NSDate *endDate;
 @property (readonly, copy) NSDate *startDate;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 + (bool)supportsSecureCoding;
 
@@ -28,5 +30,25 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToDateInterval:(id)arg1;
 - (id)startDate;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
++ (id)hk_dateIntervalForDayFromDate:(id)arg1 calendar:(id)arg2;
++ (id)hk_dateIntervalWithStart:(double)arg1 end:(double)arg2;
++ (id)hk_dateIntervalWithStartDate:(id)arg1 endDate:(id)arg2;
+
+- (bool)hk_containsTime:(double)arg1;
+- (bool)hk_intersectsDateIntervalWithStartDate:(id)arg1 endDate:(id)arg2;
+- (id)hk_midDate;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
++ (id)hk_dateIntervalWithValueRange:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
+
++ (id)_mt_dateIntervalFromPropertyList:(id)arg1;
+
+- (id)_mt_propertyList;
 
 @end

@@ -10,6 +10,7 @@
 - (NSDictionary *)dictionaryRepresentation;
 - (bool)hasBottomPadding;
 - (bool)hasTopPadding;
+- (bool)isCentered;
 - (NSData *)jsonData;
 - (NSArray *)punchoutOptions;
 - (NSString *)punchoutPickerDismissText;
@@ -19,6 +20,7 @@
 - (void)setCanBeHidden:(bool)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setIsCentered:(bool)arg1;
 - (void)setPunchoutOptions:(NSArray *)arg1;
 - (void)setPunchoutPickerDismissText:(NSString *)arg1;
 - (void)setPunchoutPickerTitle:(NSString *)arg1;

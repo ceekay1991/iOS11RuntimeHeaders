@@ -54,6 +54,8 @@
 - (id)rangedRegions;
 - (void)setAllowsBackgroundLocationUpdates:(bool)arg1;
 - (void)setPausesLocationUpdatesAutomatically:(int)arg1;
+- (void)setShowsBackgroundLocationIndicator:(bool)arg1;
+- (bool)showsBackgroundLocationIndicator;
 - (void)stopUpdatingLocationAutoPaused;
 
 @end

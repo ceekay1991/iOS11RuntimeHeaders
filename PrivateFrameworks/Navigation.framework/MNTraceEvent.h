@@ -31,11 +31,13 @@
 - (id)eventData;
 - (unsigned long long)eventType;
 - (id)initWithTime:(double)arg1 stepIndex:(unsigned long long)arg2 stage:(unsigned long long)arg3 distance:(double)arg4 location:(id)arg5 eventType:(unsigned long long)arg6 eventData:(id)arg7;
+- (id)instructionsFromSignDescription:(id)arg1;
 - (id)location;
 - (id)primaryDescription;
 - (id)secondaryDescription;
 - (void)setEventData:(id)arg1;
 - (void)setEventType:(unsigned long long)arg1;
+- (id)shieldToText:(id)arg1;
 - (unsigned long long)stage;
 - (unsigned long long)stepIndex;
 - (id)stringByInstructions:(id)arg1;

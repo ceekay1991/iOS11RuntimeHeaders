@@ -28,7 +28,6 @@
 - (long long)code;
 - (id)defaultBookingDate;
 - (unsigned long long)defaultPartySize;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBackingStore:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;

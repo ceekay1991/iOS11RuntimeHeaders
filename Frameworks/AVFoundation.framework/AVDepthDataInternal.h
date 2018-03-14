@@ -9,6 +9,9 @@
     float  depthBlurEffectSimulatedAperture;
     bool  filtered;
     struct __CVBuffer { } * pixelBuffer;
+    float  portraitScore;
+    bool  portraitScoreIsHigh;
+    long long  quality;
     int  version;
 }
 

@@ -18,17 +18,18 @@
 
 - (void).cxx_destruct;
 - (id)_authenticationServiceConnection;
+- (id)accountNamesForAltDSID:(id)arg1;
 - (id)activeLoginCode:(id*)arg1;
 - (void)authenticateWithContext:(id)arg1 completion:(id /* block */)arg2;
 - (void)checkInWithAuthenticationServerForAppleID:(id)arg1 completion:(id /* block */)arg2;
-- (void)checkSecurityUpgradeEligibilityForAppleID:(id)arg1 completion:(id /* block */)arg2;
+- (void)checkSecurityUpgradeEligibilityForContext:(id)arg1 completion:(id /* block */)arg2;
 - (void)configurationInfoWithIdentifiers:(id)arg1 forAltDSID:(id)arg2 completion:(id /* block */)arg3;
 - (void)dealloc;
 - (id /* block */)deallocHandler;
 - (id)delegate;
-- (id)emailsForAltDSID:(id)arg1;
 - (void)fetchDeviceListWithContext:(id)arg1 completion:(id /* block */)arg2;
 - (id)fetchDeviceListWithContext:(id)arg1 error:(id*)arg2;
+- (void)fetchURLBagWithCompletion:(id /* block */)arg1;
 - (void)fetchUserInformationForAltDSID:(id)arg1 completion:(id /* block */)arg2;
 - (void)generateLoginCodeWithCompletion:(id /* block */)arg1;
 - (void)getServerUILoadDelegateForAltDSID:(id)arg1 completion:(id /* block */)arg2;
@@ -53,6 +54,7 @@
 - (void)teardownFollowUpWithContext:(id)arg1 completion:(id /* block */)arg2;
 - (void)updateStateWithExternalAuthenticationResponse:(id)arg1 forAppleID:(id)arg2 completion:(id /* block */)arg3;
 - (void)updateStateWithExternalAuthenticationResponse:(id)arg1 forContext:(id)arg2 completion:(id /* block */)arg3;
+- (id)urlBagWithError:(id*)arg1;
 - (void)validateLoginCode:(unsigned long long)arg1 forAppleID:(id)arg2 completion:(id /* block */)arg3;
 - (void)validateVettingToken:(id)arg1 forAltDSID:(id)arg2 completion:(id /* block */)arg3;
 - (void)verifyMasterKey:(id)arg1 context:(id)arg2 completion:(id /* block */)arg3;

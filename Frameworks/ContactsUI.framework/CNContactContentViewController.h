@@ -19,6 +19,7 @@
     bool  _allowsConferencing;
     bool  _allowsContactBlocking;
     bool  _allowsDeletion;
+    bool  _allowsEditInApp;
     bool  _allowsEditing;
     bool  _allowsPropertyActions;
     bool  _allowsSendMessage;
@@ -70,6 +71,7 @@
     CNPropertyFaceTimeAction * _faceTimeAudioAction;
     <CNCancelable> * _faceTimeIDSLookupToken;
     CNMutableContact * _fakeEditableContact;
+    UIView * _footerOverflowView;
     NSMutableDictionary * _groupsAfterGroup;
     UIView * _headerDropShadowView;
     NSLayoutConstraint * _headerHeightConstraint;
@@ -78,6 +80,7 @@
     NSArray * _highlightedProperties;
     bool  _highlightedPropertyImportant;
     <CNCancelable> * _iMessageIDSLookupToken;
+    CNContactAction * _ignoreContactAction;
     bool  _isMailVIP;
     NSMutableArray * _issuedSaveRequestIdentifiers;
     double  _keyboardVerticalOverlap;
@@ -96,6 +99,12 @@
     bool  _outOfProcessSetupComplete;
     CNContainer * _parentContainer;
     CNGroup * _parentGroup;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _peripheryInsets;
     UIViewController * _personHeaderViewController;
     CNPolicy * _policy;
     <CNContactViewControllerPPTDelegate> * _pptDelegate;
@@ -133,6 +142,7 @@
 @property (nonatomic) bool allowsConferencing;
 @property (nonatomic) bool allowsContactBlocking;
 @property (nonatomic) bool allowsDeletion;
+@property (nonatomic) bool allowsEditInApp;
 @property (nonatomic) bool allowsEditing;
 @property (nonatomic) bool allowsPropertyActions;
 @property (nonatomic) bool allowsSendMessage;
@@ -186,6 +196,7 @@
 @property (nonatomic, retain) CNPropertyFaceTimeAction *faceTimeAudioAction;
 @property (nonatomic, retain) <CNCancelable> *faceTimeIDSLookupToken;
 @property (nonatomic, retain) CNMutableContact *fakeEditableContact;
+@property (nonatomic, retain) UIView *footerOverflowView;
 @property (nonatomic, retain) NSMutableDictionary *groupsAfterGroup;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UIView *headerDropShadowView;
@@ -195,6 +206,7 @@
 @property (nonatomic, retain) NSArray *highlightedProperties;
 @property (nonatomic) bool highlightedPropertyImportant;
 @property (nonatomic, retain) <CNCancelable> *iMessageIDSLookupToken;
+@property (nonatomic, retain) CNContactAction *ignoreContactAction;
 @property (nonatomic) bool isMailVIP;
 @property (readonly) bool isPresentingModalViewController;
 @property (nonatomic, retain) NSMutableArray *issuedSaveRequestIdentifiers;
@@ -211,6 +223,7 @@
 @property (nonatomic) bool outOfProcessSetupComplete;
 @property (nonatomic, retain) CNContainer *parentContainer;
 @property (nonatomic, retain) CNGroup *parentGroup;
+@property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } peripheryInsets;
 @property (nonatomic, retain) UIView *personHeaderView;
 @property (nonatomic, retain) UIViewController *personHeaderViewController;
 @property (nonatomic, retain) CNPolicy *policy;
@@ -289,6 +302,7 @@
 - (void)_setupAddToAddressBookActions;
 - (void)_setupCardActions;
 - (void)_setupContactBlockingActionsWithUpdate:(bool)arg1;
+- (void)_setupCustomActions;
 - (void)_setupEditingCardActions;
 - (void)_setupEditingLinkedContactsForKeys:(id)arg1;
 - (void)_setupPrimaryPropertyActions;
@@ -344,6 +358,7 @@
 - (bool)allowsConferencing;
 - (bool)allowsContactBlocking;
 - (bool)allowsDeletion;
+- (bool)allowsEditInApp;
 - (bool)allowsEditing;
 - (bool)allowsPropertyActions;
 - (bool)allowsSendMessage;
@@ -425,6 +440,7 @@
 - (id)faceTimeAudioAction;
 - (id)faceTimeIDSLookupToken;
 - (id)fakeEditableContact;
+- (id)footerOverflowView;
 - (double)globalHeaderHeightForContentOffset:(double)arg1 contentInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
 - (Class)groupClassForProperty:(id)arg1;
 - (unsigned long long)groupIndexFromTableViewSectionIndex:(unsigned long long)arg1;
@@ -441,6 +457,7 @@
 - (bool)highlightedPropertyImportant;
 - (id)hostingViewControllerForController:(id)arg1;
 - (id)iMessageIDSLookupToken;
+- (id)ignoreContactAction;
 - (long long)indexOfGroup:(id)arg1;
 - (id)indexPathOfDisplayedPropertyItem:(id)arg1;
 - (id)initWithContact:(id)arg1;
@@ -477,6 +494,7 @@
 - (bool)outOfProcessSetupComplete;
 - (id)parentContainer;
 - (id)parentGroup;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })peripheryInsets;
 - (id)personHeaderView;
 - (id)personHeaderViewController;
 - (id)policy;
@@ -505,6 +523,7 @@
 - (id)saveCommand;
 - (id)saveLinkedContactChanges;
 - (void)saveModelChangesToContact;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })scrollIndicatorInsetsForDisplayTableView:(id)arg1 withContentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
 - (void)scrollScrollViewAllTheWayUp:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
@@ -528,6 +547,7 @@
 - (void)setAllowsConferencing:(bool)arg1;
 - (void)setAllowsContactBlocking:(bool)arg1;
 - (void)setAllowsDeletion:(bool)arg1;
+- (void)setAllowsEditInApp:(bool)arg1;
 - (void)setAllowsEditing:(bool)arg1;
 - (void)setAllowsPropertyActions:(bool)arg1;
 - (void)setAllowsSendMessage:(bool)arg1;
@@ -576,6 +596,7 @@
 - (void)setFaceTimeAudioAction:(id)arg1;
 - (void)setFaceTimeIDSLookupToken:(id)arg1;
 - (void)setFakeEditableContact:(id)arg1;
+- (void)setFooterOverflowView:(id)arg1;
 - (void)setGroupsAfterGroup:(id)arg1;
 - (void)setHeaderDropShadowView:(id)arg1;
 - (void)setHeaderHeightConstraint:(id)arg1;
@@ -584,6 +605,7 @@
 - (void)setHighlightedProperties:(id)arg1;
 - (void)setHighlightedPropertyImportant:(bool)arg1;
 - (void)setIMessageIDSLookupToken:(id)arg1;
+- (void)setIgnoreContactAction:(id)arg1;
 - (void)setIsMailVIP:(bool)arg1;
 - (void)setIssuedSaveRequestIdentifiers:(id)arg1;
 - (void)setKeyboardVerticalOverlap:(double)arg1;
@@ -632,6 +654,8 @@
 - (id)sharedActionsDataSource;
 - (void)sharingStatusDidChange;
 - (bool)shouldDisplayAvatarHeaderView;
+- (bool)shouldReallyShowLinkedContactsForEditingState:(bool)arg1;
+- (bool)shouldShowFooterOverflowViewForEditingState:(bool)arg1;
 - (bool)shouldShowLinkedContacts;
 - (bool)showingMeContact;
 - (id)siriContextProvider;
@@ -669,9 +693,11 @@
 - (void)updateDoneButton;
 - (void)updateEditNavigationItemsAnimated:(bool)arg1;
 - (id)updateExistingContactAction;
+- (void)updateFooterOverflowViewForTableView:(id)arg1 editing:(bool)arg2;
 - (double)updateHeaderConstraintForGlobalHeaderHeight:(double)arg1 direction:(long long)arg2 animated:(bool)arg3;
 - (void)updateHeaderHeightToMatchScrollViewState:(id)arg1 scrollDirection:(long long)arg2 animated:(bool)arg3;
-- (void)updateTableView:(id)arg1 insetsTo:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
+- (void)updateInsetsIfNeededForTableView:(id)arg1 isEditing:(bool)arg2;
+- (void)updateTableView:(id)arg1 contentInsetsTo:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 withScrollIndicatorInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg3;
 - (void)updateUserActivityState:(id)arg1;
 - (void)updateViewConstraints;
 - (void)updateWithNewContact:(id)arg1;
@@ -681,6 +707,7 @@
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(bool)arg2;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 

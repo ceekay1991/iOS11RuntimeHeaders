@@ -22,7 +22,7 @@
 - (id)gestureRecognizer;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithGestureRecognizer:(id)arg1;
-- (id)initWithView:(id)arg1;
+- (id)initWithView:(id)arg1 configuration:(id /* block */)arg2;
 - (bool)isActive;
 - (struct CGPoint { double x1; double x2; })locationInCoordinateSpace:(id)arg1;
 - (void)setActive:(bool)arg1;

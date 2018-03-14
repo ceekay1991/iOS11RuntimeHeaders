@@ -18,6 +18,8 @@
 
 @property (nonatomic, retain) NSNumber *mecabraCandidatePointerValue;
 
+// Image: /System/Library/PrivateFrameworks/TextInput.framework/TextInput
+
 + (bool)supportsSecureCoding;
 + (int)type;
 
@@ -44,5 +46,13 @@
 - (id)label;
 - (id)mecabraCandidatePointerValue;
 - (void)setMecabraCandidatePointerValue:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TextInputCore.framework/TextInputCore
+
++ (id)convertedInputFromMecabraCandidate:(void*)arg1;
++ (id)displayReadingFromMecabraCandidate:(void*)arg1;
++ (id)mecabraCandidateWithCandidateRef:(const void*)arg1 autoconvertedCandidates:(id)arg2;
+
+- (id)initWithMecabraCandidate:(const void*)arg1;
 
 @end

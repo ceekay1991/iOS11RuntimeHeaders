@@ -93,6 +93,7 @@
 - (id)defaultInputHueMagRYAmount;
 - (id)defaultInputHueMagYGAmount;
 - (id)defaultInputLuminanceNoiseReductionAmount;
+- (id)defaultInputMoireAmount;
 - (id)defaultInputNoiseReductionContrastAmount;
 - (id)defaultInputNoiseReductionDetailAmount;
 - (id)defaultInputNoiseReductionSharpnessAmount;
@@ -158,6 +159,7 @@
 - (void)setInputImageOrientation:(id)arg1;
 - (void)setInputLinearSpaceFilter:(id)arg1;
 - (void)setInputLuminanceNoiseReductionAmount:(id)arg1;
+- (void)setInputMoireAmount:(id)arg1;
 - (void)setInputNeutralChromaticityX:(id)arg1;
 - (void)setInputNeutralChromaticityY:(id)arg1;
 - (void)setInputNeutralLocation:(id)arg1;

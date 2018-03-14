@@ -16,6 +16,8 @@
 @property <NSXPCListenerDelegate> *delegate;
 @property (readonly, retain) NSXPCListenerEndpoint *endpoint;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)_UUID;
 + (id)anonymousListener;
 + (void)enableTransactions;
@@ -38,5 +40,10 @@
 - (void)setOptions:(unsigned long long)arg1;
 - (void)stop;
 - (void)suspend;
+
+// Image: /System/Library/PrivateFrameworks/CellularPlanManager.framework/CellularPlanManager
+
+- (id)initCellularPlanDatabaseServer;
+- (id)initVinylTestServer;
 
 @end

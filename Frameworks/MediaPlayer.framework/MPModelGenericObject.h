@@ -32,6 +32,8 @@
 @property (nonatomic, retain) MPModelSong *song;
 @property (nonatomic, retain) MPModelTVEpisode *tvEpisode;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)__MPModelRelationshipGenericAlbum__PROPERTY;
 + (id)__MPModelRelationshipGenericArtist__PROPERTY;
 + (id)__MPModelRelationshipGenericMediaClip__PROPERTY;
@@ -58,6 +60,7 @@
 + (id)__show__KEY;
 + (id)__song__KEY;
 + (id)__tvEpisode__KEY;
++ (id)genericObjectWithModelObject:(id)arg1;
 + (id)kindWithRelationshipKinds:(id)arg1;
 + (id)requiredStoreLibraryPersonalizationProperties;
 
@@ -98,5 +101,14 @@
 - (bool)storeItemMetadataRequestNeedsPersonalization;
 - (id)tvEpisode;
 - (long long)type;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mpc_remotePlaybackQueueRequiredProperties;
++ (id)mqf_requiredPlaybackProperties;
+
+- (id)mpc_protoContainerRepresentation;
+- (id)mpc_protoItemRepresentation;
+- (id)mqf_playbackItemMetadataModelObject;
 
 @end

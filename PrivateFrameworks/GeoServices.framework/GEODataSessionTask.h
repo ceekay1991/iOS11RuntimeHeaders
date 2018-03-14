@@ -3,8 +3,8 @@
  */
 
 @interface GEODataSessionTask : NSObject <GEODataSessionTask, GEODataSessionTaskDelegate, GEODataSessionTaskRulesObserver, GEOStateCapturing> {
+    NSObject<OS_os_activity> * _activity;
     <GEODataSessionTask> * _completedSubtask;
-    NSObject<OS_os_activity> * _completionActivity;
     <GEODataSessionTaskDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     bool  _didStart;
@@ -20,6 +20,7 @@
     GEODataXPCSessionTask * _xpcTask;
 }
 
+@property (nonatomic, readonly) NSObject<OS_os_activity> *activity;
 @property (nonatomic, readonly) GEOClientMetrics *clientMetrics;
 @property (nonatomic, retain) <GEODataSessionTask> *completedSubtask;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,6 +35,7 @@
 @property (nonatomic, readonly) unsigned long long incomingPayloadSize;
 @property (nonatomic, readonly) NSURL *originalRequestURL;
 @property (nonatomic, readonly) unsigned long long outgoingPayloadSize;
+@property float priority;
 @property (nonatomic, readonly) bool protocolBufferHasPreamble;
 @property (nonatomic, readonly) NSData *receivedData;
 @property (nonatomic, readonly) NSString *remoteAddressAndPort;
@@ -47,11 +49,13 @@
 @property (nonatomic, retain) GEODataXPCSessionTask *xpcTask;
 
 - (void).cxx_destruct;
+- (id)activity;
 - (void)cancel;
 - (id)captureStateWithHints:(struct os_state_hints_s { unsigned int x1; char *x2; unsigned int x3; unsigned int x4; }*)arg1;
 - (id)clientMetrics;
 - (id)completedSubtask;
 - (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
+- (void)dataSession:(id)arg1 willSendRequest:(id)arg2 forTask:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)delegate;
@@ -66,6 +70,7 @@
 - (id)initWithSession:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 requestKind:(int)arg5;
 - (id)originalRequestURL;
 - (unsigned long long)outgoingPayloadSize;
+- (float)priority;
 - (bool)protocolBufferHasPreamble;
 - (id)receivedData;
 - (id)remoteAddressAndPort;
@@ -76,6 +81,7 @@
 - (id)sessionIsolation;
 - (void)setCompletedSubtask:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setPriority:(float)arg1;
 - (void)setSession:(id)arg1;
 - (void)setUrlTask:(id)arg1;
 - (void)setXpcTask:(id)arg1;

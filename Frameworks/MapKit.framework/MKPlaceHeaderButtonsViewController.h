@@ -5,6 +5,7 @@
 @interface MKPlaceHeaderButtonsViewController : MKPlaceSectionViewController <MKETAProviderObserver, MKModuleViewControllerProtocol, MKStackingViewControllerFixedHeightAware> {
     MKPlaceSectionRowView * _buttonsContainerView;
     NSArray * _constraints;
+    double  _contentAlpha;
     NSString * _currentETAString;
     <MKPlaceHeaderButtonsViewControllerDelegate> * _delegate;
     <GEOTransitLineItem> * _lineItem;
@@ -19,6 +20,7 @@
     _MKPlaceActionButtonController * _tertiaryButtonController;
 }
 
+@property (nonatomic) double contentAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MKPlaceHeaderButtonsViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -36,10 +38,10 @@
 - (void)_contentSizeDidChange;
 - (id)attributedStringWith:(id)arg1;
 - (void)commonInit;
+- (double)contentAlpha;
 - (id)delegate;
 - (id)directionAttributedStringWithETAString;
 - (id)etaStringFor:(unsigned long long)arg1 travelTime:(double)arg2;
-- (double)extraHeightToReserveInLayout;
 - (id)infoCardChildPossibleActions;
 - (id)initWithLineItem:(id)arg1;
 - (id)initWithPlaceItem:(id)arg1;
@@ -52,6 +54,7 @@
 - (bool)resizableViewsDisabled;
 - (id)secondaryButtonController;
 - (void)setConstraints;
+- (void)setContentAlpha:(double)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setPrimaryButtonType:(unsigned long long)arg1;
 - (void)setResizableViewsDisabled:(bool)arg1;

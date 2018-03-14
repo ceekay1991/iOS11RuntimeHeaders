@@ -10,9 +10,11 @@
         unsigned int hasTopPadding : 1; 
         unsigned int hasBottomPadding : 1; 
         unsigned int separatorStyle : 1; 
+        unsigned int isCentered : 1; 
     }  _has;
     bool  _hasBottomPadding;
     bool  _hasTopPadding;
+    bool  _isCentered;
     NSArray * _punchoutOptions;
     NSString * _punchoutPickerDismissText;
     NSString * _punchoutPickerTitle;
@@ -31,6 +33,7 @@
 @property (nonatomic, readonly) bool hasCanBeHidden;
 @property (nonatomic, readonly) bool hasHasBottomPadding;
 @property (nonatomic, readonly) bool hasHasTopPadding;
+@property (nonatomic, readonly) bool hasIsCentered;
 @property (nonatomic, readonly) bool hasPunchoutPickerDismissText;
 @property (nonatomic, readonly) bool hasPunchoutPickerTitle;
 @property (nonatomic, readonly) bool hasSeparatorStyle;
@@ -39,6 +42,7 @@
 @property (nonatomic) bool hasTopPadding;
 @property (nonatomic, readonly) bool hasType;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool isCentered;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSArray *punchoutOptions;
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
@@ -60,6 +64,7 @@
 - (bool)hasCanBeHidden;
 - (bool)hasHasBottomPadding;
 - (bool)hasHasTopPadding;
+- (bool)hasIsCentered;
 - (bool)hasPunchoutPickerDismissText;
 - (bool)hasPunchoutPickerTitle;
 - (bool)hasSeparatorStyle;
@@ -71,6 +76,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithFacade:(id)arg1;
 - (id)initWithJSON:(id)arg1;
+- (bool)isCentered;
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (id)punchoutOptions;
@@ -84,6 +90,7 @@
 - (void)setCanBeHidden:(bool)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setIsCentered:(bool)arg1;
 - (void)setPunchoutOptions:(id)arg1;
 - (void)setPunchoutPickerDismissText:(id)arg1;
 - (void)setPunchoutPickerTitle:(id)arg1;

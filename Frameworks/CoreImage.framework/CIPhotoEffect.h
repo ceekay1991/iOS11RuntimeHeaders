@@ -12,6 +12,7 @@
 
 - (int)_defaultVersion;
 - (int)_maxVersion;
+- (id)cubeColorSpaceName;
 - (id)cubeName;
 - (id)cubePath;
 - (id)init;

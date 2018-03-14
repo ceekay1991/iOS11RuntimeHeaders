@@ -3,8 +3,7 @@
  */
 
 @interface _DKCloudUtilities : NSObject {
-    CKAccountInfo * _accountInfo;
-    NSObject<OS_dispatch_group> * _fetchInProgressGroup;
+    NSObject<OS_dispatch_queue> * _fetchQueue;
     bool  _isCloudSyncAvailable;
     bool  _isSingleDevice;
 }
@@ -14,6 +13,8 @@
 
 + (id)containerIdentifier;
 + (bool)isCloudKitEnabled;
++ (bool)isSyncAvailableAndEnabled;
++ (bool)isSyncAvailableAndEnabledWithVerboseLogging:(bool)arg1;
 + (bool)isUnitTesting;
 + (void)setCloudKitEnabled:(bool)arg1;
 + (void)setUnitTesting:(bool)arg1;
@@ -23,6 +24,10 @@
 - (void)_accountDidChange:(id)arg1;
 - (void)_fetchAccountInfoWithCompletionHandler:(id /* block */)arg1;
 - (void)_fetchCloudKitConfigurationAndStatus;
+- (void)_performUpdateNumberOfSyncedDevicesWithAttempt:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
+- (void)_performUpdateNumberOfSyncedDevicesWithCompletionHandler:(id /* block */)arg1;
+- (void)_resetServerChangeToken;
+- (void)_updateAccountInfo:(id)arg1 error:(id)arg2;
 - (void)_updateNumberOfSyncedDevicesWithCompletionHandler:(id /* block */)arg1;
 - (void)dealloc;
 - (void)deleteRemoteStateWithReply:(id /* block */)arg1;

@@ -11,6 +11,8 @@
 @property (nonatomic, copy) NSString *startItemID;
 @property (nonatomic, copy) NSArray *storeIDs;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -26,5 +28,9 @@
 - (void)setStoreIDs:(id)arg1;
 - (id)startItemID;
 - (id)storeIDs;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)playbackContext;
 
 @end

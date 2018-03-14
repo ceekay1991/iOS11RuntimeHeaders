@@ -44,7 +44,7 @@
 - (id)initWithURL:(id)arg1 title:(id)arg2;
 - (id)initWithURLString:(id)arg1 title:(id)arg2 displayTitle:(id)arg3 lastVisitedTimeInterval:(double)arg4;
 - (id)initWithURLString:(id)arg1 title:(id)arg2 lastVisitedTimeInterval:(double)arg3;
-- (id)initWithWebCoreHistoryItem:(struct PassRefPtr<WebCore::HistoryItem> { struct HistoryItem {} *x1; })arg1;
+- (id)initWithWebCoreHistoryItem:(struct Ref<WebCore::HistoryItem> { struct HistoryItem {} *x1; }*)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isTargetItem;
 - (bool)lastVisitWasFailure;

@@ -16,7 +16,9 @@
     NSString * _protocolVersion;
     long long  _qualityOfService;
     ICStoreRequestContext * _requestContext;
+    double  _retryDelay;
     bool  _returnsLocalEquivalencies;
+    bool  _shouldIgnoreCache;
     double  _timeoutInterval;
 }
 
@@ -35,7 +37,9 @@
 @property (nonatomic) long long qualityOfService;
 @property (nonatomic, readonly, copy) NSArray *queryItems;
 @property (nonatomic, copy) ICStoreRequestContext *requestContext;
+@property (nonatomic) double retryDelay;
 @property (nonatomic) bool returnsLocalEquivalencies;
+@property (nonatomic) bool shouldIgnoreCache;
 @property (nonatomic) double timeoutInterval;
 
 - (void).cxx_destruct;
@@ -51,13 +55,14 @@
 - (id)init;
 - (id)itemIdentifiers;
 - (id)keyProfile;
-- (void)performWithResponseHandler:(id /* block */)arg1;
+- (id)performWithResponseHandler:(id /* block */)arg1;
 - (long long)personalizationStyle;
 - (id)platformIdentifier;
 - (id)protocolVersion;
 - (long long)qualityOfService;
 - (id)queryItems;
 - (id)requestContext;
+- (double)retryDelay;
 - (bool)returnsLocalEquivalencies;
 - (void)setBatchResultsHandler:(id /* block */)arg1;
 - (void)setBatchSize:(long long)arg1;
@@ -72,8 +77,11 @@
 - (void)setProtocolVersion:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
 - (void)setRequestContext:(id)arg1;
+- (void)setRetryDelay:(double)arg1;
 - (void)setReturnsLocalEquivalencies:(bool)arg1;
+- (void)setShouldIgnoreCache:(bool)arg1;
 - (void)setTimeoutInterval:(double)arg1;
+- (bool)shouldIgnoreCache;
 - (double)timeoutInterval;
 
 @end

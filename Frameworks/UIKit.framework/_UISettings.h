@@ -17,6 +17,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 + (id)settingsFromArchiveDictionary:(id)arg1;
 + (id)settingsFromArchiveFile:(id)arg1 error:(id*)arg2;
 
@@ -70,5 +72,15 @@
 - (void)settingsGroup:(id)arg1 didInsertSettings:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)settingsGroup:(id)arg1 didMoveSettings:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (void)settingsGroup:(id)arg1 didRemoveSettings:(id)arg2 atIndex:(unsigned long long)arg3;
+
+// Image: /System/Library/PrivateFrameworks/PrototypeTools.framework/PrototypeTools
+
++ (id)settingsControllerModule;
+
+- (id)archiveFilename;
+- (bool)isSimilarToSettings:(id)arg1;
+- (id)settingsHUDConfiguration;
+- (id)settingsHUDInfoLabelString;
+- (void)settingsResetByHUD;
 
 @end

@@ -5,10 +5,9 @@
 
 @required
 
-- (NSArray *)buildings;
 - (<GEOMapItemVenueContents> *)contents;
+- (NSArray *)filters;
 - (GEOMapItemParentVenue *)parent;
-- (int)venueBrowseType;
 - (int)venueFeatureType;
 - (<GEOVenueIdentifier> *)venueIdentifier;
 

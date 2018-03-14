@@ -5,26 +5,20 @@
 
 @required
 
-- (<_UINavigationBarTitleViewDataSource> *)_dataSource;
-- (void)_setDataSource:(id <_UINavigationBarTitleViewDataSource>)arg1;
-- (NSArray *)contentOverlayRects;
-- (double)height;
-- (bool)hideBackButton;
-- (bool)hideLeadingBarButtons;
-- (bool)hideStandardTitle;
-- (bool)hideTrailingBarButtons;
-- (UINavigationItem *)navigationItem;
-- (void)performTransition:(long long)arg1 willBeDisplayed:(bool)arg2;
-- (long long)preferredContentSizeForSize:(long long)arg1;
-- (void)setHideBackButton:(bool)arg1;
-- (void)setHideLeadingBarButtons:(bool)arg1;
-- (void)setHideStandardTitle:(bool)arg1;
-- (void)setHideTrailingBarButtons:(bool)arg1;
-- (void)setNavigationItem:(UINavigationItem *)arg1;
-- (void)setTitleLocation:(long long)arg1;
-- (long long)titleLocation;
-- (void)transitionCompleted:(long long)arg1 willBeDisplayed:(bool)arg2;
-- (void)transitionWillBegin:(long long)arg1 willBeDisplayed:(bool)arg2;
-- (bool)underlayBarContent;
+- (void)_contentDidChange;
+- (bool)_hideNavigationBarBackButton;
+- (bool)_hideNavigationBarLeadingBarButtons;
+- (bool)_hideNavigationBarStandardTitle;
+- (bool)_hideNavigationBarTrailingBarButtons;
+- (double)_navigationBarBackButtonMaximumWidth;
+- (double)_navigationBarContentHeight;
+- (void)_performTransition:(long long)arg1 willBeDisplayed:(bool)arg2;
+- (long long)_preferredContentSizeForSize:(long long)arg1;
+- (void)_setDataSource:(id <_UINavigationBarTitleViewDataSource>)arg1 navigationItem:(UINavigationItem *)arg2 titleLocation:(long long)arg3;
+- (void)_transitionCompleted:(long long)arg1 willBeDisplayed:(bool)arg2;
+- (void)_transitionWillBegin:(long long)arg1 willBeDisplayed:(bool)arg2;
+- (bool)_underlayNavigationBarContent;
+- (bool)_wantsTwoPartTransition;
+- (int)preferredAlignment;
 
 @end

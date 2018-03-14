@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
  */
 
-@interface VKMapModel : VKModelObject <GEOExperimentConfigurationObserver, GEOResourceManifestTileGroupObserver, VKPolylineGroupOverlayObserver, VKPolylineOverlayRouteRibbonObserver, VKTileProviderClient, VKTileSourceZoomDelegate> {
+@interface VKMapModel : VKModelObject <GEOExperimentConfigurationObserver, GEOResourceManifestTileGroupObserver, VKPolylineGroupOverlayObserver, VKPolylineOverlayRouteRibbonObserver, VKTileProviderClient> {
     bool  _activeMapLayers;
     struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { 
         struct StylesheetManager<gss::PropertyID> {} *__ptr_; 
@@ -64,7 +64,7 @@
     NSLocale * _locale;
     bool  _localizeLabels;
     double  _lodBias;
-    struct LogicManager { int (**x1)(); struct Logic {} *x2[3]; } * _logicManager;
+    struct LogicManager { int (**x1)(); struct Logic {} *x2[4]; } * _logicManager;
     GEOResourceManifestConfiguration * _manifestConfiguration;
     struct FeatureAttributeSet { 
         struct vector<gss::FeatureAttributePair, std::__1::allocator<gss::FeatureAttributePair> > { 
@@ -116,6 +116,12 @@
     VKTileProvider * _rasterOverlayProvider;
     VKRasterOverlayTileSource * _rasterOverlayTileSource;
     struct CartographicRenderer { int (**x1)(); struct shared_ptr<md::TaskContext> { struct TaskContext {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue> > { struct __compressed_pair<md::RenderQueue *, std::__1::default_delete<md::RenderQueue> > { struct RenderQueue {} *x_1_2_1; } x_3_1_1; } x3; struct RenderLayer {} *x4[28]; struct RenderLayer {} *x5[65]; struct RunLoopController {} *x6; struct MapEngine {} *x7; id x8; id x9; struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x_10_1_1; struct __shared_weak_count {} *x_10_1_2; } x10; struct CommandBuffer {} *x11; struct AnimationRunner {} *x12; } * _renderer;
+    struct mutex { 
+        struct _opaque_pthread_mutex_t { 
+            long long __sig; 
+            BOOL __opaque[56]; 
+        } __m_; 
+    }  _rendererMutex;
     <GEORoutePreloadSession> * _routePreloadSession;
     struct PolylineCoordinate { 
         unsigned int index; 
@@ -199,7 +205,6 @@
 @property (nonatomic, readonly) NSSet *persistentOverlays;
 @property (nonatomic, readonly) unsigned long long purpose;
 @property (nonatomic, readonly) NSArray *rasterOverlays;
-@property (nonatomic) struct CartographicRenderer { int (**x1)(); struct shared_ptr<md::TaskContext> { struct TaskContext {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; /* Warning: unhandled struct encoding: '{unique_ptr<md::RenderQueue' */ struct x3; }*renderer; /* unknown property attribute:  std::__1::default_delete<md::RenderQueue> >=^{RenderQueue}}}[28^{RenderLayer}][65^{RenderLayer}]^{RunLoopController}^{MapEngine}@@@@{shared_ptr<gss::StylesheetManager<gss::PropertyID> >=^{StylesheetManager<gss::PropertyID>}^{__shared_weak_count}}^{CommandBuffer}^{AnimationRunner}} */
 @property (nonatomic) <VKRouteMatchedAnnotationPresentation> *routeLineSplitAnnotation;
 @property (nonatomic, retain) <GEORoutePreloadSession> *routePreloadSession;
 @property (nonatomic) struct PolylineCoordinate { unsigned int x1; float x2; } routeUserOffset;
@@ -236,6 +241,7 @@
 - (long long)_maximumZoomLevelInView:(id)arg1 ignoreZoomOverride:(bool)arg2;
 - (struct COverlayLayer { int (**x1)(); struct CommandBufferIdSet { struct vector<md::CommandBufferId, std::__1::allocator<md::CommandBufferId> > { unsigned char *x_1_2_1; unsigned char *x_1_2_2; struct __compressed_pair<md::CommandBufferId *, std::__1::allocator<md::CommandBufferId> > { unsigned char *x_3_3_1; } x_1_2_3; } x_2_1_1; } x2; struct map<md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer> >, std::__1::less<md::CommandBufferId>, std::__1::allocator<std::__1::pair<const md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer> > > > > { struct __tree<std::__1::__value_type<md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer> > >, std::__1::__map_value_compare<md::CommandBufferId, std::__1::__value_type<md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer> > >, std::__1::less<md::CommandBufferId>, true>, std::__1::allocator<std::__1::__value_type<md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer> > > > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *x_1_2_1; struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer> > >, void *> > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> { struct __tree_node_base<void *> {} *x_1_4_1; } x_2_3_1; } x_1_2_2; struct __compressed_pair<unsigned long, std::__1::__map_value_compare<md::CommandBufferId, std::__1::__value_type<md::CommandBufferId, std::__1::unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer> > >, std::__1::less<md::CommandBufferId>, true> > { unsigned long long x_3_3_1; } x_1_2_3; } x_3_1_1; } x3; }*)_rasterOverlayForLevel:(unsigned long long)arg1;
 - (id)_rasterOverlayTileSourceForLevel:(unsigned long long)arg1;
+- (void)_setInitialClientStyleAttributesForDefaultStyleManager;
 - (void)_setStyleManagerFromMapType:(long long)arg1;
 - (void)_setStyleTransitionProgress:(double)arg1 targetStyle:(struct DisplayStyle { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; unsigned char x5; })arg2 step:(long long)arg3;
 - (double)_styleTransitionProgress;
@@ -277,6 +283,7 @@
 - (id)debugLabelString:(bool)arg1;
 - (id)delegate;
 - (void)deselectTransitLineMarker;
+- (void)destroyRenderer;
 - (id)detailedDescription;
 - (id)detailedDescriptionDictionaryRepresentation;
 - (void)didBeginTransitionToNavigation;
@@ -305,7 +312,7 @@
 - (void)foreachActiveLayer:(id /* block */)arg1;
 - (void)foreachActiveRenderLayer:(id /* block */)arg1;
 - (void)foreachRenderLayer:(id /* block */)arg1;
-- (id)initWithTarget:(id)arg1 purpose:(unsigned long long)arg2 manifestConfiguration:(id)arg3 locale:(id)arg4 taskContext:(struct shared_ptr<md::TaskContext> { struct TaskContext {} *x1; struct __shared_weak_count {} *x2; })arg5 logicManager:(struct LogicManager { int (**x1)(); struct Logic {} *x2[3]; }*)arg6;
+- (id)initWithTarget:(id)arg1 renderer:(struct CartographicRenderer { int (**x1)(); struct shared_ptr<md::TaskContext> { struct TaskContext {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue> > { struct __compressed_pair<md::RenderQueue *, std::__1::default_delete<md::RenderQueue> > { struct RenderQueue {} *x_1_2_1; } x_3_1_1; } x3; struct RenderLayer {} *x4[28]; struct RenderLayer {} *x5[65]; struct RunLoopController {} *x6; struct MapEngine {} *x7; id x8; id x9; struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x_10_1_1; struct __shared_weak_count {} *x_10_1_2; } x10; struct CommandBuffer {} *x11; struct AnimationRunner {} *x12; }*)arg2 purpose:(unsigned long long)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5 taskContext:(struct shared_ptr<md::TaskContext> { struct TaskContext {} *x1; struct __shared_weak_count {} *x2; })arg6 logicManager:(struct LogicManager { int (**x1)(); struct Logic {} *x2[4]; }*)arg7;
 - (void)insertRasterOverlay:(id)arg1 aboveOverlay:(id)arg2;
 - (void)insertRasterOverlay:(id)arg1 belowOverlay:(id)arg2;
 - (bool)isFullyDrawn;
@@ -316,6 +323,7 @@
 - (bool)isTrafficEnabled;
 - (bool)isTrafficIncidentsEnabled;
 - (id)labelMapTileForTile:(id)arg1 layer:(unsigned char)arg2;
+- (void)labelMarkerDidChangeState:(const struct shared_ptr<md::LabelMarker> { struct LabelMarker {} *x1; struct __shared_weak_count {} *x2; }*)arg1;
 - (unsigned char)labelScaleFactor;
 - (struct LabelSettings { struct LabelSettings_Presentation { struct LabelSettings {} *x_1_1_1; } x1; struct LabelSettings_Navigation { struct LabelSettings {} *x_2_1_1; } x2; struct LabelSettings_Markers { struct LabelSettings {} *x_3_1_1; } x3; struct shared_ptr<md::LabelManager> { struct LabelManager {} *x_4_1_1; struct __shared_weak_count {} *x_4_1_2; } x4; struct unique_ptr<md::LabelSettingsData, std::__1::default_delete<md::LabelSettingsData> > { struct __compressed_pair<md::LabelSettingsData *, std::__1::default_delete<md::LabelSettingsData> > { struct LabelSettingsData {} *x_1_2_1; } x_5_1_1; } x5; }*)labelSettings;
 - (void)layoutScene:(id)arg1 withContext:(struct LayoutContext { id x1; short x2; /* Warning: Unrecognized filer type: 'h' using 'void*' */ void*x3; void*x4; const void*x5; double x6; void*x7; void*x8; void*x9; const void*x10; void*x11; double x12; SEL x13; SEL x14; oneway int x15; void*x16; void*x17; void*x18; const void*x19; in short x20; float x21; out const void*x22; void*x23; void*x24; struct ViewTransform {} *x25; struct __shared_weak_count {} *x26; }*)arg2;
@@ -328,7 +336,6 @@
 - (bool)mapTypeUsesStandardTiles;
 - (long long)maximumZoomLevelInView:(id)arg1;
 - (long long)maximumZoomLevelInViewWithoutZoomOverride:(id)arg1;
-- (long long)maximumZoomLevelOverride:(id)arg1 maximumZoomLevel:(long long)arg2;
 - (long long)minimumZoomLevelInView:(id)arg1;
 - (float)navMapModeTransitionZ;
 - (id)navigationPuck;
@@ -355,7 +362,6 @@
 - (void)removeOverlay:(id)arg1;
 - (void)removePersistentOverlay:(id)arg1;
 - (void)removeRasterOverlay:(id)arg1;
-- (struct CartographicRenderer { int (**x1)(); struct shared_ptr<md::TaskContext> { struct TaskContext {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue> > { struct __compressed_pair<md::RenderQueue *, std::__1::default_delete<md::RenderQueue> > { struct RenderQueue {} *x_1_2_1; } x_3_1_1; } x3; struct RenderLayer {} *x4[28]; struct RenderLayer {} *x5[65]; struct RunLoopController {} *x6; struct MapEngine {} *x7; id x8; id x9; struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x_10_1_1; struct __shared_weak_count {} *x_10_1_2; } x10; struct CommandBuffer {} *x11; struct AnimationRunner {} *x12; }*)renderer;
 - (void)requestStylesheetAnimation:(id)arg1 targetMapDisplayStyle:(struct DisplayStyle { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; unsigned char x5; })arg2 setupHandler:(id /* block */)arg3;
 - (void)reserveStencilRangesForScene:(id)arg1 context:(struct LayoutContext { id x1; short x2; /* Warning: Unrecognized filer type: 'h' using 'void*' */ void*x3; void*x4; const void*x5; double x6; void*x7; void*x8; void*x9; const void*x10; void*x11; double x12; SEL x13; SEL x14; oneway int x15; void*x16; void*x17; void*x18; const void*x19; in short x20; float x21; out const void*x22; void*x23; void*x24; struct ViewTransform {} *x25; struct __shared_weak_count {} *x26; }*)arg2 renderQueue:(struct RenderQueue { int (**x1)(); struct shared_ptr<ggl::RenderQueue> { struct RenderQueue {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; }*)arg3;
 - (void)resetTileContainers;
@@ -368,7 +374,6 @@
 - (id)sceneConfiguration;
 - (struct shared_ptr<gss::StylesheetManager<gss::ScenePropertyID> > { struct StylesheetManager<gss::ScenePropertyID> {} *x1; struct __shared_weak_count {} *x2; })sceneManager;
 - (void)selectTransitLineMarker:(id)arg1;
-- (void)selectedLabelMarkerDidChangeState:(const struct shared_ptr<md::LabelMarker> { struct LabelMarker {} *x1; struct __shared_weak_count {} *x2; }*)arg1;
 - (void)selectedLabelMarkerWillDisappear:(const struct shared_ptr<md::LabelMarker> { struct LabelMarker {} *x1; struct __shared_weak_count {} *x2; }*)arg1;
 - (id)selectedTransitLineIDs;
 - (void)setAdditionalManifestConfiguration:(id)arg1;
@@ -397,7 +402,6 @@
 - (void)setNavigationPuckSize:(float)arg1;
 - (void)setNavigationShieldSize:(long long)arg1;
 - (void)setNeighborMode:(unsigned long long)arg1;
-- (void)setRenderer:(struct CartographicRenderer { int (**x1)(); struct shared_ptr<md::TaskContext> { struct TaskContext {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue> > { struct __compressed_pair<md::RenderQueue *, std::__1::default_delete<md::RenderQueue> > { struct RenderQueue {} *x_1_2_1; } x_3_1_1; } x3; struct RenderLayer {} *x4[28]; struct RenderLayer {} *x5[65]; struct RunLoopController {} *x6; struct MapEngine {} *x7; id x8; id x9; struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x_10_1_1; struct __shared_weak_count {} *x_10_1_2; } x10; struct CommandBuffer {} *x11; struct AnimationRunner {} *x12; }*)arg1;
 - (void)setRouteContext:(id)arg1;
 - (void)setRouteLineSplitAnnotation:(id)arg1;
 - (void)setRoutePreloadSession:(id)arg1;
@@ -441,6 +445,7 @@
 - (void)tileProviderNeedsUpdate:(id)arg1;
 - (id)tileSetForMapLayer:(unsigned char)arg1 tileGroup:(id)arg2;
 - (long long)tileSize;
+- (long long)tileSource:(id)arg1 overrideForMaximumZoomLevel:(long long)arg2;
 - (int)tileStyleForMapLayer:(unsigned char)arg1;
 - (const struct TrafficSharedResources { struct TrafficSharedPipelineStates { struct shared_ptr<ggl::SolidTraffic::BasePipelineState> { struct BasePipelineState {} *x_1_2_1; struct __shared_weak_count {} *x_1_2_2; } x_1_1_1; struct shared_ptr<ggl::TrafficGlow::BasePipelineState> { struct BasePipelineState {} *x_2_2_1; struct __shared_weak_count {} *x_2_2_2; } x_1_1_2; struct shared_ptr<ggl::OptimizedTraffic::BasePipelineState> { struct BasePipelineState {} *x_3_2_1; struct __shared_weak_count {} *x_3_2_2; } x_1_1_3; } x1; struct TrafficSharedRenderStates { struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState> > { struct __compressed_pair<ggl::RenderState *, std::__1::default_delete<ggl::RenderState> > { struct RenderState {} *x_1_3_1; } x_1_2_1; } x_2_1_1; struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState> > { struct __compressed_pair<ggl::RenderState *, std::__1::default_delete<ggl::RenderState> > { struct RenderState {} *x_1_3_1; } x_2_2_1; } x_2_1_2; struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState> > { struct __compressed_pair<ggl::RenderState *, std::__1::default_delete<ggl::RenderState> > { struct RenderState {} *x_1_3_1; } x_3_2_1; } x_2_1_3; struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState> > { struct __compressed_pair<ggl::RenderState *, std::__1::default_delete<ggl::RenderState> > { struct RenderState {} *x_1_3_1; } x_4_2_1; } x_2_1_4; struct unique_ptr<ggl::RenderState, std::__1::default_delete<ggl::RenderState> > { struct __compressed_pair<ggl::RenderState *, std::__1::default_delete<ggl::RenderState> > { struct RenderState {} *x_1_3_1; } x_5_2_1; } x_2_1_5; } x2; }*)trafficResources;
 - (id)transitLineMarkersForSelectionAtPoint:(struct CGPoint { double x1; double x2; })arg1;

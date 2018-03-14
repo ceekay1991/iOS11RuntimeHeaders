@@ -17,10 +17,11 @@
 @property (nonatomic, readonly) unsigned long long bufferSize;
 @property (nonatomic, readonly) unsigned long long elementSize;
 
+- (id)_newSubBuffer;
 - (unsigned long long)bufferSize;
 - (void)dealloc;
 - (unsigned long long)elementSize;
 - (id)initWithDevice:(id)arg1 fixedSizeElement:(unsigned long long)arg2 buffersize:(unsigned long long)arg3 name:(id)arg4;
-- (id)newSubBuffer;
+- (id)newSubBufferWithBytes:(const void*)arg1 length:(unsigned long long)arg2 blitEncoder:(id)arg3;
 
 @end

@@ -4,7 +4,6 @@
 
 @interface UIKeyboardCandidateGridCollectionView : UIKBCandidateCollectionView {
     UITableViewIndex * _index;
-    double  _indexMaximumHeight;
     UIKeyboardCandidateGridCollectionViewController * _parentViewController;
     double  _previousGroupBarStartingY;
 }
@@ -14,10 +13,14 @@
 @property (nonatomic) UIKeyboardCandidateGridCollectionViewController *parentViewController;
 @property (nonatomic) double previousGroupBarStartingY;
 
-// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (void).cxx_destruct;
+- (bool)_canDrawContent;
 - (void)dealloc;
+
+// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+
 - (void)delayUpdateIndex;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (double)groupBarStartingY;
@@ -37,6 +40,7 @@
 - (void)setIndexTitles:(id)arg1;
 - (void)setParentViewController:(id)arg1;
 - (void)setPreviousGroupBarStartingY:(double)arg1;
+- (bool)shouldDrawGroupBackground;
 - (bool)shouldShowIndex;
 - (void)showIndex:(bool)arg1;
 - (void)updateIndex;

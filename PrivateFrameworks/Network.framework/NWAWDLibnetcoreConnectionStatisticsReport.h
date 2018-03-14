@@ -21,6 +21,7 @@
     unsigned long long  _currentRTTMsecs;
     bool  _dNSAnswersCached;
     unsigned long long  _dNSResolvedTimeMsecs;
+    bool  _firstParty;
     unsigned long long  _flowDurationMsecs;
     struct { 
         unsigned int appDataStallTimerMsecs : 1; 
@@ -38,6 +39,13 @@
         unsigned int dNSResolvedTimeMsecs : 1; 
         unsigned int flowDurationMsecs : 1; 
         unsigned int iPAddressAttemptCount : 1; 
+        unsigned int multipathBytesInCell : 1; 
+        unsigned int multipathBytesInInitial : 1; 
+        unsigned int multipathBytesInWiFi : 1; 
+        unsigned int multipathBytesOutCell : 1; 
+        unsigned int multipathBytesOutInitial : 1; 
+        unsigned int multipathBytesOutWiFi : 1; 
+        unsigned int multipathServiceType : 1; 
         unsigned int packetsDuplicate : 1; 
         unsigned int packetsIn : 1; 
         unsigned int packetsOut : 1; 
@@ -57,6 +65,7 @@
         unsigned int cellularRRCConnected : 1; 
         unsigned int connected : 1; 
         unsigned int dNSAnswersCached : 1; 
+        unsigned int firstParty : 1; 
         unsigned int kernelReportedStalls : 1; 
         unsigned int kernelReportingConnectionStalled : 1; 
         unsigned int kernelReportingReadStalled : 1; 
@@ -69,6 +78,13 @@
     bool  _kernelReportingConnectionStalled;
     bool  _kernelReportingReadStalled;
     bool  _kernelReportingWriteStalled;
+    unsigned long long  _multipathBytesInCell;
+    unsigned long long  _multipathBytesInInitial;
+    unsigned long long  _multipathBytesInWiFi;
+    unsigned long long  _multipathBytesOutCell;
+    unsigned long long  _multipathBytesOutInitial;
+    unsigned long long  _multipathBytesOutWiFi;
+    unsigned long long  _multipathServiceType;
     unsigned long long  _packetsDuplicate;
     unsigned long long  _packetsIn;
     unsigned long long  _packetsOut;
@@ -103,6 +119,7 @@
 @property (nonatomic) unsigned long long currentRTTMsecs;
 @property (nonatomic) bool dNSAnswersCached;
 @property (nonatomic) unsigned long long dNSResolvedTimeMsecs;
+@property (nonatomic) bool firstParty;
 @property (nonatomic) unsigned long long flowDurationMsecs;
 @property (nonatomic) bool hasAppDataStallTimerMsecs;
 @property (nonatomic) bool hasAppReportingDataStallCount;
@@ -122,6 +139,7 @@
 @property (nonatomic) bool hasCurrentRTTMsecs;
 @property (nonatomic) bool hasDNSAnswersCached;
 @property (nonatomic) bool hasDNSResolvedTimeMsecs;
+@property (nonatomic) bool hasFirstParty;
 @property (nonatomic) bool hasFlowDurationMsecs;
 @property (nonatomic) bool hasIPAddressAttemptCount;
 @property (nonatomic) bool hasInterfaceType;
@@ -129,6 +147,13 @@
 @property (nonatomic) bool hasKernelReportingConnectionStalled;
 @property (nonatomic) bool hasKernelReportingReadStalled;
 @property (nonatomic) bool hasKernelReportingWriteStalled;
+@property (nonatomic) bool hasMultipathBytesInCell;
+@property (nonatomic) bool hasMultipathBytesInInitial;
+@property (nonatomic) bool hasMultipathBytesInWiFi;
+@property (nonatomic) bool hasMultipathBytesOutCell;
+@property (nonatomic) bool hasMultipathBytesOutInitial;
+@property (nonatomic) bool hasMultipathBytesOutWiFi;
+@property (nonatomic) bool hasMultipathServiceType;
 @property (nonatomic) bool hasPacketsDuplicate;
 @property (nonatomic) bool hasPacketsIn;
 @property (nonatomic) bool hasPacketsOut;
@@ -149,6 +174,13 @@
 @property (nonatomic) bool kernelReportingConnectionStalled;
 @property (nonatomic) bool kernelReportingReadStalled;
 @property (nonatomic) bool kernelReportingWriteStalled;
+@property (nonatomic) unsigned long long multipathBytesInCell;
+@property (nonatomic) unsigned long long multipathBytesInInitial;
+@property (nonatomic) unsigned long long multipathBytesInWiFi;
+@property (nonatomic) unsigned long long multipathBytesOutCell;
+@property (nonatomic) unsigned long long multipathBytesOutInitial;
+@property (nonatomic) unsigned long long multipathBytesOutWiFi;
+@property (nonatomic) unsigned long long multipathServiceType;
 @property (nonatomic) unsigned long long packetsDuplicate;
 @property (nonatomic) unsigned long long packetsIn;
 @property (nonatomic) unsigned long long packetsOut;
@@ -189,6 +221,7 @@
 - (unsigned long long)dNSResolvedTimeMsecs;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (bool)firstParty;
 - (unsigned long long)flowDurationMsecs;
 - (bool)hasAppDataStallTimerMsecs;
 - (bool)hasAppReportingDataStallCount;
@@ -208,6 +241,7 @@
 - (bool)hasCurrentRTTMsecs;
 - (bool)hasDNSAnswersCached;
 - (bool)hasDNSResolvedTimeMsecs;
+- (bool)hasFirstParty;
 - (bool)hasFlowDurationMsecs;
 - (bool)hasIPAddressAttemptCount;
 - (bool)hasInterfaceType;
@@ -215,6 +249,13 @@
 - (bool)hasKernelReportingConnectionStalled;
 - (bool)hasKernelReportingReadStalled;
 - (bool)hasKernelReportingWriteStalled;
+- (bool)hasMultipathBytesInCell;
+- (bool)hasMultipathBytesInInitial;
+- (bool)hasMultipathBytesInWiFi;
+- (bool)hasMultipathBytesOutCell;
+- (bool)hasMultipathBytesOutInitial;
+- (bool)hasMultipathBytesOutWiFi;
+- (bool)hasMultipathServiceType;
 - (bool)hasPacketsDuplicate;
 - (bool)hasPacketsIn;
 - (bool)hasPacketsOut;
@@ -239,6 +280,13 @@
 - (bool)kernelReportingReadStalled;
 - (bool)kernelReportingWriteStalled;
 - (void)mergeFrom:(id)arg1;
+- (unsigned long long)multipathBytesInCell;
+- (unsigned long long)multipathBytesInInitial;
+- (unsigned long long)multipathBytesInWiFi;
+- (unsigned long long)multipathBytesOutCell;
+- (unsigned long long)multipathBytesOutInitial;
+- (unsigned long long)multipathBytesOutWiFi;
+- (unsigned long long)multipathServiceType;
 - (unsigned long long)packetsDuplicate;
 - (unsigned long long)packetsIn;
 - (unsigned long long)packetsOut;
@@ -264,6 +312,7 @@
 - (void)setCurrentRTTMsecs:(unsigned long long)arg1;
 - (void)setDNSAnswersCached:(bool)arg1;
 - (void)setDNSResolvedTimeMsecs:(unsigned long long)arg1;
+- (void)setFirstParty:(bool)arg1;
 - (void)setFlowDurationMsecs:(unsigned long long)arg1;
 - (void)setHasAppDataStallTimerMsecs:(bool)arg1;
 - (void)setHasAppReportingDataStallCount:(bool)arg1;
@@ -283,6 +332,7 @@
 - (void)setHasCurrentRTTMsecs:(bool)arg1;
 - (void)setHasDNSAnswersCached:(bool)arg1;
 - (void)setHasDNSResolvedTimeMsecs:(bool)arg1;
+- (void)setHasFirstParty:(bool)arg1;
 - (void)setHasFlowDurationMsecs:(bool)arg1;
 - (void)setHasIPAddressAttemptCount:(bool)arg1;
 - (void)setHasInterfaceType:(bool)arg1;
@@ -290,6 +340,13 @@
 - (void)setHasKernelReportingConnectionStalled:(bool)arg1;
 - (void)setHasKernelReportingReadStalled:(bool)arg1;
 - (void)setHasKernelReportingWriteStalled:(bool)arg1;
+- (void)setHasMultipathBytesInCell:(bool)arg1;
+- (void)setHasMultipathBytesInInitial:(bool)arg1;
+- (void)setHasMultipathBytesInWiFi:(bool)arg1;
+- (void)setHasMultipathBytesOutCell:(bool)arg1;
+- (void)setHasMultipathBytesOutInitial:(bool)arg1;
+- (void)setHasMultipathBytesOutWiFi:(bool)arg1;
+- (void)setHasMultipathServiceType:(bool)arg1;
 - (void)setHasPacketsDuplicate:(bool)arg1;
 - (void)setHasPacketsIn:(bool)arg1;
 - (void)setHasPacketsOut:(bool)arg1;
@@ -310,6 +367,13 @@
 - (void)setKernelReportingConnectionStalled:(bool)arg1;
 - (void)setKernelReportingReadStalled:(bool)arg1;
 - (void)setKernelReportingWriteStalled:(bool)arg1;
+- (void)setMultipathBytesInCell:(unsigned long long)arg1;
+- (void)setMultipathBytesInInitial:(unsigned long long)arg1;
+- (void)setMultipathBytesInWiFi:(unsigned long long)arg1;
+- (void)setMultipathBytesOutCell:(unsigned long long)arg1;
+- (void)setMultipathBytesOutInitial:(unsigned long long)arg1;
+- (void)setMultipathBytesOutWiFi:(unsigned long long)arg1;
+- (void)setMultipathServiceType:(unsigned long long)arg1;
 - (void)setPacketsDuplicate:(unsigned long long)arg1;
 - (void)setPacketsIn:(unsigned long long)arg1;
 - (void)setPacketsOut:(unsigned long long)arg1;

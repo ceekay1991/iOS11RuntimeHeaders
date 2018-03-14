@@ -9,6 +9,8 @@
 
 @property (nonatomic, retain) MPModelPlaylistEntry *playlistEntry;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)requiredProperties;
 
 - (void).cxx_destruct;
@@ -20,5 +22,9 @@
 - (void)setPlaylistEntry:(id)arg1;
 - (void)setSong:(id)arg1;
 - (id)song;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)mqf_playbackItemMetadataModelObject;
 
 @end

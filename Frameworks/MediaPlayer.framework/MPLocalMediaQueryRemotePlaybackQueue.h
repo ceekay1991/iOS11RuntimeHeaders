@@ -14,6 +14,8 @@
 @property (nonatomic, readonly) long long repeatType;
 @property (nonatomic, readonly) long long shuffleType;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 - (void).cxx_destruct;
 - (id)description;
 - (id)firstItem;
@@ -23,5 +25,9 @@
 - (long long)repeatType;
 - (long long)shuffleType;
 - (bool)verifyWithError:(id*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (void)getPlaybackContextWithCompletion:(id /* block */)arg1;
 
 @end

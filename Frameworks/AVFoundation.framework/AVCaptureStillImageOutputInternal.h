@@ -9,6 +9,7 @@
     bool  SISEnabled;
     bool  SISSupported;
     bool  bravoImageFusionSupported;
+    struct ct_green_tea_logger_s { } * greenTeaLogger;
     bool  highResStillEnabled;
     unsigned int  imageDataFormatType;
     bool  isCapturingPhoto;

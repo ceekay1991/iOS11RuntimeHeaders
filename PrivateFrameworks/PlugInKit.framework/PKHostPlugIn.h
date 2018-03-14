@@ -20,6 +20,7 @@
     Protocol * _queuedHostProtocol;
     NSArray * _sandboxExtensions;
     <PKCorePlugInProtocol> * _service;
+    NSString * _serviceExtension;
     NSDictionary * _sourceForm;
     unsigned long long  _state;
     <PKPlugIn> * _supersededBy;
@@ -49,6 +50,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *identifier;
 @property (readonly) NSString *localizedContainingName;
+@property (readonly) NSDictionary *localizedFileProviderActionNames;
 @property (readonly) NSString *localizedName;
 @property (readonly) NSString *localizedShortName;
 @property (retain) NSUUID *multipleInstanceUUID;
@@ -61,6 +63,7 @@
 @property (retain) Protocol *queuedHostProtocol;
 @property (retain) NSArray *sandboxExtensions;
 @property (retain) <PKCorePlugInProtocol> *service;
+@property (retain) NSString *serviceExtension;
 @property (retain) NSDictionary *sourceForm;
 @property (readonly) bool spent;
 @property unsigned long long state;
@@ -107,6 +110,7 @@
 - (void)resume;
 - (id)sandboxExtensions;
 - (id)service;
+- (id)serviceExtension;
 - (void)setBeganUsingAt:(id)arg1;
 - (void)setBootstrap;
 - (void)setDiscoveryExtensions:(id)arg1;
@@ -124,6 +128,7 @@
 - (void)setReplyQueue:(id)arg1;
 - (void)setSandboxExtensions:(id)arg1;
 - (void)setService:(id)arg1;
+- (void)setServiceExtension:(id)arg1;
 - (void)setSourceForm:(id)arg1;
 - (void)setState:(unsigned long long)arg1;
 - (void)setSupersededBy:(id)arg1;

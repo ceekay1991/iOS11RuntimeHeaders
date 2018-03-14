@@ -5,6 +5,7 @@
 
 @required
 
+- (unsigned long long)allocatedSize;
 - (unsigned long long)cpuCacheMode;
 - (<MTLDevice> *)device;
 - (<MTLHeap> *)heap;

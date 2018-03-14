@@ -2,13 +2,15 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UIDropSessionImpl : NSObject <UIDropSession> {
+@interface _UIDropSessionImpl : NSObject <UIDropSession, _UIDragDropSessionInternal> {
     NSArray * _items;
     <UIDragSession> * _localDragSession;
     unsigned long long  _progressIndicatorStyle;
     _UIInternalDraggingSessionDestination * _sessionDestination;
 }
 
+@property (getter=_allowsItemsToUpdate, nonatomic, readonly) bool _allowsItemsToUpdate;
+@property (nonatomic, readonly) long long _dataOwner;
 @property (nonatomic, readonly) bool allowsMoveOperation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -23,12 +25,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_allowsItemsToUpdate;
 - (id)_createItemsOfClass:(Class)arg1 synchronouslyIfPossible:(bool)arg2 completion:(id /* block */)arg3;
+- (long long)_dataOwner;
+- (id)_draggingSession;
 - (void)_itemsNeedUpdate:(id)arg1;
 - (unsigned long long)_operationMask;
 - (bool)allowsMoveOperation;
 - (bool)canLoadObjectsOfClass:(Class)arg1;
-- (bool)canLoadObjectsOfClasses:(id)arg1;
 - (bool)hasItemsConformingToTypeIdentifiers:(id)arg1;
 - (id)initWithSessionDestination:(id)arg1;
 - (bool)isRestrictedToDraggingApplication;
@@ -38,7 +42,6 @@
 - (struct CGPoint { double x1; double x2; })locationInView:(id)arg1;
 - (id)progress;
 - (unsigned long long)progressIndicatorStyle;
-- (id)session;
 - (id)sessionDestination;
 - (void)setProgressIndicatorStyle:(unsigned long long)arg1;
 

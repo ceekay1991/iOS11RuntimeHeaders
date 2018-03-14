@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSEntityDescription : NSObject <NSCoding, NSCopying, NSFastEnumeration> {
+@interface NSEntityDescription : NSObject <NSCoding, NSCopying, NSFastEnumeration, NSSecureCoding> {
     int  _cd_rc;
     NSString * _classNameForEntity;
     struct __entityDescriptionFlags { 
@@ -48,8 +48,10 @@
 @property (copy) NSString *managedObjectClassName;
 @property (readonly) NSManagedObjectModel *managedObjectModel;
 @property (copy) NSString *name;
+@property (readonly) NSEntityDescription *ph_baseEntity;
 @property (retain) NSArray *properties;
 @property (readonly, copy) NSDictionary *propertiesByName;
+@property (getter=vs_referenceValueAttribute, setter=vs_setReferenceValueAttribute:, nonatomic, retain) NSAttributeDescription *referenceValueAttribute;
 @property (readonly, copy) NSDictionary *relationshipsByName;
 @property (copy) NSString *renamingIdentifier;
 @property (retain) NSArray *subentities;
@@ -60,14 +62,18 @@
 @property (readonly, copy) NSData *versionHash;
 @property (copy) NSString *versionHashModifier;
 
+// Image: /System/Library/Frameworks/CoreData.framework/CoreData
+
 + (id)_MOClassName;
 + (id)entityForName:(id)arg1 inManagedObjectContext:(id)arg2;
 + (void)initialize;
 + (id)insertNewObjectForEntityForName:(id)arg1 inManagedObjectContext:(id)arg2;
++ (bool)supportsSecureCoding;
 
 - (void)_addIndexForProperty:(id)arg1;
 - (void)_addProperty:(id)arg1;
 - (void)_addSubentity:(id)arg1;
+- (void)_addSupplementalIndexes:(id)arg1;
 - (id)_allPropertyNames;
 - (id)_attributeNamed:(id)arg1;
 - (id)_checkForNonCascadeNoInverses;
@@ -129,7 +135,7 @@
 - (void)_restoreValidation;
 - (id)_rootEntity;
 - (void)_setIndexes:(id)arg1;
-- (void)_setIndexesFromJSONObject:(id)arg1;
+- (void)_setIndexesFromJSONObject:(id)arg1 supplemental:(bool)arg2;
 - (void)_setIsEditable:(bool)arg1;
 - (void)_setIsFlattened:(bool)arg1;
 - (void)_setManagedObjectModel:(id)arg1;
@@ -203,5 +209,18 @@
 - (id)userInfo;
 - (id)versionHash;
 - (id)versionHashModifier;
+
+// Image: /System/Library/Frameworks/Photos.framework/Photos
+
+- (id)ph_baseEntity;
+- (id)ph_relationshipDescriptionsForKeyPath:(id)arg1;
+
+// Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
+
++ (id)vs_subscriptionEntityForVersion:(long long)arg1;
+
+- (id)vs_referenceValueAttribute;
+- (void)vs_setReferenceValueAttribute:(id)arg1;
+- (void)vs_setUserInfoValue:(id)arg1 forKey:(id)arg2;
 
 @end

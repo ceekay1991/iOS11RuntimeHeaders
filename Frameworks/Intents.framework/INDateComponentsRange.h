@@ -22,10 +22,12 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)EKRecurrenceRule;
 - (id)_dictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dateInterval;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
 - (id)endDateComponents;
@@ -33,6 +35,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDate:(id)arg1 onCalendar:(id)arg2 inTimeZone:(id)arg3;
 - (id)initWithDateInterval:(id)arg1 onCalendar:(id)arg2 inTimeZone:(id)arg3;
+- (id)initWithEKRecurrenceRule:(id)arg1;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 onCalendar:(id)arg3 inTimeZone:(id)arg4;
 - (id)initWithStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 - (id)initWithStartDateComponents:(id)arg1 endDateComponents:(id)arg2 recurrenceRule:(id)arg3;

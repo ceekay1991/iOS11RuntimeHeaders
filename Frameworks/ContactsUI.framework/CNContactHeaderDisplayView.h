@@ -6,7 +6,6 @@
     NSString * _alternateName;
     NSLayoutConstraint * _avatarNameSpacingConstraint;
     CNContactFormatter * _contactFormatter;
-    double  _lastViewHeight;
     double  _lastViewWidth;
     double  _maxHeight;
     struct CGSize { 
@@ -15,11 +14,9 @@
     }  _maxNameSize;
     NSString * _message;
     double  _minHeight;
-    NSLayoutConstraint * _nameHeightConstraint;
     UIView * _personHeaderView;
     NSLayoutConstraint * _photoHeightConstraint;
     NSLayoutConstraint * _photoTopConstraint;
-    NSLayoutConstraint * _taglineHeightConstraint;
     UILabel * _taglineLabel;
     NSDictionary * _taglineTextAttributes;
 }
@@ -31,25 +28,22 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) double lastViewHeight;
 @property (nonatomic) double lastViewWidth;
 @property (nonatomic) double maxHeight;
 @property (nonatomic) struct CGSize { double x1; double x2; } maxNameSize;
 @property (nonatomic, retain) NSString *message;
 @property (nonatomic) double minHeight;
-@property (retain) NSLayoutConstraint *nameHeightConstraint;
 @property (nonatomic, retain) UIView *personHeaderView;
 @property (retain) NSLayoutConstraint *photoHeightConstraint;
 @property (nonatomic, readonly) double photoLabelSpacing;
 @property (nonatomic, readonly) double photoMinTopMargin;
 @property (retain) NSLayoutConstraint *photoTopConstraint;
 @property (readonly) Class superclass;
-@property (retain) NSLayoutConstraint *taglineHeightConstraint;
 @property (retain) UILabel *taglineLabel;
 @property (nonatomic, copy) NSDictionary *taglineTextAttributes;
 
-+ (id)contactHeaderViewWithContact:(id)arg1;
-+ (id)contactHeaderViewWithContact:(id)arg1 allowsPhotoDrops:(bool)arg2;
++ (id)contactHeaderViewWithContact:(id)arg1 allowsPhotoDrops:(bool)arg2 delegate:(id)arg3;
++ (id)contactHeaderViewWithContact:(id)arg1 delegate:(id)arg2;
 + (id)descriptorForRequiredKeysForContactFormatter:(id)arg1 includingAvatarViewDescriptors:(bool)arg2;
 + (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(bool)arg2 shouldAllowImageDrops:(bool)arg3;
 
@@ -67,9 +61,8 @@
 - (id)descriptorForRequiredKeys;
 - (void)disablePhotoTapGesture;
 - (void)handleNameLabelLongPress:(id)arg1;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(bool)arg4;
-- (double)lastViewHeight;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 delegate:(id)arg3;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(bool)arg4 delegate:(id)arg5;
 - (double)lastViewWidth;
 - (void)layoutSubviews;
 - (double)maxHeight;
@@ -77,7 +70,6 @@
 - (void)menuWillHide:(id)arg1;
 - (id)message;
 - (double)minHeight;
-- (id)nameHeightConstraint;
 - (id)personHeaderView;
 - (id)photoHeightConstraint;
 - (double)photoLabelSpacing;
@@ -88,21 +80,17 @@
 - (void)setAvatarNameSpacingConstraint:(id)arg1;
 - (void)setAvatarStyle:(unsigned long long)arg1;
 - (void)setContactFormatter:(id)arg1;
-- (void)setLastViewHeight:(double)arg1;
 - (void)setLastViewWidth:(double)arg1;
 - (void)setMaxHeight:(double)arg1;
 - (void)setMaxNameSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setMessage:(id)arg1;
 - (void)setMinHeight:(double)arg1;
-- (void)setNameHeightConstraint:(id)arg1;
 - (void)setNameTextAttributes:(id)arg1;
 - (void)setPersonHeaderView:(id)arg1;
 - (void)setPhotoHeightConstraint:(id)arg1;
 - (void)setPhotoTopConstraint:(id)arg1;
-- (void)setTaglineHeightConstraint:(id)arg1;
 - (void)setTaglineLabel:(id)arg1;
 - (void)setTaglineTextAttributes:(id)arg1;
-- (id)taglineHeightConstraint;
 - (id)taglineLabel;
 - (id)taglineTextAttributes;
 - (void)tintColorDidChange;

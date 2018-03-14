@@ -9,6 +9,8 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _calibrationLock;
+    struct OpaqueFigSimpleMutex { } * _calibrationPipelineMutex;
+    NSObject<OS_dispatch_queue> * _calibrationRunQueue;
     bool  _calibrationShouldAbort;
     struct { 
         double x; 
@@ -22,31 +24,26 @@
         int attemptCount; 
         double threshold; 
     }  _magneticFieldMagnitudeTiers;
-    NSObject<OS_dispatch_queue> * _notifyQueue;
     FigCaptureSphereCalibrationContext * _sphereCalibrationContext;
     FigCaptureSphereEndStopCalibrationContext * _sphereEndStopCalibrationContext;
     NSMutableArray * _streamCalibrationInformation;
 }
 
++ (void)initialize;
 + (void)initializeSharedInstance;
 + (id)sharedInstance;
 
+- (void)_attemptToRunCalibrationForCalibrationContext:(id)arg1 deviceType:(int)arg2 devicePosition:(int)arg3 disableHistoryChecking:(bool)arg4 resultsBlock:(id /* block */)arg5;
 - (bool)_calibrationShouldAbort;
-- (id)_createDefaultXPCSchedulingParameters;
-- (id)_createDictionaryForFailureOutsideFirmwareWithReasons:(int)arg1 withCalibrationData:(id)arg2 withDeviceType:(int)arg3 withDevicePosition:(int)arg4;
+- (id)_createDefaultXPCSchedulingParametersWithInterval:(int)arg1 batteryLevel:(int)arg2;
 - (double)_getMagneticThresholdFromAttempt;
 - (void)_notifyOfDeviceMotion;
-- (id)_runAndCreateDictionaryForCalibration:(id)arg1 withDeviceType:(int)arg2 withDevicePosition:(int)arg3 errorsOut:(unsigned int*)arg4 didFirmwareHaveCalibrationError:(bool*)arg5;
+- (id)_runAndCreateDictionaryForCalibrationContext:(id)arg1 deviceType:(int)arg2 devicePosition:(int)arg3 errors:(unsigned int*)arg4;
 - (void)_setCalibrationShouldAbort:(bool)arg1;
-- (void)_setupAPSCalibration;
-- (void)_setupAPSSPhereInteractionCalibration;
 - (void)_setupActivityAndTriggers:(const char *)arg1 interval:(int)arg2 batteryLevel:(int)arg3 calibrationBlock:(id /* block */)arg4 isRepeating:(bool)arg5;
-- (void)_setupAutoFocusCalibration;
+- (void)_setupCalibrationForContext:(id)arg1;
 - (void)_setupDuetTriggersAndScheduling;
 - (void)_setupRepeatingCalibrationScheduling:(id)arg1 withCalibrationBlock:(id /* block */)arg2;
-- (void)_setupSphereCalibration;
-- (void)_setupSphereEndStopCalibration;
-- (void)_startCalibrationAndLogWithData:(id)arg1 withDeviceType:(int)arg2 withDevicePosition:(int)arg3 withResultsBlock:(id /* block */)arg4;
 - (id)apsSphereInteractionCalibrationData;
 - (id)autoFocusCalibrationData;
 - (id)autoFocusPositionSensorCalibrationData;

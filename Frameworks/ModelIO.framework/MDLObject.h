@@ -8,7 +8,6 @@
     bool  _hidden;
     MDLObject * _instance;
     MDLObject * _parent;
-    <MDLPrimitiveComponent> * _primitive;
     NSString * name;
 }
 
@@ -19,7 +18,6 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) MDLObject *parent;
 @property (nonatomic, readonly) NSString *path;
-@property (nonatomic, retain) <MDLPrimitiveComponent> *primitive;
 @property (nonatomic, retain) <MDLTransformComponent> *transform;
 
 // Image: /System/Library/Frameworks/ModelIO.framework/ModelIO
@@ -39,7 +37,6 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)parent;
 - (id)path;
-- (id)primitive;
 - (void)setChildren:(id)arg1;
 - (void)setComponent:(id)arg1 forProtocol:(id)arg2;
 - (void)setHidden:(bool)arg1;
@@ -47,7 +44,6 @@
 - (void)setName:(id)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setParent:(id)arg1;
-- (void)setPrimitive:(id)arg1;
 - (void)setTransform:(id)arg1;
 - (id)transform;
 

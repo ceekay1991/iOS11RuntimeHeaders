@@ -17,6 +17,7 @@
 @property (nonatomic, copy) NSArray *visibleActivityGroupViewControllers;
 
 - (void).cxx_destruct;
+- (double)_accessibilityDefaultContentHeightForViewController:(id)arg1;
 - (id)activityGroupViewControllers;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct CGSize { double x1; double x2; })collectionView:(id)arg1 layout:(id)arg2 referenceSizeForFooterInSection:(long long)arg3;
@@ -45,6 +46,7 @@
 - (void)updateVisibleActivityGroupViewControllers;
 - (id)viewControllerForItemAtIndexPath:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
 - (id)visibleActivityGroupViewControllers;
 
 @end

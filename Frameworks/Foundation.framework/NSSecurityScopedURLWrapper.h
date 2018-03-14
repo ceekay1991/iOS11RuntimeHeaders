@@ -10,7 +10,6 @@
     bool  _readonly;
     NSData * _scope;
     NSURL * _url;
-    bool  _wasProvidedAsData;
 }
 
 @property (nonatomic, readonly) NSData *_scope;
@@ -20,7 +19,6 @@
 @property (nonatomic, readonly) NSString *providerIdentifier;
 @property (getter=isReadonly, nonatomic, readonly) bool readonly;
 @property (nonatomic, readonly, copy) NSURL *url;
-@property (nonatomic) bool wasProvidedAsData;
 
 + (bool)supportsSecureCoding;
 
@@ -39,8 +37,6 @@
 - (bool)isReadonly;
 - (id)itemIdentifier;
 - (id)providerIdentifier;
-- (void)setWasProvidedAsData:(bool)arg1;
 - (id)url;
-- (bool)wasProvidedAsData;
 
 @end

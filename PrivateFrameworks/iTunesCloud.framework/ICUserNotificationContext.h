@@ -11,6 +11,7 @@
 @property (nonatomic) struct __CFRunLoopSource { }*runLoopSourceRef;
 
 - (void).cxx_destruct;
+- (void)clearRunLoop;
 - (id /* block */)completionHandler;
 - (struct __CFRunLoopSource { }*)runLoopSourceRef;
 - (void)setCompletionHandler:(id /* block */)arg1;

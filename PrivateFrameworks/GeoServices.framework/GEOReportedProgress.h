@@ -19,6 +19,7 @@
 + (id)progressWithTotalUnitCount:(long long)arg1;
 
 - (void).cxx_destruct;
+- (void)addChild:(id)arg1 withPendingUnitCount:(long long)arg2;
 - (void)becomeCurrentWithPendingUnitCount:(long long)arg1;
 - (void)cancel;
 - (id /* block */)cancellationHandler;

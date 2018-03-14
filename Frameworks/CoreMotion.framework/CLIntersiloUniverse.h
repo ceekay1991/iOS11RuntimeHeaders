@@ -2,22 +2,23 @@
    Image: /System/Library/Frameworks/CoreMotion.framework/CoreMotion
  */
 
-@interface CLIntersiloUniverse : NSObject {
-    id  _key;
+@interface CLIntersiloUniverse : NSObject <CLIntersiloUniverse> {
     CLSilo * _silo;
     CLServiceVendor * _vendor;
 }
 
-@property (nonatomic, readonly) id key;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) CLSilo *silo;
-@property (nonatomic, readonly, copy) CLServiceVendor *vendor;
+@property (readonly) Class superclass;
+@property (nonatomic, readonly) CLServiceVendor *vendor;
 
 + (id)newIsolatedUniverseWithOnlySilo:(id)arg1;
 + (id)newSharedVendorUniverseWithSilo:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)initWithKey:(id)arg1 silo:(id)arg2 vendor:(id)arg3;
-- (id)key;
 - (id)silo;
 - (id)vendor;
 

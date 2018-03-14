@@ -5,13 +5,12 @@
 
 @required
 
-+ (id)outputDeviceDiscoverySessionImplWithDeviceFeatures:(unsigned long long)arg1;
-
-- (NSArray *)availableOutputDeviceGroups;
 - (AVOutputDeviceDiscoverySessionAvailableOutputDevices *)availableOutputDevicesObject;
 - (bool)devicePresenceDetected;
 - (void)outputDeviceDiscoverySessionDidChangeDiscoveryMode:(AVOutputDeviceDiscoverySession *)arg1;
 - (AVOutputDeviceDiscoverySession *)parentOutputDeviceDiscoverySession;
 - (void)setParentOutputDeviceDiscoverySession:(AVOutputDeviceDiscoverySession *)arg1;
+- (void)setTargetAudioSession:(AVAudioSession *)arg1;
+- (AVAudioSession *)targetAudioSession;
 
 @end

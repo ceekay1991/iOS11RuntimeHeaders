@@ -18,7 +18,7 @@
 - (id)_actionTypeString;
 - (long long)action;
 - (id)bagKey;
-- (id)customURLString;
+- (id)fallbackBagKeys;
 - (id)httpBody;
 - (long long)httpBodyType;
 - (long long)httpMethod;

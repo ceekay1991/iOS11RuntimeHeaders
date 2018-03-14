@@ -27,6 +27,7 @@
         unsigned int isTopHeader : 1; 
         unsigned int didSetSectionHeader : 1; 
         unsigned int didSetupDefaults : 1; 
+        unsigned int insetsContentViewsToSafeArea : 1; 
     }  _headerFooterFlags;
     _UITableViewHeaderFooterViewLabel * _label;
     double  _leadingMarginWidth;
@@ -46,8 +47,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) UILabel *detailTextLabel;
+@property (getter=_effectiveSafeAreaInsets, nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } effectiveSafeAreaInsets;
 @property (nonatomic) bool floating;
 @property (readonly) unsigned long long hash;
+@property (getter=_insetsContentViewsToSafeArea, setter=_setInsetsContentViewsToSafeArea:, nonatomic) bool insetsContentViewsToSafeArea;
 @property (getter=_marginWidth, setter=_setMarginWidth:, nonatomic) double marginWidth;
 @property (nonatomic) double maxTitleWidth;
 @property (nonatomic, copy) NSString *reuseIdentifier;
@@ -72,6 +75,7 @@
 + (double)defaultFooterHeightForStyle:(long long)arg1;
 + (double)defaultHeaderHeightForStyle:(long long)arg1;
 
+- (void).cxx_destruct;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_backgroundRect;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_backgroundRectForWidth:(double)arg1;
 - (id)_constants;
@@ -79,7 +83,9 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentRectForWidth:(double)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_detailLabelFrame;
 - (struct CGSize { double x1; double x2; })_detailTextSizeForWidth:(double)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_effectiveSafeAreaInsets;
 - (bool)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
+- (bool)_insetsContentViewsToSafeArea;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_insetsToBounds;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_insetsToContentRect;
 - (void)_invalidateDetailLabelBackgroundColor;
@@ -90,8 +96,10 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_labelFrame;
 - (double)_marginWidth;
 - (double)_rightMarginWidth;
+- (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setBackgroundViewColor:(id)arg1;
 - (void)_setConstants:(id)arg1;
+- (void)_setInsetsContentViewsToSafeArea:(bool)arg1;
 - (void)_setMarginWidth:(double)arg1;
 - (void)_setRightMarginWidth:(double)arg1;
 - (void)_setStripPadding:(bool)arg1;
@@ -114,7 +122,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)backgroundImage;
 - (id)backgroundView;
 - (id)contentView;

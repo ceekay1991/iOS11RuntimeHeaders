@@ -11,11 +11,15 @@
     bool  _selectionGestureDetected;
     UIButton * _startButton;
     UIButton * _stopButton;
+    UIButton * _waveTapEndpointButton;
 }
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void)dealloc;
 - (void)didEndIndirectSelectionGesture;
 - (void)finishReturnToKeyboard;
 - (void)globeButtonPressed:(id)arg1 withEvent:(id)arg2;

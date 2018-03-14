@@ -39,6 +39,7 @@
     long long  _storageGroupingPolicy;
     long long  _uploadRank;
     NSString * _uploadReceipt;
+    double  _uploadReceiptExpiration;
     bool  _uploaded;
     bool  _wasCached;
     NSData * _wrappedAssetKey;
@@ -85,6 +86,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) long long uploadRank;
 @property (nonatomic, copy) NSString *uploadReceipt;
+@property (nonatomic) double uploadReceiptExpiration;
 @property (nonatomic) bool uploaded;
 @property (nonatomic) bool wasCached;
 @property (nonatomic, retain) NSData *wrappedAssetKey;
@@ -178,6 +180,7 @@
 - (void)setUUID:(id)arg1;
 - (void)setUploadRank:(long long)arg1;
 - (void)setUploadReceipt:(id)arg1;
+- (void)setUploadReceiptExpiration:(double)arg1;
 - (void)setUploaded:(bool)arg1;
 - (void)setWasCached:(bool)arg1;
 - (void)setWrappedAssetKey:(id)arg1;
@@ -187,6 +190,7 @@
 - (long long)storageGroupingPolicy;
 - (long long)uploadRank;
 - (id)uploadReceipt;
+- (double)uploadReceiptExpiration;
 - (bool)uploaded;
 - (bool)wasCached;
 - (id)wrappedAssetKey;

@@ -18,6 +18,7 @@
     NSLock * _observersLock;
     <_MKPlaceItem> * _placeItem;
     _MKQuickRouteManager * _quickRouteManager;
+    NSTimer * _refreshTimer;
     GEOTransitOptions * _transitOptions;
 }
 
@@ -40,11 +41,14 @@
 
 - (void).cxx_destruct;
 - (bool)_areDistanceAndETAInformationAvailable;
+- (void)_cancelTimer;
 - (void)_commonInit;
 - (void)_configureETAForMapItem:(id)arg1;
 - (void)_notifyETAAllObservers;
 - (void)_notifyLocationAllObservers;
+- (void)_refreshTimer;
 - (bool)_shouldUpdateETAForMapView:(id)arg1;
+- (void)_startTimer;
 - (void)_updateETA;
 - (void)_updateETADisplayWithTransportType:(unsigned long long)arg1 travelTime:(double)arg2 distance:(double)arg3;
 - (void)_updateETAHandler:(id)arg1;
@@ -54,6 +58,7 @@
 - (void)configureWithNearestStationMapItem:(id)arg1;
 - (id)currentLocation;
 - (id)currentMapItem;
+- (void)dealloc;
 - (id)delegate;
 - (id)distanceString;
 - (unsigned long long)etaTransportType;
@@ -74,7 +79,7 @@
 - (id)observersLock;
 - (id)placeItem;
 - (void)quickRouteManager:(id)arg1 didUpdateETA:(id)arg2 error:(id)arg3 animated:(bool)arg4;
-- (bool)quickRouteShouldIncludeTransit;
+- (bool)quickRouteShouldIncludeTransitWhenNotPreferredTransportType;
 - (bool)quickRouteShouldOnlyUseAutomobile;
 - (void)removeObserver:(id)arg1;
 - (void)setAutomobileOptions:(id)arg1;

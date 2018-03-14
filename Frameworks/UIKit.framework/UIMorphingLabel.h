@@ -47,6 +47,10 @@
 @property (nonatomic, retain) UIColor *textColor;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } visibleRect;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
+- (void)dealloc;
+
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
 - (double)alphaForFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -74,7 +78,6 @@
 - (double)changeInWidthDueToAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (void)copyStateFromGlyph:(id)arg1 toGlyph:(id)arg2;
 - (double)currentMediaTime;
-- (void)dealloc;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })dstRangeOfAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (bool)enableAnimation;
 - (double)flushAmount;

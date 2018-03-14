@@ -7,6 +7,8 @@
     MNRoutePlanningDetails * _routePlanningDetails;
 }
 
++ (id)guidanceStateForRoutePlanningDetails:(id)arg1 stateManager:(id)arg2 navigationSessionManager:(id)arg3;
+
 - (void).cxx_destruct;
 - (void)acceptReroute:(bool)arg1 forTrafficIncidentAlertDetails:(id)arg2;
 - (unsigned long long)desiredLocationProviderType;

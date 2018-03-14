@@ -29,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSUUID *identifierForVendor;
 @property (nonatomic, readonly) NSString *localizedModel;
+@property (nonatomic, readonly) MFObservable *mf_batteryLevelObservable;
 @property (nonatomic, readonly) NSString *model;
 @property (getter=isMultitaskingSupported, nonatomic, readonly) bool multitaskingSupported;
 @property (nonatomic, readonly) NSString *name;
@@ -110,5 +111,113 @@
 + (id)debugHierarchyObjectsInGroupWithID:(id)arg1 outOptions:(id*)arg2;
 
 - (id)debugHierarchyPropertyDescriptions;
+
+// Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
+
+- (bool)cn_isD22;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (id)mf_batteryLevelObservable;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
+- (long long)cam_initialLayoutStyle;
+
+// Image: /System/Library/PrivateFrameworks/ControlCenterUIKit.framework/ControlCenterUIKit
+
++ (id)_ccuiDevicesIncapableOfGroupRendering;
+
+- (bool)ccuiSupportsGroupRendering;
+
+// Image: /System/Library/PrivateFrameworks/DrawingKit.framework/DrawingKit
+
+- (bool)dk_deviceSupportsGL;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
++ (id)hu_modelSpecificLocalizedStringKeyWithGreenTeaForKey:(id)arg1;
+
+- (bool)hu_isHomeAffordancePresent;
+
+// Image: /System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit
+
++ (id)mt_lowQualityDevicesForDynamicBlurRadius;
++ (id)mt_mediumQualityDevicesForDynamicBlurRadius;
+
+- (id)mt_currentProduct;
+- (long long)mt_dynamicBlurRadiusGraphicsQuality;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
+- (bool)canEncode2160P;
+- (bool)enoughMemoryFor2160P;
+- (bool)enoughMemoryForRendering12MPPhoto;
+- (bool)enoughPowerFor2160P;
+- (bool)enoughPowerForLargerPhotoThumbnails;
+- (long long)freeMemory;
+- (bool)hasMoreThan1GBOfMemory;
+- (bool)hasPlentyOfMemory;
+- (bool)isLargePhone;
+- (bool)isWidePhone;
+- (long long)memorySize;
+- (int)numberOfCPU;
+- (id)orientationString;
+- (bool)osVersionAtLeast:(id)arg1;
+- (bool)screenCanShow2160P;
+- (bool)sufficientOomphForZoomedRenderScale;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
++ (bool)ic_isLargeiPad;
++ (bool)ic_isPlusiPhone;
++ (bool)ic_isiPad;
++ (bool)ic_isiPhone;
+
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
++ (id)platformString;
+
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
+
++ (bool)sx_isSpectreDevice;
+
+// Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
+
++ (id)platform;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardFoundation.framework/SpringBoardFoundation
+
+- (id)_currentProduct;
+- (id)_deviceInfoForKey:(struct __CFString { }*)arg1;
+- (long long)_graphicsQualityIncludingMediumN41:(bool)arg1;
+- (id)_highQualityDevicesForHomeFolders;
+- (id)_lowQualityDevicesForDashBoardPresentation;
+- (id)_lowQualityDevicesForHomeScreenBlur;
+- (id)_lowQualityDevicesForHomescreenFolders;
+- (id)_lowQualityDevicesForSearchTransitions;
+- (id)_mediumQualityDevicesForHomeScreenBlur;
+- (id)_mediumQualityProductsIncludingN41:(bool)arg1;
+- (long long)sbf_bannerGraphicsQuality;
+- (long long)sbf_controlCenterGraphicsQuality;
+- (long long)sbf_dashBoardPresentationGraphicsQuality;
+- (long long)sbf_homeScreenBlurGraphicsQuality;
+- (long long)sbf_homeScreenFolderGraphicsQuality;
+- (long long)sbf_searchTransitionGraphicsQuality;
+
+// Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
+
++ (id)platformString;
+
+// Image: /System/Library/PrivateFrameworks/WiFiKitUI.framework/WiFiKitUI
+
++ (bool)currentIsIPad;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (id)platformString;
++ (bool)tsk_padUI;
++ (bool)tsk_phoneDevice;
++ (bool)tsk_phoneUI;
 
 @end

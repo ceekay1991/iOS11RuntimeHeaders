@@ -20,6 +20,7 @@
 @property (getter=isEditable, nonatomic, readonly) bool editable;
 @property (getter=isEditing, nonatomic, readonly) bool editing;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool ic_isFirstResponder;
 @property (nonatomic, readonly) UIView *inputAccessoryView;
 @property (nonatomic, readonly) UIInputViewController *inputAccessoryViewController;
 @property (nonatomic, readonly) UITextInputAssistantItem *inputAssistantItem;
@@ -88,6 +89,8 @@
 - (void)_didChangeToFirstResponder:(id)arg1;
 - (bool)_disableAutomaticKeyboardBehavior;
 - (bool)_disableAutomaticKeyboardUI;
+- (long long)_dragDataOwner;
+- (long long)_dropDataOwner;
 - (id)_editingDelegate;
 - (id)_effectivePasteConfiguration;
 - (bool)_enableAutomaticKeyboardPressDone;
@@ -192,6 +195,8 @@
 - (bool)_selectionAtWordStart;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_selectionClipRect;
 - (void)_setCaretSelectionAtEndOfSelection;
+- (void)_setDragDataOwner:(long long)arg1;
+- (void)_setDropDataOwner:(long long)arg1;
 - (void)_setFirstResponder:(id)arg1;
 - (void)_setGestureRecognizers;
 - (id)_setHistory:(id)arg1 withExtending:(bool)arg2 withAnchor:(int)arg3 withAffinityDownstream:(bool)arg4;
@@ -199,6 +204,7 @@
 - (void)_setSelectedTextRange:(id)arg1 withAffinityDownstream:(bool)arg2;
 - (id)_setSelectionRangeWithHistory:(id)arg1;
 - (bool)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(id)arg2 checkAutocorrection:(bool)arg3;
+- (bool)_shouldRestorationInputViewsOnlyWhenKeepingFirstResponder;
 - (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 type:(long long)arg3 fromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 inView:(id)arg4;
 - (bool)_supportsBecomeFirstResponderWhenPossible;
@@ -266,7 +272,7 @@
 - (void)setPasteConfiguration:(id)arg1;
 - (void)setRestorationIdentifier:(id)arg1;
 - (void)setUserActivity:(id)arg1;
-- (bool)sholdReloadInputViews;
+- (bool)shouldReloadInputViews;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (id)textInputContextIdentifier;
 - (id)textInputMode;
@@ -284,5 +290,39 @@
 // Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
 
 - (id)debugHierarchyPropertyDescriptions;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
++ (id)currentFirstResponder;
+
+- (void)findFirstResponder:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
+
+- (bool)_ntk_becomeFirstResponder;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
+- (bool)ic_becomeFirstResponder;
+- (bool)ic_inhbitsGlobalKeyCommands;
+- (bool)ic_isFirstResponder;
+
+// Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
+
+- (id)_SKUIView;
+
+// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+
++ (id)tswp_currentFirstResponder;
+
+- (void)tswp_findFirstResponder:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
+
+- (void)tvmlkit_handleEvent:(id)arg1 forElement:(id)arg2 andSourceView:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/ToneKit.framework/ToneKit
+
+- (id)tk_firstViewControllerInResponderChain;
 
 @end

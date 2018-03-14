@@ -52,6 +52,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSArray *touches;
 
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
 - (void).cxx_destruct;
 - (double)_allowableSeparation;
 - (bool)_allowsDynamicTouchesList;
@@ -121,5 +123,13 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
+
+- (bool)cam_isHoldingLongPress;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+
+- (id)_automationName;
 
 @end

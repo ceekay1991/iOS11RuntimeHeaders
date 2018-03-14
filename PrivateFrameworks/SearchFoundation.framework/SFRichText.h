@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFRichText : SFText <NSSecureCoding, SFRichText> {
+@interface SFRichText : SFText <NSCopying, NSSecureCoding, SFRichText> {
     NSString * _contentAdvisory;
     NSArray * _formattedTextPieces;
     struct { 
@@ -30,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (id)contentAdvisory;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)formattedTextPieces;

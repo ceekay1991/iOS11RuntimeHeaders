@@ -52,6 +52,7 @@
 @property (nonatomic, copy) NSString *meContactBannerFootnoteLabel;
 @property (nonatomic, copy) NSString *meContactBannerFootnoteValue;
 @property (nonatomic, readonly) _UIContentUnavailableView *noContactsView;
+@property (nonatomic, readonly) <CNContactDataSource> *originalDataSource;
 @property (nonatomic, retain) NSArray *pendingLayoutBlocks;
 @property (nonatomic) bool pendingSearchControllerActivation;
 @property (nonatomic, retain) NSString *pendingSearchQuery;
@@ -74,6 +75,8 @@
 @property (nonatomic, retain) NSArray *tableViewHeaderConstraints;
 @property (nonatomic, retain) CNVCardImportController *vCardImportController;
 
++ (id)emptyContact;
+
 - (void).cxx_destruct;
 - (void)_applicationEnteringForeground:(id)arg1;
 - (id)_contactAtIndexPath:(id)arg1;
@@ -85,11 +88,14 @@
 - (id)_tableView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (void)_tableView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (void)_updateCountStringNow:(bool)arg1;
+- (void)_updateTableViewRowHeight;
 - (bool)allowsSearching;
 - (long long)avatarCardController:(id)arg1 presentationResultForLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (void)avatarCardControllerWillBeginPreviewInteraction:(id)arg1;
 - (void)bannerView:(id)arg1 wasSelectedToPresentMeContact:(id)arg2;
 - (void)beginSearch:(id)arg1;
 - (bool)canBecomeFirstResponder;
+- (bool)canSelectContactAtIndexPath:(id)arg1;
 - (void)cancelSearch:(id)arg1;
 - (id)cardController;
 - (void)configureNavigationBarForLargeTitles;
@@ -99,6 +105,7 @@
 - (void)contactStoreDidChangeWithNotification:(id)arg1;
 - (double)contentOffsetDueToMeContactBanner;
 - (void)contentSizeCategoryDidChange:(id)arg1;
+- (id)createTableView;
 - (id)dataSource;
 - (void)dealloc;
 - (id)delegate;
@@ -107,6 +114,7 @@
 - (id)dragItemsForIndexPath:(id)arg1;
 - (id)environment;
 - (id)groupsGridController;
+- (bool)hasNoContacts;
 - (id)hostingViewControllerForController:(id)arg1;
 - (id)initWithDataSource:(id)arg1 environment:(id)arg2 shouldUseLargeTitle:(bool)arg3;
 - (id)initWithDataSource:(id)arg1 searchable:(bool)arg2 environment:(id)arg3 shouldUseLargeTitle:(bool)arg4;
@@ -123,6 +131,7 @@
 - (id)noContactsView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
+- (id)originalDataSource;
 - (id)pendingLayoutBlocks;
 - (bool)pendingSearchControllerActivation;
 - (id)pendingSearchQuery;
@@ -193,11 +202,12 @@
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
+- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (id)tableViewHeaderConstraints;
 - (bool)updateFrameAndDisplayNoContactsViewIfNeeded;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (id)vCardImportController;
-- (void)vCardImportController:(id)arg1 didSaveContact:(id)arg2;
+- (void)vCardImportController:(id)arg1 didSaveContacts:(id)arg2;
 - (void)vCardImportController:(id)arg1 presentViewController:(id)arg2 animated:(bool)arg3;
 - (void)vCardImportControllerDidCompleteQueue:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;

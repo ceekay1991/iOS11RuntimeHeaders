@@ -9,6 +9,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)reloadData;
 - (void)viewDidLoad;
 
 @end

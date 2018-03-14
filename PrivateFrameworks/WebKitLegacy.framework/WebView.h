@@ -7,6 +7,11 @@
 }
 
 @property (nonatomic) <WebUIDelegate> *UIDelegate;
+@property (nonatomic, readonly) unsigned long long _dragSourceAction;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } _draggedElementBounds;
+@property (nonatomic, readonly) NSString *_draggedLinkTitle;
+@property (nonatomic, readonly) NSURL *_draggedLinkURL;
+@property (setter=_setUnobscuredSafeAreaInsets:, nonatomic) struct WebEdgeInsets { double x1; double x2; double x3; double x4; } _unobscuredSafeAreaInsets;
 @property (nonatomic, copy) NSString *applicationNameForUserAgent;
 @property (nonatomic, readonly) WebBackForwardList *backForwardList;
 @property (nonatomic, readonly) bool canGoBack;
@@ -51,6 +56,8 @@
 @property (nonatomic, readonly) NSUndoManager *undoManager;
 @property (nonatomic, readonly) WebScriptObject *windowScriptObject;
 
+// Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
+
 + (id)MIMETypesShownAsHTML;
 + (bool)_HTTPPipeliningEnabled;
 + (id)_MIMETypeForFile:(id)arg1;
@@ -75,6 +82,7 @@
 + (Class)_getPDFRepresentationClass;
 + (Class)_getPDFViewClass;
 + (bool)_hasRemoteInspectorSession;
++ (bool)_isIconLoadingEnabled;
 + (bool)_isRemoteInspectorEnabled;
 + (bool)_isUnderMemoryPressure;
 + (void)_makeAllWebViewsPerformSelector:(SEL)arg1;
@@ -104,6 +112,7 @@
 + (void)_setDomainRelaxationForbidden:(bool)arg1 forURLScheme:(id)arg2;
 + (void)_setFontWhitelist:(id)arg1;
 + (void)_setHTTPPipeliningEnabled:(bool)arg1;
++ (void)_setIconLoadingEnabled:(bool)arg1;
 + (void)_setLoadResourcesSerially:(bool)arg1;
 + (void)_setPDFRepresentationClass:(Class)arg1;
 + (void)_setPDFViewClass:(Class)arg1;
@@ -161,11 +170,11 @@
 - (struct CGPoint { double x1; double x2; })_convertPointFromRootView:(struct CGPoint { double x1; double x2; })arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_convertRectFromRootView:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)_cookieEnabled;
-- (id)_createImageWithPlatterForImage:(id)arg1 boundingRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 contentScaleFactor:(double)arg3 clippingRects:(id)arg4;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_dataInteractionCaretRect;
 - (id)_dataOperationTextIndicator;
 - (void)_destroyAllPlugIns;
 - (void)_detachScriptDebuggerFromAllFrames;
+- (unsigned long long)_deviceOrientation;
 - (id)_deviceOrientationProvider;
 - (void)_didCommitLoadForFrame:(id)arg1;
 - (void)_didConcludeEditDataInteraction;
@@ -177,10 +186,14 @@
 - (id)_displayURL;
 - (void)_documentScaleChanged;
 - (id)_downloadURL:(id)arg1;
+- (unsigned long long)_dragSourceAction;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_draggedElementBounds;
+- (id)_draggedLinkTitle;
+- (id)_draggedLinkURL;
 - (id)_editingDelegateForwarder;
 - (id)_elementAtWindowPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_endedDataInteraction:(struct CGPoint { double x1; double x2; })arg1 global:(struct CGPoint { double x1; double x2; })arg2;
-- (void)_enterVideoFullscreenForVideoElement:(struct HTMLVideoElement { int (**x1)(); struct Weak<WebCore::JSDOMObject> { struct WeakImpl {} *x_2_1_1; } x2; int x3; unsigned int x4; struct ContainerNode {} *x5; struct TreeScope {} *x6; struct Node {} *x7; struct Node {} *x8; union DataUnion { struct RenderObject {} *x_9_1_1; struct NodeRareDataBase {} *x_9_1_2; } x9; struct Node {} *x10; struct Node {} *x11; struct QualifiedName { struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl> { struct QualifiedNameImpl {} *x_1_2_1; } x_12_1_1; } x12; struct RefPtr<WebCore::ElementData> { struct ElementData {} *x_13_1_1; } x13; int (**x14)(); struct ScriptExecutionContext {} *x15; unsigned int x16; int (**x17)(); int (**x18)(); int (**x19)(); int (**x20)(); int (**x21)(); int (**x22)(); int (**x23)(); int (**x24)(); int (**x25)(); int (**x26)(); struct Timer { int (**x_27_1_1)(); struct MonotonicTime { double x_2_2_1; } x_27_1_2; struct MonotonicTime { double x_3_2_1; } x_27_1_3; struct Seconds { double x_4_2_1; } x_27_1_4; int x_27_1_5; unsigned int x_27_1_6; struct Vector<WebCore::TimerBase *, 0, WTF::CrashOnOverflow, 16> {} *x_27_1_7; struct function<void ()>={type=[24C] {} x_27_1_8; struct __base<void ()> {} *x_27_1_9; } x27; }*)arg1 mode:(unsigned int)arg2;
+- (void)_enterVideoFullscreenForVideoElement:(struct HTMLVideoElement { int (**x1)(); struct Weak<WebCore::JSDOMObject> { struct WeakImpl {} *x_2_1_1; } x2; int x3; unsigned int x4; struct ContainerNode {} *x5; struct TreeScope {} *x6; struct Node {} *x7; struct Node {} *x8; union DataUnion { struct RenderObject {} *x_9_1_1; struct NodeRareDataBase {} *x_9_1_2; } x9; struct Node {} *x10; struct Node {} *x11; struct QualifiedName { struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl> { struct QualifiedNameImpl {} *x_1_2_1; } x_12_1_1; } x12; struct RefPtr<WebCore::ElementData> { struct ElementData {} *x_13_1_1; } x13; int (**x14)(); struct ScriptExecutionContext {} *x15; unsigned int x16; int (**x17)(); int (**x18)(); int (**x19)(); int (**x20)(); int (**x21)(); int (**x22)(); int (**x23)(); int (**x24)(); int (**x25)(); int (**x26)(); struct WeakPtrFactory<WebCore::HTMLMediaElement> { struct Ref<WTF::WeakReference<WebCore::HTMLMediaElement> > { struct WeakReference<WebCore::HTMLMediaElement> {} *x_1_2_1; } x_27_1_1; } x27; struct Timer { int (**x_28_1_1)(); struct MonotonicTime { double x_2_2_1; } x_28_1_2; struct MonotonicTime { double x_3_2_1; } x_28_1_3; struct Seconds { double x_4_2_1; } x_28_1_4; int x_28_1_5; unsigned int x_28_1_6; struct Vector<WebCore::TimerBase *, 0, WTF::CrashOnOverflow, 16> {} *x_28_1_7; struct Function<void ()>={unique_ptr<WTF::Function<void ()>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void ()>::CallableWrapperBase> >={__compressed_pair<WTF::Function<void ()>::CallableWrapperBase *, std::__1::default_delete<WTF::Function<void ()>::CallableWrapperBase> >=^{CallableWrapperBase {} x_28_1_8; } x28; }*)arg1 mode:(unsigned int)arg2;
 - (unsigned long long)_enteredDataInteraction:(id)arg1 client:(struct CGPoint { double x1; double x2; })arg2 global:(struct CGPoint { double x1; double x2; })arg3 operation:(unsigned long long)arg4;
 - (void)_executeCoreCommandByName:(id)arg1 value:(id)arg2;
 - (void)_exitVideoFullscreen;
@@ -276,14 +289,14 @@
 - (void)_setCookieEnabled:(bool)arg1;
 - (void)_setCustomFixedPositionLayoutRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_setCustomFixedPositionLayoutRectInWebThread:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 synchronize:(bool)arg2;
-- (void)_setDataInteractionData:(struct CGImage { }*)arg1 textIndicator:(struct optional<WebCore::TextIndicatorData> { bool x1; union storage_t<WebCore::TextIndicatorData> { unsigned char x_2_1_1; struct TextIndicatorData { struct FloatRect { struct FloatPoint { float x_1_4_1; float x_1_4_2; } x_1_3_1; struct FloatSize { float x_2_4_1; float x_2_4_2; } x_1_3_2; } x_2_2_1; struct FloatRect { struct FloatPoint { float x_1_4_1; float x_1_4_2; } x_2_3_1; struct FloatSize { float x_2_4_1; float x_2_4_2; } x_2_3_2; } x_2_2_2; struct FloatRect { struct FloatPoint { float x_1_4_1; float x_1_4_2; } x_3_3_1; struct FloatSize { float x_2_4_1; float x_2_4_2; } x_3_3_2; } x_2_2_3; struct Vector<WebCore::FloatRect, 0, WTF::CrashOnOverflow, 16> { struct FloatRect {} *x_4_3_1; unsigned int x_4_3_2; unsigned int x_4_3_3; } x_2_2_4; float x_2_2_5; struct RefPtr<WebCore::Image> { struct Image {} *x_6_3_1; } x_2_2_6; struct RefPtr<WebCore::Image> { struct Image {} *x_7_3_1; } x_2_2_7; struct RefPtr<WebCore::Image> { struct Image {} *x_8_3_1; } x_2_2_8; struct Color { union { unsigned long long x_1_4_1; struct ExtendedColor {} *x_1_4_2; } x_9_3_1; } x_2_2_9; int x_2_2_10; unsigned short x_2_2_11; } x_2_1_2; } x2; })arg2 atClientPosition:(struct CGPoint { double x1; double x2; })arg3 anchorPoint:(struct CGPoint { double x1; double x2; })arg4 action:(unsigned long long)arg5;
+- (void)_setDeviceOrientation:(unsigned long long)arg1;
 - (void)_setDeviceOrientationProvider:(id)arg1;
 - (void)_setFixedLayoutSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_setFontFallbackPrefersPictographs:(bool)arg1;
 - (void)_setFormDelegate:(id)arg1;
 - (void)_setGapBetweenPages:(double)arg1;
 - (void)_setGeolocationProvider:(id)arg1;
-- (void)_setGlobalHistoryItem:(struct HistoryItem { unsigned int x1; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_2_1_1; } x2; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_3_1_1; } x3; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_4_1_1; } x4; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_5_1_1; } x5; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_6_1_1; } x6; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_7_1_1; } x7; struct IntPoint { int x_8_1_1; int x_8_1_2; } x8; float x9; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_10_1_1; unsigned int x_10_1_2; unsigned int x_10_1_3; } x10; int x11; struct Vector<WTF::Ref<WebCore::HistoryItem>, 0, WTF::CrashOnOverflow, 16> { struct Ref<WebCore::HistoryItem> {} *x_12_1_1; unsigned int x_12_1_2; unsigned int x_12_1_3; } x12; bool x13; bool x14; bool x15; bool x16; long long x17; }*)arg1;
+- (void)_setGlobalHistoryItem:(struct HistoryItem { unsigned int x1; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_2_1_1; } x2; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_3_1_1; } x3; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_4_1_1; } x4; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_5_1_1; } x5; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_6_1_1; } x6; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_7_1_1; } x7; struct IntPoint { int x_8_1_1; int x_8_1_2; } x8; float x9; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_10_1_1; unsigned int x_10_1_2; unsigned int x_10_1_3; unsigned int x_10_1_4; } x10; int x11; struct Vector<WTF::Ref<WebCore::HistoryItem>, 0, WTF::CrashOnOverflow, 16> { struct Ref<WebCore::HistoryItem> {} *x_12_1_1; unsigned int x_12_1_2; unsigned int x_12_1_3; unsigned int x_12_1_4; } x12; }*)arg1;
 - (void)_setHostApplicationProcessIdentifier:(int)arg1 auditToken:(struct { unsigned int x1[8]; })arg2;
 - (void)_setIsVisible:(bool)arg1;
 - (void)_setMaintainsInactiveSelection:(bool)arg1;
@@ -300,6 +313,7 @@
 - (void)_setSourceApplicationAuditData:(id)arg1;
 - (void)_setUIKitDelegate:(id)arg1;
 - (void)_setUIWebViewUserAgentWithBuildVersion:(id)arg1;
+- (void)_setUnobscuredSafeAreaInsets:(struct WebEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setUseFastImageScalingMode:(bool)arg1;
 - (void)_setUseFixedLayout:(bool)arg1;
 - (void)_setUserMediaClient:(id)arg1;
@@ -311,11 +325,13 @@
 - (void)_simplifyMarkup:(id)arg1 endNode:(id)arg2;
 - (id)_sourceApplicationAuditData;
 - (void)_startAllPlugIns;
+- (void)_startDrag:(const struct DragItem { struct DragImage { struct RetainPtr<CGImage *> { void *x_1_2_1; } x_1_1_1; struct optional<WebCore::TextIndicatorData> { bool x_2_2_1; union storage_t<WebCore::TextIndicatorData> { unsigned char x_2_3_1; struct TextIndicatorData { struct FloatRect { struct FloatPoint { float x_1_6_1; float x_1_6_2; } x_1_5_1; struct FloatSize { float x_2_6_1; float x_2_6_2; } x_1_5_2; } x_2_4_1; struct FloatRect { struct FloatPoint { float x_1_6_1; float x_1_6_2; } x_2_5_1; struct FloatSize { float x_2_6_1; float x_2_6_2; } x_2_5_2; } x_2_4_2; struct FloatRect { struct FloatPoint { float x_1_6_1; float x_1_6_2; } x_3_5_1; struct FloatSize { float x_2_6_1; float x_2_6_2; } x_3_5_2; } x_2_4_3; struct Vector<WebCore::FloatRect, 0, WTF::CrashOnOverflow, 16> { struct FloatRect {} *x_4_5_1; unsigned int x_4_5_2; unsigned int x_4_5_3; unsigned int x_4_5_4; } x_2_4_4; float x_2_4_5; struct RefPtr<WebCore::Image> { struct Image {} *x_6_5_1; } x_2_4_6; struct RefPtr<WebCore::Image> { struct Image {} *x_7_5_1; } x_2_4_7; struct RefPtr<WebCore::Image> { struct Image {} *x_8_5_1; } x_2_4_8; struct Color { union { unsigned long long x_1_6_1; struct ExtendedColor {} *x_1_6_2; } x_9_5_1; } x_2_4_9; unsigned char x_2_4_10; unsigned short x_2_4_11; } x_2_3_2; } x_2_2_2; } x_1_1_2; } x1; }*)arg1;
 - (void)_stopAllPlugIns;
 - (void)_stopAllPlugInsForPageCache;
 - (void)_synchronizeCustomFixedPositionLayoutRect;
 - (id)_touchEventRegions;
 - (bool)_tryToPerformDataInteraction:(id)arg1 client:(struct CGPoint { double x1; double x2; })arg2 global:(struct CGPoint { double x1; double x2; })arg3 operation:(unsigned long long)arg4;
+- (struct WebEdgeInsets { double x1; double x2; double x3; double x4; })_unobscuredSafeAreaInsets;
 - (void)_updateActiveState;
 - (void)_updateScreenScaleFromWindow;
 - (void)_updateVisibilityState;
@@ -408,7 +424,8 @@
 - (void)deleteWordForward:(id)arg1;
 - (id)documentViewAtWindowPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)downloadDelegate;
-- (struct DragData { struct IntPoint { int x_1_1_1; int x_1_1_2; } x1; struct IntPoint { int x_2_1_1; int x_2_1_2; } x2; void *x3; int x4; int x5; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_6_1_1; unsigned int x_6_1_2; unsigned int x_6_1_3; } x6; int x7; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_8_1_1; } x8; })dragDataForDataInteraction:(id)arg1 client:(struct CGPoint { double x1; double x2; })arg2 global:(struct CGPoint { double x1; double x2; })arg3 operation:(unsigned long long)arg4;
+- (struct DragData { struct IntPoint { int x_1_1_1; int x_1_1_2; } x1; struct IntPoint { int x_2_1_1; int x_2_1_2; } x2; void *x3; int x4; int x5; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_6_1_1; unsigned int x_6_1_2; unsigned int x_6_1_3; unsigned int x_6_1_4; } x6; int x7; struct String { struct RefPtr<WTF::StringImpl> { struct StringImpl {} *x_1_2_1; } x_8_1_1; } x8; })dragDataForSession:(id)arg1 client:(struct CGPoint { double x1; double x2; })arg2 global:(struct CGPoint { double x1; double x2; })arg3 operation:(unsigned long long)arg4;
+- (unsigned long long)dragDestinationActionMaskForSession:(id)arg1;
 - (bool)drawsBackground;
 - (id)editableDOMRangeForPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)editingDelegate;
@@ -667,5 +684,11 @@
 - (void)yankAndSelect:(id)arg1;
 - (void)zoomPageIn:(id)arg1;
 - (void)zoomPageOut:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/WebBookmarks.framework/WebBookmarks
+
+- (bool)_createSymlinkInDirectory:(id)arg1 pointingToPath:(id)arg2;
+- (id)_quickLookContentFilePath;
+- (bool)_writeDataAtPath:(id)arg1 asArchive:(bool)arg2;
 
 @end

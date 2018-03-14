@@ -31,6 +31,8 @@
 @property (readonly, copy) NSString *string;
 @property (copy) NSString *user;
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 + (id)componentsWithString:(id)arg1;
 + (id)componentsWithURL:(id)arg1 resolvingAgainstBaseURL:(bool)arg2;
@@ -82,5 +84,46 @@
 - (void)setUser:(id)arg1;
 - (id)string;
 - (id)user;
+
+// Image: /System/Library/PrivateFrameworks/CoreParsec.framework/CoreParsec
+
++ (id)parsec_componentsWithString:(id)arg1;
++ (id)parsec_componentsWithURL:(id)arg1 resolvingAgainstBaseURL:(bool)arg2;
+
+- (id)parsec_componentsForEmbeddedAMPURL;
+- (id)parsec_normalizedURLStringForDeepLinkIngest;
+- (id)parsec_normalizedURLStringForDeepLinkWhitelist;
+- (id)parsec_normalizedURLStringForLDAModel;
+- (id)parsec_normalizedURLStringForTLDFeatures;
+- (id)parsec_normalizedURLStringWithOptions:(unsigned long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/FamilyCircleUI.framework/FamilyCircleUI
+
+- (id)fa_queryItemsDictionary;
+- (id)fa_valueForQueryItem:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
+
+- (void)geo_updateQueryItemsWithBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (bool)ic_boolValueForQueryItemWithKey:(id)arg1;
+- (id)ic_queryItemWithKey:(id)arg1;
+- (id)ic_stringValueForQueryItemWithKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/RemoteMediaServices.framework/RemoteMediaServices
+
+- (id)rms_componentsByAddingQueryParameters:(id)arg1;
+- (id)rms_componentsByAddingQueryParameters:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
+
+- (id)queryValueForName:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TelephonyUtilities.framework/TelephonyUtilities
+
+- (bool)containsQueryItemWithName:(id)arg1;
+- (id)firstQueryItemWithName:(id)arg1;
 
 @end

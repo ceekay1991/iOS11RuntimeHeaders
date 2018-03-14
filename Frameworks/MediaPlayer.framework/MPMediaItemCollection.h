@@ -14,8 +14,11 @@
 @property (nonatomic, readonly) unsigned long long count;
 @property (nonatomic, readonly) long long groupingType;
 @property (nonatomic, readonly) NSArray *items;
+@property (getter=wlk_jsPropertyStrings, nonatomic, readonly) NSSet *jsPropertyStrings;
 @property (nonatomic, readonly) unsigned long long mediaTypes;
 @property (nonatomic, readonly) MPMediaItem *representativeItem;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (id)artworkCatalogCachePropertiesForGroupingType:(long long)arg1;
 + (id)collectionWithItems:(id)arg1;
@@ -47,5 +50,23 @@
 - (id)representativeItem;
 - (bool)setValue:(id)arg1 forProperty:(id)arg2;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 withCompletionBlock:(id /* block */)arg3;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
++ (id)customPropertyHandlersCollection;
++ (void)registerSupportedCustomPropertiesWithHandlersCollection:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
++ (id)MPU_contentItemIdentifierCollectionPropertiesForGroupingType:(long long)arg1;
++ (void)_MPU_getContentItemIdentifierCollectionItemType:(unsigned long long*)arg1 storeAdamIDProperty:(id*)arg2 forGroupingType:(long long)arg3;
+
+- (id)MPU_contentItemIdentifierCollection;
+
+// Image: /System/Library/PrivateFrameworks/WatchListKitUI.framework/WatchListKitUI
+
++ (id)wlk_JSgenericProperties;
+
+- (id)wlk_jsPropertyStrings;
 
 @end

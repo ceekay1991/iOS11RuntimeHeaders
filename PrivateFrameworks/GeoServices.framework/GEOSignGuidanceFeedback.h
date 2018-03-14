@@ -4,42 +4,34 @@
 
 @interface GEOSignGuidanceFeedback : PBCodable <NSCopying> {
     struct { 
-        unsigned int primarySignDetailIndex : 1; 
-        unsigned int primarySignTitleIndex : 1; 
-        unsigned int secondarySignIndex : 1; 
+        unsigned int signDetailIndex : 1; 
+        unsigned int signTitleIndex : 1; 
     }  _has;
-    int  _primarySignDetailIndex;
-    int  _primarySignTitleIndex;
-    int  _secondarySignIndex;
+    int  _signDetailIndex;
+    int  _signTitleIndex;
 }
 
-@property (nonatomic) bool hasPrimarySignDetailIndex;
-@property (nonatomic) bool hasPrimarySignTitleIndex;
-@property (nonatomic) bool hasSecondarySignIndex;
-@property (nonatomic) int primarySignDetailIndex;
-@property (nonatomic) int primarySignTitleIndex;
-@property (nonatomic) int secondarySignIndex;
+@property (nonatomic) bool hasSignDetailIndex;
+@property (nonatomic) bool hasSignTitleIndex;
+@property (nonatomic) int signDetailIndex;
+@property (nonatomic) int signTitleIndex;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasPrimarySignDetailIndex;
-- (bool)hasPrimarySignTitleIndex;
-- (bool)hasSecondarySignIndex;
+- (bool)hasSignDetailIndex;
+- (bool)hasSignTitleIndex;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (int)primarySignDetailIndex;
-- (int)primarySignTitleIndex;
 - (bool)readFrom:(id)arg1;
-- (int)secondarySignIndex;
-- (void)setHasPrimarySignDetailIndex:(bool)arg1;
-- (void)setHasPrimarySignTitleIndex:(bool)arg1;
-- (void)setHasSecondarySignIndex:(bool)arg1;
-- (void)setPrimarySignDetailIndex:(int)arg1;
-- (void)setPrimarySignTitleIndex:(int)arg1;
-- (void)setSecondarySignIndex:(int)arg1;
+- (void)setHasSignDetailIndex:(bool)arg1;
+- (void)setHasSignTitleIndex:(bool)arg1;
+- (void)setSignDetailIndex:(int)arg1;
+- (void)setSignTitleIndex:(int)arg1;
+- (int)signDetailIndex;
+- (int)signTitleIndex;
 - (void)writeTo:(id)arg1;
 
 @end

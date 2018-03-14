@@ -5,6 +5,8 @@
 @interface INWorkoutLocationTypeResolutionResult : INIntentResolutionResult
 
 + (id)confirmationRequiredWithValueToConfirm:(long long)arg1;
++ (id)confirmationRequiredWithWorkoutLocationTypeToConfirm:(long long)arg1;
 + (id)successWithResolvedValue:(long long)arg1;
++ (id)successWithResolvedWorkoutLocationType:(long long)arg1;
 
 @end

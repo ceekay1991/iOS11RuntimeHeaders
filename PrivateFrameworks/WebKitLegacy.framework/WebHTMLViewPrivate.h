@@ -7,6 +7,7 @@
     WebEvent * autoscrollTriggerEvent;
     bool  closed;
     WebDataSource * dataSource;
+    bool  drawingIntoAcceleratedLayer;
     bool  drawingIntoLayer;
     bool  exposeInputContext;
     bool  handlingMouseDownEvent;

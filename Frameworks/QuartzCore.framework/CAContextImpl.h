@@ -17,6 +17,7 @@
 - (unsigned int)createSlot;
 - (void)dealloc;
 - (void)deleteSlot:(unsigned int)arg1;
+- (float)desiredDynamicRange;
 - (id)initRemoteWithOptions:(id)arg1;
 - (id)initWithOptions:(id)arg1 localContext:(bool)arg2;
 - (void)invalidate;
@@ -32,6 +33,7 @@
 - (void)setColorSpace:(struct CGColorSpace { }*)arg1;
 - (void)setCommitPriority:(unsigned int)arg1;
 - (void)setContentsFormat:(id)arg1;
+- (void)setDesiredDynamicRange:(float)arg1;
 - (void)setFence:(unsigned int)arg1 count:(unsigned int)arg2;
 - (void)setFencePort:(unsigned int)arg1;
 - (void)setFencePort:(unsigned int)arg1 commitHandler:(id /* block */)arg2;

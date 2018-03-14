@@ -20,6 +20,10 @@
 @property (nonatomic, retain) NSString *mainTitle;
 @property (nonatomic) bool supportsLikedState;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
++ (bool)isPlaceholder;
+
 - (void).cxx_destruct;
 - (id)album;
 - (id)artist;
@@ -39,5 +43,9 @@
 - (bool)supportsLikedState;
 - (bool)supportsSettingCurrentTime;
 - (bool)supportsSkip;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (bool)mpcReporting_isValidReportingItem;
 
 @end

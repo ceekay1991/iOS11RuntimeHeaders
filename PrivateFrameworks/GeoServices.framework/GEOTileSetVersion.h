@@ -16,6 +16,7 @@
     unsigned int  _identifier;
     unsigned int  _supportedLanguagesVersion;
     unsigned int  _timeToLiveSeconds;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, readonly) struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*availableTiles;
@@ -27,7 +28,9 @@
 @property (nonatomic) unsigned int identifier;
 @property (nonatomic) unsigned int supportedLanguagesVersion;
 @property (nonatomic) unsigned int timeToLiveSeconds;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
+- (void).cxx_destruct;
 - (void)addAvailableTiles:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; })arg1;
 - (void)addGenericTile:(struct GEOGenericTile { unsigned int x1; unsigned int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })arg1;
 - (struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*)availableTiles;
@@ -59,6 +62,7 @@
 - (void)setTimeToLiveSeconds:(unsigned int)arg1;
 - (unsigned int)supportedLanguagesVersion;
 - (unsigned int)timeToLiveSeconds;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPStoreArtworkRequestToken : NSObject <NSCopying, NSSecureCoding> {
+@interface MPStoreArtworkRequestToken : NSObject <MPArtworkDataSourceVisualIdenticality, NSSecureCoding> {
     NSURL * _artworkURL;
     NSString * _cropStyle;
     NSArray * _lookupItemArtworks;
@@ -12,9 +12,13 @@
 
 @property (nonatomic, copy) NSURL *artworkURL;
 @property (nonatomic, copy) NSString *cropStyle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *lookupItemArtworks;
 @property (nonatomic) bool shouldIgnoreImage;
 @property (nonatomic, copy) NSString *sourceEditorialArtworkKind;
+@property (readonly) Class superclass;
 
 + (bool)supportsSecureCoding;
 
@@ -25,6 +29,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (id)lookupItemArtworks;
 - (void)setArtworkURL:(id)arg1;
 - (void)setCropStyle:(id)arg1;
@@ -33,5 +38,6 @@
 - (void)setSourceEditorialArtworkKind:(id)arg1;
 - (bool)shouldIgnoreImage;
 - (id)sourceEditorialArtworkKind;
+- (id)stringRepresentation;
 
 @end

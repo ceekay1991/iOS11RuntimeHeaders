@@ -14,7 +14,6 @@
     unsigned int  _expectedTime;
     unsigned int  _firstVisiblePoint;
     GEORoute * _geoRoute;
-    bool  _hasCheckedIsWalkingOnlyTransitRoute;
     bool  _isWalkingOnlyTransitRoute;
     <GEOServerFormattedString> * _launchAndGoCardTitle;
     <GEOServerFormattedString> * _launchAndGoRouteDescription;
@@ -34,6 +33,7 @@
     <GEOServerFormattedString> * _previewDurationFormatString;
     NSArray * _rideSelections;
     NSData * _routeID;
+    GEORouteInitializerData * _routeInitializerData;
     NSArray * _routePlanningArtworks;
     GEORouteSet * _routeSet;
     NSMutableArray * _sections;
@@ -99,6 +99,7 @@
 @property (nonatomic, readonly) GEORouteAttributes *routeAttributes;
 @property (nonatomic, readonly) NSArray *routeDescriptions;
 @property (nonatomic, retain) NSData *routeID;
+@property (nonatomic, readonly) GEORouteInitializerData *routeInitializerData;
 @property (nonatomic, readonly, copy) NSArray *routePlanningArtworks;
 @property (nonatomic) GEORouteSet *routeSet;
 @property (nonatomic, readonly) int routeType;
@@ -129,8 +130,11 @@
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 - (void).cxx_destruct;
+- (bool)_MapsCarPlay_isArray:(id)arg1 equalTo:(id)arg2;
+- (bool)_MapsCarPlay_isEqual:(id)arg1;
 - (void)_addPaths:(id)arg1 forObserver:(id)arg2;
 - (void)_addSnappedPolylinePathsForSection:(id)arg1 toPaths:(id)arg2 rects:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; }*)arg3 rectsCount:(unsigned long long)arg4;
+- (void)_createTrafficIncidentsForRouteInitializerData:(id)arg1;
 - (struct PolylineCoordinate { unsigned int x1; float x2; })_findRouteCoordinateWithOffset:(float)arg1 aPos:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg2 aCoord:(const struct PolylineCoordinate { unsigned int x1; float x2; }*)arg3 bCoord:(const struct PolylineCoordinate { unsigned int x1; float x2; }*)arg4 pointOnSegment:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg5 bounds:(const struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; }*)arg6;
 - (void)_initializeManeuverDisplaySteps;
 - (bool)_meetsMinimumPathLengthBetweenStart:(unsigned int)arg1 end:(unsigned int)arg2;
@@ -190,6 +194,7 @@
 - (void)initRideSelections;
 - (id)initWithCompanionRoute:(id)arg1;
 - (id)initWithRoute:(id)arg1;
+- (id)initWithRoute:(id)arg1 initializerData:(id)arg2;
 - (id)initWithRoute:(id)arg1 origin:(id)arg2 destination:(id)arg3;
 - (id)initWithSuggestedRoute:(id)arg1 decoderData:(id)arg2;
 - (id)initWithSuggestedRoute:(id)arg1 decoderData:(id)arg2 origin:(id)arg3 destination:(id)arg4;
@@ -234,6 +239,7 @@
 - (struct PolylineCoordinate { unsigned int x1; float x2; })routeCoordinateAtDistance:(double)arg1 beforeRouteCoordinate:(struct PolylineCoordinate { unsigned int x1; float x2; })arg2;
 - (id)routeDescriptions;
 - (id)routeID;
+- (id)routeInitializerData;
 - (id)routeMatchAtDistance:(double)arg1 from:(id)arg2 stopAtEndOfTunnel:(bool)arg3 stopAtEndOfManeuver:(bool)arg4 date:(id)arg5;
 - (id)routePlanningArtworks;
 - (id)routeSet;
@@ -277,6 +283,7 @@
 - (id)styleAttributes;
 - (id)suggestedRoute;
 - (bool)supportsSnapping;
+- (unsigned int)trafficColorForDistanceRemaining:(double)arg1;
 - (unsigned long long)trafficColorOffsetAtIndex:(unsigned long long)arg1;
 - (unsigned int*)trafficColorOffsets;
 - (unsigned long long)trafficColorOffsetsCount;
@@ -299,10 +306,13 @@
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
 + (void)_addPointsToArray:(id)arg1 forMapPoints:(struct { double x1; double x2; }*)arg2 pointCount:(unsigned long long)arg3 isPolylineA:(bool)arg4;
-+ (void)_findDivergenceAndConvergence:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherPoints:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 divergenceTolerance:(double)arg5 outDivergenceCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg6 outDivergenceCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg7 outConvergenceCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg8 outConvergenceCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg9;
++ (void)_findDivergenceAndConvergence:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherPoints:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 divergenceTolerance:(double)arg5 convergenceTolerance:(double)arg6 outDivergenceCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg7 outDivergenceCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg8 outConvergenceCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg9 outConvergenceCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg10;
++ (bool)_pointsConverge:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherPoints:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 tolerance:(double)arg5 outCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg6 outCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg7;
++ (bool)_pointsConverge:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherPoints:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 tolerance:(double)arg5 outCoordinatesA:(out id*)arg6 outCoordinatesB:(out id*)arg7;
 + (bool)_pointsDiverge:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherPoints:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 tolerance:(double)arg5 outCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg6 outCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg7;
 + (unsigned long long)_startIndexForPoints:(struct Matrix<double, 2, 1> { double x1[2]; })arg1 withPoints:(struct Matrix<double, 2, 1> { double x1[2]; }*)arg2 pointCount:(unsigned long long)arg3 toleranceSquared:(double)arg4;
 + (void)findDivergenceAndConvergence:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherCoordinates:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 distanceInMeters:(double)arg5 outDivergenceCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg6 outDivergenceCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg7 outConvergenceCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg8 outConvergenceCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg9;
++ (void)findDivergenceAndConvergence:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherPoints:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 divergenceTolerance:(double)arg5 convergenceTolerance:(double)arg6 outCoordinatesA:(out id*)arg7 outCoordinatesB:(out id*)arg8;
 + (void)findDivergenceAndConvergence:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherPoints:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 outDivergenceCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg5 outDivergenceCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg6 outConvergenceCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg7 outConvergenceCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg8;
 + (bool)pointsConverge:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherPoints:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 outCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg5 outCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg6;
 + (bool)pointsDiverge:(struct { double x1; double x2; }*)arg1 pointCount:(unsigned long long)arg2 otherPoints:(struct { double x1; double x2; }*)arg3 pointCount:(unsigned long long)arg4 outCoordinateA:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg5 outCoordinateB:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg6;
@@ -310,6 +320,8 @@
 - (id)_mapPoints;
 - (double)_remainingTimeFromRouteMatch:(id)arg1 etaRoute:(id)arg2 outRemainingDistance:(out double*)arg3 outDistanceToManeuverStart:(out double*)arg4 outDistanceToManeuverEnd:(out double*)arg5;
 - (int)cameraFocusStyleForStep:(id)arg1;
+- (id)divergenceAndConvergenceWithRoute:(id)arg1;
+- (id)divergenceAndConvergenceWithRoute:(id)arg1 outOtherRoutePoints:(out id*)arg2;
 - (void)findDivergenceAndConvergenceWithRoute:(id)arg1 distanceInMeters:(double)arg2 outDivergenceCoordinate:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg3 outConvergenceCoordinate:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg4;
 - (void)findDivergenceAndConvergenceWithRoute:(id)arg1 outDivergenceCoordinate:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg2 outConvergenceCoordinate:(out struct PolylineCoordinate { unsigned int x1; float x2; }*)arg3;
 - (double)remainingTimeFromLocation:(id)arg1;

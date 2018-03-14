@@ -3,34 +3,29 @@
  */
 
 @interface __NSOperationInternal : NSObject {
-    int  __RC;
     id  __activity;
-    unsigned char  __appliedQoS;
-    unsigned char  __cached_isReady;
-    id  __children;
+    bool  __cached_isReady;
     id /* block */  __completion;
-    id  __dependencies;
-    id  __down_dependencies;
+    NSMutableArray * __dependencies;
+    NSHashTable * __down_dependencies;
     void * __implicitObsInfo;
-    unsigned char  __inferredQoS;
-    unsigned char  __isBarrier;
-    unsigned char  __isCancelled;
+    bool  __isCancelled;
+    unsigned char  __isCancelledObserverCount;
+    unsigned char  __isExecutingObserverCount;
+    unsigned char  __isFinishedObserverCount;
+    unsigned char  __isReadyObserverCount;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  __lock;
     char * __nameBuffer;
     NSOperation * __nextOp;
     NSOperation * __nextPriOp;
     void * __obsInfo;
-    NSOperation * __outerOp;
-    struct pthread_override_s { } * __ov;
-    unsigned char  __pad1;
-    unsigned char  __pad3;
     NSOperation * __prevOp;
     BOOL  __prio;
-    unsigned char  __promotedQoS;
     unsigned char  __propertyQoS;
-    struct _opaque_pthread_t { long long x1; struct __darwin_pthread_handler_rec {} *x2; BOOL x3[8176]; } * __pthread;
     NSOperationQueue * __queue;
-    long long  __seqno;
-    int  __state;
+    unsigned char  __state;
     double  __thread_prio;
     long long  __unfinished_deps;
     struct _opaque_pthread_cond_t { 
@@ -45,7 +40,6 @@
 
 + (void)_observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 changeKind:(unsigned long long)arg3 oldValue:(id)arg4 newValue:(id)arg5 indexes:(id)arg6 context:(void*)arg7;
 
-- (id)__;
 - (id)_activity;
 - (void)_addDependency:(id)arg1 outer:(id)arg2;
 - (void)_cancel:(id)arg1;

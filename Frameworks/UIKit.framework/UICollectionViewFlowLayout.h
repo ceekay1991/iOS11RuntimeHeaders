@@ -68,6 +68,7 @@
         double bottom; 
         double right; 
     }  _sectionInset;
+    long long  _sectionInsetReference;
 }
 
 @property (nonatomic) struct CGSize { double x1; double x2; } estimatedItemSize;
@@ -81,10 +82,12 @@
 @property (nonatomic) bool sectionFootersPinToVisibleBounds;
 @property (nonatomic) bool sectionHeadersPinToVisibleBounds;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } sectionInset;
+@property (nonatomic) long long sectionInsetReference;
 
 + (Class)invalidationContextClass;
 
 - (void).cxx_destruct;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_adjustedSectionInsetForSectionInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1 forAxis:(int)arg2;
 - (bool)_boundsAndInsetsAreValidForReferenceDimension;
 - (void)_calculateAttributesForRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
@@ -93,9 +96,9 @@
 - (struct CGSize { double x1; double x2; })_effectiveEstimatedItemSize;
 - (bool)_estimatesSizes;
 - (id)_existingLayoutAttributesForItemAtIndexPath:(id)arg1;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_fastScrollingIndexBarInsets;
 - (id)_fetchAndCacheNewLayoutAttributesForCellWithIndexPath:(id)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_fetchItemsInfoForRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_focusFastScrollingIndexBarInsets;
 - (bool)_footerFollowsSectionMargins;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForFooterInSection:(long long)arg1 usingData:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForHeaderInSection:(long long)arg1 usingData:(id)arg2;
@@ -109,12 +112,14 @@
 - (bool)_roundsToScreenScale;
 - (id)_rowAlignmentOptions;
 - (long long)_sectionArrayIndexForIndexPath:(id)arg1;
+- (void)_setCollectionView:(id)arg1;
 - (void)_setFooterFollowsSectionMargins:(bool)arg1;
 - (void)_setHeaderFollowsSectionMargins:(bool)arg1;
 - (void)_setNeedsLayoutComputationWithoutInvalidation;
 - (void)_setRoundsToScreenScale:(bool)arg1;
 - (void)_setRowAlignmentsOptions:(id)arg1;
 - (bool)_shouldScrollToContentBeginningInRightToLeft;
+- (void)_updateCollectionViewScrollableAxis;
 - (void)_updateContentSizeScrollingDimensionWithDelta:(double)arg1;
 - (void)_updateDelegateFlags;
 - (void)_updateItemsLayoutForRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 allowsPartialUpdate:(bool)arg2;
@@ -157,6 +162,7 @@
 - (bool)sectionFootersPinToVisibleBounds;
 - (bool)sectionHeadersPinToVisibleBounds;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })sectionInset;
+- (long long)sectionInsetReference;
 - (void)setEstimatedItemSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setFooterReferenceSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setHeaderReferenceSize:(struct CGSize { double x1; double x2; })arg1;
@@ -167,6 +173,7 @@
 - (void)setSectionFootersPinToVisibleBounds:(bool)arg1;
 - (void)setSectionHeadersPinToVisibleBounds:(bool)arg1;
 - (void)setSectionInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)setSectionInsetReference:(long long)arg1;
 - (bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)shouldInvalidateLayoutForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (struct CGSize { double x1; double x2; })synchronizeLayout;

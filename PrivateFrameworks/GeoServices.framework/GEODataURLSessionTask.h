@@ -3,6 +3,7 @@
  */
 
 @interface GEODataURLSessionTask : NSObject <GEODataSessionTask, GEOStateCapturing> {
+    NSObject<OS_os_activity> * _activity;
     NSURLSessionDataTask * _backingTask;
     bool  _backingTaskNeedsResume;
     NSData * _cachedData;
@@ -11,17 +12,23 @@
     double  _endTime;
     NSError * _error;
     bool  _finished;
+    float  _priority;
+    unsigned int  _qos;
     NSMutableData * _receivedData;
     GEODataRequest * _request;
     int  _requestKind;
+    unsigned int  _sessionIdentifier;
     NSObject<OS_dispatch_queue> * _sessionIsolation;
     double  _startTime;
     unsigned long long  _stateCaptureHandle;
     unsigned int  _taskIdentifier;
+    GEODataURLSessionTaskQueue * _taskQueue;
     NSURLSessionTaskMetrics * _urlTaskMetrics;
 }
 
 @property (nonatomic, readonly) long long HTTPStatusCode;
+@property (nonatomic, readonly) float _priority;
+@property (readonly) NSObject<OS_os_activity> *activity;
 @property (nonatomic, readonly) NSURLSessionDataTask *backingTask;
 @property (nonatomic, copy) NSData *cachedData;
 @property (nonatomic, readonly) GEOClientMetrics *clientMetrics;
@@ -42,20 +49,27 @@
 @property (nonatomic, readonly) NSURL *originalRequestURL;
 @property (nonatomic, readonly) NSURLRequest *originalURLRequest;
 @property (nonatomic, readonly) unsigned long long outgoingPayloadSize;
+@property float priority;
 @property (nonatomic, readonly) bool protocolBufferHasPreamble;
 @property (nonatomic, readonly) NSData *receivedData;
 @property (nonatomic, readonly) NSString *remoteAddressAndPort;
 @property (nonatomic, readonly) GEODataRequest *request;
 @property (nonatomic, readonly) int requestKind;
 @property (nonatomic, readonly) NSHTTPURLResponse *response;
+@property (nonatomic) unsigned int sessionIdentifier;
 @property (nonatomic, readonly) double startTime;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned int taskIdentifier;
+@property (nonatomic, retain) GEODataURLSessionTaskQueue *taskQueue;
+@property (getter=isTileRequest, nonatomic, readonly) bool tileRequest;
 @property (nonatomic, readonly) NSURLSessionTaskMetrics *urlTaskMetrics;
 
 - (void).cxx_destruct;
 - (long long)HTTPStatusCode;
 - (void)_prepareForRestart;
+- (float)_priority;
+- (void)_start;
+- (id)activity;
 - (id)backingTask;
 - (id)cachedData;
 - (void)cancel;
@@ -63,8 +77,10 @@
 - (id)clientMetrics;
 - (unsigned long long)contentLength;
 - (id)contentLengthString;
+- (id)createURLRequest;
 - (id)createURLSessionTaskWithSession:(id)arg1 request:(id)arg2;
 - (void)dataSession:(id)arg1 taskDidCompleteWithError:(id)arg2;
+- (void)dataSession:(id)arg1 willSendRequestForEstablishedConnection:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)dealloc;
 - (id)delegate;
 - (id)delegateQueue;
@@ -81,19 +97,29 @@
 - (unsigned long long)incomingPayloadSize;
 - (id)init;
 - (id)initWithSession:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 requestKind:(int)arg4;
+- (bool)isTileRequest;
+- (void)notifyDelegateWithSession:(id)arg1;
 - (id)originalRequestURL;
 - (id)originalURLRequest;
 - (unsigned long long)outgoingPayloadSize;
+- (float)priority;
 - (bool)protocolBufferHasPreamble;
 - (id)receivedData;
 - (id)remoteAddressAndPort;
 - (id)request;
 - (int)requestKind;
 - (id)response;
+- (unsigned int)sessionIdentifier;
 - (void)setCachedData:(id)arg1;
+- (void)setPriority:(float)arg1;
+- (void)setSessionIdentifier:(unsigned int)arg1;
+- (void)setTaskQueue:(id)arg1;
 - (void)start;
+- (void)startDequeuedFromQueue:(id)arg1;
 - (double)startTime;
 - (unsigned int)taskIdentifier;
+- (id)taskQueue;
+- (void)updateRequest:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)urlTaskMetrics;
 - (bool)validateContentLengthWithError:(id*)arg1;
 - (bool)validateNonEmptyResponseWithError:(id*)arg1;

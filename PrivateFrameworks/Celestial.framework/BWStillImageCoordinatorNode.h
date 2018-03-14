@@ -20,6 +20,8 @@
     unsigned int  _firedDelegateCallbackFlags;
     BWNodeOutput * _hdrOutput;
     bool  _hdrSupported;
+    BWNodeInput * _infraredInput;
+    BWNodeOutput * _infraredOutput;
     NSDictionary * _inputIndexToPortType;
     bool  _oisSupported;
     NSDictionary * _portTypeToInput;
@@ -37,8 +39,6 @@
     NSObject<OS_dispatch_group> * _stillImageDispatchGroup;
     NSObject<OS_dispatch_queue> * _stillImageDispatchQueue;
     bool  _stillImageGraphSupportsMultipleInflightCaptures;
-    BWNodeInput * _streamObservationInput;
-    BWNodeOutput * _streamObservationOutput;
     BWNodeInput * _telephotoInput;
     bool  _usesHDRPreBracketFrameForErrorRecovery;
 }
@@ -49,28 +49,34 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) BWNodeOutput *hdrOutput;
+@property (nonatomic, readonly) BWNodeOutput *infraredOutput;
 @property (nonatomic, readonly) BWNodeOutput *sisOutput;
 @property (nonatomic) <BWStillImageCaptureStatusDelegate> *stillImageCaptureStatusDelegate;
-@property (nonatomic, readonly) BWNodeOutput *streamObservationOutput;
 @property (readonly) Class superclass;
 
 + (void)initialize;
 
 - (void)_addExifOrientationToSampleBufferMetadata:(struct opaqueCMSampleBuffer { }*)arg1;
 - (void)_beginCapture;
-- (void)_beginResolvingStillImageCapture;
-- (int)_captureTypeForSettings:(id)arg1 frameStatistics:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; int x12; int x13; unsigned int x14; float x15; unsigned char x16; double x17; int x18; int x19; int x20; float x21; float x22; int x23; int x24; int x25; float x26; float x27; int x28; int x29; int x30; int x31; long long x32; }*)arg2 captureFlags:(unsigned long long*)arg3;
-- (id)_clientBracketSettingsWithCurrentFrameStats:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; int x12; int x13; unsigned int x14; float x15; unsigned char x16; double x17; int x18; int x19; int x20; float x21; float x22; int x23; int x24; int x25; float x26; float x27; int x28; int x29; int x30; int x31; long long x32; }*)arg1 stillImageSettings:(id)arg2;
+- (void)_beginInitiatingCapture;
+- (void)_beginPreparingCapture;
+- (void)_beginResolvingCapture;
+- (int)_captureTypeForSettings:(id)arg1 frameStatistics:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; unsigned int x12; int x13; int x14; int x15; unsigned int x16; float x17; unsigned char x18; double x19; int x20; int x21; int x22; float x23; float x24; int x25; int x26; unsigned char x27; int x28; int x29; float x30; float x31; int x32; int x33; int x34; int x35; long long x36; }*)arg2 captureFlags:(unsigned long long*)arg3;
+- (id)_clientBracketSettingsWithCurrentFrameStats:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; unsigned int x12; int x13; int x14; int x15; unsigned int x16; float x17; unsigned char x18; double x19; int x20; int x21; int x22; float x23; float x24; int x25; int x26; unsigned char x27; int x28; int x29; float x30; float x31; int x32; int x33; int x34; int x35; long long x36; }*)arg1 stillImageSettings:(id)arg2;
 - (void)_completeRequestWithStatus:(int)arg1;
 - (void)_configureCurrentCaptureRequestStateForFigCaptureStillImageSettings;
-- (void)_didCaptureStillImageWithPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (void)_didCaptureStillImage;
+- (void)_didResolveReferenceFrameBracketedCaptureSequenceNumber:(id)arg1;
+- (void)_didResolveStillImagePTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 isPreBracketedEV0:(bool)arg2;
 - (int)_enqueueRequestWithSettings:(id)arg1 serviceRequestsIfNecessary:(bool)arg2;
 - (void)_flushStillImageRequestWithError:(int)arg1;
+- (id)_initWithCaptureDevice:(id)arg1 inputPortTypes:(id)arg2 hdrSupported:(bool)arg3 sisSupported:(bool)arg4 oisSupported:(bool)arg5 shareOutputForSingleStillSISAndOIS:(bool)arg6 shareOutputsForSingleStillsAndHDR:(bool)arg7 allStateTransitionsHandler:(id /* block */)arg8;
 - (id)_outputForMultiframeStereoFusionCaptureWithNodeInput:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 metadataDictionary:(id)arg3;
 - (id)_outputForNodeInput:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 metadataDictionary:(id)arg3;
 - (id)_resolvePhotoManifest;
 - (void)_serviceNextRequest;
-- (void)_setupStateMachine;
+- (void)_setupStateMachineWithAllStateTransitionsHandler:(id /* block */)arg1;
+- (id)_stateMachine;
 - (id)_stillImageDispatchQueue;
 - (void)_unpackNextRequest;
 - (void)_willBeginCapture;
@@ -90,9 +96,12 @@
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
 - (id)hdrOutput;
+- (id)infraredOutput;
 - (id)initWithCaptureDevice:(id)arg1 inputPortTypes:(id)arg2 hdrSupported:(bool)arg3 sisSupported:(bool)arg4 oisSupported:(bool)arg5 shareOutputForSingleStillSISAndOIS:(bool)arg6 shareOutputsForSingleStillsAndHDR:(bool)arg7;
+- (int)initiateStillImageCaptureNowWithSettings:(id)arg1;
 - (id)inputForPortType:(id)arg1;
 - (void)node:(id)arg1 didSelectReferenceFrameBracketedCaptureSequenceNumber:(id)arg2 pts:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3;
+- (void)nodeDidCaptureStillImage:(id)arg1;
 - (id)nodeSubType;
 - (id)nodeType;
 - (int)prepareStillImageCaptureNowWithSettings:(id)arg1;
@@ -104,7 +113,6 @@
 - (id)sisOutput;
 - (id)stillImageCaptureStatusDelegate;
 - (bool)stillImageGraphSupportsMultipleInflightCaptures;
-- (id)streamObservationOutput;
 - (bool)usesHDRPreBracketFrameForErrorRecovery;
 - (void)willStopGraph:(bool)arg1;
 - (int)worstCaseMaxBracketedCaptureBufferCountForPreparedSettings:(id)arg1;

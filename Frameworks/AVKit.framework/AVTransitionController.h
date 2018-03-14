@@ -31,7 +31,7 @@
 - (void)animationEnded:(bool)arg1;
 - (id)gestureTracker;
 - (void)gestureTracker:(id)arg1 didBeginTrackingGesture:(long long)arg2;
-- (void)gestureTracker:(id)arg1 didTrackPercentComplete:(double)arg2 translation:(struct CGPoint { double x1; double x2; })arg3 rotation:(double)arg4;
+- (void)gestureTracker:(id)arg1 didTrackPercentComplete:(double)arg2 translation:(struct CGPoint { double x1; double x2; })arg3 rotation:(double)arg4 locationInWindow:(struct CGPoint { double x1; double x2; })arg5;
 - (void)gestureTrackerDidCancelTracking:(id)arg1;
 - (void)gestureTrackerDidFinishTracking:(id)arg1;
 - (bool)gestureTrackerShouldTrackPanToDismiss:(id)arg1;

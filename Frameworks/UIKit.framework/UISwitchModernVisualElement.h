@@ -43,6 +43,7 @@
 
 + (struct CGSize { double x1; double x2; })preferredContentSize;
 
+- (void).cxx_destruct;
 - (id)_accessibleOffImage;
 - (id)_accessibleOnImage;
 - (id)_defaultOnTintColor;
@@ -93,9 +94,9 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (bool)displayedOn;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)gestureTrackingSession;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)interactiveChangeToDisplayedOn:(bool)arg1;

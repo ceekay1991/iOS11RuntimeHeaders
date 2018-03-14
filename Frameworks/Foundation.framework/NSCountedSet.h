@@ -7,6 +7,8 @@
     id  _table;
 }
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (bool)supportsSecureCoding;
 
 - (void)addObject:(id)arg1;
@@ -30,5 +32,28 @@
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)objectEnumerator;
 - (void)removeObject:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Message.framework/Message
+
+- (id)mf_debugDescription;
+
+// Image: /System/Library/PrivateFrameworks/NetAppsUtilities.framework/NetAppsUtilities
+
+- (id)na_mostCommonObject;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (id)fc_description;
+
+// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+
+- (void)enumerateObjectsSortedByCountUsingBlock:(id /* block */)arg1 ascending:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/PhotosGraph
+
+- (unsigned long long)pg_countForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)pg_objectWithMaxCount;
+- (id)pg_objectWithMinCount;
+- (id)pg_sortedArrayByCountAscending:(bool)arg1;
 
 @end

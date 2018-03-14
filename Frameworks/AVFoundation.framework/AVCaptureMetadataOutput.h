@@ -31,11 +31,14 @@
 - (void)dealloc;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
 - (id)init;
+- (bool)isFaceTrackingMetadataObjectTypesAvailable;
+- (bool)isFaceTrackingSupported;
 - (id)metadataObjectTypes;
 - (id)metadataObjectsCallbackQueue;
 - (id)metadataObjectsDelegate;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectOfInterest;
 - (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;
+- (void)setFaceTrackingMetadataObjectTypesAvailable:(bool)arg1;
 - (void)setMetadataObjectTypes:(id)arg1;
 - (void)setMetadataObjectsDelegate:(id)arg1 queue:(id)arg2;
 - (void)setRectOfInterest:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)_fixupFavoriteRank:(id)arg1;
+- (id)init;
 - (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2;
 - (void)invalidate;
 - (bool)isInvalidated;

@@ -4,6 +4,9 @@
 
 @interface SCNRenderContextImp : NSObject <SCNRenderContext> {
     struct __C3DEngineStats { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; unsigned int x19; unsigned int x20; unsigned int x21; unsigned int x22; unsigned int x23; unsigned int x24; double x25; double x26; double x27; double x28; double x29; double x30; double x31; double x32; double x33; double x34; double x35; double x36; double x37; double x38; unsigned int x39; unsigned int x40; unsigned int x41; unsigned int x42; unsigned int x43; unsigned int x44; unsigned int x45; unsigned int x46; unsigned int x47; unsigned int x48; unsigned int x49; unsigned int x50; unsigned int x51; unsigned int x52; unsigned int x53; unsigned int x54; double x55; double x56; double x57; double x58[60]; unsigned int x59; double x60; double x61; } * __engineStats;
+    long long  _currentFrameIndex;
+    bool  _needSuperSampling;
+    SCNRenderTargetRegistry * _renderTargetRegistry;
     struct C3DColor4 { 
         union { 
             float rgba[4]; 
@@ -14,10 +17,7 @@
                 float a; 
             } ; 
         } ; 
-    }  _backgroundColor;
-    long long  _currentFrameIndex;
-    bool  _needSuperSampling;
-    SCNRenderTargetRegistry * _renderTargetRegistry;
+    }  _rendererPremultipliedBackgroundColor;
     struct SCNMatrix4 { 
         float m11; 
         float m12; 
@@ -108,13 +108,13 @@
 - (id)resourceManager;
 - (long long)sampleCount;
 - (struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })screenTransform;
-- (void)setBackgroundColor:(struct C3DColor4 { union { float x_1_1_1[4]; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_1_1_2; } x1; })arg1;
 - (void)setCollectsCompilationErrors:(bool)arg1;
 - (void)setContentScaleFactor:(double)arg1;
 - (void)setDebugOptions:(unsigned long long)arg1;
 - (void)setDisableLinearRendering:(bool)arg1;
 - (void)setEnablesDeferredShading:(bool)arg1;
 - (void)setIsOpaque:(bool)arg1;
+- (void)setRendererPremultipliedBackgroundColor:(struct C3DColor4 { union { float x_1_1_1[4]; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_1_1_2; } x1; })arg1;
 - (void)setSampleCount:(long long)arg1;
 - (void)setScreenTransform:(struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })arg1;
 - (void)setShowsAuthoringEnvironment:(bool)arg1;

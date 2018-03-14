@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFDescriptionCardSection : SFTitleCardSection <NSSecureCoding, SFDescriptionCardSection> {
+@interface SFDescriptionCardSection : SFTitleCardSection <NSCopying, NSSecureCoding, SFDescriptionCardSection> {
     SFImage * _attributionGlyph;
     NSString * _attributionText;
     NSURL * _attributionURL;
@@ -60,12 +60,14 @@
 @property (nonatomic) bool hideDivider;
 @property (nonatomic, retain) SFImage *image;
 @property (nonatomic) int imageAlign;
+@property (nonatomic) bool isCentered;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SFCard *nextCard;
 @property (nonatomic, copy) NSArray *parameterKeyPaths;
 @property (nonatomic, copy) NSArray *punchoutOptions;
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
+@property (nonatomic, copy) NSString *resultIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (nonatomic, copy) NSString *subtitle;
 @property (readonly) Class superclass;
@@ -75,6 +77,8 @@
 @property (nonatomic, copy) NSNumber *titleWeight;
 @property (nonatomic, copy) NSString *type;
 
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -83,6 +87,7 @@
 - (id)attributionURL;
 - (id)backgroundColor;
 - (bool)canBeHidden;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)descriptionExpand;
 - (id)descriptionSize;
 - (id)descriptionText;
@@ -139,5 +144,9 @@
 - (bool)titleNoWrap;
 - (id)titleWeight;
 - (id)type;
+
+// Image: /System/Library/PrivateFrameworks/CardKit.framework/CardKit
+
+- (bool)_crkinteractivecardsectionviewcontroller_shouldRenderButtonOverlay;
 
 @end

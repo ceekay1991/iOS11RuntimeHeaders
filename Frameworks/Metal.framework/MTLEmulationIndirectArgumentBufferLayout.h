@@ -3,6 +3,7 @@
  */
 
 @interface MTLEmulationIndirectArgumentBufferLayout : _MTLIndirectArgumentBufferLayout {
+    unsigned long long  _alignment;
     void * _bufferIndices;
     unsigned long long  _bufferOffset;
     void * _constantIndices;
@@ -16,7 +17,11 @@
 
 @property (nonatomic, readonly) unsigned long long stride;
 
+- (unsigned long long)alignment;
+- (bool)bufferLayoutMatchesFrontEndLayout;
+- (unsigned long long)constantOffsetAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
+- (unsigned long long)encodedLength;
 - (id)initWithStructType:(id)arg1;
 - (unsigned long long)offsetForBuffer:(unsigned long long)arg1;
 - (unsigned long long)offsetForConstant:(unsigned long long)arg1;

@@ -5,6 +5,7 @@
 @interface CNDonationLoggerProvider : NSObject <CNDonationLoggerProvider> {
     <CNDonationAccountLogger> * _accountLoggerImpl;
     <CNDonationAgentLogger> * _agentLoggerImpl;
+    <CNDonationAnalyticsLogger> * _analyticsLoggerImpl;
     <CNDonationExtensionLogger> * _extensionLoggerImpl;
     <CNDonationPreferencesLogger> * _preferencesLoggerImpl;
     <CNDonationToolLogger> * _toolLoggerImpl;
@@ -14,6 +15,8 @@
 @property (nonatomic, readonly) <CNDonationAccountLogger> *accountLoggerImpl;
 @property (readonly) <CNDonationAgentLogger> *agentLogger;
 @property (nonatomic, readonly) <CNDonationAgentLogger> *agentLoggerImpl;
+@property (readonly) <CNDonationAnalyticsLogger> *analyticsLogger;
+@property (nonatomic, readonly) <CNDonationAnalyticsLogger> *analyticsLoggerImpl;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) <CNDonationExtensionLogger> *extensionLogger;
@@ -32,6 +35,8 @@
 - (id)accountLoggerImpl;
 - (id)agentLogger;
 - (id)agentLoggerImpl;
+- (id)analyticsLogger;
+- (id)analyticsLoggerImpl;
 - (id)extensionLogger;
 - (id)extensionLoggerImpl;
 - (id)init;

@@ -24,8 +24,9 @@
 
 + (id)glyphFont;
 + (id)labelFont;
-+ (double)minWidthForString:(id)arg1;
++ (double)minWidthForString:(id)arg1 forSize:(id)arg2;
 + (double)widthBrandItem;
++ (id)widthDictionary;
 
 - (void).cxx_destruct;
 - (void)_contentSizeDidChange;

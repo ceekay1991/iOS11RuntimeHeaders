@@ -3,15 +3,17 @@
  */
 
 @interface MNCommuteLocationTracker : MNLocationTracker <GEOETAUpdaterDelegate> {
+    <GEOMapServiceTicket> * _currentLocationTicket;
     GEOComposedWaypoint * _destination;
     unsigned long long  _destinationID;
     <GEODirectionServiceTicket> * _directionsRequestTicket;
     GEOETAUpdater * _etaUpdater;
     MNLocation * _lastLocation;
+    GEOComposedWaypoint * _lastOrigin;
     GEONavigationMapMatcher * _mapMatcher;
     bool  _requestNonRecommendedRoutes;
-    GEOComposedRoute * _route;
     MNActiveRouteInfo * _routeInfo;
+    bool  _routingInProgress;
     MNNavigationTraceManager * _traceManager;
 }
 
@@ -22,15 +24,18 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool requestNonRecommendedRoutes;
 @property (nonatomic, readonly) GEOComposedRoute *route;
+@property (nonatomic) bool routingInProgress;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_directionsRequestFeedbackForState:(id)arg1;
+- (id)_directionsRequestFeedback;
 - (void)_handleDirectionsResponse:(id)arg1 error:(id)arg2 forRequest:(id)arg3;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (id)_matchedLocationForMatchResult:(id)arg1 originalLocation:(id)arg2;
 - (void)_requestRouteFromLocation:(id)arg1;
+- (void)_requestRouteFromWaypoint:(id)arg1 location:(id)arg2;
 - (id)_routeAttributes;
+- (void)_setAuditToken:(id)arg1;
 - (void)dealloc;
 - (id)destination;
 - (unsigned long long)destinationID;
@@ -43,8 +48,10 @@
 - (id)initWithDestination:(id)arg1 traceManager:(id)arg2;
 - (bool)requestNonRecommendedRoutes;
 - (id)route;
+- (bool)routingInProgress;
 - (void)setDestinationID:(unsigned long long)arg1;
 - (void)setRequestNonRecommendedRoutes:(bool)arg1;
+- (void)setRoutingInProgress:(bool)arg1;
 - (void)startTracking;
 - (void)stopTracking;
 - (int)transportType;

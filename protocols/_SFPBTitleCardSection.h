@@ -14,6 +14,7 @@
 - (bool)hasCanBeHidden;
 - (bool)hasHasBottomPadding;
 - (bool)hasHasTopPadding;
+- (bool)hasIsCentered;
 - (bool)hasPunchoutPickerDismissText;
 - (bool)hasPunchoutPickerTitle;
 - (bool)hasSeparatorStyle;
@@ -23,6 +24,7 @@
 - (bool)hasType;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (bool)isCentered;
 - (NSData *)jsonData;
 - (NSArray *)punchoutOptions;
 - (_SFPBPunchout *)punchoutOptionsAtIndex:(unsigned long long)arg1;
@@ -34,6 +36,7 @@
 - (void)setCanBeHidden:(bool)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setIsCentered:(bool)arg1;
 - (void)setPunchoutOptions:(NSArray *)arg1;
 - (void)setPunchoutPickerDismissText:(NSString *)arg1;
 - (void)setPunchoutPickerTitle:(NSString *)arg1;

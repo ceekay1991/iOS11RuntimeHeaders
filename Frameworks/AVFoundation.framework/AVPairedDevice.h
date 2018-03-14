@@ -6,9 +6,9 @@
     AVPairedDeviceInternal * _ivars;
 }
 
-@property (nonatomic, readonly) NSString *ID;
 @property (nonatomic, readonly) NSString *modelID;
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *pairedDeviceID;
 @property (getter=isPlaying, nonatomic, readonly) bool playing;
 @property (nonatomic, readonly) NSString *productName;
 
@@ -20,6 +20,7 @@
 - (bool)isPlaying;
 - (id)modelID;
 - (id)name;
+- (id)pairedDeviceID;
 - (id)productName;
 
 @end

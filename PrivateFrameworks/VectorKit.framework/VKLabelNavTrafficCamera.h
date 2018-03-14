@@ -10,6 +10,7 @@
     bool  _isAwayFromRoute;
     bool  _isOnRoute;
     bool  _isPicked;
+    unsigned char  _labelNavMode;
     struct shared_ptr<md::LabelStyle> { 
         struct LabelStyle {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
@@ -45,6 +46,7 @@
 @property (nonatomic, readonly) bool isStartOfRoadName;
 @property (nonatomic, readonly) bool isTrafficCameraFeature;
 @property (nonatomic, readonly) VKLabelNavRoadLabel *label;
+@property (nonatomic, readonly) unsigned char labelNavMode;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) long long navState;
 @property (nonatomic, readonly) struct Mercator2<double> { double x1[2]; } nextMercatorPoint;
@@ -64,6 +66,7 @@
 - (struct Mercator2<double> { double x1[2]; })displayMercatorPoint;
 - (unsigned char)expectedIconState;
 - (struct Mercator2<double> { double x1[2]; })featureMercatorPoint;
+- (bool)hasLabelWithArtwork;
 - (id)initWithTrafficCamera:(id)arg1 previousMercatorPoint:(const struct Mercator2<double> { double x1[2]; }*)arg2 nextMercatorPoint:(const struct Mercator2<double> { double x1[2]; }*)arg3;
 - (long long)intraRoadPriority;
 - (bool)isAwayFromRoute;
@@ -78,6 +81,7 @@
 - (bool)isStartOfRoadName;
 - (bool)isTrafficCameraFeature;
 - (id)label;
+- (unsigned char)labelNavMode;
 - (void)layoutWithNavContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg1;
 - (id)name;
 - (long long)navState;

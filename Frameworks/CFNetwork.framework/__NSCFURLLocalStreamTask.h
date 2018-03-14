@@ -128,7 +128,7 @@
 - (void)_onqueue_unscheduleStreams;
 - (void)_onqueue_writeData:(id)arg1 timeout:(double)arg2 completionHandler:(id /* block */)arg3;
 - (void)_onqueue_writeStreamEvent:(unsigned long long)arg1;
-- (void)_reportTimingDataToAWD;
+- (void)_reportTimingDataToAWD:(id)arg1;
 - (void)_task_onqueue_didFinish;
 - (void)_task_onqueue_didReceiveDispatchData:(id)arg1 completionHandler:(id /* block */)arg2;
 - (double)_timeWindowDelay;

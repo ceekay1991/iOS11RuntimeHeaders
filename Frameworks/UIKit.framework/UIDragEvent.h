@@ -8,7 +8,6 @@
     bool  _dragFailed;
     id /* block */  _dragFailedCallback;
     unsigned int  _dragSessionID;
-    _UIDropSessionImpl * _dropSession;
     NSMutableSet * _dynamicGestureRecognizers;
     NSMutableSet * _dynamicInteractions;
     NSMutableSet * _endingGestureRecognizers;
@@ -31,9 +30,12 @@
 @property (nonatomic) UIEventEnvironment *eventEnvironment;
 @property (nonatomic, readonly) UIWindow *eventWindow;
 @property (getter=_hitTestedView, nonatomic, readonly) UIView *hitTestedView;
+@property (nonatomic, readonly) bool isFromAccessibilitySession;
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } locationInSceneReferenceSpace;
 @property (getter=_sessionDestination, nonatomic, readonly) _UIInternalDraggingSessionDestination *sessionDestination;
 @property (getter=_sessionSource, nonatomic, readonly) _UIInternalDraggingSessionSource *sessionSource;
+@property (getter=_touchRoutingPolicyContextID, nonatomic, readonly) unsigned int touchRoutingPolicyContextID;
+@property (getter=_windowServerHitTestContextID, nonatomic, readonly) unsigned int windowServerHitTestContextID;
 
 + (void)_invalidateSessionID:(unsigned int)arg1;
 + (bool)_isSessionIDValid:(unsigned int)arg1;
@@ -56,16 +58,19 @@
 - (void)_setHIDEvent:(struct __IOHIDEvent { }*)arg1;
 - (void)_setNeedsHitTestReset;
 - (bool)_shouldSendEvent;
+- (unsigned int)_touchRoutingPolicyContextID;
 - (void)_updateFromCurrentSample;
 - (void)_updateGesturesFromCurrentSample;
 - (id)_updatingDropGestureRecognizers;
 - (void)_wasDeliveredToGestureRecognizers;
+- (unsigned int)_windowServerHitTestContextID;
 - (id)_windows;
 - (void)dealloc;
 - (unsigned int)dragSessionID;
 - (id)eventEnvironment;
 - (id)eventWindow;
 - (id)initWithDragSessionID:(unsigned int)arg1;
+- (bool)isFromAccessibilitySession;
 - (struct CGPoint { double x1; double x2; })locationInSceneReferenceSpace;
 - (struct CGPoint { double x1; double x2; })locationInView:(id)arg1;
 - (void)setEventEnvironment:(id)arg1;

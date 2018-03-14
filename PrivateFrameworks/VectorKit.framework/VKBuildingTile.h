@@ -70,7 +70,7 @@
 - (void)dealloc;
 - (const struct vector<std::__1::shared_ptr<ggl::Texture2D>, std::__1::allocator<std::__1::shared_ptr<ggl::Texture2D> > > { struct shared_ptr<ggl::Texture2D> {} *x1; struct shared_ptr<ggl::Texture2D> {} *x2; struct __compressed_pair<std::__1::shared_ptr<ggl::Texture2D> *, std::__1::allocator<std::__1::shared_ptr<ggl::Texture2D> > > { struct shared_ptr<ggl::Texture2D> {} *x_3_1_1; } x3; }*)facadeTextures;
 - (struct FogInfo { struct shared_ptr<ggl::ConstantDataTyped<ggl::Fog::Skyfog> > { struct ConstantDataTyped<ggl::Fog::Skyfog> {} *x_1_1_1; struct __shared_weak_count {} *x_1_1_2; } x1; }*)fogInfo;
-- (bool)heightAtPoint:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg1 outZ:(float*)arg2;
+- (bool)heightAtPoint:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg1 outZ:(float*)arg2 outBuildingId:(unsigned long long*)arg3;
 - (id)initWithKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg1 modelTile:(id)arg2 prepareExtrusion:(bool)arg3 styleManager:(struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x1; struct __shared_weak_count {} *x2; })arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(struct Device { int (**x1)(); struct DeviceVersion { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; struct DeviceCapabilities { bool x_3_1_1; bool x_3_1_2; unsigned int x_3_1_3; unsigned int x_3_1_4; unsigned int x_3_1_5; struct DeviceSize { unsigned int x_6_2_1; unsigned int x_6_2_2; unsigned int x_6_2_3; } x_3_1_6; } x3; struct DeviceAPIProperties { int x_4_1_1; double x_4_1_2; } x4; int x5; int x6; }*)arg7;
 - (double)maxHeight;
 - (float)maxLayeringHeight;

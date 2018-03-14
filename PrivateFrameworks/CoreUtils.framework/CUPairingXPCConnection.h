@@ -7,7 +7,9 @@
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     bool  _monitoring;
     bool  _pmEntitledDeleteIdentity;
+    bool  _pmEntitledHomeKit;
     bool  _pmEntitledRead;
+    bool  _pmEntitledRemoveAdmin;
     bool  _pmEntitledRemovePeer;
     bool  _pmEntitledWrite;
     NSXPCConnection * _xpcCnx;

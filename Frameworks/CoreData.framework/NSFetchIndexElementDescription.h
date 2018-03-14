@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSFetchIndexElementDescription : NSObject <NSCoding> {
+@interface NSFetchIndexElementDescription : NSObject <NSCoding, NSSecureCoding> {
     unsigned long long  _collationType;
     NSFetchIndexDescription * _indexDescription;
     struct __indexElementDescriptionFlags { 
@@ -20,6 +20,8 @@
 @property (readonly, retain) NSPropertyDescription *property;
 @property (readonly, retain) NSString *propertyName;
 
++ (bool)supportsSecureCoding;
+
 - (bool)_isEditable;
 - (id)_resolveProperty;
 - (void)_setAscending:(bool)arg1;
@@ -31,6 +33,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)indexDescription;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProperty:(id)arg1 collationType:(unsigned long long)arg2;

@@ -65,6 +65,7 @@
 - (void)setPropertyCell:(id)arg1;
 - (void)setSubjectLabel:(id)arg1;
 - (bool)shouldShowAddIgnoreControls;
+- (bool)shouldShowPreview;
 - (void)showSource:(id)arg1;
 - (id)subjectLabel;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

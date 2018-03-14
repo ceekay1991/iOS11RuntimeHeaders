@@ -32,7 +32,10 @@
 @property (nonatomic) bool privateMode;
 @property (nonatomic, copy) NSString *purpose;
 @property (nonatomic, readonly, copy) NSSet *rangedRegions;
+@property (nonatomic) bool showsBackgroundLocationIndicator;
 @property (nonatomic) bool supportInfo;
+
+// Image: /System/Library/Frameworks/CoreLocation.framework/CoreLocation
 
 + (int)_authorizationStatus;
 + (int)_authorizationStatusForBundleIdentifier:(id)arg1 bundle:(id)arg2;
@@ -43,6 +46,7 @@
 + (int)authorizationStatus;
 + (int)authorizationStatusForBundle:(id)arg1;
 + (int)authorizationStatusForBundleIdentifier:(id)arg1;
++ (bool)backgroundIndicatorEnabledForLocationDictionary:(id)arg1;
 + (bool)bundleSupported:(id)arg1;
 + (id)dateLocationLastUsedForLocationDictionary:(id)arg1;
 + (bool)deferredLocationUpdatesAvailable;
@@ -71,6 +75,9 @@
 + (void)setAuthorizationStatus:(bool)arg1 forBundleIdentifier:(id)arg2;
 + (void)setAuthorizationStatusByType:(int)arg1 forBundle:(id)arg2;
 + (void)setAuthorizationStatusByType:(int)arg1 forBundleIdentifier:(id)arg2;
++ (void)setBackgroundIndicatorEnabled:(bool)arg1 forBundle:(id)arg2;
++ (void)setBackgroundIndicatorEnabled:(bool)arg1 forBundleIdentifier:(id)arg2;
++ (void)setBackgroundIndicatorEnabled:(bool)arg1 forLocationDictionary:(id)arg2;
 + (void)setDefaultEffectiveBundle:(id)arg1;
 + (void)setDefaultEffectiveBundleIdentifier:(id)arg1;
 + (void)setEntityAuthorization:(unsigned long long)arg1 forLocationDictionary:(id)arg2;
@@ -176,7 +183,9 @@
 - (void)setPersistentMonitoringEnabled:(bool)arg1;
 - (void)setPrivateMode:(bool)arg1;
 - (void)setPurpose:(id)arg1;
+- (void)setShowsBackgroundLocationIndicator:(bool)arg1;
 - (void)setSupportInfo:(bool)arg1;
+- (bool)showsBackgroundLocationIndicator;
 - (void)startAppStatusUpdates;
 - (void)startMonitoringForRegion:(id)arg1;
 - (void)startMonitoringForRegion:(id)arg1 desiredAccuracy:(double)arg2;
@@ -208,5 +217,29 @@
 - (void)stopUpdatingVehicleSpeed;
 - (bool)supportInfo;
 - (id)technologiesInUse;
+
+// Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
+
++ (bool)convertAuthStatusToBool:(int)arg1;
++ (int)convertToHMDLocationAuthorization:(int)arg1;
++ (int)convertToHMDRegionState:(long long)arg1;
++ (id)hmdLocationAuthorizationAsString:(int)arg1;
++ (id)hmdRegionStateAsString:(int)arg1;
++ (id)locationAuthorizationDescription:(int)arg1;
++ (id)referenceFrameDescription:(int)arg1;
++ (id)regionDescription:(id)arg1;
++ (id)regionStateDescription:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
+
++ (bool)convertAuthStatusToBool:(int)arg1;
++ (int)convertToHMDLocationAuthorization:(int)arg1;
++ (int)convertToHMDRegionState:(long long)arg1;
++ (id)hmdLocationAuthorizationAsString:(int)arg1;
++ (id)hmdRegionStateAsString:(int)arg1;
++ (id)locationAuthorizationDescription:(int)arg1;
++ (id)referenceFrameDescription:(int)arg1;
++ (id)regionDescription:(id)arg1;
++ (id)regionStateDescription:(long long)arg1;
 
 @end

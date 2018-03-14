@@ -14,4 +14,17 @@
 
 - (id)nextObjectIdenticalTo:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/NetAppsUtilities.framework/NetAppsUtilities
+
+- (bool)na_all:(id /* block */)arg1;
+- (bool)na_any:(id /* block */)arg1;
+- (void)na_each:(id /* block */)arg1;
+- (id)na_filter:(id /* block */)arg1;
+- (id)na_firstObjectPassingTest:(id /* block */)arg1;
+- (id)na_map:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (id)fc_firstObjectPassingTest:(id /* block */)arg1;
+
 @end

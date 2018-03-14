@@ -16,6 +16,7 @@
     CALayer * _rightBorder;
     bool  _showsLeftBorder;
     bool  _showsRightBorder;
+    bool  _showsTopAndBottomBorders;
     int  _style;
     bool  _usePersistentCaching;
 }
@@ -31,6 +32,7 @@
 @property (nonatomic, readonly) bool keepNonPersistent;
 @property (nonatomic) bool showsLeftBorder;
 @property (nonatomic) bool showsRightBorder;
+@property (nonatomic) bool showsTopAndBottomBorders;
 @property (nonatomic) int style;
 @property (readonly) Class superclass;
 @property (nonatomic) bool usePersistentCaching;
@@ -61,10 +63,12 @@
 - (void)setCacheInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setShowsLeftBorder:(bool)arg1;
 - (void)setShowsRightBorder:(bool)arg1;
+- (void)setShowsTopAndBottomBorders:(bool)arg1;
 - (void)setStyle:(int)arg1;
 - (void)setUsePersistentCaching:(bool)arg1;
 - (bool)showsLeftBorder;
 - (bool)showsRightBorder;
+- (bool)showsTopAndBottomBorders;
 - (int)style;
 - (id)traitsForCurrentStyle;
 - (bool)usePersistentCaching;

@@ -13,6 +13,7 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
+- (id)accessibilityHUDRepresentation;
 - (double)alphaForConnected:(bool)arg1;
 - (id)contentsImage;
 - (void)performPendedActions;

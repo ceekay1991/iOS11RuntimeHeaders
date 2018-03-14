@@ -14,6 +14,8 @@
 @property (nonatomic, retain) NSString *handleIdentifier;
 @property (nonatomic, retain) NSArray *handles;
 
+// Image: /System/Library/Frameworks/CoreSpotlight.framework/CoreSpotlight
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -33,5 +35,17 @@
 - (void)setDisplayName:(id)arg1;
 - (void)setHandleIdentifier:(id)arg1;
 - (void)setHandles:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CoreSuggestions.framework/CoreSuggestions
+
+- (id)sg_emailAddress;
+- (id)sg_initWithNamedEmailAddress:(id)arg1;
+- (id)sg_initWithSerializedForm:(id)arg1;
+- (id)sg_namedEmailAddress;
+- (id)sg_serialized;
+
+// Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
+
+- (bool)isKnownAppleContact;
 
 @end

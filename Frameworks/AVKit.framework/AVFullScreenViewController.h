@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) UIView *presentationBackgroundView;
 
 - (void).cxx_destruct;
+- (bool)canBecomeFirstResponder;
 - (bool)canChangeStatusBarHidden;
 - (id)contentView;
 - (void)dealloc;
@@ -26,6 +27,7 @@
 - (bool)modalPresentationCapturesStatusBarAppearance;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredWhitePointAdaptivityStyle;
+- (bool)prefersHomeIndicatorAutoHidden;
 - (bool)prefersStatusBarHidden;
 - (id)presentationBackgroundView;
 - (void)setCanChangeStatusBarHidden:(bool)arg1;
@@ -33,5 +35,7 @@
 - (void)setDelegate:(id)arg1;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (void)viewDidAppear:(bool)arg1;
+- (void)viewWillDisappear:(bool)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

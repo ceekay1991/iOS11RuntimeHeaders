@@ -10,6 +10,7 @@
         double height; 
     }  _layoutSize;
     UILayoutGuide * _sizingLayoutGuide;
+    float  _sizingPriority;
     UIView * _view;
     NSLayoutConstraint * _width;
 }
@@ -18,7 +19,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UILayoutGuide *sizingLayoutGuide;
+@property (nonatomic) float sizingPriority;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) UIView *view;
 
 + (bool)shouldWrapView:(id)arg1;
 
@@ -28,8 +31,11 @@
 - (id)initWithView:(id)arg1;
 - (void)layoutSubviews;
 - (void)setSizingLayoutGuide:(id)arg1;
+- (void)setSizingPriority:(float)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)sizingLayoutGuide;
+- (float)sizingPriority;
 - (void)updateForAvailableSize;
+- (id)view;
 
 @end

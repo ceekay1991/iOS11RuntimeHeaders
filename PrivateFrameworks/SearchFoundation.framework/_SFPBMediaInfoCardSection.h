@@ -23,6 +23,7 @@
     NSString * _punchoutPickerDismissText;
     NSString * _punchoutPickerTitle;
     int  _separatorStyle;
+    _SFPBRichText * _specialOfferButtonLabel;
     NSString * _type;
     NSString * _watchListButtonLabel;
     NSString * _watchListConfirmationText;
@@ -46,6 +47,7 @@
 @property (nonatomic, readonly) bool hasPunchoutPickerDismissText;
 @property (nonatomic, readonly) bool hasPunchoutPickerTitle;
 @property (nonatomic, readonly) bool hasSeparatorStyle;
+@property (nonatomic, readonly) bool hasSpecialOfferButtonLabel;
 @property (nonatomic) bool hasTopPadding;
 @property (nonatomic, readonly) bool hasType;
 @property (nonatomic, readonly) bool hasWatchListButtonLabel;
@@ -62,6 +64,7 @@
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
 @property (nonatomic) int separatorStyle;
+@property (nonatomic, retain) _SFPBRichText *specialOfferButtonLabel;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *watchListButtonLabel;
@@ -93,6 +96,7 @@
 - (bool)hasPunchoutPickerDismissText;
 - (bool)hasPunchoutPickerTitle;
 - (bool)hasSeparatorStyle;
+- (bool)hasSpecialOfferButtonLabel;
 - (bool)hasTopPadding;
 - (bool)hasType;
 - (bool)hasWatchListButtonLabel;
@@ -131,11 +135,13 @@
 - (void)setPunchoutPickerDismissText:(id)arg1;
 - (void)setPunchoutPickerTitle:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;
+- (void)setSpecialOfferButtonLabel:(id)arg1;
 - (void)setType:(id)arg1;
 - (void)setWatchListButtonLabel:(id)arg1;
 - (void)setWatchListConfirmationText:(id)arg1;
 - (void)setWatchListContinuationText:(id)arg1;
 - (void)setWatchListIdentifier:(id)arg1;
+- (id)specialOfferButtonLabel;
 - (id)type;
 - (id)watchListButtonLabel;
 - (id)watchListConfirmationText;

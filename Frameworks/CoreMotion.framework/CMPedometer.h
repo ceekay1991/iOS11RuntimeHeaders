@@ -8,6 +8,7 @@
 
 @property (nonatomic, readonly) CMPedometerProxy *pedometerProxy;
 
++ (long long)authorizationStatus;
 + (bool)isCadenceAvailable;
 + (bool)isDistanceAvailable;
 + (bool)isFloorCountingAvailable;

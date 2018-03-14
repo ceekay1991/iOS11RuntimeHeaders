@@ -106,6 +106,7 @@
 - (double)_maxImageWidthForSection:(long long)arg1;
 - (double)_maxImageWidthForSection:(long long)arg1 passingTest:(id /* block */)arg2;
 - (id)_messageCellForSection:(long long)arg1;
+- (id)_multipartStringSeparator;
 - (long long)_numberOfDeparturesSectionsForSystem:(id)arg1;
 - (long long)_numberOfRowsInSection:(long long)arg1;
 - (id)_operatingHoursDescriptionForSequence:(id)arg1;

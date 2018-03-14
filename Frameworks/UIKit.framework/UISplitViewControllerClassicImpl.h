@@ -82,6 +82,7 @@
         unsigned int pendingUpdateTargetDisplayMode : 1; 
         unsigned int collapsingClockwise : 1; 
         unsigned int firstResponderChangedFromPostTransitionResponder : 1; 
+        unsigned int firstResponderChangedFromPostTransitionResponderToNil : 1; 
         unsigned int inWillTransitionToSize : 1; 
         unsigned int hasTransitioningToInternalMode : 1; 
         unsigned int delegateImplementsPrivateIsPrimaryVisible : 1; 
@@ -220,6 +221,7 @@
 - (id)_primaryViewControllerForExpanding;
 - (void)_removeCollapsingSnapshotViews;
 - (void)_removeRoundedCorners;
+- (struct CGSize { double x1; double x2; })_screenSizeInMainScene:(bool)arg1;
 - (id)_secondaryViewControllerForCollapsing;
 - (void)_separateMasterAndDetailWithTransitionCoordinator:(id)arg1;
 - (id)_separateSecondaryViewControllerFromPrimaryViewController:(id)arg1;
@@ -239,6 +241,7 @@
 - (bool)_shouldPersistViewWhenCoding;
 - (bool)_shouldPreventAutorotation;
 - (bool)_shouldSynthesizeSupportedOrientations;
+- (bool)_shouldUseRelativeInsets;
 - (void)_showMasterViewAnimated:(bool)arg1;
 - (unsigned long long)_targetEdgeForPopover;
 - (void)_triggerDisplayModeAction:(id)arg1;

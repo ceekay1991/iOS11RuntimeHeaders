@@ -58,6 +58,8 @@
 + (id)defaultSettings;
 + (id)defaultUnionValuesForSetting:(id)arg1;
 + (id)defaultValueForSetting:(id)arg1;
++ (id)explicitlyRestrictedAppsBySetting;
++ (id)explicitlyRestrictedEphemeralMultiUserApps;
 + (id)filterRestrictionDictionary:(id)arg1 acceptedKeysDict:(id)arg2;
 + (id)filterRestrictionDictionary:(id)arg1 toIncludeOnlyRestrictionsThatDifferFromRestrictions:(id)arg2;
 + (id)filterRestrictionDictionaryForPublicUse:(id)arg1;

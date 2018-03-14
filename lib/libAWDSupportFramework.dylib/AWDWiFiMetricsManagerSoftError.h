@@ -10,6 +10,7 @@
     AWDWiFiMetricsManagerBTCoexStats * _btCoexStats;
     unsigned int  _channel;
     AWDWiFiMetricsManagerChipCounters * _chipCounters;
+    NSMutableArray * _chipCountersPerSlices;
     struct { 
         unsigned int sample1TimeStamp : 1; 
         unsigned int sample2TimeStamp : 1; 
@@ -51,6 +52,7 @@
 @property (nonatomic, retain) AWDWiFiMetricsManagerBTCoexStats *btCoexStats;
 @property (nonatomic) unsigned int channel;
 @property (nonatomic, retain) AWDWiFiMetricsManagerChipCounters *chipCounters;
+@property (nonatomic, retain) NSMutableArray *chipCountersPerSlices;
 @property (nonatomic, readonly) bool hasApOUI;
 @property (nonatomic, readonly) bool hasAppId;
 @property (nonatomic) bool hasBatteryChargeLevel;
@@ -87,6 +89,9 @@
 @property (nonatomic) unsigned int softErrorType;
 @property (nonatomic) unsigned long long timestamp;
 
++ (Class)chipCountersPerSliceType;
+
+- (void)addChipCountersPerSlice:(id)arg1;
 - (id)apOUI;
 - (id)appId;
 - (unsigned int)batteryChargeLevel;
@@ -94,6 +99,10 @@
 - (id)btCoexStats;
 - (unsigned int)channel;
 - (id)chipCounters;
+- (id)chipCountersPerSliceAtIndex:(unsigned long long)arg1;
+- (id)chipCountersPerSlices;
+- (unsigned long long)chipCountersPerSlicesCount;
+- (void)clearChipCountersPerSlices;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -143,6 +152,7 @@
 - (void)setBtCoexStats:(id)arg1;
 - (void)setChannel:(unsigned int)arg1;
 - (void)setChipCounters:(id)arg1;
+- (void)setChipCountersPerSlices:(id)arg1;
 - (void)setHasBatteryChargeLevel:(bool)arg1;
 - (void)setHasChannel:(bool)arg1;
 - (void)setHasInCar:(bool)arg1;

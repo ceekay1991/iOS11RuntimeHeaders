@@ -21,23 +21,20 @@
 + (id)sharedConnection;
 
 - (void).cxx_destruct;
-- (void)beginMonitoringProviderChangesWithReceiver:(id)arg1 receiverIdentifier:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)bookmarkableStringFromDocumentURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)connection;
 - (id)connectionQueue;
 - (id)connectionQueueConnection;
 - (void)documentURLFromBookmarkableString:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)dumpStateTo:(id)arg1 completionHandler:(id /* block */)arg2;
-- (oneway void)endMonitoringProviderChangesWithIdentifier:(id)arg1;
 - (void)endpointForItemAtURL:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)evictItemAtURL:(id)arg1 andClearACLForConsumer:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)evictItemAtURL:(id)arg1 evenIfEnumeratingFP:(bool)arg2 andClearACLForConsumer:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)extendBookmarkForFileURL:(id)arg1 toConsumerID:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)extendSandboxAndCreatePlaceholderForFileURL:(id)arg1 fromProviderID:(id)arg2 toConsumerID:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)extendSandboxForFileURL:(id)arg1 fromProviderID:(id)arg2 toConsumerID:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)fetchRemoteFileProviderWithIdentifier:(id)arg1 handler:(id /* block */)arg2;
-- (void)fetchRemoteMessageInterfaceProviderWithIdentifier:(id)arg1 handler:(id /* block */)arg2;
-- (void)fetchSupportedMessageInterfacesForDocumentAtURL:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)fetchSupportedMessageInterfacesForItemID:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)fetchRemoteServiceEndpointCreatingProviderWithIdentifier:(id)arg1 itemURL:(id)arg2 handler:(id /* block */)arg3;
+- (void)fetchSupportedServicesForDocumentAtURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)initWithUser:(unsigned int)arg1;
 - (void)providersCompletionHandler:(id /* block */)arg1;
 - (void)setConnectionQueue:(id)arg1;

@@ -10,6 +10,7 @@
 - (id)localObject;
 - (void)setAttachmentResult:(NSTextAttachment *)arg1;
 - (void)setAttributedStringResult:(NSAttributedString *)arg1;
+- (void)setDefaultResult;
 - (void)setNoResult;
 - (void)setStringResult:(NSString *)arg1;
 

@@ -23,8 +23,11 @@
 @property (nonatomic, readonly, copy) NSNumber *favoriteRank;
 @property (readonly, copy) NSURL *fileURL;
 @property (nonatomic, readonly, copy) NSString *filename;
-@property (readonly) NSString *fp_domainIdentifier;
-@property (readonly) NSString *fp_spotlightDomainIdentifier;
+@property (readonly, copy) NSString *fp_appContainerBundleIdentifier;
+@property (readonly, copy) NSString *fp_domainIdentifier;
+@property (readonly) bool fp_isContainer;
+@property (readonly, copy) NSString *fp_spotlightDomainIdentifier;
+@property (getter=fp_isUbiquitous, readonly) bool fp_ubiquitous;
 @property (readonly, copy) NSNumber *hasUnresolvedConflicts;
 @property (readonly) unsigned long long hash;
 @property (getter=isHidden, readonly) bool hidden;
@@ -34,10 +37,10 @@
 @property (getter=isMostRecentVersionDownloaded, nonatomic, readonly) bool mostRecentVersionDownloaded;
 @property (nonatomic, readonly) NSPersonNameComponents *ownerNameComponents;
 @property (nonatomic, readonly, copy) NSString *parentItemIdentifier;
-@property (readonly) NSString *providerIdentifier;
+@property (readonly, copy) NSString *providerIdentifier;
 @property (getter=isShared, nonatomic, readonly) bool shared;
 @property (getter=isSharedByCurrentUser, nonatomic, readonly) bool sharedByCurrentUser;
-@property (readonly) NSString *sharingPermissions;
+@property (readonly, copy) NSString *sharingPermissions;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSData *tagData;
 @property (getter=isTrashed, nonatomic, readonly) bool trashed;
@@ -59,7 +62,9 @@
 - (id)downloadingError;
 - (id)favoriteRank;
 - (id)filename;
+- (id)fp_appContainerBundleIdentifier;
 - (id)fp_domainIdentifier;
+- (bool)fp_isContainer;
 - (id)fp_spotlightDomainIdentifier;
 - (id)hasUnresolvedConflicts;
 - (id)initWithOriginalDocumentItem:(id)arg1 alternateContentsURL:(id)arg2;
@@ -76,6 +81,7 @@
 - (id)itemIdentifier;
 - (id)lastUsedDate;
 - (id)mostRecentEditorNameComponents;
+- (id)ownerNameComponents;
 - (id)parentItemIdentifier;
 - (id)providerIdentifier;
 - (id)sharingPermissions;

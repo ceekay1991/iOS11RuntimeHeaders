@@ -8,7 +8,6 @@
 + (id)_rightDescription;
 + (bool)supportsSecureCoding;
 
-- (id)_initWithPort:(unsigned int)arg1 previousTrace:(id)arg2;
 - (bool)_queue_isUsable;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

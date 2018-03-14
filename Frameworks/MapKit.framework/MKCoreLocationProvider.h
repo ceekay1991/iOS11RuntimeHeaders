@@ -4,13 +4,14 @@
 
 @interface MKCoreLocationProvider : NSObject <CLLocationManagerDelegate, CLLocationManagerVehicleDelegate, MKLocationProvider> {
     bool  _alternate;
-    NSLock * _authorizationLock;
+    NSObject<OS_dispatch_queue> * _authorizationQueue;
     id /* block */  _authorizationRequestBlock;
     int  _authorizationStatus;
     CLLocationManager * _clLocationManager;
     <MKLocationProviderDelegate> * _delegate;
     NSBundle * _effectiveBundle;
     NSString * _effectiveBundleIdentifier;
+    double  _expectedGpsUpdateInterval;
     bool  _hasQueriedAuthorization;
     bool  _locationServicesPreferencesDialogEnabled;
     bool  _waitingForAuthorization;
@@ -40,6 +41,7 @@
 @property (nonatomic, readonly) bool usesCLMapCorrection;
 
 - (void).cxx_destruct;
+- (int)_authorizationStatusOnQueue;
 - (id)_clLocationManager;
 - (void)_createCLLocationManager;
 - (void)_resetForNewEffectiveBundle;
@@ -47,6 +49,7 @@
 - (long long)activityType;
 - (id /* block */)authorizationRequestBlock;
 - (int)authorizationStatus;
+- (void)authorizationStatusOnQueue:(id)arg1 result:(id /* block */)arg2;
 - (void)dealloc;
 - (id)delegate;
 - (double)desiredAccuracy;

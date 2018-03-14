@@ -19,6 +19,7 @@
     NSMutableArray * _finishingProcedures;
     bool  _hasInvokedClaimer;
     bool  _isRevoked;
+    id  _originatingReactorQueueID;
     NSMutableOrderedSet * _pendingClaims;
     NSFileAccessProcessManager * _processManager;
     NSMutableArray * _providerCancellationProcedures;
@@ -35,7 +36,7 @@
 + (bool)canWritingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapWritingItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
 + (bool)supportsSecureCoding;
 
-- (void)_setupWithClaimID:(id)arg1 purposeID:(id)arg2;
+- (void)_setupWithClaimID:(id)arg1 purposeID:(id)arg2 originatingReactorQueueID:(id)arg3;
 - (bool)_writeArchiveOfDirectoryAtURL:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
 - (void)acceptClaimFromClient:(id)arg1 arbiterQueue:(id)arg2 grantHandler:(id /* block */)arg3;
 - (void)addPendingClaim:(id)arg1;
@@ -64,6 +65,7 @@
 - (bool)evaluateSelfWithRootNode:(id)arg1 checkSubarbitrability:(bool)arg2;
 - (void)finished;
 - (void)forwardUsingConnection:(id)arg1 crashHandler:(id /* block */)arg2;
+- (void)givePriorityToClaim:(id)arg1;
 - (void)granted;
 - (id)initWithClient:(id)arg1 claimID:(id)arg2 purposeID:(id)arg3;
 - (id)initWithCoder:(id)arg1;
@@ -91,6 +93,7 @@
 - (void)setClaimerError:(id)arg1;
 - (bool)shouldBeRevokedPriorToInvokingAccessor;
 - (bool)shouldCancelInsteadOfWaiting;
+- (bool)shouldInformProvidersAboutEndOfWriteWithOptions:(unsigned long long)arg1;
 - (bool)shouldReadingWithOptions:(unsigned long long)arg1 causePresenterToRelinquish:(id)arg2;
 - (void)startObservingClientState;
 - (void)unblock;

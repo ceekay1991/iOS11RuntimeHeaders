@@ -45,6 +45,11 @@
         unsigned int *list; 
         unsigned long long count; 
         unsigned long long size; 
+    }  _phyTxErrThreshs;
+    struct { 
+        unsigned int *list; 
+        unsigned long long count; 
+        unsigned long long size; 
     }  _phys;
     struct { 
         unsigned int *list; 
@@ -89,6 +94,8 @@
 @property (nonatomic, readonly) unsigned long long memoryDumpsCount;
 @property (nonatomic, readonly) unsigned int*pcieQueueStates;
 @property (nonatomic, readonly) unsigned long long pcieQueueStatesCount;
+@property (nonatomic, readonly) unsigned int*phyTxErrThreshs;
+@property (nonatomic, readonly) unsigned long long phyTxErrThreshsCount;
 @property (nonatomic, readonly) unsigned int*phys;
 @property (nonatomic, readonly) unsigned long long physCount;
 @property (nonatomic, readonly) unsigned int*psmWDs;
@@ -111,6 +118,7 @@
 - (void)addMemoryDump:(unsigned int)arg1;
 - (void)addPcieQueueState:(unsigned int)arg1;
 - (void)addPhy:(unsigned int)arg1;
+- (void)addPhyTxErrThresh:(unsigned int)arg1;
 - (void)addPsmWD:(unsigned int)arg1;
 - (void)addSignature:(unsigned int)arg1;
 - (void)addStackTraces:(unsigned int)arg1;
@@ -129,6 +137,7 @@
 - (void)clearMacs;
 - (void)clearMemoryDumps;
 - (void)clearPcieQueueStates;
+- (void)clearPhyTxErrThreshs;
 - (void)clearPhys;
 - (void)clearPsmWDs;
 - (void)clearSignatures;
@@ -160,6 +169,9 @@
 - (unsigned int*)pcieQueueStates;
 - (unsigned long long)pcieQueueStatesCount;
 - (unsigned int)phyAtIndex:(unsigned long long)arg1;
+- (unsigned int)phyTxErrThreshAtIndex:(unsigned long long)arg1;
+- (unsigned int*)phyTxErrThreshs;
+- (unsigned long long)phyTxErrThreshsCount;
 - (unsigned int*)phys;
 - (unsigned long long)physCount;
 - (unsigned int)psmWDAtIndex:(unsigned long long)arg1;
@@ -175,6 +187,7 @@
 - (void)setMacs:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setMemoryDumps:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setPcieQueueStates:(unsigned int*)arg1 count:(unsigned long long)arg2;
+- (void)setPhyTxErrThreshs:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setPhys:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setPsmWDs:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setSequence:(unsigned int)arg1;

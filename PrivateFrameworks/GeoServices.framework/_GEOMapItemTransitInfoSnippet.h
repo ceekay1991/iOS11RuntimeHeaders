@@ -33,6 +33,7 @@
 - (id)directionsForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 validForDateFromBlock:(id /* block */)arg3 hasSequencesWithNoDirection:(out bool*)arg4;
 - (id)displayName;
 - (bool)hasTransitIncidentComponent;
+- (id)headSignsForLine:(id)arg1;
 - (id)inactiveLinesForSystem:(id)arg1 relativeToDateFromBlock:(id /* block */)arg2 excludingIncidentEntities:(id)arg3;
 - (id)incidents;
 - (id)initWithTransitInfoSnippet:(id)arg1;

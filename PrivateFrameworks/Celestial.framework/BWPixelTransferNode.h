@@ -53,8 +53,8 @@
     unsigned long long  _outputHeight;
     unsigned int  _outputPixelFormat;
     unsigned long long  _outputWidth;
+    bool  _packed10BitPixelFormatSupported;
     bool  _passesBuffersThroughWhenPossible;
-    bool  _pw20PixelFormatSupported;
     int  _rotationDegrees;
     struct OpaqueVTImageRotationSession { } * _rotationSession;
     int  _rotationSessionColorSpaceProperties;
@@ -103,9 +103,9 @@
 - (unsigned long long)outputHeight;
 - (unsigned int)outputPixelFormat;
 - (unsigned long long)outputWidth;
+- (bool)packed10BitPixelFormatSupported;
 - (bool)passesBuffersThroughWhenPossible;
 - (void)prepareForCurrentConfigurationToBecomeLive;
-- (bool)pw20PixelFormatSupported;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
 - (int)rotationDegrees;
 - (void)setAppliesUprightExifOrientationTransformToInput:(bool)arg1;
@@ -120,8 +120,8 @@
 - (void)setOutputHeight:(unsigned long long)arg1;
 - (void)setOutputPixelFormat:(unsigned int)arg1;
 - (void)setOutputWidth:(unsigned long long)arg1;
+- (void)setPacked10BitPixelFormatSupported:(bool)arg1;
 - (void)setPassesBuffersThroughWhenPossible:(bool)arg1;
-- (void)setPw20PixelFormatSupported:(bool)arg1;
 - (void)setRotationDegrees:(int)arg1;
 - (void)setUpdatesSampleBufferMetadataForIrisVIS:(bool)arg1;
 - (bool)updatesSampleBufferMetadataForIrisVIS;

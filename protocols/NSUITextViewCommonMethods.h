@@ -17,6 +17,7 @@
 @optional
 
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })markedRange;
+- (NSDictionary *)markedTextStyle;
 - (void)setMarkedRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setTextContainer:(NSTextContainer *)arg1;
 - (NSTextContainer *)textContainer;

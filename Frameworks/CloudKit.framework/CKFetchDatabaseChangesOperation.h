@@ -26,6 +26,8 @@
 @property (nonatomic, retain) CKServerChangeToken *serverChangeToken;
 @property (nonatomic) long long status;
 
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleCompletionCallback:(id)arg1;
@@ -57,5 +59,10 @@
 - (void)setServerChangeToken:(id)arg1;
 - (void)setStatus:(long long)arg1;
 - (long long)status;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (id)ic_loggingValues;
+- (void)ic_removeAllCompletionBlocks;
 
 @end

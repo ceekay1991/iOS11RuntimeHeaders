@@ -46,7 +46,6 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (void)_sanityCheckNotificationParameters;
 - (void)_setAlertActionLocalizationKeyNoValidate:(id)arg1;
 - (void)_setAlertBodyNoValidate:(id)arg1;
 - (void)_setAlertLaunchImageNoValidate:(id)arg1;

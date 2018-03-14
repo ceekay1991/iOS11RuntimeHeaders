@@ -14,6 +14,7 @@
 
 + (id)_stringRepresentationForHTTPBodyType:(long long)arg1;
 + (id)_stringRepresentationForHTTPMethod:(long long)arg1;
++ (id)_urlStringForKey:(id)arg1 inBag:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)_storeURLRequestPropertiesUsingBag:(id)arg1;

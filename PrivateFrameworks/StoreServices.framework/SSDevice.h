@@ -51,6 +51,7 @@
 @property (readonly) NSString *serialNumber;
 @property (copy) NSString *softwareLibraryIdentifier;
 @property (readonly) NSString *storeFrontIdentifier;
+@property (nonatomic, readonly) SSPromise *storeFrontIdentifierPromise;
 @property (readonly) Class superclass;
 @property (readonly) NSString *thinnedApplicationVariantIdentifier;
 @property (readonly) NSString *uniqueDeviceIdentifier;
@@ -60,8 +61,12 @@
 + (id)currentDevice;
 + (bool)deviceIsAppleTV;
 + (bool)deviceIsAppleWatch;
++ (bool)deviceIsAudioAccessory;
 + (bool)deviceIsInternalBuild;
 + (bool)deviceIsSeedBuild;
++ (bool)deviceIsiPad;
++ (bool)deviceIsiPhone;
++ (bool)deviceIsiPod;
 + (bool)promptNeedsDisplay:(id)arg1;
 + (bool)setCachedAvailableItemKinds:(id)arg1;
 + (void)setLastPromptAttemptDate:(id)arg1 forPromptWithIdentifier:(id)arg2;
@@ -139,6 +144,7 @@
 - (void)setStoreFrontIdentifier:(id)arg1 account:(id)arg2 isTransient:(bool)arg3;
 - (void)setStoreFrontIdentifier:(id)arg1 accountIdentifier:(id)arg2;
 - (void)setStoreFrontIdentifier:(id)arg1 accountIdentifier:(id)arg2 isTransient:(bool)arg3;
+- (void)setStoreFrontIdentifier:(id)arg1 forRequest:(id)arg2 response:(id)arg3 account:(id)arg4;
 - (void)setStoreFrontIdentifier:(id)arg1 isTransient:(bool)arg2;
 - (void)setStoreFrontWithResponseHeaders:(id)arg1;
 - (void)showPromptWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -146,6 +152,7 @@
 - (void)startPowerMonitoring;
 - (void)stopPowerMonitoring;
 - (id)storeFrontIdentifier;
+- (id)storeFrontIdentifierPromise;
 - (bool)supportsDeviceCapability:(long long)arg1;
 - (id)synchedStoreFrontIdentifier;
 - (void)synchronizeAutomaticDownloadKinds;

@@ -38,6 +38,7 @@
     bool  _hasPeekedGestureKey;
     bool  _holdingShift;
     NSNumber * _homeRowHint;
+    bool  _inDealloc;
     UIKBTree * _inactiveLanguageIndicator;
     double  _initialSplitProgress;
     bool  _inputTraitsPreventInitialReuse;
@@ -164,6 +165,7 @@
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (void)_didTapBiasEscapeButton:(id)arg1;
 - (bool)_handRestRecognizerCancelShouldBeEnd;
+- (bool)_handleTouchForEmojiInputView;
 - (id)_keyplaneVariantsKeyForString:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_paddedKeyUnionFrame;
 - (void)_recordKeystrokeStatisticForKeyPress;
@@ -171,6 +173,7 @@
 - (void)_setReturnKeyEnabled:(bool)arg1 withDisplayName:(id)arg2 withType:(int)arg3;
 - (bool)_stringContainsCurrencyCharacters:(id)arg1;
 - (id)_variantsByAppendingDualStringKey:(id)arg1 toVariants:(id)arg2;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
@@ -220,10 +223,10 @@
 - (long long)currentHandBiasWithCoordinator:(id)arg1;
 - (id)currentKeyplane;
 - (id)currentKeyplaneView;
+- (id)currentRepresentedStringForDualDisplayKey:(id)arg1;
 - (void)deactivateActiveKey;
 - (void)deactivateActiveKeys;
 - (void)deactivateActiveKeysClearingTouchInfo:(bool)arg1 clearingDimming:(bool)arg2;
-- (void)dealloc;
 - (id)defaultKeyplaneForKeyplane:(id)arg1;
 - (id)defaultNameForKeyplaneName:(id)arg1;
 - (long long)defaultSelectedVariantIndexForKey:(id)arg1 withActions:(unsigned long long)arg2;
@@ -292,6 +295,7 @@
 - (double)hitBuffer;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)hostViewForHandBiasTransition:(id)arg1;
+- (bool)ignoreWriteboard;
 - (bool)ignoresShiftState;
 - (void)incrementPunctuationIfNeeded:(id)arg1;
 - (id)infoForTouch:(id)arg1;
@@ -300,11 +304,13 @@
 - (id)initialKeyplaneNameWithKBStarName:(id)arg1;
 - (id)inputModeToMergeCapsLockKey;
 - (void)installGestureRecognizers;
+- (id)internationalKeyDisplayStringOnEmojiKeyboard;
 - (bool)is10KeyRendering;
 - (bool)isAlphabeticPlane;
 - (bool)isDeadkeyInput:(id)arg1;
 - (bool)isEmojiKeyplane;
 - (bool)isLongPressedKey:(id)arg1;
+- (bool)isMultitapKey:(id)arg1;
 - (bool)isRotating;
 - (bool)isShiftKeyBeingHeld;
 - (bool)isShiftKeyPlaneChooser;
@@ -329,6 +335,7 @@
 - (id)keyplaneNameForRevertAfterTouch;
 - (id)keyplaneNamed:(id)arg1;
 - (unsigned long long)keyplaneShiftState;
+- (double)lastTouchDownTimestamp;
 - (double)lastTouchUpTimestamp;
 - (double)lastTwoFingerTapTimestamp;
 - (id)layoutTag;
@@ -375,6 +382,7 @@
 - (struct CGImage { }*)renderedImageWithStateFallbacksForToken:(id)arg1;
 - (struct CGImage { }*)renderedImageWithToken:(id)arg1;
 - (struct CGImage { }*)renderedKeyplaneWithToken:(id)arg1 split:(bool)arg2;
+- (void)resetHRRLayoutState;
 - (void)resetPanAlternativesForEndedTouch:(id)arg1;
 - (void)restoreDefaultsForAllKeys;
 - (void)restoreDefaultsForKey:(id)arg1;

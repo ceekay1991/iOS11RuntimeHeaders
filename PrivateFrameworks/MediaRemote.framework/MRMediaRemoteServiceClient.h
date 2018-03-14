@@ -3,15 +3,22 @@
  */
 
 @interface MRMediaRemoteServiceClient : NSObject {
+    void * _activePlayerPath;
     MRNotificationClient * _notificationClient;
+    int  _notifyRestoreClientStateForLaunch;
+    NSObject<OS_dispatch_queue> * _playbackQueueDispatchQueue;
+    NSMutableDictionary * _playerPathInvalidationHandlers;
+    NSString * _preparedBundleID;
     NSMutableArray * _registeredOrigins;
     MRAVRoutingClientController * _routingClientController;
     NSObject<OS_dispatch_queue> * _serialQueue;
     struct MRMediaRemoteService { } * _service;
-    NSMutableDictionary * _transactionSources;
 }
 
+@property (nonatomic) void*activePlayerPath;
 @property (nonatomic, readonly) MRNotificationClient *notificationClient;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *playbackQueueDispatchQueue;
+@property (nonatomic, copy) NSString *preparedBundleID;
 @property (nonatomic, readonly) NSArray *registeredOrigins;
 @property (nonatomic, readonly) struct MRMediaRemoteService { }*service;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workerQueue;
@@ -19,14 +26,31 @@
 
 + (id)sharedServiceClient;
 
+- (void)_callInvalidationHandler:(id)arg1;
+- (void)_onQueue_processPlayerPathInvalidationHandlersWithBlock:(id /* block */)arg1;
+- (void)_onQueue_setActivePlayerPath:(void*)arg1;
+- (void)_processPlayerPathInvalidationHandlersWithBlock:(id /* block */)arg1;
+- (bool)_shouldPostNotifications;
+- (void*)activePlayerPath;
+- (void*)addPlayerPathInvalidationHandler:(id)arg1;
 - (void)dealloc;
 - (void)fetchPickableRoutesWithCategory:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (id)notificationClient;
+- (void)notificationFired:(id)arg1 originNotification:(id)arg2 nowPlayingNotification:(id)arg3;
+- (void)notificationFired:(id)arg1 playerPathNotifcation:(id)arg2 originNotification:(id)arg3 nowPlayingNotification:(id)arg4;
+- (id)playbackQueueDispatchQueue;
+- (id)preparedBundleID;
+- (void)processPlayerPathInvalidationHandlersWithBlock:(id /* block */)arg1;
+- (void)processPlayerPathInvalidationHandlersWithInvalidOrigin:(void*)arg1;
+- (void)registerCallbacks;
 - (void)registerOrigin:(void*)arg1 withCompletion:(id /* block */)arg2;
 - (id)registeredOrigins;
-- (void)sendTransaction:(unsigned long long)arg1 withData:(id)arg2 forPlayer:(void*)arg3;
+- (void)removeInvalidationHandler:(void*)arg1;
 - (struct MRMediaRemoteService { }*)service;
+- (void)setActivePlayerPath:(void*)arg1;
+- (void)setPlaybackQueueDispatchQueue:(id)arg1;
+- (void)setPreparedBundleID:(id)arg1;
 - (void)unregisterAllOriginsWithCompletion:(id /* block */)arg1;
 - (void)unregisterOrigin:(void*)arg1 withCompletion:(id /* block */)arg2;
 - (id)workerQueue;

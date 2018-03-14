@@ -5,6 +5,7 @@
 @interface CNAvatarCardController : NSObject <CNAvatarCardControllerOrbTransitionDelegate, CNAvatarCardViewControllerDelegate, UIPreviewInteractionDelegatePrivate> {
     NSArray * _actionCategories;
     bool  _actionsNeedRefresh;
+    UIAlertController * _alertController;
     CNAvatarView * _avatarView;
     bool  _bypassActionValidation;
     NSArray * _cardControllerConstraints;
@@ -32,6 +33,7 @@
 
 @property (nonatomic, copy) NSArray *actionCategories;
 @property (nonatomic) bool actionsNeedRefresh;
+@property (nonatomic, retain) UIAlertController *alertController;
 @property (nonatomic) CNAvatarView *avatarView;
 @property (nonatomic) bool bypassActionValidation;
 @property (nonatomic, retain) NSArray *cardControllerConstraints;
@@ -64,18 +66,19 @@
 - (id)_previewInteraction:(id)arg1 viewControllerPresentationForPresentingViewController:(id)arg2;
 - (id)_previewInteractionHighlighterForPreviewTransition:(id)arg1;
 - (bool)_previewInteractionShouldFinishTransitionToPreview:(id)arg1;
+- (void)_setupAlertController;
 - (void)_setupCardViewControllerWithContacts:(id)arg1;
 - (void)_setupForCardControllerPresentation;
 - (void)_updateCard;
 - (void)_updateHeaderViewFrame;
 - (id)actionCategories;
 - (bool)actionsNeedRefresh;
+- (id)alertController;
 - (id)avatarView;
 - (bool)bypassActionValidation;
 - (id)cardControllerConstraints;
 - (id)cardViewController;
 - (id)cardViewController:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
-- (void)cardViewController:(id)arg1 willShowActions:(id)arg2;
 - (void)cardViewControllerDidDismiss:(id)arg1;
 - (void)cardViewControllerWillDismiss:(id)arg1;
 - (void)configurePreviewInteraction;
@@ -103,6 +106,7 @@
 - (id)rolloverGestureRecognizer;
 - (void)setActionCategories:(id)arg1;
 - (void)setActionsNeedRefresh:(bool)arg1;
+- (void)setAlertController:(id)arg1;
 - (void)setAvatarView:(id)arg1;
 - (void)setBypassActionValidation:(bool)arg1;
 - (void)setCardControllerConstraints:(id)arg1;

@@ -15,7 +15,10 @@
 - (bool)buttonEnabledState:(id)arg1 forRequestedState:(bool)arg2;
 - (bool)buttonHighlitedState:(id)arg1 forRequestedState:(bool)arg2;
 - (struct CGSize { double x1; double x2; })buttonIntrinsicContentSize:(id)arg1;
+- (void)buttonLayoutSubviews:(id)arg1 baseImplementation:(id /* block */)arg2;
 - (bool)buttonSelectionState:(id)arg1 forRequestedState:(bool)arg2;
+- (void)buttonWillMoveToSuperview:(id)arg1;
+- (void)buttonWillMoveToWindow:(id)arg1;
 - (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
 - (id)contentView;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

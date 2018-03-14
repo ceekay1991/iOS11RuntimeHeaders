@@ -51,6 +51,7 @@
 - (void)addParticlesNode:(id)arg1;
 - (void)addPhysicsFieldNode:(id)arg1;
 - (void)addedNode:(id)arg1;
+- (id)authoringCamera:(long long)arg1;
 - (id)authoringCameraNodes;
 - (id)cameraFrustumGeometry;
 - (id)cameraGeometry;

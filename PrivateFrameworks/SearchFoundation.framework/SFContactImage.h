@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFContactImage : SFImage <NSSecureCoding, SFContactImage> {
+@interface SFContactImage : SFImage <NSCopying, NSSecureCoding, SFContactImage> {
     NSString * _contactIdentifier;
 }
 
@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)contactIdentifier;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

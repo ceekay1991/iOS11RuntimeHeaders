@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) NSString *extensionBundleId;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, readonly, copy) NSString *intentDescription;
 @property (nonatomic, readonly) NSString *intentId;
 @property (nonatomic, readonly) NSString *launchId;
 @property (nonatomic, copy) NSDictionary *parametersByName;
@@ -38,11 +39,12 @@
 - (id)_dictionaryRepresentation;
 - (id)_impl;
 - (id)_metadata;
-- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_typedBackingStore;
 - (id)backingStore;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)domain;
 - (void)encodeWithCoder:(id)arg1;
 - (id)extensionBundleId;
@@ -52,6 +54,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDomain:(id)arg1 verb:(id)arg2 parametersByName:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 backingStore:(id)arg2;
+- (id)intentDescription;
 - (id)intentId;
 - (bool)isEqual:(id)arg1;
 - (bool)isGenericIntent;
@@ -69,11 +72,25 @@
 - (id)utteranceString;
 - (id)verb;
 
+// Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
+
+- (void)apr_getArgsInto:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
 
 - (long long)cd_interactionMechanism;
 - (id)cd_recipients;
 - (bool)cd_saveToKnowledgeStore;
 - (bool)cd_saveToPeopleStore;
+
+// Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
+
++ (id)mt_intentForAlarmCreate:(id)arg1;
++ (id)mt_intentForAlarmDelete:(id)arg1;
++ (id)mt_intentForAlarmDisable:(id)arg1;
++ (id)mt_intentForAlarmEnable:(id)arg1;
++ (id)mt_intentForAlarmUpdate:(id)arg1;
+
+- (id)mt_initWithAlarm:(id)arg1 verb:(id)arg2;
 
 @end

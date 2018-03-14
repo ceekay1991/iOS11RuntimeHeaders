@@ -3,6 +3,7 @@
  */
 
 @interface MNNavigationStateManager : NSObject <MNLocationManagerObserver, MNMapsAppStateMonitorObserver, MNNavigationStateInterface, MNSuggestionsManagerObserver, MNVehicleDetectorObserver> {
+    GEOApplicationAuditToken * _auditToken;
     MNCommuteSession * _commuteSession;
     MNNavigationState * _currentState;
     bool  _isStarted;
@@ -13,13 +14,16 @@
     MNSuggestionsManager * _suggestionsManager;
 }
 
+@property (nonatomic, readonly) GEOApplicationAuditToken *auditToken;
 @property (nonatomic, readonly) MNCommuteSession *commuteSession;
 @property (nonatomic, readonly) MNNavigationState *currentState;
+@property (nonatomic, readonly) unsigned long long currentStateType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isStarted;
 @property (nonatomic) <MNNavigationSessionManagerDelegate> *navigationDelegate;
+@property (nonatomic, readonly) MNResourceManager *resourceManager;
 @property (nonatomic, readonly) MNSuggestionsManager *suggestionsManager;
 @property (readonly) Class superclass;
 
@@ -27,16 +31,19 @@
 
 - (void).cxx_destruct;
 - (void)_changeToDesiredLocationProviderType;
-- (void)_changeToDesiredResourcePolicy;
 - (id)_initialState;
 - (void)_replayStateForNewObserver:(id)arg1;
 - (unsigned long long)_stateTypeForState:(id)arg1;
 - (void)acceptReroute:(bool)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)acquireDesiredResourcePolicy;
 - (void)addObserver:(id)arg1;
+- (id)auditToken;
 - (void)changeSettings:(id)arg1;
 - (id)commuteSession;
 - (void)commuteSession:(id)arg1 didUpdateDestinations:(id)arg2;
+- (void)commuteSessionDidArrive:(id)arg1;
 - (id)currentState;
+- (unsigned long long)currentStateType;
 - (void)dealloc;
 - (id)init;
 - (void)interfaceHashesWithHandler:(id /* block */)arg1;
@@ -58,6 +65,7 @@
 - (void)removeObserver:(id)arg1;
 - (void)repeatCurrentGuidanceWithReply:(id /* block */)arg1;
 - (void)repeatCurrentTrafficAlertWithReply:(id /* block */)arg1;
+- (id)resourceManager;
 - (void)resumeOriginalDestination;
 - (void)setCurrentAudioOutputSetting:(id)arg1;
 - (void)setCurrentState:(id)arg1;

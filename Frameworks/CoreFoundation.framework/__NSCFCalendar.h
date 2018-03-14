@@ -14,8 +14,8 @@
 - (id)__ensureThoroughEnumerationByAdjustingComponents:(id)arg1 usingSearchDate:(id)arg2 goBackwards:(bool)arg3;
 - (unsigned long long)__findHighestSetUnitInDateComponents:(id)arg1;
 - (unsigned long long)__findLowestSetUnitInDateComponents:(id)arg1;
-- (bool)__findMatchingDate:(id*)arg1 afterStartDate:(id)arg2 matchingComponents:(id)arg3 goingBackwards:(bool)arg4 findLastMatch:(bool)arg5;
-- (bool)__findMatchingDate:(id*)arg1 matchingComponents:(id)arg2 inNextHighestUnitRange:(unsigned long long)arg3 afterStartDate:(id)arg4 goBackwards:(bool)arg5 findLastMatch:(bool)arg6;
+- (bool)__findMatchingDate:(id*)arg1 afterStartDate:(id)arg2 matchingComponents:(id)arg3 goingBackwards:(bool)arg4 findLastMatch:(bool)arg5 options:(unsigned long long)arg6;
+- (bool)__findMatchingDate:(id*)arg1 matchingComponents:(id)arg2 inNextHighestUnitRange:(unsigned long long)arg3 afterStartDate:(id)arg4 goBackwards:(bool)arg5 findLastMatch:(bool)arg6 options:(unsigned long long)arg7;
 - (bool)__verifyNSDateComponentsValues:(id)arg1;
 - (bool)_isDeallocating;
 - (bool)_tryRetain;

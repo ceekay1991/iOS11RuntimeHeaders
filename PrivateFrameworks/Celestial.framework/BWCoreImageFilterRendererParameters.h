@@ -25,6 +25,7 @@
 - (void)_ensureResourceRequirementsForFilters:(id)arg1 outputRequiresFaceLandmarks:(bool*)arg2 outputRequiresDepthMap:(bool*)arg3;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
+- (int)depthTypeForFilter:(id)arg1;
 - (id)filters;
 - (id)init;
 - (id)initWithFilters:(id)arg1 originalOutputFilter:(id)arg2;

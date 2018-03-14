@@ -30,6 +30,7 @@
 - (unsigned long long)AVAssetDownloadToken;
 - (id)URL;
 - (id)URLAsset;
+- (bool)_isAVAssetTask;
 - (void)_onqueue_didFinishDownloadingToURL:(id)arg1;
 - (void)_onqueue_didFinishWithError:(id)arg1;
 - (void)_onqueue_didLoadTimeRange:(id)arg1 totalTimeRangesLoaded:(id)arg2 timeRangeExpectedToLoad:(id)arg3;

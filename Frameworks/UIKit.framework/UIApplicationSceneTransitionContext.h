@@ -4,14 +4,21 @@
 
 @interface UIApplicationSceneTransitionContext : FBSSceneTransitionContext
 
+@property (nonatomic) bool allowCPUThrottling;
 @property (nonatomic) double execTime;
 @property (nonatomic) bool forTesting;
 @property (getter=_lifecycleActionType, setter=_setLifecycleActionType:, nonatomic) unsigned long long lifecycleActionType;
 @property (nonatomic, retain) NSDictionary *payload;
+@property (nonatomic) bool runWatchdogIndependently;
 @property (nonatomic) bool safeMode;
 @property (nonatomic) bool shouldTakeKeyboardFocus;
 @property (nonatomic) double userLaunchEventTime;
 @property (nonatomic) bool waitForBackgroundTaskCompletion;
+@property (nonatomic) double watchdogExtension;
+@property (nonatomic) long long watchdogPolicy;
+@property (nonatomic) double watchdogScaleFactor;
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (unsigned long long)_lifecycleActionType;
 - (void)_setLifecycleActionType:(unsigned long long)arg1;
@@ -32,5 +39,18 @@
 - (double)userLaunchEventTime;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (bool)waitForBackgroundTaskCompletion;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
+
+- (bool)allowCPUThrottling;
+- (bool)runWatchdogIndependently;
+- (void)setAllowCPUThrottling:(bool)arg1;
+- (void)setRunWatchdogIndependently:(bool)arg1;
+- (void)setWatchdogExtension:(double)arg1;
+- (void)setWatchdogPolicy:(long long)arg1;
+- (void)setWatchdogScaleFactor:(double)arg1;
+- (double)watchdogExtension;
+- (long long)watchdogPolicy;
+- (double)watchdogScaleFactor;
 
 @end

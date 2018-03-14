@@ -26,9 +26,13 @@
 @property (readonly) Class superclass;
 @property (nonatomic) struct { unsigned int x1 : 6; unsigned int x2 : 1; unsigned int x3 : 1; unsigned int x4 : 8; unsigned int x5 : 8; unsigned int x6 : 8; } visualStyling;
 
-// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (void).cxx_destruct;
+- (void)dealloc;
+
+// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+
 - (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
 - (id)candidateList;
 - (id)candidateResultSet;
@@ -36,7 +40,6 @@
 - (id)collectionViewController;
 - (id)currentCandidate;
 - (unsigned long long)currentIndex;
-- (void)dealloc;
 - (void)displayLayer:(id)arg1;
 - (unsigned long long)gridCollectionViewNumberOfColumns:(id)arg1;
 - (unsigned long long)gridCollectionViewSelectedSortMethodIndex:(id)arg1;

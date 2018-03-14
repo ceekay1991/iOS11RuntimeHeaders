@@ -35,13 +35,16 @@
 @property (nonatomic, readonly) bool isITunesU;
 @property (nonatomic, readonly) bool isRental;
 @property (nonatomic, readonly) bool isUsableAsRepresentativeItem;
+@property (getter=wlk_jsPropertyStrings, nonatomic, readonly) NSSet *jsPropertyStrings;
 @property (nonatomic, copy) NSDate *lastPlayedDate;
 @property (nonatomic, copy) NSDate *lastSkippedDate;
 @property (nonatomic, readonly) NSString *lyrics;
 @property (nonatomic, readonly) unsigned long long mediaType;
+@property (getter=wlk_mediaTypeString, nonatomic, readonly, copy) NSString *mediaTypeString;
 @property (nonatomic, readonly) unsigned long long persistentID;
 @property (nonatomic, readonly) unsigned long long playCount;
 @property (nonatomic) unsigned long long playCountSinceSync;
+@property (getter=wlk_playState, nonatomic, readonly, copy) NSString *playState;
 @property (nonatomic, readonly) double playbackDuration;
 @property (nonatomic, readonly) NSString *playbackStoreID;
 @property (nonatomic, readonly) unsigned long long podcastPersistentID;
@@ -57,6 +60,8 @@
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *userGrouping;
 @property (nonatomic, readonly) unsigned long long year;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (id)MPSD_mediaItemPropertiesForDownloadability;
 + (void)_createFilterableDictionary;
@@ -116,6 +121,7 @@
 - (bool)hasBeenPlayed;
 - (bool)hasProtectedAsset;
 - (unsigned long long)hash;
+- (void)incrementPlayCount;
 - (void)incrementPlayCountForPlayingToEnd;
 - (bool)incrementPlayCountForStopTime:(double)arg1;
 - (void)incrementSkipCount;
@@ -172,5 +178,47 @@
 - (id)valueForProperty:(id)arg1;
 - (id)valuesForProperties:(id)arg1;
 - (unsigned long long)year;
+
+// Image: /System/Library/Frameworks/QuickLook.framework/QuickLook
+
++ (id)playingInfoFromAsset:(id)arg1 withDefaultTitle:(id)arg2;
++ (id)playingInfoFromAsset:(id)arg1 withDefaultTitle:(id)arg2 playbackDuration:(double)arg3 elapsedTime:(double)arg4;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
++ (id)customPropertyHandlersCollection;
++ (void)registerSupportedCustomPropertiesWithHandlersCollection:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
++ (id)MPU_contentItemIdentifierCollectionProperties;
+
+- (id)MPU_contentItemIdentifierCollection;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlayerUI.framework/MediaPlayerUI
+
+- (id)MPU_containerLibraryLinkURL;
+- (id)MPU_directStoreURL;
+- (id)MPU_libraryLinkArtist;
+- (id)MPU_libraryLinkKind;
+- (id)MPU_libraryLinkPlaylistName;
+
+// Image: /System/Library/PrivateFrameworks/MusicCarDisplayUI.framework/MusicCarDisplayUI
+
+- (id)albumImageWithFallbackForSize:(struct CGSize { double x1; double x2; })arg1 doubleLineRow:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/WatchListKitUI.framework/WatchListKitUI
+
++ (id)wlk_JSgenericProperties;
++ (id)wlk_JSmovieProperties;
++ (id)wlk_JStvShowProperties;
++ (id)wlk_mediaItemForPersistentIdentifier:(id)arg1;
++ (id)wlk_mediaItemForStoreIdentifier:(id)arg1;
+
+- (id)wlk_jsPropertyStrings;
+- (id)wlk_mediaTypeString;
+- (id)wlk_playState;
+- (id)wlk_stringIdentifierForProperty:(id)arg1;
+- (id)wlk_stringIdentifierForSeason;
 
 @end

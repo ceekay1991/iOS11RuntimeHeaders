@@ -27,6 +27,7 @@
 - (void)prepareQueueForPlayback;
 - (void)prepareToPlay;
 - (void)prependQueueDescriptor:(MPMusicPlayerQueueDescriptor *)arg1;
+- (MPMediaQuery *)queueAsQuery;
 - (MPRadioStation *)queueAsRadioStation;
 - (MPMusicPlayerControllerQueue *)queueWithUUID:(NSUUID *)arg1;
 - (void)registerForServerDiedNotifications;

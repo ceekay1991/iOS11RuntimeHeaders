@@ -31,7 +31,6 @@
 @property (nonatomic) unsigned long long unsupportedReason;
 
 + (id)_dataForResolutionMethodUnimplemented;
-+ (id)callerToResolve;
 + (id)needsValue;
 + (id)notRequired;
 + (id)resolutionResultConfirmationRequiredWithItemToConfirm:(id)arg1;
@@ -49,6 +48,7 @@
 - (void).cxx_destruct;
 - (id)_buildIntentSlotResolutionResultWithIntentSlotDescription:(id)arg1;
 - (id)_dataForIntentSlotDescription:(id)arg1;
+- (id)_initWithResolutionResult:(id)arg1;
 - (id)_initWithResultCode:(long long)arg1;
 - (id)_intentSlotValueForObject:(id)arg1 slotDescription:(id)arg2;
 - (id)_stringForResultCode:(long long)arg1;
@@ -56,6 +56,7 @@
 - (id)alternatives;
 - (id)conflictingParameterKeyPath;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (id)dictionaryRepresentation;
 - (id)disambiguationItems;
 - (id)incompleteParameterKeyPaths;
@@ -63,7 +64,7 @@
 - (id)itemToConfirm;
 - (id)neededParameterKeyPaths;
 - (long long)resolutionResultCode;
-- (id)resolutionResultDataForIntent:(id)arg1 intentSlotDescription:(id)arg2;
+- (id)resolutionResultDataForIntent:(id)arg1 intentSlotDescription:(id)arg2 error:(id*)arg3;
 - (id)resolvedValue;
 - (void)setAlternatives:(id)arg1;
 - (void)setConflictingParameterKeyPath:(id)arg1;

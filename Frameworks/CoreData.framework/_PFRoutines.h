@@ -22,6 +22,7 @@
 + (id)_rootEntityGroupsForObjects:(id)arg1 passingBlock:(id /* block */)arg2;
 + (id)anyObjectFromCollection:(id)arg1;
 + (void)attemptToUpdatePermissionsForFileAtPath:(const char *)arg1 toLevel:(int)arg2;
++ (id)attributeClassesForSecureCoding;
 + (void)cleanupExternalReferenceLink:(const char *)arg1;
 + (bool)convertCString:(const char *)arg1 toUnsignedInt64:(unsigned long long*)arg2 withBase:(int)arg3;
 + (struct __CFDictionary { }*)createDictionaryPartitioningObjectsByEntity:(id)arg1;
@@ -57,6 +58,7 @@
 + (id)newOrderedSetOfObjectIDsFromCollection:(id)arg1;
 + (id)newSetFromCollection:(id)arg1 byAddingItems:(id)arg2;
 + (id)newSetOfObjectIDsFromCollection:(id)arg1;
++ (id)plistClassesForSecureCoding;
 + (void)readBytesForExternalReferenceData:(id)arg1 intoBuffer:(void*)arg2 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
 + (void*)readExternalReferenceDataFromFile:(id)arg1;
 + (id)sanitize:(id)arg1;

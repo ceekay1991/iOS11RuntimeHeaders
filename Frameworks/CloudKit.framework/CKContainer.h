@@ -68,10 +68,18 @@
 @property (nonatomic) bool wantsSiloedContext;
 @property (nonatomic, retain) NSXPCConnection *xpcConnection;
 
++ (void)_checkSelfCloudServicesEntitlement;
++ (id)_checkSelfContainerIdentifier;
++ (long long)_untrustedDatabaseEnvironment;
++ (id)_untrustedEntitlementForKey:(id)arg1;
++ (id)containerIDForContainerIdentifier:(id)arg1;
++ (id)containerIDForContainerIdentifier:(id)arg1 environment:(long long)arg2;
 + (id)containerWithIdentifier:(id)arg1;
 + (id)defaultContainer;
 + (void)getBehaviorOptionForKey:(id)arg1 isContainerOption:(bool)arg2 completionHandler:(id /* block */)arg3;
++ (void)registerCompletedLongLivedOperationWithID:(id)arg1;
 + (void)registerOutstandingOperationWithID:(id)arg1;
++ (id)sharedCompletedLongLivedOperationIDs;
 + (id)sharedOutstandingOperations;
 + (void)unregisterOutstandingOperationWithID:(id)arg1;
 
@@ -81,8 +89,6 @@
 - (id)_CKXPCExportedInterface;
 - (id)_CKXPCInterface;
 - (id)_allStatusReports;
-- (void)_checkSelfCloudServicesEntitlement;
-- (id)_checkSelfContainerIdentifier;
 - (void)_cleanupSandboxExtensionHandles:(id)arg1;
 - (void)_discoverUserIdentityWithLookupInfo:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_fetchLongLivedOperationsWithIDs:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -91,8 +97,7 @@
 - (void)_prepareForDaemonLaunch;
 - (void)_scheduleConvenienceOperation:(id)arg1;
 - (void)_setupWithContainerID:(id)arg1 options:(id)arg2;
-- (long long)_untrustedDatabaseEnvironment;
-- (id)_untrustedEntitlementForKey:(id)arg1;
+- (id)_untrustedContainerEntitlementsForKey:(id)arg1;
 - (void)acceptShareMetadata:(id)arg1 completionHandler:(id /* block */)arg2;
 - (int)accountChangeToken;
 - (void)accountChangedWithID:(id)arg1;
@@ -137,6 +142,7 @@
 - (void)fetchAllLongLivedOperationIDsWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchCurrentDeviceIDWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchCurrentUserBoundaryKeyWithCompletionHandler:(id /* block */)arg1;
+- (void)fetchFullNameAndFormattedUsernameOfAccountWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchFullNameAndPrimaryEmailOnAccountWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchLongLivedOperationWithID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)fetchLongLivedOperationsWithIDs:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -150,12 +156,14 @@
 - (id)findTrackedAssetByUUID:(id)arg1;
 - (id)flowControlManager;
 - (void)flushOperationMetricsToPowerLog;
+- (void)getFileMetadataWithFileHandle:(id)arg1 openInfo:(id)arg2 reply:(id /* block */)arg3;
 - (void)getNewWebSharingIdentity:(id /* block */)arg1;
 - (void)getNewWebSharingIdentityDataWithCompletionHandler:(id /* block */)arg1;
 - (void)handleOperationCheckpoint:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationCompletion:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2 reply:(id /* block */)arg3;
+- (void)handleOperationStatistics:(id)arg1 forOperationWithID:(id)arg2;
 - (bool)hasCachedSetupInfo;
 - (bool)hasValidConnection;
 - (bool)holdAllOperations;
@@ -224,6 +232,7 @@
 - (void)triggerAutoBugCaptureSnapshot;
 - (void)updatePushTokens;
 - (bool)wantsSiloedContext;
+- (void)wipeAllCachedLongLivedProxiesWithCompletionHandler:(id /* block */)arg1;
 - (void)wipeAllCachesAndDie;
 - (id)xpcConnection;
 

@@ -7,7 +7,6 @@
 }
 
 @property (nonatomic, readonly) NSObject<OS_xpc_object> *connection;
-@property (nonatomic, readonly) bool forceSecureCoding;
 @property (nonatomic, readonly) bool isValid;
 @property (nonatomic) int pid;
 @property (nonatomic, readonly) NSString *portName;
@@ -26,7 +25,6 @@
 - (id)connection;
 - (void)dealloc;
 - (id)description;
-- (bool)forceSecureCoding;
 - (void)forwardInvocation:(id)arg1;
 - (unsigned long long)forwardXPCObject:(id)arg1 messageContext:(id)arg2;
 - (id)initWithConnection:(id)arg1 protocol:(id)arg2;

@@ -11,6 +11,7 @@
     NSObject<OS_dispatch_queue> * _knowledgeStoreDeletionQueue;
     NSMutableArray * _pendingOperations;
     NSObject<OS_dispatch_queue> * _pendingOperationsQueue;
+    NSObject<OS_os_transaction> * _pendingOperationsTransaction;
     <_CDInteractionRecording><_CDInteractionDeleting> * _recorder;
 }
 
@@ -39,6 +40,7 @@
 - (void)deleteSearchableItemsSinceDate:(id)arg1 bundleID:(id)arg2;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)deleteSearchableItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
+- (void)enqueueOperation:(id)arg1;
 - (id)initWithInteractionRecorder:(id)arg1;
 - (id)initWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2;
 - (id)recorder;

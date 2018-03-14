@@ -5,6 +5,6 @@
 
 @required
 
-- (void)portraitRequest:(CVAPortraitRequest *)arg1 didCompletePortraitWithResult:(id <CVAPortraitResult>)arg2;
+- (void)portraitRequest:(id <CVAPortraitRequest>)arg1 didCompletePortraitWithResult:(id <CVAPortraitResult>)arg2;
 
 @end

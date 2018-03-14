@@ -19,12 +19,12 @@
 + (id)focusedTextColorForBlurEffectStyle:(long long)arg1;
 + (id)unfocusedTextColorForBlurEffectStyle:(long long)arg1;
 
+- (void).cxx_destruct;
 - (bool)_tvIsDarkMode;
 - (void)_updateAppearance;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (long long)blurEffectStyle;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)floatingLabel;

@@ -92,6 +92,7 @@
 
 + (Class)routeDescriptionsType;
 + (Class)stepType;
++ (id)syntheticRouteDetailsWithOrigin:(id)arg1 destination:(id)arg2 transportType:(int)arg3 destinationName:(id)arg4;
 
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
@@ -184,6 +185,8 @@
 - (void)setTransportType:(int)arg1;
 - (bool)showTransitSchedules;
 - (id)stepAtIndex:(unsigned long long)arg1;
+- (unsigned long long)stepIndexWithID:(unsigned long long)arg1;
+- (id)stepWithID:(unsigned long long)arg1;
 - (id)steps;
 - (unsigned long long)stepsCount;
 - (unsigned int)trafficColorAtIndex:(unsigned long long)arg1;

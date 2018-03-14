@@ -19,6 +19,7 @@
 - (id)_dictionaryRepresentation;
 - (long long)code;
 - (id)description;
+- (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)initWithCoder:(id)arg1;

@@ -14,15 +14,20 @@
 @property (nonatomic, readonly) NSDictionary *attributes;
 @property (nonatomic, readonly) long long state;
 
++ (void)startCatalogDownload:(id)arg1 options:(id)arg2 then:(id /* block */)arg3;
 + (void)startCatalogDownload:(id)arg1 then:(id /* block */)arg2;
 
 - (id)assetId;
 - (id)assetProperty:(id)arg1;
 - (id)assetType;
+- (void)attachProgressCallBack:(id /* block */)arg1;
 - (id)attributes;
-- (void)commonAssetDownload:(id)arg1 then:(id /* block */)arg2;
+- (long long)calculateTimeout;
+- (void)cancelDownload:(id /* block */)arg1;
+- (void)commonAssetDownload:(id)arg1 options:(id)arg2 then:(id /* block */)arg3;
 - (id)createExtractor;
 - (void)dealloc;
+- (id)getLocalFileUrl;
 - (id)getLocalUrl;
 - (id)hashToString:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
@@ -30,6 +35,7 @@
 - (void)purge:(id /* block */)arg1;
 - (bool)refreshState;
 - (void)startDownload:(id /* block */)arg1;
+- (void)startDownload:(id)arg1 then:(id /* block */)arg2;
 - (void)startDownloadWithExtractor:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (long long)state;
 

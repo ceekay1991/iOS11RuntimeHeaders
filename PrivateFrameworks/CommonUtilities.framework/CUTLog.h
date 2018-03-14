@@ -4,9 +4,13 @@
 
 @interface CUTLog : NSObject
 
++ (id)checkpointTraceProcess;
++ (id)checkpointTraceSystem;
++ (id)checkpointTraceThread;
 + (id)fileCopier;
 + (id)network;
 + (id)power;
++ (id)utilities;
 + (id)weakLink;
 + (id)xpc;
 

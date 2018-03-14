@@ -14,6 +14,7 @@
     NSMutableSet * _gestureRecognizersNeedingRemoval;
     NSMutableSet * _gestureRecognizersNeedingReset;
     NSMutableSet * _gestureRecognizersNeedingUpdate;
+    bool  _isUpdatingGestureEnvironment;
     NSMapTable * _nodesByGestureRecognizer;
     NSMutableArray * _preUpdateActions;
     bool  _updateExclusivity;
@@ -33,10 +34,9 @@
 - (id)_delayedPressForPress:(id)arg1 event:(id)arg2;
 - (id)_delayedTouchForTouch:(id)arg1 event:(id)arg2;
 - (void)_deliverEvent:(id)arg1 toGestureRecognizers:(id)arg2 usingBlock:(id /* block */)arg3;
-- (void)_donateAllTouches;
-- (void)_donateTouchesWhileKeepingGestures:(id)arg1 endingGestures:(id)arg2;
 - (void)_enqueueDelayedPressToSend:(id)arg1;
 - (void)_enqueueDelayedTouchToSend:(id)arg1;
+- (void)_forceUpdateForSpringBoardOnly;
 - (void)_gestureNeedsReset:(id)arg1;
 - (id)_gestureRecognizerForNode:(id)arg1;
 - (id)_graphDictionary:(bool)arg1;
@@ -44,6 +44,7 @@
 - (void)_markGestureAsDirty:(id)arg1;
 - (id)_nodeForGestureRecognizer:(id)arg1;
 - (void)_notifyDependentsGestureRecognizerHasCompleted:(id)arg1;
+- (void)_performTouchContinuationWithOverrideHitTestedView:(id)arg1;
 - (bool)_pressesBeganWasDelayedForPress:(id)arg1;
 - (void)_queueGestureRecognizerForResetIfFinished:(id)arg1;
 - (void)_queueGestureRecognizersForResetIfFinished:(id)arg1;

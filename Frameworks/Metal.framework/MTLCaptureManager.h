@@ -17,7 +17,6 @@
 - (bool)isCapturing;
 - (id)newCaptureScopeWithCommandQueue:(id)arg1;
 - (id)newCaptureScopeWithDevice:(id)arg1;
-- (void)notifySubmissionForEyeSPI:(unsigned long long)arg1 iosurface:(struct __IOSurface { }*)arg2 bounds:(const struct MTLVRTextureBounds { float x1; float x2; float x3; float x4; }*)arg3 submitFlags:(unsigned long long)arg4;
 - (void)setDefaultCaptureScope:(id)arg1;
 - (void)startCaptureWithCommandQueue:(id)arg1;
 - (void)startCaptureWithDevice:(id)arg1;

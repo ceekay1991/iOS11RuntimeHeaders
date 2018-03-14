@@ -2,16 +2,18 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UISpringLoadedInteraction : NSObject <UIInteraction, UIInteraction_Internal, UISpringLoadedInteractionBehaviorDelegate> {
+@interface UISpringLoadedInteraction : NSObject <UIDragGestureRecognizerDelegate, UIInteraction, UIInteraction_Internal, UISpringLoadedInteractionBehaviorDelegate> {
     UIDelayedAction * _activateAction;
     UISpringLoadedInteractionContextImpl * _context;
     UIDelayedAction * _emphasizeAction;
     id /* block */  _handler;
     <UISpringLoadedInteractionBehavior> * _interactionBehavior;
     <UISpringLoadedInteractionEffect> * _interactionEffect;
+    double  _possibleStateDuration;
     UIView * _view;
 }
 
+@property (setter=_setPossibleStateDuration:, nonatomic) double _possibleStateDuration;
 @property (nonatomic, retain) UIDelayedAction *activateAction;
 @property (nonatomic, retain) UISpringLoadedInteractionContextImpl *context;
 @property (readonly, copy) NSString *debugDescription;
@@ -26,12 +28,7 @@
 
 + (id)_blinkEffect;
 + (id)_defaultInteractionBehavior;
-+ (id)blinkEffect;
-+ (id)defaultInteractionBehavior;
-+ (id)hysteresisBehavior;
 + (id)hysteresisBehaviorWithBeginningVelocity:(double)arg1 cancelingVelocity:(double)arg2;
-+ (id)scaleEffect;
-+ (id)springLoadedInteractionWithActivationHandler:(id /* block */)arg1;
 + (id)springLoadedInteractionWithHandler:(id /* block */)arg1;
 
 - (void).cxx_destruct;
@@ -39,15 +36,15 @@
 - (void)_cancelActions;
 - (id)_dynamicGestureRecognizersForEvent:(id)arg1;
 - (void)_emphasizeSpringLoading:(id)arg1;
+- (double)_possibleStateDuration;
 - (void)_reloadSpringLoadedInteractionBehavior;
 - (void)_resetBehavior;
-- (bool)_shouldBeginInteractionWithContext:(id)arg1;
-- (bool)_shouldContinueInteractionWithContext:(id)arg1;
+- (void)_setPossibleStateDuration:(double)arg1;
+- (bool)_shouldAllowInteractionWithContext:(id)arg1;
 - (void)_springloadedStateChanged:(id)arg1;
 - (void)_startActivateAction;
 - (void)_startEmphasizeAction;
 - (id)activateAction;
-- (id)behavior;
 - (id)context;
 - (void)didMoveToView:(id)arg1;
 - (id)emphasizeAction;
@@ -57,16 +54,12 @@
 - (id)interactionBehavior;
 - (id)interactionEffect;
 - (void)setActivateAction:(id)arg1;
-- (void)setBehavior:(id)arg1;
 - (void)setContext:(id)arg1;
 - (void)setEmphasizeAction:(id)arg1;
 - (void)setHandler:(id /* block */)arg1;
-- (void)setInteractionBehavior:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)setView:(id)arg1;
-- (void)setVisualEffect:(id)arg1;
 - (id)view;
-- (id)visualEffect;
 - (void)willMoveToView:(id)arg1;
 
 @end

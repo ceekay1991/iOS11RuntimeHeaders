@@ -10,6 +10,7 @@
     }  _has;
     _SFPBCard * _nextCard;
     NSArray * _parameterKeyPaths;
+    NSString * _resultIdentifier;
     int  _type;
     _SFPBCardSectionValue * _value;
 }
@@ -20,12 +21,14 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasCardSectionId;
 @property (nonatomic, readonly) bool hasNextCard;
+@property (nonatomic, readonly) bool hasResultIdentifier;
 @property (nonatomic, readonly) bool hasType;
 @property (nonatomic, readonly) bool hasValue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) _SFPBCard *nextCard;
 @property (nonatomic, copy) NSArray *parameterKeyPaths;
+@property (nonatomic, copy) NSString *resultIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic) int type;
 @property (nonatomic, retain) _SFPBCardSectionValue *value;
@@ -42,6 +45,7 @@
 - (id)dictionaryRepresentation;
 - (bool)hasCardSectionId;
 - (bool)hasNextCard;
+- (bool)hasResultIdentifier;
 - (bool)hasType;
 - (bool)hasValue;
 - (unsigned long long)hash;
@@ -55,10 +59,12 @@
 - (id)parameterKeyPathsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)parameterKeyPathsCount;
 - (bool)readFrom:(id)arg1;
+- (id)resultIdentifier;
 - (void)setCardSectionId:(id)arg1;
 - (void)setCommands:(id)arg1;
 - (void)setNextCard:(id)arg1;
 - (void)setParameterKeyPaths:(id)arg1;
+- (void)setResultIdentifier:(id)arg1;
 - (void)setType:(int)arg1;
 - (void)setValue:(id)arg1;
 - (int)type;

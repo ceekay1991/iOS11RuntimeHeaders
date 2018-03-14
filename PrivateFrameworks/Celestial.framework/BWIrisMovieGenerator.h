@@ -16,11 +16,13 @@
     NSObject<OS_dispatch_queue> * _movieGenerationQueue;
     NSMutableArray * _movieInfoAndCallbacks;
     struct OpaqueFigSimpleMutex { } * _movieInfoAndCallbacksMutex;
+    int  _numberOfPendingReferenceMovies;
     bool  _sampleReferenceMoviesEnabled;
     bool  _sourceIsFrontFacingCamera;
     bool  _suspended;
 }
 
+@property (readonly) int numberOfPendingReferenceMovies;
 @property bool suspended;
 
 + (bool)_addStillImageTimeMetadataTrackToAssetWriter:(struct OpaqueFigAssetWriter { }*)arg1 forTrackTimeScale:(int)arg2 yieldingTrackID:(int*)arg3;
@@ -32,6 +34,7 @@
 - (bool)flush;
 - (void)flushAsync;
 - (id)initWithReadableByteStream:(struct OpaqueCMByteStream { }*)arg1 forFrontFacingCamera:(bool)arg2 sampleReferenceMoviesEnabled:(bool)arg3;
+- (int)numberOfPendingReferenceMovies;
 - (void)parseAdditionalFragments;
 - (void)setSuspended:(bool)arg1;
 - (bool)suspended;

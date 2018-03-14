@@ -12,6 +12,8 @@
 @property (readonly) Class superclass;
 @property (getter=isTemporaryID, readonly) bool temporaryID;
 
+// Image: /System/Library/Frameworks/CoreData.framework/CoreData
+
 + (id)_newArchiveForScalarObjectIDs:(id)arg1;
 + (bool)accessInstanceVariablesDirectly;
 + (void)initialize;
@@ -35,5 +37,9 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isTemporaryID;
 - (id)persistentStore;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (id)pl_shortURI;
 
 @end

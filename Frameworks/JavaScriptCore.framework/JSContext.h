@@ -9,15 +9,17 @@
         struct JSValue {} *m_slot; 
     }  m_exception;
     JSVirtualMachine * m_virtualMachine;
-    JSWrapperMap * m_wrapperMap;
 }
 
+@property (nonatomic, readonly) RWIProtocolInspector *_inspector;
 @property (retain) JSValue *exception;
 @property (copy) id /* block */ exceptionHandler;
 @property (readonly) JSValue *globalObject;
 @property (copy) NSString *name;
 @property (readonly) JSVirtualMachine *virtualMachine;
 @property (readonly, retain) JSWrapperMap *wrapperMap;
+
+// Image: /System/Library/Frameworks/JavaScriptCore.framework/JavaScriptCore
 
 + (id)contextWithJSGlobalContextRef:(struct OpaqueJSContext { }*)arg1;
 + (id)currentArguments;
@@ -38,6 +40,7 @@
 - (bool)boolFromNotifyException:(struct OpaqueJSValue { }*)arg1;
 - (void)dealloc;
 - (void)endCallbackWithData:(/* Warning: unhandled struct encoding: '{CallbackData=^{CallbackData}@@^{OpaqueJSValue}^{OpaqueJSValue}Q^^{OpaqueJSValue}@}' */ struct CallbackData { struct CallbackData {} *x1; id x2; struct OpaqueJSValue {} *x3; struct OpaqueJSValue {} *x4; unsigned long long x5; struct OpaqueJSValue {} **x6; id x7; }*)arg1;
+- (void)ensureWrapperMap;
 - (id)evaluateScript:(id)arg1;
 - (id)evaluateScript:(id)arg1 withSourceURL:(id)arg2;
 - (id)exception;
@@ -58,5 +61,9 @@
 - (id)wrapperForJSObject:(struct OpaqueJSValue { }*)arg1;
 - (id)wrapperForObjCObject:(id)arg1;
 - (id)wrapperMap;
+
+// Image: /System/Library/PrivateFrameworks/WebInspector.framework/WebInspector
+
+- (id)_inspector;
 
 @end

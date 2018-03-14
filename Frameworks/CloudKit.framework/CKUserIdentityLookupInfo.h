@@ -16,6 +16,8 @@
 @property (nonatomic) bool shouldReportMissingIdentity;
 @property (nonatomic, copy) CKRecordID *userRecordID;
 
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
 + (id)lookupInfosWithEmails:(id)arg1;
 + (id)lookupInfosWithPhoneNumbers:(id)arg1;
 + (id)lookupInfosWithRecordIDs:(id)arg1;
@@ -47,5 +49,11 @@
 - (void)setUserRecordID:(id)arg1;
 - (bool)shouldReportMissingIdentity;
 - (id)userRecordID;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (void)_decryptPersonalInfoWithPCSBlob:(struct _OpaquePCSShareProtection { }*)arg1 participantID:(id)arg2 inShareWithID:(id)arg3 pcsManager:(id)arg4;
+- (void)_encryptPersonalInfoWithPCSBlob:(struct _OpaquePCSShareProtection { }*)arg1 participantID:(id)arg2 inShareWithID:(id)arg3 pcsManager:(id)arg4;
+- (bool)hasEncryptedPersonalInfo;
 
 @end

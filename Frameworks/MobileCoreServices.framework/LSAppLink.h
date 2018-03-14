@@ -42,6 +42,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)openInWebBrowser:(bool)arg1 setAppropriateOpenStrategyAndWebBrowserState:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)openInWebBrowser:(bool)arg1 setOpenStrategy:(long long)arg2 webBrowserState:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)openInWebBrowser:(bool)arg1 setOpenStrategy:(long long)arg2 webBrowserState:(id)arg3 configuration:(id)arg4 completionHandler:(id /* block */)arg5;
 - (long long)openStrategy;
 - (void)openWithCompletionHandler:(id /* block */)arg1;
 - (void)openWithConfiguration:(id)arg1 completionHandler:(id /* block */)arg2;

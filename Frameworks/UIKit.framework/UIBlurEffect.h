@@ -11,7 +11,7 @@
 @property (nonatomic, readonly) long long _style;
 @property (nonatomic, readonly) UIColor *_tintColor;
 
-+ (void)_addBlurToEffectNode:(id)arg1 blurRadius:(double)arg2 options:(id)arg3;
++ (void)_addBlurToEffectNode:(id)arg1 blurRadius:(double)arg2 scale:(double)arg3 options:(id)arg4;
 + (id)_effectWithStyle:(long long)arg1 invertAutomaticStyle:(bool)arg2;
 + (id)_effectWithStyle:(long long)arg1 tintColor:(id)arg2 invertAutomaticStyle:(bool)arg3;
 + (id)_effectWithTintColor:(id)arg1;

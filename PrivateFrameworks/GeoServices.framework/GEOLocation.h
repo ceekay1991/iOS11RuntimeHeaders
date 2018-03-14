@@ -143,10 +143,14 @@
 - (double)horizontalAccuracy;
 - (id)initWithGEOCoordinate:(struct { double x1; double x2; })arg1;
 - (id)initWithGEOCoordinate:(struct { double x1; double x2; })arg1 floorOrdinal:(int)arg2;
+- (id)initWithGEOCoordinate:(struct { double x1; double x2; })arg1 isUserLocation:(bool)arg2;
+- (id)initWithGEOCoordinate:(struct { double x1; double x2; })arg1 isUserLocation:(bool)arg2 floorOrdinal:(int)arg3;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 floorOrdinal:(int)arg3;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 isUserLocation:(bool)arg3 floorOrdinal:(int)arg4;
 - (id)initWithLocation:(id)arg1;
 - (id)initWithLocation:(id)arg1 floorOrdinal:(int)arg2;
+- (id)initWithLocation:(id)arg1 isUserLocation:(bool)arg2 floorOrdinal:(int)arg3;
 - (bool)isEqual:(id)arg1;
 - (bool)isMatchedLocation;
 - (bool)isShifted;

@@ -12,6 +12,7 @@
 @property (nonatomic, readonly, copy) NSDictionary *payload;
 @property (nonatomic, readonly) long long type;
 
++ (void)deserializeCacheItem:(id)arg1 completion:(id /* block */)arg2;
 + (void)deserializeCacheItems:(id)arg1 completion:(id /* block */)arg2;
 + (void)serializeCacheableObjects:(id)arg1 completion:(id /* block */)arg2;
 + (bool)supportsSecureCoding;

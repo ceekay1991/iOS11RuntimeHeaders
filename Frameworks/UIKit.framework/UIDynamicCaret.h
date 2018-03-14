@@ -24,9 +24,12 @@
 @property (nonatomic, retain) _UIDynamicCaretNoContentView *noContentView;
 @property (readonly) Class superclass;
 
-// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (void).cxx_destruct;
+
+// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+
 - (void)alternativeTappedAtIndex:(long long)arg1;
 - (id)alternativesView;
 - (id)backgroundImage;

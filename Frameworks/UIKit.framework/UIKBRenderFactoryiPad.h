@@ -4,6 +4,8 @@
 
 @interface UIKBRenderFactoryiPad : UIKBRenderFactoryiPhone
 
+- (id)ZWNJKeyImageName;
+- (struct CGPoint { double x1; double x2; })ZWNJKeyOffset;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;

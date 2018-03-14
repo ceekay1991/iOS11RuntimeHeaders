@@ -10,6 +10,7 @@
     NSArray * _refreshControlConstraints;
     double  _restingHeightOfRefreshControl;
     UIScrollView * _scrollView;
+    double  _unobstructedHeight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,13 +25,18 @@
 @property (nonatomic) double restingHeightOfRefreshControl;
 @property (readonly) UIScrollView *scrollView;
 @property (readonly) Class superclass;
+@property (nonatomic) double unobstructedHeight;
 
 + (bool)canHostRefreshControlOwnedByScrollView:(id)arg1 inNavigationController:(id)arg2;
 
 - (void).cxx_destruct;
+- (double)_alphaForRefreshingControlStateWithPossiblyObstructedContent;
 - (void)_installRefreshControlIntoContainerView;
 - (void)_notifyLayoutDidChange;
 - (void)_removeRefreshControlFromContainerView;
+- (double)_thresholdForObstructedContentFullAlpha;
+- (double)_thresholdForObstructedContentZeroAlpha;
+- (void)_updateFadeOutProgress;
 - (void)decrementInsetHeight:(double)arg1;
 - (id)delegate;
 - (id)hostContainerView;
@@ -49,6 +55,8 @@
 - (void)setRefreshControl:(id)arg1;
 - (void)setRefreshControlConstraints:(id)arg1;
 - (void)setRestingHeightOfRefreshControl:(double)arg1;
+- (void)setUnobstructedHeight:(double)arg1;
 - (void)stopAnimationsAndSetToIdle;
+- (double)unobstructedHeight;
 
 @end

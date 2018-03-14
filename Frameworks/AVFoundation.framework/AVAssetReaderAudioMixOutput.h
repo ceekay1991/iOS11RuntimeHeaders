@@ -11,6 +11,8 @@
 @property (nonatomic, copy) NSString *audioTimePitchAlgorithm;
 @property (nonatomic, readonly) NSArray *audioTracks;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (id)assetReaderAudioMixOutputWithAudioTracks:(id)arg1 audioSettings:(id)arg2;
 
 - (id)_asset;
@@ -33,5 +35,9 @@
 - (id)mediaType;
 - (void)setAudioMix:(id)arg1;
 - (void)setAudioTimePitchAlgorithm:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
++ (id)assetReaderAudioMixOutputWithAudioMix:(id)arg1 appliedToAsset:(id)arg2 audioSettings:(id)arg3;
 
 @end

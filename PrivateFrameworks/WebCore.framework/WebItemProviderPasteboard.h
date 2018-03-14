@@ -14,10 +14,10 @@
     long long  _pendingOperationCount;
     struct RetainPtr<NSArray> { 
         void *m_ptr; 
-    }  _preferredTypeIdentifiers;
+    }  _registrationInfoLists;
     struct RetainPtr<NSArray> { 
         void *m_ptr; 
-    }  _registrationInfoLists;
+    }  _supportedTypeIdentifiers;
     struct RetainPtr<NSArray> { 
         void *m_ptr; 
     }  _typeToFileURLMaps;
@@ -63,7 +63,8 @@
 - (void)setItemsUsingRegistrationInfoLists:(id)arg1;
 - (void)setNumberOfItems:(long long)arg1;
 - (void)setPendingOperationCount:(long long)arg1;
-- (void)updatePreferredTypeIdentifiers:(id)arg1;
+- (id)typeIdentifierToLoadForRegisteredTypeIdentfiers:(id)arg1;
+- (void)updateSupportedTypeIdentifiers:(id)arg1;
 - (id)valuesForPasteboardType:(id)arg1 inItemSet:(id)arg2;
 
 @end

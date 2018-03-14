@@ -3,6 +3,7 @@
  */
 
 @interface GEOLogMsgStateUserSession : PBCodable <NSCopying> {
+    GEOLocalTime * _eventTime;
     struct { 
         unsigned int navSessionId : 1; 
         unsigned int sessionId : 1; 
@@ -23,6 +24,8 @@
     }  _sessionId;
 }
 
+@property (nonatomic, retain) GEOLocalTime *eventTime;
+@property (nonatomic, readonly) bool hasEventTime;
 @property (nonatomic) bool hasNavSessionId;
 @property (nonatomic) bool hasNavSessionRelativeTimestamp;
 @property (nonatomic) bool hasRelativeTimestamp;
@@ -34,10 +37,13 @@
 @property (nonatomic) unsigned int sequenceNumber;
 @property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionId;
 
+- (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)eventTime;
+- (bool)hasEventTime;
 - (bool)hasNavSessionId;
 - (bool)hasNavSessionRelativeTimestamp;
 - (bool)hasRelativeTimestamp;
@@ -52,6 +58,7 @@
 - (double)relativeTimestamp;
 - (unsigned int)sequenceNumber;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionId;
+- (void)setEventTime:(id)arg1;
 - (void)setHasNavSessionId:(bool)arg1;
 - (void)setHasNavSessionRelativeTimestamp:(bool)arg1;
 - (void)setHasRelativeTimestamp:(bool)arg1;

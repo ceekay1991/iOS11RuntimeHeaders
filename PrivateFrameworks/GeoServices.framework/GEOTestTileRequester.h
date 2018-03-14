@@ -2,14 +2,11 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOTestTileRequester : GEOTileRequester {
-    NSTimer * _timer;
-}
+@interface GEOTestTileRequester : GEOTileRequester
 
 + (unsigned char)tileProviderIdentifier;
 
-- (void).cxx_destruct;
-- (void)_sendResults:(id)arg1;
+- (void)_sendResults;
 - (void)dealloc;
 - (void)start;
 

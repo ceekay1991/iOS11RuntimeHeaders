@@ -2,35 +2,26 @@
    Image: /System/Library/PrivateFrameworks/CommonUtilities.framework/CommonUtilities
  */
 
-@interface CUTCheckpointTrace : NSObject <NSSecureCoding> {
-    NSArray * _allCheckpointLayers;
-    NSString * _identifier;
-    NSString * _name;
-    NSDate * _startDate;
+@interface CUTCheckpointTrace : CUTCheckpointRange {
+    NSMutableArray * _mutableCheckpoints;
 }
 
-@property (nonatomic, readonly) NSArray *allCheckpointLayers;
-@property (nonatomic, readonly) id currentLayer;
-@property (nonatomic, readonly) NSString *identifier;
-@property (nonatomic, readonly) NSString *name;
-@property (nonatomic, readonly) NSDate *startDate;
-
-+ (id)pendingCheckpoints;
-+ (void)registerPendingCheckpoint;
-+ (bool)supportsSecureCoding;
-+ (void)unregisterFinishedCheckpoint;
+@property (nonatomic, retain) NSMutableArray *mutableCheckpoints;
 
 - (void).cxx_destruct;
-- (id)allCheckpointLayers;
-- (id)currentLayer;
+- (void)_appendReportToMutableString:(id)arg1 indentation:(long long)arg2 paddedNameLength:(long long)arg3;
+- (id)_identifierWithExtraIdentifier:(id)arg1;
+- (id)appendCheckpoint:(id)arg1;
+- (id)checkpoints;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (id)identifier;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithName:(id)arg1 startDate:(id)arg2 identifier:(id)arg3 allCheckpointLayers:(id)arg4;
-- (id)initWithName:(id)arg1 startDate:(id)arg2 identifier:(id)arg3 currentLayer:(id)arg4;
-- (id)name;
-- (id)startDate;
-- (id)traceByPushingLayer:(id)arg1;
+- (void)freeze;
+- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 name:(id)arg3 uniqueIdentifier:(id)arg4;
+- (id)instantCheckpointWithName:(id)arg1;
+- (id)instantCheckpointWithName:(id)arg1 extraIdentifier:(id)arg2;
+- (id)mutableCheckpoints;
+- (id)rangeCheckpointWithName:(id)arg1;
+- (id)rangeCheckpointWithName:(id)arg1 extraIdentifier:(id)arg2;
+- (void)setAssertsUseAfterFreeze:(bool)arg1;
+- (void)setMutableCheckpoints:(id)arg1;
 
 @end

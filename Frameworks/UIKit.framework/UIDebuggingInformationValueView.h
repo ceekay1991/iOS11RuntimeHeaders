@@ -17,11 +17,11 @@
 + (Class)_viewClassForValueType:(long long)arg1;
 + (id)viewWithValue:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)_prepareConstraints;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)addViewsToContentView;
 - (id)contentView;
 - (id)initWithValue:(id)arg1;

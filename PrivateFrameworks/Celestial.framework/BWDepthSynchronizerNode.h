@@ -7,18 +7,24 @@
         unsigned int _os_unfair_lock_opaque; 
     }  _bufferServicingLock;
     NSMutableArray * _depthBufferQueue;
+    int  _depthIDWrapAroundCounter;
     BWNodeInput * _depthInput;
+    bool  _discardsDegradedDepthBuffers;
     BWNodeError * _errorForDepthInput;
     BWNodeError * _errorForImageInput;
     NSMutableArray * _imageBufferQueue;
+    int  _imageIDWrapAroundCounter;
     BWNodeInput * _imageInput;
     int  _lastEmittedFrameCaptureID;
+    int  _lastReceivedDepthID;
+    int  _lastReceivedImageID;
     int  _maxQueueDepth;
     int  _numEODMessagesReceived;
     bool  _streaming;
 }
 
 @property (readonly) BWNodeInput *depthInput;
+@property (nonatomic) bool discardsDegradedDepthBuffers;
 @property (readonly) BWNodeInput *imageInput;
 
 + (void)initialize;
@@ -34,6 +40,7 @@
 - (id)depthInput;
 - (void)didReachEndOfDataForInput:(id)arg1;
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2 forAttachedMediaKey:(id)arg3;
+- (bool)discardsDegradedDepthBuffers;
 - (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
 - (void)handleStillImageReferenceFrameBracketedCaptureSequenceNumber:(int)arg1 forInput:(id)arg2;
@@ -42,5 +49,6 @@
 - (id)nodeSubType;
 - (id)nodeType;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
+- (void)setDiscardsDegradedDepthBuffers:(bool)arg1;
 
 @end

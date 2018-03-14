@@ -31,6 +31,7 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (id)_backgroundImageForBarPosition:(long long)arg1 barMetrics:(long long)arg2;
 - (long long)_barPosition;
 - (id)_createBackgroundImageForBarStyle:(long long)arg1 alpha:(double)arg2;
@@ -43,7 +44,6 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)backgroundImage;
 - (id)backgroundImagePrompt;
 - (long long)barStyle;

@@ -27,7 +27,6 @@
 - (id)_responseMessagePBRepresentation;
 - (id)chargePercentRemaining;
 - (long long)code;
-- (id)description;
 - (id)distanceRemaining;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fuelPercentRemaining;

@@ -22,6 +22,8 @@
 @property double queueing;
 @property (nonatomic, retain) NSDate *startDate;
 
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -47,5 +49,9 @@
 - (void)setStartDate:(id)arg1;
 - (id)startDate;
 - (void)unionMetric:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
+
+- (id)initWithMMCSOperationMetric:(id)arg1;
 
 @end

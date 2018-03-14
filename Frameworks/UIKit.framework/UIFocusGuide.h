@@ -46,6 +46,7 @@
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (void)_setAutomaticallyDisableWhenIntersectingFocus:(bool)arg1;
 - (void)_setAutomaticallyPreferOwningView:(bool)arg1;
+- (bool)_uili_isFocusGuide;
 - (bool)canBecomeFocused;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

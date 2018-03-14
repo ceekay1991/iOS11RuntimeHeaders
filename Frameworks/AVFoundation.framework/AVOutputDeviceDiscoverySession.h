@@ -6,16 +6,18 @@
     AVOutputDeviceDiscoverySessionInternal * _outputDeviceDiscoverySession;
 }
 
-@property (nonatomic, readonly) NSArray *availableOutputDeviceGroups;
 @property (nonatomic, readonly) NSArray *availableOutputDevices;
 @property (nonatomic, readonly) AVOutputDeviceDiscoverySessionAvailableOutputDevices *availableOutputDevicesObject;
 @property (nonatomic, readonly) bool devicePresenceDetected;
 @property (nonatomic) long long discoveryMode;
+@property (readonly) struct OpaqueFigRouteDiscoverer { }*routeDiscoverer;
+@property (nonatomic, retain) AVAudioSession *targetAudioSession;
 
-+ (Class)defaultOutputDeviceDiscoverySessionImplClass;
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (void)initialize;
++ (id)outputDeviceDiscoverySessionFactory;
 
-- (id)availableOutputDeviceGroups;
 - (id)availableOutputDevices;
 - (id)availableOutputDevicesObject;
 - (void)dealloc;
@@ -27,6 +29,13 @@
 - (id)initWithOutputDeviceDiscoverySessionImpl:(id)arg1;
 - (void)outputDeviceDiscoverySessionImpl:(id)arg1 didExpireWithReplacement:(id)arg2;
 - (void)outputDeviceDiscoverySessionImplDidChangeAvailableOutputDevices:(id)arg1;
+- (struct OpaqueFigRouteDiscoverer { }*)routeDiscoverer;
 - (void)setDiscoveryMode:(long long)arg1;
+- (void)setTargetAudioSession:(id)arg1;
+- (id)targetAudioSession;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (unsigned long long)_pu_routeAvailability;
 
 @end

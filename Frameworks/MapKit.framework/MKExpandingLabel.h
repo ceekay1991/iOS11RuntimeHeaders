@@ -3,22 +3,17 @@
  */
 
 @interface MKExpandingLabel : UIView <UIGestureRecognizerDelegate> {
-    bool  _constraintsAdded;
     unsigned long long  _expansionMode;
-    UIFont * _font;
     bool  _isPerformingLayout;
     id /* block */  _labelResizedBlock;
     unsigned long long  _numberOfLinesWhenCollapsed;
     _MKUILabel * _showMoreLabel;
     UITapGestureRecognizer * _showMoreTapRecognizer;
     UIColor * _showMoreTextColor;
-    long long  _textAlignment;
-    UIColor * _textColor;
     NSTextContainer * _textContainer;
     NSLayoutManager * _textLayoutManager;
     NSTextStorage * _textStorage;
     UITextView * _textView;
-    bool  _useAttributedText;
 }
 
 @property (nonatomic, copy) NSAttributedString *attributedText;
@@ -28,7 +23,6 @@
 @property (nonatomic, retain) UIFont *font;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) id /* block */ labelResizedBlock;
-@property (nonatomic) long long lineBreakMode;
 @property (nonatomic) unsigned long long numberOfLinesWhenCollapsed;
 @property (nonatomic, retain) UIFont *showMoreFont;
 @property (nonatomic, copy) NSString *showMoreText;
@@ -45,7 +39,6 @@
 - (void)_mkExpandingLabelComonInit;
 - (void)_setExpansionMode:(unsigned long long)arg1;
 - (void)_setTextExclusionPath;
-- (void)_updateTextAttributes;
 - (id)attributedText;
 - (id)font;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -57,13 +50,11 @@
 - (bool)isShowingExpanded;
 - (id /* block */)labelResizedBlock;
 - (void)layoutSubviews;
-- (long long)lineBreakMode;
 - (unsigned long long)numberOfLinesWhenCollapsed;
 - (void)setAttributedText:(id)arg1;
 - (void)setExpanded:(bool)arg1;
 - (void)setFont:(id)arg1;
 - (void)setLabelResizedBlock:(id /* block */)arg1;
-- (void)setLineBreakMode:(long long)arg1;
 - (void)setNumberOfLinesWhenCollapsed:(unsigned long long)arg1;
 - (void)setShowMoreFont:(id)arg1;
 - (void)setShowMoreText:(id)arg1;
@@ -79,7 +70,6 @@
 - (long long)textAlignment;
 - (id)textColor;
 - (id)textView;
-- (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

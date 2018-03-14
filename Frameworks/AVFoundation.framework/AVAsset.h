@@ -6,16 +6,19 @@
     AVAssetInternal * _asset;
 }
 
-@property (getter=MP_canAffectNetworkPlayability, setter=MP_setCanAffectNetworkPlayability:, nonatomic) bool MP_canAffectNetworkPlayability;
 @property (readonly) NSArray *availableChapterLocales;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } duration;
 @property (nonatomic, readonly) bool isProxy;
 @property (nonatomic, readonly) long long moovAtomSize;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } naturalSize;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } naturalSizeWithPreferredTransforms;
 @property (nonatomic, readonly) float preferredRate;
 @property (nonatomic, readonly) struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } preferredTransform;
 @property (nonatomic, readonly) float preferredVolume;
 @property (nonatomic, readonly) id propertyListForProxy;
+@property (nonatomic, readonly) NSValue *pu_cachedDuration;
+@property (getter=isQTAutoloopVideo, readonly) bool qtAutoloopVideo;
+@property (setter=rc_setComposedAVURL:, nonatomic, retain) NSURL *rc_composedAVURL;
 
 // Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
 
@@ -24,6 +27,7 @@
 + (id)assetWithURL:(id)arg1;
 + (id)assetWithURL:(id)arg1 figPlaybackItem:(struct OpaqueFigPlaybackItem { }*)arg2 trackIDs:(id)arg3 dynamicBehavior:(bool)arg4;
 + (bool)expectsPropertyRevisedNotifications;
++ (bool)supportsPlayerItems;
 
 - (id)_ID3Metadata;
 - (id)_URLSessionDataDelegate;
@@ -72,6 +76,7 @@
 - (id)availableChapterLocales;
 - (id)availableMediaCharacteristicsWithMediaSelectionOptions;
 - (id)availableMetadataFormats;
+- (id)availableVideoDynamicRanges;
 - (bool)canContainFragments;
 - (void)cancelLoading;
 - (id)chapterMetadataGroupsBestMatchingPreferredLanguages:(id)arg1;
@@ -133,9 +138,77 @@
 
 // Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
-- (bool)MP_canAffectNetworkPlayability;
-- (void)MP_setCanAffectNetworkPlayability:(bool)arg1;
 - (id)createLanguageOptionGroups;
 - (void)mpLoadValuesAsynchronouslyForKeys:(id)arg1 completionQueue:(id)arg2 completionHandler:(id /* block */)arg3;
+
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (void)_pu_setCachedDuration:(id)arg1;
+- (id)pu_cachedDuration;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })pu_duration;
+- (void)pu_loadDurationWithCompletionHandler:(id /* block */)arg1;
+
+// Image: /System/Library/Frameworks/QuickLook.framework/QuickLook
+
++ (void)assetIsAutoloopMedia:(id)arg1 completionHandler:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUI.framework/IMSharedUI
+
+- (bool)isQTAutoloopVideo;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
++ (id)assetWithIdentifierURL:(id)arg1;
++ (id)pluginEditedAsset;
++ (void)setPluginEditedAsset:(id)arg1;
+
+- (id)creationDateFromMetadata;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (struct CGImageSource { }*)newPreviewImageSource;
+- (id)previewImageDataWithUTType:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
+- (struct UIImage { Class x1; }*)previewImage;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (id)plVideoCodecName;
+
+// Image: /System/Library/PrivateFrameworks/PhotosPlayer.framework/PhotosPlayer
+
+- (float)is_cropFactor;
+- (id)is_valueForMetadataIdentifier:(id)arg1;
+- (struct CGSize { double x1; double x2; })is_videoSize;
+
+// Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
+
++ (id)keyPathsForValuesAffectingNaturalSizeWithPreferredTransforms;
+
+- (struct CGSize { double x1; double x2; })naturalSizeWithPreferredTransforms;
+
+// Image: /System/Library/PrivateFrameworks/VideoProcessing.framework/VideoProcessing
+
+- (id)vcp_assetWithoutAdjustments:(id)arg1 duration:(double)arg2;
+- (id)vcp_enabledTracksWithMediaType:(id)arg1;
+- (id)vcp_firstEnabledTrackWithMediaType:(id)arg1;
+- (bool)vcp_isMontage;
+- (bool)vcp_isShortMovie;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })vcp_livePhotoStillDisplayTime;
+- (void)vcp_scaleRampWithIntervals:(id)arg1 andRates:(id)arg2 inSlowmoTimerange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg3 withTimeMapping:(id)arg4 inComposition:(id)arg5;
+- (void)vcp_scaleSlowmoTimeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1 withTimeMapping:(id)arg2 inComposition:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
+
+- (id)rc_composedAVURL;
+- (void)rc_setComposedAVURL:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (id)keyPathsForValuesAffectingNaturalSizeWithPreferredTransforms;
+
+- (struct CGSize { double x1; double x2; })naturalSizeWithPreferredTransforms;
 
 @end

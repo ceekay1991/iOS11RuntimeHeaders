@@ -6,9 +6,7 @@
     NSDictionary * _additionalPixelBufferAttributes;
     unsigned long long  _capacity;
     bool  _clientProvidesPool;
-    bool  _logAllDrops;
     NSString * _name;
-    int  _numConsecutiveDrops;
     struct __CVPixelBufferPool { } * _pixelBufferPool;
     NSDictionary * _pixelBufferPoolAuxAttributes;
     int  _pixelBufferPoolCreateError;

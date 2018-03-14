@@ -11,6 +11,7 @@
         unsigned int debugServerLatencyMs : 1; 
         unsigned int status : 1; 
     }  _has;
+    NSData * _responseId;
     NSMutableArray * _routes;
     NSData * _sessionState;
     int  _status;
@@ -23,8 +24,10 @@
 @property (nonatomic, readonly) bool hasDatasetAbStatus;
 @property (nonatomic) bool hasDebugServerLatencyMs;
 @property (nonatomic, readonly) bool hasEtaServiceSummary;
+@property (nonatomic, readonly) bool hasResponseId;
 @property (nonatomic, readonly) bool hasSessionState;
 @property (nonatomic) bool hasStatus;
+@property (nonatomic, retain) NSData *responseId;
 @property (nonatomic, retain) NSMutableArray *routes;
 @property (nonatomic, retain) NSData *sessionState;
 @property (nonatomic) int status;
@@ -51,12 +54,14 @@
 - (bool)hasDatasetAbStatus;
 - (bool)hasDebugServerLatencyMs;
 - (bool)hasEtaServiceSummary;
+- (bool)hasResponseId;
 - (bool)hasSessionState;
 - (bool)hasStatus;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
+- (id)responseId;
 - (id)routeAtIndex:(unsigned long long)arg1;
 - (id)routes;
 - (unsigned long long)routesCount;
@@ -67,6 +72,7 @@
 - (void)setEtaServiceSummary:(id)arg1;
 - (void)setHasDebugServerLatencyMs:(bool)arg1;
 - (void)setHasStatus:(bool)arg1;
+- (void)setResponseId:(id)arg1;
 - (void)setRoutes:(id)arg1;
 - (void)setSessionState:(id)arg1;
 - (void)setStatus:(int)arg1;

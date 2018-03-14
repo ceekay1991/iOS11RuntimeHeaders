@@ -20,7 +20,6 @@
 - (id)_dictionaryRepresentation;
 - (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(bool)arg11 alternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)emailAddress;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

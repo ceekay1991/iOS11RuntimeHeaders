@@ -12,13 +12,13 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
+- (void).cxx_destruct;
 - (bool)_scrollsToMakeFirstResponderVisible;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (id)contentView;
-- (void)dealloc;
 - (id)initWithContentView:(id)arg1;
 - (void)keyboardDidChangeFrame:(id)arg1;
 - (void)layoutSubviews;

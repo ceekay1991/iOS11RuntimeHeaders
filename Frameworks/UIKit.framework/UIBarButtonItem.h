@@ -2,8 +2,9 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIBarButtonItem : UIBarItem <DebugHierarchyObject, NSCoding, UISpringLoadedInteractionSupporting> {
+@interface UIBarButtonItem : UIBarItem <DebugHierarchyObject, MFPopoverPresentationSource, NSCoding, UISpringLoadedInteractionSupporting> {
     id /* block */  __autoValidationHandler;
+    NSArray * __backButtonAlternateTitles;
     bool  __hidden;
     UIBarButtonItem * __itemVariation;
     bool  __needsViewUpdateForLetterpressImage;
@@ -14,6 +15,12 @@
     <_UIBarButtonItemViewOwner> * __viewOwner;
     bool  __viewWantsLetterpressImage;
     SEL  _action;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _additionalSelectionInsets;
     id  _appearanceStorage;
     struct { 
         unsigned int enabled : 1; 
@@ -61,11 +68,14 @@
     double  _width;
 }
 
+@property (setter=_setAdditionalSelectionInsets:, nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } _additionalSelectionInsets;
 @property (setter=_setAutoValidationHandler:, nonatomic, copy) id /* block */ _autoValidationHandler;
+@property (setter=_setBackButtonAlternateTitles:, nonatomic, copy) NSArray *_backButtonAlternateTitles;
 @property (setter=_setFlexible:, nonatomic) bool _flexible;
 @property (setter=_setGestureRecognizers:, nonatomic, retain) NSArray *_gestureRecognizers;
 @property (setter=_setHidden:, nonatomic) bool _hidden;
 @property (setter=_setImageHasEffects:, nonatomic) bool _imageHasEffects;
+@property (setter=_setInteractions:, nonatomic, retain) NSArray *_interactions;
 @property (setter=_setItemVariation:, nonatomic, retain) UIBarButtonItem *_itemVariation;
 @property (setter=_setMaximumWidth:, nonatomic) double _maximumWidth;
 @property (setter=_setMinimumWidth:, nonatomic) double _minimumWidth;
@@ -74,6 +84,7 @@
 @property (setter=_setOwningNavigationItem:, nonatomic) UINavigationItem *_owningNavigationItem;
 @property (setter=_setPopoverLayoutGuide:, nonatomic, retain) UILayoutGuide *_popoverLayoutGuide;
 @property (setter=_setPossibleItemVariations:, nonatomic, copy) NSSet *_possibleItemVariations;
+@property (setter=_sf_setLongPressEnabled:, nonatomic) bool _sf_longPressEnabled;
 @property (setter=_setShowsBackButtonIndicator:, nonatomic) bool _showsBackButtonIndicator;
 @property (setter=_setStylesForSizingTitles:, nonatomic, copy) NSDictionary *_stylesForSizingTitles;
 @property (nonatomic, readonly) UIToolbarButton *_toolbarButton;
@@ -109,9 +120,11 @@
 
 - (void).cxx_destruct;
 - (bool)_actsAsFakeBackButton;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_additionalSelectionInsets;
 - (id)_appearanceStorage;
 - (void)_applyPositionAdjustmentToSegmentedControl:(id)arg1;
 - (id /* block */)_autoValidationHandler;
+- (id)_backButtonAlternateTitles;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (void)_executeValidationHandler;
 - (bool)_flexible;
@@ -143,7 +156,9 @@
 - (double)_rightImagePaddingForEdgeMarginInNavBar;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
 - (void)_setActsAsFakeBackButton:(bool)arg1;
+- (void)_setAdditionalSelectionInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setAutoValidationHandler:(id /* block */)arg1;
+- (void)_setBackButtonAlternateTitles:(id)arg1;
 - (void)_setButtonGroup:(id)arg1 isRepresentative:(bool)arg2;
 - (void)_setEnclosingBar:(id)arg1 onItem:(id)arg2;
 - (void)_setFlexible:(bool)arg1;
@@ -193,6 +208,7 @@
 - (id)createViewForToolbar:(id)arg1;
 - (id)customView;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)groupRepresentative;
 - (bool)hasImage;
@@ -264,5 +280,46 @@
 
 - (id)debugHierarchyPropertyDescriptions;
 - (id)debugHierarchyValueForPropertyWithName:(id)arg1;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (void)mf_setAsSourceForPopoverPresentationController:(id)arg1;
+- (void)mf_setImageOffset:(struct CGPoint { double x1; double x2; })arg1;
+- (void)mf_setImageVerticalOffset:(double)arg1;
+- (void)mf_setLandscapeImagePhoneOffset:(struct CGPoint { double x1; double x2; })arg1;
+- (void)mf_setLandscapeImagePhoneVerticalOffset:(double)arg1;
+
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
++ (double)_sf_longPressAllowableMovement;
+
+- (bool)_sf_longPressEnabled;
+- (void)_sf_setLongPressEnabled:(bool)arg1;
+- (void)_sf_setLongPressTarget:(id)arg1 action:(SEL)arg2;
+
+// Image: /System/Library/Frameworks/UIKit.framework/Frameworks/DocumentManager.framework/DocumentManager
+
+- (bool)_doc_isMatchingUUID:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
+
++ (id)_ckBarButtonItemWithTitle:(id)arg1 style:(long long)arg2;
++ (id)ckCancelBarButtonItem;
++ (id)ckDoneBarButtonItem;
++ (id)ckEditBarButtonItem;
++ (id)ckEditDoneButtonPossibleItemVariations;
+
+// Image: /System/Library/PrivateFrameworks/NewsUI.framework/NewsUI
+
+- (id)nu_view;
+
+// Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
+
++ (id)telephonyUI_fixedSpaceBarButtonItem;
++ (id)telephonyUI_flexibleSpaceBarButtonItem;
+
+// Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
+
+- (void)configureFromScriptButton:(id)arg1;
 
 @end

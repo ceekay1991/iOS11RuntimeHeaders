@@ -12,7 +12,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)enqueueObject:(id)arg1 buffer:(id)arg2;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithCapacity:(unsigned long long)arg1 overflowHandler:(id /* block */)arg2;

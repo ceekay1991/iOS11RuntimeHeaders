@@ -7,7 +7,6 @@
     bool  _changingPlayer;
     bool  _changingPlaylistFeeder;
     MPAVItem * _currentItem;
-    bool  _currentItemDidLoadDurationTimeRange;
     <MPAVItemQueueIdentifier> * _currentItemQueueIdentifier;
     MPQueueFeeder * _currentQueueFeeder;
     <MPAVPlaylistManagerDelegate> * _delegate;
@@ -22,6 +21,7 @@
     bool  _updatedAudioSessionMode;
 }
 
+@property (nonatomic, readonly) bool allowsQueueResetWhenReachingEnd;
 @property (nonatomic, readonly) bool allowsUserVisibleUpcomingItems;
 @property (nonatomic) MPAVController *avController;
 @property (nonatomic, readonly) bool canSeek;
@@ -40,7 +40,9 @@
 @property (nonatomic, readonly) MPQueueFeeder *playlistFeeder;
 @property (readonly) MPAVQueueCoordinator *queueCoordinator;
 @property (nonatomic) long long repeatMode;
+@property (nonatomic) bool shouldDeferItemLoading;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) long long upNextItemCount;
 @property (nonatomic, readonly) bool userCanChangeShuffleAndRepeatType;
 
 - (void).cxx_destruct;
@@ -56,10 +58,9 @@
 - (long long)_prepareToQueuePlaybackIndex:(long long)arg1 selectionDirection:(long long)arg2;
 - (id)_queuePlayerFeederItemForIndex:(long long)arg1;
 - (void)_reloadQueuedItemsIfPathBecameAvailable;
-- (void)_setCurrentItemDidLoadDurationTimeRange:(bool)arg1;
 - (void)_updateAudioSessionModeWithIndex:(unsigned long long)arg1;
-- (void)_updateMaximumQueueDepthForItemIndex:(long long)arg1 inQueueFeeder:(id)arg2;
 - (void)_willFinishReloadWithQueueFeeder:(id)arg1 fromPlaybackContext:(id)arg2;
+- (bool)allowsQueueResetWhenReachingEnd;
 - (bool)allowsUserVisibleUpcomingItems;
 - (id)avController;
 - (bool)canChangePlaylistFeeder;
@@ -70,6 +71,7 @@
 - (bool)canSkipToPreviousItemForItem:(id)arg1;
 - (void)clearQueueFeeder;
 - (void)connectPlayer;
+- (id)contentItemIDForPlaylistIndex:(long long)arg1;
 - (long long)currentIndex;
 - (id)currentItem;
 - (id)currentQueueUUID;
@@ -89,6 +91,7 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isChangingPlayer;
 - (bool)isChangingPlaylistFeeder;
+- (bool)isPlaceholderItemForContentItemID:(id)arg1;
 - (bool)isTransitioningSource;
 - (id)itemForContentItemID:(id)arg1;
 - (id)itemForPlaylistIndex:(long long)arg1;
@@ -127,7 +130,11 @@
 - (bool)setMusicPlayerControllerQueue:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (bool)setPlaylistFeeder:(id)arg1 startIndex:(long long)arg2 keepPlaying:(bool)arg3;
 - (void)setRepeatMode:(long long)arg1;
+- (void)setShouldDeferItemLoading:(bool)arg1;
+- (bool)shouldDeferItemLoading;
+- (long long)upNextItemCount;
 - (void)updateForSoundCheckDefaultsChange;
+- (void)updateLocationDependentPropertiesForItem:(id)arg1;
 - (bool)userCanChangeShuffleAndRepeatType;
 
 @end

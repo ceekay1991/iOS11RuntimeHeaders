@@ -6,7 +6,7 @@
 @optional
 
 - (void)locationTracker:(MNLocationTracker *)arg1 didChangeState:(int)arg2;
-- (void)locationTracker:(MNLocationTracker *)arg1 didReroute:(MNActiveRouteInfo *)arg2 rerouteReason:(unsigned long long)arg3 request:(GEODirectionsRequest *)arg4 response:(GEODirectionsResponse *)arg5;
+- (void)locationTracker:(MNLocationTracker *)arg1 didReroute:(MNActiveRouteInfo *)arg2 newAlternateRoutes:(NSArray *)arg3 rerouteReason:(unsigned long long)arg4 request:(GEODirectionsRequest *)arg5 response:(GEODirectionsResponse *)arg6;
 - (void)locationTracker:(MNLocationTracker *)arg1 didSignalAlightForStepAtIndex:(unsigned long long)arg2;
 - (void)locationTracker:(MNLocationTracker *)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(MNActiveRouteInfo *)arg3 request:(GEODirectionsRequest *)arg4 response:(GEODirectionsResponse *)arg5;
 - (void)locationTracker:(MNLocationTracker *)arg1 didUpdateAlternateRoutes:(NSArray *)arg2;

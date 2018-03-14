@@ -29,6 +29,7 @@
         unsigned int unavailable : 1; 
     }  _has;
     bool  _installedApp;
+    NSMutableArray * _intentResponseFailures;
     bool  _movedPickupLocation;
     unsigned int  _numberOfAvailableExtensions;
     GEOLatLng * _originBlurred;
@@ -74,6 +75,7 @@
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic) bool hasUnavailable;
 @property (nonatomic) bool installedApp;
+@property (nonatomic, retain) NSMutableArray *intentResponseFailures;
 @property (nonatomic) bool movedPickupLocation;
 @property (nonatomic) unsigned int numberOfAvailableExtensions;
 @property (nonatomic, retain) GEOLatLng *originBlurred;
@@ -89,13 +91,16 @@
 @property (nonatomic) bool unavailable;
 
 + (Class)errorMessageType;
++ (Class)intentResponseFailureType;
 
 - (void).cxx_destruct;
 - (int)StringAsEndState:(id)arg1;
 - (int)StringAsEndView:(id)arg1;
 - (int)StringAsStatusIssue:(id)arg1;
 - (void)addErrorMessage:(id)arg1;
+- (void)addIntentResponseFailure:(id)arg1;
 - (void)clearErrorMessages;
+- (void)clearIntentResponseFailures;
 - (bool)comparedRideOptions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -135,6 +140,9 @@
 - (bool)hasUnavailable;
 - (unsigned long long)hash;
 - (bool)installedApp;
+- (id)intentResponseFailureAtIndex:(unsigned long long)arg1;
+- (id)intentResponseFailures;
+- (unsigned long long)intentResponseFailuresCount;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)movedPickupLocation;
@@ -170,6 +178,7 @@
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setHasUnavailable:(bool)arg1;
 - (void)setInstalledApp:(bool)arg1;
+- (void)setIntentResponseFailures:(id)arg1;
 - (void)setMovedPickupLocation:(bool)arg1;
 - (void)setNumberOfAvailableExtensions:(unsigned int)arg1;
 - (void)setOriginBlurred:(id)arg1;

@@ -110,6 +110,7 @@
 + (bool)_allowActionsToQueue;
 + (id)timeStringForSeconds:(int)arg1 forceFullWidthComponents:(bool)arg2 isElapsed:(bool)arg3;
 
+- (void).cxx_destruct;
 - (id)__distributionStatisticsForUserInteractionDuration;
 - (bool)_alwaysHandleScrollerMouseEvent;
 - (void)_animateAfterEdit:(bool)arg1;
@@ -136,10 +137,10 @@
 - (void)_updateThumbLocation;
 - (void)_updateTimes;
 - (double)_valueForLocatable:(id)arg1;
+- (void)dealloc;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentMargins;
 - (void)animateAfterEdit;
 - (void)animateCancelEdit;
@@ -147,7 +148,6 @@
 - (bool)cancelTouchTracking;
 - (void)continueTrackingWithLocatable:(id)arg1;
 - (id)dataSource;
-- (void)dealloc;
 - (id)delegate;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;

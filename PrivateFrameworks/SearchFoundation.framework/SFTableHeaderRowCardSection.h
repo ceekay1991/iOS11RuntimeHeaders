@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFTableHeaderRowCardSection : SFTableRowCardSection <NSSecureCoding, SFTableHeaderRowCardSection> {
+@interface SFTableHeaderRowCardSection : SFTableRowCardSection <NSCopying, NSSecureCoding, SFTableHeaderRowCardSection> {
     bool  _alignRowsToHeader;
     SFTableAlignmentSchema * _alignmentSchema;
     SFColor * _backgroundColor;
@@ -54,6 +54,7 @@
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
 @property (nonatomic) bool reducedRowHeight;
+@property (nonatomic, copy) NSString *resultIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *tabGroupIdentifier;
@@ -68,6 +69,7 @@
 - (id)alignmentSchema;
 - (id)backgroundColor;
 - (bool)canBeHidden;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)data;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;

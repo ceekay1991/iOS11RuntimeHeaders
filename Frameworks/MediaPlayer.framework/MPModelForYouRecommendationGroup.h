@@ -22,6 +22,8 @@
 @property (nonatomic, copy) NSArray *subgroups;
 @property (nonatomic, copy) NSString *title;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)__MPModelForYouRecommendationGroupPropertyGroupType__PROPERTY;
 + (id)__MPModelForYouRecommendationGroupPropertyLastUpdatedDate__PROPERTY;
 + (id)__MPModelForYouRecommendationGroupPropertyLoadAdditionalContentURL__PROPERTY;
@@ -59,5 +61,9 @@
 - (void)setTitle:(id)arg1;
 - (id)subgroups;
 - (id)title;
+
+// Image: /System/Library/PrivateFrameworks/NanoMusicSync.framework/NanoMusicSync
+
+- (void)enumerateItemsUsingBlock:(id /* block */)arg1;
 
 @end

@@ -42,6 +42,8 @@
 @property (nonatomic, copy) NSString *recentsDomain;
 @property (nonatomic, retain) NSNumber *weight;
 
+// Image: /System/Library/PrivateFrameworks/CoreRecents.framework/CoreRecents
+
 + (bool)supportsSecureCoding;
 
 - (void)_enumerateWordsInString:(id)arg1 usingBlock:(id /* block */)arg2;
@@ -108,5 +110,14 @@
 - (void)setRecentsDomain:(id)arg1;
 - (void)setWeight:(id)arg1;
 - (id)weight;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (id)_addressBookContext;
+- (void)_setAddressBookContext:(id)arg1;
+- (void*)existingPerson;
+- (int)matchedIdentifier;
+- (void*)person;
+- (int)property;
 
 @end

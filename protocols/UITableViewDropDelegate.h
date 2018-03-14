@@ -10,6 +10,7 @@
 @optional
 
 - (bool)tableView:(UITableView *)arg1 canHandleDropSession:(id <UIDropSession>)arg2;
+- (UIDragPreviewParameters *)tableView:(UITableView *)arg1 dropPreviewParametersForRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 dropSessionDidEnd:(id <UIDropSession>)arg2;
 - (void)tableView:(UITableView *)arg1 dropSessionDidEnter:(id <UIDropSession>)arg2;
 - (void)tableView:(UITableView *)arg1 dropSessionDidExit:(id <UIDropSession>)arg2;

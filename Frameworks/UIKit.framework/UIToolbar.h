@@ -31,6 +31,7 @@
 @property (setter=_setHidesShadow:, nonatomic) bool _hidesShadow;
 @property (getter=_isLocked, setter=_setLocked:, nonatomic) bool _locked;
 @property (setter=_setShadowView:, nonatomic, retain) UIView *_shadowView;
+@property (nonatomic, readonly) bool _shouldStretchDuringCrossfadeTransition;
 @property (setter=_setWantsLetterpressContent:, nonatomic) bool _wantsLetterpressContent;
 @property (nonatomic, copy) NSArray *backgroundEffects;
 @property (nonatomic, readonly) long long barPosition;
@@ -53,6 +54,7 @@
 + (double)defaultHeight;
 + (double)defaultHeightForBarSize:(int)arg1;
 
+- (void).cxx_destruct;
 - (id)__appearanceStorage;
 - (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint { double x1; double x2; })arg2;
@@ -75,10 +77,10 @@
 - (void)_frameOrCenterChanged;
 - (bool)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long*)arg1;
 - (bool)_hidesShadow;
+- (bool)_hostsLayoutEngineAllowsTAMIC_NO;
 - (bool)_isLocked;
 - (id)_itemAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)_linkedBeforeWhitetailAndInitializedFromCoder;
-- (void)_performBlockAllowingConstraintManipulation:(id /* block */)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_positionToolbarButtonsAndResetFontScaleAdjustment:(bool)arg1;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
@@ -97,14 +99,19 @@
 - (void)_setWantsLetterpressContent:(bool)arg1;
 - (void)_setupAXHUDGestureIfNecessary;
 - (id)_shadowView;
+- (bool)_shouldStretchDuringCrossfadeTransition;
 - (bool)_subclassImplementsDrawRect;
 - (void)_updateBackgroundView;
 - (void)_updateBarForStyle;
 - (bool)_wantsLetterpressContent;
+- (void)dealloc;
+
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
+
+- (id)debugHierarchyPropertyDescriptions;
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)addConstraint:(id)arg1;
 - (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
 - (id)backgroundEffects;
@@ -113,8 +120,6 @@
 - (long long)barStyle;
 - (id)barTintColor;
 - (bool)centerTextButtons;
-- (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
 - (struct CGSize { double x1; double x2; })defaultSizeForOrientation:(long long)arg1;
 - (id)delegate;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -129,6 +134,7 @@
 - (bool)isTranslucent;
 - (id)items;
 - (void)layoutSubviews;
+- (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (void)removeConstraint:(id)arg1;
 - (void)setBackgroundEffects:(id)arg1;
 - (void)setBackgroundImage:(id)arg1 forToolbarPosition:(long long)arg2 barMetrics:(long long)arg3;
@@ -148,5 +154,16 @@
 - (id)shadowImageForToolbarPosition:(long long)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+
+// Image: /System/Library/Frameworks/QuickLook.framework/QuickLook
+
+- (id)configuration;
+- (void)configureTransparent;
+- (void)configureWithConfiguration:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
 
 @end

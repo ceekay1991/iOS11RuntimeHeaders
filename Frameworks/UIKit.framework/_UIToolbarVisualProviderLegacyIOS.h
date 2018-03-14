@@ -22,6 +22,7 @@
 - (id)_positionToolbarButtons:(id)arg1 ignoringItem:(id)arg2 resetFontScaleAdjustment:(bool)arg3 actuallyRepositionButtons:(bool)arg4;
 - (id)_repositionedItemsFromItems:(id)arg1 withBarButtonFrames:(id*)arg2 withHitRects:(id*)arg3 buttonIndexes:(id*)arg4 textButtonIndexes:(id*)arg5;
 - (void)_setBackdropViewLayerGroupName:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })backgroundFrame;
 - (id)currentBackgroundView;
 - (void)customViewChangedForButtonItem:(id)arg1;
 - (struct CGSize { double x1; double x2; })defaultSizeForOrientation:(long long)arg1;

@@ -17,6 +17,7 @@
 - (void)clearPlayCommands;
 - (void)clearPunchoutOptions;
 - (void)clearStopCommands;
+- (_SFPBRichText *)detailText;
 - (bool)hasBackgroundColor;
 - (bool)hasBottomImage;
 - (bool)hasBottomImageEmoji;
@@ -24,12 +25,16 @@
 - (bool)hasBottomSubtitle;
 - (bool)hasBottomText;
 - (bool)hasCanBeHidden;
+- (bool)hasDetailText;
 - (bool)hasHasBottomPadding;
 - (bool)hasHasTopPadding;
 - (bool)hasPunchoutPickerDismissText;
 - (bool)hasPunchoutPickerTitle;
 - (bool)hasSeparatorStyle;
 - (bool)hasState;
+- (bool)hasSubtitle;
+- (bool)hasThumbnail;
+- (bool)hasTitle;
 - (bool)hasTopImage;
 - (bool)hasTopImageEmoji;
 - (bool)hasTopPadding;
@@ -54,6 +59,7 @@
 - (void)setBottomSubtitle:(_SFPBText *)arg1;
 - (void)setBottomText:(_SFPBText *)arg1;
 - (void)setCanBeHidden:(bool)arg1;
+- (void)setDetailText:(_SFPBRichText *)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
 - (void)setPlayCommands:(NSArray *)arg1;
@@ -63,6 +69,9 @@
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setState:(int)arg1;
 - (void)setStopCommands:(NSArray *)arg1;
+- (void)setSubtitle:(_SFPBRichText *)arg1;
+- (void)setThumbnail:(_SFPBImage *)arg1;
+- (void)setTitle:(_SFPBRichText *)arg1;
 - (void)setTopImage:(_SFPBImage *)arg1;
 - (void)setTopImageEmoji:(NSString *)arg1;
 - (void)setTopSecondaryText:(NSString *)arg1;
@@ -72,6 +81,9 @@
 - (NSArray *)stopCommands;
 - (_SFPBAbstractCommand *)stopCommandsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)stopCommandsCount;
+- (_SFPBRichText *)subtitle;
+- (_SFPBImage *)thumbnail;
+- (_SFPBRichText *)title;
 - (_SFPBImage *)topImage;
 - (NSString *)topImageEmoji;
 - (NSString *)topSecondaryText;

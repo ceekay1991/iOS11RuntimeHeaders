@@ -86,6 +86,7 @@
 - (id)_materialWithName:(id)arg1;
 - (void)_pauseAnimation:(bool)arg1 forKey:(id)arg2 pausedByNode:(bool)arg3;
 - (void)_releaseCachedSourcesAndElements;
+- (id)_renderableCopy;
 - (id)_scnAnimationForKey:(id)arg1;
 - (id)_scnBindings;
 - (void)_setAttributes:(id)arg1;

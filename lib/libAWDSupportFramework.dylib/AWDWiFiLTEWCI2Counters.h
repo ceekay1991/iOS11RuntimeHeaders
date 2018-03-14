@@ -24,6 +24,7 @@
     unsigned long long  _type4DueToTimerExpiryCount;
     unsigned long long  _type4HonouredCount;
     unsigned long long  _type4HonouredTimeInMS;
+    NSMutableArray * _wci2Counters;
     unsigned long long  _wlanProtectionFramesDueToLTECoexCount;
     unsigned long long  _wlanRxPriCount;
     unsigned long long  _wlanRxPriTimeInMS;
@@ -48,12 +49,18 @@
 @property (nonatomic) unsigned long long type4DueToTimerExpiryCount;
 @property (nonatomic) unsigned long long type4HonouredCount;
 @property (nonatomic) unsigned long long type4HonouredTimeInMS;
+@property (nonatomic, retain) NSMutableArray *wci2Counters;
 @property (nonatomic) unsigned long long wlanProtectionFramesDueToLTECoexCount;
 @property (nonatomic) unsigned long long wlanRxPriCount;
 @property (nonatomic) unsigned long long wlanRxPriTimeInMS;
 
++ (Class)wci2CountersType;
+
+- (void)addWci2Counters:(id)arg1;
+- (void)clearWci2Counters;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (bool)hasLteTxPowerLimitCount;
@@ -92,6 +99,7 @@
 - (void)setType4DueToTimerExpiryCount:(unsigned long long)arg1;
 - (void)setType4HonouredCount:(unsigned long long)arg1;
 - (void)setType4HonouredTimeInMS:(unsigned long long)arg1;
+- (void)setWci2Counters:(id)arg1;
 - (void)setWlanProtectionFramesDueToLTECoexCount:(unsigned long long)arg1;
 - (void)setWlanRxPriCount:(unsigned long long)arg1;
 - (void)setWlanRxPriTimeInMS:(unsigned long long)arg1;
@@ -101,6 +109,9 @@
 - (unsigned long long)type4DueToTimerExpiryCount;
 - (unsigned long long)type4HonouredCount;
 - (unsigned long long)type4HonouredTimeInMS;
+- (id)wci2Counters;
+- (id)wci2CountersAtIndex:(unsigned long long)arg1;
+- (unsigned long long)wci2CountersCount;
 - (unsigned long long)wlanProtectionFramesDueToLTECoexCount;
 - (unsigned long long)wlanRxPriCount;
 - (unsigned long long)wlanRxPriTimeInMS;

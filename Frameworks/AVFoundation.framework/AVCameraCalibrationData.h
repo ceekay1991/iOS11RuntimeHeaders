@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) float pixelSize;
 
 - (id)_distortionLookupTableFromCoefficients:(id)arg1 distortionCenter:(struct CGPoint { double x1; double x2; })arg2 pixelSize:(float)arg3 referenceDimensions:(struct CGSize { double x1; double x2; })arg4 lookupTableLength:(int)arg5;
+- (id)_initEmpty;
 - (id)cameraCalibrationDataWithExifOrientation:(unsigned int)arg1;
 - (struct CGImageMetadata { }*)copyAuxiliaryMetadata;
 - (void)dealloc;

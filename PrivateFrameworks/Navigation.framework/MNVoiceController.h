@@ -2,11 +2,12 @@
    Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
  */
 
-@interface MNVoiceController : NSObject <AVAudioPlayerDelegate, MNVoiceEventQueueDelegate, VSSpeechSynthesizerDelegate> {
+@interface MNVoiceController : NSObject <AVAudioPlayerDelegate, CARSessionObserving, MNVoiceEventQueueDelegate, VSSpeechSynthesizerDelegate> {
     NSTimer * _activationDebugTimer;
     MNNavigationAudioSession * _activeNavigationSession;
     NSObject<OS_dispatch_queue> * _audioQueue;
     long long  _audioSessionState;
+    CARSessionStatus * _carSessionStatus;
     unsigned long long  _charactersSpokenCount;
     double  _charactersSpokenDuration;
     NSString * _currentLanguage;
@@ -33,6 +34,7 @@
 }
 
 @property (nonatomic, retain) MNNavigationAudioSession *activeNavigationSession;
+@property (nonatomic, retain) CARSessionStatus *carSessionStatus;
 @property (nonatomic, retain) MNVoiceEvent *currentVoiceEvent;
 @property (nonatomic, readonly) NSString *currentVoiceLanguage;
 @property (nonatomic, readonly) NSLocale *currentVoiceLocale;
@@ -83,7 +85,8 @@
 - (id)activeNavigationSession;
 - (void)addObserver:(id)arg1;
 - (void)audioPlayerDidFinishPlaying:(id)arg1 successfully:(bool)arg2;
-- (void)beepIfNecessaryForShortPromptType:(unsigned long long)arg1;
+- (void)beepIfNecessaryForShortPromptType:(unsigned long long)arg1 textToSpeak:(id)arg2;
+- (id)carSessionStatus;
 - (void)clearAllEvents;
 - (id)currentVoiceEvent;
 - (id)currentVoiceLanguage;
@@ -98,8 +101,11 @@
 - (bool)isSpeaking;
 - (void)prepareToAnnounce;
 - (void)removeObserver:(id)arg1;
+- (void)sessionDidConnect:(id)arg1;
+- (void)sessionDidDisconnect:(id)arg1;
 - (void)setActiveNavigationSession:(id)arg1;
 - (void)setAudioSessionProperties;
+- (void)setCarSessionStatus:(id)arg1;
 - (void)setCurrentVoiceEvent:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setSpeechRequest:(id)arg1;

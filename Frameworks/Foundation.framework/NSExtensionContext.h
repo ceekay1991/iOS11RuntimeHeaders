@@ -27,8 +27,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } hostedViewMaximumAllowedSize;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } hostedViewMinimumAllowedSize;
 @property (setter=_setInputItems:, nonatomic, copy) NSArray *inputItems;
 @property (readonly) Class superclass;
+
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (id)_allowedErrorClasses;
 + (id)_defaultExtensionContextProtocol;
@@ -85,5 +89,24 @@
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)openURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)set_UUID:(id)arg1;
+
+// Image: /System/Library/Frameworks/IntentsUI.framework/IntentsUI
+
+- (struct CGSize { double x1; double x2; })hostedViewMaximumAllowedSize;
+- (struct CGSize { double x1; double x2; })hostedViewMinimumAllowedSize;
+- (id)interfaceParametersDescription;
+
+// Image: /System/Library/Frameworks/ReplayKit.framework/ReplayKit
+
+- (void)completeRequestWithBroadcastURL:(id)arg1 broadcastConfiguration:(id)arg2 setupInfo:(id)arg3;
+- (void)completeRequestWithBroadcastURL:(id)arg1 setupInfo:(id)arg2;
+- (void)loadBroadcastingApplicationInfoWithCompletion:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Widgets.framework/Widgets
+
+- (void)setWidgetLargestAvailableDisplayMode:(long long)arg1;
+- (long long)widgetActiveDisplayMode;
+- (long long)widgetLargestAvailableDisplayMode;
+- (struct CGSize { double x1; double x2; })widgetMaximumSizeForDisplayMode:(long long)arg1;
 
 @end

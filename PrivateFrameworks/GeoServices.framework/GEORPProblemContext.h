@@ -22,6 +22,7 @@
     NSString * _lastSearchString;
     NSString * _lastUserTypedSearchString;
     GEORPMapLocation * _mapLocation;
+    GEORPNavigationSettings * _navigationSettings;
     GEOPlace * _originalPlace;
     unsigned long long  _originatingAuxiliaryControlIndex;
     GEORPPersonalizedMaps * _personalizedMaps;
@@ -54,6 +55,7 @@
 @property (nonatomic, readonly) bool hasLastSearchString;
 @property (nonatomic, readonly) bool hasLastUserTypedSearchString;
 @property (nonatomic, readonly) bool hasMapLocation;
+@property (nonatomic, readonly) bool hasNavigationSettings;
 @property (nonatomic, readonly) bool hasOriginalPlace;
 @property (nonatomic) bool hasOriginatingAuxiliaryControlIndex;
 @property (nonatomic, readonly) bool hasPersonalizedMaps;
@@ -67,6 +69,7 @@
 @property (nonatomic, retain) NSString *lastSearchString;
 @property (nonatomic, retain) NSString *lastUserTypedSearchString;
 @property (nonatomic, retain) GEORPMapLocation *mapLocation;
+@property (nonatomic, retain) GEORPNavigationSettings *navigationSettings;
 @property (nonatomic, retain) GEOPlace *originalPlace;
 @property (nonatomic) unsigned long long originatingAuxiliaryControlIndex;
 @property (nonatomic, retain) GEORPPersonalizedMaps *personalizedMaps;
@@ -130,6 +133,7 @@
 - (bool)hasLastSearchString;
 - (bool)hasLastUserTypedSearchString;
 - (bool)hasMapLocation;
+- (bool)hasNavigationSettings;
 - (bool)hasOriginalPlace;
 - (bool)hasOriginatingAuxiliaryControlIndex;
 - (bool)hasPersonalizedMaps;
@@ -146,6 +150,7 @@
 - (id)lastUserTypedSearchString;
 - (id)mapLocation;
 - (void)mergeFrom:(id)arg1;
+- (id)navigationSettings;
 - (id)originalPlace;
 - (unsigned long long)originatingAuxiliaryControlIndex;
 - (id)personalizedMaps;
@@ -173,6 +178,7 @@
 - (void)setLastSearchString:(id)arg1;
 - (void)setLastUserTypedSearchString:(id)arg1;
 - (void)setMapLocation:(id)arg1;
+- (void)setNavigationSettings:(id)arg1;
 - (void)setOriginalPlace:(id)arg1;
 - (void)setOriginatingAuxiliaryControlIndex:(unsigned long long)arg1;
 - (void)setPersonalizedMaps:(id)arg1;

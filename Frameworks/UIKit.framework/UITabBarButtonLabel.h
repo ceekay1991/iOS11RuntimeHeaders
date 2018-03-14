@@ -6,6 +6,7 @@
     Class  _appearanceGuideClass;
     _UITabBarItemAppearanceStorage * _appearanceStorage;
     double  _boundsWidth;
+    bool  _hasSeenIdiom;
     bool  _isHighlighted;
     bool  _isSelected;
     UITabBarButton * _tabBarButton;
@@ -20,6 +21,7 @@
 
 + (double)_fontPointSizeForIdiom:(long long)arg1;
 
+- (void).cxx_destruct;
 - (void)_UIAppearance_setBadgeColor:(id)arg1;
 - (void)_UIAppearance_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_UIAppearance_setTitlePositionAdjustment:(struct UIOffset { double x1; double x2; })arg1;
@@ -28,6 +30,7 @@
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(bool)arg3;
 - (id)_fontForIdiom:(long long)arg1;
+- (long long)_idiomForFontGivenIdiom:(long long)arg1;
 - (void)_setAppearanceGuideClass:(Class)arg1;
 - (void)_setBadgeColor:(id)arg1;
 - (void)_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
@@ -45,11 +48,11 @@
 
 // Image: /Developer/usr/lib/libMainThreadChecker.dylib
 
-- (void).cxx_destruct;
 - (void)setHighlighted:(bool)arg1;
 - (void)setSelected:(bool)arg1;
 - (void)sizeToFitBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTextColorsForState;
 
 @end

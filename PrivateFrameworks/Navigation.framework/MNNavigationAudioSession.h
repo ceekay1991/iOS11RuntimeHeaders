@@ -27,7 +27,7 @@
 + (id)sessionOfType:(unsigned long long)arg1 language:(id)arg2;
 
 - (void).cxx_destruct;
-- (bool)_beepIfNecessaryWithShortPromptType:(unsigned long long)arg1;
+- (bool)_beepIfNecessaryWithShortPromptType:(unsigned long long)arg1 textToSpeak:(id)arg2;
 - (bool)_headphonesAreInUse;
 - (bool)_isVoiceGuidanceEnabled;
 - (void)_speak:(id)arg1 fallbackPrompt:(unsigned long long)arg2 completionBlock:(id /* block */)arg3;

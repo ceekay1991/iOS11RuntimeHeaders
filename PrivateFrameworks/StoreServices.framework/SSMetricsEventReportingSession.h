@@ -13,6 +13,7 @@
 }
 
 - (void).cxx_destruct;
+- (long long)_estimateSizeOfJsonObject:(id)arg1;
 - (id)_unreportedEvents;
 - (void)_writeString:(id)arg1 toData:(id)arg2;
 - (bool)anyUnreportedEvents;
@@ -22,5 +23,6 @@
 - (bool)markEventsAsReported;
 - (id)sessionCanaryIdentifier;
 - (id)writeEventsToStream:(id)arg1;
+- (id)writeEventsToStream:(id)arg1 uncompressedMaxSize:(long long)arg2;
 
 @end

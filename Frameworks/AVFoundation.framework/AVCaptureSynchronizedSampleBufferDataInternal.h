@@ -4,6 +4,7 @@
 
 @interface AVCaptureSynchronizedSampleBufferDataInternal : NSObject {
     long long  droppedReason;
+    bool  hasCorrespondingDepthData;
     struct opaqueCMSampleBuffer { } * sampleBuffer;
     bool  sampleBufferWasDropped;
 }

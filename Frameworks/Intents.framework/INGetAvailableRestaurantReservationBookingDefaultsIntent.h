@@ -17,7 +17,6 @@
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRestaurant:(id)arg1;

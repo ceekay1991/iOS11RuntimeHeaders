@@ -31,7 +31,6 @@
 @property (nonatomic, copy) NSDictionary *inputTuningParameters;
 
 + (id)_kernel;
-+ (id)_kernelWithParameterImage;
 
 - (id)inputFacesCenterX;
 - (id)inputFacesCenterY;

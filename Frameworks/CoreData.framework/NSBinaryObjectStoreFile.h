@@ -19,7 +19,7 @@
 - (unsigned long long)primaryKeyGeneration;
 - (bool)readBinaryStoreFromData:(id)arg1 originalPath:(id)arg2 error:(id*)arg3;
 - (bool)readFromFile:(id)arg1 error:(id*)arg2;
-- (bool)readMetadataFromFile:(id)arg1 error:(id*)arg2;
+- (bool)readMetadataFromFile:(id)arg1 securely:(bool)arg2 error:(id*)arg3;
 - (void)setDatabaseVersion:(int)arg1;
 - (void)setFullMetadata:(id)arg1;
 - (void)setMapData:(id)arg1;

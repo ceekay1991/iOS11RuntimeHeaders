@@ -18,9 +18,12 @@
 @property (nonatomic) UIWebBrowserView *webBrowserView;
 @property (nonatomic, retain) CALayer *webLayer;
 
-// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (void)dealloc;
+
+// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+
 - (bool)fixUpViewAfterInsertion;
 - (id)initWithLayer:(id)arg1 node:(id)arg2 webBrowserView:(id)arg3;
 - (bool)isBeingRemoved;

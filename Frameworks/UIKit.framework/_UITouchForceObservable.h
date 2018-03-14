@@ -6,6 +6,7 @@
     CADisplayLink * _continuousEvaluationDisplayLink;
     NSSet * _currentTouches;
     _UITouchesObservingGestureRecognizer * _gestureRecognizer;
+    double  _lastObservationTime;
     long long  _observerCount;
     NSObservation * _touchesObservation;
     UIView * _view;

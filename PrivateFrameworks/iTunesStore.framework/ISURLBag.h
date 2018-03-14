@@ -24,7 +24,6 @@
 @property (getter=isValid, nonatomic, readonly) bool valid;
 @property (nonatomic, readonly) long long versionIdentifier;
 
-+ (bool)_allowUnsignedBags;
 + (void)_loadItemKindURLBagKeyMap;
 + (id)_sharedBagBackend;
 + (id)copyExtraHeadersForURL:(id)arg1 inBagContext:(id)arg2;

@@ -22,6 +22,8 @@
 @property (nonatomic, readonly) float userRating;
 @property (nonatomic, readonly) float userRatingForCurrentVersion;
 
+// Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
+
 + (bool)supportsSecureCoding;
 
 - (id)ITunesStoreIdentifier;
@@ -44,5 +46,13 @@
 - (id)productPageURL;
 - (float)userRating;
 - (float)userRatingForCurrentVersion;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (id)appAdamID;
+- (id)introductoryOffers;
+- (bool)isPeriodValid:(id)arg1;
+- (id)offerName;
+- (id)subscriptionPeriodInISO_8601;
 
 @end

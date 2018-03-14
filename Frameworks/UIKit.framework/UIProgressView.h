@@ -45,6 +45,7 @@
 + (id)_tintedImageForHeight:(double)arg1 andColors:(id)arg2 roundingRectCorners:(unsigned long long)arg3;
 + (struct CGSize { double x1; double x2; })defaultSize;
 
+- (void).cxx_destruct;
 - (id)_appropriateProgressImage;
 - (id)_appropriateTrackImage;
 - (bool)_contentHuggingDefault_isUsuallyFixedHeight;
@@ -68,13 +69,15 @@
 - (void)_updateCornerRadiusWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_updateImages;
 
-// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+// Image: /Developer/Library/PrivateFrameworks/DTDDISupport.framework/libViewDebuggerSupport.dylib
 
-- (void).cxx_destruct;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
-- (long long)barStyle;
 - (id)debugHierarchyPropertyDescriptions;
 - (id)debugHierarchyValueForPropertyWithName:(id)arg1;
+
+// Image: /Developer/usr/lib/libMainThreadChecker.dylib
+
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
+- (long long)barStyle;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -102,5 +105,14 @@
 - (id)trackImage;
 - (id)trackTintColor;
 - (void)traitCollectionDidChange:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
+
+- (bool)supportsAsynchronousMeasurement;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
 
 @end

@@ -4,7 +4,6 @@
 
 @interface MPMediaPlaybackItemMetadata : NSObject {
     NSObject<OS_dispatch_queue> * _accessQueue;
-    NSDictionary * _additionalHTTPHeaderFields;
     NSString * _albumArtistName;
     long long  _albumStoreAdamID;
     NSString * _albumTitle;
@@ -22,6 +21,7 @@
     long long  _endpointType;
     double  _expectedDuration;
     NSString * _genreTitle;
+    NSDictionary * _hlsOfflinePlaybackKeys;
     NSNumber * _iTunesStoreContentDSID;
     NSNumber * _iTunesStoreContentID;
     bool  _isExplicitTrack;
@@ -29,6 +29,8 @@
     MPMediaItem * _mediaItem;
     long long  _mediaLibraryPersistentID;
     MPModelGenericObject * _modelGenericObject;
+    bool  _offlineHLS;
+    bool  _prefersStoreContentInfo;
     NSURL * _protectedContentSupportStorageURL;
     NSNumber * _rentalIdentifier;
     bool  _requiresPlayWhileDownload;
@@ -44,6 +46,7 @@
     float  _volumeNormalization;
 }
 
+@property (nonatomic, readonly) MPUContentItemIdentifierCollection *MPU_contentItemIdentifierCollection;
 @property (nonatomic, readonly, copy) NSDictionary *additionalHTTPHeaderFields;
 @property (nonatomic, readonly, copy) NSString *albumArtistName;
 @property (nonatomic, readonly) long long albumStoreAdamID;
@@ -63,6 +66,7 @@
 @property (nonatomic, readonly) long long endpointType;
 @property (nonatomic, readonly) double expectedDuration;
 @property (nonatomic, readonly, copy) NSString *genreTitle;
+@property (nonatomic, readonly) NSDictionary *hlsOfflinePlaybackKeys;
 @property (nonatomic, readonly, copy) NSNumber *iTunesStoreContentDSID;
 @property (nonatomic, readonly, copy) NSString *iTunesStoreContentDownloadParameters;
 @property (nonatomic, readonly, copy) NSNumber *iTunesStoreContentID;
@@ -75,6 +79,8 @@
 @property (nonatomic, readonly) MPMediaItem *mediaItem;
 @property (nonatomic, readonly) long long mediaLibraryPersistentID;
 @property (nonatomic, readonly) MPModelGenericObject *modelGenericObject;
+@property (getter=isOfflineHLS, nonatomic, readonly) bool offlineHLS;
+@property (nonatomic, readonly) bool prefersStoreContentInfo;
 @property (nonatomic, readonly, copy) NSURL *protectedContentSupportStorageURL;
 @property (getter=_rentalIdentifier, nonatomic, readonly) NSNumber *rentalIdentifier;
 @property (nonatomic, readonly) bool requiresPlayWhileDownload;
@@ -89,6 +95,8 @@
 @property (getter=isSubscriptionRequired, nonatomic, readonly) bool subscriptionRequired;
 @property (nonatomic, readonly) float volumeNormalization;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (bool)_shouldRespectMusicCellularDataSetting;
 + (bool)_shouldRespectStoreCellularDataSetting;
 
@@ -96,6 +104,7 @@
 - (bool)_calculateAllowsCellularNetworking;
 - (void)_contentTasteControllerDidChangeNotification:(id)arg1;
 - (void)_musicCellularNetworkingAllowedDidChangeNotification:(id)arg1;
+- (void)_persistURI:(id)arg1 persistentContentKey:(id)arg2;
 - (id)_rentalIdentifier;
 - (bool)_requiresPendingItemDownload;
 - (void)_setNeedsAllowsCellularNetworkingUpdate;
@@ -124,7 +133,7 @@
 - (double)expectedDuration;
 - (id)genreTitle;
 - (void)getNetworkConstraintsForDownloadKind:(id)arg1 withCompletionHandler:(id /* block */)arg2;
-- (id)headerFields;
+- (id)hlsOfflinePlaybackKeys;
 - (id)iTunesStoreContentDSID;
 - (id)iTunesStoreContentDownloadParameters;
 - (id)iTunesStoreContentID;
@@ -134,6 +143,7 @@
 - (id)init;
 - (bool)isEqual:(id)arg1;
 - (bool)isExplicitTrack;
+- (bool)isOfflineHLS;
 - (bool)isSubscriptionRequired;
 - (long long)likedState;
 - (void)loadMediaItemWithCompletionHandler:(id /* block */)arg1;
@@ -141,6 +151,7 @@
 - (id)mediaItem;
 - (long long)mediaLibraryPersistentID;
 - (id)modelGenericObject;
+- (bool)prefersStoreContentInfo;
 - (id)protectedContentSupportStorageURL;
 - (bool)requiresPlayWhileDownload;
 - (void)setCachedLocalPlaybackAssetFilePath:(id)arg1 protectionType:(unsigned long long)arg2 assetQuality:(unsigned long long)arg3 withCompletionHandler:(id /* block */)arg4;
@@ -156,5 +167,9 @@
 - (id)streamingPlaybackAssetDestinationFilePathForAssetQuality:(unsigned long long)arg1 assetFlavor:(id)arg2 protectionType:(unsigned long long)arg3 pathExtension:(id)arg4;
 - (id)streamingPlaybackPurchaseBundleDestinationFilePathForAssetFilePath:(id)arg1;
 - (float)volumeNormalization;
+
+// Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
+
+- (id)MPU_contentItemIdentifierCollection;
 
 @end

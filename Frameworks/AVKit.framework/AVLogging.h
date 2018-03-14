@@ -4,7 +4,6 @@
 
 @interface AVLogging : NSObject {
     NSMutableDictionary * _categories;
-    NSObject<OS_os_log> * _log;
     long long  _loggingLevel;
     NSObject<OS_dispatch_queue> * _loggingQueue;
     NSMutableArray * _reusableLogQueue;
@@ -21,6 +20,7 @@
 - (id)categories;
 - (id)init;
 - (void)logString:(id)arg1 type:(unsigned char)arg2 logLevel:(long long)arg3;
+- (void)logTrustedString:(id)arg1 type:(unsigned char)arg2 logLevel:(long long)arg3;
 - (id)loggingQueue;
 - (void)popCategory:(id)arg1;
 - (void)pushCategory:(id)arg1;

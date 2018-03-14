@@ -10,6 +10,7 @@
     bool  _isCachedAirplaneModeValid;
     struct __SCPreferences { } * _prefs;
     bool  notifyForExternalChangeOnly;
+    NSObject<OS_os_log> * radios_prefs_log;
 }
 
 @property (nonatomic) bool airplaneMode;

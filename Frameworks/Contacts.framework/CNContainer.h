@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Contacts.framework/Contacts
  */
 
-@interface CNContainer : NSObject <NSCopying, NSSecureCoding> {
+@interface CNContainer : NSObject <ABSCNLegacyIdentifiable, NSCopying, NSSecureCoding> {
     NSString * _accountIdentifier;
     bool  _enabled;
     int  _iOSLegacyIdentifier;
@@ -14,12 +14,17 @@
 }
 
 @property (nonatomic, readonly, copy) NSString *accountIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (getter=isEnabled, nonatomic, readonly) bool enabled;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) int iOSLegacyIdentifier;
+@property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly, copy) CNContainerPermissions *permissions;
 @property (nonatomic, readonly, copy) CNContainer *snapshot;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) long long type;
 
 + (id)identifierProvider;
